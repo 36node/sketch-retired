@@ -1,0 +1,21 @@
+{
+  "name": "@36node/cli",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "sketch": "bin/sketch.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "@36node/eslint": "^1.0.0",
+    "@36node/init": "^1.0.0"
+  }
+}
