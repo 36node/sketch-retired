@@ -1,0 +1,23 @@
+{
+  "name": "sketch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "lerna bootstrap",
+    "lint": "eslint --quiet packages",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "lerna": "^2.11.0"
+  },
+  "engines": {
+    "node": ">=8"
+  }
+}
