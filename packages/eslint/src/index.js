@@ -3,7 +3,7 @@ const ora = require('ora');
 
 const rules = require('./rules');
 
-module.exports = function () {
+module.exports = () => {
   const spinner = ora('eslint').start();
   const config = {
     extensions: ['.js'],
