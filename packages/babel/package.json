@@ -1,0 +1,24 @@
+{
+  "name": "@36node/babel",
+  "version": "0.0.0",
+  "description": "Babel tools and config for 36node.",
+  "repository": "36node/sketch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/36node/sketch/issues"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.3",
+    "babel-eslint": "8.2.5",
+    "babel-jest": "23.2.0",
+    "babel-plugin-transform-builtin-extend": "1.1.2",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-stage-0": "6.24.1"
+  }
+}

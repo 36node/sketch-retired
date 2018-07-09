@@ -1,0 +1,29 @@
+{
+  "name": "@36node/eslint-config",
+  "version": "0.0.0",
+  "description": "ESLint configuration used by 36node team",
+  "repository": "36node/sketch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/36node/sketch/issues"
+  },
+  "files": [
+    "index.js"
+  ],
+  "peerDependencies": {
+    "babel": "6.23.0",
+    "babel-eslint": "8.2.5",
+    "eslint": "5.0.1",
+    "prettier": "1.13.7"
+  },
+  "dependencies": {
+    "eslint": "5.0.1",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-config-react-app": "2.1.0",
+    "eslint-plugin-flowtype": "2.49.3",
+    "eslint-plugin-import": "2.13.0",
+    "eslint-plugin-jsx-a11y": "6.1.0",
+    "eslint-plugin-prettier": "2.6.2",
+    "eslint-plugin-react": "7.10.0"
+  }
+}

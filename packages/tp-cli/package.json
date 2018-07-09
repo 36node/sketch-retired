@@ -1,0 +1,25 @@
+{
+  "name": "@36node/cli",
+  "version": "0.0.0",
+  "description": "command tools for 36node sketch",
+  "bin": {
+    "sketch": "bin/sketch.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@36node/eslint-config": "*",
+    "babel": "6.23.0",
+    "babel-eslint": "8.2.5",
+    "eslint": "5.0.1",
+    "prettier": "1.13.7"
+  }
+}

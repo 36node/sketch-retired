@@ -1,0 +1,44 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "changelog": "lerna-changelog",
+    "format": "prettier --trailing-comma es5 --single-quote --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js'"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "git add"
+    ],
+    "yarn.lock": [
+      "git rm --cached"
+    ]
+  },
+  "devDependencies": {
+    "@36node/eslint-config": "*",
+    "@36node/babel": "*",
+    "@commitlint/cli": "6.1.0",
+    "@commitlint/config-conventional": "6.1.0",
+    "husky": "0.14.3",
+    "lerna": "2.11.0",
+    "lint-staged": "7.2.0",
+    "prettier": "1.13.7"
+  }
+}
