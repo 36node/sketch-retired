@@ -22,7 +22,7 @@ export async function init(tpl, dest = ".", options) {
   try {
     spinner.text = "Generating basic files ...";
     spinner.start();
-    await copy(path.join(__dirname, "../basic"), dest, { overwrite: false });
+    await copy(path.join(__dirname, "../tpl-basic-files"), dest, { overwrite: false });
     spinner.succeed("Generating basic files success!");
   } catch (err) {
     spinner.fail("Generating basic files failed!");
