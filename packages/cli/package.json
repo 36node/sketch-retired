@@ -12,7 +12,11 @@
   },
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "bin",
+    "dist",
+    "template",
+    "CHANGELOG.md",
+    "README.md"
   ],
   "bin": {
     "sketch": "bin/sketch.js"
