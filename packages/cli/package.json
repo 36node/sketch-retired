@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Cli for @36node/sketch",
   "repository": "36node/sketch",
+  "private": false,
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/36node/sketch/issues"
