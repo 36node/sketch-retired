@@ -40,7 +40,7 @@ export default async (pkg, dest) => {
     // step 4: clean up
     tmpObj.removeCallback();
 
-    return Promise.resolve(dest);
+    return dest;
   } catch (err) {
     Promise.reject(err);
   }

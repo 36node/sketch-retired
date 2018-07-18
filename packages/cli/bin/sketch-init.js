@@ -41,6 +41,6 @@ inquirer
   .prompt(questions)
   .then(answers => {
     const template = program.template || answers.template;
-    return cli.init(template, dest);
+    return cli.init(template, dest, questions);
   })
   .catch(err => console.error(err));
