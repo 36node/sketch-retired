@@ -1,0 +1,11 @@
+# 特殊 ignore，确保模板里的东西都上传到 npm 中
+
+# Node generated files
+node_modules
+npm-debug.log
+
+# OS generated files
+Thumbs.db
+.DS_Store
+
+dist
