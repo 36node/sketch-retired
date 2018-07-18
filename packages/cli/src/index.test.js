@@ -6,6 +6,7 @@ import download from "./download-npm-package";
 
 jest.mock("./download-npm-package");
 jest.mock("./lib");
+jest.mock("fs-extra");
 
 test("init", () => {
   jsonfile.readFile.mockResolvedValue({});

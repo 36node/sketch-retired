@@ -1,11 +1,15 @@
-import fs from "fs";
+import * as app from "./index";
+import * as math from "./math";
 
-import { listFiles } from "./index";
+math.add = jest.fn();
+math.subtract = jest.fn();
 
-jest.mock("fs");
+test("calls math.add", () => {
+  app.doAdd(1, 2);
+  expect(math.add).toHaveBeenCalledWith(1, 2);
+});
 
-test("list files", () => {
-  const result = ["a"];
-  fs.readdirSync.mockReturnValue(result);
-  expect(listFiles("/tmp")).toBe(result);
+test("calls math.subtract", () => {
+  app.doSubtract(1, 2);
+  expect(math.subtract).toHaveBeenCalledWith(1, 2);
 });

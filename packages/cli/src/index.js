@@ -1,5 +1,6 @@
 import path from "path";
 import ora from "ora";
+import { copy } from "fs-extra";
 
 import download from "./download-npm-package";
 import { jsonfile } from "./lib";
@@ -14,6 +15,17 @@ export async function init(tpl, dest = ".", options) {
     spinner.succeed("Downloading success.");
   } catch (err) {
     spinner.fail("Downloading failed.");
+    throw err;
+  }
+
+  // generate preset files
+  try {
+    spinner.text = "Generating basic files ...";
+    spinner.start();
+    await copy(path.join(__dirname, "../basic"), dest, { overwrite: false });
+    spinner.succeed("Generating basic files success!");
+  } catch (err) {
+    spinner.fail("Generating basic files failed!");
     throw err;
   }
 

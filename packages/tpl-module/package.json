@@ -15,7 +15,6 @@
     "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
     "format": "prettier --trailing-comma es5 --single-quote --write",
     "lint": "eslint src",
-    "preinstall": "cp ../../.????* ./",
     "prepublishOnly": "npm run build",
     "test:cov": "jest --coverage && npm run lint",
     "test": "npm run lint && jest"
