@@ -5,7 +5,7 @@ Will add some badges here.
 ## Install
 
 ```bash
-yarn add @36node/sketch-cli --global
+yarn global add @36node/sketch-cli
 ```
 
 ## Usage

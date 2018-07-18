@@ -5,7 +5,7 @@ import { copy } from "fs-extra";
 import download from "./download-npm-package";
 import { jsonfile } from "./lib";
 
-export async function init(tpl, dest = ".", options) {
+export async function init(tpl, dest = ".", options = {}) {
   const pkg = `@36node/template-${tpl}`;
   const spinner = ora(`Downloading template ${pkg}...`);
 
