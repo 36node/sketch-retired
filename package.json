@@ -8,6 +8,7 @@
     "changelog": "lerna-changelog",
     "format": "prettier --trailing-comma es5 --single-quote --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js'",
     "lint": "eslint packages/*/src",
+    "release": "lerna publish --conventional-commits --yes && git push --follow-tags origin master",
     "test:cov": "jest --coverage && npm run lint",
     "test": "npm run lint && jest packages/*/src"
   },
