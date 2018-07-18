@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.1.3...@36node/sketch-cli@0.2.0) (2018-07-18)
+
+
+### Features
+
+* template-cli ([ee2ded7](https://github.com/36node/sketch/commit/ee2ded7))
+
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.1.2...@36node/sketch-cli@0.1.3) (2018-07-18)
 
