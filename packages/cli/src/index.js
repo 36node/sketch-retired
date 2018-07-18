@@ -18,11 +18,11 @@ export async function init(tpl, dest = ".", options) {
     throw err;
   }
 
-  // generate preset files
+  // generate common template files
   try {
-    spinner.text = "Generating basic files ...";
+    spinner.text = "Generating common template files ...";
     spinner.start();
-    await copy(path.join(__dirname, "../tpl-basic-files"), dest, { overwrite: false });
+    await copy(path.join(__dirname, "../template"), dest, { overwrite: false });
     spinner.succeed("Generating basic files success!");
   } catch (err) {
     spinner.fail("Generating basic files failed!");
