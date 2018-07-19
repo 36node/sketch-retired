@@ -13,8 +13,8 @@
   "main": "dist/index.js",
   "files": [
     "bin",
-    "dist",
-    "CHANGELOG.md",
+    "src",
+    "circle.yml",
     "README.md"
   ],
   "bin": {

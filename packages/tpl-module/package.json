@@ -10,6 +10,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "src",
+    "circle.yml",
+    "README.md"
+  ],
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",

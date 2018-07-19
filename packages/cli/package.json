@@ -14,9 +14,7 @@
   "files": [
     "bin",
     "dist",
-    "template",
-    "CHANGELOG.md",
-    "README.md"
+    "template"
   ],
   "bin": {
     "sketch": "bin/sketch.js"
