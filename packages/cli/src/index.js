@@ -38,12 +38,17 @@ export async function init(tpl, dest = ".", options = {}) {
 
     let { name, owner, scope } = options;
     const files = ["bin", "dist"];
+    const version = "0.0.0";
     const repository = {
       url: `${owner}/${name}`,
       type: "git"
     };
     name = scope ? `@${scope}/${name}` : name;
-    await jsonfile.writeFile(pkgFile, { ...pkgJson, name, repository, files }, { spaces: 2 });
+    await jsonfile.writeFile(
+      pkgFile,
+      { ...pkgJson, name, repository, files, version },
+      { spaces: 2 }
+    );
     spinner.succeed(`Package.json cooked! ${path.resolve(dest)}`);
   } catch (err) {
     spinner.fail("Modifying package.json failed.");
