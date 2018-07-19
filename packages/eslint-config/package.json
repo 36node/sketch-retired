@@ -14,10 +14,10 @@
     "index.js"
   ],
   "peerDependencies": {
-    "babel": "^6.26.0",
-    "babel-eslint": "^8.2.5",
-    "eslint": "^5.0.1",
-    "prettier": "^1.13.7"
+    "babel": ">=5",
+    "babel-eslint": ">=7",
+    "eslint": ">=4",
+    "prettier": ">=1"
   },
   "dependencies": {
     "eslint": "5.0.1",
