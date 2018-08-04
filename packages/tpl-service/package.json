@@ -1,7 +1,7 @@
 {
-  "name": "@36node/template-module",
+  "name": "@36node/template-service",
   "version": "0.1.2",
-  "description": "A module boilerplate for nodejs and web.",
+  "description": "A service boilerplate with openapi,rest and mongodb.",
   "repository": {
     "url": "36node/sketch",
     "type": "git"
@@ -11,9 +11,8 @@
     "access": "public"
   },
   "files": [
-    "src",
-    "circle.yml",
-    "README.md"
+    "bin",
+    "dist"
   ],
   "main": "dist/index.js",
   "scripts": {
@@ -21,7 +20,6 @@
     "format": "prettier --trailing-comma es5 --single-quote --write",
     "lint": "eslint src",
     "prepublishOnly": "npm run build",
-    "release": "standard-version && git push --follow-tags origin master",
     "test:cov": "jest --coverage && npm run lint",
     "test": "npm run lint && jest"
   },
@@ -57,7 +55,6 @@
     "husky": "0.14.3",
     "jest-cli": "23.3.0",
     "lint-staged": "7.2.0",
-    "prettier": "1.13.7",
-    "standard-version": "4.4.0"
+    "prettier": "1.13.7"
   }
 }

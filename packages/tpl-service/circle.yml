@@ -9,6 +9,10 @@ jobs:
 
   build:
     <<: *defaults
+    branches:
+      ignore:
+        - gh-pages # list of branches to ignore
+        - /release\/.*/ # or ignore regexes
     steps:
       - checkout
       - restore_cache:
@@ -37,7 +41,7 @@ jobs:
           at: ~/repo
       - run:
           name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish package
           command: npm publish
@@ -49,10 +53,10 @@ workflows:
       - build:
           filters:
             tags:
-              only: /.*/
+              only: /^v.*/
       - deploy:
           requires:
-            - build
+            - test
           filters:
             tags:
               only: /^v.*/
