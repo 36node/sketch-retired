@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.0.2"></a>
+## [0.0.2](https://github.com/36node/sketch/compare/@36node/eslint-config@0.0.1...@36node/eslint-config@0.0.2) (2018-08-04)
+
+
+### Bug Fixes
+
+* peerDependencies in eslint-config ([cf53873](https://github.com/36node/sketch/commit/cf53873))
+* peerDependencies in eslint-config ([746f7c5](https://github.com/36node/sketch/commit/746f7c5))
+* tpl-module circile ci ([033b7d0](https://github.com/36node/sketch/commit/033b7d0))
+
+
+
+
 <a name="0.0.1"></a>
 ## 0.0.1 (2018-07-18)
 
