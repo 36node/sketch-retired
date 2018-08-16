@@ -5,6 +5,8 @@
  * #  #  {head} {month} {date} {hour} {minute} {second} #  #
  * 23 23 01     09      12     08     08       20       23 23
  *
+ * 23 23 01 09 12 08 08 20 23 23
+ *
  * send back to client
  * hello 09-12 08:08:20
  */
