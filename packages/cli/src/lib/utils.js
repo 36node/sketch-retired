@@ -5,7 +5,7 @@ export const promisify = (fn, receiver) => {
         ...args,
         (err, res) => {
           return err ? reject(err) : resolve(res);
-        },
+        }
       ]);
     });
   };

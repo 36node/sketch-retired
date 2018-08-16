@@ -17,7 +17,7 @@ test("init", () => {
   const options = {
     name: "somepkg",
     owner: "tester",
-    scope: "36node",
+    scope: "36node"
   };
 
   return init(tpl, dest, options)
@@ -30,8 +30,8 @@ test("init", () => {
           name: "@36node/somepkg",
           repository: {
             url: "tester/somepkg",
-            type: "git",
-          },
+            type: "git"
+          }
         },
         { spaces: 2 }
       );
