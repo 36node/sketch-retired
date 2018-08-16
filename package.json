@@ -6,7 +6,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "changelog": "lerna-changelog",
-    "format": "prettier --trailing-comma es5 --write",
+    "format": "prettier --write",
     "lint": "eslint packages/*/src",
     "release": "lerna publish --conventional-commits --yes && git push --follow-tags origin master",
     "test:cov": "jest --coverage && npm run lint",
@@ -30,7 +30,12 @@
       "packages/"
     ]
   },
-  "lint-staged": {},
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "@36node/babel": "*",
     "@36node/eslint-config": "*",
