@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/36node/sketch/compare/@36node/template-module@0.1.3...@36node/template-module@0.2.0) (2018-08-16)
+
+
+### Features
+
+* tpl-tcp ([b54b2a1](https://github.com/36node/sketch/commit/b54b2a1))
+
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/36node/sketch/compare/@36node/template-module@0.1.2...@36node/template-module@0.1.3) (2018-08-04)
 
