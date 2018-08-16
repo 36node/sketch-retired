@@ -18,23 +18,23 @@ const questions = [
     name: "template",
     message: "which boilerplate do you want use:",
     choices: ["module", "react", "react-redux", "service", "tcp"],
-    when: () => !program.template
+    when: () => !program.template,
   },
   {
     name: "name",
     message: "What is your package name?",
-    default: baseFolderName
+    default: baseFolderName,
   },
   {
     name: "owner",
     message: "Who is package's owner?",
-    default: gitUser().name
+    default: gitUser().name,
   },
   {
     name: "scope",
     message: "What is the package scope?",
-    default: ""
-  }
+    default: "",
+  },
 ];
 
 inquirer

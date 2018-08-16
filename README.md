@@ -5,6 +5,8 @@ Boilerplates for nodejs and web, including module, tcp-server, service and react
 ## Install
 
 ```sh
+## use this command for upgrade too
+
 yarn global add @36node/sketch-cli
 ```
 

@@ -6,11 +6,11 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "changelog": "lerna-changelog",
-    "format": "prettier --trailing-comma es5 --single-quote --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js'",
+    "format": "prettier --trailing-comma es5 --write",
     "lint": "eslint packages/*/src",
     "release": "lerna publish --conventional-commits --yes && git push --follow-tags origin master",
     "test:cov": "jest --coverage && npm run lint",
-    "test": "npm run lint && jest packages/*/src"
+    "test": "npm run lint && jest packages/*/src --silent"
   },
   "commitlint": {
     "extends": [
@@ -30,21 +30,13 @@
       "packages/"
     ]
   },
-  "lint-staged": {
-    "*.js": [
-      "npm run format",
-      "git add"
-    ],
-    "yarn.lock": [
-      "git rm --cached"
-    ]
-  },
+  "lint-staged": {},
   "devDependencies": {
     "@36node/babel": "*",
     "@36node/eslint-config": "*",
     "@commitlint/cli": "6.1.0",
     "@commitlint/config-conventional": "6.1.0",
-    "husky": "0.14.3",
+    "husky": "1.0.0-rc.13",
     "jest": "23.4.1",
     "lerna": "2.11.0",
     "lint-staged": "7.2.0",
