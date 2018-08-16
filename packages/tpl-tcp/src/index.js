@@ -55,11 +55,3 @@ app.on("end", session => {
 app.on("error", session => {
   console.log(`session ${session.id}: error`);
 });
-
-/**
- * test data
- */
-// request
-// 23 23 01 09 12 08 08 20 23 23
-// response
-// haha ##
