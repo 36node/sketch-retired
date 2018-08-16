@@ -24,7 +24,7 @@ test("download", () => {
       expect(tmp.dirSync).toBeCalledWith({ unsafeCleanup: true });
       expect(spawn.sync).toBeCalledWith("npm", ["pack", pkg], {
         stdio: "ignore",
-        cwd: tmpFolder
+        cwd: tmpFolder,
       });
       expect(fs.readdir).toBeCalledWith(tmpFolder);
       expect(tar.x).toBeCalled();

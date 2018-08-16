@@ -29,7 +29,7 @@ export default class Protocol {
     }
 
     const header = {
-      command: buf[2]
+      command: buf[2],
     };
 
     const body = {
@@ -37,7 +37,7 @@ export default class Protocol {
       date: buf[4],
       hour: buf[5],
       minute: buf[6],
-      second: buf[7]
+      second: buf[7],
     };
 
     return { header, body };

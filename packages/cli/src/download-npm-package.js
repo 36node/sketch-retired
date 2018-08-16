@@ -17,7 +17,7 @@ export default async (pkg, dest) => {
     // step 2: download package from npm
     const result = await spawn.sync("npm", ["pack", pkg], {
       stdio: "ignore",
-      cwd: tmpObj.name
+      cwd: tmpObj.name,
     });
 
     if (result.status !== 0) {
@@ -32,7 +32,7 @@ export default async (pkg, dest) => {
     // step 3: extract and copy to dest
     await tar.x({
       file: path.join(tmpObj.name, files[0]),
-      cwd: tmpObj.name
+      cwd: tmpObj.name,
     });
     await mkdirp(dest);
     await copy(path.join(tmpObj.name, "package"), dest);

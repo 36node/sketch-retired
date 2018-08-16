@@ -41,7 +41,7 @@ export async function init(tpl, dest = ".", options = {}) {
     const version = "0.0.0";
     const repository = {
       url: `${owner}/${name}`,
-      type: "git"
+      type: "git",
     };
     name = scope ? `@${scope}/${name}` : name;
     await jsonfile.writeFile(
