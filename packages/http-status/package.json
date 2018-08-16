@@ -1,6 +1,6 @@
 {
   "name": "@36node/http-status",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Provides useful http status.",
   "repository": {
     "url": "36node/http-status",
