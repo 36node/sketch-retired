@@ -7,23 +7,20 @@ import helmet from "koa-helmet";
 import logger from "koa-logger";
 import jwt from "koa-jwt";
 import Router from "koa-tree-router";
-import send from "koa-send";
 
+import { openapi } from "./utils/middleware";
 import petsService from "./services/pet";
 
 const app = new Koa2();
 const router = new Router();
 // const env = process.env.NODE_ENV || "development";
 
-router.get("/openapi.yml", async ctx => {
-  await send(ctx, "src/api/openapi.yml");
-});
-
 // register services
 petsService.bind(router);
 
 app
   .use(logger())
+  .use(openapi(path.join(__dirname, "./api/openapi.yml")))
   .use(helmet())
   .use(jwt({ secret: "shared-secret" }).unless({ path: "/openapi.yml" }))
   .use(cors({ exposeHeaders: "*" }))

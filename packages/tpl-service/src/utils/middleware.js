@@ -1,4 +1,4 @@
-import send from "koa-send";
+import { readFile } from "fs-extra";
 
 /**
  * Static file middleware
@@ -6,6 +6,11 @@ import send from "koa-send";
  * @param {string} path path to file
  * @returns {Function} middleware
  */
-export const file = path => async ctx => {
-  await send(ctx, path);
+export const openapi = path => async (ctx, next) => {
+  if (ctx.path.includes("/openapi.yml")) {
+    ctx.type = "yaml";
+    ctx.body = await readFile(path);
+  } else {
+    await next();
+  }
 };
