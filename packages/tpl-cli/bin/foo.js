@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-var pkg = require("../package.json");
 var program = require("commander");
+
+var pkg = require("../package.json");
 var foo = require("../dist");
 
 program

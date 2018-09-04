@@ -49,6 +49,9 @@
       "git add"
     ]
   },
+  "dependencies": {
+    "commander": "2.16.0"
+  },
   "devDependencies": {
     "@36node/babel": "0.0.1",
     "@36node/eslint-config": "0.1.0",
