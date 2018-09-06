@@ -1,4 +1,5 @@
-import { authorize, makesure, NewPet, Pet } from "./helper";
+import { authorize } from "./helper";
+import { ListPetsParam, ShowPetByIdParam, NewPet, Pet } from "./schema"; // eslint-disable-line
 
 export default class API {
   roles = {
@@ -9,13 +10,12 @@ export default class API {
 
   bind(router) {
     const listPets = async ctx => {
-      const options = {
-        session: ctx.session,
-        limit: makesure("limit", ctx.query.limit, "int32"),
-      };
+      const param = new ListPetsParam({
+        limit: ctx.query.limit,
+      });
 
-      const result = await this.listPets(options);
-      const xNext = await this.listPetsXNext(options);
+      const result = await this.listPets(ctx, param);
+      const xNext = await this.listPetsXNext(ctx, param);
 
       ctx.body = result;
       ctx.set("X-Next", xNext);
@@ -23,18 +23,18 @@ export default class API {
 
     const createPet = async ctx => {
       const newPet = new NewPet(ctx.request.body);
-      const options = { session: ctx.session };
 
-      const result = await this.createPet(newPet, options);
+      const result = await this.createPet(ctx, newPet);
 
       ctx.body = result;
     };
 
     const showPetById = async ctx => {
-      const options = { session: ctx.session };
-      const petId = makesure("petId", ctx.params.petId, "string", true);
+      const param = new ShowPetByIdParam({
+        petId: ctx.params.petId,
+      });
 
-      const result = await this.showPetById(petId, options);
+      const result = await this.showPetById(ctx, param);
 
       if (!result) return ctx.throw(404, "not found");
       ctx.body = result;
@@ -53,12 +53,12 @@ export default class API {
    * List all pets
    *
    * @abstract
-   * @param {object} options optional params
-   * - {object} session session object
-   * - {number} limit the number of returned pets
+   * @param {Object} ctx koa context
+   * @param {ListPetsParam} param listPets parameters
    * @returns {Array<Pet>} A paged array of pets
    */
-  listPets(options) {
+
+  listPets(ctx, param) {
     throw new Error("not implemented");
   }
 
@@ -66,10 +66,12 @@ export default class API {
    * List all pets' x-next
    *
    * @abstract
-   * @param {object} options optional params
+   * @param {Object} ctx koa context
+   * @param {ListPetsParam} param listPets parameters
    * @returns {string} A link to the next page of responses
    */
-  listPetsXNext(options) {
+
+  listPetsXNext(ctx, param) {
     throw new Error("not implemented");
   }
 
@@ -77,10 +79,12 @@ export default class API {
    * Create a pet
    *
    * @abstract
-   * @param {object} options optional params
+   * @param {Object} ctx koa context
+   * @param {NewPet} body createPet's body
    * @returns {Pet} The Pet created
    */
-  createPet(newPet, options) {
+
+  createPet(ctx, body) {
     throw new Error("not implemented");
   }
 
@@ -88,11 +92,12 @@ export default class API {
    * Find pet by id
    *
    * @abstract
-   * @param {string} petId The id of the pet to retrieve
-   * @param {object} options optional params
+   * @param {Object} ctx koa context
+   * @param {ShowPetByIdParam} param showPetById's parameters
    * @returns {Pet} Expected response to a valid request
    */
-  showPetById(petId, options) {
+
+  showPetById(ctx, param) {
     throw new Error("not implemented");
   }
 }

@@ -42,36 +42,3 @@ export const makesure = (name, param, type, required) => {
 
   return param;
 };
-
-/**
- * NewPet
- */
-export class NewPet {
-  name;
-  tag;
-
-  constructor({ name, tag }) {
-    if (!name) throw new createError.BadRequest("name is required!");
-
-    this.name = name;
-    this.tag = tag;
-  }
-}
-
-/**
- * Pet
- */
-export class Pet {
-  id;
-  name;
-  tag;
-
-  constructor({ id, name, tag }) {
-    if (!id) throw new createError.BadRequest("id is required!");
-    if (!name) throw new createError.BadRequest("name is required!");
-
-    this.id = id;
-    this.name = name;
-    this.tag = tag;
-  }
-}

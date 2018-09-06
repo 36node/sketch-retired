@@ -33,12 +33,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Pets"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
         default:
           description: unexpected error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+
     post:
       summary: Create a pet
       operationId: createPets
@@ -60,12 +67,19 @@ paths:
                 $ref: "#/components/schemas/Pet"
         '201':
           description: Null response
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
         default:
           description: unexpected error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+
   /pets/{petId}:
     get:
       summary: Find pet by id
@@ -86,12 +100,22 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Pets"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
         default:
           description: unexpected error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+
+security:
+  - bearerAuth: []
+
 components:
   schemas:
     Pet:
@@ -128,3 +152,18 @@ components:
           format: int32
         message:
           type: string
+
+    UnauthorizedError:
+      properties:
+        name:
+          type: string
+        status:
+          type: number
+        message:
+          type: string
+
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

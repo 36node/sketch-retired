@@ -1,3 +1,4 @@
+import fs from "fs";
 import path from "path";
 
 import Koa2 from "koa";
@@ -8,21 +9,33 @@ import logger from "koa-logger";
 import jwt from "koa-jwt";
 import Router from "koa-tree-router";
 
-import { openapi } from "./utils/middleware";
+import { BASE } from "./config";
 import petsService from "./services/pet";
 
 const app = new Koa2();
-const router = new Router();
-// const env = process.env.NODE_ENV || "development";
+const router = new Router({ prefix: BASE });
+const publicKey = fs.readFileSync(path.join(__dirname, "ssl/rsa_jwt.pub"));
 
 // register services
 petsService.bind(router);
 
+/**
+ * spec openapi.yml
+ */
+
+router.get("/openapi.yml", ctx => {
+  ctx.type = "yaml";
+  ctx.body = fs.readFileSync(path.join(__dirname, "openapi.yml"));
+});
+
+/**
+ * application
+ */
+
 app
   .use(logger())
-  .use(openapi(path.join(__dirname, "./api/openapi.yml")))
   .use(helmet())
-  .use(jwt({ secret: "shared-secret" }).unless({ path: "/openapi.yml" }))
+  .use(jwt({ secret: publicKey }))
   .use(cors({ exposeHeaders: "*" }))
   .use(body())
   .use(router.routes());

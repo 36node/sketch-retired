@@ -1,5 +1,5 @@
 import API from "../api/pet";
-import { Pet } from "../api/helper";
+import { ListPetsParam, ShowPetByIdParam, NewPet, Pet } from "../api/schema"; // eslint-disable-line
 
 const pets = [
   { id: "11212", name: "dog", tag: "cute" },
@@ -8,37 +8,50 @@ const pets = [
 ];
 
 export class Service extends API {
+  roles = {
+    listPets: [],
+    createPet: [],
+    showPetById: [],
+  };
+
   /**
    * List all pets
    *
-   * @param {Object} [options] optional params
-   *  - {Session} session session object
-   *  - {Number} limit the number of returned pets
+   * @abstract
+   * @param {Object} ctx koa context
+   * @param {ListPetsParam} param listPets parameters
    * @returns {Array<Pet>} A paged array of pets
    */
-  listPets(options) {
+
+  listPets(ctx, param) {
     return pets;
   }
 
   /**
    * List all pets' x-next
    *
-   * @param {object} options optional params
+   * @abstract
+   * @param {Object} ctx koa context
+   * @param {ListPetsParam} param listPets parameters
    * @returns {string} A link to the next page of responses
    */
-  listPetsXNext(options) {
+
+  listPetsXNext(ctx, param) {
     return "x-next";
   }
 
   /**
    * Create a pet
    *
-   * @param {object} options optional params
+   * @abstract
+   * @param {Object} ctx koa context
+   * @param {NewPet} body createPet's body
    * @returns {Pet} The Pet created
    */
-  createPet(newPet, options) {
-    newPet.id = (Math.random() * 100000).toFixed(0);
-    const pet = new Pet(newPet);
+
+  createPet(ctx, body) {
+    body.id = (Math.random() * 100000).toFixed(0);
+    const pet = new Pet(body);
     pets.push(pet);
     return pet;
   }
@@ -46,12 +59,14 @@ export class Service extends API {
   /**
    * Find pet by id
    *
-   * @param {string} petId The id of the pet to retrieve
-   * @param {object} options optional params
+   * @abstract
+   * @param {Object} ctx koa context
+   * @param {ShowPetByIdParam} param showPetById's parameters
    * @returns {Pet} Expected response to a valid request
    */
-  showPetById(petId, options) {
-    const pet = pets.find(p => p.id === petId);
+
+  showPetById(ctx, param) {
+    const pet = pets.find(p => p.id === param.petId);
     return pet;
   }
 }

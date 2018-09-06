@@ -1,22 +1,13 @@
-# module
+# tpl-service
 
-[![NPM version](https://img.shields.io/npm/v/module.svg?style=flat)](https://npmjs.com/package/module) [![NPM downloads](https://img.shields.io/npm/dm/module.svg?style=flat)](https://npmjs.com/package/module) [![CircleCI](https://circleci.com/gh/36node/module/tree/master.svg?style=shield)](https://circleci.com/gh/36node/module/tree/master) [![codecov](https://codecov.io/gh/36node/module/branch/master/graph/badge.svg)](https://codecov.io/gh/36node/module)
+[![NPM version](https://img.shields.io/npm/v/tpl-service.svg?style=flat)](https://npmjs.com/package/tpl-service) [![NPM downloads](https://img.shields.io/npm/dm/tpl-service.svg?style=flat)](https://npmjs.com/package/tpl-service) [![CircleCI](https://circleci.com/gh/36node/tpl-service/tree/master.svg?style=shield)](https://circleci.com/gh/36node/tpl-service/tree/master) [![codecov](https://codecov.io/gh/36node/tpl-service/branch/master/graph/badge.svg)](https://codecov.io/gh/36node/tpl-service)
 [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/36node/donate)
-
-## Install
-
-```bash
-yarn add module
-```
 
 ## Usage
 
-```js
-const module = require('module');
-
-module();
-//=> foo
-```
+1.  编辑更目录下的 openapi.yml
+2.  run `generate:api` script under root
+3.  `yarn install && yarn start`
 
 ## Contributing
 
@@ -28,7 +19,7 @@ module();
 
 ## Author
 
-**module** © [36node](https://github.com/36node), Released under the [MIT](./LICENSE) License.<br>
-Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/module/contributors)).
+**tpl-service** © [36node](https://github.com/36node), Released under the [MIT](./LICENSE) License.<br>
+Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/tpl-service/contributors)).
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node) · Twitter [@y](https://twitter.com/y)

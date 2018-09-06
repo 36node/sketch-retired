@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@koa/cors": "2",
+    "dotenv": "6.0.0",
     "koa": "2.5.2",
     "koa-body": "4.0.4",
     "koa-helmet": "4.0.0",
