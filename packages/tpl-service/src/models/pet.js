@@ -1,9 +1,27 @@
 import mongoose from "mongoose";
 
-const petSchema = new mongoose.Schema({
+import { Base, createSchema } from "./lib";
+
+export const petSchema = createSchema({
   name: String,
-  birthday: Date,
-  type: { type: String, enum: ["CAT", "DOG"] },
+  tag: String,
+  owner: String,
 });
 
-export default mongoose.model("Pet", petSchema);
+class Pet extends Base {
+  name;
+  tag;
+  owner;
+}
+
+/**
+ * output
+ */
+petSchema.loadClass(Pet);
+
+/**
+ * @type {typeof Pet}
+ */
+const Model = mongoose.model("Pet", petSchema);
+
+export default Model;

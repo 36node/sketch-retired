@@ -1,11 +1,6 @@
 import API from "../api/pet";
 import { ListPetsParam, ShowPetByIdParam, NewPet, Pet } from "../api/schema"; // eslint-disable-line
-
-const pets = [
-  { id: "11212", name: "dog", tag: "cute" },
-  { id: "11213", name: "cat", tag: "cute" },
-  { id: "11214", name: "fish", tag: "cute" },
-];
+import PetModel from "../models/pet";
 
 export class Service extends API {
   roles = {
@@ -24,7 +19,7 @@ export class Service extends API {
    */
 
   listPets(ctx, param) {
-    return pets;
+    return PetModel.find();
   }
 
   /**
@@ -50,10 +45,7 @@ export class Service extends API {
    */
 
   createPet(ctx, body) {
-    body.id = (Math.random() * 100000).toFixed(0);
-    const pet = new Pet(body);
-    pets.push(pet);
-    return pet;
+    return PetModel.create(body);
   }
 
   /**
@@ -65,8 +57,8 @@ export class Service extends API {
    * @returns {Pet} Expected response to a valid request
    */
 
-  showPetById(ctx, param) {
-    const pet = pets.find(p => p.id === param.petId);
+  async showPetById(ctx, param) {
+    const pet = await PetModel.get(param.petId);
     return pet;
   }
 }

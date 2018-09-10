@@ -34,9 +34,17 @@ paths:
               schema:
                 $ref: "#/components/schemas/Pets"
         '401':
-          $ref: '#/components/responses/Unauthorized'
-        '500':
-          $ref: '#/components/responses/InternalError'
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
     post:
       summary: Create a pet
@@ -57,10 +65,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Pet"
+        '201':
+          description: Null response
         '401':
-          $ref: '#/components/responses/Unauthorized'
-        '500':
-          $ref: '#/components/responses/InternalError'
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
   /pets/{petId}:
     get:
@@ -83,37 +101,22 @@ paths:
               schema:
                 $ref: "#/components/schemas/Pets"
         '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalError'
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
 security:
   - bearerAuth: []
 
 components:
-  responses:
-    NoContent:
-      description: The resource was deleted successfully.
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalError:
-      description: unexpected error
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
   schemas:
     Pet:
       required:
@@ -140,15 +143,24 @@ components:
       items:
         $ref: "#/components/schemas/Pet"
     Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
       required:
         - code
         - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+
+    UnauthorizedError:
+      properties:
+        name:
+          type: string
+        status:
+          type: number
+        message:
+          type: string
 
   securitySchemes:
     bearerAuth:            # arbitrary name for the security scheme
