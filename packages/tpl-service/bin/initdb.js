@@ -5,48 +5,17 @@ import jsf from "json-schema-faker";
 require("mongoose-schema-jsonschema")(mongoose);
 
 async function main() {
-  // const schema = Models.Pet.jsonSchema();
+  const schema = Models.Pet.jsonSchema();
 
-  // var schema = {
+  // const schema = {
   //   type: "object",
   //   properties: {
-  //     user: {
-  //       type: "object",
-  //       properties: {
-  //         id: {
-  //           $ref: "#/definitions/positiveInt"
-  //         },
-  //         name: {
-  //           type: "string",
-  //           faker: "name.findName"
-  //         },
-  //         email: {
-  //           type: "string",
-  //           format: "email",
-  //           faker: "internet.email"
-  //         }
-  //       },
-  //       required: ["id", "name", "email"]
-  //     }
+  //     name: { type: "string" },
+  //     birthday: { type: "string", format: "date-time" },
   //   },
-  //   required: ["user"],
-  //   definitions: {
-  //     positiveInt: {
-  //       type: "integer",
-  //       minimum: 0,
-  //       exclusiveMinimum: true
-  //     }
-  //   }
+  //   required: ["name", "birthday"],
   // };
 
-  const schema = {
-    type: "object",
-    properties: {
-      name: { type: "string" },
-      birthday: { type: "string", format: "date-time" },
-    },
-    required: ["name", "birthday"],
-  };
   const ret = await jsf.resolve(schema);
   console.log(schema);
   console.log(ret);
