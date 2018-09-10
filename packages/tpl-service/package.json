@@ -22,7 +22,8 @@
     "prepublishOnly": "npm run build",
     "start": "nodemon src/index.js --watch src --exec 'babel-node'",
     "test:cov": "jest --coverage && npm run lint",
-    "test": "npm run lint && jest --silent"
+    "test": "npm run lint && jest --silent",
+    "init-db": "babel-node bin/initdb.js"
   },
   "commitlint": {
     "extends": [
@@ -52,7 +53,9 @@
     "@commitlint/config-conventional": "6.1.0",
     "husky": "1.0.0-rc.13",
     "jest-cli": "23.3.0",
+    "json-schema-faker": "0.5.0-rc15",
     "lint-staged": "7.2.0",
+    "mongoose-schema-jsonschema": "1.1.15",
     "nodemon": "1.18.3",
     "prettier": "1.13.7"
   },
@@ -64,6 +67,7 @@
     "koa-helmet": "4.0.0",
     "koa-jwt": "3.3.2",
     "koa-logger": "3.2.0",
-    "koa-tree-router": "0.4.2"
+    "koa-tree-router": "0.4.2",
+    "mongoose": "5.0.14"
   }
 }
