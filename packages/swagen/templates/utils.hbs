@@ -36,6 +36,7 @@ export const makesure = (name, param, type, required) => {
     if (type === "number") return Number.parseFloat(param);
     if (type === "boolean") return Boolean(param);
     if (type === "date" || type === "date-time") return new Date(param);
+    if (type.prototype && type.prototype.constructor) return new type(param);
   } catch (err) {
     throw new createError.BadRequest(`${name} should be type ${type}: err.message`);
   }

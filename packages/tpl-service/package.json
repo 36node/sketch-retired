@@ -18,6 +18,7 @@
   "scripts": {
     "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
     "format": "prettier --trailing-comma es5 --write",
+    "gen:api": "swagen -t koa -s openapi.yml -f ./src",
     "lint": "eslint src",
     "prepublishOnly": "npm run build",
     "start": "nodemon src/index.js --watch src --exec 'babel-node'",
@@ -48,6 +49,7 @@
   "devDependencies": {
     "@36node/babel": "*",
     "@36node/eslint-config": "0.1.0",
+    "@36node/swagen": "*",
     "@commitlint/cli": "6.1.0",
     "@commitlint/config-conventional": "6.1.0",
     "husky": "1.0.0-rc.13",

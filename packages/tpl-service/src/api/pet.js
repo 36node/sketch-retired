@@ -54,7 +54,7 @@ export default class API {
    *
    * @abstract
    * @param {Object} ctx koa context
-   * @param {ListPetsParam} param listPets parameters
+   * @param { ListPetsParam } param listPets parameters
    * @returns {Array<Pet>} A paged array of pets
    */
 

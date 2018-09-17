@@ -1,0 +1,25 @@
+import { makesure } from "./utils";
+
+export class Response {
+  headers: {};
+  content;
+}
+{{#each this}}
+{{#if properties}}
+
+export class {{capitalize @key}} {
+{{#each properties}}
+  /**
+   * @type { {{type}} }
+   */
+  {{@key}};
+
+{{/each}}
+  constructor(obj) {
+  {{#each properties}}
+    this.{{@key}} = makesure("{{@key}}", obj.{{@key}}, "{{type}}"{{#inArray ../required @key}}, true{{/inArray}});
+  {{/each}}
+  }
+}
+{{/if}}
+{{/each}}
