@@ -15,10 +15,11 @@ program
 
 const dest = program.folder || ".";
 const target = path.resolve(process.cwd(), dest);
+const swagger = path.resolve(process.cwd(), program.swagger);
 
 switch (program.template) {
   case "koa":
-    genKoaCode(target, program.swagger);
+    genKoaCode(target, swagger);
     break;
   case "sdk":
     break;

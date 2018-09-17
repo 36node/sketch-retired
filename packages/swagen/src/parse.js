@@ -53,7 +53,7 @@ function getSchemaName(schema = {}) {
 
 async function getFile(filePath) {
   return new Promise((resolve, reject) => {
-    fs.readFile(path.resolve(__dirname, filePath), (err, data) => {
+    fs.readFile(filePath, (err, data) => {
       if (err) return reject(err);
       resolve(data);
     });

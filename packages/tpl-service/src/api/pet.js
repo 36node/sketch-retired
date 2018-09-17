@@ -1,103 +1,162 @@
-import { authorize } from "./helper";
-import { ListPetsParam, ShowPetByIdParam, NewPet, Pet } from "./schema"; // eslint-disable-line
+import { authorize, makesure } from "./lib/utils";
+import * as schemas from "./lib/schemas";
+
+export class ListPetsOptions {
+  /** @type { integer } */
+  limit;
+
+  constructor(obj) {
+    this.limit = makesure("limit", obj.limit, "integer", false);
+  }
+}
+export class CreatePetsOptions {
+  /** @type { schemas.NewPet } */
+  body;
+
+  constructor(obj) {
+    this.body = makesure("body", obj.body, schemas.NewPet, true);
+  }
+}
+export class ShowPetByIdOptions {
+  /** @type { string } */
+  petId;
+
+  constructor(obj) {
+    this.petId = makesure("petId", obj.petId, "string", true);
+  }
+}
+
+export class ListPetsResult {
+  /** @type { schemas.Pets } */
+  body;
+  /** @type { string } */
+  xNext;
+}
+export class CreatePetsResult {
+  /** @type { schemas.Pet } */
+  body;
+}
+export class ShowPetByIdResult {
+  /** @type { schemas.Pets } */
+  body;
+}
 
 export default class API {
   roles = {
     listPets: [],
-    createPet: [],
+    createPets: [],
     showPetById: [],
   };
 
   bind(router) {
     const listPets = async ctx => {
-      const param = new ListPetsParam({
+      const options = new ListPetsOptions({
         limit: ctx.query.limit,
       });
 
-      const result = await this.listPets(ctx, param);
-      const xNext = await this.listPetsXNext(ctx, param);
+      try {
+        const result = await this.listPets(ctx.state, options);
 
-      ctx.body = result;
-      ctx.set("X-Next", xNext);
+        // check result
+        if (result.body instanceof schemas.Pets) {
+          throw new Error("result.body should be instanceof schemas.Pets");
+        }
+        if (!result.xNext) throw new Error("result should have xNext");
+
+        ctx.status = 200;
+        ctx.body = result.body;
+        ctx.set("x-next", result.xNext);
+      } catch (err) {
+        ctx.status = err.status;
+        ctx.body = err;
+      }
     };
 
-    const createPet = async ctx => {
-      const newPet = new NewPet(ctx.request.body);
+    const createPets = async ctx => {
+      const options = new CreatePetsOptions({
+        body: ctx.request.body,
+      });
 
-      const result = await this.createPet(ctx, newPet);
+      try {
+        const result = await this.createPets(ctx.state, options);
 
-      ctx.body = result;
+        // check result
+        if (result.body instanceof schemas.Pet) {
+          throw new Error("result.body should be instanceof schemas.Pet");
+        }
+
+        ctx.status = 200;
+        ctx.body = result.body;
+      } catch (err) {
+        ctx.status = err.status;
+        ctx.body = err;
+      }
     };
 
     const showPetById = async ctx => {
-      const param = new ShowPetByIdParam({
-        petId: ctx.params.petId,
+      const options = new ShowPetByIdOptions({
+        petId: ctx.path.petId,
       });
 
-      const result = await this.showPetById(ctx, param);
+      try {
+        const result = await this.showPetById(ctx.state, options);
 
-      if (!result) return ctx.throw(404, "not found");
-      ctx.body = result;
+        // check result
+        if (result.body instanceof schemas.Pets) {
+          throw new Error("result.body should be instanceof schemas.Pets");
+        }
+
+        ctx.status = 200;
+        ctx.body = result.body;
+      } catch (err) {
+        ctx.status = err.status;
+        ctx.body = err;
+      }
     };
 
     router.get("/pets", authorize(this.roles.listPets), listPets);
-    router.post("/pets", authorize(this.roles.createPet), createPet);
-    router.get("/pets/:petId", authorize(this.roles.showPetById), showPetById);
+    router.post("/pets", authorize(this.roles.createPets), createPets);
+    router.get("/pets/{petId}", authorize(this.roles.showPetById), showPetById);
   }
 
   /**
-   * implement following abstract methods in inherited class
+   * implement following abstract methods in the inherited class
    */
 
   /**
    * List all pets
    *
    * @abstract
-   * @param {Object} ctx koa context
-   * @param { ListPetsParam } param listPets parameters
-   * @returns {Array<Pet>} A paged array of pets
+   * @param { Object } state ctx.state store state data, like state.user
+   * @param { ListPetsOptions } options listPets options
+   * @returns { ListPetsResult } A paged array of pets
    */
 
-  listPets(ctx, param) {
+  listPets(state, options) {
     throw new Error("not implemented");
   }
-
-  /**
-   * List all pets' x-next
-   *
-   * @abstract
-   * @param {Object} ctx koa context
-   * @param {ListPetsParam} param listPets parameters
-   * @returns {string} A link to the next page of responses
-   */
-
-  listPetsXNext(ctx, param) {
-    throw new Error("not implemented");
-  }
-
   /**
    * Create a pet
    *
    * @abstract
-   * @param {Object} ctx koa context
-   * @param {NewPet} body createPet's body
-   * @returns {Pet} The Pet created
+   * @param { Object } state ctx.state store state data, like state.user
+   * @param { CreatePetsOptions } options createPets options
+   * @returns { CreatePetsResult } The Pet created
    */
 
-  createPet(ctx, body) {
+  createPets(state, options) {
     throw new Error("not implemented");
   }
-
   /**
    * Find pet by id
    *
    * @abstract
-   * @param {Object} ctx koa context
-   * @param {ShowPetByIdParam} param showPetById's parameters
-   * @returns {Pet} Expected response to a valid request
+   * @param { Object } state ctx.state store state data, like state.user
+   * @param { ShowPetByIdOptions } options showPetById options
+   * @returns { ShowPetByIdResult } Expected response to a valid request
    */
 
-  showPetById(ctx, param) {
+  showPetById(state, options) {
     throw new Error("not implemented");
   }
 }
