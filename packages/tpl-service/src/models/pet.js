@@ -6,6 +6,7 @@ export const petSchema = createSchema({
   name: String,
   tag: String,
   owner: String,
+  category: { type: String, enum: ["CAT", "DOG"] },
 });
 
 class Pet extends Base {
