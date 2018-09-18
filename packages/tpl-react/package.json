@@ -1,0 +1,25 @@
+{
+  "name": "@36node/template-react",
+  "version": "0.0.1",
+  "description": "A react boilerplate for web",
+  "license": "MIT",
+  "scripts": {
+    "start": "poi dev",
+    "build": "poi build",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "qs": "^6.5.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "@36node/babel": "*",
+    "@36node/eslint-config": "0.1.0",
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.7",
+    "poi": "next",
+    "poi-plugin-dotenv": "^0.1.0",
+    "prettier": "1.13.7"
+  }
+}
