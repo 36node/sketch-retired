@@ -67,14 +67,21 @@ export class Base {
    * @param {number} conditions - Query condition.
    * @returns {Promise<[*]>}
    */
-  static list({ offset = 0, limit = 50, sort = "-updatedAt", conditions, populate, select } = {}) {
-    return this.find(conditions, {
-      offset: Number(offset),
-      limit: Number(limit),
-      sort,
-      populate,
-      select,
-    });
+  static list({
+    offset = 0,
+    limit = 50,
+    sort = "-updatedAt",
+    conditions,
+    populate = "",
+    select,
+  } = {}) {
+    return this.find(conditions)
+      .sort(sort)
+      .skip(offset)
+      .limit(limit)
+      .populate(populate)
+      .select(select)
+      .exec();
   }
 
   /**

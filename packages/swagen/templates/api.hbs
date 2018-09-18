@@ -1,0 +1,119 @@
+import { authorize, makesure } from "./lib/utils";
+import * as schemas from "./lib/schemas";
+
+{{#each operations}}
+{{#or parameters requestBody}}
+export class {{capitalize name}}Options {
+{{#each parameters}}
+  /** @type { {{{schemaName schema}}} } */
+  {{name}};
+{{/each}}
+{{#with requestBody}}
+  /** @type { {{{schemaName content.schema}}} } */
+  body;
+{{/with}}
+
+  constructor(obj) {
+  {{#each parameters}}
+    this.{{name}} = makesure("{{name}}", obj.{{name}}, {{{schemaType schema}}}, {{required}});
+  {{/each}}
+  {{#with requestBody}}
+    this.body = makesure("body", obj.body, {{{schemaType content.schema}}}, true);
+  {{/with}}
+  }
+}
+{{/or}}
+{{/each}}
+
+{{#each operations}}
+{{#or response.content response.headers}}
+export class {{capitalize name}}Result {
+  {{#with response.content}}
+  /** @type { {{{schemaName schema}}} } */
+  body;
+  {{/with}}
+  {{#each response.headers}}
+  /** @type { {{{schemaType schema}}} } */
+  {{camelcase @key}};
+  {{/each}}
+}
+{{/or}}
+{{/each}}
+
+export default class API {
+  roles = {
+  {{#each operations}}
+    {{name}}: [],
+  {{/each}}
+  };
+
+  bind(router) {
+  {{#each operations}}
+    const {{name}} = async ctx => {
+      {{#or parameters requestBody}}
+      const options = new {{capitalize name}}Options({
+      {{#each parameters}}
+        {{name}}: ctx.{{in}}.{{name}},
+      {{/each}}
+      {{#with requestBody}}
+        body: ctx.request.body,
+      {{/with}}
+      });
+
+      {{/or}}
+      try {
+        {{#or response.content response.headers}}const result = {{/or}}await this.{{name}}(ctx.state{{#or parameters requestBody}}, options{{/or}});
+
+        {{#with response.content}}
+        // check result
+        if (!(result.body instanceof {{{schemaType schema}}})) {
+          throw new Error("result.body should be instanceof {{{schemaName schema}}}");
+        }
+
+        {{/with}}
+        {{#each response.headers}}
+        if (!result.{{camelcase @key}}) throw new Error("result should have {{camelcase @key}}");
+
+        {{/each}}
+        {{#if response.content}}
+        ctx.body = result.body;
+        {{/if}}
+        {{#each response.headers}}
+        ctx.set("{{@key}}", result.{{camelcase @key}});
+        {{/each}}
+        ctx.status = {{response.status}};
+      } catch (err) {
+        ctx.status = err.status || 500;
+        ctx.body = err;
+      }
+    };
+
+  {{/each}}
+  {{#each operations}}
+    router.{{method}}("{{path}}", authorize(this.roles.{{name}}), {{name}});
+  {{/each}}
+  }
+
+  /**
+   * implement following abstract methods in the inherited class
+   */
+{{#each operations}}
+
+  /**
+   * {{summary}}
+   *
+   * @abstract
+   * @param { Object } state ctx.state store state data, like state.user
+   {{#or parameters requestBody}}
+   * @param { {{capitalize name}}Options } options {{name}} options
+   {{/or}}
+   {{#or response.content response.headers}}
+   * @returns { {{capitalize name}}Result } {{response.description}}
+   {{/or}}
+   */
+
+  {{name}}(state{{#or parameters requestBody}}, options{{/or}}) {
+    throw new Error("not implemented");
+  }
+{{/each}}
+}

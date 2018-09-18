@@ -1,0 +1,18 @@
+import { makesure } from "./utils";
+
+{{#each this}}
+{{#if properties}}
+export class {{capitalize @key}} {
+{{#each properties}}
+  /** @type { {{{schemaType this}}} } */
+  {{@key}};
+
+{{/each}}
+  constructor(obj) {
+  {{#each properties}}
+    this.{{@key}} = makesure("{{@key}}", obj.{{@key}}, {{{schemaType this}}}{{#inArray ../required @key}}, true{{/inArray}});
+  {{/each}}
+  }
+}
+{{/if}}
+{{/each}}

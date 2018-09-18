@@ -32,7 +32,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pets"
+                type: array
+                items:
+                  $ref: "#/components/schemas/Pet"
         '401':
           $ref: '#/components/responses/Unauthorized'
         '500':
@@ -81,7 +83,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pets"
+                $ref: "#/components/schemas/Pet"
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -135,10 +137,6 @@ components:
           type: string
         tag:
           type: string
-    Pets:
-      type: array
-      items:
-        $ref: "#/components/schemas/Pet"
     Error:
       type: object
       properties:

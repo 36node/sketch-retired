@@ -1,33 +1,54 @@
 import fs from "fs";
-import path from "path";
 
 import YAML from "js-yaml";
+import { get, camelCase } from "lodash";
+
+/**
+ * read file
+ *
+ * @param {*} filePath target file
+ * @returns {String} raw data from a file
+ */
 
 async function getFile(filePath) {
   return new Promise((resolve, reject) => {
-    fs.readFile(path.resolve(__dirname, filePath), (err, content) => {
+    fs.readFile(filePath, (err, data) => {
       if (err) return reject(err);
-      resolve(content);
+      resolve(data);
     });
   });
 }
 
-function toJSON(content) {
-  content = content.toString("utf8");
+/**
+ * parse raw file data to json
+ *
+ * @param {String} data raw file data
+ * @returns {Object} json
+ */
+
+function toJSON(data) {
+  data = data.toString("utf8");
   try {
-    return JSON.parse(content);
+    return JSON.parse(data);
   } catch (e) {
-    return YAML.safeLoad(content);
+    return YAML.safeLoad(data);
   }
 }
 
-function parseSwaggerJSON(obj) {
-  const { paths } = obj;
-  const result = {};
+/**
+ * parse swagger
+ *
+ * @param {Object} swagger openapi object
+ * @returns {Object} { info, servers, api, components }
+ */
+
+function parseSwagger(swagger) {
+  const { paths, components, info, servers } = swagger;
+  const api = {};
 
   for (const path in paths) {
     for (const method in paths[path]) {
-      const { operationId, tags, parameters, requestBody, responses: origRes } = paths[path][
+      const { operationId, summary, tags, parameters, requestBody, responses } = paths[path][
         method
       ];
 
@@ -35,30 +56,54 @@ function parseSwaggerJSON(obj) {
       if (!operationId) throw new Error(`missing operationId for ${method} ${path}`);
       if (!tags && !tags[0]) throw new Error(`missing operation tag for ${method} ${path}`);
 
-      // parse responses
-      // currently we only care about application/json
-      const responses = [];
-      for (let code in origRes) {
-        const { content, description } = origRes[code];
-        if (!content || !content["application/json"]) continue;
-        if (code === "default") code = "500";
-        const { schema } = content["application/json"];
-        responses.push({ code, description, schema });
+      // camelcase operationId
+      const name = camelCase(operationId);
+
+      // use 200/204 response, use http-errors as error responses. https://github.com/jshttp/http-errors
+      const res200 = responses["200"] || responses[200];
+      const res204 = responses["204"] || responses[204];
+      const response = res200 || res204;
+      if (!response) throw new Error(`missing 20X response for ${method} ${path}`);
+
+      if (res200) {
+        response.status = 200;
+        response.content = get(response, ["content", "application/json"]);
       }
 
-      const name = tags[0]; // use first tag as api name
-      const api = (result[name] = result[name] || { name, operations: [] });
-      const operation = { method, path, name: operationId, parameters, requestBody, responses };
-      api.operations.push(operation);
+      if (res204) {
+        response.status = 204;
+        response.content = get(response, ["content", "application/json"]);
+      }
+
+      // requestBody
+      if (requestBody) {
+        requestBody.content = get(requestBody, ["content", "application/json"]);
+      }
+
+      // use tags[0] as api's name
+      api[tags[0]] = api[tags[0]] || { name: tags[0], operations: [], ref: [] };
+
+      api[tags[0]].operations.push({
+        method,
+        name,
+        operationId,
+        parameters,
+        path,
+        requestBody,
+        response,
+        summary,
+      });
     }
   }
 
-  return Object.values(result);
+  return { info, servers, api, components };
 }
 
 /**
  * parse swagger file to expected structure
+ *
  * @param {*} filePath file path
+ * @returns { Object } { info, servers, api, components }
  */
 export default async function parse(filePath) {
   let content, json, result;
@@ -80,7 +125,7 @@ export default async function parse(filePath) {
   }
 
   try {
-    result = parseSwaggerJSON(json);
+    result = parseSwagger(json);
   } catch (e) {
     console.error(e);
     return;
