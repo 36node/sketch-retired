@@ -1,48 +1,7 @@
 import fs from "fs";
-import path from "path";
 
 import YAML from "js-yaml";
 import { get, camelCase } from "lodash";
-import { upperFirst } from "lodash";
-
-/**
- * get schema type
- *
- * @param {*} schema swagger schema object
- * @returns {String} parsed type
- */
-
-function getSchemaType(schema = {}) {
-  let { type, $ref } = schema;
-
-  if (type === "integer") return "Number";
-  if (type) return upperFirst(type);
-
-  if ($ref) {
-    const segs = $ref.split("/");
-    if (segs.length < 2) {
-      throw new Error(`ref pattern is wrong: ${$ref}`);
-    }
-    return `${segs[segs.length - 2]}.${upperFirst(segs[segs.length - 1])}`;
-  }
-}
-
-/**
- * get schema name
- *
- * @param {*} schema swagger schema object
- * @returns {String} parsed schema name
- */
-
-function getSchemaName(schema = {}) {
-  let { type, items } = schema;
-
-  if (type === "array") {
-    return `${upperFirst(type)}<${getSchemaName(items)}>`;
-  }
-
-  return getSchemaType(schema);
-}
 
 /**
  * read file
@@ -77,26 +36,6 @@ function toJSON(data) {
 }
 
 /**
- * parse response or requestbody's content
- *
- * @param {Object} content swagger's response or request body's content
- * @returns {Object} { name, type, schema }
- */
-
-function parseContent(content) {
-  // TODO: 如果是直接 $ref 的情况，需要解析一层
-  const schema = get(content, ["application/json", "schema"]);
-
-  if (!schema) throw new Error("200 response should have application/json content and schema");
-
-  return {
-    name: getSchemaName(schema),
-    type: getSchemaType(schema),
-    schema,
-  };
-}
-
-/**
  * parse swagger
  *
  * @param {Object} swagger openapi object
@@ -128,16 +67,17 @@ function parseSwagger(swagger) {
 
       if (res200) {
         response.status = 200;
-        Object.assign(response, parseContent(response.content));
+        response.content = get(response, ["content", "application/json"]);
       }
 
       if (res204) {
         response.status = 204;
+        response.content = get(response, ["content", "application/json"]);
       }
 
       // requestBody
       if (requestBody) {
-        Object.assign(requestBody, parseContent(requestBody.content));
+        requestBody.content = get(requestBody, ["content", "application/json"]);
       }
 
       // use tags[0] as api's name

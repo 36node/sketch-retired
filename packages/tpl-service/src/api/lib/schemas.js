@@ -1,63 +1,42 @@
 import { makesure } from "./utils";
 
-export class Response {
-  headers: {};
-  content;
-}
-
 export class Pet {
-  /**
-   * @type { integer }
-   */
+  /** @type { Number } */
   id;
 
-  /**
-   * @type { string }
-   */
+  /** @type { String } */
   name;
 
-  /**
-   * @type { string }
-   */
+  /** @type { String } */
   tag;
 
   constructor(obj) {
-    this.id = makesure("id", obj.id, "integer", true);
-    this.name = makesure("name", obj.name, "string", true);
-    this.tag = makesure("tag", obj.tag, "string");
+    this.id = makesure("id", obj.id, Number, true);
+    this.name = makesure("name", obj.name, String, true);
+    this.tag = makesure("tag", obj.tag, String);
   }
 }
-
 export class NewPet {
-  /**
-   * @type { string }
-   */
+  /** @type { String } */
   name;
 
-  /**
-   * @type { string }
-   */
+  /** @type { String } */
   tag;
 
   constructor(obj) {
-    this.name = makesure("name", obj.name, "string", true);
-    this.tag = makesure("tag", obj.tag, "string");
+    this.name = makesure("name", obj.name, String, true);
+    this.tag = makesure("tag", obj.tag, String);
   }
 }
-
 export class Error {
-  /**
-   * @type { string }
-   */
+  /** @type { String } */
   code;
 
-  /**
-   * @type { string }
-   */
+  /** @type { String } */
   message;
 
   constructor(obj) {
-    this.code = makesure("code", obj.code, "string", true);
-    this.message = makesure("message", obj.message, "string", true);
+    this.code = makesure("code", obj.code, String, true);
+    this.message = makesure("message", obj.message, String, true);
   }
 }

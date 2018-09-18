@@ -2,11 +2,11 @@ import { authorize, makesure } from "./lib/utils";
 import * as schemas from "./lib/schemas";
 
 export class ListPetsOptions {
-  /** @type { integer } */
+  /** @type { Number } */
   limit;
 
   constructor(obj) {
-    this.limit = makesure("limit", obj.limit, "integer", false);
+    this.limit = makesure("limit", obj.limit, Number, false);
   }
 }
 export class CreatePetsOptions {
@@ -18,18 +18,18 @@ export class CreatePetsOptions {
   }
 }
 export class ShowPetByIdOptions {
-  /** @type { string } */
+  /** @type { String } */
   petId;
 
   constructor(obj) {
-    this.petId = makesure("petId", obj.petId, "string", true);
+    this.petId = makesure("petId", obj.petId, String, true);
   }
 }
 
 export class ListPetsResult {
-  /** @type { schemas.Pets } */
+  /** @type { Array<schemas.Pet> } */
   body;
-  /** @type { string } */
+  /** @type { String } */
   xNext;
 }
 export class CreatePetsResult {
@@ -37,7 +37,7 @@ export class CreatePetsResult {
   body;
 }
 export class ShowPetByIdResult {
-  /** @type { schemas.Pets } */
+  /** @type { schemas.Pet } */
   body;
 }
 
@@ -58,16 +58,17 @@ export default class API {
         const result = await this.listPets(ctx.state, options);
 
         // check result
-        if (result.body instanceof schemas.Pets) {
-          throw new Error("result.body should be instanceof schemas.Pets");
+        if (!(result.body instanceof Array)) {
+          throw new Error("result.body should be instanceof Array<schemas.Pet>");
         }
+
         if (!result.xNext) throw new Error("result should have xNext");
 
-        ctx.status = 200;
         ctx.body = result.body;
         ctx.set("x-next", result.xNext);
+        ctx.status = 200;
       } catch (err) {
-        ctx.status = err.status;
+        ctx.status = err.status || 500;
         ctx.body = err;
       }
     };
@@ -81,14 +82,14 @@ export default class API {
         const result = await this.createPets(ctx.state, options);
 
         // check result
-        if (result.body instanceof schemas.Pet) {
+        if (!(result.body instanceof schemas.Pet)) {
           throw new Error("result.body should be instanceof schemas.Pet");
         }
 
-        ctx.status = 200;
         ctx.body = result.body;
+        ctx.status = 200;
       } catch (err) {
-        ctx.status = err.status;
+        ctx.status = err.status || 500;
         ctx.body = err;
       }
     };
@@ -102,14 +103,14 @@ export default class API {
         const result = await this.showPetById(ctx.state, options);
 
         // check result
-        if (result.body instanceof schemas.Pets) {
-          throw new Error("result.body should be instanceof schemas.Pets");
+        if (!(result.body instanceof schemas.Pet)) {
+          throw new Error("result.body should be instanceof schemas.Pet");
         }
 
-        ctx.status = 200;
         ctx.body = result.body;
+        ctx.status = 200;
       } catch (err) {
-        ctx.status = err.status;
+        ctx.status = err.status || 500;
         ctx.body = err;
       }
     };
@@ -135,6 +136,7 @@ export default class API {
   listPets(state, options) {
     throw new Error("not implemented");
   }
+
   /**
    * Create a pet
    *
@@ -147,6 +149,7 @@ export default class API {
   createPets(state, options) {
     throw new Error("not implemented");
   }
+
   /**
    * Find pet by id
    *

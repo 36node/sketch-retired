@@ -5,20 +5,20 @@ import * as schemas from "./lib/schemas";
 {{#or parameters requestBody}}
 export class {{capitalize name}}Options {
 {{#each parameters}}
-  /** @type { {{{schema.type}}} } */
+  /** @type { {{{schemaName schema}}} } */
   {{name}};
 {{/each}}
 {{#with requestBody}}
-  /** @type { {{{name}}} } */
+  /** @type { {{{schemaName content.schema}}} } */
   body;
 {{/with}}
 
   constructor(obj) {
   {{#each parameters}}
-    this.{{name}} = makesure("{{name}}", obj.{{name}}, "{{schema.type}}", {{required}});
+    this.{{name}} = makesure("{{name}}", obj.{{name}}, {{{schemaType schema}}}, {{required}});
   {{/each}}
   {{#with requestBody}}
-    this.body = makesure("body", obj.body, {{type}}, true);
+    this.body = makesure("body", obj.body, {{{schemaType content.schema}}}, true);
   {{/with}}
   }
 }
@@ -26,16 +26,18 @@ export class {{capitalize name}}Options {
 {{/each}}
 
 {{#each operations}}
-{{#if response}}
+{{#or response.content response.headers}}
 export class {{capitalize name}}Result {
-  /** @type { {{{response.name}}} } */
+  {{#with response.content}}
+  /** @type { {{{schemaName schema}}} } */
   body;
+  {{/with}}
   {{#each response.headers}}
-  /** @type { {{{schema.type}}} } */
+  /** @type { {{{schemaType schema}}} } */
   {{camelcase @key}};
   {{/each}}
 }
-{{/if}}
+{{/or}}
 {{/each}}
 
 export default class API {
@@ -60,25 +62,28 @@ export default class API {
 
       {{/or}}
       try {
-        const result = await this.{{name}}(ctx.state{{#or parameters requestBody}}, options{{/or}});
-        {{#if response.name}}
+        {{#or response.content response.headers}}const result = {{/or}}await this.{{name}}(ctx.state{{#or parameters requestBody}}, options{{/or}});
 
+        {{#with response.content}}
         // check result
-        if (result.body instanceof {{{response.type}}}) {
-          throw new Error("result.body should be instanceof {{{response.name}}}");
+        if (!(result.body instanceof {{{schemaType schema}}})) {
+          throw new Error("result.body should be instanceof {{{schemaName schema}}}");
         }
-        {{/if}}
+
+        {{/with}}
         {{#each response.headers}}
         if (!result.{{camelcase @key}}) throw new Error("result should have {{camelcase @key}}");
-        {{/each}}
 
-        ctx.status = {{response.status}};
+        {{/each}}
+        {{#if response.content}}
         ctx.body = result.body;
+        {{/if}}
         {{#each response.headers}}
         ctx.set("{{@key}}", result.{{camelcase @key}});
         {{/each}}
+        ctx.status = {{response.status}};
       } catch (err) {
-        ctx.status = err.status;
+        ctx.status = err.status || 500;
         ctx.body = err;
       }
     };
@@ -92,8 +97,8 @@ export default class API {
   /**
    * implement following abstract methods in the inherited class
    */
-
 {{#each operations}}
+
   /**
    * {{summary}}
    *
@@ -102,7 +107,9 @@ export default class API {
    {{#or parameters requestBody}}
    * @param { {{capitalize name}}Options } options {{name}} options
    {{/or}}
+   {{#or response.content response.headers}}
    * @returns { {{capitalize name}}Result } {{response.description}}
+   {{/or}}
    */
 
   {{name}}(state{{#or parameters requestBody}}, options{{/or}}) {

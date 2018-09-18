@@ -1,6 +1,6 @@
-import API from "../api/pet";
-import { ListPetsParam, ShowPetByIdParam, NewPet, Pet } from "../api/schema"; // eslint-disable-line
-import PetModel from "../models/pet";
+import API, { ListPetsResult, CreatePetsResult, ShowPetByIdResult } from "../api/pet";
+import * as schemas from "../api/lib/schemas"; // eslint-disable-line
+import Pet from "../models/pet";
 
 export class Service extends API {
   roles = {
@@ -12,54 +12,52 @@ export class Service extends API {
   /**
    * List all pets
    *
-   * @abstract
-   * @param {Object} ctx koa context
-   * @param {ListPetsParam} param listPets parameters
-   * @returns {Array<Pet>} A paged array of pets
+   * @param { Object } state ctx.state store state data, like state.user
+   * @param { import("../api/pet").ListPetsOptions } options listPets options
+   * @returns { ListPetsResult } A paged array of pets
    */
 
-  listPets(ctx, param) {
-    return PetModel.find();
-  }
+  async listPets(state, options) {
+    const { limit = 100 } = options;
+    const conditions = {};
 
-  /**
-   * List all pets' x-next
-   *
-   * @abstract
-   * @param {Object} ctx koa context
-   * @param {ListPetsParam} param listPets parameters
-   * @returns {string} A link to the next page of responses
-   */
-
-  listPetsXNext(ctx, param) {
-    return "x-next";
+    const pets = await Pet.list({ limit, conditions });
+    const res = new ListPetsResult();
+    res.body = pets.map(p => new schemas.Pet(p));
+    res.xNext = "nextLink";
+    return res;
   }
 
   /**
    * Create a pet
    *
-   * @abstract
-   * @param {Object} ctx koa context
-   * @param {NewPet} body createPet's body
-   * @returns {Pet} The Pet created
+   * @param { Object } state ctx.state store state data, like state.user
+   * @param { import("../api/pet").CreatePetsOptions } options createPets options
+   * @returns { CreatePetsResult } The Pet created
    */
 
-  createPet(ctx, body) {
-    return PetModel.create(body);
+  async createPets(state, options) {
+    const { body } = options;
+    const pet = await Pet.create(body);
+    const res = new CreatePetsResult();
+    res.body = new schemas.Pet(pet);
+    return res;
   }
 
   /**
    * Find pet by id
    *
-   * @abstract
-   * @param {Object} ctx koa context
-   * @param {ShowPetByIdParam} param showPetById's parameters
-   * @returns {Pet} Expected response to a valid request
+   * @param { Object } state ctx.state store state data, like state.user
+   * @param { import("../api/pet").ShowPetByIdOptions } options showPetById options
+   * @returns { ShowPetByIdResult } Expected response to a valid request
    */
 
-  async showPetById(ctx, param) {
-    const pet = await PetModel.get(param.petId);
-    return pet;
+  async showPetById(state, options) {
+    const { petId } = options;
+    const pet = await Pet.get(petId);
+    const res = new ShowPetByIdResult();
+    res.body = new schemas.Pet(pet);
+    return res;
   }
 }
 
