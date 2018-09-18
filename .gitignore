@@ -67,5 +67,6 @@ packages/tpl-*/.gitattributes
 packages/tpl-*/.gitignore
 packages/tpl-*/.npmrc
 packages/tpl-*/.prettierrc
+packages/tpl-*/.env
 packages/tpl-*/gitignore
 packages/tpl-*/LICENSE
