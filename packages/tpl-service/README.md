@@ -23,3 +23,10 @@
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/tpl-service/contributors)).
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node) · Twitter [@y](https://twitter.com/y)
+
+## init-db 使用
+
+1. 写完model之后需要在 models/index.js 中export一下
+2. 在.env下配置好 APP_MONGODB_CONNECTION
+3. 执行 yarn init-db
+
