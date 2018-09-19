@@ -31,4 +31,4 @@ DOCKER_REPO: docker hub 地址
 **tpl-react** © [36node](https://github.com/36node), Released under the [MIT](./LICENSE) License.<br>
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/tpl-service/contributors)).
 
-> [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node) · Twitter [@y](https://twitter.com/y)
+> [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
