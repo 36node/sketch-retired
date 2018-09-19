@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "bump": "lerna publish --skip-npm --conventional-commits --yes && git push --follow-tags origin master",
+    "version": "lerna version -m 'chore(release): publish' --conventional-commits --push",
     "changelog": "lerna-changelog",
     "format": "prettier --trailing-comma es5 --write",
     "lint": "eslint packages/*/src",
