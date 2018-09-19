@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "version": "lerna version -m 'chore(release): publish' --conventional-commits --push",
+    "bump": "lerna version --conventional-commits --push -m 'chore(release): publish'",
     "changelog": "lerna-changelog",
     "format": "prettier --trailing-comma es5 --write",
     "lint": "eslint packages/*/src",
