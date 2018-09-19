@@ -5,10 +5,9 @@
 
 ## Usage
 
-1. `yarn install`
-2. dev: `yarn start`
-3. build: `yarn build`
-
+1.  `yarn install`
+2.  dev: `yarn start`
+3.  build: `yarn build`
 
 ## Contributing
 
@@ -26,7 +25,6 @@ DOCKER_USER: docker hub 用户名
 DOCKER_PASS: docker hub 密码
 DOCKER_REGISTRY: docker hub 地址
 DOCKER_REPO: docker hub 地址
-
 
 ## Author
 
