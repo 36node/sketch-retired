@@ -3,17 +3,17 @@ import sdk from "../lib/sdk";
 
 export default class App extends React.Component {
   state = {
-    repos: []
+    repos: [],
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchRepos();
   }
 
   fetchRepos = () => {
     sdk.getRepos().then(ret => {
       this.setState({
-        repos: ret
+        repos: ret,
       });
     });
   };
@@ -26,7 +26,7 @@ export default class App extends React.Component {
           {this.state.repos.map(r => {
             return (
               <li>
-                <a target="_blank" href={r.html_url}>
+                <a target="_blank" href={r.html_url} rel="noopener noreferrer">
                   {r.name}
                 </a>
               </li>

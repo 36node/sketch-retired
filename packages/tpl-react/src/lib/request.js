@@ -9,10 +9,9 @@ function getHeaders() {
   return clean({
     Accept: "application/json",
     "Content-Type": "application/json",
-    Authorization
+    Authorization,
   });
 }
-
 
 async function request(endpoint, options) {
   const headers = Object.assign(getHeaders(), options.headers);

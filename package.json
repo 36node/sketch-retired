@@ -8,7 +8,8 @@
     "changelog": "lerna-changelog",
     "format": "prettier --trailing-comma es5 --write",
     "lint": "eslint packages/*/src",
-    "release": "lerna publish --conventional-commits --yes && git push --follow-tags origin master",
+    "publish": "lerna publish from-git",
+    "release": "lerna publish --skip-npm --conventional-commits --yes && git push --follow-tags origin master",
     "test:cov": "jest --coverage && npm run lint",
     "test": "npm run lint && jest packages/*/src --silent"
   },
