@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.3.0...@36node/sketch-cli@0.3.1) (2018-09-19)
+
+
+### Bug Fixes
+
+* tpl-cli ([8ff7666](https://github.com/36node/sketch/commit/8ff7666))
+
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.2.3...@36node/sketch-cli@0.3.0) (2018-08-16)
 
