@@ -52,7 +52,9 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish All Packages
-          command: yarn publish:all
+          command: |
+            git status
+            yarn publish:all --yes
 
 workflows:
   version: 2

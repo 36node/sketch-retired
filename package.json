@@ -10,7 +10,7 @@
     "format": "prettier --trailing-comma es5 --write",
     "lint": "eslint packages/*/src",
     "publish:all": "lerna publish from-git --registry https://registry.npmjs.org",
-    "release": "lerna version --conventional-commits --push --yes -m 'chore(release): publish'",
+    "release": "lerna version --conventional-commits --push -m 'chore(release): publish'",
     "test": "jest packages/*/src --silent"
   },
   "commitlint": {
