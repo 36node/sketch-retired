@@ -3,11 +3,12 @@ import Whisper from "@36node/whisper";
 import Request from "./request";
 import Response from "./response";
 import Protocol from "./protocol";
+import { PORT } from "./config";
 
 const app = new Whisper();
 const protocol = new Protocol();
 
-app.listen(3456, () => console.log(`app started at 3456`));
+app.listen(PORT, () => console.log(`app started at ${PORT}`));
 
 const log = async (ctx, next) => {
   // step 1: log start
