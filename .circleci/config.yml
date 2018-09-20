@@ -15,7 +15,7 @@ jobs:
           key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependences
-          command: npm install lerna && yarn bootstrap
+          command: npm install lerna -g && yarn bootstrap
       - run:
           name: Build Package
           command: yarn build
