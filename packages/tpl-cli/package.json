@@ -24,9 +24,8 @@
     "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
     "format": "prettier --trailing-comma es5 --write",
     "lint": "eslint src",
-    "prepublishOnly": "npm run build",
-    "test:cov": "jest --coverage && npm run lint",
-    "test": "npm run lint && jest --silent"
+    "release": "standard-version && git push --follow-tags origin master",
+    "test": "jest --silent"
   },
   "commitlint": {
     "extends": [
@@ -37,7 +36,7 @@
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "npm test"
+      "pre-push": "yarn lint && yarn test"
     }
   },
   "jest": {
@@ -45,7 +44,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run format",
+      "yarn format",
       "git add"
     ]
   },
@@ -60,6 +59,7 @@
     "husky": "1.0.0-rc.13",
     "jest": "23.4.2",
     "lint-staged": "7.2.0",
-    "prettier": "1.13.7"
+    "prettier": "1.13.7",
+    "standard-version": "4.4.0"
   }
 }

@@ -19,16 +19,14 @@ async function genModelMock(model) {
   schema.required = Object.keys(
     pickBy(schema.properties, (value, key) => {
       return !["_id", "deleted", "deletedAt", "updatedAt", "createdAt", "__v", "id"].includes(key);
-    }),
+    })
   );
 
   for (let i = 0; i < mockCount; i++) {
     const ret = await jsf.resolve(schema);
     await model.create(ret);
   }
-
 }
-
 
 async function main() {
   for (let key of Object.keys(Models)) {

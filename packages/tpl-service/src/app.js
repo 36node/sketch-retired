@@ -15,7 +15,7 @@ import petsService from "./services/pet";
 
 const app = new Koa2();
 const router = new Router({ prefix: BASE });
-const publicKey = fs.readFileSync(path.join(__dirname, "ssl/rsa_jwt.pub"));
+const publicKey = fs.readFileSync(path.join(__dirname, "../ssl/rsa_jwt.pub"));
 
 /**
  * connect to mongodb

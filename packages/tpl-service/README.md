@@ -22,11 +22,35 @@
 **tpl-service** © [36node](https://github.com/36node), Released under the [MIT](./LICENSE) License.<br>
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/tpl-service/contributors)).
 
-> [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node) · Twitter [@y](https://twitter.com/y)
+> [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
 
-## init-db 使用
+## Development
 
-1. 写完model之后需要在 models/index.js 中export一下
-2. 在.env下配置好 APP_MONGODB_CONNECTION
-3. 执行 yarn init-db
+```sh
+yarn install
+yarn init:db
+yarn start
+```
 
+ps: 用 init-db 生成测试数据注意
+
+1.  写完 model 之后需要在 models/index.js 中 export 一下
+2.  在.env 下配置好 APP_MONGODB_CONNECTION
+3.  执行 yarn init-db
+
+### default token
+
+`eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJ1c2VyIjp7InJvbGVzIjpbIkFETUlOIiwiVVNFUiJdfX0.XA1kE_UdbOsU0rfmG3g1y3SpJ5aFVzPGFBHihVXv58sNatweqLHPEUAwhqobgKgmAbaKa3dlYrXEpHESHZ7AJgQYCfSeVxtsKyoQmcq9OYA0iFcH5oCWQgYqfeWJPOroMlMdNQax5kG-GkuaFbIiwiw-9j_ACS8CSPO9Oq2dQCA`
+
+visit [jwt.io](jwt.io) for more.
+
+```json
+{
+  "sub": "1234567890",
+  "name": "John Doe",
+  "iat": 1516239022,
+  "user": {
+    "roles": ["ADMIN", "USER"]
+  }
+}
+```

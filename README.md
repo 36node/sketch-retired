@@ -18,6 +18,15 @@ sketch init some-folder
 ## then choose your template
 ```
 
+## Development
+
+```sh
+yarn global add lerna
+
+# root folder
+lerna bootstrap
+```
+
 ## Contributing
 
 1.  Fork it!

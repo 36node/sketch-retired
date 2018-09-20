@@ -5,13 +5,13 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "bump": "lerna version --conventional-commits --push --yes -m 'chore(release): publish'",
+    "build": "lerna run build",
     "changelog": "lerna-changelog",
     "format": "prettier --trailing-comma es5 --write",
     "lint": "eslint packages/*/src",
-    "release": "lerna publish from-git --registry https://registry.npmjs.org",
-    "test:cov": "jest --coverage && npm run lint",
-    "test": "npm run lint && jest packages/*/src --silent"
+    "publish:all": "lerna publish from-git --registry https://registry.npmjs.org",
+    "release": "lerna version --conventional-commits --push --yes -m 'chore(release): publish'",
+    "test": "jest packages/*/src --silent"
   },
   "commitlint": {
     "extends": [
@@ -22,7 +22,7 @@
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "npm test"
+      "pre-push": "yarn lint && yarn test"
     }
   },
   "jest": {
@@ -33,17 +33,16 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run format",
+      "yarn format",
       "git add"
     ]
   },
   "devDependencies": {
-    "@36node/babel": "*",
     "@36node/eslint-config": "*",
     "@commitlint/cli": "6.1.0",
     "@commitlint/config-conventional": "6.1.0",
     "husky": "1.0.0-rc.13",
-    "jest": "23.4.1",
+    "jest": "23.6.0",
     "lerna": "3.4.0",
     "lint-staged": "7.2.0",
     "prettier": "1.13.7"

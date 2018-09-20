@@ -20,8 +20,7 @@
     "sketch": "bin/sketch.js"
   },
   "scripts": {
-    "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
-    "prepublishOnly": "npm run build"
+    "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js"
   },
   "dependencies": {
     "commander": "2.16.0",

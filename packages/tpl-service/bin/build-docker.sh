@@ -6,7 +6,7 @@ DOCKER_PASS=$3
 DOCKER_REGISTRY=$4
 
 # docker repo
-DOCKER_REPO=$DOCKER_REGISTRY/36node/template-react
+DOCKER_REPO=$DOCKER_REGISTRY/36node/template-service
 
 if ([ -z $TAG ]); then
   echo "env TAG is missing";

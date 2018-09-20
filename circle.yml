@@ -14,45 +14,58 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
-          name: install dependences
-          command: yarn
+          name: Install Dependences
+          command: npm install lerna && yarn bootstrap
+      - run:
+          name: Build Package
+          command: yarn build
       - save_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-      - run:
-          name: test
-          command: yarn test:cov
-      - run:
-          name: upload coverage
-          command: bash <(curl -s https://codecov.io/bash)
       - persist_to_workspace:
           root: ~/repo
           paths: .
 
-  deploy:
+  test:
     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/repo
       - run:
-          name: Authenticate with registry
+          name: Eslint
+          command: yarn lint
+      - run:
+          name: Unit Test
+          command: yarn test --coverage
+      - run:
+          name: Upload Coverage
+          command: bash <(curl -s https://codecov.io/bash)
+
+  release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate With Registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
       - run:
-          name: Publish package
-          command: npm publish
+          name: Publish All Packages
+          command: yarn publish:all
 
 workflows:
   version: 2
   build-deploy:
     jobs:
       - build:
-          filters:
-            tags:
-              only: /.*/
-      - deploy:
+      - test:
           requires:
             - build
+      - release:
+          context: main
+          requires:
+            - test
           filters:
             tags:
               only: /^v.*/
