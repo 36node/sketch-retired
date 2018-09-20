@@ -49,12 +49,10 @@ jobs:
           at: ~/repo
       - run:
           name: Authenticate With Registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run:
           name: Publish All Packages
-          command: |
-            git status
-            yarn publish:all --yes
+          command: yarn publish:all --yes
 
 workflows:
   version: 2

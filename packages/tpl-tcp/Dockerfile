@@ -1,4 +1,4 @@
-FROM node:9-alpine
+FROM node:10-alpine
 
 ENV DEBUG=off \
   NODE_ENV=production \
