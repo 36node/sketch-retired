@@ -61,6 +61,7 @@
   },
   "dependencies": {
     "@36node/whisper": "0.1.0",
+    "dotenv": "6.0.0",
     "only": "0.0.2"
   }
 }
