@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.4"></a>
+## [0.2.4](https://github.com/36node/sketch/compare/@36node/template-tcp@0.2.3...@36node/template-tcp@0.2.4) (2018-09-20)
+
+
+### Bug Fixes
+
+* dotenv for tpl-tcp ([0340b83](https://github.com/36node/sketch/commit/0340b83))
+
+
+
+
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/36node/sketch/compare/@36node/template-tcp@0.2.2...@36node/template-tcp@0.2.3) (2018-09-20)
 
