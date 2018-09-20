@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.6"></a>
+## [0.1.6](https://github.com/36node/sketch/compare/@36node/template-react@0.1.5...@36node/template-react@0.1.6) (2018-09-20)
+
+
+### Bug Fixes
+
+* fk circleci ([46e0dba](https://github.com/36node/sketch/commit/46e0dba))
+
+
+
+
+
 <a name="0.1.5"></a>
 ## [0.1.5](https://github.com/36node/sketch/compare/@36node/template-react@0.1.4...@36node/template-react@0.1.5) (2018-09-20)
 
