@@ -67,15 +67,15 @@ workflows:
   build_test_release:
     jobs:
       - build:
-        filters:  # required since `release` has tag filters AND requires `build`
-          tags:
-            only: /.*/
+          filters:  # required since `release` has tag filters AND requires `build`
+            tags:
+              only: /.*/
       - test:
-        requires:
-            - build
-        filters:  # required since `release` has tag filters AND requires `test`
-          tags:
-            only: /.*/
+          requires:
+              - build
+          filters:  # required since `release` has tag filters AND requires `test`
+            tags:
+              only: /.*/
       - release:
           context: main
           requires:
