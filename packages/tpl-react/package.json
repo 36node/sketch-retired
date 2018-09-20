@@ -9,7 +9,7 @@
   "files": [
     "bin",
     "src",
-    "circle.yml",
+    ".circleci",
     "Dockerfile",
     "poi.config.js",
     "README.md"

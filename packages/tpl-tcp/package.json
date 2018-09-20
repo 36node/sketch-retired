@@ -13,7 +13,7 @@
   "files": [
     "bin",
     "src",
-    "circle.yml",
+    ".circleci",
     "Dockerfile",
     "README.md"
   ],

@@ -14,7 +14,7 @@
   "files": [
     "bin",
     "src",
-    "circle.yml",
+    ".circleci",
     "README.md"
   ],
   "bin": {
