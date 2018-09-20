@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "A module boilerplate for nodejs and web.",
   "repository": {
-    "url": "36node/swagen",
+    "url": "36node/sketch",
     "type": "git"
   },
   "license": "MIT",
