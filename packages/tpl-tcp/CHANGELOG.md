@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.5"></a>
+## [0.2.5](https://github.com/36node/sketch/compare/@36node/template-tcp@0.2.4...@36node/template-tcp@0.2.5) (2018-09-20)
+
+
+### Bug Fixes
+
+* use port from env ([79b0dd0](https://github.com/36node/sketch/commit/79b0dd0))
+
+
+
+
+
 <a name="0.2.4"></a>
 ## [0.2.4](https://github.com/36node/sketch/compare/@36node/template-tcp@0.2.3...@36node/template-tcp@0.2.4) (2018-09-20)
 
