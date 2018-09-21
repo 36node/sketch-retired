@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/36node/sketch/compare/@36node/eslint-config@0.1.0...@36node/eslint-config@0.1.1) (2018-09-21)
+
+
+### Bug Fixes
+
+* format in eslint-config ([1017f91](https://github.com/36node/sketch/commit/1017f91))
+
+
+
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/36node/sketch/compare/@36node/eslint-config@0.0.2...@36node/eslint-config@0.1.0) (2018-08-16)
 
