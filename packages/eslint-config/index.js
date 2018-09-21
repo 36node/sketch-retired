@@ -6,7 +6,7 @@ module.exports = {
     commonjs: true,
     es6: true,
     jest: true,
-    node: true
+    node: true,
   },
 
   parser: "babel-eslint",
@@ -17,12 +17,12 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
       generators: true,
-      experimentalObjectRestSpread: true
-    }
+      experimentalObjectRestSpread: true,
+    },
   },
 
   rules: {
     "prettier/prettier": "error",
-    "jsx-a11y/href-no-hash": [0]
-  }
+    "jsx-a11y/href-no-hash": [0],
+  },
 };
