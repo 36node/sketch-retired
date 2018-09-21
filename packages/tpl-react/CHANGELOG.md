@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/36node/sketch/compare/@36node/template-react@0.1.8...@36node/template-react@0.2.0) (2018-09-21)
+
+
+### Features
+
+* add package fetch ([0cea087](https://github.com/36node/sketch/commit/0cea087))
+
+
+
+
+
 <a name="0.1.8"></a>
 ## [0.1.8](https://github.com/36node/sketch/compare/@36node/template-react@0.1.7...@36node/template-react@0.1.8) (2018-09-21)
 
