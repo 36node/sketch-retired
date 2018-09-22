@@ -23,16 +23,16 @@
     "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js"
   },
   "dependencies": {
-    "commander": "2.16.0",
-    "cross-spawn": "6.0.5",
-    "fs-extra": "7.0.0",
-    "git-config-path": "1.0.1",
-    "inquirer": "6.0.0",
-    "jsonfile": "4.0.0",
-    "npm-package-arg": "6.1.0",
-    "ora": "3.0.0",
-    "parse-git-config": "2.0.2",
-    "tar": "4.4.4",
-    "tmp": "0.0.33"
+    "commander": "^2.16.0",
+    "cross-spawn": "^6.0.5",
+    "fs-extra": "^7.0.0",
+    "git-config-path": "^1.0.1",
+    "inquirer": "^6.0.0",
+    "jsonfile": "^4.0.0",
+    "npm-package-arg": "^6.1.0",
+    "ora": "^3.0.0",
+    "parse-git-config": "^2.0.2",
+    "tar": "^4.4.4",
+    "tmp": "^0.0.33"
   }
 }

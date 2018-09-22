@@ -24,8 +24,8 @@
     "qs": "6.5.2"
   },
   "devDependencies": {
-    "fetch-mock": "7.0.0-alpha.6",
-    "jest": "23.6.0",
-    "node-fetch": "2.2.0"
+    "fetch-mock": "^7.0.0-alpha.6",
+    "jest": "^23.6.0",
+    "node-fetch": "^2.2.0"
   }
 }
