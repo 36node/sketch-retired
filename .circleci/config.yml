@@ -58,22 +58,11 @@ workflows:
   version: 2
   build_test_release:
     jobs:
-      - build:
-          filters:  # required since `release` has tag filters AND requires `build`
-            tags:
-              only: /.*/
+      - build
       - test:
           requires:
               - build
-          filters:  # required since `release` has tag filters AND requires `test`
-            tags:
-              only: /.*/
       - release:
           context: main
           requires:
             - test
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore: /.*/
