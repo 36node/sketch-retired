@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import fetchMock from "fetch-mock";
 import "jest";
 
