@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/36node/fetch/compare/@36node/fetch@0.1.1...@36node/fetch@0.1.2) (2018-09-22)
+
+
+### Bug Fixes
+
+* **fetch:** jest test envrionment ([880eb62](https://github.com/36node/fetch/commit/880eb62))
+* **fetch:** remove default authentication headers ([282f0aa](https://github.com/36node/fetch/commit/282f0aa))
+
+
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/36node/fetch/compare/@36node/fetch@0.1.0...@36node/fetch@0.1.1) (2018-09-22)
 
