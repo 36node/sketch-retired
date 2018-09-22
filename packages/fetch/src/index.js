@@ -4,16 +4,13 @@ import createError from "http-errors";
 
 export default async function myFetch(url, opt = {}) {
   let { query, body, headers = {} } = opt;
+  let endpoint = query ? `${url}?${qs.stringify(query, { skipNulls: true })}` : url;
 
-  const jwt = localStorage.getItem("jwt");
-  const Authorization = jwt ? `Bearer ${jwt}` : undefined;
-  const endpoint = query ? `${url}?${qs.stringify(query, { skipNulls: true })}` : url;
   if (body) body = JSON.stringify(body);
 
   headers = {
     Accept: "application/json",
     "Content-Type": "application/json",
-    Authorization,
     ...headers,
   };
 

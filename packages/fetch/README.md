@@ -6,19 +6,18 @@
 [![codecov](https://codecov.io/gh/36node/module/branch/master/graph/badge.svg)](https://codecov.io/gh/36node/module)
 [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/36node/donate)
 
-## Install
-
-```bash
-yarn add module
-```
-
 ## Usage
 
-```js
-const module = require("module");
+```bash
+yarn add @36node/fetch
+```
 
-module();
-//=> foo
+```js
+import fetch from "@36node/fetch";
+
+const res = await fetch("some url", { headers: {} });
+console.log(res.headers);
+console.log(res.body);
 ```
 
 ## Contributing
@@ -35,4 +34,4 @@ module();
 
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/module/contributors)).
 
-> [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node) · Twitter [@y](https://twitter.com/y)
+> [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
