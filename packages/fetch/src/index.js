@@ -1,6 +1,8 @@
 import qs from "qs";
+import { pickBy, identity } from "lodash";
+import createError from "http-errors";
 
-export default async function myFetch(url, opt) {
+export default async function myFetch(url, opt = {}) {
   let { query, body, headers = {} } = opt;
 
   const jwt = localStorage.getItem("jwt");
@@ -15,11 +17,17 @@ export default async function myFetch(url, opt) {
     ...headers,
   };
 
-  const res = await fetch(endpoint, {
-    ...opt,
-    body,
-    headers,
-  });
+  const res = await fetch(
+    endpoint,
+    pickBy(
+      {
+        ...opt,
+        body,
+        headers,
+      },
+      identity
+    )
+  );
 
   // if not json, deal it as text
   if (res.headers.get("content-type").toLowerCase() !== "application/json") {
@@ -31,11 +39,11 @@ export default async function myFetch(url, opt) {
     return;
   }
 
-  const resBody = res.json();
+  const resBody = await res.json();
   const resHeaders = {};
 
   // not 20x or 30x response
-  if (!res.ok) throw resBody;
+  if (!res.ok) throw createError(res.status, resBody);
 
   res.headers.forEach((val, key) => (resHeaders[key] = val));
   return { body: resBody, headers: resHeaders };
