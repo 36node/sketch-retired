@@ -35,6 +35,26 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Pet"
+              examples:
+                default:
+                  value: |
+                    [
+                      {
+                        "id": 1,
+                        "name": "aa",
+                        "tag": "red"
+                      },
+                      {
+                        "id": 2,
+                        "name": "bb",
+                        "tag": "happy"
+                      },
+                      {
+                        "id": 3,
+                        "name": "cc",
+                        "tag": "husky"
+                      }
+                    ]
         '401':
           $ref: '#/components/responses/Unauthorized'
         '500':
@@ -52,6 +72,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NewPet'
+            examples:
+              default:
+                value: |
+                  {
+                    "name": "dd",
+                    "tag": "red"
+                  }
       responses:
         '200':
           description: The Pet created
@@ -59,6 +86,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Pet"
+              examples:
+                default:
+                  value: |
+                    {
+                      "id": 4,
+                      "name": "dd",
+                      "tag": "red"
+                    }
         '401':
           $ref: '#/components/responses/Unauthorized'
         '500':
@@ -84,6 +119,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Pet"
+              examples:
+                default:
+                  value: |
+                    {
+                      "id": 3,
+                      "name": "cc",
+                      "tag": "red"
+                    }
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -103,19 +146,19 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/Err'
     Unauthorized:
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/Err'
     InternalError:
       description: unexpected error
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: "#/components/schemas/Err"
   schemas:
     Pet:
       required:
@@ -137,7 +180,7 @@ components:
           type: string
         tag:
           type: string
-    Error:
+    Err:
       type: object
       properties:
         code:

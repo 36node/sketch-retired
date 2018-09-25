@@ -20,18 +20,20 @@ dotenv.config();
  * @returns {*} value
  */
 
-export function env(name, option) {
-  const value = process.env[name];
+export function env(name, { required, init } = {}) {
+  const value = process.env[`REACT_APP_${name.toUpperCase()}`];
 
-  if (option.required && !value) {
+  if (required && !value) {
     throw new Error(`environment ${name} is required`);
   }
 
-  return value || option.default;
+  return value || init;
 }
 
 /**
  * APP
  */
-
-export const BASE = env("APP_BASE", { default: "/store/v1" });
+export const STORE_BASE = env("STORE_BASE", {
+  init: "https://api.36node.com/petstore/v0",
+});
+export const TOKEN = env("TOKEN");

@@ -6,7 +6,7 @@ DOCKER_PASS=$3
 DOCKER_REGISTRY=$4
 
 # docker repo
-DOCKER_REPO=$DOCKER_REGISTRY/36node/template-service
+DOCKER_REPO=$DOCKER_REGISTRY/36node/petstore
 
 if ([ -z $TAG ]); then
   echo "env TAG is missing";
@@ -29,7 +29,6 @@ if ([ -z $DOCKER_REGISTRY ]); then
 fi
 
 echo "Starting build image with tag ${TAG}"
-NODE_ENV=production yarn run build
 docker login -u $DOCKER_USER -p $DOCKER_PASS $DOCKER_REGISTRY
 
 # tag image

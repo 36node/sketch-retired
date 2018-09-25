@@ -8,5 +8,7 @@ RUN mkdir app
 WORKDIR /app
 COPY . /app/
 
+RUN NODE_ENV=production yarn install
+
 # Start
 CMD npm run server

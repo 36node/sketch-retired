@@ -1,0 +1,12 @@
+{
+  "presets": [["env", { "module": false }], "stage-0"],
+  "plugins": [
+    [
+      "transform-runtime",
+      "transform-builtin-extend",
+      {
+        "globals": ["Error", "Array"]
+      }
+    ]
+  ]
+}

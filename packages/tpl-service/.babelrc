@@ -1,0 +1,21 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+    "stage-0"
+  ],
+  "plugins": [
+    [
+      "transform-builtin-extend",
+      {
+        "globals": ["Error", "Array"]
+      }
+    ]
+  ]
+}

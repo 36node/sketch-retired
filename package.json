@@ -5,13 +5,13 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "lerna run build",
+    "build": "NODE_ENV=production lerna run build",
     "changelog": "lerna-changelog",
     "format": "prettier --trailing-comma es5 --write",
     "lint": "eslint packages/*/src",
     "publish:all": "lerna publish from-git --registry https://registry.npmjs.org",
     "release": "lerna version --conventional-commits --push -m 'chore(release): publish'",
-    "test": "jest packages/*/src --silent"
+    "test": "NODE_ENV=test jest packages/*/src --silent"
   },
   "commitlint": {
     "extends": [
@@ -27,9 +27,11 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "roots": [
-      "packages/"
-    ]
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jestTransformer.js",
+      "\\.(css|less)$": "<rootDir>/jestTransformer.js"
+    }
   },
   "lint-staged": {
     "*.js": [
@@ -38,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "@36node/babel": "^0.0.2",
     "@36node/eslint-config": "^0.1.1",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",

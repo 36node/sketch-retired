@@ -38,9 +38,9 @@ petsService.bind(router);
  * spec openapi.yml
  */
 
-router.get("/openapi.yml", ctx => {
-  ctx.type = "yaml";
-  ctx.body = fs.readFileSync(path.join(__dirname, "openapi.yml"));
+router.get("/openapi.yaml", ctx => {
+  ctx.type = "text/yaml";
+  ctx.body = fs.createReadStream(path.join(__dirname, "../openapi.yaml"));
 });
 
 /**
@@ -50,8 +50,8 @@ router.get("/openapi.yml", ctx => {
 app
   .use(logger())
   .use(helmet())
-  .use(jwt({ secret: publicKey }))
   .use(cors({ exposeHeaders: "*" }))
+  .use(jwt({ secret: publicKey }).unless({ path: `${BASE}/openapi.yaml` }))
   .use(body())
   .use(router.routes());
 

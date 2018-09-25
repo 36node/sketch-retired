@@ -1,7 +1,7 @@
 # tpl-react
 
-[![NPM version](https://img.shields.io/npm/v/tpl-service.svg?style=flat)](https://npmjs.com/package/tpl-service) [![NPM downloads](https://img.shields.io/npm/dm/tpl-service.svg?style=flat)](https://npmjs.com/package/tpl-service) [![CircleCI](https://circleci.com/gh/36node/tpl-service/tree/master.svg?style=shield)](https://circleci.com/gh/36node/tpl-service/tree/master) [![codecov](https://codecov.io/gh/36node/tpl-service/branch/master/graph/badge.svg)](https://codecov.io/gh/36node/tpl-service)
-[![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/36node/donate)
+[![NPM version](https://img.shields.io/npm/v/tpl-react.svg?style=flat)](https://npmjs.com/package/tpl-react)
+[![NPM downloads](https://img.shields.io/npm/dm/tpl-react.svg?style=flat)](https://npmjs.com/package/tpl-react)
 
 ## Usage
 
@@ -24,11 +24,24 @@
 DOCKER_USER: docker hub 用户名
 DOCKER_PASS: docker hub 密码
 DOCKER_REGISTRY: docker hub 地址
-DOCKER_REPO: docker hub 地址
+
+## Mock Server
+
+If you want to test against local mock server, run following script before `yarn start` :
+
+```sh
+yarn mock
+```
+
+It will run a docker for you. And add environment in `.env` file.
+
+```sh
+STORE_BASE=http://localhost:8000/petstore/v0
+```
 
 ## Author
 
 **tpl-react** © [36node](https://github.com/36node), Released under the [MIT](./LICENSE) License.<br>
-Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/tpl-service/contributors)).
+Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/tpl-react/contributors)).
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)

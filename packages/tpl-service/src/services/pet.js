@@ -39,6 +39,7 @@ export class Service extends API {
   async createPets(state, options) {
     const { body } = options;
     const pet = await Pet.create(body);
+    console.log(pet);
     const res = new CreatePetsResult();
     res.body = new schemas.Pet(pet);
     return res;

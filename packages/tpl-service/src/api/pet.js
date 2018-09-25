@@ -42,11 +42,13 @@ export class ShowPetByIdResult {
 }
 
 export default class API {
-  roles = {
-    listPets: [],
-    createPets: [],
-    showPetById: [],
-  };
+  constructor() {
+    this.roles = {
+      listPets: [],
+      createPets: [],
+      showPetById: [],
+    };
+  }
 
   bind(router) {
     const listPets = async ctx => {

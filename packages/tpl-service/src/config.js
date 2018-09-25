@@ -34,12 +34,12 @@ export function env(name, option) {
  * exports
  */
 export const PORT = env("APP_PORT", { default: 9527 });
-export const BASE = env("APP_BASE", { default: "/store/v1" });
+export const BASE = env("APP_BASE", { default: "/petstore/v0" });
 
 /**
  * Mongodb
  */
 
 export const MONGODB_CONNECTION = env("APP_MONGODB_CONNECTION", {
-  default: "mongodb://localhost/store",
+  default: "mongodb://localhost/petstore",
 });

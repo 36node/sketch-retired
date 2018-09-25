@@ -58,14 +58,3 @@ tmp
 .try*
 .playground
 snapshot
-
-# ignore some files in template
-packages/tpl-*/.babelrc
-packages/tpl-*/.editorconfig
-packages/tpl-*/.eslintrc
-packages/tpl-*/.gitattributes
-packages/tpl-*/.gitignore
-packages/tpl-*/.npmrc
-packages/tpl-*/.prettierrc
-packages/tpl-*/gitignore
-packages/tpl-*/LICENSE

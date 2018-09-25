@@ -1,0 +1,5 @@
+*
+!dist
+!ssl
+!openapi.yaml
+!package.json

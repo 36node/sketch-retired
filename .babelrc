@@ -4,10 +4,12 @@
       "env",
       {
         "targets": {
-          "node": "current"
+          "node": "current",
+          "esmodules": true
         }
       }
     ],
+    "react",
     "stage-0"
   ],
   "plugins": [
@@ -15,6 +17,15 @@
       "transform-builtin-extend",
       {
         "globals": ["Error", "Array"]
+      }
+    ],
+    [
+      "babel-plugin-styled-components",
+      {
+        "displayName": true,
+        "fileName": false,
+        "pure": true,
+        "ssr": false
       }
     ]
   ]

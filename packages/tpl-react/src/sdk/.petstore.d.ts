@@ -26,3 +26,19 @@ type CreatePetsResponse = {
 type ShowPetByIdResponse = {
   body: Pet;
 };
+
+type Pet = {
+  id: number;
+  name: string;
+  tag: string;
+};
+
+type NewPet = {
+  name: string;
+  tag: string;
+};
+
+type Err = {
+  code: string;
+  message: string;
+};

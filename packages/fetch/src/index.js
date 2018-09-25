@@ -27,7 +27,7 @@ export default async function myFetch(url, opt = {}) {
   );
 
   // if not json, deal it as text
-  if (res.headers.get("content-type").toLowerCase() !== "application/json") {
+  if (!res.headers.get("content-type").includes("application/json")) {
     return res.text();
   }
 

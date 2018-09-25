@@ -56,13 +56,16 @@ jobs:
 
 workflows:
   version: 2
-  build_test_release:
+  main:
     jobs:
       - build
       - test:
           requires:
               - build
       - release:
-          context: main
+          context: production
           requires:
             - test
+          filters:
+            branches:
+              only: master

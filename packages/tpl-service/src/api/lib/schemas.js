@@ -11,7 +11,7 @@ export class Pet {
   tag;
 
   constructor(obj) {
-    this.id = makesure("id", obj.id, Number, true);
+    this.id = makesure("id", obj.id, String, true);
     this.name = makesure("name", obj.name, String, true);
     this.tag = makesure("tag", obj.tag, String);
   }
