@@ -3,6 +3,5 @@
   "npmClient": "yarn",
   "packages": ["packages/*"],
   "useWorkspaces": true,
-  "version": "independent",
-  "exact": true
+  "version": "independent"
 }
