@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.11"></a>
+## [0.2.11](https://github.com/36node/sketch/compare/@36node/template-tcp@0.2.10...@36node/template-tcp@0.2.11) (2018-09-25)
+
+
+### Bug Fixes
+
+* version ([ebff55a](https://github.com/36node/sketch/commit/ebff55a))
+* version bumping error ([7cecc5e](https://github.com/36node/sketch/commit/7cecc5e))
+
+
+
+
+
 <a name="0.2.10"></a>
 ## [0.2.10](https://github.com/36node/sketch/compare/@36node/template-tcp@0.2.9...@36node/template-tcp@0.2.10) (2018-09-25)
 

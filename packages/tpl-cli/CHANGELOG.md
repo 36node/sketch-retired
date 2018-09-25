@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.10"></a>
+## [0.3.10](https://github.com/undefined/undefined/compare/@36node/template-cli@0.3.9...@36node/template-cli@0.3.10) (2018-09-25)
+
+
+### Bug Fixes
+
+* version ([ebff55a](https://github.com/undefined/undefined/commit/ebff55a))
+* version bumping error ([7cecc5e](https://github.com/undefined/undefined/commit/7cecc5e))
+
+
+
+
+
 <a name="0.3.9"></a>
 ## [0.3.9](https://github.com/undefined/undefined/compare/@36node/template-cli@0.3.8...@36node/template-cli@0.3.9) (2018-09-25)
 

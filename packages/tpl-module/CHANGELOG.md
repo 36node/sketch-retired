@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.8"></a>
+## [0.2.8](https://github.com/36node/sketch/compare/@36node/template-module@0.2.7...@36node/template-module@0.2.8) (2018-09-25)
+
+
+### Bug Fixes
+
+* version ([ebff55a](https://github.com/36node/sketch/commit/ebff55a))
+* version bumping error ([7cecc5e](https://github.com/36node/sketch/commit/7cecc5e))
+
+
+
+
+
 <a name="0.2.7"></a>
 ## [0.2.7](https://github.com/36node/sketch/compare/@36node/template-module@0.2.6...@36node/template-module@0.2.7) (2018-09-25)
 
