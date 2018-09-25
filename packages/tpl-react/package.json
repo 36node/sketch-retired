@@ -39,7 +39,7 @@
     ]
   },
   "devDependencies": {
-    "@36node/eslint-config": "^0.2.0",
+    "@36node/eslint-config": "^0.1.0",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
     "@types/react": "^16.4.14",
