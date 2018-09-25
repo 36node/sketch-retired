@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-react",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A react boilerplate for web",
   "license": "MIT",
   "publishConfig": {
@@ -39,7 +39,7 @@
     ]
   },
   "devDependencies": {
-    "@36node/eslint-config": "^0.1.2",
+    "@36node/eslint-config": "0.2.0",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
     "@types/react": "^16.4.14",
@@ -61,7 +61,7 @@
     "standard-version": "^4.4.0"
   },
   "dependencies": {
-    "@36node/fetch": "^0.1.3",
+    "@36node/fetch": "0.2.0",
     "antd": "^3.8.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

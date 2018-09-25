@@ -1,6 +1,6 @@
 {
   "name": "@36node/babel",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Babel tools and config for 36node.",
   "repository": "36node/sketch",
   "publishConfig": {
