@@ -35,7 +35,7 @@ export class Base {
 
   /**
    * Get by id
-   * @param {Number} id - The objectId of model.
+   * @param {string} id - The objectId of model.
    * @returns {Promise<*>}
    */
   static get(id, populate = "") {

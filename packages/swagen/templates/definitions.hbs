@@ -1,0 +1,69 @@
+{{#each api}}
+{{#each operations}}
+{{#or parameters requestBody}}
+type {{capitalize name}}Request = {
+  {{#each parameters}}
+  {{#is in "path"}}
+  {{name}}{{#unless required}}?{{/unless}}: {{schemaType schema}};
+  {{/is}}
+  {{/each}}
+  {{#withParamQuery parameters}}
+  query: {
+    {{#each parameters}}
+    {{#is in "query"}}
+    {{name}}{{#unless required}}?{{/unless}}: {{schemaType schema}};
+    {{/is}}
+    {{/each}}
+  };
+  {{/withParamQuery}}
+  {{#withParamHeader parameters}}
+  headers: {
+    {{#each parameters}}
+    {{#is in "header"}}
+    {{name}}{{#unless required}}?{{/unless}}: {{schemaType schema}};
+    {{/is}}
+    {{/each}}
+  };
+  {{/withParamHeader}}
+  {{#withParamCookie parameters}}
+  cookies: {
+    {{#each parameters}}
+    {{#is in "cookie"}}
+    {{name}}{{#unless required}}?{{/unless}}: {{schemaType schema}};
+    {{/is}}
+    {{/each}}
+  };
+  {{/withParamCookie}}
+  {{#with requestBody}}
+  body: {{schemaType content.schema}};
+  {{/with}}
+  context?: Object;
+};
+
+{{/or}}
+{{#or response.content response.headers}}
+type {{capitalize name}}Response = {
+  {{#with response.content}}
+  body: {{{schemaType schema}}};
+  {{/with}}
+  {{#with reponse.headers}}
+  headers: {
+    {{#each this}}
+    {{camelcase @key}}: {{{schemaType schema}}};
+    {{/each}}
+  };
+  {{/with}}
+}
+
+{{/or}}
+{{/each}}
+{{/each}}
+{{#each components.schemas}}
+{{#if properties}}
+type {{capitalize @key}} = {
+  {{#each properties}}
+  {{@key}}: {{{schemaType this}}};
+  {{/each}}
+}
+{{/if}}
+{{/each}}

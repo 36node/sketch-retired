@@ -7,42 +7,41 @@ hbsHelper({
 });
 
 /**
- * get schema type
+ * Get schema type
  *
  * @param {*} schema swagger schema object
  * @returns {String} parsed type
  */
-
 export function getSchemaType(schema = {}) {
-  let { type, $ref } = schema;
+  let { type, $ref, items } = schema;
 
-  if (type === "integer") return "Number";
-  if (type) return upperFirst(type);
-
+  if (type === "integer") return "number";
+  if (type === "array") {
+    return `Array<${getSchemaType(items)}>`;
+  }
   if ($ref) {
     const segs = $ref.split("/");
     if (segs.length < 2) {
       throw new Error(`ref pattern is wrong: ${$ref}`);
     }
-    return `${segs[segs.length - 2]}.${upperFirst(segs[segs.length - 1])}`;
+    return upperFirst(segs[segs.length - 1]);
   }
+
+  return type;
 }
 
 /**
- * get schema name
+ * Determine whether the query parameter is included
  *
- * @param {*} schema swagger schema object
- * @returns {String} parsed schema name
+ * @param {Array} parameters the params
+ * @param {string} type parameter type
+ * @returns {boolean} return true if query in parameters
  */
-
-export function getSchemaName(schema = {}) {
-  let { type, items } = schema;
-
-  if (type === "array") {
-    return `${upperFirst(type)}<${getSchemaName(items)}>`;
+export function hasParamType(parameters = [], type) {
+  for (let p of parameters) {
+    if (p.in === type) return true;
   }
-
-  return getSchemaType(schema);
+  return false;
 }
 
 /**
@@ -53,6 +52,18 @@ Handlebars.registerHelper("schemaType", schema => {
   return getSchemaType(schema);
 });
 
-Handlebars.registerHelper("schemaName", schema => {
-  return getSchemaName(schema);
+Handlebars.registerHelper("withParamQuery", function(parameters, options) {
+  return hasParamType(parameters, "query") ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper("withParamHeader", function(parameters, options) {
+  return hasParamType(parameters, "header") ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper("withParamCookie", function(parameters, options) {
+  return hasParamType(parameters, "cookie") ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper("toRoute", function(path) {
+  return path.replace(/{(.*?)}/, ":$1");
 });

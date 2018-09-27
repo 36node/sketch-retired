@@ -1,125 +1,65 @@
-import { authorize, makesure } from "./lib/utils";
-import * as schemas from "./lib/schemas";
-
-export class ListPetsOptions {
-  /** @type { Number } */
-  limit;
-
-  constructor(obj) {
-    this.limit = makesure("limit", obj.limit, Number, false);
-  }
-}
-export class CreatePetsOptions {
-  /** @type { schemas.NewPet } */
-  body;
-
-  constructor(obj) {
-    this.body = makesure("body", obj.body, schemas.NewPet, true);
-  }
-}
-export class ShowPetByIdOptions {
-  /** @type { String } */
-  petId;
-
-  constructor(obj) {
-    this.petId = makesure("petId", obj.petId, String, true);
-  }
-}
-
-export class ListPetsResult {
-  /** @type { Array<schemas.Pet> } */
-  body;
-  /** @type { String } */
-  xNext;
-}
-export class CreatePetsResult {
-  /** @type { schemas.Pet } */
-  body;
-}
-export class ShowPetByIdResult {
-  /** @type { schemas.Pet } */
-  body;
-}
+/// <reference path='./def.d.ts' />
+import createError from "http-errors";
 
 export default class API {
-  constructor() {
-    this.roles = {
-      listPets: [],
-      createPets: [],
-      showPetById: [],
-    };
-  }
-
+  /**
+   * Bind service to router
+   *
+   * @param {Object} router the koa compatible router
+   */
   bind(router) {
     const listPets = async ctx => {
-      const options = new ListPetsOptions({
-        limit: ctx.query.limit,
-      });
+      const req = {
+        query: {
+          limit: ctx.query.limit,
+        },
+        context: ctx, // here we put koa context in request
+      };
 
-      try {
-        const result = await this.listPets(ctx.state, options);
+      const res = await this.listPets(req);
 
-        // check result
-        if (!(result.body instanceof Array)) {
-          throw new Error("result.body should be instanceof Array<schemas.Pet>");
-        }
+      if (!res.body) throw createError(500, "should have body in response");
 
-        if (!result.xNext) throw new Error("result should have xNext");
+      if (!res.headers.xNext) throw createError(500, "should have header x-next in response");
 
-        ctx.body = result.body;
-        ctx.set("x-next", result.xNext);
-        ctx.status = 200;
-      } catch (err) {
-        ctx.status = err.status || 500;
-        ctx.body = err;
-      }
+      ctx.body = res.body;
+      ctx.set("x-next", res.headers.xNext);
+      ctx.status = 200;
     };
 
     const createPets = async ctx => {
-      const options = new CreatePetsOptions({
+      const req = {
         body: ctx.request.body,
-      });
+        context: ctx, // here we put koa context in request
+      };
 
-      try {
-        const result = await this.createPets(ctx.state, options);
+      const res = await this.createPets(req);
 
-        // check result
-        if (!(result.body instanceof schemas.Pet)) {
-          throw new Error("result.body should be instanceof schemas.Pet");
-        }
+      if (!res.body) throw createError(500, "should have body in response");
 
-        ctx.body = result.body;
-        ctx.status = 200;
-      } catch (err) {
-        ctx.status = err.status || 500;
-        ctx.body = err;
-      }
+      ctx.body = res.body;
+      ctx.status = 200;
     };
 
     const showPetById = async ctx => {
-      const options = new ShowPetByIdOptions({
-        petId: ctx.path.petId,
-      });
+      if (!ctx.params.petId) throw createError(400, "petId in path is required.");
 
-      try {
-        const result = await this.showPetById(ctx.state, options);
+      const req = {
+        petId: ctx.params.petId,
+        context: ctx, // here we put koa context in request
+      };
 
-        // check result
-        if (!(result.body instanceof schemas.Pet)) {
-          throw new Error("result.body should be instanceof schemas.Pet");
-        }
+      const res = await this.showPetById(req);
 
-        ctx.body = result.body;
-        ctx.status = 200;
-      } catch (err) {
-        ctx.status = err.status || 500;
-        ctx.body = err;
-      }
+      if (!res.body) throw createError(500, "should have body in response");
+
+      ctx.body = res.body;
+      ctx.status = 200;
     };
 
-    router.get("/pets", authorize(this.roles.listPets), listPets);
-    router.post("/pets", authorize(this.roles.createPets), createPets);
-    router.get("/pets/{petId}", authorize(this.roles.showPetById), showPetById);
+    router.get("/pets", this.authorize("listPets"), listPets);
+    router.post("/pets", this.authorize("createPets"), createPets);
+    router.get("/pets/:petId", this.authorize("showPetById"), showPetById);
   }
 
   /**
@@ -127,15 +67,25 @@ export default class API {
    */
 
   /**
+   * Authorize current operation
+   * rewrite it if you want to control operation permission
+   *
+   * @param {string} operation name of operation
+   */
+  authorize(operation) {
+    return (ctx, next) => {
+      return next();
+    };
+  }
+
+  /**
    * List all pets
    *
    * @abstract
-   * @param { Object } state ctx.state store state data, like state.user
-   * @param { ListPetsOptions } options listPets options
-   * @returns { ListPetsResult } A paged array of pets
+   * @param {ListPetsRequest} req listPets request
+   * @returns {ListPetsResponse} A paged array of pets
    */
-
-  listPets(state, options) {
+  listPets(req) {
     throw new Error("not implemented");
   }
 
@@ -143,12 +93,10 @@ export default class API {
    * Create a pet
    *
    * @abstract
-   * @param { Object } state ctx.state store state data, like state.user
-   * @param { CreatePetsOptions } options createPets options
-   * @returns { CreatePetsResult } The Pet created
+   * @param {CreatePetsRequest} req createPets request
+   * @returns {CreatePetsResponse} The Pet created
    */
-
-  createPets(state, options) {
+  createPets(req) {
     throw new Error("not implemented");
   }
 
@@ -156,12 +104,10 @@ export default class API {
    * Find pet by id
    *
    * @abstract
-   * @param { Object } state ctx.state store state data, like state.user
-   * @param { ShowPetByIdOptions } options showPetById options
-   * @returns { ShowPetByIdResult } Expected response to a valid request
+   * @param {ShowPetByIdRequest} req showPetById request
+   * @returns {ShowPetByIdResponse} Expected response to a valid request
    */
-
-  showPetById(state, options) {
+  showPetById(req) {
     throw new Error("not implemented");
   }
 }

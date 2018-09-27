@@ -24,7 +24,7 @@
   "scripts": {
     "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js --copy-files",
     "format": "prettier --trailing-comma es5 --write",
-    "gen:api": "swagen -t koa -s openapi.yml -f ./src",
+    "gen:api": "swagen -t koa -s petstore.yaml -f ./src/api",
     "init:db": "babel-node bin/initdb.js",
     "lint": "eslint src",
     "server": "node dist/index.js",
@@ -69,6 +69,7 @@
   },
   "dependencies": {
     "@koa/cors": "^2.2.2",
+    "@types/koa": "^2.0.46",
     "dotenv": "^6.0.0",
     "koa": "^2.5.2",
     "koa-body": "^4.0.4",

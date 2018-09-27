@@ -7,7 +7,7 @@ import parse from "./parse";
 import "./helpers";
 
 /**
- * make directory
+ * Make directory
  *
  * @param {*} dir target directory
  */
@@ -17,7 +17,7 @@ function mkdir(dir) {
 }
 
 /**
- * generate file through handlebars
+ * Generate file through handlebars
  *
  * @param {*} tplFile template file
  * @param {*} toFile target file
@@ -32,28 +32,36 @@ function generateFile(tplFile, toFile, data) {
 }
 
 /**
- * generate code for koa server
+ * Generate code for koa server
  *
  * @param {String} target target folder
  * @param {String} swaggerFile openapi.yml
  */
 
-export function genKoaCode(target, swaggerFile) {
-  parse(swaggerFile).then(function(swagger) {
-    const { api, components } = swagger;
-    const tplAPI = path.join(__dirname, "../templates/api.hbs");
-    const tplSchemas = path.join(__dirname, "../templates/schemas.hbs");
-    const tplUtils = path.join(__dirname, "../templates/utils.hbs");
+export function genKoa(target, swaggerFile) {
+  parse(swaggerFile)
+    .then(function(swagger) {
+      const { api } = swagger;
+      const tplAPI = path.join(__dirname, "../templates/api.hbs");
+      const tplDef = path.join(__dirname, "../templates/definitions.hbs");
 
-    mkdir(path.join(target, "api"));
-    mkdir(path.join(target, "api/lib"));
+      mkdir(target);
+      generateFile(tplDef, path.join(target, "def.d.ts"), swagger);
 
-    // copy lib.js
-    fs.copyFileSync(tplUtils, path.join(target, "api/lib/utils.js"));
-    generateFile(tplSchemas, path.join(target, "api/lib/schemas.js"), components.schemas);
+      for (let name in api) {
+        if (api[name]) generateFile(tplAPI, path.join(target, `${name}.js`), api[name]);
+      }
+    })
+    .catch(err => console.error(err));
+}
 
-    for (let name in api) {
-      if (api[name]) generateFile(tplAPI, path.join(target, "api", `${name}.js`), api[name]);
-    }
-  });
+/**
+ * Genereate code for sdk
+ *
+ * @param {*} target
+ * @param {*} swaggerFile
+ * @param {*} name
+ */
+export function genSDK(target, swaggerFile, name) {
+  // put sdk generation code here
 }
