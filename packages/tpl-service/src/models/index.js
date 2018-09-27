@@ -1,4 +1,3 @@
-module.exports = {
-  Pet: require("./pet").default,
-  User: require("./user").default,
-};
+import requireDirectory from "require-directory";
+
+module.exports = requireDirectory(module);

@@ -1,4 +1,4 @@
-import * as Models from "../src/models";
+import Models from "../src/models";
 import mongoose from "mongoose";
 import jsf from "json-schema-faker";
 import pickBy from "lodash/pickBy";
@@ -30,15 +30,14 @@ async function genModelMock(model) {
 
 async function main() {
   for (let key of Object.keys(Models)) {
-    if (key !== "default") {
-      await genModelMock(Models[key]);
+    if (Models[key].default && Models[key].default.modelName) {
+      await genModelMock(Models[key].default);
     }
   }
 }
 
 main()
   .then(() => {
-    console.log("Done");
     process.exit(0);
   })
   .catch(e => {
