@@ -15,7 +15,16 @@ yarn global add @36node/template-cli
 ## Usage
 
 ```sh
-foo
+  Usage: swagen [options]
+
+  Options:
+
+    -V, --version              output the version number
+    -t, --template <template>  template name: koa,sdk
+    -s, --swagger <file>       swagger file
+    -f, --folder [folder]      generate code to folder
+    -n, --named [named]        what name
+    -h, --help                 output usage information
 ```
 
 ## Contributing
@@ -25,6 +34,12 @@ foo
 3.  Commit your changes: `git commit -am 'Add some feature'`
 4.  Push to the branch: `git push origin my-new-feature`
 5.  Submit a pull request :D
+
+## Add new template
+
+1. Add new generator js file in src/generators, filename is the template name.
+2. In new generator js file， export default function which generate template.
+
 
 ## Author
 

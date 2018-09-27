@@ -25,6 +25,7 @@
   "dependencies": {
     "handlebars": "^4.0.12",
     "handlebars-helpers": "^0.10.0",
-    "js-yaml": "^3.12.0"
+    "js-yaml": "^3.12.0",
+    "require-directory": "^2.1.1"
   }
 }

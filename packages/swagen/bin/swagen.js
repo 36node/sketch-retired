@@ -4,11 +4,13 @@ var program = require("commander");
 var path = require("path");
 
 var pkg = require("../package.json");
-var { genKoa, genSDK } = require("../dist");
+var generators = require("../dist").default;
+
+const templateNames = Object.keys(generators).join(",");
 
 program
   .version(pkg.version)
-  .option("-t, --template <template>", "template name: koa, sdk")
+  .option("-t, --template <template>", "template name: " + templateNames)
   .option("-s, --swagger <file>", "swagger file")
   .option("-f, --folder [folder]", "generate code to folder")
   .option("-n, --named [named]", "what name")
@@ -25,13 +27,25 @@ const name =
     .slice(0, -1)
     .join(".");
 
-switch (program.template) {
-  case "koa":
-    genKoa(target, swagger);
-    break;
-  case "sdk":
-    genSDK(target, swagger, name);
-    break;
-  default:
-    throw new Error(`template ${program.template} not provided`);
+if (Object.keys(generators).includes(program.template)) {
+  const generator = generators[program.template].default;
+  if (generator && typeof  generator === "function") {
+    generators[program.template].default(target, swagger, name);
+  } else {
+    throw new Error(`generator ${program.template} invalid!`);
+  }
+
+} else {
+  throw new Error(`template ${program.template} not provided`);
 }
+
+// switch (program.template) {
+//   case "koa":
+//     genKoa(target, swagger);
+//     break;
+//   case "sdk":
+//     genSDK(target, swagger, name);
+//     break;
+//   default:
+//     throw new Error(`template ${program.template} not provided`);
+// }
