@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/undefined/undefined/compare/@36node/template-cli@0.3.10...@36node/template-cli@0.4.0) (2018-10-04)
+
+
+### Features
+
+* sketch-cli add build ([2d6032b](https://github.com/undefined/undefined/commit/2d6032b))
+
+
+
+
+
 <a name="0.3.10"></a>
 ## [0.3.10](https://github.com/undefined/undefined/compare/@36node/template-cli@0.3.9...@36node/template-cli@0.3.10) (2018-09-25)
 

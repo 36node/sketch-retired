@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/36node/sketch/compare/@36node/template-module@0.2.8...@36node/template-module@0.3.0) (2018-10-04)
+
+
+### Features
+
+* sketch-cli add build ([2d6032b](https://github.com/36node/sketch/commit/2d6032b))
+
+
+
+
+
 <a name="0.2.8"></a>
 ## [0.2.8](https://github.com/36node/sketch/compare/@36node/template-module@0.2.7...@36node/template-module@0.2.8) (2018-09-25)
 
