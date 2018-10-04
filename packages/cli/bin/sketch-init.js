@@ -1,9 +1,15 @@
 const program = require("commander");
 const inquirer = require("inquirer");
 const path = require("path");
+const parseGitConfig = require("parse-git-config");
+const gitConfigPath = require("git-config-path");
 
 const cli = require("../dist");
-const { gitUser } = require("../dist/lib");
+
+function gitUser() {
+  const gitConfig = parseGitConfig.sync({ cwd: "/", path: gitConfigPath("global") });
+  return Object.assign({ name: "", email: "" }, gitConfig.user);
+}
 
 program
   .option("-si, --skip-install", "skip installation")

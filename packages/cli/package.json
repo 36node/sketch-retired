@@ -11,6 +11,8 @@
     "url": "https://github.com/36node/sketch/issues"
   },
   "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
   "files": [
     "bin",
     "dist",
@@ -20,7 +22,8 @@
     "sketch": "bin/sketch.js"
   },
   "scripts": {
-    "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js"
+    "build": "microbundle",
+    "test": "jest --silent --env=node"
   },
   "dependencies": {
     "commander": "^2.16.0",
@@ -29,6 +32,7 @@
     "git-config-path": "^1.0.1",
     "inquirer": "^6.0.0",
     "jsonfile": "^4.0.0",
+    "microbundle": "^0.6.0",
     "npm-package-arg": "^6.1.0",
     "ora": "^3.0.0",
     "parse-git-config": "^2.0.2",
