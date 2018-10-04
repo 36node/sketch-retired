@@ -5,6 +5,7 @@ var program = require("commander");
 
 program
   .version(pkg.version)
+  .command("build [type]", "build a module, service or web app")
   .command("init [dest]", "init a package in dest dir")
   .command("update [dest]", "update a package in dest dir")
   .parse(process.argv);

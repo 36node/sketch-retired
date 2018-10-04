@@ -1,7 +1,7 @@
 import path from "path";
 
 import { jsonfile } from "./lib";
-import { init } from "./index";
+import init from "./init";
 import download from "./download-npm-package";
 
 jest.mock("./download-npm-package");

@@ -15,8 +15,10 @@
     "dist"
   ],
   "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
   "scripts": {
-    "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
+    "build": "sketch build",
     "test": "jest --silent --env=node"
   },
   "dependencies": {
@@ -25,6 +27,7 @@
     "qs": "^6.5.2"
   },
   "devDependencies": {
+    "@36node/sketch-cli": "^0.3.3",
     "babel-plugin-transform-runtime": "^6.23.0",
     "fetch-mock": "^7.0.0-alpha.6",
     "jest": "^23.6.0",
