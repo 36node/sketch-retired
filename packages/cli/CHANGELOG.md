@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.3.3...@36node/sketch-cli@0.4.0) (2018-10-04)
+
+
+### Features
+
+* sketch-cli add build ([2d6032b](https://github.com/36node/sketch/commit/2d6032b))
+
+
+
+
+
 <a name="0.3.3"></a>
 ## [0.3.3](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.3.2...@36node/sketch-cli@0.3.3) (2018-09-22)
 
