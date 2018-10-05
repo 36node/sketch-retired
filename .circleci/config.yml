@@ -25,7 +25,8 @@ jobs:
             - ./node_modules
       - persist_to_workspace:
           root: ~/repo
-          paths: .
+          paths:
+            - .
 
   test:
     <<: *defaults
@@ -61,7 +62,7 @@ workflows:
       - build
       - test:
           requires:
-              - build
+            - build
       - release:
           context: production
           requires:

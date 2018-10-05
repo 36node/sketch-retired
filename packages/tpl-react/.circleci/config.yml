@@ -25,7 +25,8 @@ jobs:
             - ./node_modules
       - persist_to_workspace:
           root: ~/repo
-          paths: .
+          paths:
+            - .
 
   test:
     <<: *defaults
@@ -72,7 +73,7 @@ workflows:
               only: /.*/
       - test:
           requires:
-              - build
+            - build
           filters:  # required since `release` has tag filters AND requires `test`
             tags:
               only: /.*/
@@ -82,6 +83,6 @@ workflows:
             - test
           filters:
             tags:
-              only: /.*/
+              only: /v.*/
             branches:
               ignore: /.*/
