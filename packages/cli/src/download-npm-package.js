@@ -15,7 +15,7 @@ export default async (pkg, dest) => {
     const tmpObj = tmp.dirSync({ unsafeCleanup: true });
 
     // step 2: download package from npm
-    const result = await spawn.sync("npm", ["pack", pkg], {
+    const result = spawn.sync("npm", ["pack", pkg], {
       stdio: "ignore",
       cwd: tmpObj.name,
     });
