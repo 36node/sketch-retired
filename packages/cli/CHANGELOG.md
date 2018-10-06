@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.4.1...@36node/sketch-cli@0.4.2) (2018-10-06)
+
+
+### Bug Fixes
+
+* cli await on spawn bug ([a494118](https://github.com/36node/sketch/commit/a494118))
+
+
+
+
+
 ## [0.4.1](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.4.0...@36node/sketch-cli@0.4.1) (2018-10-06)
 
 
