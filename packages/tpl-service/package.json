@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-service",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A service boilerplate with openapi,rest and mongodb.",
   "repository": {
     "url": "36node/sketch",
