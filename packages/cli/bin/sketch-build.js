@@ -31,6 +31,11 @@ function logError(err) {
 program
   .option("-u, --umd <name>", "Specify name exposed in UMD builds")
   .option("-o, --output <folder>", "Directory to place build files into")
+  .option(
+    "-f, --format [format]",
+    "Only build specified formats  (default es,cjs,umd)",
+    "es,cjs,umd"
+  )
   .parse(process.argv);
 
 const type = program.args[0] || "module";
@@ -38,7 +43,7 @@ const type = program.args[0] || "module";
 const opts = {
   name: program.umd,
   output: program.output,
-  format: "es,cjs,umd",
+  format: program.format,
   cwd: ".",
   target: "node",
   compress: true,
