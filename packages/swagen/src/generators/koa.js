@@ -14,8 +14,8 @@ export default function genKoa(target, swaggerFile) {
   parse(swaggerFile)
     .then(function(swagger) {
       const { api } = swagger;
-      const tplAPI = path.join(TemplatePath, "api.hbs");
-      const tplDef = path.join(TemplatePath, "definitions.hbs");
+      const tplAPI = path.join(TemplatePath, "koa", "api.hbs");
+      const tplDef = path.join(TemplatePath, "koa", "definitions.hbs");
 
       mkdir(target);
       generateFile(tplDef, path.join(target, "def.d.ts"), swagger);

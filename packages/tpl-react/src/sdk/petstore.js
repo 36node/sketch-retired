@@ -3,9 +3,16 @@
 import fetch from "@36node/fetch";
 
 export default class SDK {
-  /** @type {string} */
+  /**
+   * Base url
+   * @type {string}
+   *  */
   base;
-  /** @type {string} */
+
+  /**
+   * Sdk auth
+   * @type {string}
+   * */
   auth;
 
   /**

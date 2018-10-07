@@ -48,9 +48,9 @@ function parseSwagger(swagger) {
 
   for (const path in paths) {
     for (const method in paths[path]) {
-      const { operationId, summary, tags, parameters, requestBody, responses } = paths[path][
-        method
-      ];
+      const { operationId, summary, tags, parameters, requestBody, responses, security } = paths[
+        path
+      ][method];
 
       // make sure some props must exist
       if (!operationId) throw new Error(`missing operationId for ${method} ${path}`);
@@ -92,6 +92,7 @@ function parseSwagger(swagger) {
         requestBody,
         response,
         summary,
+        security,
       });
     }
   }

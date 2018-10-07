@@ -31,15 +31,29 @@ export function getSchemaType(schema = {}) {
 }
 
 /**
- * Determine whether the query parameter is included
+ * Determine whether the type parameter is included
  *
  * @param {Array} parameters the params
  * @param {string} type parameter type
- * @returns {boolean} return true if query in parameters
+ * @returns {boolean} return true if type in parameters
  */
 export function hasParamType(parameters = [], type) {
   for (let p of parameters) {
     if (p.in === type) return true;
+  }
+  return false;
+}
+
+/**
+ * Determine whether the type parameter is required
+ *
+ * @param {Array} parameters the params
+ * @param {string} type parameter type
+ * @returns {boolean} return true if {type} in parameters
+ */
+export function requireParamType(parameters = [], type) {
+  for (let p of parameters) {
+    if (p.in === type && p.required) return true;
   }
   return false;
 }
@@ -62,6 +76,18 @@ Handlebars.registerHelper("withParamHeader", function(parameters, options) {
 
 Handlebars.registerHelper("withParamCookie", function(parameters, options) {
   return hasParamType(parameters, "cookie") ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper("requireParamQuery", function(parameters, options) {
+  return requireParamType(parameters, "query") ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper("requireParamHeader", function(parameters, options) {
+  return requireParamType(parameters, "header") ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper("requireParamCookie", function(parameters, options) {
+  return requireParamType(parameters, "cookie") ? options.fn(this) : options.inverse(this);
 });
 
 Handlebars.registerHelper("toRoute", function(path) {
