@@ -15,7 +15,7 @@
     "eject": "react-scripts eject",
     "format": "prettier --trailing-comma es5 --write",
     "lint": "eslint src",
-    "mock": "docker run --rm -p 8000:8000 danielgtaylor/apisprout https://api.36node.com/petstore/v0/openapi.yaml",
+    "mock": "json-server --watch mock.json --port 8000",
     "release": "standard-version && git push --follow-tags origin master",
     "start": "react-app-rewired start",
     "test": "react-app-rewired test --env=jsdom"
@@ -51,6 +51,7 @@
     "husky": "^1.0.0-rc.13",
     "jest": "^23.4.2",
     "jest-styled-components": "^6.2.1",
+    "json-server": "^0.14.0",
     "lint-staged": "^7.2.0",
     "prettier": "^1.14.3",
     "react-app-rewire-eslint": "^0.2.3",
