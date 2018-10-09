@@ -27,7 +27,9 @@ export default function genSDK(target, swaggerFile, name) {
       };
 
       mkdir(target);
-      generateFile(tplDef, path.join(target, `.${sdkName}.d.ts`), tplData);
+      generateFile(tplDef, path.join(target, `.${sdkName}.d.ts`), tplData, {
+        parser: "typescript",
+      });
       generateFile(tplSdk, path.join(target, `${sdkName}.js`), tplData);
     })
     .catch(err => console.error(err));

@@ -3,15 +3,15 @@
 import fetch from "@36node/fetch";
 
 export default class SDK {
-  /** 
+  /**
    * Base url
    * @type {string}
    *  */
   base;
 
-  /** 
+  /**
    * Sdk auth
-   * @type {string} 
+   * @type {string}
    * */
   auth;
 
@@ -23,7 +23,7 @@ export default class SDK {
    * @param {string} opt.token token fro authorization
    */
   constructor(opt = {}) {
-    this.base = opt.base || "{{server.url}}"; 
+    this.base = opt.base || "{{server.url}}";
     {{#or components.securitySchemes.bearerAuth }}
     if (opt.token) {
       this.auth = `Bearer ${opt.token}`;
@@ -87,11 +87,7 @@ export default class SDK {
         headers: this.auth ? { ...headers, Authorization: this.auth } : headers,
       });
     },
-
     {{/each}}
-  }
+  };
   {{/each}}
-};
-
-
-
+}
