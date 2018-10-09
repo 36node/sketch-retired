@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/36node/sketch/compare/@36node/swagen@0.2.0...@36node/swagen@0.3.0) (2018-10-09)
+
+
+### Bug Fixes
+
+* swagen format generated js file with pretter ([02a9c74](https://github.com/36node/sketch/commit/02a9c74))
+
+
+### Features
+
+* swagan sdk ([6214716](https://github.com/36node/sketch/commit/6214716))
+* swagen support local file and url remote file ([0a65e42](https://github.com/36node/sketch/commit/0a65e42))
+
+
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/36node/sketch/compare/@36node/swagen@0.1.3...@36node/swagen@0.2.0) (2018-09-27)
 

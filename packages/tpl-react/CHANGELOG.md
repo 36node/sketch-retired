@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/36node/sketch/compare/@36node/template-react@0.4.3...@36node/template-react@0.5.0) (2018-10-09)
+
+
+### Bug Fixes
+
+* replace pet store sdk example with swagen generated ([060b540](https://github.com/36node/sketch/commit/060b540))
+* tpl-react build命令 增加 cross-env 兼容windows下命令执行 ([bf5f3b5](https://github.com/36node/sketch/commit/bf5f3b5))
+
+
+### Features
+
+* swagan sdk ([6214716](https://github.com/36node/sketch/commit/6214716))
+* swagen support local file and url remote file ([0a65e42](https://github.com/36node/sketch/commit/0a65e42))
+
+
+
+
+
 ## [0.4.3](https://github.com/36node/sketch/compare/@36node/template-react@0.4.2...@36node/template-react@0.4.3) (2018-10-06)
 
 **Note:** Version bump only for package @36node/template-react
