@@ -18,7 +18,7 @@
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.mjs",
   "scripts": {
-    "build": "sketch build",
+    "build": "microbundle build",
     "test": "jest --silent --env=node"
   },
   "dependencies": {
@@ -27,10 +27,7 @@
     "qs": "^6.5.2"
   },
   "devDependencies": {
-    "@36node/sketch-cli": "^0.4.2",
-    "babel-plugin-transform-runtime": "^6.23.0",
     "fetch-mock": "^7.0.0-alpha.6",
-    "jest": "^23.6.0",
     "node-fetch": "^2.2.0"
   }
 }
