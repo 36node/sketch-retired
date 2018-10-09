@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/36node/sketch/compare/@36node/template-service@0.5.1...@36node/template-service@0.5.2) (2018-10-09)
+
+
+### Bug Fixes
+
+* tpl-service init:db 命令，使用  require-directory 自动从models目录下读取model ([144e1b6](https://github.com/36node/sketch/commit/144e1b6))
+
+
+
+
+
 ## [0.5.1](https://github.com/36node/sketch/compare/@36node/template-service@0.5.0...@36node/template-service@0.5.1) (2018-10-06)
 
 **Note:** Version bump only for package @36node/template-service
