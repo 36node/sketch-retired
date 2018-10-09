@@ -24,6 +24,7 @@
     "lint": "eslint src",
     "release": "standard-version && git push --follow-tags origin master",
     "start": "nodemon src/index.js --watch src --exec 'babel-node'",
+    "server": "node dist/index.js",
     "test": "jest --silent"
   },
   "commitlint": {
