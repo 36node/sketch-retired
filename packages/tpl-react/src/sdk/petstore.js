@@ -3,9 +3,16 @@
 import fetch from "@36node/fetch";
 
 export default class SDK {
-  /** @type {string} */
+  /**
+   * Base url
+   * @type {string}
+   *  */
   base;
-  /** @type {string} */
+
+  /**
+   * Sdk auth
+   * @type {string}
+   * */
   auth;
 
   /**
@@ -16,8 +23,7 @@ export default class SDK {
    * @param {string} opt.token token fro authorization
    */
   constructor(opt = {}) {
-    this.base = opt.base || ""; // default use swagger.info.server
-    // 如果 openapi.yml 中有 securitySchemes.bearerAuth
+    this.base = opt.base || "http://petstore.swagger.io/v1";
     if (opt.token) {
       this.auth = `Bearer ${opt.token}`;
     }
@@ -26,7 +32,6 @@ export default class SDK {
   /**
    * pet's methods
    */
-
   pet = {
     /**
      * List all pets
@@ -35,57 +40,45 @@ export default class SDK {
      * @returns {Promise<ListPetsResponse>} A paged array of pets
      */
     listPets: req => {
-      const { query } = req;
+      const { query, headers } = req;
+
       return fetch(`${this.base}/pets`, {
+        method: "get",
         query,
-        // TODO: operation 中是否有 auth 要求，或者有全局的
-        //  security:
-        //   - bearerAuth: []
-        headers: {
-          Authorization: this.auth,
-        },
+        headers: this.auth ? { ...headers, Authorization: this.auth } : headers,
       });
     },
-
     /**
      * Create a pet
      *
-     * @param {CreatePetsRequest} req CreatePets request
-     * @returns {Promise<CreatePetsResponse>} The Pet created
+     * @param {CreatePetsRequest} req ListPets request
+     * @returns {Promise<CreatePetsResponse>} A paged array of pets
      */
     createPets: req => {
-      const { body } = req;
-      if (!body) throw new Error("requestBody is required for CreatePets");
+      const { headers, body } = req;
+
+      if (!body) throw new Error("requetBody is required for createPets");
 
       return fetch(`${this.base}/pets`, {
+        method: "post",
         body,
-        // TODO: operation 中是否有 auth 要求，或者有全局的
-        //  security:
-        //   - bearerAuth: []
-        headers: {
-          Authorization: this.auth,
-        },
+        headers: this.auth ? { ...headers, Authorization: this.auth } : headers,
       });
     },
-
     /**
      * Find pet by id
      *
-     * @param {ShowPetByIdRequest} req ShowPetById request
-     * @returns {Promise<ShowPetByIdResponse>} Expected response to a valid request
+     * @param {ShowPetByIdRequest} req ListPets request
+     * @returns {Promise<ShowPetByIdResponse>} A paged array of pets
      */
-
     showPetById: req => {
-      const { petId } = req;
-      if (!petId) throw new Error("petId is required for ShowPetById");
+      const { petId, headers } = req;
 
-      return fetch(`${this.base}/pets/${petId}`, {
-        // TODO: operation 中是否有 auth 要求，或者有全局的
-        //  security:
-        //   - bearerAuth: []
-        headers: {
-          Authorization: this.auth,
-        },
+      if (!petId) throw new Error("petId is required for showPetById");
+
+      return fetch(`${this.base}/pets/{petId}`, {
+        method: "get",
+        headers: this.auth ? { ...headers, Authorization: this.auth } : headers,
       });
     },
   };

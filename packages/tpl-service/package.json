@@ -65,7 +65,8 @@
     "lint-staged": "^7.2.0",
     "mongoose-schema-jsonschema": "^1.1.15",
     "nodemon": "^1.18.3",
-    "prettier": "^1.13.7"
+    "prettier": "^1.13.7",
+    "require-directory": "^2.1.1"
   },
   "dependencies": {
     "@koa/cors": "^2.2.2",

@@ -1,0 +1,93 @@
+/// <reference path='.{{sdkName}}.d.ts' />
+
+import fetch from "@36node/fetch";
+
+export default class SDK {
+  /**
+   * Base url
+   * @type {string}
+   *  */
+  base;
+
+  /**
+   * Sdk auth
+   * @type {string}
+   * */
+  auth;
+
+  /**
+   * Init store sdk
+   *
+   * @param {Object} opt
+   * @param {string} opt.base  base url
+   * @param {string} opt.token token fro authorization
+   */
+  constructor(opt = {}) {
+    this.base = opt.base || "{{server.url}}";
+    {{#or components.securitySchemes.bearerAuth }}
+    if (opt.token) {
+      this.auth = `Bearer ${opt.token}`;
+    }
+    {{/or}}
+  }
+
+  {{#each api}}
+  /**
+   * {{@key}}'s methods
+   */
+  {{@key}} = {
+    {{#each operations}}
+    /**
+     * {{summary}}
+     *
+     * @param { {{~capitalize name}}Request} req ListPets request
+     * @returns {Promise<{{~capitalize name}}Response>} A paged array of pets
+     */
+    {{name}}: req => {
+      const {
+        {{#each parameters}}
+        {{#is in "path"}}
+        {{name}},
+        {{/is}}
+        {{/each}}
+        {{#withParamQuery parameters}}
+        query,
+        {{/withParamQuery}}
+        headers,
+        {{#with requestBody}}
+        body,
+        {{/with}}
+      } = req;
+
+      {{#each parameters}}
+      {{#is in "path"}}
+      {{#is required true}}
+      if (!{{name}}) throw new Error("{{name}} is required for {{../name}}");
+      {{/is}}
+      {{/is}}
+      {{/each}}
+      {{#requireParamQuery parameters}}
+      if (!query) throw new Error("query is required for {{../name}}");
+      {{/requireParamQuery}}
+      {{#requireParamHeader parameters}}
+      if (!headers) throw new Error("headers is required for {{../name}}");
+      {{/requireParamHeader}}
+      {{#with requestBody}}
+      if (!body) throw new Error("requetBody is required for {{../name}}");
+      {{/with}}
+
+      return fetch(`${this.base}{{path}}`, {
+        method: "{{method}}",
+        {{#withParamQuery parameters}}
+        query,
+        {{/withParamQuery}}
+        {{#with requestBody}}
+        body,
+        {{/with}}
+        headers: this.auth ? { ...headers, Authorization: this.auth } : headers,
+      });
+    },
+    {{/each}}
+  };
+  {{/each}}
+}

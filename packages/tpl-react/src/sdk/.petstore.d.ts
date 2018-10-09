@@ -4,23 +4,20 @@ type ListPetsRequest = {
   };
 };
 
+type ListPetsResponse = {
+  body: Array<Pet>;
+};
+
 type CreatePetsRequest = {
   body: NewPet;
 };
 
-type ShowPetByIdRequest = {
-  petId: string;
-};
-
-type ListPetsResponse = {
-  body: Array<Pet>;
-  headers: {
-    xNext: string;
-  };
-};
-
 type CreatePetsResponse = {
   body: Pet;
+};
+
+type ShowPetByIdRequest = {
+  petId: string;
 };
 
 type ShowPetByIdResponse = {
@@ -30,7 +27,7 @@ type ShowPetByIdResponse = {
 type Pet = {
   id: number;
   name: string;
-  tag?: string;
+  tag: string;
 };
 
 type NewPet = {
