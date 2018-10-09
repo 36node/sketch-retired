@@ -2401,7 +2401,7 @@ babel-plugin-transform-regenerator@6.26.0, babel-plugin-transform-regenerator@^6
   dependencies:
     regenerator-transform "^0.10.0"
 
-babel-plugin-transform-runtime@6.23.0, babel-plugin-transform-runtime@^6.23.0:
+babel-plugin-transform-runtime@6.23.0:
   version "6.23.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-runtime/-/babel-plugin-transform-runtime-6.23.0.tgz#88490d446502ea9b8e7efb0fe09ec4d99479b1ee"
   dependencies:
@@ -11372,8 +11372,8 @@ rc-switch@~1.8.0:
     prop-types "^15.5.6"
 
 rc-table@~6.3.2:
-  version "6.3.4"
-  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-6.3.4.tgz#5ec6e37f18661228161bcaa7bbf8cbaf132405ec"
+  version "6.3.5"
+  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-6.3.5.tgz#8f537b60da09083e3670390bc07f8813d50a9f54"
   dependencies:
     babel-runtime "6.x"
     classnames "^2.2.5"
