@@ -21,10 +21,26 @@ yarn global add @36node/template-cli
 
     -V, --version              output the version number
     -t, --template <template>  template name: koa,sdk
-    -s, --swagger <file>       swagger file
+    -s, --swagger <file>       local swagger file or remote url
     -f, --folder [folder]      generate code to folder
     -n, --named [named]        what name
     -h, --help                 output usage information
+```
+
+## Exapmle
+
+Use local file
+
+```sh
+# name default 'petstore' same with filename
+swagen -t sdk -s petstore.yaml
+```
+
+Use remote file
+
+```sh
+# set name with 'petstore'
+swagen -t sdk -s https://api.36node.com/petstore/v0/openapi.yaml -n petstore
 ```
 
 ## Contributing
@@ -39,7 +55,6 @@ yarn global add @36node/template-cli
 
 1. Add new generator js file in src/generators, filename is the template name.
 2. In new generator js file， export default function which generate template.
-
 
 ## Author
 

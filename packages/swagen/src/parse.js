@@ -2,20 +2,34 @@ import fs from "fs";
 
 import YAML from "js-yaml";
 import { get, camelCase } from "lodash";
+import is from "./util/is";
+import request from "request";
 
 /**
- * read file
+ * read file or fetch from remote
  *
- * @param {*} filePath target file
+ * @param {*} source target file or remote url
  * @returns {String} raw data from a file
  */
 
-async function getFile(filePath) {
+async function getFile(source) {
   return new Promise((resolve, reject) => {
-    fs.readFile(filePath, (err, data) => {
-      if (err) return reject(err);
-      resolve(data);
-    });
+    if (is.YML(source) || is.YAML(source) || is.JSON(source)) {
+      // local file
+      fs.readFile(source, (err, data) => {
+        if (err) return reject(err);
+        resolve(data);
+      });
+    } else if (is.URL(source)) {
+      //fetch from remote
+      const opts = { url: source };
+      request(opts, (err, response) => {
+        if (err) return reject(err);
+        resolve(response.body);
+      });
+    } else {
+      reject(new Error(`Unsupported source ${source}`));
+    }
   });
 }
 
@@ -103,14 +117,14 @@ function parseSwagger(swagger) {
 /**
  * parse swagger file to expected structure
  *
- * @param {*} filePath file path
+ * @param {*} source file path or remote url
  * @returns { Object } { info, servers, api, components }
  */
-export default async function parse(filePath) {
+export default async function parse(source) {
   let content, json, result;
 
   try {
-    content = await getFile(filePath);
+    content = await getFile(source);
   } catch (e) {
     console.error("Can not load the content of the Swagger specification file");
     console.error(e);

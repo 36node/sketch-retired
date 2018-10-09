@@ -16,21 +16,18 @@ export default function genSDK(target, swaggerFile, name) {
     .then(function(swagger) {
       const tplSdk = path.join(TemplatePath, "sdk", "sdk.hbs");
       const tplDef = path.join(TemplatePath, "sdk", "definitions.hbs");
-      const sdkName = path.basename(swaggerFile).split(".")[0];
-
       const { servers = [] } = swagger;
-
       const tplData = {
-        sdkName,
+        sdkName: name,
         server: servers[0] || { url: "" },
         ...swagger,
       };
 
       mkdir(target);
-      generateFile(tplDef, path.join(target, `.${sdkName}.d.ts`), tplData, {
+      generateFile(tplDef, path.join(target, `.${name}.d.ts`), tplData, {
         parser: "typescript",
       });
-      generateFile(tplSdk, path.join(target, `${sdkName}.js`), tplData);
+      generateFile(tplSdk, path.join(target, `${name}.js`), tplData);
     })
     .catch(err => console.error(err));
 }
