@@ -6,6 +6,8 @@ const gitConfigPath = require("git-config-path");
 
 const cli = require("../dist");
 
+const enableTpls = ["module", "react", "react-redux", "service", "tcp", "cli"];
+
 function gitUser() {
   const gitConfig = parseGitConfig.sync({ cwd: "/", path: gitConfigPath("global") });
   return Object.assign({ name: "", email: "" }, gitConfig.user);
@@ -13,7 +15,7 @@ function gitUser() {
 
 program
   .option("-si, --skip-install", "skip installation")
-  .option("-t, --template <name>", "all templates: module, react, react-redux, service, tcp")
+  .option("-t, --template <name>", `all templates: ${enableTpls.join(",")}`)
   .parse(process.argv);
 
 const dest = program.args[0] || ".";
@@ -23,7 +25,7 @@ const questions = [
     type: "list",
     name: "template",
     message: "which boilerplate do you want use:",
-    choices: ["module", "react", "react-redux", "service", "tcp"],
+    choices: enableTpls,
     when: () => !program.template,
   },
   {
