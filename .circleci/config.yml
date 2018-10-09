@@ -52,6 +52,9 @@ jobs:
           name: Authenticate With Registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run:
+          name: Reset yarn.lock
+          command: git checkout yarn.lock
+      - run:
           name: Publish All Packages
           command: yarn publish:all --yes
 
