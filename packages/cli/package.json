@@ -22,7 +22,7 @@
     "sketch": "bin/sketch.js"
   },
   "scripts": {
-    "build": "microbundle",
+    "build": "microbundle build",
     "test": "jest --silent --env=node"
   },
   "dependencies": {
