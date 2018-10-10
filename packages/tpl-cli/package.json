@@ -14,16 +14,15 @@
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.mjs",
   "files": [
-    "bin",
     "src",
     ".circleci",
     "README.md"
   ],
   "bin": {
-    "foo": "bin/foo.js"
+    "foo": "dist/cli.js"
   },
   "scripts": {
-    "build": "microbundle build",
+    "build": "microbundle build --format cjs src/{cli,index}.js",
     "format": "prettier --trailing-comma es5 --write",
     "lint": "eslint src",
     "release": "standard-version && git push --follow-tags origin master",

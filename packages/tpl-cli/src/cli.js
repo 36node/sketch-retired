@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var program = require("commander");
+import program from "commander";
+import foo from "./index";
 
-var pkg = require("../package.json");
-var foo = require("../dist");
+const pkg = require("../package.json"); // microbundle not support json
 
 program
   .version(pkg.version)
