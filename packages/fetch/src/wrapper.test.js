@@ -1,7 +1,7 @@
 import fetchMock from "fetch-mock";
 import "jest";
 
-import fetch from "./index";
+import fetch from "./wrapper";
 
 const bodyOK = { id: "123", name: "cc", tag: "red" };
 const bodyText = "some text";

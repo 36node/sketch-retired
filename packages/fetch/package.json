@@ -14,16 +14,17 @@
     "bin",
     "dist"
   ],
+  "browser": "dist/browser.mjs",
   "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
   "module": "dist/index.mjs",
   "scripts": {
-    "build": "microbundle build",
+    "build": "microbundle build --format cjs,es src/{browser,index}.js",
     "test": "jest --silent --env=node"
   },
   "dependencies": {
     "http-errors": "^1.7.1",
     "lodash": "^4.17.11",
+    "node-fetch": "^2.2.0",
     "qs": "^6.5.2"
   },
   "devDependencies": {
