@@ -47,7 +47,10 @@ test("fetch with headers", async () => {
 
 test("fetch application/plain", async () => {
   const res = await fetch("/text");
-  expect(res).toBe("some text");
+  expect(res).toEqual({
+    body: "some text",
+    headers: { "content-length": "9", "content-type": "application/plain" },
+  });
 });
 
 test("fetch 401", async () => {
