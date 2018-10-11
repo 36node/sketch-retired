@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/36node/sketch/compare/@36node/fetch@0.3.3...@36node/fetch@0.3.4) (2018-10-11)
+
+
+### Bug Fixes
+
+* err response with text & isomorpic fetch support ([94df7ea](https://github.com/36node/sketch/commit/94df7ea))
+* fetch test ([7b0099b](https://github.com/36node/sketch/commit/7b0099b))
+
+
+
+
+
 ## [0.3.3](https://github.com/36node/sketch/compare/@36node/fetch@0.3.2...@36node/fetch@0.3.3) (2018-10-09)
 
 **Note:** Version bump only for package @36node/fetch
