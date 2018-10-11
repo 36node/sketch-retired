@@ -2,6 +2,8 @@ import qs from "qs";
 import { pickBy, identity } from "lodash";
 import createError from "http-errors";
 
+const realFetch = fetch || window.fetch || global.fetch;
+
 /**
  * A wrapper of fetch
  *
@@ -21,7 +23,7 @@ export default async function(url, opt = {}) {
     ...headers,
   };
 
-  const res = await fetch(
+  const res = await realFetch(
     endpoint,
     pickBy(
       {
