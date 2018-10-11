@@ -40,7 +40,7 @@ class App extends Component {
     // just a log output for testing purpose
     // we should have a petstore's UI in template-react-redux
     petstore.pet
-      .listPets({ query: { limit: 10 } })
+      .listPets({ query: { _limit: 10 } })
       .then(ret => console.log("petstore api success: ", ret.body));
   };
 
