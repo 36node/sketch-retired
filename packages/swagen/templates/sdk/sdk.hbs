@@ -23,7 +23,7 @@ export default class SDK {
    * @param {string} opt.token token fro authorization
    */
   constructor(opt = {}) {
-    this.base = opt.base || "{{server.url}}";
+    this.base = opt.base || "";
     {{#or components.securitySchemes.bearerAuth }}
     if (opt.token) {
       this.auth = `Bearer ${opt.token}`;
