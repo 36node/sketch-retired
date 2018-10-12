@@ -33,7 +33,5 @@ export function env(name, { required, init } = {}) {
 /**
  * APP
  */
-export const STORE_BASE = env("STORE_BASE", {
-  init: "https://api.36node.com/petstore/v0",
-});
+export const STORE_BASE = env("STORE_BASE");
 export const TOKEN = env("TOKEN");

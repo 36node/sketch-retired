@@ -5,9 +5,15 @@ const rewireStyledComponents = require("react-app-rewire-styled-components");
 const mock = require("./mock");
 const jsonServer = require("json-server");
 const pause = require("connect-pause");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const mockFn = mock.mockFn;
 const mockServerOpts = mock.serverOpts;
+
+const disableMock = process.env.REACT_APP_DISABLE_MOCK === "true";
+
 /**
  * compose web dev server config
  * @param {function} f
@@ -52,29 +58,36 @@ module.exports = {
        * @param {Express.Application} app
        */
       function mockServer(app) {
-        const serverOpts = mockServerOpts();
-        if (!serverOpts.enable) {
+        if (disableMock) {
           return app;
         }
 
-        // config mock server
-        const defaultsOpts = {
-          logger: !serverOpts.quiet,
-          readOnly: serverOpts.readOnly,
-          noCors: serverOpts.noCors,
-          noGzip: serverOpts.noGzip,
-          bodyParser: true,
-        };
+        const serverOpts = mockServerOpts();
         const router = jsonServer.router(mockFn());
-        const middlewares = jsonServer.defaults(defaultsOpts);
-        // serveStatic middleware conflict with create-react-app, removed it
-        const usedMiddleWares = middlewares.filter(m => m.name !== "serveStatic");
-        app.use(usedMiddleWares);
-        const base = serverOpts.base || "/api";
+
+        const shouldMock = req => {
+          return (
+            req.method !== "GET" ||
+            (req.headers.accept && req.headers.accept.indexOf("application/json") !== -1)
+          );
+        };
+
         if (serverOpts.delay) {
-          app.use(base, pause(serverOpts.delay));
+          app.use((req, res, next) => {
+            if (shouldMock(req)) {
+              return pause(serverOpts.delay)(req, res, next);
+            }
+            return next();
+          });
         }
-        app.use(base, router);
+
+        app.use((req, res, next) => {
+          if (shouldMock(req)) {
+            return router(req, res, next);
+          }
+          return next();
+        });
+
         return app;
       }
 

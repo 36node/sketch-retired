@@ -29,6 +29,8 @@ DOCKER_REGISTRY: docker hub 地址
 
 Tpl-react has integrated [json-server](https://github.com/typicode/json-server) into webpack-dev-server for testing your app, you can generate mock data and config mock server through mock.js under root path.
 
+To disable mock, set `REACT_AAP_DISABLE_MOCK=true` in .env file
+
 ```js
 const faker = require("faker");
 module.exports = {
@@ -53,12 +55,7 @@ module.exports = {
    * Config mock server
    */
   serverOpts: () => ({
-    enable: true, //enable mock server [boolean]
     delay: 2000, // delay to responses (ms) [number]
-    quiet: false, //Suppress log messages from output [boolean]
-    noCors: false, //Disable Cross-Origin Resource Sharing [boolean]
-    noGzip: false, //Disable GZIP Content-Encoding [boolean]
-    readOnly: false, // Allow only GET requests [boolean]
   }),
 };
 ```

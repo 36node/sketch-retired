@@ -21,7 +21,6 @@ module.exports = {
    * Config mock server
    */
   serverOpts: () => ({
-    enable: true,
     delay: 2000,
   }),
 };

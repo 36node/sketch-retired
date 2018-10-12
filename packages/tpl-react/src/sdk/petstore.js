@@ -23,7 +23,7 @@ export default class SDK {
    * @param {string} opt.token token fro authorization
    */
   constructor(opt = {}) {
-    this.base = opt.base || "http://petstore.swagger.io/v1";
+    this.base = opt.base || "";
     if (opt.token) {
       this.auth = `Bearer ${opt.token}`;
     }

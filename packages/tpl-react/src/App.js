@@ -41,7 +41,8 @@ class App extends Component {
     // we should have a petstore's UI in template-react-redux
     petstore.pet
       .listPets({ query: { _limit: 10 } })
-      .then(ret => console.log("petstore api success: ", ret.body));
+      .then(ret => console.log("petstore api success: ", ret.body))
+      .catch(error => console.log(error));
   };
 
   render() {
