@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/36node/sketch/compare/@36node/swagen@0.3.0...@36node/swagen@0.3.1) (2018-10-13)
+
+
+### Bug Fixes
+
+* remove default base url in sdk template ([a5ec0b5](https://github.com/36node/sketch/commit/a5ec0b5))
+* sdk token support function ([43bbd01](https://github.com/36node/sketch/commit/43bbd01))
+
+
+
+
+
 # [0.3.0](https://github.com/36node/sketch/compare/@36node/swagen@0.2.0...@36node/swagen@0.3.0) (2018-10-09)
 
 

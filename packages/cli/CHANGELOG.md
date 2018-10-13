@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.5](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.4.4...@36node/sketch-cli@0.4.5) (2018-10-13)
+
+
+### Bug Fixes
+
+* add 'cli' to sketch-cli init choices ([2356c69](https://github.com/36node/sketch/commit/2356c69))
+
+
+
+
+
 ## [0.4.4](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.4.3...@36node/sketch-cli@0.4.4) (2018-10-10)
 
 **Note:** Version bump only for package @36node/sketch-cli

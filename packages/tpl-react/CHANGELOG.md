@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/36node/sketch/compare/@36node/template-react@0.5.2...@36node/template-react@0.6.0) (2018-10-13)
+
+
+### Bug Fixes
+
+* sdk token support function ([43bbd01](https://github.com/36node/sketch/commit/43bbd01))
+
+
+### Features
+
+* tpl-react integrate mock server and webpack dev server ([b4df3fd](https://github.com/36node/sketch/commit/b4df3fd))
+* tpl-react mock server change usage ([1a8894f](https://github.com/36node/sketch/commit/1a8894f))
+
+
+
+
+
 ## [0.5.2](https://github.com/36node/sketch/compare/@36node/template-react@0.5.1...@36node/template-react@0.5.2) (2018-10-11)
 
 **Note:** Version bump only for package @36node/template-react
