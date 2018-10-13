@@ -27,16 +27,37 @@ DOCKER_REGISTRY: docker hub 地址
 
 ## Mock Server
 
-If you want to test against local mock server, run following script before `yarn start` :
+Tpl-react has integrated [json-server](https://github.com/typicode/json-server) into webpack-dev-server for testing your app, you can generate mock data and config mock server through mock.js under root path.
 
-```sh
-yarn mock
-```
+To disable mock, set `REACT_AAP_DISABLE_MOCK=true` in .env file
 
-It will run a docker for you. And add environment in `.env` file.
+```js
+const faker = require("faker");
+module.exports = {
+  /**
+   * Generate mock data
+   */
+  mockFn: () => {
+    const data = { pets: [] };
+    const tags = ["CAT", "DOG", "RABBIT"];
 
-```sh
-STORE_BASE=http://localhost:8000/petstore/v0
+    for (let i = 0; i < 100; i++) {
+      data.pets.push({
+        id: i,
+        name: faker.name.lastName(),
+        tag: tags[faker.random.number(2)],
+      });
+    }
+
+    return data;
+  },
+  /**
+   * Config mock server
+   */
+  serverOpts: () => ({
+    delay: 2000, // delay to responses (ms) [number]
+  }),
+};
 ```
 
 ## Author
