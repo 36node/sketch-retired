@@ -5,15 +5,27 @@ import fetch from "@36node/fetch";
 export default class SDK {
   /**
    * Base url
-   * @type {string}
+   *
+   * @returns {string} base url
    *  */
-  base;
+  get base() {
+    return this.options.base || "";
+  }
 
   /**
    * Sdk auth
-   * @type {string}
+   *
+   * @returns {string} auth header
    * */
-  auth;
+  get auth() {
+    let token = this.options.token;
+    if (typeof this.options.token === "function") {
+      token = token();
+    }
+    if (token) {
+      return `Bearer ${token}`;
+    }
+  }
 
   /**
    * Init store sdk
@@ -23,10 +35,7 @@ export default class SDK {
    * @param {string} opt.token token fro authorization
    */
   constructor(opt = {}) {
-    this.base = opt.base || "";
-    if (opt.token) {
-      this.auth = `Bearer ${opt.token}`;
-    }
+    this.options = opt;
   }
 
   /**
@@ -45,7 +54,7 @@ export default class SDK {
       return fetch(`${this.base}/pets`, {
         method: "get",
         query,
-        headers: this.auth ? { ...headers, Authorization: this.auth } : headers,
+        headers: { Authorization: this.auth, ...headers },
       });
     },
     /**
@@ -62,7 +71,7 @@ export default class SDK {
       return fetch(`${this.base}/pets`, {
         method: "post",
         body,
-        headers: this.auth ? { ...headers, Authorization: this.auth } : headers,
+        headers: { Authorization: this.auth, ...headers },
       });
     },
     /**
@@ -78,7 +87,7 @@ export default class SDK {
 
       return fetch(`${this.base}/pets/{petId}`, {
         method: "get",
-        headers: this.auth ? { ...headers, Authorization: this.auth } : headers,
+        headers: { Authorization: this.auth, ...headers },
       });
     },
   };

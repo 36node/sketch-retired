@@ -15,7 +15,7 @@ import Jumbotron from "./components/jumbotron";
 const github = new Github();
 const petstore = new Petstore({
   base: STORE_BASE,
-  token: TOKEN,
+  token: () => TOKEN,
 });
 
 class App extends Component {
