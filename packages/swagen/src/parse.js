@@ -4,50 +4,51 @@ import YAML from "js-yaml";
 import { get, camelCase } from "lodash";
 import is from "./util/is";
 import request from "request";
+import SwaggerParser from "swagger-parser";
 
-/**
- * read file or fetch from remote
- *
- * @param {*} source target file or remote url
- * @returns {String} raw data from a file
- */
+// /**
+//  * read file or fetch from remote
+//  *
+//  * @param {*} source target file or remote url
+//  * @returns {String} raw data from a file
+//  */
 
-async function getFile(source) {
-  return new Promise((resolve, reject) => {
-    if (is.YML(source) || is.YAML(source) || is.JSON(source)) {
-      // local file
-      fs.readFile(source, (err, data) => {
-        if (err) return reject(err);
-        resolve(data);
-      });
-    } else if (is.URL(source)) {
-      //fetch from remote
-      const opts = { url: source };
-      request(opts, (err, response) => {
-        if (err) return reject(err);
-        resolve(response.body);
-      });
-    } else {
-      reject(new Error(`Unsupported source ${source}`));
-    }
-  });
-}
+// async function getFile(source) {
+//   return new Promise((resolve, reject) => {
+//     if (is.YML(source) || is.YAML(source) || is.JSON(source)) {
+//       // local file
+//       fs.readFile(source, (err, data) => {
+//         if (err) return reject(err);
+//         resolve(data);
+//       });
+//     } else if (is.URL(source)) {
+//       //fetch from remote
+//       const opts = { url: source };
+//       request(opts, (err, response) => {
+//         if (err) return reject(err);
+//         resolve(response.body);
+//       });
+//     } else {
+//       reject(new Error(`Unsupported source ${source}`));
+//     }
+//   });
+// }
 
-/**
- * parse raw file data to json
- *
- * @param {String} data raw file data
- * @returns {Object} json
- */
+// /**
+//  * parse raw file data to json
+//  *
+//  * @param {String} data raw file data
+//  * @returns {Object} json
+//  */
 
-function toJSON(data) {
-  data = data.toString("utf8");
-  try {
-    return JSON.parse(data);
-  } catch (e) {
-    return YAML.safeLoad(data);
-  }
-}
+// function toJSON(data) {
+//   data = data.toString("utf8");
+//   try {
+//     return JSON.parse(data);
+//   } catch (e) {
+//     return YAML.safeLoad(data);
+//   }
+// }
 
 /**
  * parse swagger
@@ -118,13 +119,21 @@ function parseSwagger(swagger) {
  * parse swagger file to expected structure
  *
  * @param {*} source file path or remote url
+ * @param {object} options {parse: true}
+ * @param {object} options.dereference replace all $ref with normal js objects
  * @returns { Object } { info, servers, api, components }
  */
-export default async function parse(source) {
-  let content, json, result;
+export default async function parse(source, options = {}) {
+  let api, result;
 
   try {
-    content = await getFile(source);
+    if (options.dereference) {
+      // replace all $ref with normal js objects
+      api = await SwaggerParser.dereference(source);
+    } else {
+      // only parse swagger object, does not resolve $ref pointers or dereference anything
+      api = await SwaggerParser.parse(source);
+    }
   } catch (e) {
     console.error("Can not load the content of the Swagger specification file");
     console.error(e);
@@ -132,15 +141,7 @@ export default async function parse(source) {
   }
 
   try {
-    json = toJSON(content);
-  } catch (e) {
-    console.error("Can not parse the content of the Swagger specification file");
-    console.error(e);
-    return;
-  }
-
-  try {
-    result = parseSwagger(json);
+    result = parseSwagger(api);
   } catch (e) {
     console.error(e);
     return;

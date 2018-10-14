@@ -4,13 +4,12 @@ import { mkdir, generateFile, TemplatePath } from "./lib";
 import path from "path";
 
 /**
- * Generate code for koa server
- *
- * @param {String} target target folder
- * @param {String} swaggerFile openapi.yml
+ * Generate code for koa server api
+ * @param {object} opts options
+ * @param {string} opts.target code dist
+ * @param {string} opts.swaggerFile openapi file path
  */
-
-export default function genKoa(target, swaggerFile) {
+export default function genKoa({ target, swaggerFile }) {
   parse(swaggerFile)
     .then(function(swagger) {
       const { api } = swagger;
