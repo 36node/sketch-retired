@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 import hbsHelper from "handlebars-helpers";
-import { upperFirst } from "lodash";
+import { upperFirst, get } from "lodash";
 
 hbsHelper({
   handlebars: Handlebars,
@@ -45,6 +45,45 @@ export function hasParamType(parameters = [], type) {
 }
 
 /**
+ * Determin whether the response json body is included
+ * @param {*} operation swagger operation object
+ */
+export function hasJsonBody(operation) {
+  const schema = get(operation, ["response", "content", "schema"], null);
+  if (schema) {
+    return true;
+  }
+
+  return false;
+}
+
+/**
+ * Get json body from response of operation definition
+ * @param {*} operation swagger operation object
+ * @returns {object} return json response body schema
+ */
+export function getJsonBodySchema(operation) {
+  const bodySchema = get(operation, ["response", "content", "schema"], null);
+  if (bodySchema) {
+    return JSON.stringify(bodySchema, null, 2);
+  }
+  return null;
+}
+
+/**
+ * Determine whether the request has status
+ * @param {*} operation swagger operation object
+ */
+export function hasResponseStatus(operation) {
+  const status = get(operation, ["response", "status"], null);
+  if (status) {
+    return true;
+  }
+
+  return false;
+}
+
+/**
  * Determine whether the type parameter is required
  *
  * @param {Array} parameters the params
@@ -64,6 +103,10 @@ export function requireParamType(parameters = [], type) {
 
 Handlebars.registerHelper("schemaType", schema => {
   return getSchemaType(schema);
+});
+
+Handlebars.registerHelper("jsonBodySchema", operation => {
+  return getJsonBodySchema(operation);
 });
 
 Handlebars.registerHelper("withParamQuery", function(parameters, options) {
@@ -88,6 +131,14 @@ Handlebars.registerHelper("requireParamHeader", function(parameters, options) {
 
 Handlebars.registerHelper("requireParamCookie", function(parameters, options) {
   return requireParamType(parameters, "cookie") ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper("withJsonBody", function(operation, options) {
+  return hasJsonBody(operation) ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper("withResponseStatus", function(operation, options) {
+  return hasResponseStatus(operation) ? options.fn(this) : options.inverse(this);
 });
 
 Handlebars.registerHelper("toRoute", function(path) {

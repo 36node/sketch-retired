@@ -1,9 +1,4 @@
-import fs from "fs";
-
-import YAML from "js-yaml";
 import { get, camelCase } from "lodash";
-import is from "./util/is";
-import request from "request";
 import SwaggerParser from "swagger-parser";
 
 // /**
@@ -58,7 +53,7 @@ import SwaggerParser from "swagger-parser";
  */
 
 function parseSwagger(swagger) {
-  const { paths, components, info, servers } = swagger;
+  const { paths, components, info, servers, security } = swagger;
   const api = {};
 
   for (const path in paths) {
@@ -76,12 +71,24 @@ function parseSwagger(swagger) {
 
       // use 200/204 response, use http-errors as error responses. https://github.com/jshttp/http-errors
       const res200 = responses["200"] || responses[200];
+      const res201 = responses["201"] || responses[201];
+      const res202 = responses["202"] || responses[202];
       const res204 = responses["204"] || responses[204];
-      const response = res200 || res204;
+      const response = res200 || res201 || res202 || res204;
       if (!response) throw new Error(`missing 20X response for ${method} ${path}`);
 
       if (res200) {
         response.status = 200;
+        response.content = get(response, ["content", "application/json"]);
+      }
+
+      if (res201) {
+        response.status = 201;
+        response.content = get(response, ["content", "application/json"]);
+      }
+
+      if (res202) {
+        response.status = 202;
         response.content = get(response, ["content", "application/json"]);
       }
 
@@ -112,7 +119,7 @@ function parseSwagger(swagger) {
     }
   }
 
-  return { info, servers, api, components };
+  return { info, servers, api, components, security };
 }
 
 /**
