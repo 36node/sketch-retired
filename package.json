@@ -44,6 +44,7 @@
     "@36node/eslint-config": "^0.1.1",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
+    "@types/jest": "^23.3.5",
     "cross-env": "^5.2.0",
     "husky": "^1.0.0-rc.13",
     "jest": "^23.6.0",

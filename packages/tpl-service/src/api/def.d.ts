@@ -1,13 +1,18 @@
 type ListPetsRequest = {
   query: {
-    limit?: number;
+    _limit?: number;
+    tag?: string;
+    age_gt?: number;
   };
   context?: Object;
 };
 
 type ListPetsResponse = {
   body: Array<Pet>;
-}
+  headers: {
+    xNext: string;
+  };
+};
 
 type CreatePetsRequest = {
   body: NewPet;
@@ -16,7 +21,7 @@ type CreatePetsRequest = {
 
 type CreatePetsResponse = {
   body: Pet;
-}
+};
 
 type ShowPetByIdRequest = {
   petId: string;
@@ -25,18 +30,20 @@ type ShowPetByIdRequest = {
 
 type ShowPetByIdResponse = {
   body: Pet;
-}
+};
 
 type Pet = {
   id: number;
+  age: number;
   name: string;
   tag: string;
-}
+};
 type NewPet = {
   name: string;
   tag: string;
-}
+  age: number;
+};
 type Err = {
   code: string;
   message: string;
-}
+};

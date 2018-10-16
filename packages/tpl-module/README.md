@@ -15,7 +15,7 @@ yarn add module
 ## Usage
 
 ```js
-const module = require("module");
+import module from "module";
 
 module();
 //=> foo
@@ -35,4 +35,4 @@ module();
 
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/module/contributors)).
 
-> [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node) · Twitter [@y](https://twitter.com/y)
+> [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)

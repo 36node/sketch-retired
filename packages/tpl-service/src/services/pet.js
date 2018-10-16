@@ -10,13 +10,13 @@ export class Service extends API {
    */
 
   async listPets(req) {
-    const { query = {} } = req;
-    const { limit = 100 } = query;
-    const conditions = {};
+    const limit = Number(req.query._limit) || 100;
+    const tag = req.query.tag;
+    const age_gt = req.query.age_gt;
 
-    const pets = await Pet.list({ limit: Number(limit), conditions });
+    const result = await Pet.list({ limit, filter: { tag, age_gt } });
     return {
-      body: pets,
+      body: result.docs,
       headers: {
         xNext: "nextLink",
       },
