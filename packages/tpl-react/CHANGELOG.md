@@ -1,5 +1,31 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.7.0](https://github.com/36node/sketch/compare/@36node/template-react@0.6.0...@36node/template-react@0.7.0) (2018-10-17)
+
+
+
+# 0.7.0 (2018-10-17)
+
+
+### Bug Fixes
+
+* tpl-service query readme ([251de7e](https://github.com/36node/sketch/commit/251de7e))
+* use npm in tpl-* scripts ([ce61184](https://github.com/36node/sketch/commit/ce61184))
+
+
+### Features
+
+* mongoose-helper for tpl-service ([eed31f0](https://github.com/36node/sketch/commit/eed31f0))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 <a name="0.7.0"></a>
