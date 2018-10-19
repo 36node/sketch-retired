@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should renders correctly 1`] = `
+.c0 {
+  -webkit-animation: app-logo-spin infinite 20s linear;
+  animation: app-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+<img
+  className="c0"
+  src="logo.svg"
+>
+  somthing
+</img>
+`;

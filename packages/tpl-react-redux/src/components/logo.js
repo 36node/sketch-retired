@@ -13,7 +13,10 @@ const spin = keyframes`
 
 const Logo = styled.img.attrs({ src: svg })`
   animation: ${spin} infinite 20s linear;
-  height: 80px;
+  width: 60px;
+  height: 31px;
+  margin: 16px 24px 16px -16px;
+  float: left;
 `;
 
 export default Logo;
