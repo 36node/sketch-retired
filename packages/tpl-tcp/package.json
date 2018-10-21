@@ -13,8 +13,11 @@
   "files": [
     "bin",
     "src",
+    ".babelrc",
     ".circleci",
+    ".dockerignore",
     "Dockerfile",
+    "openapi.yml",
     "README.md"
   ],
   "main": "dist/index.js",
