@@ -2,8 +2,7 @@
 
 exports[`should renders correctly 1`] = `
 .c0 {
-  padding: 20px;
-  font-size: large;
+  font-size: 2rem;
 }
 
 <div

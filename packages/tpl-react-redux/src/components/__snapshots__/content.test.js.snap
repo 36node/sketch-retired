@@ -2,14 +2,13 @@
 
 exports[`should renders correctly 1`] = `
 .c0 {
-  position: fixed;
-  z-index: 1;
-  width: 100%;
+  padding: 0 50px;
+  margin-top: 64px;
 }
 
 <div
-  className="c0 ant-layout-header"
+  className="c0 ant-layout-content"
 >
-  somthing
+   somthing 
 </div>
 `;

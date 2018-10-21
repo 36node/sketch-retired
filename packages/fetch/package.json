@@ -12,7 +12,8 @@
   },
   "files": [
     "bin",
-    "dist"
+    "dist",
+    "typings"
   ],
   "browser": "dist/browser.mjs",
   "main": "dist/index.js",
@@ -20,6 +21,9 @@
   "scripts": {
     "build": "microbundle build --format cjs,es src/{browser,index}.js",
     "test": "jest --silent --env=node"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "dependencies": {
     "http-errors": "^1.7.1",

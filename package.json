@@ -4,7 +4,7 @@
     "packages/*"
   ],
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "yarn install && lerna bootstrap",
     "build": "NODE_ENV=production lerna run build",
     "changelog": "lerna-changelog",
     "format": "prettier --trailing-comma es5 --write",
@@ -40,8 +40,8 @@
     ]
   },
   "devDependencies": {
-    "@36node/babel": "^0.0.2",
-    "@36node/eslint-config": "^0.1.1",
+    "@36node/babel": "^0.1.0",
+    "@36node/eslint-config": "^0.2.1",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
     "@types/jest": "^23.3.5",

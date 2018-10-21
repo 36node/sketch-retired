@@ -11,50 +11,19 @@
     "access": "public"
   },
   "files": [
-    "dist"
+    "bin",
+    "dist",
+    "typings"
   ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "typings/index.d.ts",
   "scripts": {
     "build": "microbundle build --format cjs,es",
-    "format": "prettier --trailing-comma es5 --write",
-    "lint": "eslint src",
-    "release": "standard-version && git push --follow-tags origin master",
     "test": "jest --silent"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $GIT_PARAMS",
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn lint && yarn test"
-    }
   },
   "jest": {
     "testEnvironment": "node"
-  },
-  "lint-staged": {
-    "*.js": [
-      "yarn format",
-      "git add"
-    ]
-  },
-  "devDependencies": {
-    "@36node/babel": "^0.1.0",
-    "@36node/eslint-config": "^0.1.0",
-    "@commitlint/cli": "^6.1.0",
-    "@commitlint/config-conventional": "^6.1.0",
-    "husky": "^1.0.0-rc.13",
-    "jest": "^23.4.2",
-    "lint-staged": "^7.2.0",
-    "microbundle": "^0.6.0",
-    "prettier": "^1.13.7",
-    "standard-version": "^4.4.0"
   },
   "peerDependencies": {
     "@types/mongoose": "^5.2.19",

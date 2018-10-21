@@ -50,11 +50,11 @@
   },
   "devDependencies": {
     "@36node/babel": "^0.1.0",
-    "@36node/eslint-config": "^0.1.0",
+    "@36node/eslint-config": "^0.2.0",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
     "husky": "^1.0.0-rc.13",
-    "jest": "^23.4.2",
+    "jest": "20.0.4",
     "lint-staged": "^7.2.0",
     "nodemon": "^1.18.3",
     "prettier": "^1.13.7",

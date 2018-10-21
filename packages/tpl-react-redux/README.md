@@ -78,11 +78,12 @@ module.exports = {
 
 - Antd
 - React-Router v4
+- Story-Book
+- React-Media
 - Redux
 - Saga
 - Reselect
 - Normalizr
-- React-Media
 
 ## Author
 
