@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/36node/sketch/compare/@36node/template-react@0.7.0...@36node/template-react@0.8.0) (2018-10-21)
+
+
+### Bug Fixes
+
+* eslint babel and jest uncompatible issue && change a lot ([1e2576b](https://github.com/36node/sketch/commit/1e2576b))
+
+
+### Features
+
+* template-react-redux ([d5f775e](https://github.com/36node/sketch/commit/d5f775e))
+
+
+
+
+
 # [0.7.0](https://github.com/36node/sketch/compare/@36node/template-react@0.6.0...@36node/template-react@0.7.0) (2018-10-17)
 
 

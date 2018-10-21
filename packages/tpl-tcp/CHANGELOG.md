@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.14](https://github.com/36node/sketch/compare/@36node/template-tcp@0.2.13...@36node/template-tcp@0.2.14) (2018-10-21)
+
+
+### Bug Fixes
+
+* eslint babel and jest uncompatible issue && change a lot ([1e2576b](https://github.com/36node/sketch/commit/1e2576b))
+* use npm in tpl-* scripts ([ce61184](https://github.com/36node/sketch/commit/ce61184))
+
+
+
+
+
 ## [0.2.13](https://github.com/36node/sketch/compare/@36node/template-tcp@0.2.12...@36node/template-tcp@0.2.13) (2018-10-09)
 
 

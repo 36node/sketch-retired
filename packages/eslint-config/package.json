@@ -1,6 +1,6 @@
 {
   "name": "@36node/eslint-config",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "ESLint configuration used by 36node team",
   "repository": "36node/sketch",
   "publishConfig": {
