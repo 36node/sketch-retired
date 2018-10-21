@@ -1,8 +1,10 @@
-import dotenv from "dotenv";
-
 /**
  * init dotenv
- * priority: environment -> .env
+ *
+ * .env: Default.
+ * .env.local: Local overrides. This file is loaded for all environments except test.
+ * .env.development, .env.test, .env.production: Environment-specific settings.
+ * .env.development.local, .env.test.local, .env.production.local: Local overrides of environment-specific settings.
  *
  * Available settings
  *
@@ -10,8 +12,6 @@ import dotenv from "dotenv";
  * APP_BASE_PATH=/v1
  * APP_JWT_PUBLIC_KEY=`a public key string`
  */
-
-dotenv.config();
 
 /**
  *
