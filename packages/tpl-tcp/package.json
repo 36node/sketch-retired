@@ -52,8 +52,8 @@
     ]
   },
   "devDependencies": {
-    "@36node/babel": "^0.2.0",
-    "@36node/eslint-config": "^0.3.0",
+    "@36node/babel": "0.2.0",
+    "@36node/eslint-config": "0.3.0",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
     "husky": "^1.0.0-rc.13",
