@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/36node/sketch/compare/@36node/template-service@0.6.1...@36node/template-service@0.6.2) (2018-10-23)
+
+
+### Bug Fixes
+
+* tpl-service npm publish files ([fcd7315](https://github.com/36node/sketch/commit/fcd7315))
+
+
+
+
+
 ## [0.6.1](https://github.com/36node/sketch/compare/@36node/template-service@0.6.0...@36node/template-service@0.6.1) (2018-10-23)
 
 

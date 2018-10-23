@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.5.3...@36node/sketch-cli@0.5.4) (2018-10-23)
+
+
+### Bug Fixes
+
+* remove markdownlint from cli template ([883a00f](https://github.com/36node/sketch/commit/883a00f))
+
+
+
+
+
 ## [0.5.3](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.5.2...@36node/sketch-cli@0.5.3) (2018-10-23)
 
 
