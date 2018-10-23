@@ -10,6 +10,9 @@
   "bugs": {
     "url": "https://github.com/36node/sketch/issues"
   },
+  "bin": {
+    "sketch": "./bin/sketch"
+  },
   "files": [
     "bin",
     "dist",
