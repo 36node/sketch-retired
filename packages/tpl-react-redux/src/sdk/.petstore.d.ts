@@ -6,6 +6,9 @@ type ListPetsRequest = {
 
 type ListPetsResponse = {
   body: Array<Pet>;
+  headers: {
+    xNext: string;
+  };
 };
 
 type CreatePetsRequest = {

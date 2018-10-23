@@ -3,14 +3,10 @@
 import fetch from "@36node/fetch";
 
 export default class SDK {
-  /**
-   * Base url
-   *
-   * @returns {string} base url
-   *  */
-  get base() {
-    return this.options.base || "";
-  }
+  /**@type {string} **/
+  base;
+  /**@type {string} **/
+  token;
 
   /**
    * Sdk auth
@@ -18,12 +14,8 @@ export default class SDK {
    * @returns {string} auth header
    * */
   get auth() {
-    let token = this.options.token;
-    if (typeof this.options.token === "function") {
-      token = token();
-    }
-    if (token) {
-      return `Bearer ${token}`;
+    if (this.token) {
+      return `Bearer ${this.token}`;
     }
   }
 
@@ -35,7 +27,8 @@ export default class SDK {
    * @param {string} opt.token token fro authorization
    */
   constructor(opt = {}) {
-    this.options = opt;
+    this.base = opt.base || "";
+    this.token = opt.token || "";
   }
 
   /**

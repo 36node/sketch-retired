@@ -52,7 +52,7 @@ release
 tmp
 
 # config
-.env
+.env*
 
 # try files
 .try*

@@ -7,7 +7,7 @@ module.exports = {
     const data = { pets: [] };
     const tags = ["CAT", "DOG", "RABBIT"];
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 20; i++) {
       data.pets.push({
         id: i,
         name: faker.name.lastName(),

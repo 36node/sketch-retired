@@ -2,6 +2,7 @@ const { injectBabelPlugin } = require("react-app-rewired");
 const rewireLess = require("react-app-rewire-less");
 const rewireEslint = require("react-app-rewire-eslint");
 const rewireStyledComponents = require("react-app-rewire-styled-components");
+const rewireReactHotLoader = require("react-app-rewire-hot-loader");
 const mock = require("./mock");
 const jsonServer = require("json-server");
 const pause = require("connect-pause");
@@ -28,6 +29,9 @@ module.exports = {
 
     // for decorator
     config = injectBabelPlugin("transform-decorators-legacy", config);
+
+    // hot reloader
+    config = rewireReactHotLoader(config, env);
 
     // for styled-components
     config = rewireStyledComponents(config, env, {
