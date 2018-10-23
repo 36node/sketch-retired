@@ -18,7 +18,7 @@
     ".babelrc",
     ".dockerignore",
     "Dockerfile",
-    "petstore.yml",
+    "petstore.yaml",
     "README.md"
   ],
   "main": "dist/index.js",
