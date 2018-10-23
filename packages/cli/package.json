@@ -11,7 +11,7 @@
     "url": "https://github.com/36node/sketch/issues"
   },
   "bin": {
-    "sketch": "./bin/sketch"
+    "sketch": "bin/sketch.js"
   },
   "files": [
     "bin",
