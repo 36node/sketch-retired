@@ -11,13 +11,14 @@
     "access": "public"
   },
   "files": [
+    ".circleci",
     "bin",
     "src",
+    "ssl",
     ".babelrc",
-    ".circleci",
     ".dockerignore",
     "Dockerfile",
-    "openapi.yml",
+    "petstore.yml",
     "README.md"
   ],
   "main": "dist/index.js",
