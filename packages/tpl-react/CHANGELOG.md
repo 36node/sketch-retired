@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/36node/sketch/compare/@36node/template-react@0.8.0...@36node/template-react@0.8.1) (2018-10-23)
+
+
+### Bug Fixes
+
+* config dotenv ([6f14bdc](https://github.com/36node/sketch/commit/6f14bdc))
+* yarn.lock ([c525713](https://github.com/36node/sketch/commit/c525713))
+
+
+
+
+
 # [0.8.0](https://github.com/36node/sketch/compare/@36node/template-react@0.7.0...@36node/template-react@0.8.0) (2018-10-21)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.15](https://github.com/36node/sketch/compare/@36node/template-tcp@0.2.14...@36node/template-tcp@0.2.15) (2018-10-23)
+
+
+### Bug Fixes
+
+* config dotenv ([6f14bdc](https://github.com/36node/sketch/commit/6f14bdc))
+* yarn.lock ([c525713](https://github.com/36node/sketch/commit/c525713))
+* yarn.lock ([3a392e1](https://github.com/36node/sketch/commit/3a392e1))
+
+
+
+
+
 ## [0.2.14](https://github.com/36node/sketch/compare/@36node/template-tcp@0.2.13...@36node/template-tcp@0.2.14) (2018-10-21)
 
 

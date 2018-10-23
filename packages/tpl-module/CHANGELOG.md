@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/36node/sketch/compare/@36node/template-module@0.4.0...@36node/template-module@0.4.1) (2018-10-23)
+
+
+### Bug Fixes
+
+* yarn.lock ([c525713](https://github.com/36node/sketch/commit/c525713))
+
+
+
+
+
 # [0.4.0](https://github.com/36node/sketch/compare/@36node/template-module@0.3.3...@36node/template-module@0.4.0) (2018-10-21)
 
 
