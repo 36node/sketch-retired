@@ -1,6 +1,6 @@
 {
   "name": "@36node/swagen",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "A module boilerplate for nodejs and web.",
   "repository": {
     "url": "36node/sketch",
@@ -21,7 +21,8 @@
   },
   "scripts": {
     "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
-    "dev": "babel ./src -d ./dist --ignore test.js -w"
+    "dev": "babel ./src -d ./dist --ignore test.js -w",
+    "test": "jest --silent"
   },
   "dependencies": {
     "handlebars": "^4.0.12",

@@ -14,7 +14,7 @@ paths:
       tags:
         - pet
       parameters:
-        - name: limit
+        - name: _limit
           in: query
           description: How many items to return at one time (max 100)
           required: false
@@ -22,6 +22,18 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: tag
+          in: query
+          description: Tag of pet
+          required: false
+          schema:
+            type: string
+        - name: age_gt
+          in: query
+          description: Return Pet older than given age
+          required: false
+          schema:
+            type: integer
       responses:
         "200":
           description: A paged array of pets
@@ -43,17 +55,20 @@ paths:
                       {
                         "id": 1,
                         "name": "aa",
-                        "tag": "red"
+                        "tag": "red",
+                        "age": 3
                       },
                       {
                         "id": 2,
                         "name": "bb",
-                        "tag": "happy"
+                        "tag": "happy",
+                        "age": 5
                       },
                       {
                         "id": 3,
                         "name": "cc",
-                        "tag": "husky"
+                        "tag": "husky",
+                        "age": 6
                       }
                     ]
         "401":
@@ -78,7 +93,8 @@ paths:
                 value: |
                   {
                     "name": "dd",
-                    "tag": "red"
+                    "tag": "red",
+                    "age": 5
                   }
       responses:
         "201":
@@ -93,7 +109,8 @@ paths:
                     {
                       "id": 4,
                       "name": "dd",
-                      "tag": "red"
+                      "tag": "red",
+                      "age": 5
                     }
         "401":
           $ref: "#/components/responses/Unauthorized"
@@ -126,7 +143,8 @@ paths:
                     {
                       "id": 3,
                       "name": "cc",
-                      "tag": "red"
+                      "tag": "red",
+                      "age": 6
                     }
         "401":
           $ref: "#/components/responses/Unauthorized"
@@ -191,6 +209,9 @@ components:
         id:
           type: integer
           format: int64
+        age:
+          type: integer
+          format: int32
         name:
           type: string
         tag:
@@ -203,6 +224,8 @@ components:
           type: string
         tag:
           type: string
+        age:
+          type: integer
     Err:
       type: object
       properties:

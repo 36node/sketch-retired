@@ -1,28 +1,48 @@
 import mongoose from "mongoose";
+import helper from "@36node/mongoose-helper";
 
-import { Base, createSchema } from "./lib";
+export const petSchema = new mongoose.Schema(
+  {
+    name: String,
+    tag: String,
+    owner: String,
+    category: { type: String, enum: ["CAT", "DOG"] },
+  },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+    toObject: {
+      virtuals: true,
+    },
+  }
+);
 
-export const petSchema = createSchema({
-  name: String,
-  tag: String,
-  owner: String,
-  category: { type: String, enum: ["CAT", "DOG"] },
-});
-
-class Pet extends Base {
+class Pet {
+  /** @type {string} */
   name;
+  /** @type {string} */
   tag;
+  /** @type {string} */
   owner;
+  /** @type {("CAT"|"DOG")} */
+  category;
 }
 
 /**
  * output
  */
 petSchema.loadClass(Pet);
+petSchema.plugin(helper);
 
 /**
- * @type {typeof Pet}
+ * @typedef {mongoose.Document & Pet} PetDocument
  */
-const Model = mongoose.model("Pet", petSchema);
+
+/**
+ * @type {mongoose.Model<PetDocument>}
+ */
+let Model = mongoose.model("Pet", petSchema);
 
 export default Model;

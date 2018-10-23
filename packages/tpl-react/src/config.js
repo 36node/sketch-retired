@@ -1,8 +1,10 @@
-import dotenv from "dotenv";
-
 /**
  * init dotenv
- * priority: environment -> .env
+ *
+ * .env: Default.
+ * .env.local: Local overrides. This file is loaded for all environments except test.
+ * .env.development, .env.test, .env.production: Environment-specific settings.
+ * .env.development.local, .env.test.local, .env.production.local: Local overrides of environment-specific settings.
  *
  * Available settings
  *
@@ -11,12 +13,10 @@ import dotenv from "dotenv";
  * APP_JWT_PUBLIC_KEY=`a public key string`
  */
 
-dotenv.config();
-
 /**
  *
  * @param {*} name envrionment name
- * @param {*} option option with { required, default }
+ * @param {*} option option with { required, init }
  * @returns {*} value
  */
 
@@ -33,7 +33,5 @@ export function env(name, { required, init } = {}) {
 /**
  * APP
  */
-export const STORE_BASE = env("STORE_BASE", {
-  init: "https://api.36node.com/petstore/v0",
-});
+export const STORE_BASE = env("STORE_BASE");
 export const TOKEN = env("TOKEN");

@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-service",
-  "version": "0.5.2",
+  "version": "0.6.2",
   "description": "A service boilerplate with openapi,rest and mongodb.",
   "repository": {
     "url": "36node/sketch",
@@ -11,20 +11,21 @@
     "access": "public"
   },
   "files": [
+    ".circleci",
     "bin",
     "src",
+    "ssl",
     ".babelrc",
-    ".circleci",
     ".dockerignore",
     "Dockerfile",
-    "openapi.yml",
+    "petstore.yml",
     "README.md"
   ],
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
     "format": "prettier --trailing-comma es5 --write",
-    "gen:api": "swagen -t koa -s petstore.yaml -f ./src/api",
+    "gen:api": "swagen -t koa -s petstore.yaml -f ./src/api && npm run format",
     "init:db": "babel-node bin/initdb.js",
     "lint": "eslint src",
     "server": "node dist/index.js",
@@ -40,7 +41,7 @@
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "yarn lint && yarn test"
+      "pre-push": "npm run lint && npm run test"
     }
   },
   "jest": {
@@ -48,14 +49,14 @@
   },
   "lint-staged": {
     "*.js": [
-      "yarn format",
+      "npm run format",
       "git add"
     ]
   },
   "devDependencies": {
-    "@36node/babel": "^0.1.0",
-    "@36node/eslint-config": "^0.1.0",
-    "@36node/swagen": "^0.3.0",
+    "@36node/babel": "0.2.0",
+    "@36node/eslint-config": "0.3.0",
+    "@36node/swagen": "^0.5.0",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
     "@types/lodash": "^4.14.116",
@@ -69,8 +70,10 @@
     "require-directory": "^2.1.1"
   },
   "dependencies": {
+    "@36node/mongoose-helper": "^0.1.0",
     "@koa/cors": "^2.2.2",
     "@types/koa": "^2.0.46",
+    "@types/mongoose": "^5.2.19",
     "dotenv": "^6.0.0",
     "koa": "^2.5.2",
     "koa-body": "^4.0.4",
@@ -79,7 +82,6 @@
     "koa-logger": "^3.2.0",
     "koa-tree-router": "^0.4.2",
     "lodash": "^4.17.10",
-    "mongoose": "^5.2.14",
-    "mongoose-hidden": "^1.5.4"
+    "mongoose": "^5.2.14"
   }
 }

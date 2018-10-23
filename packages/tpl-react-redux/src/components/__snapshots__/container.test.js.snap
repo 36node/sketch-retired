@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should renders correctly 1`] = `
+.c0 {
+  background: #fff;
+  padding: 24px;
+  min-height: 280px;
+}
+
+<div
+  className="c0"
+>
+  somthing
+</div>
+`;

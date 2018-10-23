@@ -2,4 +2,4 @@ function foo() {
   console.log("I am foo");
 }
 
-module.exports = foo;
+export default foo;

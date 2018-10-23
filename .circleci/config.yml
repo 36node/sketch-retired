@@ -15,7 +15,7 @@ jobs:
           key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependences
-          command: yarn install && yarn bootstrap
+          command: yarn install
       - run:
           name: Build Package
           command: yarn build

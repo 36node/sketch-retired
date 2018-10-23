@@ -1,6 +1,6 @@
 {
   "name": "@36node/sketch-cli",
-  "version": "0.4.4",
+  "version": "0.5.4",
   "description": "Cli for @36node/sketch",
   "repository": "36node/sketch",
   "publishConfig": {
@@ -10,20 +10,24 @@
   "bugs": {
     "url": "https://github.com/36node/sketch/issues"
   },
-  "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
-  "module": "dist/index.mjs",
-  "files": [
-    "bin",
-    "dist",
-    "template"
-  ],
   "bin": {
     "sketch": "bin/sketch.js"
   },
+  "files": [
+    "bin",
+    "dist",
+    "template",
+    "typings"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "microbundle build",
-    "test": "jest --silent --env=node"
+    "build": "microbundle build --format cjs,es",
+    "test": "jest --silent"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "dependencies": {
     "commander": "^2.16.0",

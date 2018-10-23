@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should renders correctly 1`] = `
+.c0 {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
+<div
+  className="c0 ant-layout-header"
+>
+  somthing
+</div>
+`;

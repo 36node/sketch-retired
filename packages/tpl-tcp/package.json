@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-tcp",
-  "version": "0.2.13",
+  "version": "0.2.15",
   "description": "A module boilerplate for tcp server.",
   "repository": {
     "url": "36node/sketch",
@@ -13,8 +13,11 @@
   "files": [
     "bin",
     "src",
+    ".babelrc",
     ".circleci",
+    ".dockerignore",
     "Dockerfile",
+    "openapi.yml",
     "README.md"
   ],
   "main": "dist/index.js",
@@ -36,7 +39,7 @@
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "yarn lint && yarn test"
+      "pre-push": "npm run lint && npm run test"
     }
   },
   "jest": {
@@ -44,17 +47,17 @@
   },
   "lint-staged": {
     "*.js": [
-      "yarn format",
+      "npm run format",
       "git add"
     ]
   },
   "devDependencies": {
-    "@36node/babel": "^0.1.0",
-    "@36node/eslint-config": "^0.1.0",
+    "@36node/babel": "0.2.0",
+    "@36node/eslint-config": "0.3.0",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
     "husky": "^1.0.0-rc.13",
-    "jest": "^23.4.2",
+    "jest": "20.0.4",
     "lint-staged": "^7.2.0",
     "nodemon": "^1.18.3",
     "prettier": "^1.13.7",

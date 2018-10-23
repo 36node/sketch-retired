@@ -21,19 +21,26 @@ sketch init some-folder
 ## Development
 
 ```sh
-yarn global add lerna
-
-# root folder
-lerna bootstrap
+yarn bootstrap
 ```
 
 ## Contributing
 
-1.  Fork it!
-2.  Create your feature branch: `git checkout -b my-new-feature`
-3.  Commit your changes: `git commit -am 'Add some feature'`
-4.  Push to the branch: `git push origin my-new-feature`
-5.  Submit a pull request :D
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
+## RoadMap 1.0
+
+目前打包工具的配置不太舒服，由于受到`CRA`的制约，`eslint/babel`等迫不得已使用老版本。
+希望未来我们能推出自己的 scripts 来支持前端、组件、后端的打包工作。
+和`react-scripts`不同的是，我们要考虑支持前端和后端的打包。
+
+1. A scripts package like react-scripts to wrapper all things about jest/babel/eslint and the most important build etc.
+2. Consider how to support more templates.
+3. 考察 webpack4/5 vs rollup，统一的 build 工具。
 
 ## Author
 

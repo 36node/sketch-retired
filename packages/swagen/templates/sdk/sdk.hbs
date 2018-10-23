@@ -3,17 +3,25 @@
 import fetch from "@36node/fetch";
 
 export default class SDK {
-  /**
-   * Base url
-   * @type {string}
-   *  */
+  /**@type {string} **/
   base;
+  /**@type {string} **/
+  token;
 
+  {{#if components.securitySchemes }}
   /**
    * Sdk auth
-   * @type {string}
+   *
+   * @returns {string} auth header
    * */
-  auth;
+  get auth() {
+    if (this.token) {
+      {{#if components.securitySchemes.bearerAuth }}
+      return `Bearer ${this.token}`;
+      {{/if}}
+    }
+  }
+  {{/if}}
 
   /**
    * Init store sdk
@@ -23,12 +31,8 @@ export default class SDK {
    * @param {string} opt.token token fro authorization
    */
   constructor(opt = {}) {
-    this.base = opt.base || "{{server.url}}";
-    {{#or components.securitySchemes.bearerAuth }}
-    if (opt.token) {
-      this.auth = `Bearer ${opt.token}`;
-    }
-    {{/or}}
+    this.base = opt.base || "";
+    this.token = opt.token || "";
   }
 
   {{#each api}}
@@ -84,7 +88,7 @@ export default class SDK {
         {{#with requestBody}}
         body,
         {{/with}}
-        headers: this.auth ? { ...headers, Authorization: this.auth } : headers,
+        headers: { Authorization: this.auth, ...headers },
       });
     },
     {{/each}}

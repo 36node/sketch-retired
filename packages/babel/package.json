@@ -1,6 +1,6 @@
 {
   "name": "@36node/babel",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Babel tools and config for 36node.",
   "repository": "36node/sketch",
   "publishConfig": {
@@ -15,10 +15,10 @@
     "index.js"
   ],
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^7.2.3",
-    "babel-jest": "^23.2.0",
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-eslint": "7.2.3",
+    "babel-jest": "20.0.3",
     "babel-plugin-transform-builtin-extend": "^1.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",

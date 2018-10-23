@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/36node/sketch/compare/@36node/swagen@0.4.0...@36node/swagen@0.5.0) (2018-10-23)
+
+
+### Features
+
+* template-react-redux ([3f07502](https://github.com/36node/sketch/commit/3f07502))
+
+
+
+
+
+# [0.4.0](https://github.com/36node/sketch/compare/@36node/swagen@0.3.1...@36node/swagen@0.4.0) (2018-10-21)
+
+
+### Bug Fixes
+
+* eslint babel and jest uncompatible issue && change a lot ([1e2576b](https://github.com/36node/sketch/commit/1e2576b))
+
+
+### Features
+
+* mongoose-helper for tpl-service ([eed31f0](https://github.com/36node/sketch/commit/eed31f0))
+
+
+
+
+
+## [0.3.1](https://github.com/36node/sketch/compare/@36node/swagen@0.3.0...@36node/swagen@0.3.1) (2018-10-13)
+
+
+### Bug Fixes
+
+* remove default base url in sdk template ([a5ec0b5](https://github.com/36node/sketch/commit/a5ec0b5))
+* sdk token support function ([43bbd01](https://github.com/36node/sketch/commit/43bbd01))
+
+
+
+
+
 # [0.3.0](https://github.com/36node/sketch/compare/@36node/swagen@0.2.0...@36node/swagen@0.3.0) (2018-10-09)
 
 

@@ -1,0 +1,28 @@
+{
+  "name": "@36node/query-normalizr",
+  "version": "0.1.0",
+  "description": "A module boilerplate for nodejs and web.",
+  "repository": {
+    "url": "36node/query-normalizr",
+    "type": "git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "typings"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "typings/index.d.ts",
+  "scripts": {
+    "build": "microbundle build --format cjs,es",
+    "test": "jest --silent"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}

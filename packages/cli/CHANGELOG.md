@@ -3,6 +3,83 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.5.3...@36node/sketch-cli@0.5.4) (2018-10-23)
+
+
+### Bug Fixes
+
+* remove markdownlint from cli template ([883a00f](https://github.com/36node/sketch/commit/883a00f))
+
+
+
+
+
+## [0.5.3](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.5.2...@36node/sketch-cli@0.5.3) (2018-10-23)
+
+
+### Bug Fixes
+
+* sketch bin ([0bd9f0b](https://github.com/36node/sketch/commit/0bd9f0b))
+
+
+
+
+
+## [0.5.2](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.5.1...@36node/sketch-cli@0.5.2) (2018-10-23)
+
+
+### Bug Fixes
+
+* sketch bin ([53f3400](https://github.com/36node/sketch/commit/53f3400))
+
+
+
+
+
+## [0.5.1](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.5.0...@36node/sketch-cli@0.5.1) (2018-10-23)
+
+
+### Bug Fixes
+
+* sketch cli bin ([e6d395e](https://github.com/36node/sketch/commit/e6d395e))
+
+
+
+
+
+# [0.5.0](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.4.6...@36node/sketch-cli@0.5.0) (2018-10-23)
+
+
+### Features
+
+* template-react-redux ([3f07502](https://github.com/36node/sketch/commit/3f07502))
+
+
+
+
+
+## [0.4.6](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.4.5...@36node/sketch-cli@0.4.6) (2018-10-21)
+
+
+### Bug Fixes
+
+* eslint babel and jest uncompatible issue && change a lot ([1e2576b](https://github.com/36node/sketch/commit/1e2576b))
+
+
+
+
+
+## [0.4.5](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.4.4...@36node/sketch-cli@0.4.5) (2018-10-13)
+
+
+### Bug Fixes
+
+* add 'cli' to sketch-cli init choices ([2356c69](https://github.com/36node/sketch/commit/2356c69))
+
+
+
+
+
 ## [0.4.4](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.4.3...@36node/sketch-cli@0.4.4) (2018-10-10)
 
 **Note:** Version bump only for package @36node/sketch-cli

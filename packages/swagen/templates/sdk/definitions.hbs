@@ -36,7 +36,7 @@ type {{capitalize name}}Response = {
   {{#with response.content}}
   body: {{{schemaType schema}}};
   {{/with}}
-  {{#with reponse.headers}}
+  {{#with response.headers}}
   headers: {
     {{#each this}}
     {{camelcase @key}}: {{{schemaType schema}}};

@@ -11,7 +11,9 @@ export default class API {
     const listPets = async ctx => {
       const req = {
         query: {
-          limit: ctx.query.limit,
+          _limit: ctx.query._limit,
+          tag: ctx.query.tag,
+          age_gt: ctx.query.age_gt,
         },
         context: ctx, // here we put koa context in request
       };

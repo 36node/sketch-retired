@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.7](https://github.com/undefined/undefined/compare/@36node/template-cli@0.4.6...@36node/template-cli@0.4.7) (2018-10-23)
+
+
+### Bug Fixes
+
+* yarn.lock ([c525713](https://github.com/undefined/undefined/commit/c525713))
+
+
+
+
+
+## [0.4.6](https://github.com/undefined/undefined/compare/@36node/template-cli@0.4.5...@36node/template-cli@0.4.6) (2018-10-21)
+
+
+### Bug Fixes
+
+* eslint babel and jest uncompatible issue && change a lot ([1e2576b](https://github.com/undefined/undefined/commit/1e2576b))
+* use npm in tpl-* scripts ([ce61184](https://github.com/undefined/undefined/commit/ce61184))
+
+
+
+
+
+## [0.4.5](https://github.com/undefined/undefined/compare/@36node/template-cli@0.4.4...@36node/template-cli@0.4.5) (2018-10-13)
+
+
+### Bug Fixes
+
+* tpl-cli build bug ([d91135d](https://github.com/undefined/undefined/commit/d91135d))
+
+
+
+
+
 ## [0.4.4](https://github.com/undefined/undefined/compare/@36node/template-cli@0.4.3...@36node/template-cli@0.4.4) (2018-10-10)
 
 **Note:** Version bump only for package @36node/template-cli
