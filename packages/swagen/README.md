@@ -15,32 +15,85 @@ yarn global add @36node/template-cli
 ## Usage
 
 ```sh
-  Usage: swagen [options]
+$ swagen -h
 
-  Options:
+Usage: swagen [options] [command]
 
-    -V, --version              output the version number
-    -t, --template <template>  template name: koa,sdk
-    -s, --swagger <file>       local swagger file or remote url
-    -f, --folder [folder]      generate code to folder
-    -n, --named [named]        what name
-    -h, --help                 output usage information
+Options:
+  -V, --version      output the version number
+  -h, --help         output usage information
+
+Commands:
+  koa [options]      Generate code for koa server api
+  sdk [options]      Generate code for client sdk
+  postman [options]  Transform openapi file to postman collection file
 ```
 
-## Exapmle
-
-Use local file
+### Generate client sdk code
 
 ```sh
-# name default 'petstore' same with filename
-swagen -t sdk -s petstore.yaml
+$ swagen sdk -h
+
+Usage: sdk [options]
+
+Generate code for client sdk
+
+Options:
+  -s, --swagger <file>   swagger file path or url
+  -f, --folder [folder]  generate code to folder
+  -n, --named [named]    what name
+  -h, --help             output usage information
+
+
+# example, default name is filename of yaml file or specified by --name
+$ swagen sdk -s ./petstore.yaml -n petstore
 ```
 
-Use remote file
+### Generate koa server api code
+
+```sh
+$ swagen koa -h
+
+Generate code for koa server api
+
+Options:
+  -s, --swagger <file>   swagger file path or url
+  -f, --folder [folder]  generate code to folder
+  -h, --help             output usage information
+
+# example
+$ swagen koa -s ./petstore.yaml
+```
+
+### Generate post collection from openapi
+
+```sh
+$ swagen postman -h
+
+Usage: postman [options]
+
+Transform openapi file to postman collection file
+
+Options:
+  -s, --swagger <file>   swagger file path or url
+  -f, --folder [folder]  generate code to folder
+  -n, --named [named]    what name
+  -h, --help             output usage information
+
+# example
+$ swagen postman -s ./petstore.yaml
+
+# will generate petstore.postman_collection.json in pwd
+# then can use fastman to import collection to postman
+
+$ fastman import ./petstore.postman_collection.json
+```
+
+### Use remote file
 
 ```sh
 # set name with 'petstore'
-swagen -t sdk -s https://api.36node.com/petstore/v0/openapi.yaml -n petstore
+swagen sdk -s https://api.36node.com/petstore/v0/openapi.yaml -n petstore
 ```
 
 ## Contributing

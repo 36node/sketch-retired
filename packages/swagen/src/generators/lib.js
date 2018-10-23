@@ -10,9 +10,46 @@ export const TemplatePath = path.join(__dirname, "../../templates");
  *
  * @param {*} dir target directory
  */
-
 export function mkdir(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+}
+
+/**
+ * @param {string} path
+ */
+export function formatPath(path) {
+  let result = path;
+  if (path.charAt(0) === "/") {
+    result = path.substr(1);
+  }
+
+  // format path parameter /{petId} to /:petId
+  const rxp = /{([^}]+)}/g;
+  const params = [];
+  let curMatch;
+  while ((curMatch = rxp.exec(path)) != null) {
+    params.push(curMatch[1]);
+  }
+  for (let p of params) {
+    result = result.replace(`{${p}}`, `:${p}`);
+  }
+
+  return result;
+}
+
+/**
+ * Generate template content through handlebars
+ *
+ * @param {*} tplFile template file
+ * @param {*} data data for handlebars
+ *
+ * @returns {string} parsed template content
+ */
+export function generateTemplate(tplFile, data) {
+  const content = fs.readFileSync(tplFile, "utf8");
+  const template = Handlebars.compile(content);
+  const parsed_content = template(data);
+  return parsed_content;
 }
 
 /**
@@ -25,9 +62,7 @@ export function mkdir(dir) {
  */
 
 export function generateFile(tplFile, toFile, data, prettierOpts = {}) {
-  const content = fs.readFileSync(tplFile, "utf8");
-  const template = Handlebars.compile(content);
-  const parsed_content = template(data);
+  const parsed_content = generateTemplate(tplFile, data);
   const defaultPrettierOpts = { parser: "babylon", printWidth: 100, trailingComma: "es5" };
 
   fs.writeFileSync(

@@ -18,6 +18,7 @@ paths:
           in: query
           description: How many items to return at one time (max 100)
           required: false
+          default: 10
           schema:
             type: integer
             format: int32
@@ -34,7 +35,7 @@ paths:
           schema:
             type: integer
       responses:
-        '200':
+        "200":
           description: A paged array of pets
           headers:
             x-next:
@@ -70,10 +71,10 @@ paths:
                         "age": 6
                       }
                     ]
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '500':
-          $ref: '#/components/responses/InternalError'
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/InternalError"
 
     post:
       summary: Create a pet
@@ -86,7 +87,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NewPet'
+              $ref: "#/components/schemas/NewPet"
             examples:
               default:
                 value: |
@@ -96,7 +97,7 @@ paths:
                     "age": 5
                   }
       responses:
-        '200':
+        "201":
           description: The Pet created
           content:
             application/json:
@@ -111,10 +112,10 @@ paths:
                       "tag": "red",
                       "age": 5
                     }
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '500':
-          $ref: '#/components/responses/InternalError'
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/InternalError"
 
   /pets/{petId}:
     get:
@@ -130,7 +131,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Expected response to a valid request
           content:
             application/json:
@@ -145,12 +146,34 @@ paths:
                       "tag": "red",
                       "age": 6
                     }
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalError'
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalError"
+    delete:
+      description: deletes a single pet based on the ID supplied
+      operationId: deletePet
+      tags:
+        - pet
+      parameters:
+        - name: id
+          in: path
+          description: ID of pet to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: pet deleted
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalError"
 
 security:
   - bearerAuth: []
@@ -164,13 +187,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Err'
+            $ref: "#/components/schemas/Err"
     Unauthorized:
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Err'
+            $ref: "#/components/schemas/Err"
     InternalError:
       description: unexpected error
       content:
@@ -215,7 +238,7 @@ components:
         - message
 
   securitySchemes:
-    bearerAuth:            # arbitrary name for the security scheme
+    bearerAuth: # arbitrary name for the security scheme
       type: http
       scheme: bearer
       bearerFormat: JWT

@@ -1,53 +1,49 @@
-import fs from "fs";
-
-import YAML from "js-yaml";
 import { get, camelCase } from "lodash";
-import is from "./util/is";
-import request from "request";
+import SwaggerParser from "swagger-parser";
 
-/**
- * read file or fetch from remote
- *
- * @param {*} source target file or remote url
- * @returns {String} raw data from a file
- */
+// /**
+//  * read file or fetch from remote
+//  *
+//  * @param {*} source target file or remote url
+//  * @returns {String} raw data from a file
+//  */
 
-async function getFile(source) {
-  return new Promise((resolve, reject) => {
-    if (is.YML(source) || is.YAML(source) || is.JSON(source)) {
-      // local file
-      fs.readFile(source, (err, data) => {
-        if (err) return reject(err);
-        resolve(data);
-      });
-    } else if (is.URL(source)) {
-      //fetch from remote
-      const opts = { url: source };
-      request(opts, (err, response) => {
-        if (err) return reject(err);
-        resolve(response.body);
-      });
-    } else {
-      reject(new Error(`Unsupported source ${source}`));
-    }
-  });
-}
+// async function getFile(source) {
+//   return new Promise((resolve, reject) => {
+//     if (is.YML(source) || is.YAML(source) || is.JSON(source)) {
+//       // local file
+//       fs.readFile(source, (err, data) => {
+//         if (err) return reject(err);
+//         resolve(data);
+//       });
+//     } else if (is.URL(source)) {
+//       //fetch from remote
+//       const opts = { url: source };
+//       request(opts, (err, response) => {
+//         if (err) return reject(err);
+//         resolve(response.body);
+//       });
+//     } else {
+//       reject(new Error(`Unsupported source ${source}`));
+//     }
+//   });
+// }
 
-/**
- * parse raw file data to json
- *
- * @param {String} data raw file data
- * @returns {Object} json
- */
+// /**
+//  * parse raw file data to json
+//  *
+//  * @param {String} data raw file data
+//  * @returns {Object} json
+//  */
 
-function toJSON(data) {
-  data = data.toString("utf8");
-  try {
-    return JSON.parse(data);
-  } catch (e) {
-    return YAML.safeLoad(data);
-  }
-}
+// function toJSON(data) {
+//   data = data.toString("utf8");
+//   try {
+//     return JSON.parse(data);
+//   } catch (e) {
+//     return YAML.safeLoad(data);
+//   }
+// }
 
 /**
  * parse swagger
@@ -57,7 +53,7 @@ function toJSON(data) {
  */
 
 function parseSwagger(swagger) {
-  const { paths, components, info, servers } = swagger;
+  const { paths, components, info, servers, security } = swagger;
   const api = {};
 
   for (const path in paths) {
@@ -75,12 +71,24 @@ function parseSwagger(swagger) {
 
       // use 200/204 response, use http-errors as error responses. https://github.com/jshttp/http-errors
       const res200 = responses["200"] || responses[200];
+      const res201 = responses["201"] || responses[201];
+      const res202 = responses["202"] || responses[202];
       const res204 = responses["204"] || responses[204];
-      const response = res200 || res204;
+      const response = res200 || res201 || res202 || res204;
       if (!response) throw new Error(`missing 20X response for ${method} ${path}`);
 
       if (res200) {
         response.status = 200;
+        response.content = get(response, ["content", "application/json"]);
+      }
+
+      if (res201) {
+        response.status = 201;
+        response.content = get(response, ["content", "application/json"]);
+      }
+
+      if (res202) {
+        response.status = 202;
         response.content = get(response, ["content", "application/json"]);
       }
 
@@ -111,20 +119,28 @@ function parseSwagger(swagger) {
     }
   }
 
-  return { info, servers, api, components };
+  return { info, servers, api, components, security };
 }
 
 /**
  * parse swagger file to expected structure
  *
  * @param {*} source file path or remote url
+ * @param {object} options {parse: true}
+ * @param {object} options.dereference replace all $ref with normal js objects
  * @returns { Object } { info, servers, api, components }
  */
-export default async function parse(source) {
-  let content, json, result;
+export default async function parse(source, options = {}) {
+  let api, result;
 
   try {
-    content = await getFile(source);
+    if (options.dereference) {
+      // replace all $ref with normal js objects
+      api = await SwaggerParser.dereference(source);
+    } else {
+      // only parse swagger object, does not resolve $ref pointers or dereference anything
+      api = await SwaggerParser.parse(source);
+    }
   } catch (e) {
     console.error("Can not load the content of the Swagger specification file");
     console.error(e);
@@ -132,15 +148,7 @@ export default async function parse(source) {
   }
 
   try {
-    json = toJSON(content);
-  } catch (e) {
-    console.error("Can not parse the content of the Swagger specification file");
-    console.error(e);
-    return;
-  }
-
-  try {
-    result = parseSwagger(json);
+    result = parseSwagger(api);
   } catch (e) {
     console.error(e);
     return;

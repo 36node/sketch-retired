@@ -6,11 +6,11 @@ import path from "path";
 /**
  * Genereate code for sdk
  *
- * @param {*} target
- * @param {*} swaggerFile
- * @param {*} name
+ * @param {object} opts options
+ * @param {string} opts.target code dist
+ * @param {string} opts.name sdk name
  */
-export default function genSDK(target, swaggerFile, name) {
+export default function genSDK({ target, swaggerFile, name }) {
   // put sdk generation code here
   parse(swaggerFile)
     .then(function(swagger) {
