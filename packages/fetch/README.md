@@ -1,10 +1,5 @@
-# module
-
-[![NPM version](https://img.shields.io/npm/v/module.svg?style=flat)](https://npmjs.com/package/module)
-[![NPM downloads](https://img.shields.io/npm/dm/module.svg?style=flat)](https://npmjs.com/package/module)
-[![CircleCI](https://circleci.com/gh/36node/module/tree/master.svg?style=shield)](https://circleci.com/gh/36node/module/tree/master)
-[![codecov](https://codecov.io/gh/36node/module/branch/master/graph/badge.svg)](https://codecov.io/gh/36node/module)
-[![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/36node/donate)
+# @36node/fetch
+[![version][0]][1] [![downloads][2]][3]
 
 ## Usage
 
@@ -35,3 +30,8 @@ console.log(res.body);
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/module/contributors)).
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
+
+[0]: https://img.shields.io/npm/v/@36node/fetch.svg?style=flat
+[1]: https://npmjs.com/package/@36node/fetch
+[2]: https://img.shields.io/npm/dm/@36node/fetch.svg?style=flat
+[3]: https://npmjs.com/package/@36node/fetch
