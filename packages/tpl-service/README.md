@@ -1,10 +1,5 @@
-# tpl-service
-
-[![NPM version](https://img.shields.io/npm/v/tpl-service.svg?style=flat)](https://npmjs.com/package/tpl-service)
-[![NPM downloads](https://img.shields.io/npm/dm/tpl-service.svg?style=flat)](https://npmjs.com/package/tpl-service)
-[![CircleCI](https://circleci.com/gh/36node/tpl-service/tree/master.svg?style=shield)](https://circleci.com/gh/36node/tpl-service/tree/master)
-[![codecov](https://codecov.io/gh/36node/tpl-service/branch/master/graph/badge.svg)](https://codecov.io/gh/36node/tpl-service)
-[![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/36node/donate)
+# @36node/template-service
+[![version][0]][1] [![downloads][2]][3]
 
 ## Development
 
@@ -238,3 +233,8 @@ or list the fields to exclude (which implies all other fields are included).
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/tpl-service/contributors)).
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
+
+[0]: https://img.shields.io/npm/v/@36node/template-service.svg?style=flat
+[1]: https://npmjs.com/package/@36node/template-service
+[2]: https://img.shields.io/npm/dm/@36node/template-service.svg?style=flat
+[3]: https://npmjs.com/package/@36node/template-service

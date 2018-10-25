@@ -1,10 +1,5 @@
 # mongoose-helper
-
-[![NPM version](https://img.shields.io/npm/v/mongoose-helper.svg?style=flat)](https://npmjs.com/package/mongoose-helper)
-[![NPM downloads](https://img.shields.io/npm/dm/mongoose-helper.svg?style=flat)](https://npmjs.com/package/mongoose-helper)
-[![CircleCI](https://circleci.com/gh/36node/mongoose-helper/tree/master.svg?style=shield)](https://circleci.com/gh/36node/mongoose-helper/tree/master)
-[![codecov](https://codecov.io/gh/36node/mongoose-helper/branch/master/graph/badge.svg)](https://codecov.io/gh/36node/mongoose-helper)
-[![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/36node/donate)
+[![version][0]][1] [![downloads][2]][3]
 
 mongoose-helper 提供标准的 mongoose 方法。
 
@@ -51,3 +46,8 @@ schema.plugin(helper, options);
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/mongoose-helper/contributors)).
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
+
+[0]: https://img.shields.io/npm/v/@36node/mongoose-helper.svg?style=flat
+[1]: https://npmjs.com/package/@36node/mongoose-helper
+[2]: https://img.shields.io/npm/dm/@36node/mongoose-helper.svg?style=flat
+[3]: https://npmjs.com/package/@36node/mongoose-helper

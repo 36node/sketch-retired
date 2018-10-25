@@ -1,5 +1,5 @@
 # sketch
-
+![circle-ci][0] ![codecov][1] [![js-standard-style][2]][3]
 Boilerplates for nodejs and web, including module, tcp-server, service and react etc.
 
 ## Install
@@ -49,3 +49,8 @@ yarn bootstrap
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/sketch/contributors)).
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
+
+[0]: https://circleci.com/gh/36node/sketch.svg?style=svg
+[1]: https://codecov.io/gh/36node/sketch/branch/master/graph/badge.svg
+[2]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
+[3]: https://github.com/feross/standard

@@ -1,5 +1,5 @@
 # @36node/sketch-cli
-
+[![version][0]][1] [![downloads][2]][3]
 Will add some badges here.
 
 ## Install
@@ -33,3 +33,9 @@ sketch init --help
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/cli/contributors)).
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
+
+[0]: https://img.shields.io/npm/v/@36node/sketch-cli.svg?style=flat-square
+[1]: https://npmjs.org/package/@36node/sketch-cli
+[2]: https://img.shields.io/npm/dm/@36node/sketch-cli.svg?style=flat-square
+[3]: https://npmjs.org/package/@36node/sketch-cli
+

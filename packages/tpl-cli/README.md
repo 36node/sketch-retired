@@ -1,10 +1,5 @@
-# module
-
-[![NPM version](https://img.shields.io/npm/v/@36node/template-cli.svg?style=flat)](https://npmjs.com/package/@36node/template-cli)
-[![NPM downloads](https://img.shields.io/npm/dm/@36node/template-cli.svg?style=flat)](https://npmjs.com/package/@36node/template-cli)
-[![CircleCI](https://circleci.com/gh/36node/template-cli/tree/master.svg?style=shield)](https://circleci.com/gh/36node/template-cli/tree/master)
-[![codecov](https://codecov.io/gh/36node/template-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/36node/template-cli)
-[![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/36node/donate)
+# @36node/template-cli
+[![version][0]][1] [![downloads][2]][3]
 
 ## Install
 
@@ -33,3 +28,8 @@ foo
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/template-cli/contributors)).
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
+
+[0]: https://img.shields.io/npm/v/@36node/template-cli.svg?style=flat
+[1]: https://npmjs.com/package/@36node/template-cli
+[2]: https://img.shields.io/npm/dm/@36node/template-cli.svg?style=flat
+[3]: https://npmjs.com/package/@36node/template-cli
