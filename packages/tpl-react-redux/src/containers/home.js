@@ -5,8 +5,7 @@ import { Button } from "antd";
 
 import { logout } from "../actions";
 
-import Container from "../components/container";
-import Jumbotron from "../components/jumbotron";
+import { Container, Jumbotron } from "../components/layout";
 import { withMainLayout } from "./layout";
 
 @withMainLayout

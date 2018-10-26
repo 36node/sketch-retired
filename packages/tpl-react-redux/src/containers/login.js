@@ -4,7 +4,7 @@ import { Layout, Form, Row, Col, Icon, Input, Button, Checkbox } from "antd";
 
 import { login } from "../actions";
 
-import Content from "../components/content";
+import { Content } from "../components/layout";
 
 const FormItem = Form.Item;
 

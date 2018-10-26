@@ -1,9 +1,7 @@
 import React from "react";
 import { Layout, Breadcrumb } from "antd";
 
-import Content from "../components/content";
-import Footer from "../components/footer";
-import Header from "../components/header";
+import { Content, Footer, Header } from "../components/layout";
 import Logo from "../components/logo";
 import Nav from "./nav";
 

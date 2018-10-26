@@ -50,6 +50,7 @@ dist
 build
 release
 tmp
+.cache
 
 # config
 .env*
