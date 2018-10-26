@@ -19,7 +19,7 @@
     "release": "standard-version && git push --follow-tags origin master",
     "start": "react-app-rewired start",
     "storybook": "start-storybook -p 9009 -s public",
-    "test": "react-app-rewired test --env=jsdom"
+    "test": "react-app-rewired test --env=jsdom --silent"
   },
   "commitlint": {
     "extends": [
@@ -30,7 +30,7 @@
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "npm run lint && npm run test"
+      "pre-push": "npm run lint && CI=true npm run test"
     }
   },
   "lint-staged": {
