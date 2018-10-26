@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/36node/sketch/compare/@36node/template-service@0.6.2...@36node/template-service@0.7.0) (2018-10-26)
+
+
+### Bug Fixes
+
+* petstore.yaml add to tpl-service npm publish ([571667a](https://github.com/36node/sketch/commit/571667a))
+
+
+### Features
+
+* swagen postman collection ([1228e3d](https://github.com/36node/sketch/commit/1228e3d))
+
+
+
+
+
 ## [0.6.2](https://github.com/36node/sketch/compare/@36node/template-service@0.6.1...@36node/template-service@0.6.2) (2018-10-23)
 
 

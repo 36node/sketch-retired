@@ -1,6 +1,6 @@
 {
   "name": "@36node/swagen",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A module boilerplate for nodejs and web.",
   "repository": {
     "url": "36node/sketch",
