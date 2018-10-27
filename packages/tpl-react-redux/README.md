@@ -1,7 +1,6 @@
-# tpl-react-redux
+# @36node/template-react-redux
 
-[![NPM version](https://img.shields.io/npm/v/tpl-react-redux.svg?style=flat)](https://npmjs.com/package/tpl-react-redux)
-[![NPM downloads](https://img.shields.io/npm/dm/tpl-react-redux.svg?style=flat)](https://npmjs.com/package/tpl-react-redux)
+[![version][0]][1] [![downloads][2]][3]
 
 ## Usage
 
@@ -87,7 +86,12 @@ module.exports = {
 
 ## Author
 
-**tpl-react-redux** © [36node](https://github.com/36node), Released under the [MIT](./LICENSE) License.<br>
-Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/tpl-react-redux/contributors)).
+**template-react-redux** © [36node](https://github.com/36node), Released under the [MIT](./LICENSE) License.<br>
+Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/template-react-redux/contributors)).
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
+
+[0]: https://img.shields.io/npm/v/@36node/template-react-redux.svg?style=flat
+[1]: https://npmjs.com/package/@36node/template-react-redux
+[2]: https://img.shields.io/npm/dm/@36node/template-react-redux.svg?style=flat
+[3]: https://npmjs.com/package/@36node/template-react-redux

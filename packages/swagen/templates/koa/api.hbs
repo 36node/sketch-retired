@@ -78,7 +78,7 @@ export default class API {
 
   {{/each}}
   {{#each operations}}
-    router.{{method}}("{{toRoute path}}", this.authorize("{{name}}"), {{name}});
+    router.{{method}}("{{toRoute path}}", ...this.middlewares("{{name}}"), {{name}});
   {{/each}}
   }
 
@@ -87,15 +87,13 @@ export default class API {
    */
 
   /**
-   * Authorize current operation
-   * rewrite it if you want to control operation permission
+   * Ability to inject some middlewares
    *
    * @param {string} operation name of operation
+   * @returns {function[]} middlewares
    */
-  authorize(operation) {
-    return (ctx, next) => {
-      return next();
-    };
+  middlewares(operation) {
+    return [];
   }
 {{#each operations}}
 

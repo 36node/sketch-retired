@@ -1,19 +1,20 @@
-# @36node/template-react-redux
+# @36node/template-react
+
 [![version][0]][1] [![downloads][2]][3]
 
 ## Usage
 
-1.  `yarn install`
-2.  dev: `yarn start`
-3.  build: `yarn build`
+1. `yarn install`
+2. dev: `yarn start`
+3. build: `yarn build`
 
 ## Contributing
 
-1.  Fork it!
-2.  Create your feature branch: `git checkout -b my-new-feature`
-3.  Commit your changes: `git commit -am 'Add some feature'`
-4.  Push to the branch: `git push origin my-new-feature`
-5.  Submit a pull request :D
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
 
 ## circle-ci
 
@@ -65,7 +66,7 @@ Authored and maintained by 36node with help from contributors ([list](https://gi
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
 
-[0]: https://img.shields.io/npm/v/@36node/template-react-redux.svg?style=flat
-[1]: https://npmjs.com/package/@36node/template-react-redux
-[2]: https://img.shields.io/npm/dm/@36node/template-react-redux.svg?style=flat
-[3]: https://npmjs.com/package/@36node/template-react-redux
+[0]: https://img.shields.io/npm/v/@36node/template-react.svg?style=flat
+[1]: https://npmjs.com/package/@36node/template-react
+[2]: https://img.shields.io/npm/dm/@36node/template-react.svg?style=flat
+[3]: https://npmjs.com/package/@36node/template-react
