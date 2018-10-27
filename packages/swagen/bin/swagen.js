@@ -18,7 +18,7 @@ program.version(pkg.version);
 function parseOpts(opts = {}) {
   const { folder, named, swagger } = opts;
   if (!swagger) {
-    throw "error: swagger file not given!";
+    throw new Error("error: swagger file not given!");
   }
   const dest = folder || ".";
   const target = path.resolve(process.cwd(), dest);

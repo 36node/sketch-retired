@@ -19,7 +19,7 @@
     "release": "standard-version && git push --follow-tags origin master",
     "start": "react-app-rewired start",
     "storybook": "start-storybook -p 9009 -s public",
-    "test": "react-app-rewired test --env=jsdom --silent"
+    "test": "react-app-rewired test --env=jsdom"
   },
   "commitlint": {
     "extends": [

@@ -21,7 +21,7 @@
   "module": "dist/index.mjs",
   "scripts": {
     "build": "microbundle build",
-    "format": "prettier --trailing-comma es5 --write",
+    "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "lint": "eslint src",
     "release": "standard-version && git push --follow-tags origin master",
     "test": "jest --silent"

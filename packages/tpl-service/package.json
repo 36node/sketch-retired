@@ -24,8 +24,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
-    "format": "prettier --trailing-comma es5 --write",
-    "gen:api": "swagen -t koa -s openapi.yaml -f ./src/api && npm run format",
+    "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
+    "gen:api": "swagen koa -s openapi.yaml -f ./src/api && npm run format",
     "init:db": "babel-node bin/initdb.js",
     "lint": "eslint src",
     "server": "node dist/index.js",

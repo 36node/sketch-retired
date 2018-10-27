@@ -15,19 +15,19 @@ dotenv.config();
 
 /**
  *
- * @param {*} name envrionment name
- * @param {*} option option with { required, init }
+ * @param {string} name envrionment name
+ * @param {object} opt option with { required, default }
  * @returns {*} value
  */
 
-export function env(name, { required, init } = {}) {
+export function env(name, opt = {}) {
   const value = process.env[`APP_${name.toUpperCase()}`];
 
-  if (required && !value) {
+  if (opt.required && !value) {
     throw new Error(`environment ${name} is required`);
   }
 
-  return value || init;
+  return value || opt.default;
 }
 
 /**
