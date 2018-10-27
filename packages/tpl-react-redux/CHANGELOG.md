@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/36node/tpl-react-redux/compare/@36node/template-react-redux@0.2.1...@36node/template-react-redux@0.2.2) (2018-10-27)
+
+
+### Bug Fixes
+
+* **swagen:** ability to inject some middlewares ([1067fa9](https://github.com/36node/tpl-react-redux/commit/1067fa9))
+* **tpl-react-redux:** delete some obsoleted fiels ([78b5c94](https://github.com/36node/tpl-react-redux/commit/78b5c94))
+
+
+
+
+
 ## [0.2.1](https://github.com/36node/tpl-react-redux/compare/@36node/template-react-redux@0.2.0...@36node/template-react-redux@0.2.1) (2018-10-26)
 
 

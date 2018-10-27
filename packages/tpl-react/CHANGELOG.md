@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.3](https://github.com/36node/sketch/compare/@36node/template-react@0.8.2...@36node/template-react@0.8.3) (2018-10-27)
+
+
+### Bug Fixes
+
+* **swagen:** ability to inject some middlewares ([1067fa9](https://github.com/36node/sketch/commit/1067fa9))
+
+
+
+
+
 ## [0.8.2](https://github.com/36node/sketch/compare/@36node/template-react@0.8.1...@36node/template-react@0.8.2) (2018-10-26)
 
 **Note:** Version bump only for package @36node/template-react
