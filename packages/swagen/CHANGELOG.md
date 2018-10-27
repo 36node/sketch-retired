@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/36node/sketch/compare/@36node/swagen@0.6.1...@36node/swagen@0.6.2) (2018-10-27)
+
+
+### Bug Fixes
+
+* config env default ([644a77c](https://github.com/36node/sketch/commit/644a77c))
+
+
+
+
+
 ## [0.6.1](https://github.com/36node/sketch/compare/@36node/swagen@0.6.0...@36node/swagen@0.6.1) (2018-10-27)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.2](https://github.com/36node/sketch/compare/@36node/template-service@0.7.1...@36node/template-service@0.7.2) (2018-10-27)
+
+
+### Bug Fixes
+
+* **tpl-service:** openapi.yaml name ([7289a45](https://github.com/36node/sketch/commit/7289a45))
+* config env default ([644a77c](https://github.com/36node/sketch/commit/644a77c))
+
+
+
+
+
 ## [0.7.1](https://github.com/36node/sketch/compare/@36node/template-service@0.7.0...@36node/template-service@0.7.1) (2018-10-27)
 
 **Note:** Version bump only for package @36node/template-service

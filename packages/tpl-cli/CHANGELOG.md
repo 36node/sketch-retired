@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.10](https://github.com/undefined/undefined/compare/@36node/template-cli@0.4.9...@36node/template-cli@0.4.10) (2018-10-27)
+
+
+### Bug Fixes
+
+* config env default ([644a77c](https://github.com/undefined/undefined/commit/644a77c))
+
+
+
+
+
 ## [0.4.9](https://github.com/undefined/undefined/compare/@36node/template-cli@0.4.8...@36node/template-cli@0.4.9) (2018-10-27)
 
 **Note:** Version bump only for package @36node/template-cli

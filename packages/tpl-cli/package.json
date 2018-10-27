@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-cli",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "description": "A module boilerplate for nodejs and web.",
   "repository": {
     "url": "undefined/undefined",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/36node/tpl-react-redux/compare/@36node/template-react-redux@0.2.2...@36node/template-react-redux@0.2.3) (2018-10-27)
+
+
+### Bug Fixes
+
+* config env default ([644a77c](https://github.com/36node/tpl-react-redux/commit/644a77c))
+
+
+
+
+
 ## [0.2.2](https://github.com/36node/tpl-react-redux/compare/@36node/template-react-redux@0.2.1...@36node/template-react-redux@0.2.2) (2018-10-27)
 
 
