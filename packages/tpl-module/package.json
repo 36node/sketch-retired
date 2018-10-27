@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-module",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "A module boilerplate for nodejs and web.",
   "repository": {
     "url": "36node/sketch",
@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@36node/babel": "^0.2.1",
-    "@36node/eslint-config": "^0.3.1",
+    "@36node/eslint-config": "^0.3.2",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
     "husky": "^1.0.0-rc.13",

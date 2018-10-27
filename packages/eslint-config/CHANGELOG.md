@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/36node/sketch/compare/@36node/eslint-config@0.3.1...@36node/eslint-config@0.3.2) (2018-10-27)
+
+
+### Bug Fixes
+
+* **eslint:** eslint-plugin-flowtype used with react scripts ([2849059](https://github.com/36node/sketch/commit/2849059))
+
+
+
+
+
 ## [0.3.1](https://github.com/36node/sketch/compare/@36node/eslint-config@0.3.0...@36node/eslint-config@0.3.1) (2018-10-27)
 
 **Note:** Version bump only for package @36node/eslint-config
