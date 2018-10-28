@@ -1,4 +1,5 @@
 # @36node/query-normalizr
+
 [![version][0]][1] [![downloads][2]][3]
 
 query-normalizr 的作用: 将 url 中的 query 规则化成方便 service 层调用的数据格式。
