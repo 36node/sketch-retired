@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.7](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.5.6...@36node/sketch-cli@0.5.7) (2018-10-28)
+
+
+### Bug Fixes
+
+* readme lint ([4b8bccd](https://github.com/36node/sketch/commit/4b8bccd))
+
+
+
+
+
 ## [0.5.6](https://github.com/36node/sketch/compare/@36node/sketch-cli@0.5.5...@36node/sketch-cli@0.5.6) (2018-10-27)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.6](https://github.com/36node/sketch/compare/@36node/template-react@0.8.5...@36node/template-react@0.8.6) (2018-10-28)
+
+**Note:** Version bump only for package @36node/template-react
+
+
+
+
+
 ## [0.8.5](https://github.com/36node/sketch/compare/@36node/template-react@0.8.4...@36node/template-react@0.8.5) (2018-10-27)
 
 **Note:** Version bump only for package @36node/template-react

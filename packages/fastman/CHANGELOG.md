@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/undefined/undefined/compare/@36node/fastman@0.1.3...@36node/fastman@0.1.4) (2018-10-28)
+
+
+### Bug Fixes
+
+* readme lint ([4b8bccd](https://github.com/undefined/undefined/commit/4b8bccd))
+* **swagen:** postman token and remove protocol ([086258a](https://github.com/undefined/undefined/commit/086258a))
+
+
+
+
+
 ## [0.1.3](https://github.com/undefined/undefined/compare/@36node/fastman@0.1.2...@36node/fastman@0.1.3) (2018-10-26)
 
 **Note:** Version bump only for package @36node/fastman

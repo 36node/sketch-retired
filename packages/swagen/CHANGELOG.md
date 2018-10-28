@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.3](https://github.com/36node/sketch/compare/@36node/swagen@0.6.2...@36node/swagen@0.6.3) (2018-10-28)
+
+
+### Bug Fixes
+
+* readme lint ([4b8bccd](https://github.com/36node/sketch/commit/4b8bccd))
+* **swagen:** postman token and remove protocol ([086258a](https://github.com/36node/sketch/commit/086258a))
+
+
+
+
+
 ## [0.6.2](https://github.com/36node/sketch/compare/@36node/swagen@0.6.1...@36node/swagen@0.6.2) (2018-10-27)
 
 

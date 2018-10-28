@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/36node/sketch/compare/@36node/eslint-config@0.3.2...@36node/eslint-config@0.3.3) (2018-10-28)
+
+
+### Bug Fixes
+
+* readme lint ([4b8bccd](https://github.com/36node/sketch/commit/4b8bccd))
+
+
+
+
+
 ## [0.3.2](https://github.com/36node/sketch/compare/@36node/eslint-config@0.3.1...@36node/eslint-config@0.3.2) (2018-10-27)
 
 
