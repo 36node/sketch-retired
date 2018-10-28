@@ -26,8 +26,10 @@
     "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "gen:api": "swagen koa -s openapi.yaml -f ./src/api && npm run format",
-    "init:db": "babel-node bin/initdb.js",
+    "gen:db": "babel-node bin/initdb.js",
+    "gen:postman": "swagen postman -s ./openapi.yaml",
     "lint": "eslint src",
+    "release": "standard-version && git push --follow-tags origin master",
     "server": "node dist/index.js",
     "start": "nodemon src/index.js --watch src --exec 'babel-node'",
     "test": "jest --silent"
@@ -67,7 +69,8 @@
     "mongoose-schema-jsonschema": "^1.1.15",
     "nodemon": "^1.18.3",
     "prettier": "^1.13.7",
-    "require-directory": "^2.1.1"
+    "require-directory": "^2.1.1",
+    "standard-version": "^4.4.0"
   },
   "dependencies": {
     "@36node/mongoose-helper": "^0.1.2",
