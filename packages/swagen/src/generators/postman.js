@@ -55,7 +55,7 @@ class PostmanGenerator {
         if (securitySchema.type === "http" && securitySchema.scheme === "bearer") {
           headerList.append({
             key: "Authorization",
-            value: `{{token}}`,
+            value: `Bearer {{token}}`,
           });
         }
       }
@@ -71,7 +71,6 @@ class PostmanGenerator {
   genUrl(operation) {
     const operationPath = get(operation, "path", "/");
     const url = new Url();
-    url.protocol = "{{ptotocol}}";
     url.host = `{{host}}`;
     url.path = [formatPath(operationPath)];
     return url;
