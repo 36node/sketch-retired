@@ -1,5 +1,5 @@
 {
-  "name": "@36node/sketch-cli",
+  "name": "@36node/sketch",
   "version": "0.5.7",
   "description": "Cli for @36node/sketch",
   "repository": "36node/sketch",
@@ -10,9 +10,7 @@
   "bugs": {
     "url": "https://github.com/36node/sketch/issues"
   },
-  "bin": {
-    "sketch": "bin/sketch.js"
-  },
+  "bin": "bin/sketch.js",
   "files": [
     "bin",
     "dist",

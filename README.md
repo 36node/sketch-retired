@@ -4,18 +4,10 @@
 
 Boilerplates for nodejs and web, including module, tcp-server, service and react etc.
 
-## Install
-
-```sh
-## use this command for upgrade too
-
-yarn global add @36node/sketch-cli
-```
-
 ## usage
 
 ```sh
-sketch init some-folder
+npx sketch init some-folder
 
 ## then choose your template
 ```
