@@ -33,6 +33,7 @@
     "@36node/fetch": "^0.3.8",
     "commander": "^2.16.0",
     "http-errors": "^1.7.1",
+    "inquirer": "^6.2.0",
     "jsonfile": "^5.0.0"
   }
 }

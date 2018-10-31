@@ -5,13 +5,12 @@ import * as apis from "../postman-api";
 const stderr = console.error.bind(console);
 
 export default async function(name, dist) {
-  helpers.checkApiKey();
-  if (typeof name === "undefined") {
-    stderr("collection name not given!");
-    process.exit(1);
-  }
-
   try {
+    await helpers.checkApiKey();
+    if (typeof name === "undefined") {
+      stderr("collection name not given!");
+      process.exit(1);
+    }
     const collections = await apis.listCollections();
     const found = collections.find(c => c.name === name);
 

@@ -10,14 +10,14 @@ const stderr = console.error.bind(console);
  * @param {string} file collection file path
  */
 export default async function(file) {
-  helpers.checkApiKey();
-
-  if (typeof file === "undefined") {
-    stderr("collection file not given!");
-    process.exit(1);
-  }
-
   try {
+    await helpers.checkApiKey();
+
+    if (typeof file === "undefined") {
+      stderr("collection file not given!");
+      process.exit(1);
+    }
+
     const collection = jsonfile.readFileSync(file);
     const collections = await apis.listCollections();
     const { info = {} } = collection;

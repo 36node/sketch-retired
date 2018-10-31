@@ -1,10 +1,9 @@
 import path from "path";
 import fs from "fs";
+const inquirer = require("inquirer");
 const os = require("os");
 const jsonfile = require("jsonfile");
 const homedir = os.homedir();
-
-const stderr = console.error.bind(console);
 
 /**
  * Get fastman config dir, if not exist, make it
@@ -50,12 +49,32 @@ export function getApiKey() {
  * check api key is exist
  */
 export function checkApiKey() {
-  const apiKey = getApiKey();
-  if (!apiKey) {
-    stderr("Error: api key not config, please run:");
-    stderr();
-    stderr("fastman config -a <your-api-key>");
-    process.exit(1);
-  }
-  return apiKey;
+  return new Promise((resolve, reject) => {
+    const apiKey = getApiKey();
+
+    if (!apiKey) {
+      inquirer
+        .prompt([
+          {
+            name: "apiKey",
+            message:
+              "Please input postman api key.\n If has none, applay it in https://go.postman.co/integrations/services/pm_pro_api",
+            default: null,
+          },
+        ])
+        .then(answers => {
+          const apiKey = answers.apiKey;
+          if (apiKey) {
+            const config = getConfig();
+            config.apiKey = apiKey;
+            console.log("Api key has been saved!");
+            writeConfig(config);
+            resolve(apiKey);
+          }
+          reject("Api key is empty!");
+        });
+    } else {
+      resolve(apiKey);
+    }
+  });
 }
