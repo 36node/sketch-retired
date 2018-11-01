@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.4](https://github.com/36node/sketch/compare/@36node/swagen@0.6.3...@36node/swagen@0.6.4) (2018-11-01)
+
+
+### Bug Fixes
+
+* **swagen:** sdk req init data ([a1cdd18](https://github.com/36node/sketch/commit/a1cdd18))
+
+
+
+
+
 ## [0.6.3](https://github.com/36node/sketch/compare/@36node/swagen@0.6.2...@36node/swagen@0.6.3) (2018-10-28)
 
 

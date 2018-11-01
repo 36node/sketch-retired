@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/undefined/undefined/compare/@36node/fastman@0.1.4...@36node/fastman@0.2.0) (2018-11-01)
+
+
+### Features
+
+* fastman add prompt if api key not config ([0a996bd](https://github.com/undefined/undefined/commit/0a996bd))
+
+
+
+
+
 ## [0.1.4](https://github.com/undefined/undefined/compare/@36node/fastman@0.1.3...@36node/fastman@0.1.4) (2018-10-28)
 
 
