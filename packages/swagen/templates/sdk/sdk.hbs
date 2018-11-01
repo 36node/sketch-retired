@@ -47,7 +47,7 @@ export default class SDK {
      * @param { {{~capitalize name}}Request} req ListPets request
      * @returns {Promise<{{~capitalize name}}Response>} A paged array of pets
      */
-    {{name}}: req => {
+    {{name}}: (req = {}) => {
       const {
         {{#each parameters}}
         {{#is in "path"}}

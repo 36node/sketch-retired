@@ -178,8 +178,14 @@ POST /posts/1/comments
 Specifies which document fields to include or exclude
 
 ```curl
-GET /posts?_select=title&select=body
-GET /posts?_select=-comments&select=-views
+GET /posts?_select=title&_select=body
+GET /posts?_select=-comments&_select=-views
+```
+
+or
+
+```curl
+_select=title,body
 ```
 
 _prefixing a path with `-` will flag that path as excluded.
