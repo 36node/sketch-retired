@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "http-errors": "^1.7.1",
+    "humps": "^2.0.1",
     "lodash": "^4.17.11",
     "node-fetch": "^2.2.0",
     "qs": "^6.5.2"

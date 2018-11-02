@@ -1,6 +1,7 @@
 import qs from "qs";
 import { pickBy, identity } from "lodash";
 import createError from "http-errors";
+import { camelizeKeys } from "humps";
 
 /**
  * A wrapper of fetch
@@ -45,5 +46,5 @@ export default async function(url, opt = {}) {
   if (!res.ok) throw createError(res.status, result.body);
 
   res.headers.forEach((val, key) => (result.headers[key] = val));
-  return result;
+  return camelizeKeys(result);
 }
