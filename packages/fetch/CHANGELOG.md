@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/36node/sketch/compare/@36node/fetch@0.4.0...@36node/fetch@0.4.1) (2018-11-02)
+
+
+### Bug Fixes
+
+* fetch test ([2e1d762](https://github.com/36node/sketch/commit/2e1d762))
+
+
+
+
+
 # [0.4.0](https://github.com/36node/sketch/compare/@36node/fetch@0.3.8...@36node/fetch@0.4.0) (2018-11-02)
 
 
