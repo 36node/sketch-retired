@@ -144,3 +144,6 @@ Handlebars.registerHelper("withResponseStatus", function(operation, options) {
 Handlebars.registerHelper("toRoute", function(path) {
   return path.replace(/{(.*?)}/, ":$1");
 });
+Handlebars.registerHelper("toDollar", function(path) {
+  return path.replace(/{(.*?)}/, "$$$&");
+});
