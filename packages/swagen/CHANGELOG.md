@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.6](https://github.com/36node/sketch/compare/@36node/swagen@0.6.5...@36node/swagen@0.6.6) (2018-11-02)
+
+
+### Bug Fixes
+
+* toDollar ([64f0c0d](https://github.com/36node/sketch/commit/64f0c0d))
+
+
+
+
+
 ## [0.6.5](https://github.com/36node/sketch/compare/@36node/swagen@0.6.4...@36node/swagen@0.6.5) (2018-11-02)
 
 
