@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/36node/sketch/compare/@36node/fetch@0.4.1...@36node/fetch@0.4.2) (2018-11-02)
+
+
+### Bug Fixes
+
+* cors for fetch ([609fe05](https://github.com/36node/sketch/commit/609fe05))
+
+
+
+
+
 ## [0.4.1](https://github.com/36node/sketch/compare/@36node/fetch@0.4.0...@36node/fetch@0.4.1) (2018-11-02)
 
 
