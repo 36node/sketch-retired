@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/36node/mongoose-helper/compare/@36node/mongoose-helper@0.1.3...@36node/mongoose-helper@0.1.4) (2018-11-02)
+
+
+### Bug Fixes
+
+* mongoose-helper fix limit offset type ([cf52cc1](https://github.com/36node/mongoose-helper/commit/cf52cc1))
+
+
+
+
+
 ## [0.1.3](https://github.com/36node/mongoose-helper/compare/@36node/mongoose-helper@0.1.2...@36node/mongoose-helper@0.1.3) (2018-11-02)
 
 
