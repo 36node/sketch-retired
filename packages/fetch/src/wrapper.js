@@ -1,4 +1,4 @@
-import qs from "qs";
+import qs from "query-string";
 import { pickBy, identity } from "lodash";
 import createError from "http-errors";
 
