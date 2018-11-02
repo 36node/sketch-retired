@@ -1,7 +1,6 @@
 import qs from "qs";
 import { pickBy, identity } from "lodash";
 import createError from "http-errors";
-import { camelizeKeys } from "humps";
 
 /**
  * A wrapper of fetch
@@ -36,7 +35,10 @@ export default async function(url, opt = {}) {
 
   const result = { headers: {} };
   if (res.statusText === "No Content") {
-  } else if (!res.headers.get("content-type").includes("application/json")) {
+  } else if (
+    !res.headers.get("content-type") ||
+    !res.headers.get("content-type").includes("application/json")
+  ) {
     result.body = await res.text();
   } else {
     result.body = await res.json();
@@ -46,5 +48,5 @@ export default async function(url, opt = {}) {
   if (!res.ok) throw createError(res.status, result.body);
 
   res.headers.forEach((val, key) => (result.headers[key] = val));
-  return camelizeKeys(result);
+  return result;
 }
