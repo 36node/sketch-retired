@@ -1,4 +1,4 @@
-import qs from "query-string";
+import { stringify } from "./query-string";
 import { pickBy, identity } from "lodash";
 import createError from "http-errors";
 
@@ -11,7 +11,7 @@ import createError from "http-errors";
  */
 export default async function(url, opt = {}) {
   let { query, body, headers = {} } = opt;
-  let endpoint = query ? `${url}?${qs.stringify(query, { skipNulls: true })}` : url;
+  let endpoint = query ? `${url}?${stringify(query, { skipNulls: true })}` : url;
 
   if (body) body = JSON.stringify(body);
 
