@@ -10,7 +10,7 @@ export default function(schema, options) {
 
   // hidden _id in toJSON and toObject
   schema.plugin(mongooseHidden(), {
-    hidden: { _id: true },
+    hidden: { _id: true, deleted: true },
   });
 }
 
@@ -60,7 +60,7 @@ class Base {
    */
   static list({
     filter,
-    lean = true,
+    lean = false,
     limit = 100,
     offset = 0,
     populate = "",
