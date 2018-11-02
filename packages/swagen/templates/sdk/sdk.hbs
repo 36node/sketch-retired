@@ -80,7 +80,7 @@ export default class SDK {
       if (!body) throw new Error("requetBody is required for {{../name}}");
       {{/with}}
 
-      return fetch(`${this.base}{{path}}`, {
+      return fetch(`${this.base}{{toRoute path}}`, {
         method: "{{method}}",
         {{#withParamQuery parameters}}
         query,
