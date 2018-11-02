@@ -75,8 +75,8 @@ class Base {
     const count = this.countDocuments(filter).exec();
     const query = this.find(filter)
       .sort(sort)
-      .skip(offset)
-      .limit(limit)
+      .skip(Number(offset))
+      .limit(Number(limit))
       .populate(populate)
       .select(select)
       .lean(lean)
