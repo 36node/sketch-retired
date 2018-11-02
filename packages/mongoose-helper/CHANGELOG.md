@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/36node/mongoose-helper/compare/@36node/mongoose-helper@0.1.4...@36node/mongoose-helper@0.1.5) (2018-11-02)
+
+
+### Bug Fixes
+
+* mongoose helper ([f648af2](https://github.com/36node/mongoose-helper/commit/f648af2))
+
+
+
+
+
 ## [0.1.4](https://github.com/36node/mongoose-helper/compare/@36node/mongoose-helper@0.1.3...@36node/mongoose-helper@0.1.4) (2018-11-02)
 
 
