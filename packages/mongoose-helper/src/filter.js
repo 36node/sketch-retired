@@ -52,6 +52,7 @@ export default function build(raw, schema) {
     else if (val === "false") acc[key] = false;
     else if (val === "*") acc[key] = { $ne: [] };
     else if (val === "none") acc[key] = { $eq: [] };
+    else acc[key] = val;
 
     return acc;
   }, {});
