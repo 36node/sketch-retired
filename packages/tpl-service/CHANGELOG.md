@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.13](https://github.com/36node/sketch/compare/@36node/template-service@0.7.12...@36node/template-service@0.7.13) (2018-11-09)
+
+**Note:** Version bump only for package @36node/template-service
+
+
+
+
+
 ## [0.7.12](https://github.com/36node/sketch/compare/@36node/template-service@0.7.11...@36node/template-service@0.7.12) (2018-11-05)
 
 **Note:** Version bump only for package @36node/template-service

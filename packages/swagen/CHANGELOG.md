@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.7](https://github.com/36node/sketch/compare/@36node/swagen@0.6.6...@36node/swagen@0.6.7) (2018-11-09)
+
+
+### Bug Fixes
+
+* swagen sdk hbs ([a4f5d3e](https://github.com/36node/sketch/commit/a4f5d3e))
+
+
+
+
+
 ## [0.6.6](https://github.com/36node/sketch/compare/@36node/swagen@0.6.5...@36node/swagen@0.6.6) (2018-11-02)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.7](https://github.com/undefined/undefined/compare/@36node/fastman@0.2.6...@36node/fastman@0.2.7) (2018-11-09)
+
+
+### Bug Fixes
+
+* swagen sdk hbs ([a4f5d3e](https://github.com/undefined/undefined/commit/a4f5d3e))
+
+
+
+
+
 ## [0.2.6](https://github.com/undefined/undefined/compare/@36node/fastman@0.2.5...@36node/fastman@0.2.6) (2018-11-02)
 
 **Note:** Version bump only for package @36node/fastman

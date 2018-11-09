@@ -1,6 +1,6 @@
 {
   "name": "@36node/fastman",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "A tool to export and import postman collection file",
   "repository": {
     "url": "undefined/undefined",
