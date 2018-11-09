@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.8](https://github.com/36node/sketch/compare/@36node/swagen@0.6.7...@36node/swagen@0.6.8) (2018-11-09)
+
+
+### Bug Fixes
+
+* res headers xTotalCount ([5cf1e89](https://github.com/36node/sketch/commit/5cf1e89))
+
+
+
+
+
 ## [0.6.7](https://github.com/36node/sketch/compare/@36node/swagen@0.6.6...@36node/swagen@0.6.7) (2018-11-09)
 
 
