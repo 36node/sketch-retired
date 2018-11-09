@@ -64,7 +64,7 @@ export default class API {
 
       {{/if}}
       {{#each response.headers}}
-      if (!res.headers.{{camelcase @key}}) throw createError(500, "should have header {{@key}} in response");
+      if (!res.headers || res.headers.{{camelcase @key}} === undefined) throw createError(500, "should have header {{@key}} in response");
 
       {{/each}}
       {{#if response.content}}
