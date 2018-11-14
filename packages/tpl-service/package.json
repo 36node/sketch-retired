@@ -23,7 +23,7 @@
   ],
   "main": "dist/index.js",
   "scripts": {
-    "bootstrap": "bin/bootstrap",
+    "bootstrap": "bin/bootstrap.sh",
     "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "gen:api": "swagen koa -s openapi.yaml -f ./src/api && npm run format",
@@ -32,7 +32,7 @@
     "lint": "eslint src",
     "release": "standard-version && git push --follow-tags origin master",
     "server": "node dist/index.js",
-    "start": "pm2 start up.yaml --no-daemon | pino-pretty -c -t",
+    "start": "pm2 start up.yml --no-daemon | pino-pretty -c -t",
     "test": "jest --silent"
   },
   "commitlint": {
@@ -82,6 +82,7 @@
     "dotenv": "^6.0.0",
     "koa": "^2.5.2",
     "koa-body": "^4.0.4",
+    "koa-compress": "^3.0.0",
     "koa-helmet": "^4.0.0",
     "koa-jwt": "^3.3.2",
     "koa-logger": "^3.2.0",

@@ -3,6 +3,7 @@ import path from "path";
 
 import Koa2 from "koa";
 import body from "koa-body";
+import compress from "koa-compress";
 import cors from "@koa/cors";
 import helmet from "koa-helmet";
 import logger from "koa-logger";
@@ -38,9 +39,9 @@ petsService.bind(router);
  * spec openapi.yml
  */
 
-router.get("/openapi.yaml", ctx => {
+router.get("/openapi.yml", ctx => {
   ctx.type = "text/yaml";
-  ctx.body = fs.createReadStream(path.join(__dirname, "../openapi.yaml"));
+  ctx.body = fs.createReadStream(path.join(__dirname, "../openapi.yml"));
 });
 
 /**
@@ -51,8 +52,9 @@ app
   .use(logger())
   .use(helmet())
   .use(cors({ exposeHeaders: "*" }))
-  .use(jwt({ secret: publicKey }).unless({ path: `${BASE}/openapi.yaml` }))
+  .use(jwt({ secret: publicKey }).unless({ path: `${BASE}/openapi.yml` }))
   .use(body())
+  .use(compress({ threshold: 2048 }))
   .use(router.routes());
 
 export default app;

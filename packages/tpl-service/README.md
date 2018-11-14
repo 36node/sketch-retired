@@ -13,6 +13,8 @@ yarn bootstrap
 
 # start service
 yarn start
+
+# use postman to check api
 ```
 
 ### Folder structures
@@ -297,7 +299,7 @@ or list the fields to exclude (which implies all other fields are included).
 
 ## Author
 
-**tpl-service** © [36node](https://github.com/36node), Released under the [MIT](./LICENSE) License.<br>
+**tpl-service** © [36node](https://github.com/36node), Released under the [MIT](./LICENSE) License.
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/tpl-service/contributors)).
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)

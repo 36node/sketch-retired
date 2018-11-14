@@ -5,7 +5,11 @@ info:
   license:
     name: MIT
 servers:
-  - url: http://petstore.swagger.io/v1
+  - url: https://api.36node.com{basePath}
+    description: The production API server
+    variables:
+      basePath:
+        default: /petstore/v0
 paths:
   /pets:
     get:
@@ -18,10 +22,10 @@ paths:
           in: query
           description: How many items to return at one time (max 100)
           required: false
-          default: 10
           schema:
             type: integer
             format: int32
+            default: 10
         - name: tag
           in: query
           description: Tag of pet

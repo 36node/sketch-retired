@@ -20,14 +20,14 @@ dotenv.config();
  * @returns {*} value
  */
 
-export function env(name, opt = {}) {
-  const value = process.env[`APP_${name.toUpperCase()}`];
+export function env(name, init) {
+  const value = process.env[`APP_${name.toUpperCase()}`] || init;
 
-  if (opt.required && !value) {
-    throw new Error(`environment ${name} is required`);
+  if (!value) {
+    throw new Error(`environment ${name} is missing`);
   }
 
-  return value || opt.default;
+  return value;
 }
 
 /**
