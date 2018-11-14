@@ -5,18 +5,40 @@
 ## Development
 
 ```sh
-# first edit openapi.yml to match your own requirement
-yarn install
-yarn generate:api # it will change files in folder src/api
-yarn init:db  # init mongodb with fake data
-yarn start # start service
+# prepare service with docker
+docker-compose -d
+
+# install dependencies
+yarn bootstrap
+
+# start service
+yarn start
 ```
 
-ps: 用 init-db 生成测试数据注意
+### Folder structures
 
-1.  写完 model 之后需要在 models/index.js 中 export 一下
-2.  在.env 下配置好 APP_MONGODB_CONNECTION
-3.  执行 yarn init-db
+```sh
+./src
+├── api
+├── app.js
+├── config.js
+├── es-client.js
+├── index.js
+├── kafka-client.js
+├── lib
+├── models
+└── services
+```
+
+- api: 自动生成的 api 目录包含 koa 桩代码
+- app.js: 应用程序入口
+- config.js: 配置文件入口
+- es-client.js: es 的 client 配置
+- index.js: 程序 main
+- kafka-client.js: kafka 的配置
+- lib: 基础库
+- models: 数据层
+- service: 逻辑层
 
 ### default token
 
@@ -32,6 +54,45 @@ visit [jwt.io](jwt.io) for more.
   "user": {
     "roles": ["ADMIN", "USER"]
   }
+}
+```
+
+### postman
+
+```sh
+# 安装 fastman
+yarn global add @36node/fastman
+
+# You can get your key from the [integrations dashboard](https://go.postman.co/integrations/services/pm_pro_api)
+fastman config -a <your-postman-api-key>
+
+# list all your collections in your postman
+fastman ls
+
+# import file into postman
+fastman import ./postman_collection.json
+
+# export file from postman
+fastman export "Shanghaibus Core API" ./postman_collection.json
+```
+
+postman 里至少设置如下两套环境, 具体变量值根据你的实际情况来。
+
+`development`
+
+```js
+{
+  host: "http://localhost:3000/shanghaibus/core/v0",
+  token: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJ1c2VyIjp7InJvbGVzIjpbIkFETUlOIiwiVVNFUiJdfX0.XA1kE_UdbOsU0rfmG3g1y3SpJ5aFVzPGFBHihVXv58sNatweqLHPEUAwhqobgKgmAbaKa3dlYrXEpHESHZ7AJgQYCfSeVxtsKyoQmcq9OYA0iFcH5oCWQgYqfeWJPOroMlMdNQax5kG-GkuaFbIiwiw-9j_ACS8CSPO9Oq2dQCA"
+}
+```
+
+`production`
+
+```js
+{
+  host: "https/api.36node.com/shanghaibus/core/v0",
+  token: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJ1c2VyIjp7InJvbGVzIjpbIkFETUlOIiwiVVNFUiJdfX0.XA1kE_UdbOsU0rfmG3g1y3SpJ5aFVzPGFBHihVXv58sNatweqLHPEUAwhqobgKgmAbaKa3dlYrXEpHESHZ7AJgQYCfSeVxtsKyoQmcq9OYA0iFcH5oCWQgYqfeWJPOroMlMdNQax5kG-GkuaFbIiwiw-9j_ACS8CSPO9Oq2dQCA"
 }
 ```
 
@@ -144,8 +205,8 @@ GET /posts?title_like=server
 
 If a field is an array, like:
 
-1.  `assignees=*` means assignees has at least one member.
-2.  `assignees=none` means assignees is an empty array.
+1. `assignees=*` means assignees has at least one member.
+2. `assignees=none` means assignees is an empty array.
 
 ### Full-text search
 
@@ -228,11 +289,11 @@ or list the fields to exclude (which implies all other fields are included).
 
 ## Contributing
 
-1.  Fork it!
-2.  Create your feature branch: `git checkout -b my-new-feature`
-3.  Commit your changes: `git commit -am 'Add some feature'`
-4.  Push to the branch: `git push origin my-new-feature`
-5.  Submit a pull request :D
+1. Fork it!
+2. Create your feature branch: `git checkout -b feature/something`
+3. Commit your changes: `git commit -am 'feat: something'`
+4. Push to the branch: `git push -u origin feature/something`
+5. Submit a pull request :D
 
 ## Author
 

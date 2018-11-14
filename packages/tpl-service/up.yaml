@@ -1,0 +1,6 @@
+apps:
+  - name: main-service
+    script: src/index.js
+    exec_mode: fork_mode
+    interpreter: babel-node
+    watch: true

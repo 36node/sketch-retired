@@ -33,13 +33,11 @@ export function env(name, opt = {}) {
 /**
  * exports
  */
-export const PORT = env("PORT", { default: 9527 });
-export const BASE = env("BASE", { default: "/petstore/v0" });
+export const PORT = env("PORT", 9527);
+export const BASE = env("BASE", "/petstore/v0");
 
 /**
  * Mongodb
  */
 
-export const MONGODB_CONNECTION = env("MONGODB_CONNECTION", {
-  default: "mongodb://localhost/petstore",
-});
+export const MONGODB_CONNECTION = env("MONGODB_CONNECTION", "mongodb://localhost/petstore");

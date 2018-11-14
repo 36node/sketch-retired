@@ -1,4 +1,19 @@
+FROM node:10-alpine AS build
+
+# work dir
+WORKDIR /build
+
+# install tools and deps for node-gyp
+RUN apk add --no-cache --virtual .gyp \
+  python \
+  make \
+  g++
+
+COPY package.json yarn.lock ./
+RUN yarn --prod
+
 FROM node:10-alpine
+ENV TZ Asia/Shanghai
 
 ENV DEBUG=off \
   NODE_ENV=production \
@@ -6,9 +21,8 @@ ENV DEBUG=off \
 
 RUN mkdir app
 WORKDIR /app
-COPY . /app/
-
-RUN NODE_ENV=production yarn install
+COPY --from=build /build/node_modules node_modules/
+COPY ./ ./
 
 # Start
 CMD npm run server
