@@ -58,4 +58,3 @@ tmp
 # try files
 .try*
 .playground
-snapshot

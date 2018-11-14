@@ -1,6 +1,6 @@
 import path from "path";
 import ora from "ora";
-import { copy, remove } from "fs-extra";
+import { copy, remove, move } from "fs-extra";
 
 import download from "./download-npm-package";
 import { jsonfile } from "./lib";
@@ -24,6 +24,7 @@ export default async function init(tpl, dest = ".", options = {}) {
     spinner.start();
     await copy(path.join(__dirname, "../template"), dest, { overwrite: false });
     await remove(path.join(dest, "CHANGELOG.md"));
+    await move(path.join(dest, "gitignore"), path.join(dest, ".gitignore"));
     spinner.succeed("Generating basic files success!");
   } catch (err) {
     spinner.fail("Generating basic files failed!");
