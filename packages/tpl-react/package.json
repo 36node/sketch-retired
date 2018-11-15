@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production react-app-rewired build",
-    "gen:sdk": "swagen -t sdk -s https://api.36node.com/petstore/v0/openapi.yaml -n petstore -f ./src/sdk && npm run format",
+    "gen:sdk": "swagen sdk https://api.36node.com/petstore/v0/openapi.yaml ./src/sdk petstore && npm run format",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "lint": "eslint src",
     "release": "standard-version && git push --follow-tags origin master",

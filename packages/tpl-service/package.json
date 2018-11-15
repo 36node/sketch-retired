@@ -26,7 +26,7 @@
     "bootstrap": "bin/bootstrap.sh",
     "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
-    "gen:api": "swagen koa -s openapi.yml -f ./src/api && npm run format",
+    "gen:api": "swagen koa openapi.yaml ./src/api && npm run format",
     "gen:db": "babel-node bin/initdb.js",
     "gen:postman": "swagen postman -s ./openapi.yml",
     "lint": "eslint src",

@@ -10,9 +10,9 @@ import path from "path";
  * @param {string} opts.target code dist
  * @param {string} opts.name sdk name
  */
-export default function genSDK({ target, swaggerFile, name }) {
+export default function genSDK({ yamlFile, dist, name }) {
   // put sdk generation code here
-  parse(swaggerFile)
+  parse(yamlFile)
     .then(function(swagger) {
       const tplSdk = path.join(TemplatePath, "sdk", "sdk.hbs");
       const tplDef = path.join(TemplatePath, "sdk", "definitions.hbs");
@@ -23,11 +23,16 @@ export default function genSDK({ target, swaggerFile, name }) {
         ...swagger,
       };
 
-      mkdir(target);
-      generateFile(tplDef, path.join(target, `.${name}.d.ts`), tplData, {
+      if (dist) {
+        mkdir(dist);
+      }
+
+      const finalDist = dist || process.cwd();
+
+      generateFile(tplDef, path.join(finalDist, `.${name}.d.ts`), tplData, {
         parser: "typescript",
       });
-      generateFile(tplSdk, path.join(target, `${name}.js`), tplData);
+      generateFile(tplSdk, path.join(finalDist, `${name}.js`), tplData);
     })
     .catch(err => console.error(err));
 }

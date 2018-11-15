@@ -30,19 +30,16 @@ Commands:
 ```sh
 $ swagen sdk -h
 
-Usage: sdk [options]
+Usage: sdk [options] [yamlFile] [name] [dist]
 
 Generate code for client sdk
 
 Options:
-  -s, --swagger <file>   swagger file path or url
-  -f, --folder [folder]  generate code to folder
-  -n, --named [named]    what name
-  -h, --help             output usage information
+  -h, --help  output usage information
 
 
-# example, default name is filename of yaml file or specified by --name
-$ swagen sdk -s ./petstore.yaml -n petstore
+# example, default name is filename of yaml file or specified by name option
+$ swagen sdk ./petstore.yaml ./sdk petstore
 ```
 
 ### Generate koa server api code
@@ -50,15 +47,16 @@ $ swagen sdk -s ./petstore.yaml -n petstore
 ```sh
 $ swagen koa -h
 
+Usage: koa [options] [yamlFile] [dist]
+
 Generate code for koa server api
 
 Options:
-  -s, --swagger <file>   swagger file path or url
-  -f, --folder [folder]  generate code to folder
-  -h, --help             output usage information
+  -h, --help  output usage information
 
-# example
-$ swagen koa -s ./petstore.yaml
+
+# example, if dist not specified, current dir will be used as default dist
+$ swagen koa ./petstore.yaml ./koa
 ```
 
 ### Generate post collection from openapi
@@ -66,18 +64,15 @@ $ swagen koa -s ./petstore.yaml
 ```sh
 $ swagen postman -h
 
-Usage: postman [options]
+Usage: postman [options] [yamlFile] [targetFile]
 
 Transform openapi file to postman collection file
 
 Options:
-  -s, --swagger <file>   swagger file path or url
-  -f, --folder [folder]  generate code to folder
-  -n, --named [named]    what name
-  -h, --help             output usage information
+  -h, --help  output usage information
 
-# example
-$ swagen postman -s ./petstore.yaml
+# example, default targetFile name is the openapi info title properity
+$ swagen postman ./petstore.yaml ./petstore.postman_collection.json
 
 # will generate petstore.postman_collection.json in pwd
 # then can use fastman to import collection to postman
@@ -89,7 +84,7 @@ $ fastman import ./petstore.postman_collection.json
 
 ```sh
 # set name with 'petstore'
-swagen sdk -s https://api.36node.com/petstore/v0/openapi.yaml -n petstore
+swagen sdk https://api.36node.com/petstore/v0/openapi.yaml . petstore
 ```
 
 ## Contributing
