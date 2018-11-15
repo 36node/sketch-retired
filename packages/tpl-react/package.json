@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-react",
-  "version": "0.8.17",
+  "version": "0.8.18",
   "description": "A react boilerplate for web",
   "license": "MIT",
   "publishConfig": {
@@ -38,7 +38,7 @@
     ]
   },
   "devDependencies": {
-    "@36node/eslint-config": "^0.3.3",
+    "@36node/eslint-config": "^0.3.4",
     "@36node/swagen": "^0.6.8",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",

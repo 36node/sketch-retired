@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/36node/sketch/compare/@36node/sketch@0.6.0...@36node/sketch@0.6.1) (2018-11-15)
+
+
+### Bug Fixes
+
+* makesure gitignore copied ([e99b5d4](https://github.com/36node/sketch/commit/e99b5d4))
+
+
+
+
+
 # 0.6.0 (2018-10-28)
 
 
