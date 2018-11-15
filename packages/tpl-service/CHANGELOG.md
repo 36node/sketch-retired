@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.16](https://github.com/36node/sketch/compare/@36node/template-service@0.7.15...@36node/template-service@0.7.16) (2018-11-15)
+
+
+### Bug Fixes
+
+* openapi.yml name in package.json files ([46c0fdb](https://github.com/36node/sketch/commit/46c0fdb))
+
+
+
+
+
 ## [0.7.15](https://github.com/36node/sketch/compare/@36node/template-service@0.7.14...@36node/template-service@0.7.15) (2018-11-15)
 
 
