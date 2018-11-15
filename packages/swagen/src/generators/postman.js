@@ -10,6 +10,7 @@ import {
   RequestBody,
   Url,
   Response,
+  RequestAuth,
 } from "postman-collection";
 import jsonfile from "jsonfile";
 import path from "path";
@@ -38,33 +39,25 @@ class PostmanGenerator {
       });
     }
 
-    // security config, preferred to use operation security config
-    const security =
-      get(operation, ["security"], null) ||
-      get(this.swagger, ["security"], null);
+    // if (security && Array.isArray(security)) {
+    //   for (let s of security) {
+    //     const applySecurity = Object.keys(s)[0];
+    //     const securitySchema = get(
+    //       this.swagger,
+    //       ["components", "securitySchemes", applySecurity],
+    //       null
+    //     );
 
-    if (security && Array.isArray(security)) {
-      for (let s of security) {
-        const applySecurity = Object.keys(s)[0];
-        const securitySchema = get(
-          this.swagger,
-          ["components", "securitySchemes", applySecurity],
-          null
-        );
-
-        // only support bearer
-        // TODO: support multi-type security schema
-        if (
-          securitySchema.type === "http" &&
-          securitySchema.scheme === "bearer"
-        ) {
-          headerList.append({
-            key: "Authorization",
-            value: `Bearer {{token}}`,
-          });
-        }
-      }
-    }
+    //     // only support bearer
+    //     // TODO: support multi-type security schema
+    //     if (securitySchema.type === "http" && securitySchema.scheme === "bearer") {
+    //       headerList.append({
+    //         key: "Authorization",
+    //         value: `Bearer {{token}}`,
+    //       });
+    //     }
+    //   }
+    // }
 
     return headerList;
   }
@@ -90,6 +83,40 @@ class PostmanGenerator {
     request.headers = this.genHeaders(operation);
     request.url = this.genUrl(operation);
     request.method = toUpper(operation.method);
+
+    // security config, preferred to use operation security config
+    const security =
+      get(operation, ["security"], null) ||
+      get(this.swagger, ["security"], null);
+
+    if (security && Array.isArray(security)) {
+      for (let s of security) {
+        const applySecurity = Object.keys(s)[0];
+        const securitySchema = get(
+          this.swagger,
+          ["components", "securitySchemes", applySecurity],
+          null
+        );
+
+        // TODO: support multi-type security schema
+        if (
+          securitySchema &&
+          securitySchema.type === "http" &&
+          securitySchema.scheme === "bearer"
+        ) {
+          request.auth = new RequestAuth({
+            type: "bearer",
+            bearer: [
+              {
+                key: "token",
+                value: "{{token}}",
+                type: "string",
+              },
+            ],
+          });
+        }
+      }
+    }
 
     // generate request body
     const body = get(
