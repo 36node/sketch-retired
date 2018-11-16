@@ -1,12 +1,59 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Layout, Form, Row, Col, Icon, Input, Button, Checkbox } from "antd";
+import { Layout, Form, Icon, Input, Button, Checkbox } from "antd";
+import styled from "styled-components";
 
 import { login } from "../actions";
 
 import { Content } from "../components/layout";
 
 const FormItem = Form.Item;
+
+const LoginContainer = styled("div")`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LoginBox = styled("div")`
+  padding: 0px 24px 0 24px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  .login-logo {
+    padding: 18px 0px;
+    display: flex;
+    align-items: center;
+
+    div {
+      margin-left: 12px;
+      color: #5e9f7b;
+
+      .title {
+        font-size: 18px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .login-form {
+    max-width: 300px;
+  }
+
+  .login-form-forgot {
+    max-width: 300px;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }
+`;
 
 @Form.create()
 @connect(state => ({}))
@@ -25,8 +72,15 @@ export default class Login extends React.PureComponent {
     return (
       <Layout>
         <Content>
-          <Row>
-            <Col span={12} offset={6}>
+          <LoginContainer>
+            <LoginBox>
+              <div className="login-logo">
+                <img src="/images/logo.png" width="48px" height="48px" alt="logo" />
+                <div>
+                  <div className="title">REACT-REDUX-TEMPLATE</div>
+                  <div className="subtitle">@36node</div>
+                </div>
+              </div>
               <Form onSubmit={this.handleSubmit} className="login-form">
                 <FormItem>
                   {getFieldDecorator("userName", {
@@ -63,8 +117,8 @@ export default class Login extends React.PureComponent {
                   Or <a href="">register now!</a>
                 </FormItem>
               </Form>
-            </Col>
-          </Row>
+            </LoginBox>
+          </LoginContainer>
         </Content>
       </Layout>
     );
