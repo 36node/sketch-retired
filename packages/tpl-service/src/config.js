@@ -23,7 +23,7 @@ dotenv.config();
 export function env(name, init) {
   const value = process.env[`APP_${name.toUpperCase()}`] || init;
 
-  if (!value) {
+  if (value === undefined) {
     throw new Error(`environment ${name} is missing`);
   }
 
@@ -40,4 +40,7 @@ export const BASE = env("BASE", "/petstore/v0");
  * Mongodb
  */
 
-export const MONGODB_CONNECTION = env("MONGODB_CONNECTION", "mongodb://localhost/petstore");
+export const MONGODB_CONNECTION = env(
+  "MONGODB_CONNECTION",
+  "mongodb://localhost/petstore"
+);

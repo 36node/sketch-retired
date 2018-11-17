@@ -82,7 +82,10 @@ class Base {
       .lean(lean)
       .exec();
 
-    return Promise.all([count, query]).then(([total, docs]) => ({ total, docs }));
+    return Promise.all([count, query]).then(([total, docs]) => ({
+      total,
+      docs,
+    }));
   }
 
   /**

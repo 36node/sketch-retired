@@ -72,7 +72,8 @@ module.exports = {
         const shouldMock = req => {
           return (
             req.method !== "GET" ||
-            (req.headers.accept && req.headers.accept.indexOf("application/json") !== -1)
+            (req.headers.accept &&
+              req.headers.accept.indexOf("application/json") !== -1)
           );
         };
 

@@ -10,7 +10,10 @@ const body404 = { message: "resource not found" };
 const body500 = { message: "internal error" };
 
 const headersText = { "content-type": "application/plain" };
-const headersOK = { "x-next": "some value", "access-control-allow-origin": "*" };
+const headersOK = {
+  "x-next": "some value",
+  "access-control-allow-origin": "*",
+};
 
 fetchMock.mock("/401", { status: 401, body: body401 });
 fetchMock.mock("/404", { status: 404, body: body404 });

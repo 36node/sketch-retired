@@ -9,7 +9,10 @@ const cli = require("../dist");
 const enableTpls = ["module", "react", "react-redux", "service", "tcp", "cli"];
 
 function gitUser() {
-  const gitConfig = parseGitConfig.sync({ cwd: "/", path: gitConfigPath("global") });
+  const gitConfig = parseGitConfig.sync({
+    cwd: "/",
+    path: gitConfigPath("global"),
+  });
   return Object.assign({ name: "", email: "" }, gitConfig.user);
 }
 

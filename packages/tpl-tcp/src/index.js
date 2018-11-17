@@ -23,7 +23,9 @@ const log = async (ctx, next) => {
   console.log(ctx.req);
   console.log("response: ");
   console.log(ctx.res);
-  console.log(`session ${ctx.session.id}: seq ${ctx.no} success ${endAt - startedAt} ms`);
+  console.log(
+    `session ${ctx.session.id}: seq ${ctx.no} success ${endAt - startedAt} ms`
+  );
 };
 
 const handleFrame = async (ctx, next) => {

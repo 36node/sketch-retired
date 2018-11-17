@@ -16,9 +16,13 @@ function encoderForArrayFormat(options) {
       return (key, value, index) => {
         return value === null
           ? [encode(key, options), "[", index, "]"].join("")
-          : [encode(key, options), "[", encode(index, options), "]=", encode(value, options)].join(
-              ""
-            );
+          : [
+              encode(key, options),
+              "[",
+              encode(index, options),
+              "]=",
+              encode(value, options),
+            ].join("");
       };
     case "bracket":
       return (key, value) => {
@@ -156,7 +160,11 @@ function parse(input, options) {
     .sort()
     .reduce((result, key) => {
       const value = ret[key];
-      if (Boolean(value) && typeof value === "object" && !Array.isArray(value)) {
+      if (
+        Boolean(value) &&
+        typeof value === "object" &&
+        !Array.isArray(value)
+      ) {
         // Sort object keys, not values
         result[key] = keysSorter(value);
       } else {

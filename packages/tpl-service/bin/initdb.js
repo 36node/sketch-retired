@@ -24,7 +24,15 @@ async function genModelMock(model) {
   // 去掉一些自动生成的字段
   schema.required = Object.keys(
     pickBy(schema.properties, (value, key) => {
-      return !["_id", "deleted", "deletedAt", "updatedAt", "createdAt", "__v", "id"].includes(key);
+      return ![
+        "_id",
+        "deleted",
+        "deletedAt",
+        "updatedAt",
+        "createdAt",
+        "__v",
+        "id",
+      ].includes(key);
     })
   );
 

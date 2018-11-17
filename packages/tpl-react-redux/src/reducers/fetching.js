@@ -6,7 +6,10 @@ const initState = {
 };
 
 export default baseType => {
-  const reducer = (state = initState, { type, payload = {}, error, meta = {} }) => {
+  const reducer = (
+    state = initState,
+    { type, payload = {}, error, meta = {} }
+  ) => {
     switch (type) {
       case baseType:
         return { ...initState, loading: true, request: payload, meta };

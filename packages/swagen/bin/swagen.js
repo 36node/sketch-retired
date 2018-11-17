@@ -22,7 +22,9 @@ function parseOpts(opts = {}) {
   }
   const dest = folder || ".";
   const target = path.resolve(process.cwd(), dest);
-  const swaggerFile = is.URL(swagger) ? swagger : path.resolve(process.cwd(), swagger);
+  const swaggerFile = is.URL(swagger)
+    ? swagger
+    : path.resolve(process.cwd(), swagger);
   const name =
     named ||
     path

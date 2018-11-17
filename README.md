@@ -18,6 +18,34 @@ npx sketch init some-folder
 yarn bootstrap
 ```
 
+### we use jwt
+
+我们准备了一个默认的`token`,可以在开发阶段使用，也可以自行生成.
+
+`eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJ1c2VyIjp7InJvbGVzIjpbIkFETUlOIiwiVVNFUiJdfX0.XA1kE_UdbOsU0rfmG3g1y3SpJ5aFVzPGFBHihVXv58sNatweqLHPEUAwhqobgKgmAbaKa3dlYrXEpHESHZ7AJgQYCfSeVxtsKyoQmcq9OYA0iFcH5oCWQgYqfeWJPOroMlMdNQax5kG-GkuaFbIiwiw-9j_ACS8CSPO9Oq2dQCA`
+
+visit [jwt.io](jwt.io) for more.
+
+```json
+{
+  "sub": "session",
+  "exp": 1516239022,
+  "jti": "jwt id = session id",
+  "user": {
+    "id": "user id",
+    "name": "John Doe",
+    "ns": "/36node",
+    "roles": ["ADMIN", "USER"]
+  }
+```
+
+- sub: 该 `jwt` 的主题
+- exp(expire): 过期时间
+- jti: 该 JWT 的 id，这里等于 sessionId
+- user: 由于是 session jwt，所以这里会有一个 user 字段，里面包含最必要的 user 信息
+
+public key and private key in folder `./ssl`
+
 ## Contributing
 
 1. Fork it!

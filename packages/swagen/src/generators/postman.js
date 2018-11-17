@@ -39,7 +39,9 @@ class PostmanGenerator {
     }
 
     // security config, preferred to use operation security config
-    const security = get(operation, ["security"], null) || get(this.swagger, ["security"], null);
+    const security =
+      get(operation, ["security"], null) ||
+      get(this.swagger, ["security"], null);
 
     if (security && Array.isArray(security)) {
       for (let s of security) {
@@ -52,7 +54,10 @@ class PostmanGenerator {
 
         // only support bearer
         // TODO: support multi-type security schema
-        if (securitySchema.type === "http" && securitySchema.scheme === "bearer") {
+        if (
+          securitySchema.type === "http" &&
+          securitySchema.scheme === "bearer"
+        ) {
           headerList.append({
             key: "Authorization",
             value: `Bearer {{token}}`,
@@ -87,7 +92,11 @@ class PostmanGenerator {
     request.method = toUpper(operation.method);
 
     // generate request body
-    const body = get(operation, ["requestBody", "content", "schema", "properties"], null);
+    const body = get(
+      operation,
+      ["requestBody", "content", "schema", "properties"],
+      null
+    );
 
     if (body) {
       const raw = {};
@@ -104,7 +113,10 @@ class PostmanGenerator {
     if (operation.parameters) {
       for (let param of operation.parameters) {
         if (param.in === "query") {
-          request.url.addQueryParams({ key: param.name, value: toString(param.default) });
+          request.url.addQueryParams({
+            key: param.name,
+            value: toString(param.default),
+          });
         }
 
         if (param.in === "path") {
@@ -116,7 +128,10 @@ class PostmanGenerator {
         }
 
         if (param.in === "header") {
-          request.headers.add({ key: param.name, value: toString(param.default) });
+          request.headers.add({
+            key: param.name,
+            value: toString(param.default),
+          });
         }
       }
     }

@@ -58,13 +58,21 @@ function parseSwagger(swagger) {
 
   for (const path in paths) {
     for (const method in paths[path]) {
-      const { operationId, summary, tags, parameters, requestBody, responses, security } = paths[
-        path
-      ][method];
+      const {
+        operationId,
+        summary,
+        tags,
+        parameters,
+        requestBody,
+        responses,
+        security,
+      } = paths[path][method];
 
       // make sure some props must exist
-      if (!operationId) throw new Error(`missing operationId for ${method} ${path}`);
-      if (!tags && !tags[0]) throw new Error(`missing operation tag for ${method} ${path}`);
+      if (!operationId)
+        throw new Error(`missing operationId for ${method} ${path}`);
+      if (!tags && !tags[0])
+        throw new Error(`missing operation tag for ${method} ${path}`);
 
       // camelcase operationId
       const name = camelCase(operationId);
@@ -75,7 +83,8 @@ function parseSwagger(swagger) {
       const res202 = responses["202"] || responses[202];
       const res204 = responses["204"] || responses[204];
       const response = res200 || res201 || res202 || res204;
-      if (!response) throw new Error(`missing 20X response for ${method} ${path}`);
+      if (!response)
+        throw new Error(`missing 20X response for ${method} ${path}`);
 
       if (res200) {
         response.status = 200;

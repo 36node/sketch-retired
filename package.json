@@ -7,7 +7,7 @@
     "bootstrap": "yarn install && lerna bootstrap",
     "build": "NODE_ENV=production lerna run build",
     "changelog": "lerna-changelog",
-    "format": "prettier --trailing-comma es5 --write",
+    "format": "prettier --trailing-comma es5 --write 'packages/**/*.js'",
     "lint": "eslint packages/*/src",
     "publish:all": "lerna publish from-git --registry https://registry.npmjs.org",
     "release": "lerna version --conventional-commits --push -m 'chore(release): publish'",

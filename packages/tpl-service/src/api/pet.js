@@ -22,7 +22,8 @@ export default class API {
 
       if (!res.body) throw createError(500, "should have body in response");
 
-      if (!res.headers.xNext) throw createError(500, "should have header x-next in response");
+      if (!res.headers.xNext)
+        throw createError(500, "should have header x-next in response");
 
       ctx.body = res.body;
       ctx.set("x-next", res.headers.xNext);
@@ -44,7 +45,8 @@ export default class API {
     };
 
     const showPetById = async ctx => {
-      if (!ctx.params.petId) throw createError(400, "petId in path is required.");
+      if (!ctx.params.petId)
+        throw createError(400, "petId in path is required.");
 
       const req = {
         petId: ctx.params.petId,

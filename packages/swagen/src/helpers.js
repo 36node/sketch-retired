@@ -110,27 +110,39 @@ Handlebars.registerHelper("jsonBodySchema", operation => {
 });
 
 Handlebars.registerHelper("withParamQuery", function(parameters, options) {
-  return hasParamType(parameters, "query") ? options.fn(this) : options.inverse(this);
+  return hasParamType(parameters, "query")
+    ? options.fn(this)
+    : options.inverse(this);
 });
 
 Handlebars.registerHelper("withParamHeader", function(parameters, options) {
-  return hasParamType(parameters, "header") ? options.fn(this) : options.inverse(this);
+  return hasParamType(parameters, "header")
+    ? options.fn(this)
+    : options.inverse(this);
 });
 
 Handlebars.registerHelper("withParamCookie", function(parameters, options) {
-  return hasParamType(parameters, "cookie") ? options.fn(this) : options.inverse(this);
+  return hasParamType(parameters, "cookie")
+    ? options.fn(this)
+    : options.inverse(this);
 });
 
 Handlebars.registerHelper("requireParamQuery", function(parameters, options) {
-  return requireParamType(parameters, "query") ? options.fn(this) : options.inverse(this);
+  return requireParamType(parameters, "query")
+    ? options.fn(this)
+    : options.inverse(this);
 });
 
 Handlebars.registerHelper("requireParamHeader", function(parameters, options) {
-  return requireParamType(parameters, "header") ? options.fn(this) : options.inverse(this);
+  return requireParamType(parameters, "header")
+    ? options.fn(this)
+    : options.inverse(this);
 });
 
 Handlebars.registerHelper("requireParamCookie", function(parameters, options) {
-  return requireParamType(parameters, "cookie") ? options.fn(this) : options.inverse(this);
+  return requireParamType(parameters, "cookie")
+    ? options.fn(this)
+    : options.inverse(this);
 });
 
 Handlebars.registerHelper("withJsonBody", function(operation, options) {
@@ -138,7 +150,9 @@ Handlebars.registerHelper("withJsonBody", function(operation, options) {
 });
 
 Handlebars.registerHelper("withResponseStatus", function(operation, options) {
-  return hasResponseStatus(operation) ? options.fn(this) : options.inverse(this);
+  return hasResponseStatus(operation)
+    ? options.fn(this)
+    : options.inverse(this);
 });
 
 Handlebars.registerHelper("toRoute", function(path) {

@@ -5,7 +5,10 @@ test("should build filter _like", () => {
     views_me_like: "cd9",
     views_like: "aBc",
   };
-  expect(build(raw)).toEqual({ views: { $regex: /aBc/i }, viewsMe: { $regex: /cd9/i } });
+  expect(build(raw)).toEqual({
+    views: { $regex: /aBc/i },
+    viewsMe: { $regex: /cd9/i },
+  });
 });
 
 test("should build filter _lt _gt", () => {
@@ -29,7 +32,10 @@ test("should build filter * and none", () => {
     assignees: "*",
     followers: "none",
   };
-  expect(build(raw)).toEqual({ assignees: { $ne: [] }, followers: { $eq: [] } });
+  expect(build(raw)).toEqual({
+    assignees: { $ne: [] },
+    followers: { $eq: [] },
+  });
 });
 
 test("should build filter q", () => {

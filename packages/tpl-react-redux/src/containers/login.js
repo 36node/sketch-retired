@@ -75,7 +75,12 @@ export default class Login extends React.PureComponent {
           <LoginContainer>
             <LoginBox>
               <div className="login-logo">
-                <img src="/images/logo.png" width="48px" height="48px" alt="logo" />
+                <img
+                  src="/images/logo.png"
+                  width="48px"
+                  height="48px"
+                  alt="logo"
+                />
                 <div>
                   <div className="title">REACT-REDUX-TEMPLATE</div>
                   <div className="subtitle">@36node</div>
@@ -84,20 +89,40 @@ export default class Login extends React.PureComponent {
               <Form onSubmit={this.handleSubmit} className="login-form">
                 <FormItem>
                   {getFieldDecorator("userName", {
-                    rules: [{ required: true, message: "Please input your username!" }],
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input your username!",
+                      },
+                    ],
                   })(
                     <Input
-                      prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
+                      prefix={
+                        <Icon
+                          type="user"
+                          style={{ color: "rgba(0,0,0,.25)" }}
+                        />
+                      }
                       placeholder="Username"
                     />
                   )}
                 </FormItem>
                 <FormItem>
                   {getFieldDecorator("password", {
-                    rules: [{ required: true, message: "Please input your Password!" }],
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please input your Password!",
+                      },
+                    ],
                   })(
                     <Input
-                      prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+                      prefix={
+                        <Icon
+                          type="lock"
+                          style={{ color: "rgba(0,0,0,.25)" }}
+                        />
+                      }
                       type="password"
                       placeholder="Password"
                     />
@@ -111,7 +136,11 @@ export default class Login extends React.PureComponent {
                   <a className="login-form-forgot" href="">
                     Forgot password
                   </a>
-                  <Button type="primary" htmlType="submit" className="login-form-button">
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    className="login-form-button"
+                  >
                     Log in
                   </Button>
                   Or <a href="">register now!</a>

@@ -9,7 +9,10 @@ const initState = {
 };
 
 export default function paginate(base, append) {
-  const reducer = (state = initState, { type, payload = {}, error, meta = {} }) => {
+  const reducer = (
+    state = initState,
+    { type, payload = {}, error, meta = {} }
+  ) => {
     let { xTotalCount = 0, result = [] } = payload;
     result = append ? union(result, state.result) : result;
     switch (type) {

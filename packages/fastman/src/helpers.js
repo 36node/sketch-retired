@@ -23,7 +23,9 @@ export function configDir() {
 export function writeConfig(config) {
   const dir = configDir();
   const configFile = path.join(dir, "config.json");
-  const oldConfig = fs.existsSync(configFile) ? jsonfile.readFileSync(configFile) : {};
+  const oldConfig = fs.existsSync(configFile)
+    ? jsonfile.readFileSync(configFile)
+    : {};
   jsonfile.writeFileSync(configFile, { ...oldConfig, ...config });
 }
 

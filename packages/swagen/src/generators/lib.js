@@ -63,11 +63,18 @@ export function generateTemplate(tplFile, data) {
 
 export function generateFile(tplFile, toFile, data, prettierOpts = {}) {
   const parsed_content = generateTemplate(tplFile, data);
-  const defaultPrettierOpts = { parser: "babylon", printWidth: 100, trailingComma: "es5" };
+  const defaultPrettierOpts = {
+    parser: "babylon",
+    printWidth: 100,
+    trailingComma: "es5",
+  };
 
   fs.writeFileSync(
     toFile,
-    prettier.format(parsed_content, { ...defaultPrettierOpts, ...prettierOpts }),
+    prettier.format(parsed_content, {
+      ...defaultPrettierOpts,
+      ...prettierOpts,
+    }),
     "utf8"
   );
 }

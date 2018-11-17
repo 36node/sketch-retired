@@ -24,4 +24,6 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-export default connect(state => ({ session: selectSession(state) }))(ProtectedRoute);
+export default connect(state => ({ session: selectSession(state) }))(
+  ProtectedRoute
+);

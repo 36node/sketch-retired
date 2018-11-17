@@ -11,7 +11,9 @@ import createError from "http-errors";
  */
 export default async function(url, opt = {}) {
   let { query, body, headers = {} } = opt;
-  let endpoint = query ? `${url}?${stringify(query, { skipNulls: true })}` : url;
+  let endpoint = query
+    ? `${url}?${stringify(query, { skipNulls: true })}`
+    : url;
 
   if (body) body = JSON.stringify(body);
 

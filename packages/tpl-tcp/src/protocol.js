@@ -51,6 +51,8 @@ export default class Protocol {
    * @param {Object} body response body
    */
   build(body) {
-    return `time: ${body.month}-${body.date}-${body.hour}-${body.minute}-${body.second}`;
+    return `time: ${body.month}-${body.date}-${body.hour}-${body.minute}-${
+      body.second
+    }`;
   }
 }

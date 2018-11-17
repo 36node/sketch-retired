@@ -12,9 +12,9 @@ function getHeaders() {
  * list collection use postman api
  */
 export function listCollections() {
-  return fetch("https://api.getpostman.com/collections", { headers: getHeaders() }).then(
-    result => result.body.collections
-  );
+  return fetch("https://api.getpostman.com/collections", {
+    headers: getHeaders(),
+  }).then(result => result.body.collections);
 }
 
 /**
@@ -22,11 +22,11 @@ export function listCollections() {
  * @param {string} id  collection id
  */
 export function singleCollection(id) {
-  return fetch(`https://api.getpostman.com/collections/${id}`, { headers: getHeaders() }).then(
-    result => {
-      return result.body.collection;
-    }
-  );
+  return fetch(`https://api.getpostman.com/collections/${id}`, {
+    headers: getHeaders(),
+  }).then(result => {
+    return result.body.collection;
+  });
 }
 
 export function updateCollection(id, collection) {
