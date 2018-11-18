@@ -20,18 +20,17 @@
  * @returns {*} value
  */
 
-export function env(name, opt = {}) {
-  const value = process.env[`REACT_APP_${name.toUpperCase()}`];
+export function env(name, init) {
+  const value = process.env[`APP_${name.toUpperCase()}`] || init;
 
-  if (opt.required && !value) {
-    throw new Error(`environment ${name} is required`);
+  if (value === undefined) {
+    throw new Error(`environment ${name} is missing`);
   }
 
-  return value || opt.default;
+  return value;
 }
-
 /**
  * APP
  */
-export const STORE_BASE = env("STORE_BASE");
-export const TOKEN = env("TOKEN");
+export const STORE_BASE = env("STORE_BASE", "");
+export const TOKEN = env("TOKEN", "");
