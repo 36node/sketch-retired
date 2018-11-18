@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/36node/sketch/compare/@36node/sketch@0.6.1...@36node/sketch@0.6.2) (2018-11-18)
+
+
+### Bug Fixes
+
+* prettier 80 width ([9a63826](https://github.com/36node/sketch/commit/9a63826))
+
+
+
+
+
 ## [0.6.1](https://github.com/36node/sketch/compare/@36node/sketch@0.6.0...@36node/sketch@0.6.1) (2018-11-15)
 
 

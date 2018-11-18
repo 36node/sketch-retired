@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/36node/tpl-react-redux/compare/@36node/template-react-redux@0.2.17...@36node/template-react-redux@0.3.0) (2018-11-18)
+
+
+### Bug Fixes
+
+* config ([528f97b](https://github.com/36node/tpl-react-redux/commit/528f97b))
+* prettier 80 width ([9a63826](https://github.com/36node/tpl-react-redux/commit/9a63826))
+
+
+### Features
+
+* enhance tpl-react-redux login view ([#40](https://github.com/36node/tpl-react-redux/issues/40)) ([c2bffab](https://github.com/36node/tpl-react-redux/commit/c2bffab))
+
+
+
+
+
 ## [0.2.17](https://github.com/36node/tpl-react-redux/compare/@36node/template-react-redux@0.2.16...@36node/template-react-redux@0.2.17) (2018-11-15)
 
 **Note:** Version bump only for package @36node/template-react-redux

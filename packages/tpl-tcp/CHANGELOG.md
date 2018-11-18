@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.22](https://github.com/36node/sketch/compare/@36node/template-tcp@0.2.21...@36node/template-tcp@0.2.22) (2018-11-18)
+
+
+### Bug Fixes
+
+* config ([528f97b](https://github.com/36node/sketch/commit/528f97b))
+* prettier 80 width ([9a63826](https://github.com/36node/sketch/commit/9a63826))
+
+
+
+
+
 ## [0.2.21](https://github.com/36node/sketch/compare/@36node/template-tcp@0.2.20...@36node/template-tcp@0.2.21) (2018-11-15)
 
 **Note:** Version bump only for package @36node/template-tcp

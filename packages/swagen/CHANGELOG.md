@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/36node/sketch/compare/@36node/swagen@0.6.8...@36node/swagen@0.7.0) (2018-11-18)
+
+
+### Bug Fixes
+
+* prettier 80 width ([9a63826](https://github.com/36node/sketch/commit/9a63826))
+
+
+### Features
+
+* enhance tpl-react-redux login view ([#40](https://github.com/36node/sketch/issues/40)) ([c2bffab](https://github.com/36node/sketch/commit/c2bffab))
+
+
+
+
+
 ## [0.6.8](https://github.com/36node/sketch/compare/@36node/swagen@0.6.7...@36node/swagen@0.6.8) (2018-11-09)
 
 

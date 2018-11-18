@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.17](https://github.com/36node/sketch/compare/@36node/template-service@0.7.16...@36node/template-service@0.7.17) (2018-11-18)
+
+
+### Bug Fixes
+
+* prettier 80 width ([9a63826](https://github.com/36node/sketch/commit/9a63826))
+
+
+
+
+
 ## [0.7.16](https://github.com/36node/sketch/compare/@36node/template-service@0.7.15...@36node/template-service@0.7.16) (2018-11-15)
 
 

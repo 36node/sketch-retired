@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/36node/mongoose-helper/compare/@36node/mongoose-helper@0.1.6...@36node/mongoose-helper@0.1.7) (2018-11-18)
+
+
+### Bug Fixes
+
+* prettier 80 width ([9a63826](https://github.com/36node/mongoose-helper/commit/9a63826))
+
+
+
+
+
 ## [0.1.6](https://github.com/36node/mongoose-helper/compare/@36node/mongoose-helper@0.1.5...@36node/mongoose-helper@0.1.6) (2018-11-05)
 
 
