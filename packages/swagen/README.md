@@ -59,7 +59,7 @@ Options:
 $ swagen koa ./petstore.yaml ./koa
 ```
 
-### Generate post collection from openapi
+### Generate postman collection from openapi
 
 ```sh
 $ swagen postman -h
