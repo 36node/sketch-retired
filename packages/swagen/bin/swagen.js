@@ -2,7 +2,6 @@
 
 var program = require("commander");
 var path = require("path");
-const is = require("../dist/util/is");
 
 var pkg = require("../package.json");
 var genreatorModule = require("../dist").default;
@@ -14,26 +13,6 @@ Object.keys(genreatorModule)
   .forEach(k => (generators[k] = genreatorModule[k].default));
 
 program.version(pkg.version);
-
-function parseOpts(opts = {}) {
-  const { folder, named, swagger } = opts;
-  if (!swagger) {
-    throw new Error("error: swagger file not given!");
-  }
-  const dest = folder || ".";
-  const target = path.resolve(process.cwd(), dest);
-  const swaggerFile = is.URL(swagger)
-    ? swagger
-    : path.resolve(process.cwd(), swagger);
-  const name =
-    named ||
-    path
-      .basename(swagger)
-      .split(".")
-      .slice(0, -1)
-      .join(".");
-  return { target, swaggerFile, name };
-}
 
 program
   .command("koa [yamlFile] [dist]")
