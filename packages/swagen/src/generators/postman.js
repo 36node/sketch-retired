@@ -1,5 +1,5 @@
 import parse from "../parse";
-import { mkdir, generateTemplate, formatPath, TemplatePath } from "./lib";
+import { generateTemplate, formatPath, TemplatePath } from "./lib";
 import { get, toString, toUpper, mergeWith } from "lodash";
 import {
   Collection,

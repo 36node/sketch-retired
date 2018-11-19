@@ -144,42 +144,45 @@ GET /comments?author.name=typicode
 
 ### Paginate
 
-Use `_page` and optionally `_size` to paginate returned data.
+Use `_page` and optionally `_limit` to paginate returned data.
 
 In the `Link` header you'll get `first`, `prev`, `next` and `last` links.
 
 ```curl
 GET /posts?_page=7
-GET /posts?_page=7&_size=20
+GET /posts?_page=7&_limit=20
 ```
 
 note: _10 items are returned by default_
 
 ### Sort
 
-Add `_sort` (ascending order by default, `-` before field means descending)
+Add `_sort` and `_order` (ascending order by default)
 
 ```curl
-GET /posts?_sort=views
-GET /posts/1/comments?_sort=votes
+GET /posts?_sort=views&_order=asc
+GET /posts/1/comments?_sort=votes&_order=asc
 ```
 
 For multiple fields, use the following format:
 
 ```curl
-GET /posts?_sort=-publishAt&_sort=views
+GET /posts?_sort=user,views&_order=desc,asc
 ```
 
 note: _list posts by publishAt descending order and views ascending order_
 
 ### Slice
 
-Add `_limit` and optionally `_offset` (an `X-Total-Count` header is included in the response).
-`_offset` means how many documents will be skipped.
+Add `_start` and `_end` or `_limit` (an `X-Total-Count` header is included in the response)
 
 ```curl
-GET /posts?_limit=20&_offset=10
+GET /posts?_start=20&_end=30
+GET /posts/1/comments?_start=20&_end=30
+GET /posts/1/comments?_start=20&_limit=10
 ```
+
+_Works exactly as [Array.slice](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) (i.e. `_start` is inclusive and `_end` exclusive)_
 
 note: _if we count start from 1, then above return element 11 ~ 30_
 
@@ -220,16 +223,21 @@ GET /posts?q=internet
 
 ### Relationships
 
-To expend the relational resource, add `_populate`
+To include children resources, add `_embed`
 
 ```curl
-GET /posts?_populate=comments
-GET /posts/1?_populate=comments
-GET /comments?_populate=post&_populate=createdBy
-GET /comments/1?_populate=post
+GET /posts?_embed=comments
+GET /posts/1?_embed=comments
 ```
 
-To get or create nested resources
+To include parent resource, add `_expand`
+
+```curl
+GET /comments?_expand=post
+GET /comments/1?_expand=post
+```
+
+To get or create nested resources (by default one level, [add custom routes](#add-custom-routes) for more)
 
 ```curl
 GET  /posts/1/comments
