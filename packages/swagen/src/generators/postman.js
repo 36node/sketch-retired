@@ -10,6 +10,7 @@ import {
   RequestBody,
   Url,
   Response,
+  RequestAuth,
 } from "postman-collection";
 import jsonfile from "jsonfile";
 import path from "path";
@@ -38,34 +39,6 @@ class PostmanGenerator {
       });
     }
 
-    // security config, preferred to use operation security config
-    const security =
-      get(operation, ["security"], null) ||
-      get(this.swagger, ["security"], null);
-
-    if (security && Array.isArray(security)) {
-      for (let s of security) {
-        const applySecurity = Object.keys(s)[0];
-        const securitySchema = get(
-          this.swagger,
-          ["components", "securitySchemes", applySecurity],
-          null
-        );
-
-        // only support bearer
-        // TODO: support multi-type security schema
-        if (
-          securitySchema.type === "http" &&
-          securitySchema.scheme === "bearer"
-        ) {
-          headerList.append({
-            key: "Authorization",
-            value: `Bearer {{token}}`,
-          });
-        }
-      }
-    }
-
     return headerList;
   }
 
@@ -90,6 +63,40 @@ class PostmanGenerator {
     request.headers = this.genHeaders(operation);
     request.url = this.genUrl(operation);
     request.method = toUpper(operation.method);
+
+    // security config, preferred to use operation security config
+    const security =
+      get(operation, ["security"], null) ||
+      get(this.swagger, ["security"], null);
+
+    if (security && Array.isArray(security)) {
+      for (let s of security) {
+        const applySecurity = Object.keys(s)[0];
+        const securitySchema = get(
+          this.swagger,
+          ["components", "securitySchemes", applySecurity],
+          null
+        );
+
+        // TODO: support multi-type security schema
+        if (
+          securitySchema &&
+          securitySchema.type === "http" &&
+          securitySchema.scheme === "bearer"
+        ) {
+          request.auth = new RequestAuth({
+            type: "bearer",
+            bearer: [
+              {
+                key: "token",
+                value: "{{token}}",
+                type: "string",
+              },
+            ],
+          });
+        }
+      }
+    }
 
     // generate request body
     const body = get(
@@ -225,27 +232,27 @@ class PostmanGenerator {
   genCollection(name) {
     const { api = {}, components = {} } = this.swagger;
     const collection = new Collection({
-      name: get(this.swagger, ["info", "title"], name),
+      name,
     });
 
-    for (let name in api) {
-      collection.items.add(this.genFolder(api[name], components));
+    for (let n in api) {
+      collection.items.add(this.genFolder(api[n], components));
     }
     return collection;
   }
 }
 
-export default function genPostman({ target, swaggerFile, name }) {
-  parse(swaggerFile, { dereference: true }).then(function(swagger) {
+export default function genPostman({ yamlFile, targetFile }) {
+  parse(yamlFile, { dereference: true }).then(function(swagger) {
     const generator = new PostmanGenerator(swagger);
+    const name = get(swagger, ["info", "title"], null);
+    if (!name) throw new Error("Openapi must have title");
     const collection = generator.genCollection(name).toJSON();
-    mkdir(target);
-
-    const targetFile = path.join(target, name + ".postman_collection.json");
+    const finalTargetFile = targetFile || name + ".postman_collection.json";
 
     // if file exist merge generated collection to original collection
-    if (fs.existsSync(targetFile)) {
-      const originCollection = jsonfile.readFileSync(targetFile);
+    if (fs.existsSync(finalTargetFile)) {
+      const originCollection = jsonfile.readFileSync(finalTargetFile);
       mergeWith(collection, originCollection, (objValue, srcValue, key) => {
         // test script not merge
         if (key === "exec") {
@@ -254,6 +261,6 @@ export default function genPostman({ target, swaggerFile, name }) {
         return undefined;
       });
     }
-    jsonfile.writeFileSync(targetFile, collection, { spaces: 2 });
+    jsonfile.writeFileSync(finalTargetFile, collection, { spaces: 2 });
   });
 }

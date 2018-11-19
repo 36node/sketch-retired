@@ -51,6 +51,7 @@ build
 release
 tmp
 .cache
+package-lock.json
 
 # config
 .env*

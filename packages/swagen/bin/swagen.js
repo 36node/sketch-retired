@@ -36,41 +36,34 @@ function parseOpts(opts = {}) {
 }
 
 program
-  .command("koa")
+  .command("koa [yamlFile] [dist]")
   .description("Generate code for koa server api")
-  .option("-s, --swagger <file>", "swagger file path or url")
-  .option("-f, --folder [folder]", "generate code to folder")
-  .action(p => {
+  .action((yamlFile, dist) => {
     try {
-      generators["koa"](parseOpts(p.opts()));
+      generators["koa"]({ yamlFile, dist });
     } catch (error) {
       console.error(error);
     }
   });
 
 program
-  .command("sdk")
+  .command("sdk [yamlFile] [dist] [name]")
   .description("Generate code for client sdk")
-  .option("-s, --swagger <file>", "swagger file path or url")
-  .option("-f, --folder [folder]", "generate code to folder")
-  .option("-n, --named [named]", "what name")
-  .action(p => {
+  .action((yamlFile, dist, name) => {
     try {
-      generators["sdk"](parseOpts(p.opts()));
+      const sdkName = name || path.basename(yamlFile).split(".")[0];
+      generators["sdk"]({ yamlFile, name: sdkName, dist });
     } catch (error) {
       console.error(error);
     }
   });
 
 program
-  .command("postman")
+  .command("postman [yamlFile] [targetFile]")
   .description("Transform openapi file to postman collection file")
-  .option("-s, --swagger <file>", "swagger file path or url")
-  .option("-f, --folder [folder]", "generate code to folder")
-  .option("-n, --named [named]", "what name")
-  .action(p => {
+  .action((yamlFile, targetFile) => {
     try {
-      generators["postman"](parseOpts(p.opts()));
+      generators["postman"]({ yamlFile, targetFile });
     } catch (error) {
       console.error(error);
     }
