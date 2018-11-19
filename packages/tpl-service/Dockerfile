@@ -1,14 +1,12 @@
 FROM node:10-alpine AS build
 
-# work dir
-WORKDIR /build
-
 # install tools and deps for node-gyp
 RUN apk add --no-cache --virtual .gyp \
   python \
   make \
   g++
 
+WORKDIR /build
 COPY package.json yarn.lock ./
 RUN yarn --prod
 
