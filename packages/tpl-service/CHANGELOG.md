@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.19](https://github.com/36node/sketch/compare/@36node/template-service@0.7.18...@36node/template-service@0.7.19) (2018-11-20)
+
+
+### Bug Fixes
+
+* swagen postman ([e5a9e0f](https://github.com/36node/sketch/commit/e5a9e0f))
+
+
+
+
+
 ## [0.7.18](https://github.com/36node/sketch/compare/@36node/template-service@0.7.17...@36node/template-service@0.7.18) (2018-11-19)
 
 

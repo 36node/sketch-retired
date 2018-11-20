@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.7](https://github.com/36node/sketch/compare/@36node/fetch@0.4.6...@36node/fetch@0.4.7) (2018-11-20)
+
+
+### Bug Fixes
+
+* **fetch:** remove Access-Control-Allow-Origin in req header ([89fdd2c](https://github.com/36node/sketch/commit/89fdd2c))
+
+
+
+
+
 ## [0.4.6](https://github.com/36node/sketch/compare/@36node/fetch@0.4.5...@36node/fetch@0.4.6) (2018-11-18)
 
 
