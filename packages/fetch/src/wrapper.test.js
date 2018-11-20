@@ -43,7 +43,6 @@ test("fetch with headers", async () => {
   expect(fetchMock.lastOptions("/ok").headers).toEqual({
     Accept: "application/json",
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
     Authorization,
     another: "something",
   });
