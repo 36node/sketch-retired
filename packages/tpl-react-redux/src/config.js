@@ -21,7 +21,7 @@
  */
 
 export function env(name, init) {
-  const value = process.env[`APP_${name.toUpperCase()}`] || init;
+  const value = process.env[`REACT_APP_${name.toUpperCase()}`] || init;
 
   if (value === undefined) {
     throw new Error(`environment ${name} is missing`);
@@ -29,8 +29,9 @@ export function env(name, init) {
 
   return value;
 }
+
 /**
  * APP
  */
 export const STORE_BASE = env("STORE_BASE", "");
-export const TOKEN = env("TOKEN", "");
+export const TOKEN = env("TOKEN", "some fake token");

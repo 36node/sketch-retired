@@ -6,14 +6,10 @@ const rewireReactHotLoader = require("react-app-rewire-hot-loader");
 const mock = require("./mock");
 const jsonServer = require("json-server");
 const pause = require("connect-pause");
-const dotenv = require("dotenv");
+const antdTheme = require("./antd.theme");
 
-dotenv.config();
-
-const mockFn = mock.mockFn;
-const mockServerOpts = mock.serverOpts;
-
-const disableMock = process.env.REACT_APP_DISABLE_MOCK === "true";
+const stopMock = process.env.MOCK === "false";
+const { serverOpts, db, rewrite } = mock;
 
 /**
  * compose web dev server config
@@ -47,7 +43,7 @@ module.exports = {
       config
     );
     config = rewireLess.withLoaderOptions({
-      modifyVars: { "@primary-color": "#1DA57A" },
+      modifyVars: antdTheme,
       javascriptEnabled: true,
     })(config, env);
 
@@ -57,19 +53,18 @@ module.exports = {
     return function(proxy, allowedHost) {
       const config = configFunction(proxy, allowedHost);
 
+      if (stopMock) {
+        return config;
+      }
+
       /**
        * mock server hoc
        * @param {Express.Application} app
        */
       function mockServer(app) {
-        if (disableMock) {
-          return app;
-        }
+        const router = jsonServer.router(db);
 
-        const serverOpts = mockServerOpts();
-        const router = jsonServer.router(mockFn());
-
-        const shouldMock = req => {
+        const shouldMockReq = req => {
           return (
             req.method !== "GET" ||
             (req.headers.accept &&
@@ -79,15 +74,16 @@ module.exports = {
 
         if (serverOpts.delay) {
           app.use((req, res, next) => {
-            if (shouldMock(req)) {
+            if (shouldMockReq(req)) {
               return pause(serverOpts.delay)(req, res, next);
             }
             return next();
           });
         }
 
+        app.use(jsonServer.rewriter(rewrite));
         app.use((req, res, next) => {
-          if (shouldMock(req)) {
+          if (shouldMockReq(req)) {
             return router(req, res, next);
           }
           return next();
@@ -96,9 +92,14 @@ module.exports = {
         return app;
       }
 
+      const prev = config.before;
+
       config.before = compose(
-        config.before,
-        mockServer
+        mockServer,
+        app => {
+          prev(app);
+          return app;
+        }
       );
 
       return config;

@@ -1,26 +1,25 @@
-const faker = require("faker");
+const mockPet = require("./.mock/pet");
+
 module.exports = {
   /**
-   * Generate mock data
+   * mock data
    */
-  mockFn: () => {
-    const data = { pets: [] };
-    const tags = ["CAT", "DOG", "RABBIT"];
-
-    for (let i = 0; i < 20; i++) {
-      data.pets.push({
-        id: i,
-        name: faker.name.lastName(),
-        tag: tags[faker.random.number(2)],
-      });
-    }
-
-    return data;
+  db: {
+    pets: mockPet(20),
   },
+
+  /**
+   * rewrite
+   */
+  rewrite: {
+    "/vehicles/*/logs": "/logs",
+    "/vehicles/:vid/records": "/records?vehicleId=:vid",
+  },
+
   /**
    * Config mock server
    */
-  serverOpts: () => ({
-    delay: 2000,
-  }),
+  serverOpts: {
+    delay: 500,
+  },
 };
