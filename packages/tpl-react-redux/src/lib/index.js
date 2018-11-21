@@ -19,12 +19,25 @@ export function round(number, precision) {
   return Math.round(number * multiplier) / multiplier;
 }
 
-export const add = (a, b) => a + b;
+/**
+ * A delay promise
+ * @param {Number} ms delay miliseconds
+ */
 export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+/**
+ * Format time
+ * @param {Date} date
+ */
 export function ymdhms(date) {
   return moment(date).format("YYYY-MM-DD HH:mm:ss");
 }
 
+/**
+ * Combine date and time
+ * @param {Date} date
+ * @param {Date} time
+ */
 export function combine(date, time) {
   const m = moment(date);
   m.hour(time.hour());
@@ -38,7 +51,7 @@ function createIteratee(converter, self) {
     set(result, converter(key), isObjectLike(value) ? self(value) : value);
 }
 
-export default function createHumps(keyConverter) {
+function createHumps(keyConverter) {
   return function humps(node) {
     if (isArray(node)) return map(node, humps);
     if (isPlainObject(node))
@@ -47,6 +60,9 @@ export default function createHumps(keyConverter) {
   };
 }
 
+/**
+ * Make object keys camelcase
+ */
 export const humps = createHumps(camelCase);
 
 /**
