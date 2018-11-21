@@ -1,6 +1,6 @@
 {
   "name": "@36node/fastman",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "A tool to export and import postman collection file",
   "repository": {
     "url": "undefined/undefined",
@@ -29,7 +29,7 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "@36node/fetch": "^0.4.7",
+    "@36node/fetch": "^0.4.8",
     "commander": "^2.16.0",
     "http-errors": "^1.7.1",
     "inquirer": "^6.2.0",
