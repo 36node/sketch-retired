@@ -7,7 +7,7 @@ Boilerplates for nodejs and web, including module, tcp-server, service and react
 ## usage
 
 ```sh
-npx sketch init some-folder
+npx @36node/sketch init some-folder
 
 ## then choose your template
 ```
