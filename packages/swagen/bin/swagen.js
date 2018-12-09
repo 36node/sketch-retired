@@ -48,4 +48,15 @@ program
     }
   });
 
+program
+  .command("mock [yamlFile] [dist] [count]")
+  .description("Transform openapi file to json-server data file")
+  .action((yamlFile, dist, count) => {
+    try {
+      generators["mock"]({ yamlFile, dist, count });
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
 program.parse(process.argv);
