@@ -10,6 +10,7 @@ let {
   mapValues,
   padStart,
   chain,
+  at,
 } = require("lodash");
 let map = {};
 function generateId(capName, old = false) {
@@ -103,11 +104,7 @@ export default function genMock({ dist, yamlFile, count = 10 }) {
         servers,
         api,
       } = swagger;
-      let {
-        variables: {
-          basePath: { default: defaultUrl },
-        },
-      } = servers[0];
+      let defaultUrl = at(servers, "[0].variables.basePath.default")[0] || "";
 
       if (dist) {
         mkdir(dist);

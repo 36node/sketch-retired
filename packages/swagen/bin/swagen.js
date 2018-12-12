@@ -49,9 +49,13 @@ program
   });
 
 program
-  .command("mock [yamlFile] [dist] [count]")
+  .command("mock [yamlFile] [dist]")
+  .option(
+    "-c, --count [count]",
+    "Add count of mock data to generate, default is 10"
+  )
   .description("Transform openapi file to json-server data file")
-  .action((yamlFile, dist, count) => {
+  .action((yamlFile, dist, { count }) => {
     try {
       generators["mock"]({ yamlFile, dist, count });
     } catch (error) {
