@@ -1,6 +1,6 @@
 import { stringify } from "./query-string";
-import { pickBy, identity } from "lodash";
 import createError from "http-errors";
+import clean from "clean-deep";
 
 /**
  * A wrapper of fetch
@@ -11,6 +11,7 @@ import createError from "http-errors";
  */
 export default async function(url, opt = {}) {
   let { query, body, headers = {} } = opt;
+  query = clean(query);
   let endpoint = query
     ? `${url}?${stringify(query, { skipNulls: true })}`
     : url;
@@ -25,14 +26,11 @@ export default async function(url, opt = {}) {
 
   const res = await fetch(
     endpoint,
-    pickBy(
-      {
-        ...opt,
-        body,
-        headers,
-      },
-      identity
-    )
+    clean({
+      ...opt,
+      body,
+      headers,
+    })
   );
 
   const result = { headers: {} };

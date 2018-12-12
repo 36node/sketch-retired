@@ -26,6 +26,7 @@
     "testEnvironment": "node"
   },
   "dependencies": {
+    "clean-deep": "^3.0.2",
     "decode-uri-component": "^0.2.0",
     "http-errors": "^1.7.1",
     "lodash": "^4.17.11",
