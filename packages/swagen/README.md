@@ -80,6 +80,30 @@ $ swagen postman ./petstore.yaml ./petstore.postman_collection.json
 $ fastman import ./petstore.postman_collection.json
 ```
 
+### Generate mock collection from openapi
+
+```sh
+$ swagen mock -h
+
+Usage: mock [options] [yamlFile] [dist]
+
+Transform openapi file to json-server data file
+
+Options:
+  -c, --count [count]  Add count of mock data to generate, default is 10
+  -h, --help           output usage information
+
+# example, default targetFile name is the openapi info title properity
+$ swagen mock ./petstore.yaml ./mock/
+
+# will generate data.json and routes.json in mock
+# then can use json-server with these data and routes
+
+$ json-server ./mock/db.json --routes ./mock/routes.json
+
+```
+More about **json-server** you can see [here](https://github.com/typicode/json-server)
+
 ### Use remote file
 
 ```sh
