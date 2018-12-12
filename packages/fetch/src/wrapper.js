@@ -10,8 +10,7 @@ import clean from "clean-deep";
  * @returns {Promise<object>} result {body, headers}
  */
 export default async function(url, opt = {}) {
-  let { query, body, headers = {} } = opt;
-  query = clean(query);
+  let { query, body, headers = {} } = clean(opt);
   let endpoint = query
     ? `${url}?${stringify(query, { skipNulls: true })}`
     : url;
