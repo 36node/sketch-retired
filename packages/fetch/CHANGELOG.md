@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.9](https://github.com/36node/sketch/compare/@36node/fetch@0.4.8...@36node/fetch@0.4.9) (2018-12-12)
+
+
+### Bug Fixes
+
+* clean options ([03f95dd](https://github.com/36node/sketch/commit/03f95dd))
+* fetch query empty object ([953b534](https://github.com/36node/sketch/commit/953b534))
+
+
+
+
+
 ## [0.4.8](https://github.com/36node/sketch/compare/@36node/fetch@0.4.7...@36node/fetch@0.4.8) (2018-11-21)
 
 
