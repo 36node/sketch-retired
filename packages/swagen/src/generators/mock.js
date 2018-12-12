@@ -56,7 +56,7 @@ function genJson(name, schemas, count) {
   const mapVFunc = (property, fieldName) =>
     genDataFromType(fieldName, property, capName);
   const mapVkey = ({ $ref }, fieldName) => fieldName + ($ref ? "Id" : "");
-  return new Array(count).fill(0).map(() =>
+  return new Array(parseInt(count)).fill(0).map(() =>
     chain(schema.properties)
       .mapKeys(mapVkey)
       .mapValues(mapVFunc)
