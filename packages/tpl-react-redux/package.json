@@ -14,7 +14,7 @@
     "build": "cross-env NODE_ENV=production react-app-rewired build",
     "build-storybook": "build-storybook -s public",
     "gen:sdk": "swagen sdk https://api.36node.com/petstore/v0/openapi.yaml ./src/sdk petstore && npm run format",
-    "gen:mock": "swagen mock -c 100 https://api.36node.com/petstore/v0/openapi.yaml ./.mock",
+    "gen:mock": "swagen mock -c 100 https://api.36node.com/petstore/v0/openapi.yaml ./.mock/petstore",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "lint": "eslint src",
     "release": "standard-version && git push --follow-tags origin master",
