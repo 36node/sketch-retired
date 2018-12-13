@@ -1,11 +1,14 @@
-const mockPet = require("./.mock/pet");
+const petstoreDB = require("./.mock/petstore/db.json");
+const petstoreRoute = require("./.mock/petstore/routes.json");
+
+console.log(petstoreDB);
 
 module.exports = {
   /**
    * mock data
    */
   db: {
-    pets: mockPet(20),
+    ...petstoreDB,
   },
 
   /**
