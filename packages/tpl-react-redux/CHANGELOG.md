@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/36node/tpl-react-redux/compare/@36node/template-react-redux@0.3.4...@36node/template-react-redux@0.4.0) (2018-12-18)
+
+
+### Bug Fixes
+
+* storybook babel preset error ([7cb2757](https://github.com/36node/tpl-react-redux/commit/7cb2757))
+
+
+### Features
+
+* add a mock command for swagen ([#46](https://github.com/36node/tpl-react-redux/issues/46)) ([4925e96](https://github.com/36node/tpl-react-redux/commit/4925e96))
+
+
+
+
+
 ## [0.3.4](https://github.com/36node/tpl-react-redux/compare/@36node/template-react-redux@0.3.3...@36node/template-react-redux@0.3.4) (2018-12-12)
 
 **Note:** Version bump only for package @36node/template-react-redux

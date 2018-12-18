@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.3](https://github.com/36node/sketch/compare/@36node/sketch@0.6.2...@36node/sketch@0.6.3) (2018-12-18)
+
+
+### Bug Fixes
+
+* storybook babel preset error ([7cb2757](https://github.com/36node/sketch/commit/7cb2757))
+
+
+
+
+
 ## [0.6.2](https://github.com/36node/sketch/compare/@36node/sketch@0.6.1...@36node/sketch@0.6.2) (2018-11-18)
 
 

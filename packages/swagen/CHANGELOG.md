@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/36node/sketch/compare/@36node/swagen@0.7.2...@36node/swagen@0.8.0) (2018-12-18)
+
+
+### Features
+
+* add a mock command for swagen ([#46](https://github.com/36node/sketch/issues/46)) ([4925e96](https://github.com/36node/sketch/commit/4925e96))
+
+
+
+
+
 ## [0.7.2](https://github.com/36node/sketch/compare/@36node/swagen@0.7.1...@36node/swagen@0.7.2) (2018-11-20)
 
 
