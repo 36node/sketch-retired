@@ -1,4 +1,4 @@
-import { get, camelCase } from "lodash";
+import { get, set, reduceRight, camelCase, merge } from "lodash";
 import SwaggerParser from "swagger-parser";
 
 // /**
@@ -132,6 +132,33 @@ function parseSwagger(swagger) {
 }
 
 /**
+ * 解析allOf
+ * @param {*} allOfList allof list
+ */
+function handleAllOf(allOfList = []) {
+  return reduceRight(
+    allOfList,
+    (acc, cur) => {
+      return merge(acc, cur);
+    },
+    {}
+  );
+}
+
+function handleSchemas(schemas = {}) {
+  const ret = {};
+  for (let key in schemas) {
+    const schema = schemas[key];
+    if (schema.allOf) {
+      ret[key] = handleAllOf(schema.allOf);
+    } else {
+      ret[key] = schema;
+    }
+  }
+  return ret;
+}
+
+/**
  * parse swagger file to expected structure
  *
  * @param {*} source file path or remote url
@@ -142,13 +169,24 @@ function parseSwagger(swagger) {
 export default async function parse(source, options = {}) {
   let api, result;
 
+  let dereferenceApi = await SwaggerParser.dereference(source);
+
   try {
     if (options.dereference) {
       // replace all $ref with normal js objects
-      api = await SwaggerParser.dereference(source);
+      api = dereferenceApi;
     } else {
       // only parse swagger object, does not resolve $ref pointers or dereference anything
       api = await SwaggerParser.parse(source);
+
+      // replace components schema with dereference object
+      if (get(api, "components.schemas")) {
+        set(
+          api,
+          "components.schemas",
+          handleSchemas(get(dereferenceApi, "components.schemas"))
+        );
+      }
     }
   } catch (e) {
     console.error("Can not load the content of the Swagger specification file");
