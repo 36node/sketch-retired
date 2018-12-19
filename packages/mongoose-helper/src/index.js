@@ -59,7 +59,7 @@ class Base {
    * @returns {Promise<ListResult>}
    */
   static list({
-    filter,
+    filter = {},
     lean = false,
     limit = 100,
     offset = 0,
