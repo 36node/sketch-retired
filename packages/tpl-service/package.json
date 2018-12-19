@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-service",
-  "version": "0.7.20",
+  "version": "0.7.21",
   "description": "A service boilerplate with openapi,rest and mongodb.",
   "repository": {
     "url": "36node/sketch",
@@ -59,7 +59,7 @@
   "devDependencies": {
     "@36node/babel": "^0.2.2",
     "@36node/eslint-config": "^0.3.4",
-    "@36node/swagen": "^0.8.0",
+    "@36node/swagen": "^0.9.0",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
     "@types/lodash": "^4.14.116",
@@ -75,7 +75,7 @@
     "standard-version": "^4.4.0"
   },
   "dependencies": {
-    "@36node/mongoose-helper": "^0.1.7",
+    "@36node/mongoose-helper": "^0.1.8",
     "@koa/cors": "^2.2.2",
     "@types/koa": "^2.0.46",
     "@types/mongoose": "^5.2.19",

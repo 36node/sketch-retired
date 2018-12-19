@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/36node/sketch/compare/@36node/swagen@0.8.0...@36node/swagen@0.9.0) (2018-12-19)
+
+
+### Features
+
+* swagen support schema allOf ([#50](https://github.com/36node/sketch/issues/50)) ([10bb0c4](https://github.com/36node/sketch/commit/10bb0c4))
+
+
+
+
+
 # [0.8.0](https://github.com/36node/sketch/compare/@36node/swagen@0.7.2...@36node/swagen@0.8.0) (2018-12-18)
 
 
