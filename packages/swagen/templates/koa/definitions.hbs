@@ -1,7 +1,7 @@
 {{#each api}}
 {{#each operations}}
 {{#or parameters requestBody}}
-type {{capitalize name}}Request = {
+interface {{capitalize name}}Request  {
   {{#each parameters}}
   {{#is in "path"}}
   {{name}}{{#unless required}}?{{/unless}}: {{schemaType schema}};
@@ -42,7 +42,7 @@ type {{capitalize name}}Request = {
 
 {{/or}}
 {{#or response.content response.headers}}
-type {{capitalize name}}Response = {
+interface {{capitalize name}}Response  {
   {{#with response.content}}
   body: {{{schemaType schema}}};
   {{/with}}
@@ -60,7 +60,7 @@ type {{capitalize name}}Response = {
 {{/each}}
 {{#each components.schemas}}
 {{#if properties}}
-type {{capitalize @key}} = {
+interface {{capitalize @key}}  {
   {{#each properties}}
   {{@key}}: {{{schemaType this}}};
   {{/each}}

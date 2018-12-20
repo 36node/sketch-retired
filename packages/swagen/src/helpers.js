@@ -13,12 +13,23 @@ hbsHelper({
  * @returns {String} parsed type
  */
 export function getSchemaType(schema = {}) {
-  let { type, $ref, items } = schema;
+  let { type, $ref, items, properties = {} } = schema;
 
   if (type === "integer") return "number";
   if (type === "array") {
     return `Array<${getSchemaType(items)}>`;
   }
+
+  if (type === "object") {
+    const ret = [];
+    for (let key in properties) {
+      ret.push(`${key}:${getSchemaType(properties[key])}`);
+    }
+    return `{
+        ${ret.join("\n")}
+      }`;
+  }
+
   if ($ref) {
     const segs = $ref.split("/");
     if (segs.length < 2) {
