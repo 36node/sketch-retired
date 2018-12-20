@@ -12,10 +12,24 @@ export default class API {
     const {{name}} = async ctx => {
       {{#each parameters}}
       {{#if required}}
+      {{#is in "path"}}
       if (!ctx.params.{{name}}) throw createError(400, "{{name}} in {{in}} is required.");
+      {{/is}}
 
+      {{#is in "query"}}
+      if (!ctx.query.{{name}}) throw createError(400, "{{name}} in {{in}} is required.");
+      {{/is}}
+
+      {{#is in "header"}}
+      if (!ctx.headers["{{name}}"]) throw createError(400, "{{name}} in {{in}} is required.");
+      {{/is}}
+
+      {{#is in "cookie"}}
+      if (!ctx.cookies.get({{name}}))  throw createError(400, "{{name}} in {{in}} is required.")
+      {{/is}}
       {{/if}}
       {{/each}}
+
       {{#or parameters requestBody}}
       const req = {
         {{#each parameters}}
