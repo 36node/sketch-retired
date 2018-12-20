@@ -133,13 +133,15 @@ function parseSwagger(swagger) {
 
 /**
  * 解析allOf
- * @param {*} allOfList allof list
+ * @param {*} schema openapi schema object
  */
-function handleAllOf(allOfList = []) {
+function handleAllOf(schema) {
+  if (!schema.allOf) return schema;
+
   return reduceRight(
-    allOfList,
+    schema.allOf,
     (acc, cur) => {
-      return merge(acc, cur);
+      return merge(acc, handleAllOf(cur));
     },
     {}
   );
@@ -149,11 +151,7 @@ function handleSchemas(schemas = {}) {
   const ret = {};
   for (let key in schemas) {
     const schema = schemas[key];
-    if (schema.allOf) {
-      ret[key] = handleAllOf(schema.allOf);
-    } else {
-      ret[key] = schema;
-    }
+    ret[key] = handleAllOf(schema);
   }
   return ret;
 }
