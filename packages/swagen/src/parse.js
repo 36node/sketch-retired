@@ -168,23 +168,24 @@ export default async function parse(source, options = {}) {
   let api, result;
 
   let dereferenceApi = await SwaggerParser.dereference(source);
+  let unresolvedApi = await SwaggerParser.parse(source);
+
+  // replace components schema with dereference object
+  if (get(unresolvedApi, "components.schemas")) {
+    set(
+      unresolvedApi,
+      "components.schemas",
+      handleSchemas(get(dereferenceApi, "components.schemas"))
+    );
+  }
 
   try {
     if (options.dereference) {
       // replace all $ref with normal js objects
-      api = dereferenceApi;
+      api = await SwaggerParser.dereference(unresolvedApi);
     } else {
       // only parse swagger object, does not resolve $ref pointers or dereference anything
-      api = await SwaggerParser.parse(source);
-
-      // replace components schema with dereference object
-      if (get(api, "components.schemas")) {
-        set(
-          api,
-          "components.schemas",
-          handleSchemas(get(dereferenceApi, "components.schemas"))
-        );
-      }
+      api = unresolvedApi;
     }
   } catch (e) {
     console.error("Can not load the content of the Swagger specification file");
