@@ -1,5 +1,4 @@
 import { stringify } from "./query-string";
-import createError from "http-errors";
 import clean from "clean-deep";
 
 /**
@@ -38,13 +37,16 @@ export default async function(url, opt = {}) {
     !res.headers.get("content-type") ||
     !res.headers.get("content-type").includes("application/json")
   ) {
-    result.body = await res.text();
+    result.body = { message: await res.text() }; // text result 处理成 object
   } else {
     result.body = await res.json();
   }
 
   // not 20x or 30x response
-  if (!res.ok) throw createError(res.status, result.body);
+  if (!res.ok) {
+    const err = { ...result.body, status: res.status };
+    throw err;
+  }
 
   res.headers.forEach((val, key) => (result.headers[key] = val));
   return result;

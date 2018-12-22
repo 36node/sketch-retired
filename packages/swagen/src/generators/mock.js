@@ -24,22 +24,22 @@ function generateId(capName, old = false) {
 
 function genDataFromType(name, property, capName) {
   let { type, format, enum: enum1, $ref } = property;
-  let salt = parseInt(Math.random() * 1000).toString()[1];
+  let salt = parseInt(Math.random() * 1000, 10).toString()[1];
   if ($ref) {
     let refName = $ref.split("/").pop();
     return generateId(refName, 1);
   }
-  if (name == "id") {
+  if (name === "id") {
     return generateId(capName);
   }
   if (enum1) {
-    return enum1[parseInt(enum1.length * Math.random())];
+    return enum1[parseInt(enum1.length * Math.random(), 10)];
   }
-  if (format == "date-time") {
+  if (format === "date-time") {
     return new Date();
-  } else if (type == "integer") {
+  } else if (type === "integer") {
     return salt;
-  } else if (type == "boolean") {
+  } else if (type === "boolean") {
     return true;
   }
   let map = {
@@ -56,7 +56,7 @@ function genJson(name, schemas, count) {
   const mapVFunc = (property, fieldName) =>
     genDataFromType(fieldName, property, capName);
   const mapVkey = ({ $ref }, fieldName) => fieldName + ($ref ? "Id" : "");
-  return new Array(parseInt(count)).fill(0).map(() =>
+  return new Array(parseInt(count, 10)).fill(0).map(() =>
     chain(schema.properties)
       .mapKeys(mapVkey)
       .mapValues(mapVFunc)
