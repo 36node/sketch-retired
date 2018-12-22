@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.3](https://github.com/36node/sketch/compare/@36node/swagen@0.9.2...@36node/swagen@0.9.3) (2018-12-22)
+
+
+### Bug Fixes
+
+* fetch should use create-error ([11972a8](https://github.com/36node/sketch/commit/11972a8))
+
+
+
+
+
 ## [0.9.2](https://github.com/36node/sketch/compare/@36node/swagen@0.9.1...@36node/swagen@0.9.2) (2018-12-21)
 
 **Note:** Version bump only for package @36node/swagen

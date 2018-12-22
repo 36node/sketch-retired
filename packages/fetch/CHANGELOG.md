@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.10](https://github.com/36node/sketch/compare/@36node/fetch@0.4.9...@36node/fetch@0.4.10) (2018-12-22)
+
+
+### Bug Fixes
+
+* fetch should use create-error ([11972a8](https://github.com/36node/sketch/commit/11972a8))
+
+
+
+
+
 ## [0.4.9](https://github.com/36node/sketch/compare/@36node/fetch@0.4.8...@36node/fetch@0.4.9) (2018-12-12)
 
 
