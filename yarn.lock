@@ -5,7 +5,6 @@
 "@36node/babel@0.2.0":
   version "0.2.0"
   resolved "http://registry.npm.taobao.org/@36node/babel/download/@36node/babel-0.2.0.tgz#1abcf2ea9fc1fcd90730787a6308e2d90552e2a7"
-  integrity sha1-Grzy6p/B/NkHMHh6Ywji2QVS4qc=
   dependencies:
     babel-cli "6.26.0"
     babel-core "6.26.0"
@@ -19,7 +18,6 @@
 "@36node/eslint-config@0.3.0":
   version "0.3.0"
   resolved "http://registry.npm.taobao.org/@36node/eslint-config/download/@36node/eslint-config-0.3.0.tgz#0bb24cffd04b62f2ae3c355ac0b1b09f32c76aeb"
-  integrity sha1-C7JM/9BLYvKuPDVawLGwnzLHaus=
   dependencies:
     eslint "4.10.0"
     eslint-config-prettier "^3.1.0"
@@ -1425,7 +1423,6 @@
 "@storybook/addon-actions@4.0.6":
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/@storybook/addon-actions/download/@storybook/addon-actions-4.0.6.tgz#7dd73f2308cef35a1de6d63e200b878c1acc88d5"
-  integrity sha1-fdc/IwjO81od5tY+IAuHjBrMiNU=
   dependencies:
     "@emotion/core" "^0.13.1"
     "@emotion/provider" "^0.11.2"
@@ -1444,7 +1441,6 @@
 "@storybook/addon-links@4.0.6":
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/@storybook/addon-links/download/@storybook/addon-links-4.0.6.tgz#63a2735005195c06f367cd9132a8b9c3065c9eac"
-  integrity sha1-Y6JzUAUZXAbzZ82RMqi5wwZcnqw=
   dependencies:
     "@storybook/addons" "4.0.6"
     "@storybook/components" "4.0.6"
@@ -1455,7 +1451,6 @@
 "@storybook/addons@4.0.6":
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/@storybook/addons/download/@storybook/addons-4.0.6.tgz#4af486c113145c46bbe0d8b5cf6efa04d005a00a"
-  integrity sha1-SvSGwRMUXEa74Ni1z276BNAFoAo=
   dependencies:
     "@storybook/channels" "4.0.6"
     "@storybook/components" "4.0.6"
@@ -1465,7 +1460,6 @@
 "@storybook/channel-postmessage@4.0.6":
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/@storybook/channel-postmessage/download/@storybook/channel-postmessage-4.0.6.tgz#8fe6261926b21b5349c3f27d1a356ec0e11b6fff"
-  integrity sha1-j+YmGSayG1NJw/J9GjVuwOEbb/8=
   dependencies:
     "@storybook/channels" "4.0.6"
     global "^4.3.2"
@@ -1474,17 +1468,14 @@
 "@storybook/channels@4.0.6":
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/@storybook/channels/download/@storybook/channels-4.0.6.tgz#479211c776fae9837d1537dd5468cfdf405ed49f"
-  integrity sha1-R5IRx3b66YN9FTfdVGjP30Be1J8=
 
 "@storybook/client-logger@4.0.6":
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/@storybook/client-logger/download/@storybook/client-logger-4.0.6.tgz#4c75fb555ac0c8ca6b543c9e0b6ee067d64c7d6f"
-  integrity sha1-THX7VVrAyMprVDyeC27gZ9ZMfW8=
 
 "@storybook/components@4.0.6":
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/@storybook/components/download/@storybook/components-4.0.6.tgz#9ff82a5b280295203f5ebabe1fb9668d7cf0e1b6"
-  integrity sha1-n/gqWygClSA/Xrq+H7lmjXzw4bY=
   dependencies:
     "@emotion/core" "^0.13.1"
     "@emotion/provider" "^0.11.2"
@@ -1500,12 +1491,10 @@
 "@storybook/core-events@4.0.6":
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/@storybook/core-events/download/@storybook/core-events-4.0.6.tgz#4023ac7caba3f087ff5572b807aa6d6cd102f560"
-  integrity sha1-QCOsfKuj8If/VXK4B6ptbNEC9WA=
 
 "@storybook/core@4.0.6":
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/@storybook/core/download/@storybook/core-4.0.6.tgz#592dbb2de0e70ff0eca47d70bb4c1797dc8d25af"
-  integrity sha1-WS27LeDnD/DspH1wu0wXl9yNJa8=
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.1.0"
     "@babel/plugin-transform-regenerator" "^7.0.0"
@@ -1578,7 +1567,6 @@
 "@storybook/node-logger@4.0.6":
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/@storybook/node-logger/download/@storybook/node-logger-4.0.6.tgz#d31d185219d110645f8f97679e21a3820bf66388"
-  integrity sha1-0x0YUhnREGRfj5dnniGjggv2Y4g=
   dependencies:
     "@babel/runtime" "^7.1.2"
     npmlog "^4.1.2"
@@ -1618,7 +1606,6 @@
 "@storybook/react@4.0.6":
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/@storybook/react/download/@storybook/react-4.0.6.tgz#1f44cf1571c02811361214bf8399286ea6cc61d3"
-  integrity sha1-H0TPFXHAKBE2EhS/g5kobqbMYdM=
   dependencies:
     "@babel/preset-flow" "^7.0.0"
     "@babel/preset-react" "^7.0.0"
@@ -1639,7 +1626,6 @@
 "@storybook/ui@4.0.6":
   version "4.0.6"
   resolved "http://registry.npm.taobao.org/@storybook/ui/download/@storybook/ui-4.0.6.tgz#640bb40335484293f805e4ce83246368a1b9cf7c"
-  integrity sha1-ZAu0AzVIQpP4BeTOgyRjaKG5z3w=
   dependencies:
     "@emotion/core" "^0.13.1"
     "@emotion/provider" "^0.11.2"
@@ -4535,14 +4521,6 @@ clean-css@4.2.x:
   dependencies:
     source-map "~0.6.0"
 
-clean-deep@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/clean-deep/-/clean-deep-3.0.2.tgz#1b7096822f289cc491ca6d85af5c028cbb22fc23"
-  dependencies:
-    lodash.isempty "^4.4.0"
-    lodash.isplainobject "^4.0.6"
-    lodash.transform "^4.6.0"
-
 clean-stack@^1.0.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/clean-stack/-/clean-stack-1.3.0.tgz#9e821501ae979986c46b1d66d2d432db2fd4ae31"
@@ -6204,7 +6182,6 @@ escope@^3.6.0:
 eslint-config-prettier@^3.1.0, eslint-config-prettier@^3.3.0:
   version "3.3.0"
   resolved "http://registry.npm.taobao.org/eslint-config-prettier/download/eslint-config-prettier-3.3.0.tgz#41afc8d3b852e757f06274ed6c44ca16f939a57d"
-  integrity sha1-Qa/I07hS51fwYnTtbETKFvk5pX0=
   dependencies:
     get-stdin "^6.0.0"
 
@@ -10084,10 +10061,6 @@ lodash.isboolean@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/lodash.isboolean/-/lodash.isboolean-3.0.3.tgz#6c2e171db2a257cd96802fd43b01b20d5f5870f6"
 
-lodash.isempty@^4.4.0:
-  version "4.4.0"
-  resolved "http://registry.npmjs.org/lodash.isempty/-/lodash.isempty-4.4.0.tgz#6f86cbedd8be4ec987be9aaf33c9684db1b31e7e"
-
 lodash.isequal@^4.0.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
@@ -10184,10 +10157,6 @@ lodash.throttle@^4.0.0:
 lodash.topairs@4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.topairs/-/lodash.topairs-4.3.0.tgz#3b6deaa37d60fb116713c46c5f17ea190ec48d64"
-
-lodash.transform@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.transform/-/lodash.transform-4.6.0.tgz#12306422f63324aed8483d3f38332b5f670547a0"
 
 lodash.union@~4.6.0:
   version "4.6.0"

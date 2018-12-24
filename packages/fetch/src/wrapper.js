@@ -1,5 +1,4 @@
 import { stringify } from "./query-string";
-import clean from "clean-deep";
 
 /**
  * A wrapper of fetch
@@ -9,27 +8,22 @@ import clean from "clean-deep";
  * @returns {Promise<object>} result {body, headers}
  */
 export default async function(url, opt = {}) {
-  let { query, body, headers = {} } = clean(opt);
-  let endpoint = query
-    ? `${url}?${stringify(query, { skipNulls: true })}`
-    : url;
+  let { query, body, headers = {} } = opt;
+  const search = stringify(query, { skipNulls: true });
+  const endpoint = search ? `${url}?${search}` : url;
 
   if (body) body = JSON.stringify(body);
-
   headers = {
     Accept: "application/json",
     "Content-Type": "application/json",
     ...headers,
   };
 
-  const res = await fetch(
-    endpoint,
-    clean({
-      ...opt,
-      body,
-      headers,
-    })
-  );
+  const res = await fetch(endpoint, {
+    ...opt,
+    body,
+    headers,
+  });
 
   const result = { headers: {} };
   if (res.statusText === "No Content") {
