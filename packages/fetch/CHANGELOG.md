@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.11](https://github.com/36node/sketch/compare/@36node/fetch@0.4.10...@36node/fetch@0.4.11) (2018-12-24)
+
+
+### Bug Fixes
+
+* fetch should not clean null or undefined body ([aa1c47e](https://github.com/36node/sketch/commit/aa1c47e))
+
+
+
+
+
 ## [0.4.10](https://github.com/36node/sketch/compare/@36node/fetch@0.4.9...@36node/fetch@0.4.10) (2018-12-22)
 
 

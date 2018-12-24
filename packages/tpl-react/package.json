@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-react",
-  "version": "0.8.28",
+  "version": "0.8.29",
   "description": "A react boilerplate for web",
   "license": "MIT",
   "publishConfig": {
@@ -64,7 +64,7 @@
     "standard-version": "^4.4.0"
   },
   "dependencies": {
-    "@36node/fetch": "^0.4.10",
+    "@36node/fetch": "^0.4.11",
     "antd": "^3.8.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

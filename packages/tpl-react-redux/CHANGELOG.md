@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.5](https://github.com/36node/tpl-react-redux/compare/@36node/template-react-redux@0.4.4...@36node/template-react-redux@0.4.5) (2018-12-24)
+
+**Note:** Version bump only for package @36node/template-react-redux
+
+
+
+
+
 ## [0.4.4](https://github.com/36node/tpl-react-redux/compare/@36node/template-react-redux@0.4.3...@36node/template-react-redux@0.4.4) (2018-12-22)
 
 **Note:** Version bump only for package @36node/template-react-redux
