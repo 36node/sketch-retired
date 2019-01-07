@@ -6,8 +6,8 @@ query-normalizr 的作用: 将 url 中的 query 规则化成方便 service 层�
 
 我们定义了:
 
-1.  [标准的 query in url 格式](../tpl-service/README.md##QueryInRoute).
-2.  [标准的 service 层 Query 数据格式](../tpl-service/README.md##QueryInService).
+1.  [标准的 query in url 格式](../docs/url.md##QueryInRoute).
+2.  [标准的 service 层 Query 数据格式](../docs/url.md##QueryInService).
 
 ## Install
 
