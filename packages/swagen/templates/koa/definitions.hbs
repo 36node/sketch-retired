@@ -4,14 +4,14 @@
 interface {{capitalize name}}Request  {
   {{#each parameters}}
   {{#is in "path"}}
-  {{name}}{{#unless required}}?{{/unless}}: {{schemaType schema}};
+  {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
   {{/is}}
   {{/each}}
   {{#withParamQuery parameters}}
   query: {
     {{#each parameters}}
     {{#is in "query"}}
-    {{name}}{{#unless required}}?{{/unless}}: {{schemaType schema}};
+    {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
     {{/is}}
     {{/each}}
   };
@@ -20,7 +20,7 @@ interface {{capitalize name}}Request  {
   headers: {
     {{#each parameters}}
     {{#is in "header"}}
-    {{name}}{{#unless required}}?{{/unless}}: {{schemaType schema}};
+    {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
     {{/is}}
     {{/each}}
   };
@@ -29,13 +29,13 @@ interface {{capitalize name}}Request  {
   cookies: {
     {{#each parameters}}
     {{#is in "cookie"}}
-    {{name}}{{#unless required}}?{{/unless}}: {{schemaType schema}};
+    {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
     {{/is}}
     {{/each}}
   };
   {{/withParamCookie}}
   {{#with requestBody}}
-  body: {{schemaType content.schema}};
+  body: {{{schemaType content.schema}}};
   {{/with}}
   context?: Object;
 };
