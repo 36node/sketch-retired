@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.4](https://github.com/36node/sketch/compare/@36node/swagen@0.9.3...@36node/swagen@0.9.4) (2019-01-08)
+
+
+### Bug Fixes
+
+* swagen postman support allOf ([#53](https://github.com/36node/sketch/issues/53)) ([48160ed](https://github.com/36node/sketch/commit/48160ed))
+* swagen sdk request type escape ([63b8614](https://github.com/36node/sketch/commit/63b8614))
+
+
+
+
+
 ## [0.9.3](https://github.com/36node/sketch/compare/@36node/swagen@0.9.2...@36node/swagen@0.9.3) (2018-12-22)
 
 
