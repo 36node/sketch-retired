@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.5](https://github.com/36node/sketch/compare/@36node/swagen@0.9.4...@36node/swagen@0.9.5) (2019-01-08)
+
+
+### Bug Fixes
+
+* **swagen:** gen api array type escape ([c2d5a4c](https://github.com/36node/sketch/commit/c2d5a4c))
+
+
+
+
+
 ## [0.9.4](https://github.com/36node/sketch/compare/@36node/swagen@0.9.3...@36node/swagen@0.9.4) (2019-01-08)
 
 
