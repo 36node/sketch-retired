@@ -1,4 +1,4 @@
-# @36node/template-module
+# @36node/template-sdk
 
 [![version][0]][1] [![downloads][2]][3]
 
@@ -11,7 +11,7 @@ yarn add module
 ## Usage
 
 ```js
-import module from "module";
+const module = require("module");
 
 module();
 //=> foo
@@ -31,9 +31,9 @@ module();
 
 Authored and maintained by 36node with help from contributors ([list](https://github.com/36node/module/contributors)).
 
-> [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
+> GitHub [@36node](https://github.com/36node)
 
-[0]: https://img.shields.io/npm/v/@36node/template-module.svg?style=flat
-[1]: https://npmjs.com/package/@36node/template-module
-[2]: https://img.shields.io/npm/dm/@36node/template-module.svg?style=flat
-[3]: https://npmjs.com/package/@36node/template-module
+[0]: https://img.shields.io/npm/v/@36node/template-sdk.svg?style=flat
+[1]: https://npmjs.com/package/@36node/template-sdk
+[2]: https://img.shields.io/npm/dm/@36node/template-sdk.svg?style=flat
+[3]: https://npmjs.com/package/@36node/template-sdk

@@ -1,0 +1,62 @@
+{
+  "name": "@36node/template-sdk",
+  "version": "0.4.7",
+  "description": "A sdk boilerplate.",
+  "repository": {
+    "url": "36node/sketch",
+    "type": "git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "src",
+    ".circleci",
+    "README.md"
+  ],
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "build": "microbundle build",
+    "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
+    "lint": "eslint src",
+    "release": "standard-version && git push --follow-tags origin master",
+    "test": "jest --silent"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint && npm run test"
+    }
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@36node/babel": "^0.2.2",
+    "@36node/eslint-config": "^0.3.4",
+    "@commitlint/cli": "^6.1.0",
+    "@commitlint/config-conventional": "^6.1.0",
+    "husky": "^1.0.0-rc.13",
+    "jest": "20.0.4",
+    "lint-staged": "^7.2.0",
+    "microbundle": "^0.6.0",
+    "prettier": "^1.13.7",
+    "standard-version": "^4.4.0"
+  }
+}
