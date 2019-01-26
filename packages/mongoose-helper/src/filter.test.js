@@ -44,3 +44,8 @@ test("should build filter q", () => {
   };
   expect(build(raw)).toEqual({ $text: { $search: "hello" } });
 });
+
+test("should convert id to _id", () => {
+  const raw = { id: "xxxxxx" };
+  expect(build(raw)).toEqual({ _id: "xxxxxx" });
+});

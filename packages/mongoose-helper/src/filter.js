@@ -57,5 +57,7 @@ export default function build(raw, schema) {
     return acc;
   }, {});
 
-  return camelizeKeys(filter);
+  return camelizeKeys(filter, (key, convert) =>
+    key === "id" ? "_id" : convert(key)
+  );
 }
