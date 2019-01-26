@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.9](https://github.com/36node/mongoose-helper/compare/@36node/mongoose-helper@0.1.8...@36node/mongoose-helper@0.1.9) (2019-01-26)
+
+
+### Bug Fixes
+
+* mongoose-helper convert id to _id ([f2b6788](https://github.com/36node/mongoose-helper/commit/f2b6788))
+
+
+
+
+
 ## [0.1.8](https://github.com/36node/mongoose-helper/compare/@36node/mongoose-helper@0.1.7...@36node/mongoose-helper@0.1.8) (2018-12-19)
 
 

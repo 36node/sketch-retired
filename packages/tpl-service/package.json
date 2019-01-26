@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-service",
-  "version": "0.7.26",
+  "version": "0.7.27",
   "description": "A service boilerplate with openapi,rest and mongodb.",
   "repository": {
     "url": "36node/sketch",
@@ -75,7 +75,7 @@
     "standard-version": "^4.4.0"
   },
   "dependencies": {
-    "@36node/mongoose-helper": "^0.1.8",
+    "@36node/mongoose-helper": "^0.1.9",
     "@koa/cors": "^2.2.2",
     "@types/koa": "^2.0.46",
     "@types/mongoose": "^5.2.19",
