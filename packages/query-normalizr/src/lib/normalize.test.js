@@ -63,15 +63,10 @@ describe("Test normalize", () => {
     expect(ret.filter.tag).toEqual({ $ne: "pretty" });
   });
 
-  it("should parse full text search", () => {
-    testQuery += "&q=internet";
-    const ret = normalize(querystring.parse(testQuery));
-    expect(ret.filter.$text).toEqual({ $search: "internet" });
-  });
-
   it("should parse array wildcard", () => {
     testQuery += "&assignees=*&followers=none";
     const ret = normalize(querystring.parse(testQuery));
+    console.log(ret);
 
     expect(ret.filter.assignees).toEqual({ $ne: [] });
     expect(ret.filter.followers).toEqual({ $eq: [] });

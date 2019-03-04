@@ -138,8 +138,6 @@ qs.stringfy(denormalize(queryObj));
 
 ## What is query normalizr
 
-![image](https://user-images.githubusercontent.com/4343458/53739979-0c2d6f00-3ece-11e9-9c32-9516ecea9c25.png)
-
 ### Query in route (QIR)
 
 #### Array
