@@ -2,12 +2,7 @@
 
 [![version][0]][1] [![downloads][2]][3]
 
-query-normalizr 的作用: 将 url 中的 query 规则化成方便 service 层调用的数据格式。
-
-我们定义了:
-
-1.  [标准的 query in url 格式](../docs/url.md##QueryInRoute).
-2.  [标准的 service 层 Query 数据格式](../docs/url.md##QueryInService).
+query-normalizr 的作用: 将 url 中的 query 规则化成方便 sdk  和 service 层调用的数据格式。
 
 ## Install
 
@@ -142,6 +137,8 @@ qs.stringfy(denormalize(queryObj));
 ```
 
 ## What is query normalizr
+
+![image](https://user-images.githubusercontent.com/4343458/53739979-0c2d6f00-3ece-11e9-9c32-9516ecea9c25.png)
 
 ### Query in route (QIR)
 
