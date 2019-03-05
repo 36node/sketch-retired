@@ -66,7 +66,6 @@ describe("Test normalize", () => {
   it("should parse array wildcard", () => {
     testQuery += "&assignees=*&followers=none";
     const ret = normalize(querystring.parse(testQuery));
-    console.log(ret);
 
     expect(ret.filter.assignees).toEqual({ $ne: [] });
     expect(ret.filter.followers).toEqual({ $eq: [] });
