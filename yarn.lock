@@ -12672,14 +12672,6 @@ query-string@^6.1.0:
     decode-uri-component "^0.2.0"
     strict-uri-encode "^2.0.0"
 
-query-string@^6.3.0:
-  version "6.3.0"
-  resolved "http://registry.npm.taobao.org/query-string/download/query-string-6.3.0.tgz#41ae8a61e1213c80b182d5db6cf129e05af89fc5"
-  integrity sha1-Qa6KYeEhPICxgtXbbPEp4Fr4n8U=
-  dependencies:
-    decode-uri-component "^0.2.0"
-    strict-uri-encode "^2.0.0"
-
 querystring-es3@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"

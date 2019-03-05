@@ -1,5 +1,5 @@
 import denormalize from "./denormalize";
-import querystring from "query-string";
+
 let testObj = {};
 describe("Test denormalize", () => {
   it("should parse pagination", () => {
@@ -8,8 +8,6 @@ describe("Test denormalize", () => {
 
     expect(ret._limit).toBe(10);
     expect(ret._offset).toBe(0);
-
-    console.log(querystring.stringify(ret));
   });
 
   it("should parse sort", () => {
@@ -18,7 +16,6 @@ describe("Test denormalize", () => {
     expect(ret._sort).toEqual(
       expect.arrayContaining(["updatedAt", "-createdAt"])
     );
-    console.log(querystring.stringify(ret));
   });
 
   it("should parse populate", () => {
@@ -26,21 +23,18 @@ describe("Test denormalize", () => {
 
     const ret = denormalize(testObj);
     expect(ret._populate).toEqual("user");
-    console.log(querystring.stringify(ret));
   });
 
   it("should parse select", () => {
     testObj = { ...testObj, ...{ select: ["name", "age"] } };
     const ret = denormalize(testObj);
     expect(ret._select).toEqual(expect.arrayContaining(["name", "age"]));
-    console.log(querystring.stringify(ret));
   });
 
   it("should parse group", () => {
     testObj = { ...testObj, ...{ group: "type" } };
     const ret = denormalize(testObj);
     expect(ret._group).toEqual("type");
-    console.log(querystring.stringify(ret));
   });
 
   it("should parse array filter", () => {
@@ -57,7 +51,6 @@ describe("Test denormalize", () => {
     };
     const ret = denormalize(testObj);
     expect(ret.type).toEqual(expect.arrayContaining(["test1", "test2"]));
-    console.log(querystring.stringify(ret));
   });
 
   it("should parse gt,lt,gte,lte,ne ", () => {
@@ -81,7 +74,6 @@ describe("Test denormalize", () => {
     expect(ret.level_gte).toEqual("10");
     expect(ret.level_lte).toEqual("20");
     expect(ret.tag_ne).toEqual("pretty");
-    console.log(querystring.stringify(ret));
   });
 
   it("should parse full text search", () => {
@@ -99,7 +91,6 @@ describe("Test denormalize", () => {
     const ret = denormalize(testObj);
 
     expect(ret.q).toEqual("hello");
-    console.log(querystring.stringify(ret));
   });
 
   it("should parse array wildcard", () => {
@@ -118,7 +109,6 @@ describe("Test denormalize", () => {
 
     expect(ret.assignees).toEqual("*");
     expect(ret.followers).toEqual("none");
-    console.log(querystring.stringify(ret));
   });
 
   it("should test like", () => {
@@ -138,7 +128,6 @@ describe("Test denormalize", () => {
 
     expect(ret.title_like).toEqual("hello");
     expect(ret.plate_like).toEqual("沪A");
-    console.log(querystring.stringify(ret));
   });
 
   it("should parse custom", () => {
@@ -148,6 +137,5 @@ describe("Test denormalize", () => {
     };
     const ret = denormalize(testObj);
     expect(ret._expand).toEqual("department");
-    console.log(querystring.stringify(ret));
   });
 });
