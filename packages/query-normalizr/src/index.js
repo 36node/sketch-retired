@@ -1,6 +1,6 @@
-import * as math from "./math.js";
+import middleware from "./koa";
 
-export const doAdd = (a, b) => math.add(a, b);
-export const doSubtract = (a, b) => math.subtract(a, b);
-export const doMultiply = (a, b) => math.multiply(a, b);
-export const doDivide = (a, b) => math.divide(a, b);
+export default middleware;
+
+export { default as normalize } from "./lib/normalize";
+export { default as denormalize } from "./lib/denormalize";
