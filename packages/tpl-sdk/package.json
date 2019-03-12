@@ -1,7 +1,7 @@
 {
   "name": "@36node/template-sdk",
   "version": "0.5.0",
-  "description": "A sdk boilerplate.",
+  "description": "A SDK boilerplate.",
   "repository": {
     "url": "36node/sketch",
     "type": "git"
@@ -17,11 +17,12 @@
     "README.md"
   ],
   "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
   "module": "dist/index.mjs",
+  "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "microbundle build",
+    "build": "microbundle build --format cjs,es",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
+    "gen:sdk": "swagen sdk https://api.36node.com/petstore/v0/openapi.yaml ./src index && npm run format",
     "lint": "eslint src",
     "release": "standard-version && git push --follow-tags origin master",
     "test": "jest --silent"
@@ -50,13 +51,17 @@
   "devDependencies": {
     "@36node/babel": "^0.2.2",
     "@36node/eslint-config": "^0.3.4",
+    "@36node/swagen": "^0.9.5",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
     "husky": "^1.0.0-rc.13",
     "jest": "20.0.4",
     "lint-staged": "^7.2.0",
-    "microbundle": "^0.6.0",
+    "microbundle": "0.11.0",
     "prettier": "^1.13.7",
     "standard-version": "^4.4.0"
+  },
+  "dependencies": {
+    "@36node/fetch": "^0.4.11"
   }
 }
