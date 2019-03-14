@@ -24,6 +24,5 @@ module.exports = {
 
   rules: {
     "prettier/prettier": "error",
-    "jsx-a11y/href-no-hash": [0],
   },
 };

@@ -1,0 +1,27 @@
+{
+  "name": "@36node/redux-api",
+  "version": "0.0.0",
+  "description": "redux api module",
+  "repository": {
+    "url": "36node/redux-api",
+    "type": "git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "typings"
+  ],
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "test": "jest --silent --env=node"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "normalizr": "^3.3.0",
+    "redux-saga": "^0.16.2"
+  }
+}

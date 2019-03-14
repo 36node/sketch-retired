@@ -20,8 +20,7 @@
     "swagen": "bin/swagen.js"
   },
   "scripts": {
-    "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
-    "dev": "babel ./src -d ./dist --ignore test.js -w",
+    "build": "microbundle build --format cjs,es",
     "test": "jest --silent"
   },
   "dependencies": {

@@ -17,10 +17,10 @@
     "README.md"
   ],
   "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
   "module": "dist/index.mjs",
+  "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "microbundle build",
+    "build": "microbundle build --format cjs,es",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "lint": "eslint src",
     "release": "standard-version && git push --follow-tags origin master",
@@ -48,7 +48,6 @@
     ]
   },
   "devDependencies": {
-    "@36node/babel": "^0.2.2",
     "@36node/eslint-config": "^0.3.4",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",

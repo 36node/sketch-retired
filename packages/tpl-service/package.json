@@ -24,7 +24,6 @@
   "main": "dist/index.js",
   "scripts": {
     "bootstrap": "bin/bootstrap.sh",
-    "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "gen:api": "swagen koa openapi.yml ./src/api && npm run format",
     "gen:db": "babel-node bin/initdb.js",
@@ -57,7 +56,6 @@
     ]
   },
   "devDependencies": {
-    "@36node/babel": "^0.2.2",
     "@36node/eslint-config": "^0.3.4",
     "@36node/swagen": "^0.9.5",
     "@commitlint/cli": "^6.1.0",
