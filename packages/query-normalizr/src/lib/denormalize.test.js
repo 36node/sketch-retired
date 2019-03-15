@@ -111,7 +111,7 @@ describe("Test denormalize", () => {
       },
     };
 
-    const ret = denormalize(tesTObj);
+    const ret = denormalize(testObj);
 
     expect(ret.title_like).toEqual("hello");
     expect(ret.plate_like).toEqual("沪A");

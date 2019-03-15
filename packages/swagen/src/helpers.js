@@ -1,6 +1,7 @@
 import Handlebars from "handlebars";
 import hbsHelper from "handlebars-helpers";
 import { upperFirst, get } from "lodash";
+import { normalize } from "@36node/query-normalizr";
 
 hbsHelper({
   handlebars: Handlebars,
@@ -16,6 +17,7 @@ export function getSchemaType(schema = {}) {
   let { type, $ref, items, properties = {} } = schema;
 
   if (type === "integer") return "number";
+  if (type === "float") return "number";
   if (type === "array") {
     return `Array<${getSchemaType(items)}>`;
   }
@@ -108,6 +110,92 @@ export function requireParamType(parameters = [], type) {
   return false;
 }
 
+export function normalizeQuery(parameters = []) {
+  const queryParams = parameters.filter(p => p.in === "query");
+
+  // 将query params 转换成可以被 normalize 转换的数据格式
+  const mockQuery = {};
+  for (let p of queryParams) {
+    mockQuery[p.name] = p.name;
+  }
+
+  const normalized = normalize(mockQuery);
+
+  const { filter = {}, ...rest } = normalized;
+
+  const isRegExp = o => {
+    return (
+      typeof o !== "undefined" &&
+      Object.prototype.toString.call(o) === "[object RegExp]"
+    );
+  };
+
+  const getParam = name => {
+    if (!isRegExp(name)) {
+      return queryParams.find(p => p.name === name);
+    } else {
+      // 如果是正则表达式 _like, 则特殊处理
+      return queryParams.find(p => p.name === name.source);
+    }
+  };
+
+  const params = Object.keys(rest).map(k => {
+    const param = getParam(rest[k]);
+    return {
+      ...param,
+      name: k,
+    };
+  });
+
+  const filters = Object.keys(filter).map(k => {
+    const param = getParam(k);
+    if (param) return param;
+    else {
+      const f = filter[k];
+      const opers = Object.keys(f).map(o => {
+        return {
+          ...getParam(f[o]),
+          name: o,
+        };
+      });
+
+      return {
+        name: k,
+        operators: opers,
+      };
+    }
+  });
+
+  const tpl = `
+  query:{
+    {{#each params}}
+    {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
+    {{/each}}
+
+    {{#if filters}}
+    filter:{
+      {{#each filters}}
+        {{#if (not operators)}}
+        {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
+        {{/if}}
+        {{#if operators}}
+        {{name}}: {
+          {{#each operators}}
+            {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
+          {{/each}}
+        }
+        {{/if}}
+      {{/each}}
+    }
+    {{/if}}
+  }
+  `;
+
+  const template = Handlebars.compile(tpl);
+  const content = template({ params, filters });
+  return content;
+}
+
 /**
  * Handlebars helpers
  */
@@ -124,6 +212,10 @@ Handlebars.registerHelper("withParamQuery", function(parameters, options) {
   return hasParamType(parameters, "query")
     ? options.fn(this)
     : options.inverse(this);
+});
+
+Handlebars.registerHelper("normalizeQuery", function(parameters) {
+  return normalizeQuery(parameters);
 });
 
 Handlebars.registerHelper("withParamHeader", function(parameters, options) {

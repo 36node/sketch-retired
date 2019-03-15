@@ -64,7 +64,7 @@ export function generateTemplate(tplFile, data) {
 export function generateFile(tplFile, toFile, data, prettierOpts = {}) {
   const parsed_content = generateTemplate(tplFile, data);
   const defaultPrettierOpts = {
-    parser: "babylon",
+    parser: "babel",
     printWidth: 100,
     trailingComma: "es5",
   };

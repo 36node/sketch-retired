@@ -1,4 +1,4 @@
-import { hasJsonBody, getJsonBodySchema } from "./helpers";
+import { hasJsonBody, getJsonBodySchema, normalizeQuery } from "./helpers";
 
 const postOperation = {
   method: "post",
@@ -79,10 +79,138 @@ const deleteOperation = {
   },
 };
 
+const ListParams = [
+  {
+    name: "id",
+    in: "path",
+    description: "ID of pet to delete",
+    required: true,
+    schema: {
+      type: "integer",
+      format: "int64",
+    },
+  },
+  {
+    name: "_sort",
+    in: "query",
+    schema: {
+      type: "array",
+      items: {
+        type: "string",
+      },
+    },
+  },
+  {
+    name: "_limit",
+    in: "query",
+    description: "How many items to return at one time (max 100)",
+    schema: {
+      type: "integer",
+      format: "int64",
+      default: 10,
+    },
+  },
+  {
+    name: "_offset",
+    in: "query",
+    description: "How many items to return at one time (max 100)",
+    schema: {
+      type: "integer",
+      format: "int64",
+      default: 10,
+    },
+  },
+  {
+    name: "_group",
+    in: "query",
+    schema: {
+      type: "string",
+    },
+  },
+  {
+    name: "_exist",
+    in: "query",
+    schema: {
+      type: "string",
+    },
+  },
+  {
+    name: "tag",
+    in: "query",
+    description: "Pet tags",
+    schema: {
+      type: "array",
+      items: {
+        type: "string",
+      },
+    },
+  },
+  {
+    name: "age_gt",
+    in: "query",
+    description: "Pet age_gt",
+    schema: {
+      type: "integer",
+      format: "int32",
+    },
+  },
+  {
+    name: "age_lt",
+    in: "query",
+    description: "Pet age_lt",
+    schema: {
+      type: "integer",
+      format: "int32",
+    },
+  },
+  {
+    name: "level_gte",
+    in: "query",
+    schema: {
+      type: "integer",
+      format: "int32",
+    },
+  },
+  {
+    name: "level_lte",
+    in: "query",
+    schema: {
+      type: "integer",
+      format: "int32",
+    },
+  },
+  {
+    name: "type",
+    in: "query",
+    schema: {
+      type: "array",
+      items: {
+        type: "string",
+      },
+    },
+  },
+  {
+    name: "plate_like",
+    in: "query",
+    schema: {
+      type: "string",
+    },
+  },
+];
+
 test("Shoule get json body from operation", () => {
   expect(hasJsonBody(postOperation)).toBe(true);
   expect(getJsonBodySchema(postOperation)).not.toBe(null);
 
   expect(hasJsonBody(deleteOperation)).toBe(false);
   expect(getJsonBodySchema(deleteOperation)).toBe(null);
+});
+
+test("Should normalize query", () => {
+  const ret = normalizeQuery(ListParams);
+
+  console.log(ret);
+
+  const emptyRet = normalizeQuery([]);
+  console.log(emptyRet);
 });
