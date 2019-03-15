@@ -1,4 +1,5 @@
 import { isNil } from "lodash";
+import { safeToNumber } from "./util";
 
 /**
  * 根据key 和 operator 生成 key
@@ -23,8 +24,8 @@ export default function denormalize(queryObj = {}) {
 
   const ret = {};
 
-  if (!isNil(limit)) ret._limit = Number(limit);
-  if (!isNil(offset)) ret._offset = Number(offset);
+  if (!isNil(limit)) ret._limit = safeToNumber(limit);
+  if (!isNil(offset)) ret._offset = safeToNumber(offset);
   if (!isNil(sort)) ret._sort = sort;
   if (!isNil(populate)) ret._populate = populate;
   if (!isNil(select)) ret._select = select;
@@ -33,13 +34,7 @@ export default function denormalize(queryObj = {}) {
   for (const key in filter) {
     const val = filter[key];
 
-    // full text search
-    if (key === "$text") {
-      ret["q"] = val.$search;
-      continue;
-    }
-
-    if (typeof val !== "object") {
+    if (typeof val !== "object" || Array.isArray(val)) {
       ret[key] = val;
     } else {
       // handle operator
@@ -49,32 +44,12 @@ export default function denormalize(queryObj = {}) {
           case "$gt":
           case "$lte":
           case "$gte":
+          case "$ne":
             ret[keyWithOperator(key, operator)] = val[operator];
             break;
-          case "$in":
-            ret[key] = val[operator];
-            break;
-          case "$ne":
-            // Array wildcard *
-            if (Array.isArray(val[operator]) && val[operator].length === 0) {
-              ret[key] = "*";
-            } else {
-              ret[keyWithOperator(key, operator)] = val[operator];
-            }
-            break;
-          case "$eq":
-            // Array wildcard none
-            if (Array.isArray(val[operator]) && val[operator].length === 0) {
-              ret[key] = "none";
-            } else {
-              ret[keyWithOperator(key, operator)] = val[operator];
-            }
-            break;
-          // like
           case "$regex":
             ret[keyWithOperator(key, "$like")] = val[operator].source;
             break;
-
           default:
             break;
         }

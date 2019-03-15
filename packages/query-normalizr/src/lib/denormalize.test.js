@@ -1,7 +1,29 @@
 import denormalize from "./denormalize";
+import querystring from "querystring";
 
 let testObj = {};
 describe("Test denormalize", () => {
+  it("should parse single array", () => {
+    const queryObject = {
+      type: ["type1"],
+    };
+    const ret = denormalize(queryObject);
+
+    console.log(querystring.stringify(ret));
+  });
+
+  it("Should safe to number", () => {
+    const queryObj = {
+      limit: "abc",
+      offset: "foo",
+    };
+
+    const ret = denormalize(queryObj);
+
+    expect(ret._limit).toBe("abc");
+    expect(ret._offset).toBe("foo");
+  });
+
   it("should parse pagination", () => {
     testObj = { ...testObj, ...{ limit: 10, offset: 0 } };
     const ret = denormalize(testObj);
@@ -45,7 +67,7 @@ describe("Test denormalize", () => {
       ...{
         filter: {
           ...filter,
-          type: { $in: ["test1", "test2"] },
+          type: ["test1", "test2"],
         },
       },
     };
@@ -76,41 +98,6 @@ describe("Test denormalize", () => {
     expect(ret.tag_ne).toEqual("pretty");
   });
 
-  it("should parse full text search", () => {
-    const { filter = {} } = testObj;
-
-    testObj = {
-      ...testObj,
-      ...{
-        filter: {
-          ...filter,
-          $text: { $search: "hello" },
-        },
-      },
-    };
-    const ret = denormalize(testObj);
-
-    expect(ret.q).toEqual("hello");
-  });
-
-  it("should parse array wildcard", () => {
-    const { filter = {} } = testObj;
-    testObj = {
-      ...testObj,
-      ...{
-        filter: {
-          ...filter,
-          assignees: { $ne: [] },
-          followers: { $eq: [] },
-        },
-      },
-    };
-    const ret = denormalize(testObj);
-
-    expect(ret.assignees).toEqual("*");
-    expect(ret.followers).toEqual("none");
-  });
-
   it("should test like", () => {
     const { filter = {} } = testObj;
     testObj = {
@@ -137,5 +124,7 @@ describe("Test denormalize", () => {
     };
     const ret = denormalize(testObj);
     expect(ret._expand).toEqual("department");
+
+    console.log(querystring.stringify(ret));
   });
 });

@@ -1,6 +1,6 @@
 {
   "name": "@36node/query-normalizr",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A module boilerplate for nodejs and web.",
   "repository": {
     "url": "36node/query-normalizr",
@@ -20,7 +20,8 @@
   "typings": "typings/index.d.ts",
   "scripts": {
     "build": "microbundle build --format cjs,es",
-    "test": "jest --silent"
+    "test": "jest --silent",
+    "dev": "babel ./src -d ./dist --ignore test.js -w"
   },
   "jest": {
     "testEnvironment": "node"

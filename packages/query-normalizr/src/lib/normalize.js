@@ -1,5 +1,6 @@
 import { pickBy, startsWith, isNil, isEmpty } from "lodash";
 import { camelizeKeys } from "humps";
+import { safeToNumber } from "./util";
 
 /**
  * 将标准url中的query 格式转换成 标准 query object
@@ -20,8 +21,8 @@ export default function normalize(fromUrl) {
     ...custom
   } = others;
 
-  if (!isNil(_limit)) ret.limit = Number(_limit);
-  if (!isNil(_offset)) ret.offset = Number(_offset);
+  if (!isNil(_limit)) ret.limit = safeToNumber(_limit);
+  if (!isNil(_offset)) ret.offset = safeToNumber(_offset);
   if (!isNil(_sort)) ret.sort = _sort;
   if (!isNil(_populate)) ret.populate = _populate;
   if (!isNil(_select)) ret.select = _select;
@@ -34,7 +35,8 @@ export default function normalize(fromUrl) {
     if (!val) return acc;
 
     if (Array.isArray(val)) {
-      acc[key] = { $in: val };
+      // acc[key] = { $in: val };
+      acc[key] = val;
       return acc;
     }
 
@@ -61,13 +63,8 @@ export default function normalize(fromUrl) {
       const path = match[1];
       acc[path] = { $regex: new RegExp(val, "i") };
       return acc;
-    }
-
-    if (key === "q") acc["$text"] = { $search: val };
-    else if (val === "true") acc[key] = true;
+    } else if (val === "true") acc[key] = true;
     else if (val === "false") acc[key] = false;
-    else if (val === "*") acc[key] = { $ne: [] };
-    else if (val === "none") acc[key] = { $eq: [] };
     else acc[key] = val;
 
     return acc;
