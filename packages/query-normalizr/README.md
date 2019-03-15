@@ -2,7 +2,7 @@
 
 [![version][0]][1] [![downloads][2]][3]
 
-query-normalizr 的作用: 将 url 中的 query 规则化成方便 sdk  和 service 层调用的数据格式。
+query-normalizr 的作用: 将 url 中的 query 规则化成方便 sdk 和 service 层调用的数据格式。
 
 ## Install
 
@@ -13,10 +13,10 @@ yarn add @36node/query-normalizr
 ## Usage
 
 ```js
-import normalizr from "@36node/query-normalizr";
+import { QueryNormalizr } from "@36node/query-normalizr";
 
 // koa app
-app.use(normalizr(options));
+app.use(normalizr(QueryNormalizr));
 ```
 
 ## API
@@ -36,7 +36,7 @@ import { normalize } from "@36node/query-normalizr";
 import qs from "query-string";
 
 const queryStr =
-  " _expand=department&_group=type&_limit=10&_offset=0&_populate=user&_select=name&_select=age&_sort=updatedAt&_sort=-createdAt&age_gt=10&age_lt=20&assignees=*&followers=none&level_gte=10&level_lte=20&plate_like=沪A&q=hello&tag_ne=pretty&title_like=hello&type=test1&type=test2";
+  " _expand=department&_group=type&_limit=10&_offset=0&_populate=user&_select=name&_select=age&_sort=updatedAt&_sort=-createdAt&age_gt=10&age_lt=20&level_gte=10&level_lte=20&plate_like=沪A&tag_ne=pretty&title_like=hello&type=test1&type=test2";
 
 normalize(qs.parse(queryStr));
 
@@ -53,12 +53,6 @@ return {
       $gt: "10",
       $lt: "20",
     },
-    assignees: {
-      $ne: [],
-    },
-    followers: {
-      $eq: [],
-    },
     level: {
       $gte: "10",
       $lte: "20",
@@ -66,18 +60,13 @@ return {
     plate: {
       $regex: {},
     },
-    $text: {
-      $search: "internet",
-    },
     tag: {
       $ne: "pretty",
     },
     title: {
       $regex: {},
     },
-    type: {
-      $in: ["test1", "test2"],
-    },
+    type: ["test1", "test2"] 
   },
   _expand: "department",
 };
@@ -102,12 +91,6 @@ const queryObj = {
       $gt: "10",
       $lt: "20",
     },
-    assignees: {
-      $ne: [],
-    },
-    followers: {
-      $eq: [],
-    },
     level: {
       $gte: "10",
       $lte: "20",
@@ -115,18 +98,13 @@ const queryObj = {
     plate: {
       $regex: {},
     },
-    $text: {
-      $search: "internet",
-    },
     tag: {
       $ne: "pretty",
     },
     title: {
       $regex: {},
     },
-    type: {
-      $in: ["test1", "test2"],
-    },
+    type: ["test1", "test2"],
   },
   _expand: "department",
 };
@@ -212,21 +190,6 @@ Add `_like` to filter (RegExp supported)
 GET /posts?title_like=server
 ```
 
-### Array wildcard
-
-If a field is an array, like:
-
-1. `assignees=*` means assignees has at least one member.
-2. `assignees=none` means assignees is an empty array.
-
-### Full-text search
-
-Add `q`
-
-```curl
-GET /posts?q=internet
-```
-
 #### Select
 
 Specifies which document fields to include or exclude
@@ -263,9 +226,6 @@ or list the fields to exclude (which implies all other fields are included).
     title: {
       $regex: /^hello .* world$/i,  // like
     },
-    assignees: { $ne: [] }, // *
-    followers: { $eq: [] }, // none
-    $text: { $search: "hello" },  // q
   }
 }
 ```

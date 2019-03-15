@@ -4,6 +4,15 @@ import normalize from "./normalize";
 let testQuery = "";
 
 describe("Test normalize", () => {
+  it("Should safe to number", () => {
+    const queryUrl = "_limit=abc&_offset=foo";
+
+    const ret = normalize(querystring.parse(queryUrl));
+
+    expect(ret.limit).toBe("abc");
+    expect(ret.offset).toBe("foo");
+  });
+
   it("Should parse pagination", () => {
     testQuery += "_limit=10&_offset=0";
 
@@ -44,9 +53,7 @@ describe("Test normalize", () => {
     testQuery += "&type=test1&type=test2";
     const ret = normalize(querystring.parse(testQuery));
 
-    expect(ret.filter.type.$in).toEqual(
-      expect.arrayContaining(["test1", "test2"])
-    );
+    expect(ret.filter.type).toEqual(expect.arrayContaining(["test1", "test2"]));
   });
 
   it("should parse gt,lt,gte,lte,ne", () => {
@@ -63,14 +70,6 @@ describe("Test normalize", () => {
     expect(ret.filter.tag).toEqual({ $ne: "pretty" });
   });
 
-  it("should parse array wildcard", () => {
-    testQuery += "&assignees=*&followers=none";
-    const ret = normalize(querystring.parse(testQuery));
-
-    expect(ret.filter.assignees).toEqual({ $ne: [] });
-    expect(ret.filter.followers).toEqual({ $eq: [] });
-  });
-
   it("should parse like", () => {
     testQuery += "&title_like=hello&plate_like=沪A";
     const ret = normalize(querystring.parse(testQuery));
@@ -83,5 +82,7 @@ describe("Test normalize", () => {
     const ret = normalize(querystring.parse(testQuery));
 
     expect(ret._expand).toEqual("department");
+
+    console.log(JSON.stringify(ret, null, 2));
   });
 });
