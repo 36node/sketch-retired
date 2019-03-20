@@ -9,7 +9,7 @@ const jsonServer = require("json-server");
 const pause = require("connect-pause");
 const importCwd = require("import-cwd");
 
-const stopMock = process.env.MOCK === "false";
+const stopMock = process.env.MOCK === "false" || process.env.MOCK === "FALSE";
 const antdTheme = importCwd.silent("./antd.theme") || {};
 const defaultServerOpts = { delay: 500 };
 const { serverOpts = defaultServerOpts, db = {}, rewrite = {} } =

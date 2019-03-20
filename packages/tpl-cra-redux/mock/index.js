@@ -17,7 +17,7 @@ module.exports = {
    * mock data
    */
   db: {
-    pets: fakePets,
+    pets: fakePets(10),
   },
 
   /**
