@@ -24,7 +24,11 @@ export default class extends React.PureComponent {
         <MediaQuery maxDeviceWidth={800}>
           <Jumbotron> Welcome </Jumbotron>
         </MediaQuery>
-        <p> We are the core team of Adventurer.tech company. </p>
+        <p>
+          {" "}
+          We are the core team of
+          <a href="https://www.adventurer.tech"> Adventurer Tech Company. </a>
+        </p>
         <Button onClick={this.handleLogout}> Try Logout </Button>
       </Container>
     );

@@ -23,10 +23,7 @@ const publicKey = fs.readFileSync(path.join(__dirname, "../ssl/rsa_jwt.pub"));
  */
 
 mongoose.Promise = Promise;
-mongoose.connect(
-  MONGODB_CONNECTION,
-  { useNewUrlParser: true }
-);
+mongoose.connect(MONGODB_CONNECTION, { useNewUrlParser: true });
 mongoose.connection.on("error", console.error.bind(console, "数据库连接错误"));
 
 /**
@@ -51,7 +48,7 @@ router.get("/openapi.yml", ctx => {
 app
   .use(logger())
   .use(helmet())
-  .use(cors({ exposeHeaders: "*" }))
+  .use(cors({ exposeHeaders: ["Link", "X-Total"] }))
   .use(jwt({ secret: publicKey }).unless({ path: `${BASE}/openapi.yml` }))
   .use(body())
   .use(compress({ threshold: 2048 }))

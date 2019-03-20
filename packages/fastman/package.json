@@ -10,23 +10,20 @@
   "publishConfig": {
     "access": "public"
   },
+  "template": "cli",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "files": [
     "bin",
-    "dist",
-    "typings"
+    "dist"
   ],
   "bin": {
-    "fastman": "dist/cli.js"
+    "fastman": "dist/fastman.js"
   },
+  "config-overrides-path": "../cli/config-overrides",
   "scripts": {
-    "build": "microbundle build --format cjs src/{cli,index}.js",
-    "dev": "microbundle build -w --format cjs src/{cli,index}.js",
-    "test": "jest --silent"
-  },
-  "jest": {
-    "testEnvironment": "node"
+    "build": "sketch build",
+    "test": "NODE_ENV=test sketch test --env=node"
   },
   "dependencies": {
     "@36node/fetch": "^0.4.11",

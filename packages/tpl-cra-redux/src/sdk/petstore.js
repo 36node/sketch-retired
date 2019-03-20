@@ -17,6 +17,7 @@ export default class SDK {
     if (this.token) {
       return `Bearer ${this.token}`;
     }
+    return "";
   }
 
   /**

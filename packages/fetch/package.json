@@ -10,20 +10,19 @@
   "publishConfig": {
     "access": "public"
   },
+  "template": "module",
   "files": [
     "bin",
     "dist",
     "typings"
   ],
+  "config-overrides-path": "../cli/config-overrides",
   "browser": "dist/browser.mjs",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "scripts": {
-    "build": "microbundle build --format cjs,es src/{browser,index}.js",
-    "test": "jest --silent --env=node"
-  },
-  "jest": {
-    "testEnvironment": "node"
+    "build": "NODE_ENV=production sketch build src/{browser,index}.js",
+    "test": "NODE_ENV=test sketch test --env=node"
   },
   "dependencies": {
     "decode-uri-component": "^0.2.0",
@@ -32,7 +31,6 @@
     "node-fetch": "^2.2.0"
   },
   "devDependencies": {
-    "fetch-mock": "^7.0.0-alpha.6",
-    "node-fetch": "^2.2.0"
+    "fetch-mock": "^7.0.0-alpha.6"
   }
 }

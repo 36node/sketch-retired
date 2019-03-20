@@ -1,9 +1,6 @@
 import path from "path";
-import "../helpers";
-import parse from "../parse";
 import fs from "fs";
-import { mkdir } from "./lib";
-let {
+import {
   camelCase,
   capitalize,
   toPairs,
@@ -11,7 +8,12 @@ let {
   padStart,
   chain,
   at,
-} = require("lodash");
+} from "lodash";
+
+import "../helpers";
+import parse from "../parse";
+import { mkdir } from "../lib";
+
 let map = {};
 function generateId(capName, old = false) {
   let all = capName.slice(0, 3);

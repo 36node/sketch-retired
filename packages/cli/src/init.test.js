@@ -1,15 +1,15 @@
 import path from "path";
 
-import { jsonfile } from "./lib";
+import { readFile, writeFile } from "./lib/jsonfile-then";
 import init from "./init";
 import download from "./download-npm-package";
 
 jest.mock("./download-npm-package");
-jest.mock("./lib");
+jest.mock("./lib/jsonfile-then");
 jest.mock("fs-extra");
 
 test("init", () => {
-  jsonfile.readFile.mockResolvedValue({});
+  readFile.mockResolvedValue({});
 
   const tpl = "module";
   const dest = ".";
@@ -20,23 +20,22 @@ test("init", () => {
     scope: "36node",
   };
 
-  return init(tpl, dest, options)
-    .then(() => {
-      expect(download).toBeCalled();
-      expect(jsonfile.readFile).toBeCalledWith(pkgFile);
-      expect(jsonfile.writeFile).toBeCalledWith(
-        pkgFile,
-        {
-          name: "@36node/somepkg",
-          repository: {
-            url: "tester/somepkg",
-            type: "git",
-          },
+  return init(tpl, dest, options).then(() => {
+    expect(download).toBeCalled();
+    expect(readFile).toBeCalledWith(pkgFile);
+    expect(writeFile).toBeCalledWith(
+      pkgFile,
+      {
+        files: ["bin", "dist"],
+        name: "@36node/somepkg",
+        repository: {
+          url: "tester/somepkg",
+          type: "git",
         },
-        { spaces: 2 }
-      );
-    })
-    .catch(err => {
-      console.error(err);
-    });
+        version: "0.0.0",
+        "config-overrides-path": "node_modules/@36node/sketch/config-overrides",
+      },
+      { spaces: 2 }
+    );
+  });
 });

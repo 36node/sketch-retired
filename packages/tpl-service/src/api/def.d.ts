@@ -1,49 +1,54 @@
-type ListPetsRequest = {
+interface ListPetsRequest {
   query: {
     _limit?: number;
     tag?: string;
     age_gt?: number;
   };
   context?: Object;
-};
+}
 
-type ListPetsResponse = {
+interface ListPetsResponse {
   body: Array<Pet>;
   headers: {
     xNext: string;
   };
-};
+}
 
-type CreatePetsRequest = {
+interface CreatePetsRequest {
   body: NewPet;
   context?: Object;
-};
+}
 
-type CreatePetsResponse = {
+interface CreatePetsResponse {
   body: Pet;
-};
+}
 
-type ShowPetByIdRequest = {
+interface ShowPetByIdRequest {
   petId: string;
   context?: Object;
-};
+}
 
-type ShowPetByIdResponse = {
+interface ShowPetByIdResponse {
   body: Pet;
-};
+}
 
-type Pet = {
+interface DeletePetRequest {
+  id: number;
+  context?: Object;
+}
+
+interface Pet {
   id: number;
   age: number;
   name: string;
   tag: string;
-};
-type NewPet = {
+}
+interface NewPet {
   name: string;
   tag: string;
   age: number;
-};
-type Err = {
+}
+interface Err {
   code: string;
   message: string;
-};
+}

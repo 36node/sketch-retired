@@ -66,6 +66,7 @@ function* callAPI(api, schema, action) {
     } else {
       const msg = err.message || "api 请求错误";
       message.error(msg);
+      throw err;
     }
   }
 }

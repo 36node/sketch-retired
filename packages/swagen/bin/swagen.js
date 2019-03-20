@@ -1,16 +1,10 @@
 #!/usr/bin/env node
 
-var program = require("commander");
-var path = require("path");
+const program = require("commander");
+const path = require("path");
 
-var pkg = require("../package.json");
-var genreatorModule = require("../dist").default;
-
-// parse generators from module
-var generators = {};
-Object.keys(genreatorModule)
-  .filter(k => typeof genreatorModule[k].default === "function")
-  .forEach(k => (generators[k] = genreatorModule[k].default));
+const pkg = require("../package.json");
+const { generators } = require("../dist");
 
 program.version(pkg.version);
 

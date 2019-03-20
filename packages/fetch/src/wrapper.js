@@ -1,5 +1,12 @@
 import { stringify } from "./query-string";
 
+function isJson(res) {
+  return (
+    res.headers.get("content-type") &&
+    res.headers.get("content-type").includes("application/json")
+  );
+}
+
 /**
  * A wrapper of fetch
  *
@@ -25,12 +32,12 @@ export default async function(url, opt = {}) {
     headers,
   });
 
-  const result = { headers: {} };
   if (res.statusText === "No Content") {
-  } else if (
-    !res.headers.get("content-type") ||
-    !res.headers.get("content-type").includes("application/json")
-  ) {
+    return {};
+  }
+
+  const result = { headers: {} };
+  if (!isJson(res)) {
     result.body = { message: await res.text() }; // text result 处理成 object
   } else {
     result.body = await res.json();

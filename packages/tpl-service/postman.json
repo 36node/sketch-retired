@@ -53,7 +53,17 @@
                     "value": "Bearer {{token}}"
                   }
                 ],
-                "method": "GET"
+                "method": "GET",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "type": "string",
+                      "value": "{{token}}",
+                      "key": "token"
+                    }
+                  ]
+                }
               },
               "code": 200,
               "status": "A paged array of pets",
@@ -136,7 +146,17 @@
                 "value": "Bearer {{token}}"
               }
             ],
-            "method": "GET"
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "type": "string",
+                  "value": "{{token}}",
+                  "key": "token"
+                }
+              ]
+            }
           },
           "name": "List all pets",
           "description": "List all pets"
@@ -178,6 +198,16 @@
                   }
                 ],
                 "method": "POST",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "type": "string",
+                      "value": "{{token}}",
+                      "key": "token"
+                    }
+                  ]
+                },
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\"\n}"
@@ -253,6 +283,16 @@
               }
             ],
             "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "type": "string",
+                  "value": "{{token}}",
+                  "key": "token"
+                }
+              ]
+            },
             "body": {
               "mode": "raw",
               "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\"\n}"
@@ -299,7 +339,17 @@
                     "value": "Bearer {{token}}"
                   }
                 ],
-                "method": "GET"
+                "method": "GET",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "type": "string",
+                      "value": "{{token}}",
+                      "key": "token"
+                    }
+                  ]
+                }
               },
               "code": 200,
               "status": "Expected response to a valid request",
@@ -372,7 +422,17 @@
                 "value": "Bearer {{token}}"
               }
             ],
-            "method": "GET"
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "type": "string",
+                  "value": "{{token}}",
+                  "key": "token"
+                }
+              ]
+            }
           },
           "name": "Find pet by id",
           "description": "Find pet by id"
@@ -410,7 +470,17 @@
                     "value": "Bearer {{token}}"
                   }
                 ],
-                "method": "DELETE"
+                "method": "DELETE",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "type": "string",
+                      "value": "{{token}}",
+                      "key": "token"
+                    }
+                  ]
+                }
               },
               "code": 204,
               "status": "pet deleted"
@@ -457,7 +527,17 @@
                 "value": "Bearer {{token}}"
               }
             ],
-            "method": "DELETE"
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "type": "string",
+                  "value": "{{token}}",
+                  "key": "token"
+                }
+              ]
+            }
           },
           "name": "deletePet",
           "description": "deletePet"

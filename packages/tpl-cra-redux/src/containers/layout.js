@@ -20,7 +20,7 @@ export const withMainLayout = Component => {
         </Breadcrumb>
         <Component {...props} />
       </Content>
-      <Footer>Template-React-Redux ©2018 Created by 36node</Footer>
+      <Footer>Template-CRA-Redux ©2018 Created by 36node</Footer>
     </Layout>
   );
 };

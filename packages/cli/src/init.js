@@ -3,7 +3,7 @@ import ora from "ora";
 import { copy, remove, move } from "fs-extra";
 
 import download from "./download-npm-package";
-import { jsonfile } from "./lib";
+import * as jsonfile from "./lib/jsonfile-then";
 
 export default async function init(tpl, dest = ".", options = {}) {
   const pkg = `@36node/template-${tpl}`;
@@ -38,18 +38,16 @@ export default async function init(tpl, dest = ".", options = {}) {
     const pkgJson = await jsonfile.readFile(pkgFile);
 
     let { name, owner, scope } = options;
-    const files = ["bin", "dist"];
-    const version = "0.0.0";
-    const repository = {
+    pkgJson.files = ["bin", "dist"];
+    pkgJson.version = "0.0.0";
+    pkgJson.repository = {
       url: `${owner}/${name}`,
       type: "git",
     };
-    name = scope ? `@${scope}/${name}` : name;
-    await jsonfile.writeFile(
-      pkgFile,
-      { ...pkgJson, name, repository, files, version },
-      { spaces: 2 }
-    );
+    pkgJson.name = scope ? `@${scope}/${name}` : name;
+    pkgJson["config-overrides-path"] =
+      "node_modules/@36node/sketch/config-overrides";
+    await jsonfile.writeFile(pkgFile, pkgJson, { spaces: 2 });
     spinner.succeed(`Package.json cooked! ${path.resolve(dest)}`);
   } catch (err) {
     spinner.fail("Modifying package.json failed.");

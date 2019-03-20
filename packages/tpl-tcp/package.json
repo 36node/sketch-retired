@@ -10,25 +10,26 @@
   "publishConfig": {
     "access": "public"
   },
+  "template": "tcp",
   "files": [
     "bin",
-    "src",
-    ".babelrc",
-    ".circleci",
-    ".dockerignore",
-    "Dockerfile",
-    "openapi.yml",
+    "dist",
+    "typings",
     "README.md"
   ],
+  "bin": {
+    "server": "bin/server.js"
+  },
+  "config-overrides-path": "../cli/config-overrides",
   "main": "dist/index.js",
+  "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "rm -rf dist && babel ./src -d ./dist --ignore test.js",
-    "format": "prettier --trailing-comma es5 --write",
-    "lint": "eslint src",
+    "build": "NODE_ENV=production sketch build",
+    "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
+    "lint": "sketch lint src",
     "release": "standard-version && git push --follow-tags origin master",
-    "start": "nodemon src/index.js --watch src --exec 'babel-node'",
-    "server": "node dist/index.js",
-    "test": "jest --silent"
+    "start": "NODE_ENV=development sketch start",
+    "test": "NODE_ENV=test sketch test --env=node"
   },
   "commitlint": {
     "extends": [
@@ -42,9 +43,6 @@
       "pre-push": "npm run lint && npm run test"
     }
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
   "lint-staged": {
     "*.js": [
       "npm run format",
@@ -53,18 +51,19 @@
   },
   "devDependencies": {
     "@36node/eslint-config": "^0.3.4",
-    "@commitlint/cli": "^6.1.0",
-    "@commitlint/config-conventional": "^6.1.0",
-    "husky": "^1.0.0-rc.13",
-    "jest": "20.0.4",
-    "lint-staged": "^7.2.0",
-    "nodemon": "^1.18.3",
-    "prettier": "^1.13.7",
-    "standard-version": "^4.4.0"
+    "@36node/sketch": "^0.6.3",
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "pino-pretty": "^2.5.0",
+    "prettier": "^1.16.4",
+    "standard-version": "^5.0.2"
   },
   "dependencies": {
     "@36node/whisper": "^0.1.0",
-    "dotenv": "^6.0.0",
-    "only": "^0.0.2"
+    "dotenv": "^7.0.0",
+    "only": "^0.0.2",
+    "pino": "^5.11.1"
   }
 }

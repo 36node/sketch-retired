@@ -82,7 +82,7 @@ export default class Login extends React.PureComponent {
                   alt="logo"
                 />
                 <div>
-                  <div className="title">REACT-REDUX-TEMPLATE</div>
+                  <div className="title">TEMPLATE-CRA-REDUX</div>
                   <div className="subtitle">@36node</div>
                 </div>
               </div>
@@ -133,7 +133,7 @@ export default class Login extends React.PureComponent {
                     valuePropName: "checked",
                     initialValue: true,
                   })(<Checkbox>Remember me</Checkbox>)}
-                  <a className="login-form-forgot" href="">
+                  <a className="login-form-forgot" href="/">
                     Forgot password
                   </a>
                   <Button
@@ -143,7 +143,7 @@ export default class Login extends React.PureComponent {
                   >
                     Log in
                   </Button>
-                  Or <a href="">register now!</a>
+                  Or <a href="/">register now!</a>
                 </FormItem>
               </Form>
             </LoginBox>

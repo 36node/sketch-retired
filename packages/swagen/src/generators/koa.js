@@ -1,7 +1,7 @@
 import path from "path";
 import "../helpers";
 import parse from "../parse";
-import { generateFile, mkdir, TemplatePath } from "./lib";
+import { generateFile, mkdir, TemplatePath } from "../lib";
 
 /**
  * Generate code for koa server api

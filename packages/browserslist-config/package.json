@@ -1,0 +1,16 @@
+{
+  "name": "@36node/browserslist-config",
+  "version": "0.0.0",
+  "description": "Browserslist configuration used by 36node team",
+  "repository": "36node/sketch",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/36node/sketch/issues"
+  },
+  "files": [
+    "index.js"
+  ]
+}

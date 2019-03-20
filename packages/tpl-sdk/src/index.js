@@ -1,4 +1,4 @@
-/// <reference path='.index.d.ts' />
+/// <reference pa.index.d.ts' />
 
 import fetch from "@36node/fetch";
 
@@ -17,6 +17,7 @@ export default class SDK {
     if (this.token) {
       return `Bearer ${this.token}`;
     }
+    return ``;
   }
 
   /**

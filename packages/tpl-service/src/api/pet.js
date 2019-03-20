@@ -22,7 +22,7 @@ export default class API {
 
       if (!res.body) throw createError(500, "should have body in response");
 
-      if (!res.headers.xNext)
+      if (!res.headers || res.headers.xNext === undefined)
         throw createError(500, "should have header x-next in response");
 
       ctx.body = res.body;
@@ -41,7 +41,7 @@ export default class API {
       if (!res.body) throw createError(500, "should have body in response");
 
       ctx.body = res.body;
-      ctx.status = 200;
+      ctx.status = 201;
     };
 
     const showPetById = async ctx => {
@@ -61,9 +61,23 @@ export default class API {
       ctx.status = 200;
     };
 
-    router.get("/pets", this.authorize("listPets"), listPets);
-    router.post("/pets", this.authorize("createPets"), createPets);
-    router.get("/pets/:petId", this.authorize("showPetById"), showPetById);
+    const deletePet = async ctx => {
+      if (!ctx.params.id) throw createError(400, "id in path is required.");
+
+      const req = {
+        id: ctx.params.id,
+        context: ctx, // here we put koa context in request
+      };
+
+      await this.deletePet(req);
+
+      ctx.status = 204;
+    };
+
+    router.get("/pets", ...this.middlewares("listPets"), listPets);
+    router.post("/pets", ...this.middlewares("createPets"), createPets);
+    router.get("/pets/:petId", ...this.middlewares("showPetById"), showPetById);
+    router.delete("/pets/:petId", ...this.middlewares("deletePet"), deletePet);
   }
 
   /**
@@ -71,15 +85,13 @@ export default class API {
    */
 
   /**
-   * Authorize current operation
-   * rewrite it if you want to control operation permission
+   * Ability to inject some middlewares
    *
    * @param {string} operation name of operation
+   * @returns {function[]} middlewares
    */
-  authorize(operation) {
-    return (ctx, next) => {
-      return next();
-    };
+  middlewares(operation) {
+    return [];
   }
 
   /**
@@ -112,6 +124,16 @@ export default class API {
    * @returns {ShowPetByIdResponse} Expected response to a valid request
    */
   showPetById(req) {
+    throw new Error("not implemented");
+  }
+
+  /**
+   *
+   *
+   * @abstract
+   * @param {DeletePetRequest} req deletePet request
+   */
+  deletePet(req) {
     throw new Error("not implemented");
   }
 }

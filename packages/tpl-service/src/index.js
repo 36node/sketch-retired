@@ -1,6 +1,4 @@
 import app from "./app";
-import { PORT } from "./config";
+export * from "./config";
 
-app.listen(PORT, () => {
-  console.info(`Listening to port ${PORT} 🚀`);
-});
+export { app };

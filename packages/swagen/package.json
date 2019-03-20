@@ -10,7 +10,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "template": "cli",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "files": [
     "bin",
     "dist",
@@ -19,9 +21,10 @@
   "bin": {
     "swagen": "bin/swagen.js"
   },
+  "config-overrides-path": "../cli/config-overrides",
   "scripts": {
-    "build": "microbundle build --format cjs,es",
-    "test": "jest --silent"
+    "build": "NODE_ENV=production sketch build",
+    "test": "NODE_ENV=test sketch test --env=node"
   },
   "dependencies": {
     "handlebars": "^4.0.12",

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { hot } from "react-hot-loader";
+import { hot } from "react-hot-loader/root";
 import { Router, Route, Switch } from "react-router-dom";
 
 import history from "./history";
@@ -25,4 +25,4 @@ class App extends Component {
   }
 }
 
-export default hot(module)(App);
+export default (process.env.NODE_ENV === "development" ? hot(App) : App);

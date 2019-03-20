@@ -1,3 +1,11 @@
-import generators from "./generators";
+import requireDirectory from "require-directory";
 
-export default generators;
+const genreatorModule = requireDirectory(module, "./generators");
+
+// parse generators from module
+const generators = {};
+Object.keys(genreatorModule)
+  .filter(k => typeof genreatorModule[k].default === "function")
+  .forEach(k => (generators[k] = genreatorModule[k].default));
+
+export { generators };

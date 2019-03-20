@@ -1,5 +1,3 @@
-import parse from "../parse";
-import { generateTemplate, formatPath, TemplatePath } from "./lib";
 import { get, toString, toUpper, mergeWith } from "lodash";
 import {
   Collection,
@@ -15,6 +13,9 @@ import {
 import jsonfile from "jsonfile";
 import path from "path";
 import fs from "fs";
+
+import parse from "../parse";
+import { generateTemplate, formatPath, TemplatePath } from "../lib";
 
 class PostmanGenerator {
   constructor(swagger) {
