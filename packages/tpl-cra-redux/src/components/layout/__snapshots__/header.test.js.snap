@@ -7,9 +7,9 @@ exports[`should renders correctly 1`] = `
   width: 100%;
 }
 
-<div
+<header
   className="c0 ant-layout-header"
 >
   somthing
-</div>
+</header>
 `;

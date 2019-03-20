@@ -1,4 +1,4 @@
-import foo from "./index";
+import { foo } from "./index";
 
 jest.mock("./index");
 
