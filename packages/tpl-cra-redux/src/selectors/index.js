@@ -1,6 +1,5 @@
 import { denormalize } from "normalizr";
-import { repoSchema } from "../sdk/github.schema";
-import { petSchema } from "../sdk/petstore.schema";
+import { repoSchema, petSchema } from "./schemas";
 
 export const selectSession = state => state.session.result;
 export const selectRedirect = state => state.session.meta.redirect;

@@ -2,7 +2,7 @@
 
 import fetch from "@36node/fetch";
 
-export default class SDK {
+export default class PetStoreSDK {
   /**@type {string} **/
   base;
   /**@type {string} **/

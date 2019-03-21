@@ -19,7 +19,6 @@
     "README.md"
   ],
   "config-overrides-path": "../cli/config-overrides",
-  "browser": "dist/browser.mjs",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "typings/index.d.ts",
