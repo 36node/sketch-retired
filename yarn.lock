@@ -2,28 +2,6 @@
 # yarn lockfile v1
 
 
-"@36node/sketch@^0.6.3":
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/@36node/sketch/-/sketch-0.6.3.tgz#d203db804ccaf3beadaaeb106d89836eedffdbcf"
-  integrity sha512-hG1j5DpD2cJqfVWhtiRrvoU/d1FVRJCkI2psDJOiP2E7+dGaYtq+LWGyJF//AV1J++BFVDxeHMzybnGobDjccw==
-  dependencies:
-    commander "^2.16.0"
-    cross-spawn "^6.0.5"
-    fs-extra "^7.0.0"
-    git-config-path "^1.0.1"
-    inquirer "^6.0.0"
-    jsonfile "^4.0.0"
-    npm-package-arg "^6.1.0"
-    ora "^3.0.0"
-    parse-git-config "^2.0.2"
-    tar "^4.4.4"
-    tmp "^0.0.33"
-
-"@36node/template-sdk@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@36node/template-sdk/-/template-sdk-0.5.0.tgz#b6e5044c9540fce110f28e276891fbd0e1085a05"
-  integrity sha512-eGR3Dg0lwpjj55v8CRkRx66N5r46DG9ryIhRQ/fSbSHvjIvRXb8v/50GzML0153Kp77zakXgsJ2NWetiOLiiHw==
-
 "@36node/whisper@^0.1.0":
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/@36node/whisper/-/whisper-0.1.11.tgz#879cf1010eb2b0dd67b2f7a4863e22a67410eff2"
