@@ -13,8 +13,8 @@ import {
   Header,
   Jumbotron,
   Title,
-} from "../components/layout";
-import Logo from "../components/logo";
+} from "../src/components/layout";
+import Logo from "../src/components/logo";
 
 // default demo
 storiesOf("Welcome", module).add("to Storybook", () => (
