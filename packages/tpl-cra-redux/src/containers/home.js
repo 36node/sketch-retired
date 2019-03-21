@@ -6,9 +6,7 @@ import { Button } from "antd";
 import { logout } from "../actions";
 
 import { Container, Jumbotron } from "../components/layout";
-import { withMainLayout } from "./layout";
 
-@withMainLayout
 @connect(state => ({}))
 export default class extends React.PureComponent {
   handleLogout = () => {

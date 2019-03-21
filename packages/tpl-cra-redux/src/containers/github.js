@@ -4,10 +4,8 @@ import { connect } from "react-redux";
 import { listRepos } from "../actions";
 import { selectRepos } from "../selectors";
 
-import { withMainLayout } from "./layout";
 import { Container, Jumbotron } from "../components/layout";
 
-@withMainLayout
 @connect(state => ({
   repos: selectRepos(state),
 }))

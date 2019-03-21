@@ -4,10 +4,8 @@ import { connect } from "react-redux";
 import { listPets } from "../actions";
 import { selectPets } from "../selectors";
 
-import { withMainLayout } from "./layout";
 import { Container, Jumbotron } from "../components/layout";
 
-@withMainLayout
 @connect(state => ({
   pets: selectPets(state),
 }))
