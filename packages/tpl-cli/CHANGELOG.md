@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/undefined/undefined/compare/@36node/template-cli@0.4.13...@36node/template-cli@0.5.0) (2019-03-21)
+
+
+### Bug Fixes
+
+* update snapshot test ([154919b](https://github.com/undefined/undefined/commit/154919b))
+
+
+### Features
+
+* new scripts ([dd91226](https://github.com/undefined/undefined/commit/dd91226))
+
+
+
+
+
 ## [0.4.13](https://github.com/undefined/undefined/compare/@36node/template-cli@0.4.12...@36node/template-cli@0.4.13) (2018-11-15)
 
 **Note:** Version bump only for package @36node/template-cli

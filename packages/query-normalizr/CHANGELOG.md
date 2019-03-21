@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/36node/query-normalizr/compare/@36node/query-normalizr@0.1.4...@36node/query-normalizr@0.2.0) (2019-03-21)
+
+
+### Features
+
+* new scripts ([dd91226](https://github.com/36node/query-normalizr/commit/dd91226))
+
+
+
+
+
 ## [0.1.4](https://github.com/36node/query-normalizr/compare/@36node/query-normalizr@0.1.3...@36node/query-normalizr@0.1.4) (2019-03-06)
 
 **Note:** Version bump only for package @36node/query-normalizr

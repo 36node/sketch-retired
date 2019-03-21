@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-tcp",
-  "version": "0.2.22",
+  "version": "0.3.0",
   "description": "A module boilerplate for tcp server.",
   "repository": {
     "url": "36node/sketch",
@@ -50,8 +50,8 @@
     ]
   },
   "devDependencies": {
-    "@36node/eslint-config": "^0.3.4",
-    "@36node/sketch": "^0.6.3",
+    "@36node/eslint-config": "^0.4.0",
+    "@36node/sketch": "^0.7.0",
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "husky": "^1.3.1",

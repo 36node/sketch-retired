@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2019-03-21)
+
+
+### Bug Fixes
+
+* storybook ([fa2b0df](https://github.com/36node/tpl-react-redux/commit/fa2b0df))
+* storybook with babel-loader & mock ([a60ca3f](https://github.com/36node/tpl-react-redux/commit/a60ca3f))
+* update snapshot test ([154919b](https://github.com/36node/tpl-react-redux/commit/154919b))
+
+
+### Features
+
+* do not use [@layout](https://github.com/layout) in cra template ([84604fa](https://github.com/36node/tpl-react-redux/commit/84604fa))
+* new scripts ([dd91226](https://github.com/36node/tpl-react-redux/commit/dd91226))
+
+
+
+
+
 ## [0.4.8](https://github.com/36node/tpl-react-redux/compare/@36node/template-react-redux@0.4.7...@36node/template-react-redux@0.4.8) (2019-01-26)
 
 **Note:** Version bump only for package @36node/template-react-redux
