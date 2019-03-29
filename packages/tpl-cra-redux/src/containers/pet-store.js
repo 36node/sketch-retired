@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import DocumentTitle from "react-document-title";
 
 import { listPets } from "../actions";
 import { selectPets } from "../selectors";
@@ -21,14 +22,16 @@ export default class extends React.PureComponent {
   render() {
     const { pets } = this.props;
     return (
-      <Container>
-        <Jumbotron> Pets in store. </Jumbotron>
-        <div>
-          {pets.map(pet => (
-            <div key={pet.id}>{pet.name}</div>
-          ))}
-        </div>
-      </Container>
+      <DocumentTitle title="@36node - Pet Store Example">
+        <Container>
+          <Jumbotron> Pets in store. </Jumbotron>
+          <div>
+            {pets.map(pet => (
+              <div key={pet.id}>{pet.name}</div>
+            ))}
+          </div>
+        </Container>
+      </DocumentTitle>
     );
   }
 }

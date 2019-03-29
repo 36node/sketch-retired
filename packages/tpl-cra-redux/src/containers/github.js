@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import DocumentTitle from "react-document-title";
 
 import { listRepos } from "../actions";
 import { selectRepos } from "../selectors";
@@ -21,20 +22,28 @@ export default class extends React.PureComponent {
   render() {
     const { repos } = this.props;
     return (
-      <Container>
-        <Jumbotron>36node has {repos.length} public repos in github.</Jumbotron>
-        <div>
-          {repos.map((r, key) => {
-            return (
-              <p key={key}>
-                <a target="_blank" href={r.html_url} rel="noopener noreferrer">
-                  {r.name}
-                </a>
-              </p>
-            );
-          })}
-        </div>
-      </Container>
+      <DocumentTitle title="@36node - Github Example">
+        <Container>
+          <Jumbotron>
+            36node has {repos.length} public repos in github.
+          </Jumbotron>
+          <div>
+            {repos.map((r, key) => {
+              return (
+                <p key={key}>
+                  <a
+                    target="_blank"
+                    href={r.html_url}
+                    rel="noopener noreferrer"
+                  >
+                    {r.name}
+                  </a>
+                </p>
+              );
+            })}
+          </div>
+        </Container>
+      </DocumentTitle>
     );
   }
 }

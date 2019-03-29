@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Layout, Form, Icon, Input, Button, Checkbox } from "antd";
 import styled from "styled-components";
+import DocumentTitle from "react-document-title";
 
 import { login } from "../actions";
 
@@ -70,86 +71,88 @@ export default class Login extends React.PureComponent {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Layout>
-        <Content>
-          <LoginContainer>
-            <LoginBox>
-              <div className="login-logo">
-                <img
-                  src="/images/logo.png"
-                  width="48px"
-                  height="48px"
-                  alt="logo"
-                />
-                <div>
-                  <div className="title">TEMPLATE-CRA-REDUX</div>
-                  <div className="subtitle">@36node</div>
+      <DocumentTitle title="@36node - Login">
+        <Layout>
+          <Content>
+            <LoginContainer>
+              <LoginBox>
+                <div className="login-logo">
+                  <img
+                    src="/images/logo.png"
+                    width="48px"
+                    height="48px"
+                    alt="logo"
+                  />
+                  <div>
+                    <div className="title">TEMPLATE-CRA-REDUX</div>
+                    <div className="subtitle">@36node</div>
+                  </div>
                 </div>
-              </div>
-              <Form onSubmit={this.handleSubmit} className="login-form">
-                <FormItem>
-                  {getFieldDecorator("userName", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Please input your username!",
-                      },
-                    ],
-                  })(
-                    <Input
-                      prefix={
-                        <Icon
-                          type="user"
-                          style={{ color: "rgba(0,0,0,.25)" }}
-                        />
-                      }
-                      placeholder="Username"
-                    />
-                  )}
-                </FormItem>
-                <FormItem>
-                  {getFieldDecorator("password", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Please input your Password!",
-                      },
-                    ],
-                  })(
-                    <Input
-                      prefix={
-                        <Icon
-                          type="lock"
-                          style={{ color: "rgba(0,0,0,.25)" }}
-                        />
-                      }
-                      type="password"
-                      placeholder="Password"
-                    />
-                  )}
-                </FormItem>
-                <FormItem>
-                  {getFieldDecorator("remember", {
-                    valuePropName: "checked",
-                    initialValue: true,
-                  })(<Checkbox>Remember me</Checkbox>)}
-                  <a className="login-form-forgot" href="/">
-                    Forgot password
-                  </a>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    className="login-form-button"
-                  >
-                    Log in
-                  </Button>
-                  Or <a href="/">register now!</a>
-                </FormItem>
-              </Form>
-            </LoginBox>
-          </LoginContainer>
-        </Content>
-      </Layout>
+                <Form onSubmit={this.handleSubmit} className="login-form">
+                  <FormItem>
+                    {getFieldDecorator("userName", {
+                      rules: [
+                        {
+                          required: true,
+                          message: "Please input your username!",
+                        },
+                      ],
+                    })(
+                      <Input
+                        prefix={
+                          <Icon
+                            type="user"
+                            style={{ color: "rgba(0,0,0,.25)" }}
+                          />
+                        }
+                        placeholder="Username"
+                      />
+                    )}
+                  </FormItem>
+                  <FormItem>
+                    {getFieldDecorator("password", {
+                      rules: [
+                        {
+                          required: true,
+                          message: "Please input your Password!",
+                        },
+                      ],
+                    })(
+                      <Input
+                        prefix={
+                          <Icon
+                            type="lock"
+                            style={{ color: "rgba(0,0,0,.25)" }}
+                          />
+                        }
+                        type="password"
+                        placeholder="Password"
+                      />
+                    )}
+                  </FormItem>
+                  <FormItem>
+                    {getFieldDecorator("remember", {
+                      valuePropName: "checked",
+                      initialValue: true,
+                    })(<Checkbox>Remember me</Checkbox>)}
+                    <a className="login-form-forgot" href="/">
+                      Forgot password
+                    </a>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      className="login-form-button"
+                    >
+                      Log in
+                    </Button>
+                    Or <a href="/">register now!</a>
+                  </FormItem>
+                </Form>
+              </LoginBox>
+            </LoginContainer>
+          </Content>
+        </Layout>
+      </DocumentTitle>
     );
   }
 }
