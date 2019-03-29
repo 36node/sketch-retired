@@ -82,7 +82,5 @@ describe("Test normalize", () => {
     const ret = normalize(querystring.parse(testQuery));
 
     expect(ret._expand).toEqual("department");
-
-    console.log(JSON.stringify(ret, null, 2));
   });
 });

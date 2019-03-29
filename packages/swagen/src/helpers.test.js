@@ -198,6 +198,32 @@ const ListParams = [
   },
 ];
 
+const ListParamsNStr = `
+  query:{
+    limit?: number;
+    offset?: number;
+    sort?: Array<string>;
+    group?: string;
+    _exist?: string;
+
+    filter:{
+        tag?: Array<string>;
+        age: {
+            $gt?: number;
+            $lt?: number;
+        }
+        level: {
+            $gte?: number;
+            $lte?: number;
+        }
+        type?: Array<string>;
+        plate: {
+            $regex?: string;
+        }
+    }
+  }
+  `;
+
 test("Shoule get json body from operation", () => {
   expect(hasJsonBody(postOperation)).toBe(true);
   expect(getJsonBodySchema(postOperation)).not.toBe(null);
@@ -209,8 +235,5 @@ test("Shoule get json body from operation", () => {
 test("Should normalize query", () => {
   const ret = normalizeQuery(ListParams);
 
-  console.log(ret);
-
-  const emptyRet = normalizeQuery([]);
-  console.log(emptyRet);
+  expect(ret).toEqual(ListParamsNStr);
 });

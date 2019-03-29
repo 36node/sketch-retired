@@ -9,7 +9,7 @@ describe("Test denormalize", () => {
     };
     const ret = denormalize(queryObject);
 
-    console.log(querystring.stringify(ret));
+    expect(querystring.stringify(ret)).toBe("type=type1");
   });
 
   it("Should safe to number", () => {
@@ -125,6 +125,8 @@ describe("Test denormalize", () => {
     const ret = denormalize(testObj);
     expect(ret._expand).toEqual("department");
 
-    console.log(querystring.stringify(ret));
+    expect(querystring.stringify(ret)).toBe(
+      "_limit=10&_offset=0&_sort=updatedAt&_sort=-createdAt&_populate=user&_select=name&_select=age&_group=type&type=test1&type=test2&age_gt=10&age_lt=20&level_gte=10&level_lte=20&tag_ne=pretty&title_like=hello&plate_like=%E6%B2%AAA&_expand=department"
+    );
   });
 });

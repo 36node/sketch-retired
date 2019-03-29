@@ -2,14 +2,6 @@
 # yarn lockfile v1
 
 
-"@36node/query-normalizr@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@36node/query-normalizr/-/query-normalizr-0.1.4.tgz#1fa53693103d3b0d1b4bca2ecd1f00a846026abf"
-  integrity sha512-wd8F5xvqVDT8awXPUlHNNMhqh+0HTpi/q+mWMNckJl6u7BVKJdkE9tClnU6MPUib4KVfJL9UhjqsTYwnJJgF6A==
-  dependencies:
-    humps "^2.0.1"
-    lodash "^4.17.11"
-
 "@36node/whisper@^0.1.0":
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/@36node/whisper/-/whisper-0.1.11.tgz#879cf1010eb2b0dd67b2f7a4863e22a67410eff2"
