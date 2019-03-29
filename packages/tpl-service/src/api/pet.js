@@ -26,7 +26,7 @@ export default class API {
         throw createError(500, "should have header x-next in response");
 
       ctx.body = res.body;
-      ctx.set("x-next", res.headers.xNext);
+      ctx.set("X-Total-Count", res.headers.xTotalCount);
       ctx.status = 200;
     };
 

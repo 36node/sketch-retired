@@ -27,6 +27,7 @@
     "test": "NODE_ENV=test sketch test --env=node"
   },
   "dependencies": {
+    "@36node/query-normalizr": "^0.2.0",
     "handlebars": "^4.0.12",
     "handlebars-helpers": "^0.10.0",
     "js-yaml": "^3.12.0",

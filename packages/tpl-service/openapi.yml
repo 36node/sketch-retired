@@ -42,10 +42,10 @@ paths:
         "200":
           description: A paged array of pets
           headers:
-            x-next:
-              description: A link to the next page of responses
+            X-Total-Count:
+              description: Total count of all warnings match the query
               schema:
-                type: string
+                type: integer
           content:
             application/json:
               schema:

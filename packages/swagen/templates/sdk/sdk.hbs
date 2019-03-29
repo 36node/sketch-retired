@@ -1,6 +1,7 @@
 /// <reference path='.{{sdkName}}.d.ts' />
 
 import fetch from "@36node/fetch";
+import { denormalize } from '@36node/query-normalizr';
 
 export default class SDK {
   /**@type {string} **/
@@ -85,7 +86,7 @@ export default class SDK {
       return fetch(`${this.base}{{toDollar path}}`, {
         method: "{{method}}",
         {{#withParamQuery parameters}}
-        query,
+        query: denormalize(query),
         {{/withParamQuery}}
         {{#with requestBody}}
         body,

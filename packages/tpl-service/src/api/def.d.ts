@@ -1,16 +1,22 @@
 interface ListPetsRequest {
   query: {
-    _limit?: number;
-    tag?: string;
-    age_gt?: number;
+    limit?: number;
+
+    filter: {
+      tag?: string;
+      age: {
+        $gt?: number;
+      };
+    };
   };
+
   context?: Object;
 }
 
 interface ListPetsResponse {
   body: Array<Pet>;
   headers: {
-    xNext: string;
+    xTotalCount: number;
   };
 }
 

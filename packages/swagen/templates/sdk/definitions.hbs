@@ -8,13 +8,7 @@ type {{capitalize name}}Request = {
   {{/is}}
   {{/each}}
   {{#withParamQuery parameters}}
-  query: {
-    {{#each parameters}}
-    {{#is in "query"}}
-    {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
-    {{/is}}
-    {{/each}}
-  };
+  {{normalizeQuery parameters}}
   {{/withParamQuery}}
   {{#withParamHeader parameters}}
   headers: {
