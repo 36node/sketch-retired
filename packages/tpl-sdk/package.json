@@ -16,7 +16,8 @@
     "dist",
     "mock",
     "typings",
-    "README.md"
+    "README.md",
+    "src"
   ],
   "config-overrides-path": "../cli/config-overrides",
   "main": "dist/index.js",

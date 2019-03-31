@@ -17,7 +17,8 @@
     "src",
     ".circleci",
     "typings",
-    "README.md"
+    "README.md",
+    "src"
   ],
   "config-overrides-path": "../cli/config-overrides",
   "browser": "dist/browser.mjs",

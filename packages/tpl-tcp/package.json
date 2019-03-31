@@ -15,7 +15,8 @@
     "bin",
     "dist",
     "typings",
-    "README.md"
+    "README.md",
+    "src"
   ],
   "bin": {
     "server": "bin/server.js"

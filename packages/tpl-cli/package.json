@@ -17,7 +17,8 @@
     "bin",
     "dist",
     ".circleci",
-    "README.md"
+    "README.md",
+    "src"
   ],
   "bin": {
     "foo": "bin/foo.js"

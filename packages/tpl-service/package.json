@@ -17,7 +17,8 @@
     "ssl",
     "typings",
     "openapi.yml",
-    "README.md"
+    "README.md",
+    "src"
   ],
   "bin": {
     "server": "bin/server.js"
