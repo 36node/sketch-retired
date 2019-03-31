@@ -12,6 +12,7 @@
   },
   "template": "tcp",
   "files": [
+    ".circleci",
     "bin",
     "dist",
     "typings",

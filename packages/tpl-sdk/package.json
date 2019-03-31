@@ -12,6 +12,7 @@
   },
   "template": "sdk",
   "files": [
+    ".circleci",
     "bin",
     "dist",
     "mock",
@@ -26,7 +27,7 @@
   "scripts": {
     "build": "NODE_ENV=production sketch build",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
-    "gen": "swagen sdk https://api.36node.com/petstore/v0/openapi.yaml",
+    "gen": "swagen sdk https://api.36node.com/petstore/v0/openapi.yml",
     "lint": "sketch lint src",
     "release": "standard-version && git push --follow-tags origin master",
     "test": "NODE_ENV=test sketch test --env=node"

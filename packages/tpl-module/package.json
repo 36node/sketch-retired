@@ -12,6 +12,7 @@
   },
   "template": "module",
   "files": [
+    ".circleci",
     "bin",
     "dist",
     "src",

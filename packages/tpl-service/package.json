@@ -12,6 +12,7 @@
   },
   "template": "service",
   "files": [
+    ".circleci",
     "bin",
     "dist",
     "ssl",
