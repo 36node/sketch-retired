@@ -6,7 +6,7 @@ const gitConfigPath = require("git-config-path");
 
 const cli = require("../dist");
 
-const enableTpls = ["module", "react", "react-redux", "service", "tcp", "cli"];
+const enableTpls = ["cli", "cra-redux", "module", "sdk", "service", "tcp"];
 
 function gitUser() {
   const gitConfig = parseGitConfig.sync({
