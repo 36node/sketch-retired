@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.2](https://github.com/36node/sketch/compare/@36node/sketch@0.7.1...@36node/sketch@0.7.2) (2019-03-31)
+
+
+### Bug Fixes
+
+* sketch init template list ([42e4da6](https://github.com/36node/sketch/commit/42e4da6))
+
+
+
+
+
 ## [0.7.1](https://github.com/36node/sketch/compare/@36node/sketch@0.7.0...@36node/sketch@0.7.1) (2019-03-31)
 
 
