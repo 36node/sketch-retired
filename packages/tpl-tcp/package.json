@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-tcp",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A module boilerplate for tcp server.",
   "repository": {
     "url": "36node/sketch",
