@@ -1,16 +1,16 @@
-export = PetStoreSDK;
+export = SDK;
 
-declare class PetStoreSDK {
-  constructor(opts?: Options);
+declare class SDK {
+  constructor(opts?: SDK.Options);
 
   base: string;
   token: string;
   auth: string;
 
-  pet: PetStoreSDK.PetAPI;
+  pet: SDK.PetAPI;
 }
 
-declare namespace PetStoreSDK {
+declare namespace SDK {
   export interface Options {
     base?: string;
     token?: string;
