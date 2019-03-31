@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/36node/sketch/compare/@36node/sketch@0.7.0...@36node/sketch@0.7.1) (2019-03-31)
+
+
+### Bug Fixes
+
+* storybook ([3bed29c](https://github.com/36node/sketch/commit/3bed29c))
+
+
+
+
+
 # [0.7.0](https://github.com/36node/sketch/compare/@36node/sketch@0.6.3...@36node/sketch@0.7.0) (2019-03-21)
 
 

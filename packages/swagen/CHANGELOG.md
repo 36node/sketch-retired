@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/36node/sketch/compare/@36node/swagen@0.10.0...@36node/swagen@0.11.0) (2019-03-31)
+
+
+### Features
+
+* swagen sdk enhance ([5cff679](https://github.com/36node/sketch/commit/5cff679))
+
+
+
+
+
 # [0.10.0](https://github.com/36node/sketch/compare/@36node/swagen@0.9.5...@36node/swagen@0.10.0) (2019-03-21)
 
 

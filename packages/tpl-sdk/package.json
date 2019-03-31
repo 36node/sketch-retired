@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-sdk",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A SDK boilerplate.",
   "repository": {
     "url": "36node/sketch",
@@ -49,14 +49,14 @@
     ]
   },
   "dependencies": {
-    "@36node/fetch": "^0.5.0",
-    "@36node/query-normalizr": "^0.2.0",
+    "@36node/fetch": "^0.5.1",
+    "@36node/query-normalizr": "^0.2.1",
     "commander": "^2.16.0"
   },
   "devDependencies": {
     "@36node/eslint-config": "^0.4.0",
-    "@36node/sketch": "^0.7.0",
-    "@36node/swagen": "^0.10.0",
+    "@36node/sketch": "^0.7.1",
+    "@36node/swagen": "^0.11.0",
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "faker": "^4.1.0",

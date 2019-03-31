@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/undefined/undefined/compare/@36node/fastman@0.3.0...@36node/fastman@0.3.1) (2019-03-31)
+
+**Note:** Version bump only for package @36node/fastman
+
+
+
+
+
 # [0.3.0](https://github.com/undefined/undefined/compare/@36node/fastman@0.2.13...@36node/fastman@0.3.0) (2019-03-21)
 
 

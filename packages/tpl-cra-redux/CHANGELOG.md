@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.5.0...@36node/template-cra-redux@0.6.0) (2019-03-31)
+
+
+### Bug Fixes
+
+* add sdk but not work ([14f2054](https://github.com/36node/tpl-react-redux/commit/14f2054))
+* build break ([c028254](https://github.com/36node/tpl-react-redux/commit/c028254))
+* storybook ([3bed29c](https://github.com/36node/tpl-react-redux/commit/3bed29c))
+
+
+### Features
+
+* add document title ([e07a29f](https://github.com/36node/tpl-react-redux/commit/e07a29f))
+
+
+
+
+
 # 0.5.0 (2019-03-21)
 
 
