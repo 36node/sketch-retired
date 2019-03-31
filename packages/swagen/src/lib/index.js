@@ -1,9 +1,6 @@
-import path from "path";
 import fs from "fs";
 import Handlebars from "handlebars";
 import prettier from "prettier";
-
-export const TemplatePath = path.join(__dirname, "../../templates");
 
 /**
  * Make directory

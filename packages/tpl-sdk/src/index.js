@@ -1,8 +1,7 @@
-/// <reference pa.index.d.ts' />
-
 import fetch from "@36node/fetch";
+import { denormalize } from "@36node/query-normalizr";
 
-export default class PetStoreSDK {
+export default class SDK {
   /**@type {string} **/
   base;
   /**@type {string} **/
@@ -17,7 +16,8 @@ export default class PetStoreSDK {
     if (this.token) {
       return `Bearer ${this.token}`;
     }
-    return ``;
+
+    return "";
   }
 
   /**
@@ -47,7 +47,7 @@ export default class PetStoreSDK {
 
       return fetch(`${this.base}/pets`, {
         method: "get",
-        query,
+        query: denormalize(query),
         headers: { Authorization: this.auth, ...headers },
       });
     },

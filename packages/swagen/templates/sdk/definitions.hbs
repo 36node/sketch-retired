@@ -1,54 +1,86 @@
-{{#each api}}
-{{#each operations}}
-{{#or parameters requestBody}}
-type {{capitalize name}}Request = {
-  {{#each parameters}}
-  {{#is in "path"}}
-  {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
-  {{/is}}
+export = SDK;
+
+declare class SDK {
+  constructor(opts?: SDK.Options);
+
+  base: string;
+  token: string;
+  auth: string;
+
+  {{#each api}}
+  {{@key}}: SDK.{{capitalize @key}}API;
   {{/each}}
-  {{#withParamQuery parameters}}
-  {{normalizeQuery parameters}}
-  {{/withParamQuery}}
-  {{#withParamHeader parameters}}
-  headers: {
+}
+
+declare namespace SDK {
+  export interface Options {
+    base?: string;
+    token?: string;
+  }
+
+  {{#each api}}
+  export interface {{capitalize @key}}API {
+    {{#each operations}}
+    /**
+     * {{summary}}
+     */
+    {{name}}(req: {{capitalize name}}Request): Promise<{{capitalize name}}Response>;
+    {{/each}}
+  }
+  {{/each}}
+
+  {{#each api}}
+  {{#each operations}}
+  {{#or parameters requestBody}}
+  type {{capitalize name}}Request = {
     {{#each parameters}}
-    {{#is in "header"}}
+    {{#is in "path"}}
     {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
     {{/is}}
     {{/each}}
-  };
-  {{/withParamHeader}}
-  {{#with requestBody}}
-  body: {{{schemaType content.schema}}};
-  {{/with}}
-}
-{{/or}}
+    {{#withParamQuery parameters}}
+    {{normalizeQuery parameters}}
+    {{/withParamQuery}}
+    {{#withParamHeader parameters}}
+    headers: {
+      {{#each parameters}}
+      {{#is in "header"}}
+      {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
+      {{/is}}
+      {{/each}}
+    };
+    {{/withParamHeader}}
+    {{#with requestBody}}
+    body: {{{schemaType content.schema}}};
+    {{/with}}
+  }
+  {{/or}}
 
-{{#or response.content response.headers}}
-type {{capitalize name}}Response = {
-  {{#with response.content}}
-  body: {{{schemaType schema}}};
-  {{/with}}
-  {{#with response.headers}}
-  headers: {
-    {{#each this}}
-    {{camelcase @key}}: {{{schemaType schema}}};
+  {{#or response.content response.headers}}
+  type {{capitalize name}}Response = {
+    {{#with response.content}}
+    body: {{{schemaType schema}}};
+    {{/with}}
+    {{#with response.headers}}
+    headers: {
+      {{#each this}}
+      {{camelcase @key}}: {{{schemaType schema}}};
+      {{/each}}
+    };
+    {{/with}}
+  }
+  {{/or}}
+
+  {{/each}}
+  {{/each}}
+  {{#each components.schemas}}
+  {{#if properties}}
+  type {{capitalize @key}} = {
+    {{#each properties}}
+    {{@key}}: {{{schemaType this}}};
     {{/each}}
-  };
-  {{/with}}
-}
-{{/or}}
+  }
 
-{{/each}}
-{{/each}}
-{{#each components.schemas}}
-{{#if properties}}
-type {{capitalize @key}} = {
-  {{#each properties}}
-  {{@key}}: {{{schemaType this}}};
+  {{/if}}
   {{/each}}
 }
-
-{{/if}}
-{{/each}}

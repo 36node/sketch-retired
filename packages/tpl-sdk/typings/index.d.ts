@@ -17,14 +17,25 @@ declare namespace SDK {
   }
 
   export interface PetAPI {
+    /**
+     * List all pets
+     */
     listPets(req: ListPetsRequest): Promise<ListPetsResponse>;
+    /**
+     * Create a pet
+     */
     createPets(req: CreatePetsRequest): Promise<CreatePetsResponse>;
+    /**
+     * Find pet by id
+     */
     showPetById(req: ShowPetByIdRequest): Promise<ShowPetByIdResponse>;
   }
 
   type ListPetsRequest = {
     query: {
-      limit?: number;
+      filter: {
+        limit?: number;
+      };
     };
   };
 

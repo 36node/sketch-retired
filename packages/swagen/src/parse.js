@@ -1,50 +1,6 @@
 import { get, set, reduceRight, camelCase, merge } from "lodash";
 import SwaggerParser from "swagger-parser";
 
-// /**
-//  * read file or fetch from remote
-//  *
-//  * @param {*} source target file or remote url
-//  * @returns {String} raw data from a file
-//  */
-
-// async function getFile(source) {
-//   return new Promise((resolve, reject) => {
-//     if (is.YML(source) || is.YAML(source) || is.JSON(source)) {
-//       // local file
-//       fs.readFile(source, (err, data) => {
-//         if (err) return reject(err);
-//         resolve(data);
-//       });
-//     } else if (is.URL(source)) {
-//       //fetch from remote
-//       const opts = { url: source };
-//       request(opts, (err, response) => {
-//         if (err) return reject(err);
-//         resolve(response.body);
-//       });
-//     } else {
-//       reject(new Error(`Unsupported source ${source}`));
-//     }
-//   });
-// }
-
-// /**
-//  * parse raw file data to json
-//  *
-//  * @param {String} data raw file data
-//  * @returns {Object} json
-//  */
-
-// function toJSON(data) {
-//   data = data.toString("utf8");
-//   try {
-//     return JSON.parse(data);
-//   } catch (e) {
-//     return YAML.safeLoad(data);
-//   }
-// }
-
 /**
  * parse swagger
  *

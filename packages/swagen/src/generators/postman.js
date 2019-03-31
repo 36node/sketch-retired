@@ -15,11 +15,12 @@ import path from "path";
 import fs from "fs";
 
 import parse from "../parse";
-import { generateTemplate, formatPath, TemplatePath } from "../lib";
+import { generateTemplate, formatPath } from "../lib";
 
 class PostmanGenerator {
-  constructor(swagger) {
+  constructor(swagger, templatePath) {
     this.swagger = swagger;
+    this.templatePath = templatePath;
   }
 
   /**
@@ -200,7 +201,7 @@ class PostmanGenerator {
     item.description = name;
     item.responses.append(this.genResponse(operation));
 
-    const tplTest = path.join(TemplatePath, "postman", "test-script.hbs");
+    const tplTest = path.join(this.templatePath, "postman", "test-script.hbs");
     const testContent = generateTemplate(tplTest, operation);
 
     // console.log(testContent);
@@ -243,9 +244,9 @@ class PostmanGenerator {
   }
 }
 
-export default function genPostman({ yamlFile, targetFile }) {
+export default function genPostman({ yamlFile, targetFile, templatePath }) {
   parse(yamlFile, { dereference: true }).then(function(swagger) {
-    const generator = new PostmanGenerator(swagger);
+    const generator = new PostmanGenerator(swagger, templatePath);
     const name = get(swagger, ["info", "title"], null);
     if (!name) throw new Error("Openapi must have title");
     const collection = generator.genCollection(name).toJSON();

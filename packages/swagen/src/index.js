@@ -1,11 +1,6 @@
-import requireDirectory from "require-directory";
+import koa from "./generators/koa";
+import mock from "./generators/mock";
+import postman from "./generators/postman";
+import sdk from "./generators/sdk";
 
-const genreatorModule = requireDirectory(module, "./generators");
-
-// parse generators from module
-const generators = {};
-Object.keys(genreatorModule)
-  .filter(k => typeof genreatorModule[k].default === "function")
-  .forEach(k => (generators[k] = genreatorModule[k].default));
-
-export { generators };
+export { koa, mock, postman, sdk };

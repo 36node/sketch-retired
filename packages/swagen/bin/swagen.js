@@ -4,16 +4,18 @@ const program = require("commander");
 const path = require("path");
 
 const pkg = require("../package.json");
-const { generators } = require("../dist");
+const { koa, sdk, postman, mock } = require("../dist");
 
 program.version(pkg.version);
+
+const templatePath = path.join(__dirname, "../templates");
 
 program
   .command("koa [yamlFile] [dist]")
   .description("Generate code for koa server api")
   .action((yamlFile, dist) => {
     try {
-      generators["koa"]({ yamlFile, dist });
+      koa({ yamlFile, dist, templatePath });
     } catch (error) {
       console.error(error);
     }
@@ -24,8 +26,7 @@ program
   .description("Generate code for client sdk")
   .action((yamlFile, dist, name) => {
     try {
-      const sdkName = name || path.basename(yamlFile).split(".")[0];
-      generators["sdk"]({ yamlFile, name: sdkName, dist });
+      sdk({ yamlFile, dist, templatePath });
     } catch (error) {
       console.error(error);
     }
@@ -36,7 +37,7 @@ program
   .description("Transform openapi file to postman collection file")
   .action((yamlFile, targetFile) => {
     try {
-      generators["postman"]({ yamlFile, targetFile });
+      postman({ yamlFile, targetFile, templatePath });
     } catch (error) {
       console.error(error);
     }
@@ -51,7 +52,7 @@ program
   .description("Transform openapi file to json-server data file")
   .action((yamlFile, dist, { count }) => {
     try {
-      generators["mock"]({ yamlFile, dist, count });
+      mock({ yamlFile, dist, count });
     } catch (error) {
       console.error(error);
     }

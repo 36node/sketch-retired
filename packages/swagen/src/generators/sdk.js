@@ -2,7 +2,7 @@ import path from "path";
 
 import parse from "../parse";
 import "../helpers";
-import { mkdir, generateFile, TemplatePath } from "../lib";
+import { mkdir, generateFile } from "../lib";
 
 /**
  * Genereate code for sdk
@@ -11,15 +11,14 @@ import { mkdir, generateFile, TemplatePath } from "../lib";
  * @param {string} opts.target code dist
  * @param {string} opts.name sdk name
  */
-export default function genSDK({ yamlFile, dist, name }) {
+export default function genSDK({ yamlFile, dist = "./", templatePath }) {
   // put sdk generation code here
   parse(yamlFile)
     .then(function(swagger) {
-      const tplSdk = path.join(TemplatePath, "sdk", "sdk.hbs");
-      const tplDef = path.join(TemplatePath, "sdk", "definitions.hbs");
+      const tplSdk = path.join(templatePath, "sdk", "sdk.hbs");
+      const tplDef = path.join(templatePath, "sdk", "definitions.hbs");
       const { servers = [] } = swagger;
       const tplData = {
-        sdkName: name,
         server: servers[0] || { url: "" },
         ...swagger,
       };
@@ -30,10 +29,15 @@ export default function genSDK({ yamlFile, dist, name }) {
 
       const finalDist = dist || process.cwd();
 
-      generateFile(tplDef, path.join(finalDist, `.${name}.d.ts`), tplData, {
-        parser: "typescript",
-      });
-      generateFile(tplSdk, path.join(finalDist, `${name}.js`), tplData);
+      generateFile(
+        tplDef,
+        path.join(finalDist, "typings", `index.d.ts`),
+        tplData,
+        {
+          parser: "typescript",
+        }
+      );
+      generateFile(tplSdk, path.join(finalDist, "src", `index.js`), tplData);
     })
     .catch(err => console.error(err));
 }
