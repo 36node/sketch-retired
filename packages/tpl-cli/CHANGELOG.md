@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/undefined/undefined/compare/@36node/template-cli@0.5.3...@36node/template-cli@0.5.4) (2019-03-31)
+
+
+### Bug Fixes
+
+* circleci in template ([f694788](https://github.com/undefined/undefined/commit/f694788))
+
+
+
+
+
 ## [0.5.3](https://github.com/undefined/undefined/compare/@36node/template-cli@0.5.2...@36node/template-cli@0.5.3) (2019-03-31)
 
 

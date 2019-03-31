@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.4](https://github.com/36node/sketch/compare/@36node/template-module@0.6.3...@36node/template-module@0.6.4) (2019-03-31)
+
+
+### Bug Fixes
+
+* circleci in template ([f694788](https://github.com/36node/sketch/commit/f694788))
+
+
+
+
+
 ## [0.6.3](https://github.com/36node/sketch/compare/@36node/template-module@0.6.2...@36node/template-module@0.6.3) (2019-03-31)
 
 
