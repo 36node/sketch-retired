@@ -11,6 +11,9 @@
     "url": "https://github.com/36node/sketch/issues"
   },
   "files": [
-    "index.js"
+    "desktop.js",
+    "index.js",
+    "mobile.js",
+    "README.md"
   ]
 }
