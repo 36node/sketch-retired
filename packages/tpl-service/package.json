@@ -14,12 +14,14 @@
   "files": [
     ".circleci",
     "bin",
-    "dist",
+    "src",
     "ssl",
-    "typings",
+    "test",
+    ".dockerignore",
+    "docker-compose.yml",
+    "Dockerfile",
     "openapi.yml",
-    "README.md",
-    "src"
+    "README.md"
   ],
   "bin": {
     "server": "bin/server.js"

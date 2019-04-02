@@ -13,13 +13,15 @@
   "template": "cra-redux",
   "files": [
     ".circleci",
+    ".storybook",
     "bin",
-    "dist",
-    "ssl",
-    "typings",
-    "openapi.yml",
-    "README.md",
-    "src"
+    "mock",
+    "public",
+    "src",
+    "stories",
+    "antd.theme.js",
+    "Dockerfile",
+    "README.md"
   ],
   "bin": {
     "server": "bin/server.js"
