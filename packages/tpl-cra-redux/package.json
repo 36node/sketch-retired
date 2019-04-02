@@ -23,20 +23,15 @@
     "Dockerfile",
     "README.md"
   ],
-  "bin": {
-    "server": "bin/server.js"
-  },
   "config-overrides-path": "../cli/config-overrides",
   "main": "dist/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
     "build": "NODE_ENV=production sketch build",
-    "build-storybook": "build-storybook -s public",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
-    "gen:api": "swagen koa openapi.yml ./src/api && npm run format",
-    "gen:postman": "swagen postman openapi.yml postman.json",
     "lint": "sketch lint src",
     "release": "standard-version && git push --follow-tags origin master",
+    "server": "serve -s build",
     "start": "NODE_ENV=development sketch start",
     "storybook": "start-storybook -p 9009 -s public",
     "test": "NODE_ENV=test sketch test --env=node"
