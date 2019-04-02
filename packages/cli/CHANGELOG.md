@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.5](https://github.com/36node/sketch/compare/@36node/sketch@0.7.4...@36node/sketch@0.7.5) (2019-04-02)
+
+
+### Bug Fixes
+
+* **cli:** config overrides support user defined router ([60dcf47](https://github.com/36node/sketch/commit/60dcf47))
+
+
+
+
+
 ## [0.7.4](https://github.com/36node/sketch/compare/@36node/sketch@0.7.3...@36node/sketch@0.7.4) (2019-03-31)
 
 
