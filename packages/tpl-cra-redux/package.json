@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-cra-redux",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "description": "A react boilerplate based on CRA",
   "license": "MIT",
   "publishConfig": {
@@ -60,7 +60,7 @@
     ]
   },
   "devDependencies": {
-    "@36node/browserslist-config": "^0.1.0",
+    "@36node/browserslist-config": "^0.1.1",
     "@36node/eslint-config": "^0.4.0",
     "@36node/sketch": "^0.7.4",
     "@commitlint/cli": "^6.1.0",
