@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.8](https://github.com/36node/sketch/compare/@36node/template-service@0.8.7...@36node/template-service@0.8.8) (2019-04-02)
+
+
+### Bug Fixes
+
+* tpl-cra-redux and tpl-service package files ([10664ee](https://github.com/36node/sketch/commit/10664ee))
+
+
+
+
+
 ## [0.8.7](https://github.com/36node/sketch/compare/@36node/template-service@0.8.6...@36node/template-service@0.8.7) (2019-03-31)
 
 **Note:** Version bump only for package @36node/template-service
