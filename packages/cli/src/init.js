@@ -45,8 +45,10 @@ export default async function init(tpl, dest = ".", options = {}) {
       type: "git",
     };
     pkgJson.name = scope ? `@${scope}/${name}` : name;
-    pkgJson["config-overrides-path"] =
-      "node_modules/@36node/sketch/config-overrides";
+    if (pkgJson["config-overrides-path"]) {
+      pkgJson["config-overrides-path"] =
+        "node_modules/@36node/sketch/config-overrides";
+    }
     await jsonfile.writeFile(pkgFile, pkgJson, { spaces: 2 });
     spinner.succeed(`Package.json cooked! ${path.resolve(dest)}`);
   } catch (err) {
