@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.9](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.6.8...@36node/template-cra-redux@0.6.9) (2019-04-02)
+
+
+### Bug Fixes
+
+* faker dev dep ([7d90be4](https://github.com/36node/tpl-react-redux/commit/7d90be4))
+
+
+
+
+
 ## [0.6.8](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.6.7...@36node/template-cra-redux@0.6.8) (2019-04-02)
 
 **Note:** Version bump only for package @36node/template-cra-redux
