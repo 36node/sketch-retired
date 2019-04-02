@@ -12,7 +12,7 @@ const importCwd = require("import-cwd");
 const stopMock = process.env.MOCK === "false" || process.env.MOCK === "FALSE";
 const antdTheme = importCwd.silent("./antd.theme") || {};
 const defaultServerOpts = { delay: 500 };
-const { serverOpts = defaultServerOpts, db = {}, rewrite = {} } =
+const { serverOpts = defaultServerOpts, db = {}, rewrite = {}, router } =
   importCwd.silent("./mock") || {};
 
 const addWebpackRules = rules => config => {
@@ -79,7 +79,7 @@ module.exports = {
        * @param {Express.Application} app
        */
       function mockServer(app) {
-        const router = jsonServer.router(db);
+        const jsonRouter = jsonServer.router(db);
 
         const shouldMockReq = req => {
           return (
@@ -99,9 +99,14 @@ module.exports = {
         }
 
         app.use(jsonServer.rewriter(rewrite));
+
+        // user defined router
+        if (router) app.user(router);
+
+        // json server router
         app.use((req, res, next) => {
           if (shouldMockReq(req)) {
-            return router(req, res, next);
+            return jsonRouter(req, res, next);
           }
           return next();
         });
