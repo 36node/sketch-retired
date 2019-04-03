@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.6](https://github.com/36node/sketch/compare/@36node/sketch@0.7.5...@36node/sketch@0.7.6) (2019-04-03)
+
+
+### Bug Fixes
+
+* app.user -> app.use ([d9e8035](https://github.com/36node/sketch/commit/d9e8035))
+
+
+
+
+
 ## [0.7.5](https://github.com/36node/sketch/compare/@36node/sketch@0.7.4...@36node/sketch@0.7.5) (2019-04-02)
 
 
