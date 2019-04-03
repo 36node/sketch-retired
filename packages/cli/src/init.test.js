@@ -33,7 +33,6 @@ test("init", () => {
           type: "git",
         },
         version: "0.0.0",
-        "config-overrides-path": "node_modules/@36node/sketch/config-overrides",
       },
       { spaces: 2 }
     );

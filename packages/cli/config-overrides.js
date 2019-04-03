@@ -12,7 +12,7 @@ const importCwd = require("import-cwd");
 const stopMock = process.env.MOCK === "false" || process.env.MOCK === "FALSE";
 const antdTheme = importCwd.silent("./antd.theme") || {};
 const defaultServerOpts = { delay: 500 };
-const { serverOpts = defaultServerOpts, db = {}, rewrite = {}, router } =
+const { serverOpts = defaultServerOpts, db = {}, rewrites = {}, router } =
   importCwd.silent("./mock") || {};
 
 const addWebpackRules = rules => config => {
@@ -98,10 +98,10 @@ module.exports = {
           });
         }
 
-        app.use(jsonServer.rewriter(rewrite));
+        app.use(jsonServer.rewriter(rewrites));
 
         // user defined router
-        if (router) app.user(router);
+        if (router) app.use(router);
 
         // json server router
         app.use((req, res, next) => {
