@@ -15,6 +15,7 @@ import {
   Title,
 } from "../src/components/layout";
 import Logo from "../src/components/logo";
+import { text, boolean } from "@storybook/addon-knobs";
 
 // default demo
 storiesOf("Welcome", module).add("to Storybook", () => (
@@ -22,9 +23,21 @@ storiesOf("Welcome", module).add("to Storybook", () => (
 ));
 
 storiesOf("Button", module)
-  .add("with text", () => (
-    <Button onClick={action("clicked")}>Hello Button</Button>
-  ))
+  .add(
+    "with text",
+    () => (
+      <Button onClick={action("clicked")}>
+        {text("Label", "Hello Button")}
+      </Button>
+    ),
+    {
+      notes: "A very simple button",
+      info: {
+        inline: true,
+        header: false,
+      },
+    }
+  )
   .add("with some emoji", () => (
     <Button onClick={action("clicked")}>
       <span role="img" aria-label="so cool">
