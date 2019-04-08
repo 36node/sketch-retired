@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.8](https://github.com/36node/sketch/compare/@36node/sketch@0.7.7...@36node/sketch@0.7.8) (2019-04-08)
+
+
+### Bug Fixes
+
+* add jsonServer.bodyParser ([18a888e](https://github.com/36node/sketch/commit/18a888e))
+
+
+
+
+
 ## [0.7.7](https://github.com/36node/sketch/compare/@36node/sketch@0.7.6...@36node/sketch@0.7.7) (2019-04-08)
 
 
