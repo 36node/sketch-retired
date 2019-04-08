@@ -18,6 +18,9 @@ switch (template.toLowerCase()) {
   case "cra-redux":
     command = "react-app-rewired";
     break;
+  case "react-component":
+    command = "microbundle";
+    args.push("--jsx", "React.createElement");
   case "tcp":
   case "service":
     command = "microbundle";
