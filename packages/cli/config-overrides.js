@@ -101,6 +101,7 @@ module.exports = {
         app.use(jsonServer.rewriter(rewrites));
 
         // user defined routers
+        app.use(jsonServer.bodyParser);
         routers.forEach(router => app.use(router));
 
         // json server router
