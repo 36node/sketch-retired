@@ -1,0 +1,80 @@
+{
+  "name": "@36node/template-react-component",
+  "version": "0.0.1",
+  "description": "A module boilerplate for react component.",
+  "repository": {
+    "url": "36node/sketch",
+    "type": "git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "template": "react-component",
+  "files": [
+    ".circleci",
+    "bin",
+    "dist",
+    "src",
+    "stories",
+    ".circleci",
+    ".storybook",
+    "typings",
+    "README.md",
+    "src"
+  ],
+  "config-overrides-path": "../cli/config-overrides",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.js",
+  "typings": "typings/index.d.ts",
+  "scripts": {
+    "build": "NODE_ENV=production sketch build",
+    "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
+    "lint": "sketch lint src",
+    "release": "standard-version && git push --follow-tags origin master",
+    "test": "NODE_ENV=test sketch test --env=node",
+    "storybook": "start-storybook -p 9009 -s public"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint && npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "styled-components": "^4.1.3",
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@36node/eslint-config": "^0.4.0",
+    "@36node/sketch": "^0.7.6",
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "@storybook/addon-actions": "^5.0.3",
+    "@storybook/addon-links": "^5.0.3",
+    "@storybook/addons": "^5.0.3",
+    "@storybook/react": "^5.0.3",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.2",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4",
+    "standard-version": "^5.0.2"
+  }
+}
