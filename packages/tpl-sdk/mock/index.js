@@ -1,12 +1,14 @@
-const faker = require("faker");
-const _ = require("lodash");
+import pets from "./pet";
 
-const pets = count =>
-  _.range(count).map((val, index) => ({
-    id: faker.random.uuid(),
-    name: faker.name.lastName(),
-    tag: faker.random.arrayElement(["CAT", "DOG", "RABBIT"]),
-  }));
+const myRouter = (req, res, next) => {
+  /** example */
+  // if (req.path === "/sessions" && req.method === "POST") {
+  //   req.body.token = TOKEN;
+  // }
+  next();
+};
+
+const rewrites = { "/aaaaaaa": "/bbbbbbb" };
 
 module.exports = {
   /**
@@ -19,12 +21,7 @@ module.exports = {
   /**
    * rewrite
    */
-  rewrite: {},
+  rewrites,
 
-  /**
-   * Config mock server
-   */
-  serverOpts: {
-    delay: 500,
-  },
+  routers: [myRouter],
 };
