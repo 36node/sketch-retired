@@ -2,6 +2,7 @@ import { configure, addParameters, addDecorator } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { withKnobs } from "@storybook/addon-knobs";
 import { withInfo } from "@storybook/addon-info";
+import TableComponent from "./props-table";
 
 function loadStories() {
   require("../stories");
@@ -19,7 +20,11 @@ addParameters({
 });
 
 // info https://github.com/storybooks/storybook/blob/next/addons/info/README.md
-addDecorator(withInfo);
+addDecorator(
+  withInfo({
+    TableComponent,
+  })
+);
 
 // konobs  https://github.com/storybooks/storybook/blob/next/addons/knobs/README.md
 addDecorator(withKnobs);

@@ -16,6 +16,7 @@ import {
 } from "../src/components/layout";
 import Logo from "../src/components/logo";
 import { text, boolean } from "@storybook/addon-knobs";
+import InfoExample from "./info-example";
 
 // default demo
 storiesOf("Welcome", module).add("to Storybook", () => (
@@ -45,6 +46,17 @@ storiesOf("Button", module)
       </span>
     </Button>
   ));
+
+storiesOf("Addons", module).add(
+  "with Info",
+  () => <InfoExample text={"hello"} requiredText={"storybook"} />,
+  {
+    info: {
+      inline: true,
+      header: false,
+    },
+  }
+);
 
 // our components
 
