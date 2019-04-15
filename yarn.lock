@@ -2,6 +2,42 @@
 # yarn lockfile v1
 
 
+"@36node/sketch@^0.7.0":
+  version "0.7.8"
+  resolved "http://registry.npm.taobao.org/@36node/sketch/download/@36node/sketch-0.7.8.tgz#a7923000d74b215107d028b8f7f58479c160fe92"
+  integrity sha1-p5IwANdLIVEH0Ci49/WEecFg/pI=
+  dependencies:
+    "@babel/core" "^7.0.0-0"
+    "@babel/plugin-proposal-decorators" "^7.3.0"
+    babel-loader "8.0.4"
+    babel-plugin-import "^1.11.0"
+    babel-plugin-lodash "^3.3.4"
+    commander "^2.16.0"
+    connect-pause "^0.1.0"
+    cross-spawn "^6.0.5"
+    customize-cra "^0.2.12"
+    esm "^3.2.18"
+    fs-extra "^7.0.0"
+    git-config-path "^1.0.1"
+    import-cwd "^2.1.0"
+    inquirer "^6.0.0"
+    jest-styled-components "^6.3.1"
+    json-server "^0.14.2"
+    jsonfile "^4.0.0"
+    less "^3.9.0"
+    less-loader "^4.1.0"
+    microbundle "^0.11.0"
+    nodemon "^1.18.10"
+    npm-package-arg "^6.1.0"
+    ora "^3.0.0"
+    parse-git-config "^2.0.2"
+    react-app-rewired "^2.1.1"
+    react-scripts "^2.1.8"
+    react-test-renderer "^16.8.4"
+    tar "^4.4.4"
+    tmp "^0.0.33"
+    typescript "^3.3.3333"
+
 "@36node/whisper@^0.1.0":
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/@36node/whisper/-/whisper-0.1.11.tgz#879cf1010eb2b0dd67b2f7a4863e22a67410eff2"

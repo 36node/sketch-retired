@@ -6,8 +6,7 @@ export default function normalizor(opts = {}) {
     const queryStr = ctx.querystring;
 
     if (queryStr) {
-      ctx.rawQuery = ctx.query;
-      ctx.query = normalize(ctx.rawQuery);
+      ctx.normalizedQuery = normalize(ctx.query);
     }
 
     return next();

@@ -10,11 +10,7 @@ export default class API {
   bind(router) {
     const listPets = async ctx => {
       const req = {
-        query: {
-          _limit: ctx.query._limit,
-          tag: ctx.query.tag,
-          age_gt: ctx.query.age_gt,
-        },
+        query: ctx.normalizedQuery || {},
         context: ctx, // here we put koa context in request
       };
 
@@ -22,8 +18,8 @@ export default class API {
 
       if (!res.body) throw createError(500, "should have body in response");
 
-      if (!res.headers || res.headers.xNext === undefined)
-        throw createError(500, "should have header x-next in response");
+      if (!res.headers || res.headers.xTotalCount === undefined)
+        throw createError(500, "should have header X-Total-Count in response");
 
       ctx.body = res.body;
       ctx.set("X-Total-Count", res.headers.xTotalCount);

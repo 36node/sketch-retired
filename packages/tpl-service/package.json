@@ -74,6 +74,7 @@
   },
   "dependencies": {
     "@36node/mongoose-helper": "^0.2.0",
+    "@36node/query-normalizr": "^0.2.1",
     "@koa/cors": "^3.0.0",
     "dotenv": "^7.0.0",
     "koa": "^2.7.0",
