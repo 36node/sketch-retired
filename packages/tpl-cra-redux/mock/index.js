@@ -10,6 +10,7 @@ const fakePets = count =>
     id: faker.random.uuid(),
     name: faker.name.lastName(),
     tag: faker.random.arrayElement(["CAT", "DOG", "RABBIT"]),
+    age: faker.random.number(15),
   }));
 
 module.exports = {

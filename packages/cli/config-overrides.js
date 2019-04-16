@@ -15,6 +15,8 @@ const defaultServerOpts = { delay: 500 };
 const { serverOpts = defaultServerOpts, db = {}, rewrites = {}, routers = [] } =
   importCwd.silent("./mock") || {};
 
+const { toJsonServer } = require("@36node/query-normalizr");
+
 const addWebpackRules = rules => config => {
   if (!config.module) {
     config.module = {};
@@ -102,6 +104,16 @@ module.exports = {
 
         // user defined routers
         app.use(jsonServer.bodyParser);
+
+        // user query normalizr
+        app.use((req, res, next) => {
+          if (shouldMockReq(req)) {
+            req.query = toJsonServer(req.query);
+            return next();
+          }
+          return next();
+        });
+
         routers.forEach(router => app.use(router));
 
         // json server router

@@ -19,7 +19,16 @@ declare module "@36node/query-normalizr" {
     group?: [string] | string;
   }
 
+  interface JsonServerQuery {
+    _limit?: number;
+    _start?: number;
+    _sort?: string;
+    _order?: string;
+    _embed?: string;
+  }
+
   export function normalize(fromUrl: UrlQuery): NormalizeQuery;
   export function denormalize(queryObj: NormalizeQuery): UrlQuery;
   export function QueryNormalizr(options: object): Koa.Middleware;
+  export function toJsonServer(fromUrl: UrlQuery): JsonServerQuery;
 }

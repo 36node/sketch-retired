@@ -16,7 +16,12 @@ export default class extends React.PureComponent {
   }
 
   listPets = () => {
-    this.props.dispatch(listPets({ org: "36node" }));
+    this.props.dispatch(
+      listPets({
+        org: "36node",
+        query: { limit: 10, sort: "-age", filter: { tag: "DOG" } },
+      })
+    );
   };
 
   render() {
@@ -27,7 +32,9 @@ export default class extends React.PureComponent {
           <Jumbotron> Pets in store. </Jumbotron>
           <div>
             {pets.map(pet => (
-              <div key={pet.id}>{pet.name}</div>
+              <div key={pet.id}>
+                {pet.name}-{pet.age}
+              </div>
             ))}
           </div>
         </Container>
