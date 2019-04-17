@@ -58,10 +58,11 @@ export default class API {
     };
 
     const deletePet = async ctx => {
-      if (!ctx.params.id) throw createError(400, "id in path is required.");
+      if (!ctx.params.petId)
+        throw createError(400, "petId in path is required.");
 
       const req = {
-        id: ctx.params.id,
+        petId: ctx.params.petId,
         context: ctx, // here we put koa context in request
       };
 

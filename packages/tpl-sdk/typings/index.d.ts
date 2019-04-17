@@ -29,12 +29,23 @@ declare namespace SDK {
      * Find pet by id
      */
     showPetById(req: ShowPetByIdRequest): Promise<ShowPetByIdResponse>;
+    /**
+     *
+     */
+    deletePet(req: DeletePetRequest): Promise<DeletePetResponse>;
   }
 
   type ListPetsRequest = {
     query: {
+      limit?: number;
+      offset?: number;
+      sort?: string;
+
       filter: {
-        limit?: number;
+        tag?: string;
+        age: {
+          $gt?: number;
+        };
       };
     };
   };
@@ -42,7 +53,7 @@ declare namespace SDK {
   type ListPetsResponse = {
     body: Array<Pet>;
     headers: {
-      xNext: string;
+      xTotalCount: number;
     };
   };
 
@@ -62,8 +73,13 @@ declare namespace SDK {
     body: Pet;
   };
 
+  type DeletePetRequest = {
+    petId: number;
+  };
+
   type Pet = {
     id: number;
+    age: number;
     name: string;
     tag: string;
   };
@@ -71,6 +87,7 @@ declare namespace SDK {
   type NewPet = {
     name: string;
     tag: string;
+    age: number;
   };
 
   type Err = {

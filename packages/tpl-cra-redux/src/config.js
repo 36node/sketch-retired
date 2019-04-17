@@ -35,3 +35,15 @@ export function env(name, init) {
  */
 export const STORE_BASE = env("STORE_BASE", "");
 export const TOKEN = env("TOKEN", "some fake token");
+
+/**
+ * Test tpl-service
+ */
+// export const STORE_BASE = env(
+//   "STORE_BASE",
+//   "http://localhost:9527/petstore/v0"
+// );
+// export const TOKEN = env(
+//   "TOKEN",
+//   "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJ1c2VyIjp7InJvbGVzIjpbIkFETUlOIiwiVVNFUiJdfX0.XA1kE_UdbOsU0rfmG3g1y3SpJ5aFVzPGFBHihVXv58sNatweqLHPEUAwhqobgKgmAbaKa3dlYrXEpHESHZ7AJgQYCfSeVxtsKyoQmcq9OYA0iFcH5oCWQgYqfeWJPOroMlMdNQax5kG-GkuaFbIiwiw-9j_ACS8CSPO9Oq2dQCA"
+// );

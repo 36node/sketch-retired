@@ -84,5 +84,21 @@ export default class SDK {
         headers: { Authorization: this.auth, ...headers },
       });
     },
+    /**
+     *
+     *
+     * @param {DeletePetRequest} req deletePet request
+     * @returns {Promise<DeletePetResponse>} pet deleted
+     */
+    deletePet: (req = {}) => {
+      const { petId, headers } = req;
+
+      if (!petId) throw new Error("petId is required for deletePet");
+
+      return fetch(`${this.base}/pets/${petId}`, {
+        method: "delete",
+        headers: { Authorization: this.auth, ...headers },
+      });
+    },
   };
 }

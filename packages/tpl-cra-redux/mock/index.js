@@ -9,7 +9,8 @@ const fakePets = count =>
   _.range(count).map((val, index) => ({
     id: faker.random.uuid(),
     name: faker.name.lastName(),
-    tag: faker.random.arrayElement(["CAT", "DOG", "RABBIT"]),
+    tag: faker.random.arrayElement(["CAT", "DOG"]),
+    owner: faker.name.firstName(),
     age: faker.random.number(15),
   }));
 
@@ -18,7 +19,7 @@ module.exports = {
    * mock data
    */
   db: {
-    pets: fakePets(10),
+    pets: fakePets(100),
   },
 
   /**
