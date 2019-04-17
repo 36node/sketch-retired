@@ -2,17 +2,31 @@ import React, { Component } from "react";
 import { hot } from "react-hot-loader/root";
 import { Router, Route, Switch } from "react-router-dom";
 import { Layout, Breadcrumb } from "antd";
+import Loadable from "react-loadable";
 
 import history from "./history";
 import ProtectedRoute from "./containers/protect";
 
-import Home from "./containers/home";
-import PetStore from "./containers/pet-store";
-import Github from "./containers/github";
-import Login from "./containers/login";
 import Nav from "./containers/nav";
 import Logo from "./components/logo";
 import { Content, Footer, Header } from "./components/layout";
+
+const Home = Loadable({
+  loader: () => import("./containers/home"),
+  loading: null,
+});
+const PetStore = Loadable({
+  loader: () => import("./containers/pet-store"),
+  loading: null,
+});
+const Github = Loadable({
+  loader: () => import("./containers/github"),
+  loading: null,
+});
+const Login = Loadable({
+  loader: () => import("./containers/login"),
+  loading: null,
+});
 
 class App extends Component {
   render() {

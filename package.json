@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@36node/eslint-config": "^0.4.0",
-    "@36node/sketch": "^0.7.0",
+    "@36node/sketch": "^0.8.0",
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "@types/jest": "^24.0.11",
