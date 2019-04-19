@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "bootstrap": "yarn install && lerna bootstrap",
-    "build": "NODE_ENV=production lerna run build --concurrency=1",
+    "build": "NODE_ENV=production lerna run build --scope=@36node/sketch && lerna run build",
     "changelog": "lerna-changelog",
     "format": "prettier --trailing-comma es5 --write 'packages/**/*.js'",
     "lint": "eslint packages/*/src",

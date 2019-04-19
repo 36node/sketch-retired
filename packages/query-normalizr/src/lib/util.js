@@ -9,3 +9,11 @@ export function safeToNumber(num) {
 
   return num;
 }
+
+export function safeToArray(arrOrStr) {
+  if (Array.isArray(arrOrStr)) {
+    return arrOrStr;
+  }
+
+  return [arrOrStr];
+}

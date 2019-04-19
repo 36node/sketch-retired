@@ -26,6 +26,20 @@ paths:
             type: integer
             format: int32
             default: 10
+        - name: _offset
+          in: query
+          description: How many items to escape
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: _sort
+          in: query
+          description: Fields to sort
+          required: false
+          schema:
+            type: string
         - name: tag
           in: query
           description: Tag of pet
@@ -162,7 +176,7 @@ paths:
       tags:
         - pet
       parameters:
-        - name: id
+        - name: petId
           in: path
           description: ID of pet to delete
           required: true

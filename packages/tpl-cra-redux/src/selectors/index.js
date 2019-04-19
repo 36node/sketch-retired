@@ -7,3 +7,7 @@ export const selectRepos = state =>
   denormalize(state.paginators.repo.result, [repoSchema], state.entities);
 export const selectPets = state =>
   denormalize(state.paginators.pet.result, [petSchema], state.entities);
+export const selectListPetsLoading = state => state.paginators.pet.loading;
+export const selectListPetsTotal = state =>
+  Number(state.paginators.pet.xTotalCount);
+export const selectListPetsQuery = state => state.paginators.pet.request.query;

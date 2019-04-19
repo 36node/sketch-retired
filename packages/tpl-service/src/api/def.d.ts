@@ -1,6 +1,8 @@
 interface ListPetsRequest {
   query: {
     limit?: number;
+    offset?: number;
+    sort?: string;
 
     filter: {
       tag?: string;
@@ -39,7 +41,7 @@ interface ShowPetByIdResponse {
 }
 
 interface DeletePetRequest {
-  id: number;
+  petId: number;
   context?: Object;
 }
 

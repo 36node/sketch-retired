@@ -10,15 +10,16 @@ export class Service extends API {
    */
 
   async listPets(req) {
-    const limit = Number(req.query._limit) || 100;
-    const tag = req.query.tag;
-    const age_gt = req.query.age_gt;
+    const limit = req.query.limit || 10; // default is 10
+    const offset = req.query.offset || 0; // default is 0
+    const sort = req.query.sort;
+    const filter = req.query.filter;
 
-    const result = await Pet.list({ limit, filter: { tag, age_gt } });
+    const result = await Pet.list({ limit, offset, sort, filter });
     return {
       body: result.docs,
       headers: {
-        xNext: "nextLink",
+        xTotalCount: result.total,
       },
     };
   }

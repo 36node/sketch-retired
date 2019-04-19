@@ -13,6 +13,7 @@ import Router from "koa-tree-router";
 
 import { BASE, MONGODB_CONNECTION } from "./config";
 import petsService from "./services/pet";
+import { QueryNormalizr } from "@36node/query-normalizr";
 
 const app = new Koa2();
 const router = new Router({ prefix: BASE });
@@ -48,9 +49,10 @@ router.get("/openapi.yml", ctx => {
 app
   .use(logger())
   .use(helmet())
-  .use(cors({ exposeHeaders: ["Link", "X-Total"] }))
+  .use(cors({ exposeHeaders: ["Link", "X-Total-Count"] }))
   .use(jwt({ secret: publicKey }).unless({ path: `${BASE}/openapi.yml` }))
   .use(body())
+  .use(QueryNormalizr())
   .use(compress({ threshold: 2048 }))
   .use(router.routes());
 

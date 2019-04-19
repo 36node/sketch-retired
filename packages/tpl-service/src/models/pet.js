@@ -6,6 +6,7 @@ export const petSchema = new mongoose.Schema(
     name: String,
     tag: String,
     owner: String,
+    age: Number,
     category: { type: String, enum: ["CAT", "DOG"] },
   },
   {
@@ -24,6 +25,8 @@ class Pet {
   name;
   /** @type {string} */
   tag;
+  /** @type {number} */
+  age;
   /** @type {string} */
   owner;
   /** @type {("CAT"|"DOG")} */

@@ -38,13 +38,7 @@ export default class API {
         {{/is}}
         {{/each}}
         {{#withParamQuery parameters}}
-        query: {
-          {{#each parameters}}
-          {{#eq in "query"}}
-          {{name}}: ctx.query.{{name}},
-          {{/eq}}
-          {{/each}}
-        },
+        query: ctx.normalizedQuery || {},
         {{/withParamQuery}}
         {{#withParamHeader parameters}}
         headers: {
