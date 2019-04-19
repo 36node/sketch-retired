@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Route, Redirect } from "react-router";
 
-import { selectSession } from "../selectors";
+import { selectSession } from "selectors";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route

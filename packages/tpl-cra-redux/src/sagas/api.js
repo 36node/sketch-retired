@@ -10,14 +10,14 @@ import {
 } from "redux-saga/effects";
 import { message } from "antd";
 
-import { humps } from "../lib";
-import history from "../history";
-import Github from "../sdk/github";
+import { humps } from "src/lib";
+import history from "src/history";
+import Github from "sdk/github";
 import Petstore from "@36node/template-sdk";
-import { repoSchema, petSchema } from "../selectors/schemas";
-import { selectSession, selectRedirect } from "../selectors";
-import { STORE_BASE, TOKEN } from "../config";
-import * as cs from "../constants";
+import { repoSchema, petSchema } from "selectors/schemas";
+import { selectSession, selectRedirect } from "selectors";
+import { STORE_BASE, TOKEN } from "src/config";
+import * as cs from "src/constants";
 
 const github = new Github();
 const petstore = new Petstore({
