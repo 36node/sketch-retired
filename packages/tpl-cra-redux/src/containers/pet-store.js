@@ -2,17 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import DocumentTitle from "react-document-title";
 
-import { listPets } from "../actions";
+import { listPets } from "actions";
 import {
   selectPets,
   selectListPetsLoading,
   selectListPetsQuery,
   selectListPetsTotal,
-} from "../selectors";
+} from "selectors";
 import { Table } from "antd";
 import { isEmpty } from "lodash";
 
-import { Container, Jumbotron } from "../components/layout";
+import { Container, Jumbotron } from "components/layout";
 
 /**
  * Pets table

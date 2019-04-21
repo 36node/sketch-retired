@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import DocumentTitle from "react-document-title";
 
-import { listRepos } from "../actions";
-import { selectRepos } from "../selectors";
+import { listRepos } from "actions";
+import { selectRepos } from "selectors";
 
-import { Container, Jumbotron } from "../components/layout";
+import { Container, Jumbotron } from "components/layout";
 
 @connect(state => ({
   repos: selectRepos(state),

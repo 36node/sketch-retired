@@ -4,9 +4,9 @@ import { Layout, Form, Icon, Input, Button, Checkbox } from "antd";
 import styled from "styled-components";
 import DocumentTitle from "react-document-title";
 
-import { login } from "../actions";
+import { login } from "actions";
 
-import { Content } from "../components/layout";
+import { Content } from "components/layout";
 
 const FormItem = Form.Item;
 

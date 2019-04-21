@@ -1,6 +1,6 @@
 /// <reference path='../sdk/.github.d.ts' />
 
-import * as cs from "../constants";
+import * as cs from "src/constants";
 
 /**
  * Create action: LIST_REPOS

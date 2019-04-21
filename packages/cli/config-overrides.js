@@ -4,10 +4,12 @@ const {
   useEslintRc,
   addLessLoader,
   addDecoratorsLegacy,
+  addWebpackResolve,
 } = require("customize-cra");
 const jsonServer = require("json-server");
 const pause = require("connect-pause");
 const importCwd = require("import-cwd");
+const path = require("path");
 
 const stopMock = process.env.MOCK === "false" || process.env.MOCK === "FALSE";
 const antdTheme = importCwd.silent("./antd.theme") || {};
@@ -26,6 +28,10 @@ const addWebpackRules = rules => config => {
   }
   config.module.rules = config.module.rules.concat(rules);
   return config;
+};
+
+const resolve = function resolve(dir) {
+  return path.join(process.cwd(), dir);
 };
 
 /**
@@ -66,7 +72,19 @@ module.exports = {
         test: /\.mjs$/,
         type: "javascript/auto",
       },
-    ])
+    ]),
+    addWebpackResolve({
+      alias: {
+        src: resolve("src"),
+        actions: resolve("src/actions"),
+        components: resolve("src/components"),
+        containers: resolve("src/containers"),
+        reducers: resolve("src/reducers"),
+        sagas: resolve("src/sagas"),
+        sdk: resolve("src/sdk"),
+        selectors: resolve("src/selectors"),
+      },
+    })
   ),
   devServer: function(configFunction) {
     return function(proxy, allowedHost) {

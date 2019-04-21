@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import entities from "./entity";
 import fetching from "./fetching";
 import paginate from "./paginate";
-import * as cs from "../constants";
+import * as cs from "src/constants";
 
 const compose = (f, g) => (a, b) => f(g(a, b), b);
 
