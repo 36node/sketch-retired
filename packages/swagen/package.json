@@ -1,6 +1,6 @@
 {
   "name": "@36node/swagen",
-  "version": "0.11.1",
+  "version": "0.11.2",
   "description": "A module boilerplate for nodejs and web.",
   "repository": {
     "url": "36node/sketch",
@@ -27,7 +27,7 @@
     "test": "NODE_ENV=test sketch test --env=node"
   },
   "dependencies": {
-    "@36node/query-normalizr": "^0.2.2",
+    "@36node/query-normalizr": "^0.2.3",
     "handlebars": "^4.0.12",
     "handlebars-helpers": "^0.10.0",
     "js-yaml": "^3.12.0",
