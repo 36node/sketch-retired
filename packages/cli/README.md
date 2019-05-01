@@ -3,20 +3,14 @@
 [![version][0]][1] [![downloads][2]][3]
 Will add some badges here.
 
-## Install
-
-```bash
-yarn global add @36node/sketch
-```
-
 ## Usage
 
 ```sh
-sketch init some-folder-name
+npx @36node/sketch init some-folder-name
 
 // or
 
-sketch init --help
+npx @36node/sketch init --help
 ```
 
 ## Contributing
