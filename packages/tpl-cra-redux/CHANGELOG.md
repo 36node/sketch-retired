@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.6.14...@36node/template-cra-redux@0.7.0) (2019-05-01)
+
+
+### Bug Fixes
+
+* fix tpl-cra-redux, add loading ([#69](https://github.com/36node/tpl-react-redux/issues/69)) ([e0276b2](https://github.com/36node/tpl-react-redux/commit/e0276b2))
+* move node_env into circle script ([7efbf8f](https://github.com/36node/tpl-react-redux/commit/7efbf8f))
+* npm_package_version ([e19b7ac](https://github.com/36node/tpl-react-redux/commit/e19b7ac))
+* **tpl-cra-redux:** x-ua-compatible ([4ccc604](https://github.com/36node/tpl-react-redux/commit/4ccc604))
+
+
+### Features
+
+* add react loadable ([#67](https://github.com/36node/tpl-react-redux/issues/67)) ([93e821b](https://github.com/36node/tpl-react-redux/commit/93e821b))
+* add some addons into storybook([#60](https://github.com/36node/tpl-react-redux/issues/60)) ([#63](https://github.com/36node/tpl-react-redux/issues/63)) ([5792937](https://github.com/36node/tpl-react-redux/commit/5792937))
+* add webpack resolve ([#76](https://github.com/36node/tpl-react-redux/issues/76)) ([ac261e0](https://github.com/36node/tpl-react-redux/commit/ac261e0))
+
+
+
+
+
 ## [0.6.14](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.6.13...@36node/template-cra-redux@0.6.14) (2019-04-09)
 
 **Note:** Version bump only for package @36node/template-cra-redux

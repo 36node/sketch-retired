@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/36node/sketch/compare/@36node/sketch@0.8.0...@36node/sketch@0.9.0) (2019-05-01)
+
+
+### Features
+
+* add webpack resolve ([#76](https://github.com/36node/sketch/issues/76)) ([ac261e0](https://github.com/36node/sketch/commit/ac261e0))
+
+
+
+
+
 # [0.8.0](https://github.com/36node/sketch/compare/@36node/sketch@0.7.8...@36node/sketch@0.8.0) (2019-04-09)
 
 
