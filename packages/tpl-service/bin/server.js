@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const mongoose = require("mongoose");
-const { app, config, somejob } = require(process.env.NODE_ENV === "production"
+const { app, config, task } = require(process.env.NODE_ENV === "production"
   ? "../dist"
   : "../src");
 
@@ -12,6 +12,7 @@ const { PORT, MONGODB_CONNECTION } = config;
  */
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_CONNECTION, {
+  useCreateIndex: true,
   useNewUrlParser: true,
   auto_reconnect: true,
   reconnectInterval: 30 * 1000,
@@ -20,7 +21,7 @@ mongoose.connect(MONGODB_CONNECTION, {
   connectTimeoutMS: 30 * 1000,
 });
 mongoose.connection.on("open", async () => {
-  await somejob();
+  await task();
 });
 mongoose.connection.on("error", () => {
   console.error("mongodb connection error");

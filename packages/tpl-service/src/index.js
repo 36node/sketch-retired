@@ -1,6 +1,6 @@
 import app from "./app";
 import * as config from "./lib/config";
 import logger from "./lib/logger";
-import somejob from "./tasks/somejob";
+import task from "./task";
 
-export { app, config, logger, somejob };
+export { app, config, logger, task };
