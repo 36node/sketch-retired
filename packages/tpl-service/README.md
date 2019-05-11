@@ -9,10 +9,13 @@
 docker-compose -d
 
 # install dependencies
-yarn bootstrap
+yarn
 
 # start service
 yarn start
+
+# if we want to start service as production
+NODE_ENV=production yarn start
 
 # use postman to check api
 ```
@@ -20,6 +23,7 @@ yarn start
 ### Folder structures
 
 ```sh
+bin
 ./src
 ├── api
 ├── app.js
@@ -32,6 +36,8 @@ yarn start
 └── services
 ```
 
+- bin: 受限于nodejs的原生能力限制，该目录下要求采用 commonjs 写法; bin 目录用于辅助项目执行。
+- src: source 目录只负责输出模块。
 - api: 自动生成的 api 目录包含 koa 桩代码
 - app.js: 应用程序入口
 - config.js: 配置文件入口
@@ -41,6 +47,13 @@ yarn start
 - lib: 基础库
 - models: 数据层
 - service: 逻辑层
+
+目录引用原则：
+
+- config 文件是唯一的例外
+- services and tasks 引用 models
+- lib 目录可以被任何文件引用
+- lib 目录内部不要出现交叉引用
 
 ### default token
 

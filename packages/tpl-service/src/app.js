@@ -6,53 +6,47 @@ import body from "koa-body";
 import compress from "koa-compress";
 import cors from "@koa/cors";
 import helmet from "koa-helmet";
-import logger from "koa-logger";
+import koaLogger from "koa-logger";
+import koaPinoLogger from "koa-pino-logger";
 import jwt from "koa-jwt";
-import mongoose from "mongoose";
 import Router from "koa-tree-router";
+import { queryNormalizr } from "@36node/query-normalizr";
 
-import { BASE, MONGODB_CONNECTION } from "./config";
+import logger from "./lib/logger";
+import { BASE, NODE_ENV } from "./lib/config";
+import openapi from "./middleware/openapi";
 import petsService from "./services/pet";
-import { QueryNormalizr } from "@36node/query-normalizr";
 
 const app = new Koa2();
 const router = new Router({ prefix: BASE });
 const publicKey = fs.readFileSync(path.join(__dirname, "../ssl/rsa_jwt.pub"));
-
-/**
- * connect to mongodb
- */
-
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_CONNECTION, { useNewUrlParser: true });
-mongoose.connection.on("error", console.error.bind(console, "数据库连接错误"));
+const openapiFile = fs.createReadStream(path.join(__dirname, "../openapi.yml"));
 
 /**
  * register services
  */
-
 petsService.bind(router);
 
 /**
- * spec openapi.yml
+ * logger
  */
-
-router.get("/openapi.yml", ctx => {
-  ctx.type = "text/yaml";
-  ctx.body = fs.createReadStream(path.join(__dirname, "../openapi.yml"));
-});
+if (NODE_ENV !== "production") {
+  // simple log under development
+  app.use(koaLogger());
+} else {
+  app.use(koaPinoLogger({ logger }));
+}
 
 /**
  * application
  */
-
 app
-  .use(logger())
   .use(helmet())
+  .use(openapi(`${BASE}/openapi.yml`, openapiFile))
   .use(cors({ exposeHeaders: ["Link", "X-Total-Count"] }))
-  .use(jwt({ secret: publicKey }).unless({ path: `${BASE}/openapi.yml` }))
+  .use(jwt({ secret: publicKey }))
   .use(body())
-  .use(QueryNormalizr())
+  .use(queryNormalizr())
   .use(compress({ threshold: 2048 }))
   .use(router.routes());
 

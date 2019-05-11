@@ -14,8 +14,8 @@ export class Service extends API {
     const offset = req.query.offset || 0; // default is 0
     const sort = req.query.sort;
     const filter = req.query.filter;
-
     const result = await Pet.list({ limit, offset, sort, filter });
+
     return {
       body: result.docs,
       headers: {
