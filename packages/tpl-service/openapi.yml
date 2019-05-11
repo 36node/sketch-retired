@@ -105,7 +105,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/NewPet"
+              $ref: "#/components/schemas/PetDoc"
             examples:
               default:
                 value: |
@@ -170,6 +170,40 @@ paths:
           $ref: "#/components/responses/NotFound"
         "500":
           $ref: "#/components/responses/InternalError"
+
+    put:
+      summary: Update pet
+      operationId: updatePet
+      tags:
+        - pet
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          description: The id of pet
+          schema:
+            type: string
+      requestBody:
+        description: Pet to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PetDoc"
+      responses:
+        "200":
+          description: The pet
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pet"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
     delete:
       description: deletes a single pet based on the ID supplied
       operationId: deletePet
@@ -181,8 +215,7 @@ paths:
           description: ID of pet to delete
           required: true
           schema:
-            type: integer
-            format: int64
+            type: string
       responses:
         "204":
           description: pet deleted
@@ -225,8 +258,7 @@ components:
         - name
       properties:
         id:
-          type: integer
-          format: int64
+          type: string
         age:
           type: integer
           format: int32
@@ -234,7 +266,7 @@ components:
           type: string
         tag:
           type: string
-    NewPet:
+    PetDoc:
       required:
         - name
       properties:
@@ -244,6 +276,7 @@ components:
           type: string
         age:
           type: integer
+          format: int32
     Err:
       type: object
       properties:

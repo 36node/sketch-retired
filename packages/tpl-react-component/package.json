@@ -30,11 +30,11 @@
   "source": "src/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "NODE_ENV=production sketch build",
+    "build": "sketch build",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "lint": "sketch lint src",
     "release": "standard-version && git push --follow-tags origin master",
-    "test": "NODE_ENV=test sketch test --env=node",
+    "test": "sketch test --env=node",
     "storybook": "start-storybook -p 9009 -s public"
   },
   "commitlint": {
@@ -46,7 +46,7 @@
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "npm run lint && npm run test"
+      "pre-push": "npm run lint && CI=true NODE_ENV=test npm run test"
     }
   },
   "lint-staged": {

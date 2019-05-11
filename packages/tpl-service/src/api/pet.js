@@ -57,6 +57,24 @@ export default class API {
       ctx.status = 200;
     };
 
+    const updatePet = async ctx => {
+      if (!ctx.params.petId)
+        throw createError(400, "petId in path is required.");
+
+      const req = {
+        petId: ctx.params.petId,
+        body: ctx.request.body,
+        context: ctx, // here we put koa context in request
+      };
+
+      const res = await this.updatePet(req);
+
+      if (!res.body) throw createError(500, "should have body in response");
+
+      ctx.body = res.body;
+      ctx.status = 200;
+    };
+
     const deletePet = async ctx => {
       if (!ctx.params.petId)
         throw createError(400, "petId in path is required.");
@@ -74,6 +92,7 @@ export default class API {
     router.get("/pets", ...this.middlewares("listPets"), listPets);
     router.post("/pets", ...this.middlewares("createPets"), createPets);
     router.get("/pets/:petId", ...this.middlewares("showPetById"), showPetById);
+    router.put("/pets/:petId", ...this.middlewares("updatePet"), updatePet);
     router.delete("/pets/:petId", ...this.middlewares("deletePet"), deletePet);
   }
 
@@ -121,6 +140,17 @@ export default class API {
    * @returns {ShowPetByIdResponse} Expected response to a valid request
    */
   showPetById(req) {
+    throw new Error("not implemented");
+  }
+
+  /**
+   * Update pet
+   *
+   * @abstract
+   * @param {UpdatePetRequest} req updatePet request
+   * @returns {UpdatePetResponse} The pet
+   */
+  updatePet(req) {
     throw new Error("not implemented");
   }
 

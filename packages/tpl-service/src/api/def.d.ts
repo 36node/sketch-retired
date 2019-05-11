@@ -23,7 +23,7 @@ interface ListPetsResponse {
 }
 
 interface CreatePetsRequest {
-  body: NewPet;
+  body: PetDoc;
   context?: Object;
 }
 
@@ -40,18 +40,28 @@ interface ShowPetByIdResponse {
   body: Pet;
 }
 
+interface UpdatePetRequest {
+  petId: string;
+  body: PetDoc;
+  context?: Object;
+}
+
+interface UpdatePetResponse {
+  body: Pet;
+}
+
 interface DeletePetRequest {
-  petId: number;
+  petId: string;
   context?: Object;
 }
 
 interface Pet {
-  id: number;
+  id: string;
   age: number;
   name: string;
   tag: string;
 }
-interface NewPet {
+interface PetDoc {
   name: string;
   tag: string;
   age: number;

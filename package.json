@@ -5,13 +5,13 @@
   ],
   "scripts": {
     "bootstrap": "yarn install && lerna bootstrap",
-    "build": "NODE_ENV=production lerna run build --scope=@36node/sketch && lerna run build",
+    "build": "lerna run build --scope=@36node/sketch && lerna run build",
     "changelog": "lerna-changelog",
     "format": "prettier --trailing-comma es5 --write 'packages/**/*.js'",
     "lint": "eslint packages/*/src",
     "publish:all": "lerna publish from-git --registry https://registry.npmjs.org",
     "release": "lerna version --conventional-commits --push -m 'chore(release): publish'",
-    "test": "NODE_ENV=test sketch test --testMatch='<rootDir>/packages/*/src/**/*.test.js'"
+    "test": "lerna run test"
   },
   "commitlint": {
     "extends": [
@@ -23,7 +23,7 @@
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "yarn lint && CI=true yarn test"
+      "pre-push": "yarn lint && CI=true NODE_ENV=test yarn test"
     }
   },
   "lint-staged": {

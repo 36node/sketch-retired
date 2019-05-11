@@ -26,12 +26,12 @@
   "main": "dist/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "NODE_ENV=production sketch build",
+    "build": "sketch build",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "lint": "sketch lint src",
     "release": "standard-version && git push --follow-tags origin master",
-    "start": "NODE_ENV=development sketch start",
-    "test": "NODE_ENV=test sketch test --env=node"
+    "start": "sketch start",
+    "test": "sketch test --env=node"
   },
   "commitlint": {
     "extends": [
@@ -42,7 +42,7 @@
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "npm run lint && npm run test"
+      "pre-push": "npm run lint && CI=true npm run test"
     }
   },
   "lint-staged": {
@@ -67,5 +67,21 @@
     "dotenv": "^7.0.0",
     "only": "^0.0.2",
     "pino": "^5.11.1"
+  },
+  "jest": {
+    "displayName": "unit",
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
   }
 }

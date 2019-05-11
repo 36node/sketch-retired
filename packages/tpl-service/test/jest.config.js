@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: "newman",
-  testMatch: ["<rootDir>/test/**.test.js"],
+  displayName: "integration",
+  testMatch: ["<rootDir>/**/*.test.js"],
   runner: "jest-runner-newman",
 };

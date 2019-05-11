@@ -1,4 +1,4 @@
 import app from "./app";
-export * from "./config";
-
-export { app };
+import * as config from "./config";
+console.log(config);
+export { app, config };

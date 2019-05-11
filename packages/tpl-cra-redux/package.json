@@ -45,7 +45,7 @@
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "npm run lint && CI=true npm run test"
+      "pre-push": "npm run lint && CI=true NODE_ENV=test npm run test"
     }
   },
   "lint-staged": {

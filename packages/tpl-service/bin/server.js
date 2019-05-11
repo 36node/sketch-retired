@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-import mongoose from "mongoose";
-
-import { app, config, somejob } from "./index";
+const mongoose = require("mongoose");
+const { app, config, somejob } = require(process.env.NODE_ENV === "production"
+  ? "../dist"
+  : "../src");
 
 const { PORT, MONGODB_CONNECTION } = config;
 
@@ -28,4 +29,6 @@ mongoose.connection.on("error", () => {
 /**
  * start app
  */
-app.listen(PORT, () => console.info(`Listening to port ${PORT} 🚀`));
+app.listen(PORT, () =>
+  console.info(`[${process.env.NODE_ENV}] http server start on port ${PORT} 🚀`)
+);
