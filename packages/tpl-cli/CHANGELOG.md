@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/undefined/undefined/compare/@36node/template-cli@0.5.14...@36node/template-cli@0.6.0) (2019-05-11)
+
+
+### Features
+
+* adjuest test ([ce70303](https://github.com/undefined/undefined/commit/ce70303))
+
+
+
+
+
 ## [0.5.14](https://github.com/undefined/undefined/compare/@36node/template-cli@0.5.13...@36node/template-cli@0.5.14) (2019-05-01)
 
 **Note:** Version bump only for package @36node/template-cli

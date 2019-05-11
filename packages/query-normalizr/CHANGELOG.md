@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/36node/query-normalizr/compare/@36node/query-normalizr@0.2.3...@36node/query-normalizr@0.3.0) (2019-05-11)
+
+
+### Features
+
+* adjuest test ([ce70303](https://github.com/36node/query-normalizr/commit/ce70303))
+
+
+
+
+
 ## [0.2.3](https://github.com/36node/query-normalizr/compare/@36node/query-normalizr@0.2.2...@36node/query-normalizr@0.2.3) (2019-05-01)
 
 **Note:** Version bump only for package @36node/query-normalizr

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/36node/sketch/compare/@36node/template-service@0.8.16...@36node/template-service@0.9.0) (2019-05-11)
+
+
+### Bug Fixes
+
+* mongoose warning ([799f246](https://github.com/36node/sketch/commit/799f246))
+
+
+### Features
+
+* **tpl-service:** unit test for mongo model ([d1897b2](https://github.com/36node/sketch/commit/d1897b2))
+* adjuest test ([ce70303](https://github.com/36node/sketch/commit/ce70303))
+
+
+
+
+
 ## [0.8.16](https://github.com/36node/sketch/compare/@36node/template-service@0.8.15...@36node/template-service@0.8.16) (2019-05-01)
 
 **Note:** Version bump only for package @36node/template-service
