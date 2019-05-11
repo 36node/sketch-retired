@@ -6,11 +6,18 @@ Will add some badges here.
 ## Usage
 
 ```sh
+
+// init project
 npx @36node/sketch init some-folder-name
 
-// or
+// start service or web app
+sketch start
 
-npx @36node/sketch init --help
+// test
+sketch test
+
+// build
+sketch build
 ```
 
 ## Contributing
