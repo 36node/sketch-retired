@@ -11,7 +11,7 @@
     "lint": "eslint packages/*/src",
     "publish:all": "lerna publish from-git --registry https://registry.npmjs.org",
     "release": "lerna version --conventional-commits --push -m 'chore(release): publish'",
-    "test": "lerna run test"
+    "test": "lerna run test -- --coverage"
   },
   "commitlint": {
     "extends": [

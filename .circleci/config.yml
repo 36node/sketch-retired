@@ -38,7 +38,7 @@ jobs:
           command: yarn lint
       - run:
           name: Unit Test
-          command: NODE_ENV=test yarn test --coverage
+          command: NODE_ENV=test yarn test
       - run:
           name: Upload Coverage
           command: bash <(curl -s https://codecov.io/bash)
