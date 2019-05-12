@@ -1,19 +1,27 @@
 ---
-name: feature
-about: 产品需求
-title: '[feature] '
-labels: 'feature'
+name: enhance
+about: 功能强化
+title: '[enhance] '
+labels: 'enhance'
 assignees: ''
 
 ---
 
 ### 简介
 
-在此用几句话简述需求
+在此用几句话简述相关内容
 
 ### 截止日期（选填）
 
 deadline
+
+### 原因（选填）
+
+当前缺陷
+
+### 目标（选填）
+
+调整或者强化的方向
 
 ### 原型说明 (选填)
 
