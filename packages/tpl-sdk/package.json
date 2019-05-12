@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-sdk",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "A SDK boilerplate.",
   "repository": {
     "url": "36node/sketch",
@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@36node/eslint-config": "^0.4.0",
-    "@36node/sketch": "^0.10.1",
+    "@36node/sketch": "^0.10.2",
     "@36node/swagen": "^0.11.3",
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
