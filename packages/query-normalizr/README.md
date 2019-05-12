@@ -13,10 +13,10 @@ yarn add @36node/query-normalizr
 ## Usage
 
 ```js
-import { QueryNormalizr } from "@36node/query-normalizr";
+import { queryNormalizr } from "@36node/query-normalizr";
 
 // koa app
-app.use(normalizr(QueryNormalizr));
+app.use(normalizr(queryNormalizr));
 ```
 
 ## API
