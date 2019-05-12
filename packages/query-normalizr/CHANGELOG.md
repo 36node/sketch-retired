@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/36node/query-normalizr/compare/@36node/query-normalizr@0.3.0...@36node/query-normalizr@0.3.1) (2019-05-12)
+
+
+### Bug Fixes
+
+* queryNormalizr ([fb0a92d](https://github.com/36node/query-normalizr/commit/fb0a92d))
+
+
+
+
+
 # [0.3.0](https://github.com/36node/query-normalizr/compare/@36node/query-normalizr@0.2.3...@36node/query-normalizr@0.3.0) (2019-05-11)
 
 
