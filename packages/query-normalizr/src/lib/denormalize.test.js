@@ -117,6 +117,23 @@ describe("Test denormalize", () => {
     expect(ret.plate_like).toEqual("沪A");
   });
 
+  it("should test array like", () => {
+    const { filter = {} } = testObj;
+    testObj = {
+      ...testObj,
+      ...{
+        filter: {
+          ...filter,
+          plate: { $regex: [/沪A/i, /沪B/i] },
+        },
+      },
+    };
+
+    const ret = denormalize(testObj);
+
+    expect(ret.plate_like).toEqual(["沪A", "沪B"]);
+  });
+
   it("should parse custom", () => {
     testObj = {
       ...testObj,
@@ -126,7 +143,7 @@ describe("Test denormalize", () => {
     expect(ret._expand).toEqual("department");
 
     expect(querystring.stringify(ret)).toBe(
-      "_limit=10&_offset=0&_sort=updatedAt&_sort=-createdAt&_populate=user&_select=name&_select=age&_group=type&type=test1&type=test2&age_gt=10&age_lt=20&level_gte=10&level_lte=20&tag_ne=pretty&title_like=hello&plate_like=%E6%B2%AAA&_expand=department"
+      "_limit=10&_offset=0&_sort=updatedAt&_sort=-createdAt&_populate=user&_select=name&_select=age&_group=type&type=test1&type=test2&age_gt=10&age_lt=20&level_gte=10&level_lte=20&tag_ne=pretty&title_like=hello&plate_like=%E6%B2%AAA&plate_like=%E6%B2%AAB&_expand=department"
     );
   });
 });

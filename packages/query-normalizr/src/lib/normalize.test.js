@@ -77,6 +77,14 @@ describe("Test normalize", () => {
     expect(ret.filter.plate).toEqual({ $regex: /沪A/i });
   });
 
+  it("should parse like array", () => {
+    // test array like
+    testQuery += "&plate_like=沪B";
+    const ret = normalize(querystring.parse(testQuery));
+
+    expect(ret.filter.plate).toEqual({ $regex: [/沪A/i, /沪B/i] });
+  });
+
   it("should parse custom", () => {
     testQuery += "&_expand=department";
     const ret = normalize(querystring.parse(testQuery));

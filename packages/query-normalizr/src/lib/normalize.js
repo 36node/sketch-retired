@@ -34,12 +34,6 @@ export default function normalize(fromUrl) {
 
     if (!val) return acc;
 
-    if (Array.isArray(val)) {
-      // acc[key] = { $in: val };
-      acc[key] = val;
-      return acc;
-    }
-
     // `_gt`, `_lt`, `_gte` `_lte` or `_ne`
     let match = /(.+)_(gt|lt|gte|lte|ne)$/.exec(key);
     if (match) {
@@ -49,23 +43,25 @@ export default function normalize(fromUrl) {
       acc[path][`$${op}`] = val;
       return acc;
     }
-    // other not string
-    if (typeof val !== "string") {
-      acc[key] = val;
-      return acc;
-    }
-    // remove end space
-    val = val.trim();
 
     // `_like`
     match = /(.+)_like/.exec(key);
     if (match) {
       const path = match[1];
-      acc[path] = { $regex: new RegExp(val, "i") };
+
+      // _like support array
+      if (Array.isArray(val)) {
+        acc[path] = { $regex: val.map(v => new RegExp(v, "i")) };
+      } else {
+        acc[path] = { $regex: new RegExp(val, "i") };
+      }
+
       return acc;
     } else if (val === "true") acc[key] = true;
     else if (val === "false") acc[key] = false;
-    else acc[key] = val;
+    else if (typeof val === "string") {
+      acc[key] = val.trim();
+    } else acc[key] = val;
 
     return acc;
   }, {});
