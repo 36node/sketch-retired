@@ -48,7 +48,10 @@ export default function denormalize(queryObj = {}) {
             ret[keyWithOperator(key, operator)] = val[operator];
             break;
           case "$regex":
-            ret[keyWithOperator(key, "$like")] = val[operator].source;
+            // _like support array
+            ret[keyWithOperator(key, "$like")] = Array.isArray(val[operator])
+              ? val[operator].map(v => v.source)
+              : val[operator].source;
             break;
           default:
             break;

@@ -36,7 +36,7 @@ import { normalize } from "@36node/query-normalizr";
 import qs from "query-string";
 
 const queryStr =
-  " _expand=department&_group=type&_limit=10&_offset=0&_populate=user&_select=name&_select=age&_sort=updatedAt&_sort=-createdAt&age_gt=10&age_lt=20&level_gte=10&level_lte=20&plate_like=沪A&tag_ne=pretty&title_like=hello&type=test1&type=test2";
+  " _expand=department&_group=type&_limit=10&_offset=0&_populate=user&_select=name&_select=age&_sort=updatedAt&_sort=-createdAt&age_gt=10&age_lt=20&level_gte=10&level_lte=20&plate_like=沪A&plate_like=沪B&tag_ne=pretty&title_like=hello&type=test1&type=test2";
 
 normalize(qs.parse(queryStr));
 
@@ -58,13 +58,13 @@ return {
       $lte: "20",
     },
     plate: {
-      $regex: {},
+      $regex: [/沪A/i, /沪B/i],
     },
     tag: {
       $ne: "pretty",
     },
     title: {
-      $regex: {},
+      $regex: /hello/i,
     },
     type: ["test1", "test2"]
   },
@@ -96,13 +96,13 @@ const queryObj = {
       $lte: "20",
     },
     plate: {
-      $regex: {},
+      $regex: [/沪A/i, /沪B/i],
     },
     tag: {
       $ne: "pretty",
     },
     title: {
-      $regex: {},
+      $regex: /hello/i,
     },
     type: ["test1", "test2"],
   },
@@ -111,7 +111,7 @@ const queryObj = {
 
 qs.stringfy(denormalize(queryObj));
 
-// return " _expand=department&_group=type&_limit=10&_offset=0&_populate=user&_select=name&_select=age&_sort=updatedAt&_sort=-createdAt&age_gt=10&age_lt=20&assignees=%2A&followers=none&level_gte=10&level_lte=20&plate_like=%E6%B2%AAA&q=hello&tag_ne=pretty&title_like=hello&type=test1&type=test2"
+// return " _expand=department&_group=type&_limit=10&_offset=0&_populate=user&_select=name&_select=age&_sort=updatedAt&_sort=-createdAt&age_gt=10&age_lt=20&assignees=%2A&followers=none&level_gte=10&level_lte=20&plate_like=%E6%B2%AAA&plate_like=%E6%B2%AAB&q=hello&tag_ne=pretty&title_like=hello&type=test1&type=test2"
 ```
 
 ## What is query normalizr
@@ -185,6 +185,8 @@ GET /posts?id_ne=1
 ```
 
 Add `_like` to filter (RegExp supported)
+
+`_like` support array
 
 ```curl
 GET /posts?title_like=server
