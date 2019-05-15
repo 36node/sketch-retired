@@ -10,6 +10,9 @@ import { camelizeKeys } from "humps";
  */
 export default function build(raw, schema) {
   const filter = Object.keys(raw).reduce((acc, key) => {
+    // TODO: 大部分逻辑移到 qn 里了，后面mongoose helper 需要从 qn 的标准query object 到 mongoose query 做转变
+    // 参考：https://github.com/36node/sketch/blob/master/packages/query-normalizr/README.md#query-in-service-qis
+
     let val = raw[key];
     if (!val) return acc;
 
