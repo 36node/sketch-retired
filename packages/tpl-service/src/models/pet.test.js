@@ -5,7 +5,10 @@ import Pet from "./pet";
 describe("Pet model", () => {
   beforeAll(async () => {
     mongoose.Promise = Promise;
-    mongoose.connect(global.__MONGO_URI__, { useNewUrlParser: true });
+    mongoose.connect(global.__MONGO_URI__, {
+      useCreateIndex: true,
+      useNewUrlParser: true,
+    });
   });
 
   afterAll(async () => {

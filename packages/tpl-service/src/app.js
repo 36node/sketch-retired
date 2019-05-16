@@ -13,7 +13,7 @@ import Router from "koa-tree-router";
 import { queryNormalizr } from "@36node/query-normalizr";
 
 import logger from "./lib/logger";
-import { BASE, NODE_ENV } from "./lib/config";
+import { BASE, NODE_ENV } from "./config";
 import openapi from "./middleware/openapi";
 import petsService from "./services/pet";
 

@@ -20,7 +20,7 @@ switch (template) {
   case "tcp":
   case "service":
     command = "nodemon";
-    args = ["--harmony", "-r", "esm", "bin/server.js"];
+    args = ["--harmony", "-r", "esm", "src/server.js"];
     break;
   default:
     throw new Error(`start ${template} not supported`);

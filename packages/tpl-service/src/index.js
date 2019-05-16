@@ -1,5 +1,5 @@
 import app from "./app";
-import * as config from "./lib/config";
+import * as config from "./config";
 import logger from "./lib/logger";
 import task from "./task";
 

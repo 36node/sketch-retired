@@ -30,7 +30,7 @@
   "main": "dist/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "sketch build",
+    "build": "sketch build src/{server,index}.js",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "gen:api": "swagen koa openapi.yml ./src/api && npm run format",
     "gen:postman": "swagen postman openapi.yml postman.json",
