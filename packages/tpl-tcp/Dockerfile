@@ -11,4 +11,4 @@ COPY . /app/
 RUN NODE_ENV=production yarn install
 
 # Start
-CMD npm run server
+CMD bin/server.js
