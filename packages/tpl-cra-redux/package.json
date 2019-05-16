@@ -34,7 +34,7 @@
     "server": "serve -s build",
     "start": "REACT_APP_VERSION=$npm_package_version sketch start",
     "storybook": "start-storybook -p 9009 -s public",
-    "test": "sketch test --env=node"
+    "test": "sketch test --env=jsdom"
   },
   "commitlint": {
     "extends": [
@@ -75,7 +75,7 @@
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
     "pino-pretty": "^2.5.0",
-    "prettier": "^1.16.4",
+    "prettier": "1.17.1",
     "standard-version": "^5.0.2",
     "styled-components": "^4.1.3"
   },

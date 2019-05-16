@@ -72,7 +72,7 @@
     "jest-runner-newman": "^1.0.5",
     "lint-staged": "^8.1.5",
     "newman": "^4.4.1",
-    "prettier": "^1.16.4",
+    "prettier": "1.17.1",
     "standard-version": "^5.0.2"
   },
   "dependencies": {
