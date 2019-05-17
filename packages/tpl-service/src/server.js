@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 import mongoose from "mongoose";
-import { app, config, task } from "./index";
+
+import { app, config, init } from "./index";
 
 const { PORT, MONGODB_CONNECTION } = config;
 
@@ -19,7 +20,7 @@ mongoose.connect(MONGODB_CONNECTION, {
   connectTimeoutMS: 30 * 1000,
 });
 mongoose.connection.on("open", async () => {
-  await task();
+  await init();
 });
 mongoose.connection.on("error", () => {
   console.error("mongodb connection error");
