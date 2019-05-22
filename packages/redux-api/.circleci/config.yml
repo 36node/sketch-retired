@@ -1,0 +1,55 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:latest
+
+jobs:
+
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Eslint
+          command: yarn lint
+      - run:
+          name: Unit Test
+          command: yarn test --coverage
+      - run:
+          name: Upload Coverage
+          command: bash <(curl -s https://codecov.io/bash)
+
+  release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate With Registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish Package
+          command: npm publish
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - test:
+          requires:
+            - build
+          filters:  # required since `release` has tag filters AND requires `test`
+            tags:
+              only: /.*/
+      - release:
+          context: production
+          requires:
+            - test
+          filters:
+            tags:
+              only: /v.*/
+            branches:
+              ignore: /.*/
