@@ -16,16 +16,16 @@ import Github from "sdk/github";
 import Petstore from "@36node/template-sdk";
 import { repoSchema, petSchema } from "selectors/schemas";
 import { selectSession, selectRedirect } from "selectors";
-import { STORE_BASE, TOKEN } from "src/config";
+import { CONFIG } from "src/config";
 import * as cs from "src/constants";
 
 const github = new Github();
 const petstore = new Petstore({
-  base: STORE_BASE,
+  base: CONFIG.STORE_BASE,
 });
 
 // fake api
-const createSession = () => Promise.resolve({ body: { token: TOKEN } });
+const createSession = () => Promise.resolve({ body: { token: CONFIG.TOKEN } });
 const deleteSession = () => Promise.resolve({});
 
 /**

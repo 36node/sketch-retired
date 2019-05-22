@@ -269,6 +269,14 @@ constants 建议按照业务模块进行区域划分，可以用注释符号等�
 REACT_APP_STORE_BASE=https://api.36node.com/petstore/v0
 ```
 
+### 容器化部署配置
+
+通过Docker镜像部署时，添加环境变量
+```sh
+REACT_APP_STORE_BASE=https://api.36node.com/petstore/v0
+```
+将覆盖编译时的REACT_APP_STORE_BASE配置。
+
 ## Author
 
 **template-react-redux** © [36node](https://github.com/36node), Released under the [MIT](./LICENSE) License.<br>

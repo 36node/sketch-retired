@@ -20,30 +20,28 @@
  * @returns {*} value
  */
 
-export function env(name, init) {
-  const value = process.env[`REACT_APP_${name.toUpperCase()}`] || init;
+export default function env(name, init) {
+  const key = `REACT_APP_${name.toUpperCase()}`;
+  const buildtimeValue = process && process.env && process.env[key];
+  const runtimeValue = window && window._36node && window._36node[key];
 
+  const value = runtimeValue || buildtimeValue || init;
   if (value === undefined) {
     throw new Error(`environment ${name} is missing`);
   }
 
+  console.log("Config:", key, value);
   return value;
 }
 
 /**
  * APP
  */
-export const STORE_BASE = env("STORE_BASE", "");
-export const TOKEN = env("TOKEN", "some fake token");
-
-/**
- * Test tpl-service
- */
-// export const STORE_BASE = env(
-//   "STORE_BASE",
-//   "http://localhost:9527/petstore/v0"
-// );
-// export const TOKEN = env(
-//   "TOKEN",
-//   "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJ1c2VyIjp7InJvbGVzIjpbIkFETUlOIiwiVVNFUiJdfX0.XA1kE_UdbOsU0rfmG3g1y3SpJ5aFVzPGFBHihVXv58sNatweqLHPEUAwhqobgKgmAbaKa3dlYrXEpHESHZ7AJgQYCfSeVxtsKyoQmcq9OYA0iFcH5oCWQgYqfeWJPOroMlMdNQax5kG-GkuaFbIiwiw-9j_ACS8CSPO9Oq2dQCA"
-// );
+export const CONFIG = {
+  get STORE_BASE() {
+    return env("STORE_BASE", "");
+  },
+  get TOKEN() {
+    return env("TOKEN", "some fake token");
+  },
+};
