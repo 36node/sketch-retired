@@ -1,10 +1,10 @@
 import Petstore from "@36node/template-sdk";
 import Github from "./github";
 import Auth from "./auth";
-import { STORE_BASE } from "../config";
+import { CONFIG } from "../config";
 
 export const petstore = new Petstore({
-  base: STORE_BASE,
+  base: CONFIG.STORE_BASE,
 });
 
 export const github = new Github();
