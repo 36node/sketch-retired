@@ -4,7 +4,7 @@ import { Layout, Form, Icon, Input, Button, Checkbox } from "antd";
 import styled from "styled-components";
 import DocumentTitle from "react-document-title";
 
-import { login } from "actions";
+import { globalActions } from "../actions";
 
 import { Content } from "components/layout";
 
@@ -63,7 +63,7 @@ export default class Login extends React.PureComponent {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        this.props.dispatch(login(values));
+        this.props.dispatch(globalActions.login.request({ body: values }));
       }
     });
   };
@@ -90,7 +90,7 @@ export default class Login extends React.PureComponent {
                 </div>
                 <Form onSubmit={this.handleSubmit} className="login-form">
                   <FormItem>
-                    {getFieldDecorator("userName", {
+                    {getFieldDecorator("username", {
                       rules: [
                         {
                           required: true,

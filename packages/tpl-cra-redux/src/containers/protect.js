@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Route, Redirect } from "react-router";
 
-import { selectSession } from "selectors";
+import { globalSelectors } from "../selectors";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -24,6 +24,6 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-export default connect(state => ({ session: selectSession(state) }))(
+export default connect(state => ({ session: globalSelectors.session(state) }))(
   ProtectedRoute
 );

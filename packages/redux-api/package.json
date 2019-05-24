@@ -10,7 +10,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "template": "redux",
+  "template": "cra-redux",
   "files": [
     ".circleci",
     "bin",

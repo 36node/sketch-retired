@@ -35,6 +35,7 @@ export default function env(name, init) {
 
 export const STORE_BASE = env("STORE_BASE", "");
 export const VERSION = env("VERSION");
+export const TOKEN = env("TOKEN", "Some fake token");
 
 /* eslint-disable */
 console.log("STORE_BASE: ", STORE_BASE);

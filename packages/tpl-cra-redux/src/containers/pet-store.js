@@ -2,13 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import DocumentTitle from "react-document-title";
 
-import { listPets } from "actions";
-import {
-  selectPets,
-  selectListPetsLoading,
-  selectListPetsQuery,
-  selectListPetsTotal,
-} from "selectors";
+import { petStoreActions } from "../actions";
+import { petStoreSelectors } from "../selectors";
 import { Table } from "antd";
 import { isEmpty } from "lodash";
 
@@ -17,12 +12,16 @@ import { Container, Jumbotron } from "components/layout";
 /**
  * Pets table
  */
-@connect(state => ({
-  pets: selectPets(state),
-  loading: selectListPetsLoading(state),
-  query: selectListPetsQuery(state),
-  total: selectListPetsTotal(state),
-}))
+@connect(state => {
+  const listPetsState = petStoreSelectors.listPets(state) || {};
+
+  return {
+    pets: listPetsState.result,
+    loading: listPetsState.loading,
+    query: listPetsState.request.query,
+    total: listPetsState.total,
+  };
+})
 class PetsTable extends React.PureComponent {
   componentDidMount() {
     this.listPets({ current: 1, pageSize: 10 });
@@ -60,10 +59,7 @@ class PetsTable extends React.PureComponent {
       query.sort = (order === "ascend" ? "" : "-") + field;
     }
 
-    console.log(query);
-    console.log(pagination, filters, sort);
-
-    this.props.dispatch(listPets({ query }));
+    this.props.dispatch(petStoreActions.listPets.request({ query }));
   };
 
   render() {

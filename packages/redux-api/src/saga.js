@@ -10,7 +10,7 @@ import {
   select,
 } from "redux-saga/effects";
 import { normalize } from "normalizr";
-import { isRequest, isRefresh, isApi } from "./actions";
+import { isRequest, isRefresh } from "./actions";
 import { humps } from "./lib";
 import { successOf, failureOf, requestOf } from "@36node/redux-api";
 import { makeStateSelector } from "./selector";

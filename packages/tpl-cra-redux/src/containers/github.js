@@ -2,21 +2,24 @@ import React from "react";
 import { connect } from "react-redux";
 import DocumentTitle from "react-document-title";
 
-import { listRepos } from "actions";
-import { selectRepos } from "selectors";
+import { githubActions } from "../actions";
+import { githubSelectors } from "../selectors";
 
 import { Container, Jumbotron } from "components/layout";
 
-@connect(state => ({
-  repos: selectRepos(state),
-}))
+@connect(state => {
+  const listReposState = githubSelectors.listRepos(state) || {};
+  return {
+    repos: listReposState.result || [],
+  };
+})
 export default class extends React.PureComponent {
   componentDidMount() {
     this.fetchRepos();
   }
 
   fetchRepos = () => {
-    this.props.dispatch(listRepos({ org: "36node" }));
+    this.props.dispatch(githubActions.listRepos.request({ org: "36node" }));
   };
 
   render() {

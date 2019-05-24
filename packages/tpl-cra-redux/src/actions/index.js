@@ -1,38 +1,41 @@
 /// <reference path='../sdk/.github.d.ts' />
 
-import * as cs from "src/constants";
+import * as cs from "../constants";
+
+import { createApiActions } from "@36node/redux-api";
+import { petSchema, repoSchema } from "../selectors/schemas";
+import { github, petstore, auth } from "../sdk";
+
+export const githubActions = {
+  listRepos: createApiActions(cs.NS.GITHUB.LIST_REPOS, {
+    endpoint: github.repo.listRepos,
+    schema: [repoSchema],
+  }),
+};
 
 /**
- * Create action: LIST_REPOS
- * @param {ListReposRequest} payload the request of listRepos
+ * pet store actions
  */
-export const listRepos = payload => ({ type: cs.LIST_REPOS, payload });
+export const petStoreActions = {
+  listPets: createApiActions(cs.NS.PET_STORE.LIST_PETS, {
+    endpoint: petstore.pet.listPets,
+    schema: [petSchema],
+  }),
+  createPets: createApiActions(cs.NS.PET_STORE.CREATE_PET, {
+    endpoint: petstore.pet.createPets,
+    schema: petSchema,
+  }),
+  getPet: createApiActions(cs.NS.PET_STORE.GET_PET, {
+    endpoint: petstore.pet.showPetById,
+    schema: petSchema,
+  }),
+};
 
-/**
- * Create action: LIST_PETS
- * @param {import("@36node/template-sdk").ListPetsRequest} payload the request of listPets
- */
-export const listPets = payload => ({ type: cs.LIST_PETS, payload });
-
-/**
- * Create action: CREATE_PET
- * @param {import("@36node/template-sdk").CreatePetsRequest} payload the request of createPet
- */
-export const createPet = payload => ({ type: cs.CREATE_PET, payload });
-
-/**
- * Create action: GET_PET
- * @param {import("@36node/template-sdk").ShowPetByIdRequest} payload the request of getPet
- */
-export const getPet = payload => ({ type: cs.GET_PET, payload });
-
-/**
- * Login
- * @param {Object} payload login request
- */
-export const login = payload => ({ type: cs.LOGIN, payload });
-
-/**
- * Logout
- */
-export const logout = () => ({ type: cs.LOGOUT });
+export const globalActions = {
+  login: createApiActions(cs.NS.GLOBAL.LOGIN, {
+    endpoint: auth.session.createSession,
+  }),
+  logout: createApiActions(cs.NS.GLOBAL.LOGOUT, {
+    endpoint: auth.session.deleteSession,
+  }),
+};
