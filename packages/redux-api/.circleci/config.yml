@@ -6,7 +6,6 @@ defaults: &defaults
     - image: circleci/node:latest
 
 jobs:
-
   test:
     <<: *defaults
     steps:
@@ -39,9 +38,7 @@ workflows:
   main:
     jobs:
       - test:
-          requires:
-            - build
-          filters:  # required since `release` has tag filters AND requires `test`
+          filters: # required since `release` has tag filters AND requires `test`
             tags:
               only: /.*/
       - release:

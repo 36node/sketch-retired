@@ -44,7 +44,7 @@ export default function* root() {
 import fetch from "@36node/fetch";
 
 // endpoint function param is request action payload
-function listPetsEndpoint(payload) {
+function listPetsEndpoint(req) {
   const { query, headers } = req;
 
   // also can user other ajax tools, should return a promise
