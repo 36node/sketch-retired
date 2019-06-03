@@ -29,7 +29,7 @@
     "build": "sketch build src/{server,index}.js",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "lint": "sketch lint src",
-    "release": "standard-version && git push --follow-tags origin master",
+    "release": "standard-version",
     "start": "sketch start",
     "test": "sketch test --env=node"
   },

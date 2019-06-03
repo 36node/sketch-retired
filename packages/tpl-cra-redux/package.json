@@ -30,7 +30,7 @@
     "build": "REACT_APP_VERSION=$npm_package_version sketch build",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "lint": "sketch lint src",
-    "release": "standard-version && git push --follow-tags origin master",
+    "release": "standard-version",
     "server": "serve -s build",
     "start": "REACT_APP_VERSION=$npm_package_version sketch start",
     "storybook": "start-storybook -p 9009 -s public",
@@ -74,10 +74,8 @@
     "faker": "^4.1.0",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
-    "pino-pretty": "^2.5.0",
     "prettier": "1.17.1",
-    "standard-version": "^5.0.2",
-    "styled-components": "^4.1.3"
+    "standard-version": "^5.0.2"
   },
   "dependencies": {
     "@36node/fetch": "^0.5.1",
@@ -95,7 +93,8 @@
     "react-responsive": "^6.1.1",
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
-    "redux-saga": "^1.0.2"
+    "redux-saga": "^1.0.2",
+    "styled-components": "^4.1.3"
   },
   "browserslist": [
     "extends @36node/browserslist-config"

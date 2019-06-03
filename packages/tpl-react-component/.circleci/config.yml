@@ -78,3 +78,13 @@ workflows:
               only: /v.*/
             branches:
               ignore: /.*/
+  nightly:
+    triggers:
+      - schedule:
+          cron: "20 20 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - bump

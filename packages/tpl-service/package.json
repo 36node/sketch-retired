@@ -35,7 +35,7 @@
     "gen:api": "swagen koa openapi.yml ./src/api && npm run format",
     "gen:postman": "swagen postman openapi.yml postman.json",
     "lint": "sketch lint src",
-    "release": "standard-version && git push --follow-tags origin master",
+    "release": "standard-version",
     "start": "sketch start",
     "test": "sketch test",
     "test:int": "sketch test -c test/jest.config.js"
