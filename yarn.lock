@@ -20448,13 +20448,6 @@ ws@^6.1.2:
   dependencies:
     async-limiter "~1.0.0"
 
-wxapp-fetch@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/wxapp-fetch/-/wxapp-fetch-0.1.1.tgz#ce0d8838ebeb0e278e163d8563ef14c6373bc778"
-  integrity sha512-rv4fs2YOHTaMtFJAGLOSm5WUmqoJT3WtCyirawTdGpmKgiDRz8kONpsD7idlAnqI3azH/EC/awy6kueFcDHJ8w==
-  dependencies:
-    wxapp-http "^3.1.0"
-
 wxapp-http@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/wxapp-http/-/wxapp-http-3.1.0.tgz#c7401f546a53b1d20ace771cdd2868f95bc972cd"
