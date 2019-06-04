@@ -26,6 +26,8 @@ export default async function(url, opt = {}) {
     ...headers,
   };
 
+  const fetch = (global && global.fetch) || (window && window.fetch);
+
   const res = await fetch(endpoint, {
     ...opt,
     body,

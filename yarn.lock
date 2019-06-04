@@ -42,6 +42,11 @@
   resolved "https://registry.yarnpkg.com/@ant-design/icons/-/icons-2.0.0.tgz#f9b8b16e188ec71ed40a24a0037f1a26d8c2be59"
   integrity sha512-N4h0v9TbAkzobiDrPNF5LMLbBoR+VdlXJX7RFbZS33lar6Pff37wIF1xJHzTYSZZmE6THSYGmSlEsHQJHx0pJg==
 
+"@axetroy/event-emitter.js@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@axetroy/event-emitter.js/-/event-emitter.js-1.2.4.tgz#6366444b146ad56a035799d3baf0fe0a8812dcaa"
+  integrity sha1-Y2ZESxRq1WoDV5nTuvD+CogS3Ko=
+
 "@babel/code-frame@7.0.0", "@babel/code-frame@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.0.0.tgz#06e2ab19bdb535385559aabb5ba59729482800f8"
@@ -20442,6 +20447,20 @@ ws@^6.1.2:
   integrity sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
   dependencies:
     async-limiter "~1.0.0"
+
+wxapp-fetch@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/wxapp-fetch/-/wxapp-fetch-0.1.1.tgz#ce0d8838ebeb0e278e163d8563ef14c6373bc778"
+  integrity sha512-rv4fs2YOHTaMtFJAGLOSm5WUmqoJT3WtCyirawTdGpmKgiDRz8kONpsD7idlAnqI3azH/EC/awy6kueFcDHJ8w==
+  dependencies:
+    wxapp-http "^3.1.0"
+
+wxapp-http@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/wxapp-http/-/wxapp-http-3.1.0.tgz#c7401f546a53b1d20ace771cdd2868f95bc972cd"
+  integrity sha512-Ce5FrTRcfl1CKzx23YbOBXAnFSZ5DKMaEySqDJR38cFA5ZXMZuE77+9yZT1ARFl+JwBOAOYapwyXE5Yxp9aXjA==
+  dependencies:
+    "@axetroy/event-emitter.js" "^1.2.4"
 
 x-is-string@^0.1.0:
   version "0.1.0"

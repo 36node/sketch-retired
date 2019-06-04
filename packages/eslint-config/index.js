@@ -25,4 +25,8 @@ module.exports = {
   rules: {
     "prettier/prettier": "error",
   },
+
+  globals: {
+    wx: true,
+  },
 };
