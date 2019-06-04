@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.10.0...@36node/template-cra-redux@0.10.1) (2019-06-04)
+
+
+### Bug Fixes
+
+* use specific version of docker-nginx-react ([a6452e6](https://github.com/36node/tpl-react-redux/commit/a6452e6))
+
+
+
+
+
 # [0.10.0](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.9.0...@36node/template-cra-redux@0.10.0) (2019-06-04)
 
 
