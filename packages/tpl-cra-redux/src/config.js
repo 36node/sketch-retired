@@ -30,18 +30,13 @@ export default function env(name, init) {
     throw new Error(`environment ${name} is missing`);
   }
 
-  console.log("Config:", key, value);
   return value;
 }
 
-/**
- * APP
- */
-export const CONFIG = {
-  get STORE_BASE() {
-    return env("STORE_BASE", "");
-  },
-  get TOKEN() {
-    return env("TOKEN", "some fake token");
-  },
-};
+export const STORE_BASE = env("STORE_BASE", "");
+export const VERSION = env("VERSION");
+
+/* eslint-disable */
+console.log("STORE_BASE: ", STORE_BASE);
+console.log("VERSION: ", VERSION);
+/* eslint-disable */
