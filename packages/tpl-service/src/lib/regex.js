@@ -1,3 +1,3 @@
 export const escape = function(string) {
-  return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+  return string.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
 };
