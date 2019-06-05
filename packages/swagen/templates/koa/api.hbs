@@ -61,11 +61,10 @@ export default class API {
         {{#with requestBody}}
         body: ctx.request.body,
         {{/with}}
-        context: ctx, // here we put koa context in request
       };
 
       {{/or}}
-      {{#or response.content response.headers}}const res = {{/or}}await this.{{name}}({{#or parameters requestBody}}req{{/or}});
+      {{#or response.content response.headers}}const res = {{/or}}await this.{{name}}({{#or parameters requestBody}}req,{{/or}}ctx);
 
       {{#if response.content}}
       if (!res.body) throw createError(500, "should have body in response");
@@ -112,11 +111,12 @@ export default class API {
    {{#or parameters requestBody}}
    * @param { {{~capitalize name}}Request} req {{name}} request
    {{/or}}
+   * @param {import("koa").Context} ctx koa context
    {{#or response.content response.headers}}
    * @returns { {{~capitalize name}}Response} {{response.description}}
    {{/or}}
    */
-  {{name}}({{#or parameters requestBody}}req{{/or}}) {
+  {{name}}({{#or parameters requestBody}}req,{{/or}}ctx) {
     throw new Error("not implemented");
   }
 {{/each}}
