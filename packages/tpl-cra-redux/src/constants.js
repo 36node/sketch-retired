@@ -1,30 +1,14 @@
-/**
- * pet
- */
-export const CREATE_PET = "CREATE_PET";
-export const GET_PET = "GET_PET";
-export const LIST_PETS = "LIST_PETS";
-
-/**
- * github
- */
-export const LIST_REPOS = "LIST_REPOS";
-
-/**
- * user
- */
-export const LOGIN = "LOGIN";
-export const LOGOUT = "LOGOUT";
-
-// Add success and failure for string prototype
-Object.assign(String.prototype, {
-  success() {
-    return `${this}_SUCCESS`;
+export const NS = {
+  PET_STORE: {
+    LIST_PETS: "PET_STORE.LIST_PETS",
+    CREATE_PET: "CREATE_PET.CREATE_PET",
+    GET_PET: "PET_STORE.GET_PET",
   },
-  failure() {
-    return `${this}_FAILURE`;
+  GITHUB: {
+    LIST_REPOS: "GITHUB.LIST_REPOS",
   },
-  glob() {
-    return `${this}_*`;
+  GLOBAL: {
+    LOGIN: "GLOBAL.LOGIN",
+    LOGOUT: "GLOBAL.LOGOUT",
   },
-});
+};

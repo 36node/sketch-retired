@@ -1,13 +1,20 @@
-import { denormalize } from "normalizr";
-import { repoSchema, petSchema } from "./schemas";
+import * as cs from "../constants";
+import { apiSelector } from "@36node/redux-api";
+import { createSelector } from "reselect";
 
-export const selectSession = state => state.session.result;
-export const selectRedirect = state => state.session.meta.redirect;
-export const selectRepos = state =>
-  denormalize(state.paginators.repo.result, [repoSchema], state.entities);
-export const selectPets = state =>
-  denormalize(state.paginators.pet.result, [petSchema], state.entities);
-export const selectListPetsLoading = state => state.paginators.pet.loading;
-export const selectListPetsTotal = state =>
-  Number(state.paginators.pet.xTotalCount);
-export const selectListPetsQuery = state => state.paginators.pet.request.query;
+export const petStoreSelectors = {
+  listPets: apiSelector(cs.NS.PET_STORE.LIST_PETS),
+};
+
+export const githubSelectors = {
+  listRepos: apiSelector(cs.NS.GITHUB.LIST_REPOS),
+};
+
+export const globalSelectors = {
+  session: createSelector(
+    apiSelector(cs.NS.GLOBAL.LOGIN),
+    state => {
+      return state.result || {};
+    }
+  ),
+};

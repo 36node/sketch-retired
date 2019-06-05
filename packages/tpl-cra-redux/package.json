@@ -80,6 +80,7 @@
   "dependencies": {
     "@36node/fetch": "^0.5.1",
     "@36node/template-sdk": "^0.9.1",
+    "@36node/redux-api": "^0.0.0",
     "antd": "^3.15.1",
     "history": "^4.9.0",
     "lodash": "^4.17.11",

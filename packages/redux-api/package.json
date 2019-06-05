@@ -1,0 +1,65 @@
+{
+  "name": "@36node/redux-api",
+  "version": "0.0.0",
+  "description": "A higher order component decorator for restful apis using Redux and React ",
+  "repository": {
+    "url": "36node/redux-api",
+    "type": "git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "template": "cra-redux",
+  "files": [
+    ".circleci",
+    "bin",
+    "src",
+    "typings",
+    "README.md"
+  ],
+  "config-overrides-path": "../cli/config-overrides",
+  "module": "src/index.js",
+  "typings": "typings/index.d.ts",
+  "scripts": {
+    "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
+    "lint": "sketch lint src",
+    "release": "standard-version && git push --follow-tags origin master",
+    "test": "NODE_ENV=test sketch test --env=node"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint && npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "normalizr": "^3.3.0",
+    "redux-saga": "^1.0.2",
+    "reselect": "^4.0.0"
+  },
+  "devDependencies": {
+    "@36node/eslint-config": "^0.4.0",
+    "@36node/sketch": "^0.11.0",
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4",
+    "standard-version": "^5.0.2",
+    "redux": "^4.0.1"
+  }
+}

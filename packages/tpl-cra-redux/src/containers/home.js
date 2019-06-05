@@ -3,15 +3,14 @@ import { connect } from "react-redux";
 import MediaQuery from "react-responsive";
 import { Button } from "antd";
 import DocumentTitle from "react-document-title";
-
-import { logout } from "actions";
+import { globalActions } from "../actions";
 
 import { Container, Jumbotron } from "components/layout";
 
 @connect(state => ({}))
 export default class extends React.PureComponent {
   handleLogout = () => {
-    this.props.dispatch(logout());
+    this.props.dispatch(globalActions.logout.request());
   };
 
   render() {
