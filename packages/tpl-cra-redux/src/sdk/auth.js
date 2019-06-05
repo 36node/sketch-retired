@@ -1,4 +1,4 @@
-import { CONFIG } from "../config";
+import { TOKEN } from "../config";
 
 /**
  * fake auth sdk
@@ -26,7 +26,7 @@ export default class SDK {
               username: "example@36node.com",
               nickname: "36node",
             },
-            token: CONFIG.TOKEN,
+            token: TOKEN,
           },
         });
       });
