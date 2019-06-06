@@ -6,7 +6,7 @@ import { escape } from "./lib/regex";
  * @param {String} options.url 路径，默认 /health
  * @param {String} options.version the version of api
  */
-export default function({ url = "/health", version }) {
+export default function({ url = "/health", version } = {}) {
   const regex = new RegExp(`${escape(url)}$`);
   return (ctx, next) => {
     if (ctx.url.match(regex)) {
