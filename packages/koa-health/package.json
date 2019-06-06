@@ -1,6 +1,6 @@
 {
   "name": "@36node/koa-health",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "koa health middleware for 36node team.",
   "repository": {
     "url": "36node/sketch",
@@ -25,6 +25,5 @@
     "build": "sketch build",
     "test": "sketch test --env=node"
   },
-  "dependencies": {},
   "gitHead": "9c3f6d6834be075aa49460dd9c5e277f2a7573ad"
 }

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/36node/sketch/compare/@36node/eslint-config@0.5.0...@36node/eslint-config@0.6.0) (2019-06-06)
+
+
+### Features
+
+* support fetch in wxapp ([#86](https://github.com/36node/sketch/issues/86)) ([98c1b0c](https://github.com/36node/sketch/commit/98c1b0c))
+
+
+
+
+
 # [0.5.0](https://github.com/36node/sketch/compare/@36node/eslint-config@0.4.0...@36node/eslint-config@0.5.0) (2019-05-16)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/36node/sketch/compare/@36node/fastman@0.3.1...@36node/fastman@0.4.0) (2019-06-06)
+
+
+### Features
+
+* middleware koa-health and koa-openapi ([7a5fe8c](https://github.com/36node/sketch/commit/7a5fe8c))
+
+
+
+
+
 ## [0.3.1](https://github.com/undefined/undefined/compare/@36node/fastman@0.3.0...@36node/fastman@0.3.1) (2019-03-31)
 
 **Note:** Version bump only for package @36node/fastman

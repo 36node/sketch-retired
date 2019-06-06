@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/36node/sketch/compare/@36node/fetch@0.5.1...@36node/fetch@0.6.0) (2019-06-06)
+
+
+### Bug Fixes
+
+* eslint error ([6d140ae](https://github.com/36node/sketch/commit/6d140ae))
+
+
+### Features
+
+* middleware koa-health and koa-openapi ([7a5fe8c](https://github.com/36node/sketch/commit/7a5fe8c))
+* support fetch in wxapp ([#86](https://github.com/36node/sketch/issues/86)) ([98c1b0c](https://github.com/36node/sketch/commit/98c1b0c))
+
+
+
+
+
 ## [0.5.1](https://github.com/36node/sketch/compare/@36node/fetch@0.5.0...@36node/fetch@0.5.1) (2019-03-31)
 
 

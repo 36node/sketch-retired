@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/36node/sketch/compare/@36node/template-service@0.10.2...@36node/template-service@0.11.0) (2019-06-06)
+
+
+### Features
+
+* middleware koa-health and koa-openapi ([7a5fe8c](https://github.com/36node/sketch/commit/7a5fe8c))
+
+
+
+
+
 ## [0.10.2](https://github.com/36node/sketch/compare/@36node/template-service@0.10.1...@36node/template-service@0.10.2) (2019-06-04)
 
 
