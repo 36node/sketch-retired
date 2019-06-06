@@ -14,8 +14,10 @@ import { queryNormalizr } from "@36node/query-normalizr";
 
 import logger from "./lib/log";
 import { BASE, NODE_ENV } from "./config";
-import openapi from "./middleware/openapi";
+import health from "@36node/koa-health";
+import openapi from "@36node/koa-openapi";
 import petsService from "./services/pet";
+import pkg from "../package.json";
 
 const app = new Koa2();
 const router = new Router({ prefix: BASE });
@@ -42,7 +44,8 @@ if (NODE_ENV !== "production") {
  */
 app
   .use(helmet())
-  .use(openapi(`${BASE}/openapi.yml`, openapiFile))
+  .use(health({ url: `${BASE}/health`, version: pkg.version }))
+  .use(openapi({ url: `${BASE}/openapi.yml`, file: openapiFile }))
   .use(cors({ exposeHeaders: ["Link", "X-Total-Count"] }))
   .use(jwt({ secret: publicKey }))
   .use(body())

@@ -1,0 +1,30 @@
+{
+  "name": "@36node/koa-openapi",
+  "version": "0.0.0",
+  "description": "koa openapi middleware for 36node team.",
+  "repository": {
+    "url": "36node/sketch",
+    "type": "git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "template": "module",
+  "files": [
+    "bin",
+    "dist",
+    "typings"
+  ],
+  "config-overrides-path": "../cli/config-overrides",
+  "browser": "dist/browser.mjs",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "typings/index.d.ts",
+  "scripts": {
+    "build": "sketch build",
+    "test": "sketch test --env=node"
+  },
+  "dependencies": {},
+  "gitHead": "9c3f6d6834be075aa49460dd9c5e277f2a7573ad"
+}

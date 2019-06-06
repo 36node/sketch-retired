@@ -78,6 +78,8 @@
   "dependencies": {
     "@36node/mongoose-helper": "^0.2.1",
     "@36node/query-normalizr": "^0.4.0",
+    "@36node/koa-health": "^0.0.0",
+    "@36node/koa-openapi": "^0.0.0",
     "@koa/cors": "^3.0.0",
     "@types/jest": "^24.0.12",
     "dotenv": "^7.0.0",

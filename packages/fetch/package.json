@@ -20,6 +20,7 @@
   "browser": "dist/browser.mjs",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "typings": "typings/index.d.ts",
   "scripts": {
     "build": "sketch build src/{browser,index}.js",
     "test": "NODE_ENV=test sketch test --env=node"
