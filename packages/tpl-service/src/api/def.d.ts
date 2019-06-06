@@ -11,8 +11,6 @@ interface ListPetsRequest {
       };
     };
   };
-
-  context?: Object;
 }
 
 interface ListPetsResponse {
@@ -24,7 +22,6 @@ interface ListPetsResponse {
 
 interface CreatePetsRequest {
   body: PetDoc;
-  context?: Object;
 }
 
 interface CreatePetsResponse {
@@ -33,7 +30,6 @@ interface CreatePetsResponse {
 
 interface ShowPetByIdRequest {
   petId: string;
-  context?: Object;
 }
 
 interface ShowPetByIdResponse {
@@ -43,7 +39,6 @@ interface ShowPetByIdResponse {
 interface UpdatePetRequest {
   petId: string;
   body: PetDoc;
-  context?: Object;
 }
 
 interface UpdatePetResponse {
@@ -52,7 +47,6 @@ interface UpdatePetResponse {
 
 interface DeletePetRequest {
   petId: string;
-  context?: Object;
 }
 
 interface Pet {

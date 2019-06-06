@@ -11,10 +11,9 @@ export default class API {
     const listPets = async ctx => {
       const req = {
         query: ctx.normalizedQuery || {},
-        context: ctx, // here we put koa context in request
       };
 
-      const res = await this.listPets(req);
+      const res = await this.listPets(req, ctx);
 
       if (!res.body) throw createError(500, "should have body in response");
 
@@ -29,10 +28,9 @@ export default class API {
     const createPets = async ctx => {
       const req = {
         body: ctx.request.body,
-        context: ctx, // here we put koa context in request
       };
 
-      const res = await this.createPets(req);
+      const res = await this.createPets(req, ctx);
 
       if (!res.body) throw createError(500, "should have body in response");
 
@@ -46,10 +44,9 @@ export default class API {
 
       const req = {
         petId: ctx.params.petId,
-        context: ctx, // here we put koa context in request
       };
 
-      const res = await this.showPetById(req);
+      const res = await this.showPetById(req, ctx);
 
       if (!res.body) throw createError(500, "should have body in response");
 
@@ -64,10 +61,9 @@ export default class API {
       const req = {
         petId: ctx.params.petId,
         body: ctx.request.body,
-        context: ctx, // here we put koa context in request
       };
 
-      const res = await this.updatePet(req);
+      const res = await this.updatePet(req, ctx);
 
       if (!res.body) throw createError(500, "should have body in response");
 
@@ -81,10 +77,9 @@ export default class API {
 
       const req = {
         petId: ctx.params.petId,
-        context: ctx, // here we put koa context in request
       };
 
-      await this.deletePet(req);
+      await this.deletePet(req, ctx);
 
       ctx.status = 204;
     };
@@ -115,9 +110,10 @@ export default class API {
    *
    * @abstract
    * @param {ListPetsRequest} req listPets request
+   * @param {import("koa").Context} ctx koa context
    * @returns {ListPetsResponse} A paged array of pets
    */
-  listPets(req) {
+  listPets(req, ctx) {
     throw new Error("not implemented");
   }
 
@@ -126,9 +122,10 @@ export default class API {
    *
    * @abstract
    * @param {CreatePetsRequest} req createPets request
+   * @param {import("koa").Context} ctx koa context
    * @returns {CreatePetsResponse} The Pet created
    */
-  createPets(req) {
+  createPets(req, ctx) {
     throw new Error("not implemented");
   }
 
@@ -137,9 +134,10 @@ export default class API {
    *
    * @abstract
    * @param {ShowPetByIdRequest} req showPetById request
+   * @param {import("koa").Context} ctx koa context
    * @returns {ShowPetByIdResponse} Expected response to a valid request
    */
-  showPetById(req) {
+  showPetById(req, ctx) {
     throw new Error("not implemented");
   }
 
@@ -148,9 +146,10 @@ export default class API {
    *
    * @abstract
    * @param {UpdatePetRequest} req updatePet request
+   * @param {import("koa").Context} ctx koa context
    * @returns {UpdatePetResponse} The pet
    */
-  updatePet(req) {
+  updatePet(req, ctx) {
     throw new Error("not implemented");
   }
 
@@ -159,8 +158,9 @@ export default class API {
    *
    * @abstract
    * @param {DeletePetRequest} req deletePet request
+   * @param {import("koa").Context} ctx koa context
    */
-  deletePet(req) {
+  deletePet(req, ctx) {
     throw new Error("not implemented");
   }
 }

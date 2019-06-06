@@ -28,9 +28,10 @@ export class Service extends API {
    * List all pets
    *
    * @param {ListPetsRequest} req listPets request
+   * @param {import("koa").Context} ctx koa context
    * @returns {ListPetsResponse} A paged array of pets
    */
-  async listPets(req) {
+  async listPets(req, ctx) {
     const limit = req.query.limit || 10; // default is 10
     const offset = req.query.offset || 0; // default is 0
     const sort = req.query.sort;
@@ -49,9 +50,10 @@ export class Service extends API {
    * Create a pet
    *
    * @param {CreatePetsRequest} req createPets request
+   * @param {import("koa").Context} ctx koa context
    * @returns {CreatePetsResponse} The Pet created
    */
-  async createPets(req) {
+  async createPets(req, ctx) {
     const { body } = req;
     const pet = await Pet.create(body);
     return { body: pet };
@@ -61,21 +63,21 @@ export class Service extends API {
    * Find pet by id
    *
    * @param {ShowPetByIdRequest} req showPetById request
+   * @param {import("koa").Context} ctx koa context
    * @returns {ShowPetByIdResponse} Expected response to a valid request
    */
-  async showPetById(req) {
-    const ctx = req.context;
+  async showPetById(req, ctx) {
     return { body: ctx.state.pet };
   }
 
-  /**
+  /**t
    * Update pet
    *
    * @param {UpdatePetRequest} req updatePet request
+   * @param {import("koa").Context} ctx koa context
    * @returns {UpdatePetResponse} The pet
    */
-  async updatePet(req) {
-    const ctx = req.context;
+  async updatePet(req, ctx) {
     const pet = ctx.state.pet;
     const doc = pick(req.body, ["name", "tag", "age"]);
     await pet.set(doc).save();
@@ -86,9 +88,9 @@ export class Service extends API {
    * Delete pet by id
    *
    * @param {DeletePetRequest} req deletePet request
+   * @param {import("koa").Context} ctx koa context
    */
-  async deletePet(req) {
-    const ctx = req.context;
+  async deletePet(req, ctx) {
     await ctx.state.pet.delete();
   }
 }

@@ -31,7 +31,6 @@ interface {{capitalize name}}Request  {
   {{#with requestBody}}
   body: {{{schemaType content.schema}}};
   {{/with}}
-  context?: Object;
 };
 
 {{/or}}
