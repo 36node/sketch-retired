@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/36node/query-normalizr/compare/@36node/query-normalizr@0.4.1...@36node/query-normalizr@0.4.2) (2019-06-08)
+
+
+### Bug Fixes
+
+* make query-normalizr support wxapp ([#93](https://github.com/36node/query-normalizr/issues/93)) ([5c7f84d](https://github.com/36node/query-normalizr/commit/5c7f84d))
+
+
+
+
+
 ## [0.4.1](https://github.com/36node/query-normalizr/compare/@36node/query-normalizr@0.4.0...@36node/query-normalizr@0.4.1) (2019-06-06)
 
 **Note:** Version bump only for package @36node/query-normalizr
