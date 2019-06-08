@@ -1,5 +1,8 @@
 import { safeToNumber, safeToArray } from "./util";
-import { isNil, startsWith, pickBy, trimStart } from "lodash";
+import pickBy from "lodash/pickBy";
+import startsWith from "lodash/startsWith";
+import isNil from "lodash/isNil";
+import trimStart from "lodash/trimStart";
 
 /**
  * 将url中的query 转换为 json server 的query 格式
