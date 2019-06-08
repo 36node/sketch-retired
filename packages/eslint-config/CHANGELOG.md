@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/36node/sketch/compare/@36node/eslint-config@0.6.0...@36node/eslint-config@0.6.1) (2019-06-08)
+
+
+### Bug Fixes
+
+* **eslint-config:** get rid of annoying react version warning ([fe3100f](https://github.com/36node/sketch/commit/fe3100f))
+
+
+
+
+
 # [0.6.0](https://github.com/36node/sketch/compare/@36node/eslint-config@0.5.0...@36node/eslint-config@0.6.0) (2019-06-06)
 
 
