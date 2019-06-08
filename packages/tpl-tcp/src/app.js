@@ -3,6 +3,7 @@ import Whisper from "@36node/whisper";
 import Request from "./request";
 import Response from "./response";
 import Protocol from "./protocol";
+import logger from "./lib/log";
 
 const app = new Whisper();
 const protocol = new Protocol();
@@ -15,12 +16,12 @@ const log = async (ctx, next) => {
 
   // step 4: log end
   const endAt = Date.now();
-  console.log(ctx.data);
-  console.log("request: ");
-  console.log(ctx.req);
-  console.log("response: ");
-  console.log(ctx.res);
-  console.log(
+  logger.info(ctx.data);
+  logger.info("request: ");
+  logger.info(ctx.req);
+  logger.info("response: ");
+  logger.info(ctx.res);
+  logger.info(
     `session ${ctx.session.id}: seq ${ctx.no} success ${endAt - startedAt} ms`
   );
 };
@@ -41,19 +42,19 @@ app.use(log);
 app.use(handleFrame);
 
 app.on("close", session => {
-  console.log(`session ${session.id}: closed`);
+  logger.info(`session ${session.id}: closed`);
 });
 
 app.on("timeout", session => {
-  console.log(`session ${session.id}: timeout`);
+  logger.info(`session ${session.id}: timeout`);
 });
 
 app.on("end", session => {
-  console.log(`session ${session.id}: end`);
+  logger.info(`session ${session.id}: end`);
 });
 
 app.on("error", session => {
-  console.log(`session ${session.id}: error`);
+  logger.info(`session ${session.id}: error`);
 });
 
 export default app;

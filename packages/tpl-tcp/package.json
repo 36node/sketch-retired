@@ -30,7 +30,7 @@
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "lint": "sketch lint src",
     "release": "standard-version",
-    "start": "sketch start",
+    "start": "sketch start | pino-pretty -t 'SYS:yyyy-mm-dd HH:MM:ss'",
     "test": "sketch test --env=node"
   },
   "commitlint": {
@@ -60,7 +60,7 @@
     "lint-staged": "^8.1.5",
     "pino-pretty": "^2.5.0",
     "prettier": "1.17.1",
-    "standard-version": "^5.0.2"
+    "standard-version": "^6.0.1"
   },
   "dependencies": {
     "@36node/whisper": "^0.1.0",
