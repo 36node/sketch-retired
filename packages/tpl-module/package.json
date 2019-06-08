@@ -21,6 +21,9 @@
     "README.md",
     "src"
   ],
+  "bin": {
+    "foo": "bin/foo.js"
+  },
   "config-overrides-path": "../cli/config-overrides",
   "browser": "dist/browser.mjs",
   "main": "dist/index.js",
