@@ -29,4 +29,10 @@ module.exports = {
   globals: {
     wx: true,
   },
+
+  settings: {
+    react: {
+      version: "999.999.999",
+    },
+  },
 };
