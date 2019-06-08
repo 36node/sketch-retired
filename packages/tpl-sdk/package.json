@@ -53,7 +53,7 @@
   "dependencies": {
     "@36node/fetch": "^0.6.0",
     "@36node/query-normalizr": "^0.4.1",
-    "commander": "^2.16.0"
+    "commander": "^2.19.0"
   },
   "devDependencies": {
     "@36node/eslint-config": "^0.6.0",

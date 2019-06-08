@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@36node/fetch": "^0.6.0",
-    "commander": "^2.16.0",
+    "commander": "^2.19.0",
     "http-errors": "^1.7.1",
     "inquirer": "^6.2.0",
     "jsonfile": "^5.0.0"
