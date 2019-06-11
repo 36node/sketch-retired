@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.4](https://github.com/36node/sketch/compare/@36node/sketch@0.11.3...@36node/sketch@0.11.4) (2019-06-11)
+
+
+### Bug Fixes
+
+* react loader hotloader ([e1e4ecc](https://github.com/36node/sketch/commit/e1e4ecc))
+
+
+
+
+
 ## [0.11.3](https://github.com/36node/sketch/compare/@36node/sketch@0.11.2...@36node/sketch@0.11.3) (2019-06-08)
 
 **Note:** Version bump only for package @36node/sketch

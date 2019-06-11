@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.5](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.10.4...@36node/template-cra-redux@0.10.5) (2019-06-11)
+
+
+### Bug Fixes
+
+* react loader hotloader ([b98fa7c](https://github.com/36node/tpl-react-redux/commit/b98fa7c))
+
+
+
+
+
 ## [0.10.4](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.10.3...@36node/template-cra-redux@0.10.4) (2019-06-08)
 
 **Note:** Version bump only for package @36node/template-cra-redux

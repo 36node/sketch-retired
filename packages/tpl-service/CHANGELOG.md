@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.5](https://github.com/36node/sketch/compare/@36node/template-service@0.11.4...@36node/template-service@0.11.5) (2019-06-11)
+
+
+### Bug Fixes
+
+* **tpl-service:** small fix for listPets service ([94aa1e4](https://github.com/36node/sketch/commit/94aa1e4))
+
+
+
+
+
 ## [0.11.4](https://github.com/36node/sketch/compare/@36node/template-service@0.11.3...@36node/template-service@0.11.4) (2019-06-10)
 
 **Note:** Version bump only for package @36node/template-service
