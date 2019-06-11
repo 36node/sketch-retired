@@ -35,7 +35,7 @@
     "commander": "^2.19.0",
     "connect-pause": "^0.1.0",
     "cross-spawn": "^6.0.5",
-    "customize-cra": "0.2.12",
+    "customize-cra": "^0.2.13",
     "esm": "3.2.23",
     "fs-extra": "^7.0.0",
     "git-config-path": "^1.0.1",
@@ -55,6 +55,7 @@
     "react-scripts": "3.0.1",
     "react-test-renderer": "16.8.6",
     "tar": "^4.4.4",
-    "tmp": "^0.0.33"
+    "tmp": "^0.0.33",
+    "webpack-filter-warnings-plugin": "^1.2.1"
   }
 }

@@ -4,12 +4,14 @@ const {
   useEslintRc,
   addLessLoader,
   addDecoratorsLegacy,
+  addWebpackPlugin,
   addWebpackResolve,
 } = require("customize-cra");
 const jsonServer = require("json-server");
 const pause = require("connect-pause");
 const importCwd = require("import-cwd");
 const path = require("path");
+const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
 
 const stopMock = process.env.MOCK === "false" || process.env.MOCK === "FALSE";
 const antdTheme = importCwd.silent("./antd.theme") || {};
@@ -40,6 +42,10 @@ const resolve = function resolve(dir) {
  * @param {function} g
  */
 const compose = (f, g) => app => f(g(app));
+
+const filterWarningsPlugin = new FilterWarningsPlugin({
+  exclude: /mini-css-extract-plugin[^]*Conflicting order between:/,
+});
 
 module.exports = {
   webpack: override(
@@ -86,7 +92,8 @@ module.exports = {
         sdk: resolve("src/sdk"),
         selectors: resolve("src/selectors"),
       },
-    })
+    }),
+    addWebpackPlugin(filterWarningsPlugin)
   ),
   devServer: function(configFunction) {
     return function(proxy, allowedHost) {

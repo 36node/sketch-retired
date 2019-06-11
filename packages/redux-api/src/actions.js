@@ -13,18 +13,18 @@ export const REFRESH = "REFRESH";
  * @param {string} base base name
  */
 export const makeTypes = key => ({
-  request: `${PREFIX}/${key}_${REQUEST}`,
-  success: `${PREFIX}/${key}_${SUCCESS}`,
-  failure: `${PREFIX}/${key}_${FAILURE}`,
-  clear: `${PREFIX}/${key}_${CLEAR}`,
-  refresh: `${PREFIX}/${key}_${REFRESH}`,
+  request: `${PREFIX}/${key}/${REQUEST}`,
+  success: `${PREFIX}/${key}/${SUCCESS}`,
+  failure: `${PREFIX}/${key}/${FAILURE}`,
+  clear: `${PREFIX}/${key}/${CLEAR}`,
+  refresh: `${PREFIX}/${key}/${REFRESH}`,
 });
 
-export const successOf = key => `${PREFIX}/${key}_${SUCCESS}`;
-export const requestOf = key => `${PREFIX}/${key}_${REQUEST}`;
-export const failureOf = key => `${PREFIX}/${key}_${FAILURE}`;
-export const clearOf = key => `${PREFIX}/${key}_${CLEAR}`;
-export const refreshOf = key => `${PREFIX}/${key}_${REFRESH}`;
+export const successOf = key => `${PREFIX}/${key}/${SUCCESS}`;
+export const requestOf = key => `${PREFIX}/${key}/${REQUEST}`;
+export const failureOf = key => `${PREFIX}/${key}/${FAILURE}`;
+export const clearOf = key => `${PREFIX}/${key}/${CLEAR}`;
+export const refreshOf = key => `${PREFIX}/${key}/${REFRESH}`;
 
 /**
  * action is api action

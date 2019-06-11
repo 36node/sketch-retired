@@ -19,6 +19,11 @@ const data = [
     title: "github",
     icon: "github",
   },
+  {
+    path: "/redux-ui",
+    title: "redux-ui",
+    icon: "build",
+  },
 ];
 
 @withRouter

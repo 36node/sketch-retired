@@ -29,6 +29,11 @@ const Login = Loadable({
   loading: Loading,
 });
 
+const ReduxUi = Loadable({
+  loader: () => import("./containers/redux-ui"),
+  loading: Loading,
+});
+
 class App extends Component {
   render() {
     return (
@@ -57,6 +62,7 @@ const Main = () => (
       <Route path="/" exact component={Home} />
       <Route path="/github" component={Github} />
       <Route path="/pet-store" component={PetStore} />
+      <Route path="/redux-ui" component={ReduxUi} />
     </Content>
     <Footer>Template-CRA-Redux ©2019 Created by 36node</Footer>
   </Layout>

@@ -5,6 +5,15 @@ import * as cs from "../constants";
 import { createApiActions } from "@36node/redux-api";
 import { petSchema, repoSchema } from "../selectors/schemas";
 import { github, petstore, auth } from "../sdk";
+import { createToggleActions } from "@36node/redux-ui/toggle";
+import { createAssignActions } from "@36node/redux-ui/assign";
+import { createProgressActions } from "@36node/redux-ui/progress";
+
+export const reduxUiActions = {
+  toggleExample: createToggleActions(cs.NS.REDUX_UI.TOGGLE_EXP),
+  assignExample: createAssignActions(cs.NS.REDUX_UI.ASSIGN_EXP),
+  progressExample: createProgressActions(cs.NS.REDUX_UI.PROGRESS_EXP),
+};
 
 export const githubActions = {
   listRepos: createApiActions(cs.NS.GITHUB.LIST_REPOS, {
