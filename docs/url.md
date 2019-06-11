@@ -49,13 +49,13 @@ GET /comments?author.name=typicode
 
 ### Paginate
 
-Use `_page` and optionally `_limit` to paginate returned data.
+Use `_offset` and optionally `_limit` to paginate returned data. (an `X-Total-Count` header is included in the response)
 
 In the `Link` header you'll get `first`, `prev`, `next` and `last` links.
 
 ```curl
-GET /posts?_page=7
-GET /posts?_page=7&_limit=20
+GET /posts?_offset=10
+GET /posts?_offset=7&_limit=20
 ```
 
 note: _10 items are returned by default_
@@ -65,31 +65,23 @@ note: _10 items are returned by default_
 Add `_sort` and `_order` (ascending order by default)
 
 ```curl
-GET /posts?_sort=views&_order=asc
-GET /posts/1/comments?_sort=votes&_order=asc
+# asc
+GET /posts?_sort=views
+
+# desc
+GET /posts/1/comments?_sort=-votes
 ```
+
+note: _list posts by views ascending order and comments by votes descending order_
 
 For multiple fields, use the following format:
 
 ```curl
-GET /posts?_sort=user,views&_order=desc,asc
+GET /posts/1/comments?_sort=-votes&_sort=likes
 ```
 
-note: _list posts by publishAt descending order and views ascending order_
-
-### Slice
-
-Add `_start` and `_end` or `_limit` (an `X-Total-Count` header is included in the response)
-
-```curl
-GET /posts?_start=20&_end=30
-GET /posts/1/comments?_start=20&_end=30
-GET /posts/1/comments?_start=20&_limit=10
-```
-
-_Works exactly as [Array.slice](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) (i.e. `_start` is inclusive and `_end` exclusive)_
-
-note: _if we count start from 1, then above return element 11 ~ 30_
+\_prefixing a path with `-` will flag that sort is descending order.
+When a path does not have the `-` prefix, it is ascending order.
 
 ### Operators
 
@@ -106,6 +98,8 @@ GET /posts?id_ne=1
 ```
 
 Add `_like` to filter (RegExp supported)
+
+`_like` support array
 
 ```curl
 GET /posts?title_like=server
@@ -124,29 +118,6 @@ Add `q`
 
 ```curl
 GET /posts?q=internet
-```
-
-### Relationships
-
-To include children resources, add `_embed`
-
-```curl
-GET /posts?_embed=comments
-GET /posts/1?_embed=comments
-```
-
-To include parent resource, add `_expand`
-
-```curl
-GET /comments?_expand=post
-GET /comments/1?_expand=post
-```
-
-To get or create nested resources (by default one level, [add custom routes](#add-custom-routes) for more)
-
-```curl
-GET  /posts/1/comments
-POST /posts/1/comments
 ```
 
 ### Select
@@ -174,13 +145,10 @@ or list the fields to exclude (which implies all other fields are included).
 
 ```js
 {
-  size: 100,
-  page: 1,  // page 从 1 开始定义
   limit: 10,
   offset: 10,
   sort: "-createdBy", // if array should be: ["-createdBy", "views"]
   select: ["views", "body"], // if single should be: "views"
-  populate: "author",
   filter: {
     age: {
       $lt: 10,  // age_lt
@@ -193,9 +161,9 @@ or list the fields to exclude (which implies all other fields are included).
     title: {
       $regex: /^hello .* world$/i,  // like
     },
-    assignees: { $ne: [] }, // *
-    followers: { $eq: [] }, // none
-    $text: { $search: "hello" },  // q
+    assignees: "*",
+    followers: "none",
+    q: "hello"
   }
 }
 ```

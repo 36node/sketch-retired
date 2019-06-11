@@ -15,9 +15,10 @@ yarn
 yarn start
 
 # if we want to start service as production
-NODE_ENV=production yarn start
+# NODE_ENV=production yarn start
 
 # use postman to check api
+yarn test:int
 ```
 
 ### Folder structures
@@ -36,12 +37,12 @@ bin
 └── task.js
 ```
 
-- bin: 受限于nodejs的原生能力限制，该目录下要求采用 commonjs 写法; bin 目录用于辅助项目执行。
+- bin: 受限于 nodejs 的原生能力限制，该目录下要求采用 commonjs 写法; bin 目录用于辅助项目执行。
 - src: source 目录只负责输出模块。
 - api: 自动生成的 api 目录包含 koa 桩代码
 - config: 配置入口，用 dotenv
 - lib: 基础库
-- middleware: koa中间件
+- middleware: koa 中间件
 - services: api 的实现
 - app.js: 主程序
 - index.js: 引用目录
@@ -88,12 +89,12 @@ fastman ls
 fastman import ./test/xxxx/collection.json
 
 # export file from postman
-fastman export "Shanghaibus Core API" ./postman_collection.json
+fastman export "Petstore Service" ./test/xxxx/collection.json
 ```
 
 ## Url Pattern
 
-Find more in [@36node/query-normalizr/README.md](https://github.com/36node/sketch/blob/master/packages/query-normalizr/README.md#query-in-route-qir)
+Find more in [@36node/sketch/docs/url.md](https://github.com/36node/sketch/blob/master/docs/url.md)
 
 ## Contributing
 
