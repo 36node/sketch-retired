@@ -48,6 +48,8 @@ module.exports = {
     // for decorator
     addDecoratorsLegacy(),
     // for lodash
+    addBabelPlugin(["react-hot-loader/babel"]),
+    // for lodash
     addBabelPlugin(["lodash"]),
     // for styled-components
     addBabelPlugin([
