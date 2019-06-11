@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.5](https://github.com/36node/sketch/compare/@36node/sketch@0.11.4...@36node/sketch@0.11.5) (2019-06-11)
+
+**Note:** Version bump only for package @36node/sketch
+
+
+
+
+
 ## [0.11.4](https://github.com/36node/sketch/compare/@36node/sketch@0.11.3...@36node/sketch@0.11.4) (2019-06-11)
 
 
