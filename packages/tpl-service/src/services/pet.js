@@ -32,10 +32,7 @@ export class Service extends API {
    * @returns {ListPetsResponse} A paged array of pets
    */
   async listPets(req, ctx) {
-    const limit = req.query.limit || 10; // default is 10
-    const offset = req.query.offset || 0; // default is 0
-    const sort = req.query.sort;
-    const filter = req.query.filter;
+    const { limit = 10, offset = 0, sort, filter } = req.query;
     const result = await Pet.list({ limit, offset, sort, filter });
 
     return {
