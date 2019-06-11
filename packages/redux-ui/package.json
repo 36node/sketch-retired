@@ -62,5 +62,15 @@
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4",
     "standard-version": "^5.0.2"
+  },
+  "jest": {
+    "displayName": "unit",
+    "testMatch": [
+      "<rootDir>/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ]
   }
 }
