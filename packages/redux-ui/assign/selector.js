@@ -6,7 +6,7 @@ import { createSelector } from "reselect";
 export const makeStateSelector = path => state =>
   get(state.assigns, path) || initState;
 
-const makeToggleSelector = (key, reduxPath) => {
+const createAssignSelector = (key, reduxPath) => {
   const path = reduxPath || camelCaseKey(key);
 
   const stateSelector = makeStateSelector(path);
@@ -19,4 +19,4 @@ const makeToggleSelector = (key, reduxPath) => {
   );
 };
 
-export default makeToggleSelector;
+export default createAssignSelector;

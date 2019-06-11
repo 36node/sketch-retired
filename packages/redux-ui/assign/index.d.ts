@@ -30,7 +30,7 @@ export const assignReducer: Reducer;
 export function isAssign(action: BaseAction): Boolean;
 export function isSet(action: SetAction): Boolean;
 
-export function assignSelector(
+export function createAssignSelector(
   key: String,
   reduxPath?: String
 ): (state: Object) => AssignState;

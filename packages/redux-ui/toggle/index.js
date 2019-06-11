@@ -44,4 +44,4 @@ export { isToggle, isClose, isOpen, isSet } from "./action";
 
 export { default as toggleReducer } from "./reducer";
 
-export { default as toggleSelector } from "./selector";
+export { default as createToggleSelector } from "./selector";

@@ -52,7 +52,7 @@ export function isIncrease(action: BaseAction): Boolean;
 export function isDecrease(action: BaseAction): Boolean;
 export function isInit(action: BaseAction): Boolean;
 
-export function progressSelector(
+export function createProgressSelector(
   key: String,
   reduxPath?: String
 ): (state: Object) => ProgressState;

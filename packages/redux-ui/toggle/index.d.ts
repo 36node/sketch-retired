@@ -35,7 +35,7 @@ export function isOpen(action: OpenAction): Boolean;
 export function isClose(action: CloseAction): Boolean;
 export function isSet(action: SetAction): Boolean;
 
-export function toggleSelector(
+export function createToggleSelector(
   key: String,
   reduxPath?: String
 ): (state: Object) => ToggleState;

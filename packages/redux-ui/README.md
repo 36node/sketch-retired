@@ -30,10 +30,10 @@ dispath(assignActions.set(someValue));
 ### selector:
 
 ```js
-import { assignSelector } from "@36node/redux-ui/assign";
+import { createAssignSelector } from "@36node/redux-ui/assign";
 
 // selector maker
-const selector = assignSelector("someKey");
+const selector = createAssignSelector("someKey");
 
 const assign = selector(state).assign;
 ```
@@ -63,10 +63,10 @@ dispath(toggleActions.set(true or false));
 ### selector:
 
 ```js
-import { toggleSelector } from "@36node/redux-ui/toggle";
+import { createToggleSelector } from "@36node/redux-ui/toggle";
 
 // selector maker
-const selector = toggleSelector("someKey");
+const selector = createToggleSelector("someKey");
 
 const toggle = selector(state).toggle;
 ```
@@ -93,9 +93,9 @@ dispatch(progressActions.init(1, 0, 100));
 ### selector:
 
 ```js
-import { progressSelector } from "@36node/redux-ui/progress";
+import { createProgressSelector } from "@36node/redux-ui/progress";
 
-const selector = progressSelector("someKey");
+const selector = createProgressSelector("someKey");
 
 // progressState: {step, min, max}
 const progressState = selector(state);

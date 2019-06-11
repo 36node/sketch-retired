@@ -35,4 +35,4 @@ export { default as assignReducer } from "./reducer";
 
 export { isAssign, isSet } from "./action";
 
-export { default as assignSelector } from "./selector";
+export { default as createAssignSelector } from "./selector";

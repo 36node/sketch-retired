@@ -47,4 +47,4 @@ export { default as progressReducer } from "./reducer";
 
 export { isProgress, isIncrease, isDecrease, isInit } from "./action";
 
-export { default as progressSelector } from "./selector";
+export { default as createProgressSelector } from "./selector";

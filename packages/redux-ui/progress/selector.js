@@ -6,7 +6,7 @@ import { createSelector } from "reselect";
 export const makeStateSelector = path => state =>
   get(state.progresses, path) || initState;
 
-const makeProgressSelector = (key, reduxPath) => {
+const createProgressSelector = (key, reduxPath) => {
   const path = reduxPath || camelCaseKey(key);
 
   const stateSelector = makeStateSelector(path);
@@ -19,4 +19,4 @@ const makeProgressSelector = (key, reduxPath) => {
   );
 };
 
-export default makeProgressSelector;
+export default createProgressSelector;
