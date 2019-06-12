@@ -20,11 +20,11 @@ interface ListPetsResponse {
   };
 }
 
-interface CreatePetsRequest {
+interface CreatePetRequest {
   body: PetDoc;
 }
 
-interface CreatePetsResponse {
+interface CreatePetResponse {
   body: Pet;
 }
 

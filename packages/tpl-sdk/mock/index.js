@@ -1,4 +1,4 @@
-import pets from "./pet";
+const generate = require("./pet");
 
 const myRouter = (req, res, next) => {
   /** example */
@@ -10,12 +10,18 @@ const myRouter = (req, res, next) => {
 
 const rewrites = { "/aaaaaaa": "/bbbbbbb" };
 
-module.exports = {
+/**
+ * mock
+ *
+ * @param {object} opt mock options
+ * @param {number} opt.count how many pets to be generated
+ */
+const mock = ({ count = 100 }) => ({
   /**
    * mock data
    */
   db: {
-    pets,
+    pets: generate(count),
   },
 
   /**
@@ -24,4 +30,6 @@ module.exports = {
   rewrites,
 
   routers: [myRouter],
-};
+});
+
+module.exports = mock;

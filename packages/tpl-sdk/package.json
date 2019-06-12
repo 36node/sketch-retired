@@ -30,7 +30,10 @@
     "gen": "swagen sdk ../tpl-service/openapi.yml",
     "lint": "sketch lint src",
     "release": "standard-version",
-    "test": "sketch test --env=node"
+    "start": "bin/json-server.js",
+    "pretest": "npm run start &",
+    "test": "sketch test --env=node",
+    "posttest": "pkill -f json-server"
   },
   "commitlint": {
     "extends": [
@@ -63,6 +66,7 @@
     "@commitlint/config-conventional": "^7.5.0",
     "faker": "^4.1.0",
     "husky": "^1.3.1",
+    "json-server": "^0.15.0",
     "lint-staged": "^8.1.5",
     "prettier": "1.17.1",
     "standard-version": "^6.0.1"

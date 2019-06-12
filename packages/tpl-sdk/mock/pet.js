@@ -9,4 +9,4 @@ const generate = count =>
     owner: faker.name.firstName(),
   }));
 
-module.exports = generate(100);
+module.exports = generate;

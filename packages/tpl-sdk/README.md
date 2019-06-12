@@ -11,10 +11,16 @@ yarn add module
 ## Usage
 
 ```js
-const module = require("module");
+const SDK = require("@36node/template-sdk");
 
-module();
-//=> foo
+const sdk = new SDK({ base: "http://localhost:3000" });
+await sdk.pet.listPets();
+```
+
+## Test
+
+```sh
+yarn test
 ```
 
 ## Contributing

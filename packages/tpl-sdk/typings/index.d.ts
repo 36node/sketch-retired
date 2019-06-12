@@ -24,11 +24,15 @@ declare namespace SDK {
     /**
      * Create a pet
      */
-    createPets(req: CreatePetsRequest): Promise<CreatePetsResponse>;
+    createPet(req: CreatePetRequest): Promise<CreatePetResponse>;
     /**
      * Find pet by id
      */
     showPetById(req: ShowPetByIdRequest): Promise<ShowPetByIdResponse>;
+    /**
+     * Update pet
+     */
+    updatePet(req: UpdatePetRequest): Promise<UpdatePetResponse>;
     /**
      *
      */
@@ -57,11 +61,11 @@ declare namespace SDK {
     };
   };
 
-  type CreatePetsRequest = {
-    body: NewPet;
+  type CreatePetRequest = {
+    body: PetDoc;
   };
 
-  type CreatePetsResponse = {
+  type CreatePetResponse = {
     body: Pet;
   };
 
@@ -73,18 +77,27 @@ declare namespace SDK {
     body: Pet;
   };
 
+  type UpdatePetRequest = {
+    petId: string;
+    body: PetDoc;
+  };
+
+  type UpdatePetResponse = {
+    body: Pet;
+  };
+
   type DeletePetRequest = {
-    petId: number;
+    petId: string;
   };
 
   type Pet = {
-    id: number;
+    id: string;
     age: number;
     name: string;
     tag: string;
   };
 
-  type NewPet = {
+  type PetDoc = {
     name: string;
     tag: string;
     age: number;

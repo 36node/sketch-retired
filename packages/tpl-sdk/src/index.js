@@ -54,13 +54,13 @@ export default class SDK {
     /**
      * Create a pet
      *
-     * @param {CreatePetsRequest} req createPets request
-     * @returns {Promise<CreatePetsResponse>} The Pet created
+     * @param {CreatePetRequest} req createPet request
+     * @returns {Promise<CreatePetResponse>} The Pet created
      */
-    createPets: (req = {}) => {
+    createPet: (req = {}) => {
       const { headers, body } = req;
 
-      if (!body) throw new Error("requetBody is required for createPets");
+      if (!body) throw new Error("requetBody is required for createPet");
 
       return fetch(`${this.base}/pets`, {
         method: "post",
@@ -81,6 +81,24 @@ export default class SDK {
 
       return fetch(`${this.base}/pets/${petId}`, {
         method: "get",
+        headers: { Authorization: this.auth, ...headers },
+      });
+    },
+    /**
+     * Update pet
+     *
+     * @param {UpdatePetRequest} req updatePet request
+     * @returns {Promise<UpdatePetResponse>} The pet
+     */
+    updatePet: (req = {}) => {
+      const { petId, headers, body } = req;
+
+      if (!petId) throw new Error("petId is required for updatePet");
+      if (!body) throw new Error("requetBody is required for updatePet");
+
+      return fetch(`${this.base}/pets/${petId}`, {
+        method: "put",
+        body,
         headers: { Authorization: this.auth, ...headers },
       });
     },

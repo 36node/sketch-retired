@@ -25,12 +25,12 @@ export default class API {
       ctx.status = 200;
     };
 
-    const createPets = async ctx => {
+    const createPet = async ctx => {
       const req = {
         body: ctx.request.body,
       };
 
-      const res = await this.createPets(req, ctx);
+      const res = await this.createPet(req, ctx);
 
       if (!res.body) throw createError(500, "should have body in response");
 
@@ -85,7 +85,7 @@ export default class API {
     };
 
     router.get("/pets", ...this.middlewares("listPets"), listPets);
-    router.post("/pets", ...this.middlewares("createPets"), createPets);
+    router.post("/pets", ...this.middlewares("createPet"), createPet);
     router.get("/pets/:petId", ...this.middlewares("showPetById"), showPetById);
     router.put("/pets/:petId", ...this.middlewares("updatePet"), updatePet);
     router.delete("/pets/:petId", ...this.middlewares("deletePet"), deletePet);
@@ -121,11 +121,11 @@ export default class API {
    * Create a pet
    *
    * @abstract
-   * @param {CreatePetsRequest} req createPets request
+   * @param {CreatePetRequest} req createPet request
    * @param {import("koa").Context} ctx koa context
-   * @returns {CreatePetsResponse} The Pet created
+   * @returns {CreatePetResponse} The Pet created
    */
-  createPets(req, ctx) {
+  createPet(req, ctx) {
     throw new Error("not implemented");
   }
 
