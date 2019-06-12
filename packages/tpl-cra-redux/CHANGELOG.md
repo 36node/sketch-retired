@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.8](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.10.7...@36node/template-cra-redux@0.10.8) (2019-06-12)
+
+
+### Bug Fixes
+
+* remove webapck resolve ([#101](https://github.com/36node/tpl-react-redux/issues/101)) ([9516b1c](https://github.com/36node/tpl-react-redux/commit/9516b1c))
+
+
+
+
+
 ## [0.10.7](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.10.6...@36node/template-cra-redux@0.10.7) (2019-06-12)
 
 **Note:** Version bump only for package @36node/template-cra-redux
