@@ -6,7 +6,7 @@ import DocumentTitle from "react-document-title";
 
 import { globalActions } from "../actions";
 
-import { Content } from "components/layout";
+import { Content } from "../components/layout";
 
 const FormItem = Form.Item;
 
