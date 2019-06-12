@@ -5,7 +5,6 @@ const {
   addLessLoader,
   addDecoratorsLegacy,
   addWebpackPlugin,
-  addWebpackResolve,
 } = require("customize-cra");
 const jsonServer = require("json-server");
 const pause = require("connect-pause");
@@ -81,18 +80,6 @@ module.exports = {
         type: "javascript/auto",
       },
     ]),
-    addWebpackResolve({
-      alias: {
-        src: resolve("src"),
-        actions: resolve("src/actions"),
-        components: resolve("src/components"),
-        containers: resolve("src/containers"),
-        reducers: resolve("src/reducers"),
-        sagas: resolve("src/sagas"),
-        sdk: resolve("src/sdk"),
-        selectors: resolve("src/selectors"),
-      },
-    }),
     addWebpackPlugin(filterWarningsPlugin)
   ),
   devServer: function(configFunction) {

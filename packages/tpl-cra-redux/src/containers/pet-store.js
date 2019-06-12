@@ -7,7 +7,7 @@ import { petStoreSelectors } from "../selectors";
 import { Table } from "antd";
 import { isEmpty } from "lodash";
 
-import { Container, Jumbotron } from "components/layout";
+import { Container, Jumbotron } from "../components/layout";
 
 /**
  * Pets table

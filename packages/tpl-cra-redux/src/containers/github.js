@@ -5,7 +5,7 @@ import DocumentTitle from "react-document-title";
 import { githubActions } from "../actions";
 import { githubSelectors } from "../selectors";
 
-import { Container, Jumbotron } from "components/layout";
+import { Container, Jumbotron } from "../components/layout";
 
 @connect(state => {
   const listReposState = githubSelectors.listRepos(state) || {};

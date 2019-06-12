@@ -5,27 +5,27 @@ import { Layout, Breadcrumb } from "antd";
 import Loadable from "react-loadable";
 
 import history from "./history";
-import ProtectedRoute from "containers/protect";
+import ProtectedRoute from "./containers/protect";
 
-import Nav from "containers/nav";
-import Logo from "components/logo";
-import Loading from "components/loading";
-import { Content, Footer, Header } from "components/layout";
+import Nav from "./containers/nav";
+import Logo from "./components/logo";
+import Loading from "./components/loading";
+import { Content, Footer, Header } from "./components/layout";
 
 const Home = Loadable({
-  loader: () => import("containers/home"),
+  loader: () => import("./containers/home"),
   loading: Loading,
 });
 const PetStore = Loadable({
-  loader: () => import("containers/pet-store"),
+  loader: () => import("./containers/pet-store"),
   loading: Loading,
 });
 const Github = Loadable({
-  loader: () => import("containers/github"),
+  loader: () => import("./containers/github"),
   loading: Loading,
 });
 const Login = Loadable({
-  loader: () => import("containers/login"),
+  loader: () => import("./containers/login"),
   loading: Loading,
 });
 

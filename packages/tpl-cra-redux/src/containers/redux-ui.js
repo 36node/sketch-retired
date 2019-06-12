@@ -4,7 +4,7 @@
 
 import React, { Component, PureComponent } from "react";
 import DocumentTitle from "react-document-title";
-import { Container, Jumbotron } from "components/layout";
+import { Container, Jumbotron } from "../components/layout";
 import { reduxUiActions } from "../actions";
 import { connect } from "react-redux";
 import {

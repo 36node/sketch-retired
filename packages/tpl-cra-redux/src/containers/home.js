@@ -5,7 +5,7 @@ import { Button } from "antd";
 import DocumentTitle from "react-document-title";
 import { globalActions } from "../actions";
 
-import { Container, Jumbotron } from "components/layout";
+import { Container, Jumbotron } from "../components/layout";
 
 @connect(state => ({}))
 export default class extends React.PureComponent {
