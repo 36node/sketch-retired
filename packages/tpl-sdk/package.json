@@ -33,7 +33,7 @@
     "start": "bin/json-server.js",
     "pretest": "yarn start &",
     "test": "sketch test --env=node",
-    "posttest": "pkill -f json-server"
+    "posttest": "pkill -f json-server || exit 0"
   },
   "commitlint": {
     "extends": [
