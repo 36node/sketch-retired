@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "koa openapi middleware for 36node team.",
   "repository": {
-    "url": "36node/sketch",
+    "url": "36node/koa-openapi",
     "type": "git"
   },
   "license": "MIT",
