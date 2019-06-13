@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.9](https://github.com/36node/sketch/compare/@36node/template-service@0.11.8...@36node/template-service@0.11.9) (2019-06-13)
+
+
+### Bug Fixes
+
+* tpl-sdk test ([0ea9457](https://github.com/36node/sketch/commit/0ea9457))
+
+
+
+
+
 ## [0.11.8](https://github.com/36node/sketch/compare/@36node/template-service@0.11.7...@36node/template-service@0.11.8) (2019-06-12)
 
 **Note:** Version bump only for package @36node/template-service

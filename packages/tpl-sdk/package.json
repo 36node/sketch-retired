@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-sdk",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "description": "A SDK boilerplate.",
   "repository": {
     "url": "36node/sketch",

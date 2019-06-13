@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.9](https://github.com/36node/sketch/compare/@36node/template-sdk@0.9.8...@36node/template-sdk@0.9.9) (2019-06-13)
+
+
+### Bug Fixes
+
+* sdk test ([f0acd2b](https://github.com/36node/sketch/commit/f0acd2b))
+* tpl sdk test ([6b0c353](https://github.com/36node/sketch/commit/6b0c353))
+* tpl-sdk test ([5d6894d](https://github.com/36node/sketch/commit/5d6894d))
+* tpl-sdk test ([ff26c1d](https://github.com/36node/sketch/commit/ff26c1d))
+* tpl-sdk test ([0ea9457](https://github.com/36node/sketch/commit/0ea9457))
+
+
+
+
+
 ## [0.9.8](https://github.com/36node/sketch/compare/@36node/template-sdk@0.9.7...@36node/template-sdk@0.9.8) (2019-06-12)
 
 **Note:** Version bump only for package @36node/template-sdk
