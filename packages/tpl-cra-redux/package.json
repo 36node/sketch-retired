@@ -82,6 +82,7 @@
     "@36node/redux-api": "^0.1.6",
     "@36node/redux-ui": "^0.0.3",
     "@36node/template-sdk": "^0.9.10",
+    "@types/jest": "^24.0.11",
     "antd": "^3.15.1",
     "history": "^4.9.0",
     "lodash": "^4.17.11",
