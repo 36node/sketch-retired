@@ -8,22 +8,31 @@ describe("## SDK vehicle", () => {
     expect(result.body.length).toBe(100);
   });
 
-  it("should CRUD", async () => {
+  let pet;
+
+  it("should create pet", async () => {
     const newPet = {
       name: "jam",
       tag: "DOG",
       owner: "lily",
     };
 
-    const resultCreate = await sdk.pet.createPet({ body: newPet });
-    expect(resultCreate.body).toMatchObject(newPet);
-    const resultGet = await sdk.pet.showPetById({
-      petId: resultCreate.body.id,
+    const result = await sdk.pet.createPet({ body: newPet });
+    pet = result.body;
+    expect(pet).toMatchObject(newPet);
+  });
+
+  it("should get pet", async () => {
+    const result = await sdk.pet.showPetById({
+      petId: pet.id,
     });
-    expect(resultGet.body.id).toBe(resultCreate.body.id);
-    const resultDelete = await sdk.pet.deletePet({
-      petId: resultCreate.body.id,
+    expect(result.body.id).toBe(pet.id);
+  });
+
+  it("should delete pet", async () => {
+    const result = await sdk.pet.deletePet({
+      petId: pet.id,
     });
-    expect(resultDelete.body).toEqual({});
+    expect(result.body).toEqual({});
   });
 });
