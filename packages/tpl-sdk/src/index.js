@@ -25,7 +25,7 @@ export default class SDK {
    *
    * @param {Object} opt
    * @param {string} opt.base  base url
-   * @param {string} opt.token token fro authorization
+   * @param {string} opt.token token for authorization
    */
   constructor(opt = {}) {
     this.base = opt.base || "";
