@@ -31,9 +31,7 @@
     "lint": "sketch lint src",
     "release": "standard-version",
     "start": "bin/json-server.js",
-    "pretest": "yarn start &",
-    "test": "sketch test --env=node",
-    "posttest": "if test \"$CI\" != \"true\" ; then pkill -f json-server; fi "
+    "test:int": "sketch test --env=node"
   },
   "commitlint": {
     "extends": [
