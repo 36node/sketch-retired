@@ -31,7 +31,8 @@
     "lint": "sketch lint src",
     "release": "standard-version",
     "start": "sketch start | pino-pretty -t 'SYS:yyyy-mm-dd HH:MM:ss'",
-    "test": "sketch test --env=node"
+    "test": "sketch test --env=node",
+    "test:int": "sketch test -c test/jest.config.js"
   },
   "commitlint": {
     "extends": [
