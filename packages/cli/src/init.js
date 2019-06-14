@@ -38,7 +38,7 @@ export default async function init(tpl, dest = ".", options = {}) {
     const pkgJson = await jsonfile.readFile(pkgFile);
 
     let { name, owner, scope } = options;
-    pkgJson.files = ["bin", "dist"];
+    pkgJson.files = ["bin", "dist", "mock", "typings"];
     pkgJson.version = "0.0.0";
     pkgJson.repository = {
       url: `${owner}/${name}`,
