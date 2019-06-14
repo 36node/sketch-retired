@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/36node/sketch/compare/@36node/template-tcp@0.5.11...@36node/template-tcp@0.6.0) (2019-06-14)
+
+
+### Features
+
+* add setup and teardown to test config ([#104](https://github.com/36node/sketch/issues/104)) ([536ac30](https://github.com/36node/sketch/commit/536ac30))
+
+
+
+
+
 ## [0.5.11](https://github.com/36node/sketch/compare/@36node/template-tcp@0.5.10...@36node/template-tcp@0.5.11) (2019-06-14)
 
 **Note:** Version bump only for package @36node/template-tcp

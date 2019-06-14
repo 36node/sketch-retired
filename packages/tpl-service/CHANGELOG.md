@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/36node/sketch/compare/@36node/template-service@0.11.14...@36node/template-service@0.12.0) (2019-06-14)
+
+
+### Features
+
+* add setup and teardown to test config ([#104](https://github.com/36node/sketch/issues/104)) ([536ac30](https://github.com/36node/sketch/commit/536ac30))
+
+
+
+
+
 ## [0.11.14](https://github.com/36node/sketch/compare/@36node/template-service@0.11.13...@36node/template-service@0.11.14) (2019-06-14)
 
 **Note:** Version bump only for package @36node/template-service
