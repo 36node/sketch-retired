@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.8](https://github.com/36node/sketch/compare/@36node/sketch@0.11.7...@36node/sketch@0.11.8) (2019-06-14)
+
+
+### Bug Fixes
+
+* **cli:** update json server version ([04d4575](https://github.com/36node/sketch/commit/04d4575))
+
+
+
+
+
 ## [0.11.7](https://github.com/36node/sketch/compare/@36node/sketch@0.11.6...@36node/sketch@0.11.7) (2019-06-13)
 
 **Note:** Version bump only for package @36node/sketch
