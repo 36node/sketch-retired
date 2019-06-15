@@ -26,7 +26,7 @@ test("init", () => {
     expect(writeFile).toBeCalledWith(
       pkgFile,
       {
-        files: ["bin", "dist"],
+        files: ["bin", "dist", "mock", "typings"],
         name: "@36node/somepkg",
         repository: {
           url: "tester/somepkg",
