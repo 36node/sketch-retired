@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.16](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.10.15...@36node/template-cra-redux@0.10.16) (2019-06-16)
+
+
+### Bug Fixes
+
+* build react component ([8275a80](https://github.com/36node/tpl-react-redux/commit/8275a80))
+* temp ([ed359f8](https://github.com/36node/tpl-react-redux/commit/ed359f8))
+
+
+
+
+
 ## [0.10.15](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.10.14...@36node/template-cra-redux@0.10.15) (2019-06-15)
 
 **Note:** Version bump only for package @36node/template-cra-redux

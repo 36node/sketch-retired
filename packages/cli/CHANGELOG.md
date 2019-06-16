@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.11](https://github.com/36node/sketch/compare/@36node/sketch@0.11.10...@36node/sketch@0.11.11) (2019-06-16)
+
+
+### Bug Fixes
+
+* build react component ([8275a80](https://github.com/36node/sketch/commit/8275a80))
+* temp ([ed359f8](https://github.com/36node/sketch/commit/ed359f8))
+
+
+
+
+
 ## [0.11.10](https://github.com/36node/sketch/compare/@36node/sketch@0.11.9...@36node/sketch@0.11.10) (2019-06-15)
 
 **Note:** Version bump only for package @36node/sketch
