@@ -24,9 +24,8 @@
     "src"
   ],
   "config-overrides-path": "../cli/config-overrides",
-  "main": "dist/index.js",
+  "main": "dist/index.mjs",
   "module": "dist/index.mjs",
-  "source": "src/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
     "build": "sketch build",

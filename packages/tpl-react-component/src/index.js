@@ -5,11 +5,11 @@ export default class ReactComponent extends React.PureComponent {
   name = "jam";
 
   render() {
-    return <Container>Hello world {this.name} </Container>;
+    return <A>Hello world {this.name} </A>;
   }
 }
 
-const Container = styled.div`
+const A = styled.div`
   font-size: 20px;
   color: red;
 `;

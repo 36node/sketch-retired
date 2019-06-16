@@ -1,9 +1,8 @@
-import { Button } from "antd";
+import React from "react";
+import MediaQuery from "react-responsive";
 import { connect } from "react-redux";
 import DocumentTitle from "react-document-title";
-import MediaQuery from "react-responsive";
-import React from "react";
-import SampleComponent from "@36node/template-react-component";
+import { Button } from "antd";
 
 import { Container, Jumbotron } from "../components/layout";
 import { globalActions } from "../actions";
@@ -24,7 +23,6 @@ export default class extends React.PureComponent {
           <MediaQuery maxDeviceWidth={800}>
             <Jumbotron> Welcome </Jumbotron>
           </MediaQuery>
-          <SampleComponent />
           <p>
             {" "}
             We are the core team of

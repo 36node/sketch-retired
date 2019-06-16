@@ -21,6 +21,8 @@ switch (template.toLowerCase()) {
   case "react-component":
     command = "microbundle";
     args.push("--jsx", "React.createElement");
+    args.push("--format", "es");
+    break;
   case "tcp":
   case "service":
     command = "microbundle";
