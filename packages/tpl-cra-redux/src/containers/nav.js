@@ -24,6 +24,11 @@ const data = [
     title: "redux-ui",
     icon: "build",
   },
+  {
+    path: "/redux-form",
+    title: "redux-form",
+    icon: "form",
+  },
 ];
 
 @withRouter
