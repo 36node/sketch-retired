@@ -9,6 +9,8 @@ exports[`should renders correctly 1`] = `
 <div
   className="c0"
 >
-  Hello world
+  Hello world 
+  jam
+   
 </div>
 `;
