@@ -1,5 +1,5 @@
-import { openOf, closeOf, setOf } from "./action";
-import { registerToggle } from "./toggles";
+import { Types } from "./action";
+import { registerToggle, Toggles } from "./toggles";
 import { ReduxUiBase } from "../base";
 
 class Toggle extends ReduxUiBase {
@@ -10,19 +10,19 @@ class Toggle extends ReduxUiBase {
   get actions() {
     return {
       open: (meta = {}) => ({
-        type: openOf(this.key),
+        type: Types.open,
         key: this.key,
         meta,
       }),
 
       close: (meta = {}) => ({
-        type: closeOf(this.key),
+        type: Types.close,
         key: this.key,
         meta,
       }),
 
       set: (toggle, meta = {}) => ({
-        type: setOf(this.key),
+        type: Types.set,
         key: this.key,
         payload: { toggle },
         meta,
@@ -35,6 +35,11 @@ export function createToggleActions(key, opts = {}) {
   if (!key) {
     throw new Error("Toggle need a key");
   }
+
+  if (Toggles.has(key)) {
+    return Toggles.get(key).actions;
+  }
+
   const toggle = new Toggle(key, opts.reduxPath);
   registerToggle(toggle);
   return toggle.actions;

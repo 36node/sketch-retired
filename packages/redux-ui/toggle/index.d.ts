@@ -24,7 +24,9 @@ interface ToggleState {
   meta?: Object;
 }
 
-declare class Toggle extends ReduxUiBase {}
+declare class Toggle extends ReduxUiBase {
+  actions: ToggleActions;
+}
 
 export function createToggleActions(key: String, opts: Options): ToggleActions;
 

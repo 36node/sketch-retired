@@ -1,6 +1,6 @@
 import { ReduxUiBase } from "../base";
-import { setOf } from "./action";
-import { registerAssign } from "./assigns";
+import { Types } from "./action";
+import { registerAssign, Assigns } from "./assigns";
 
 class Assign extends ReduxUiBase {
   constructor(key, reduxPath) {
@@ -10,7 +10,7 @@ class Assign extends ReduxUiBase {
   get actions() {
     return {
       set: (assign, meta = {}) => ({
-        type: setOf(this.key),
+        type: Types.set,
         key: this.key,
         meta,
         payload: {
@@ -25,6 +25,11 @@ export function createAssignActions(key, opts = {}) {
   if (!key) {
     throw new Error("Assign need A key");
   }
+
+  if (Assigns.has(key)) {
+    return Assigns.get(key).actions;
+  }
+
   const assign = new Assign(key, opts.reduxPath);
   registerAssign(key, assign);
 

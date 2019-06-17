@@ -18,7 +18,9 @@ interface AssignState {
   meta?: Object;
 }
 
-declare class Assign extends ReduxUiBase {}
+declare class Assign extends ReduxUiBase {
+  actions: AssignActions;
+}
 
 export function createAssignActions(
   key: String,

@@ -40,7 +40,9 @@ interface ProgressActions {
   ) => IncreaseAction;
 }
 
-declare class Progress extends ReduxUiBase {}
+declare class Progress extends ReduxUiBase {
+  actions: ProgressActions;
+}
 
 export function createProgressActions(
   key: String,
