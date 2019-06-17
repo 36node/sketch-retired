@@ -31,7 +31,7 @@ export const petStoreActions = {
     schema: [petSchema],
   }),
   createPets: createApiActions(cs.NS.PET_STORE.CREATE_PET, {
-    endpoint: petstore.pet.createPets,
+    endpoint: petstore.pet.createPet,
     schema: petSchema,
   }),
   getPet: createApiActions(cs.NS.PET_STORE.GET_PET, {
