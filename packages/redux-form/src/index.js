@@ -1,10 +1,4 @@
-import {
-  resetOf,
-  registerFieldOf,
-  changeFieldOf,
-  registerMutilFieldsOf,
-  changeMutilFieldsOf,
-} from "./action";
+import { Types } from "./action";
 import { registerForm, Forms } from "./forms";
 import { camelCaseKey } from "./lib";
 
@@ -27,31 +21,31 @@ class Form {
   get actions() {
     return {
       reset: (initialValues = {}, meta = {}) => ({
-        type: resetOf(this.key),
+        type: Types.rest,
         key: this.key,
         payload: { initialValues },
         meta,
       }),
       registerField: (name, initialValue, meta = {}) => ({
-        type: registerFieldOf(this.key),
+        type: Types.registerField,
         key: this.key,
         payload: { name, initialValue },
         meta,
       }),
       registerMutilFields: (fields = [], meta = {}) => ({
-        type: registerMutilFieldsOf(this.key),
+        type: Types.registerMutilFields,
         key: this.key,
         payload: { fields },
         meta,
       }),
       changeField: (name, fieldState = {}, meta = {}) => ({
-        type: changeFieldOf(this.key),
+        type: Types.changeField,
         key: this.key,
         payload: { ...fieldState, name },
         meta,
       }),
       changeMutilFields: (fields = [], meta = {}) => ({
-        type: changeMutilFieldsOf(this.key),
+        type: Types.changeMutilFields,
         key: this.key,
         payload: { fields },
         meta,
