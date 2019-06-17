@@ -79,11 +79,6 @@ export interface FormActions {
 export function createFormActions(key: String, opts: Option): FormActions;
 
 export function isForm(action: BaseAction): Boolean;
-export function isChangeMutilFields(action: BaseAction): Boolean;
-export function isRegisterMutilFields(action: BaseAction): Boolean;
-export function isReset(action: BaseAction): Boolean;
-export function isChangeField(action: BaseAction): Boolean;
-export function isRegisterField(action: BaseAction): Boolean;
 
 export const formReducer: Reducer;
 
@@ -93,3 +88,11 @@ export function createFormSelector(
   key: String,
   reduxPath?: String
 ): FormSelector;
+
+export const FormTypes: {
+  reset: String;
+  registerField: String;
+  registerMutilFields: String;
+  changeField: String;
+  changeMutilFields: String;
+};

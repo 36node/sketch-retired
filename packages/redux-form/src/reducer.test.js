@@ -96,7 +96,7 @@ describe("Test redux-form reducer", () => {
     const name = "test-field";
 
     const action = {
-      type: Types.rest,
+      type: Types.reset,
       key,
       payload: {
         initialValues: {
@@ -120,7 +120,7 @@ describe("Test redux-form reducer", () => {
     const name = "test-field";
 
     const action = {
-      type: Types.rest,
+      type: Types.reset,
       key,
     };
 

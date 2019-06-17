@@ -1,4 +1,4 @@
-import { endsWith, startsWith } from "lodash";
+import { startsWith } from "lodash";
 export const PREFIX = "@FORM";
 
 export function isForm(action = {}) {
@@ -18,29 +18,9 @@ export const REGISTER_FIELD = "REGISTER_FIELD";
 export const REGISTER_MUTIL_FIELDS = "REGISTER_MUTIL_FIELDS";
 
 export const Types = {
-  rest: `${PREFIX}/${RESET}`,
+  reset: `${PREFIX}/${RESET}`,
   registerField: `${PREFIX}/${REGISTER_FIELD}`,
   registerMutilFields: `${PREFIX}/${REGISTER_MUTIL_FIELDS}`,
   changeField: `${PREFIX}/${CHANGE_FIELD}`,
   changeMutilFields: `${PREFIX}/${CHANGE_MUTIL_FIELDS}`,
 };
-
-export function isReset(action) {
-  return isForm(action) && endsWith(action.type, RESET);
-}
-
-export function isRegisterField(action) {
-  return isForm(action) && endsWith(action.type, REGISTER_FIELD);
-}
-
-export function isRegisterMutilFields(action) {
-  return isForm(action) && endsWith(action.type, REGISTER_MUTIL_FIELDS);
-}
-
-export function isChangeField(action) {
-  return isForm(action) && endsWith(action.type, CHANGE_FIELD);
-}
-
-export function isChangeMutilFields(action) {
-  return isForm(action) && endsWith(action.type, CHANGE_MUTIL_FIELDS);
-}

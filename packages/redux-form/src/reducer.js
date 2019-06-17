@@ -1,11 +1,4 @@
-import {
-  isChangeField,
-  isRegisterField,
-  isReset,
-  isRegisterMutilFields,
-  isChangeMutilFields,
-  isForm,
-} from "./action";
+import { isForm, Types } from "./action";
 import { setWith, clone, get } from "lodash";
 import { Forms } from "./forms";
 
@@ -54,9 +47,9 @@ function changeField(fields = {}, field = {}) {
 }
 
 function r(state = initState, action) {
-  const { payload = {}, meta = {} } = action;
+  const { payload = {}, meta = {}, type } = action;
 
-  if (isRegisterField(action)) {
+  if (type === Types.registerField) {
     // need field name
     const { name, initialValue } = payload;
     if (!name) {
@@ -72,7 +65,7 @@ function r(state = initState, action) {
     };
   }
 
-  if (isRegisterMutilFields(action)) {
+  if (type === Types.registerMutilFields) {
     const { fields = [] } = payload;
 
     const newFields = fields.reduce((acc, cur) => {
@@ -91,7 +84,7 @@ function r(state = initState, action) {
     };
   }
 
-  if (isChangeField(action)) {
+  if (type === Types.changeField) {
     const { name } = payload;
     if (!name) {
       return state;
@@ -105,7 +98,7 @@ function r(state = initState, action) {
     };
   }
 
-  if (isChangeMutilFields(action)) {
+  if (type === Types.changeMutilFields) {
     const { fields = [] } = payload;
 
     const newFields = fields.reduce((acc, cur) => {
@@ -124,7 +117,7 @@ function r(state = initState, action) {
     };
   }
 
-  if (isReset(action)) {
+  if (type === Types.reset) {
     const { initialValues = {} } = payload;
 
     const newFileds = {};
@@ -144,7 +137,10 @@ function r(state = initState, action) {
 
 export default function reducer(state = {}, action) {
   if (!isForm(action)) return state;
+
   const { key } = action;
+
+  if (!key) return state;
 
   const form = Forms.get(key);
 

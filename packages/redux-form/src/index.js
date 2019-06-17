@@ -21,7 +21,7 @@ class Form {
   get actions() {
     return {
       reset: (initialValues = {}, meta = {}) => ({
-        type: Types.rest,
+        type: Types.reset,
         key: this.key,
         payload: { initialValues },
         meta,
@@ -64,15 +64,8 @@ export function createFormActions(key, opts = {}) {
   return form.actions;
 }
 
-export {
-  isForm,
-  isChangeField,
-  isRegisterField,
-  isReset,
-  isChangeMutilFields,
-  isRegisterMutilFields,
-} from "./action";
-
 export { default as formReducer } from "./reducer";
 
 export { default as createFormSelector } from "./selector";
+
+export { Types as FormTypes, isForm } from "./action";

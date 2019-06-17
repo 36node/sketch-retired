@@ -138,7 +138,7 @@ class ReduxFormExample extends PureComponent {
                 "radio-group": "c",
                 switch: true,
                 slider: 60,
-                "number-input": 4,
+                "input-number": 4,
                 "select-multiple": ["red"],
               });
             }}
