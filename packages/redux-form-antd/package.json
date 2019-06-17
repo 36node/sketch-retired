@@ -1,6 +1,6 @@
 {
   "name": "@36node/redux-form-antd",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A higher order component decorator form using @36node/redux-form and antd form",
   "repository": {
     "url": "36node/redux-form-antd",
