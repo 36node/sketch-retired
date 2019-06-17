@@ -1,10 +1,4 @@
-import {
-  registerFieldOf,
-  changeFieldOf,
-  resetOf,
-  registerMutilFieldsOf,
-  changeMutilFieldsOf,
-} from "./action";
+import { Types } from "./action";
 import reducer, { initFieldState } from "./reducer";
 import { Forms } from "./forms";
 import { get } from "lodash";
@@ -22,7 +16,7 @@ describe("Test redux-form reducer", () => {
     Forms.set(key, { reduxPath });
 
     const action = {
-      type: registerFieldOf(key),
+      type: Types.registerField,
       key,
       payload: { name: "test-field", initialValue },
     };
@@ -44,7 +38,7 @@ describe("Test redux-form reducer", () => {
     ];
 
     const action = {
-      type: registerMutilFieldsOf(key),
+      type: Types.registerMutilFields,
       payload: { fields },
       key,
     };
@@ -61,7 +55,7 @@ describe("Test redux-form reducer", () => {
     const name = "test-field";
 
     const action = {
-      type: changeFieldOf(key),
+      type: Types.changeField,
       key,
       payload: { name: "test-field", value: "field_value", touched: true },
     };
@@ -85,7 +79,7 @@ describe("Test redux-form reducer", () => {
     ];
 
     const action = {
-      type: changeMutilFieldsOf(key),
+      type: Types.changeMutilFields,
       key,
       payload: { fields },
     };
@@ -102,7 +96,7 @@ describe("Test redux-form reducer", () => {
     const name = "test-field";
 
     const action = {
-      type: resetOf(key),
+      type: Types.rest,
       key,
       payload: {
         initialValues: {
@@ -126,7 +120,7 @@ describe("Test redux-form reducer", () => {
     const name = "test-field";
 
     const action = {
-      type: resetOf(key),
+      type: Types.rest,
       key,
     };
 
