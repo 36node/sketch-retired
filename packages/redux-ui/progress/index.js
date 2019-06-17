@@ -49,6 +49,6 @@ export function createProgressActions(key, opts = {}) {
 
 export { default as progressReducer } from "./reducer";
 
-export { isProgress, isIncrease, isDecrease, isInit } from "./action";
+export { isProgress, Types as ProgressTypes } from "./action";
 
 export { default as createProgressSelector } from "./selector";

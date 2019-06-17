@@ -30,9 +30,12 @@ export function createAssignActions(
 export const assignReducer: Reducer;
 
 export function isAssign(action: BaseAction): Boolean;
-export function isSet(action: SetAction): Boolean;
 
 export function createAssignSelector(
   key: String,
   reduxPath?: String
 ): (state: Object) => AssignState;
+
+export const AssignActions: {
+  set: String;
+};

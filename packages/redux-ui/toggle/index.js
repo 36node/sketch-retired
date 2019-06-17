@@ -45,7 +45,7 @@ export function createToggleActions(key, opts = {}) {
   return toggle.actions;
 }
 
-export { isToggle, isClose, isOpen, isSet } from "./action";
+export { isToggle, Types as ToggleTypes } from "./action";
 
 export { default as toggleReducer } from "./reducer";
 

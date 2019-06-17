@@ -38,6 +38,6 @@ export function createAssignActions(key, opts = {}) {
 
 export { default as assignReducer } from "./reducer";
 
-export { isAssign, isSet } from "./action";
+export { isAssign, Types as AssignTypes } from "./action";
 
 export { default as createAssignSelector } from "./selector";

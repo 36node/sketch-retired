@@ -33,11 +33,14 @@ export function createToggleActions(key: String, opts: Options): ToggleActions;
 export const toggleReducer: Reducer;
 
 export function isToggle(action: BaseAction): Boolean;
-export function isOpen(action: OpenAction): Boolean;
-export function isClose(action: CloseAction): Boolean;
-export function isSet(action: SetAction): Boolean;
 
 export function createToggleSelector(
   key: String,
   reduxPath?: String
 ): (state: Object) => ToggleState;
+
+export const ToggleTypes: {
+  close: String;
+  open: String;
+  set: String;
+};

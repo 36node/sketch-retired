@@ -1,4 +1,4 @@
-import { isToggle, isClose, isOpen, isSet } from "./action";
+import { isToggle, Types } from "./action";
 import { Toggles } from "./toggles";
 import { setWith, clone, get } from "lodash";
 
@@ -8,9 +8,9 @@ export const initState = {
 };
 
 function r(state = initState, action) {
-  const { payload = {}, meta = {} } = action;
+  const { payload = {}, type, meta = {} } = action;
 
-  if (isClose(action)) {
+  if (type === Types.close) {
     return {
       ...state,
       toggle: false,
@@ -18,7 +18,7 @@ function r(state = initState, action) {
     };
   }
 
-  if (isOpen(action)) {
+  if (type === Types.open) {
     return {
       ...state,
       toggle: true,
@@ -26,7 +26,7 @@ function r(state = initState, action) {
     };
   }
 
-  if (isSet(action)) {
+  if (type === Types.set) {
     const { toggle } = payload;
     return {
       ...state,
@@ -42,6 +42,8 @@ export default function reducer(state = {}, action) {
   if (!isToggle(action)) return state;
 
   const { key } = action;
+
+  if (!key) return state;
 
   const toggle = Toggles.get(key);
 

@@ -11,7 +11,3 @@ export function isAssign(action = {}) {
   const { key, type } = action;
   return key && startsWith(type, PREFIX);
 }
-
-export function isSet(action) {
-  return isAssign(action) && endsWith(action.type, SET);
-}

@@ -1,5 +1,5 @@
 import { get, clone, setWith } from "lodash";
-import { isIncrease, isDecrease, isInit, isProgress } from "./action";
+import { isProgress, Types } from "./action";
 import { Progresses } from "./progresses";
 
 export const initState = {
@@ -17,9 +17,9 @@ function max(a, b) {
 }
 
 function r(state = initState, action) {
-  const { payload = {}, meta = {} } = action;
+  const { payload = {}, meta = {}, type } = action;
 
-  if (isIncrease(action)) {
+  if (type === Types.increase) {
     return {
       ...state,
       step: min(state.max, state.step + payload.step),
@@ -27,7 +27,7 @@ function r(state = initState, action) {
     };
   }
 
-  if (isDecrease(action)) {
+  if (type === Types.decrease) {
     return {
       ...state,
       step: max(state.min, state.step - payload.step),
@@ -35,7 +35,7 @@ function r(state = initState, action) {
     };
   }
 
-  if (isInit(action)) {
+  if (type === Types.init) {
     return {
       ...state,
       ...payload,
@@ -50,6 +50,8 @@ export default function reducer(state = {}, action) {
   if (!isProgress(action)) return state;
 
   const { key } = action;
+
+  if (!key) return state;
 
   const progress = Progresses.get(key);
 

@@ -16,15 +16,3 @@ export function isProgress(action) {
   const { key, type } = action;
   return key && startsWith(type, PREFIX);
 }
-
-export function isIncrease(action) {
-  return isProgress(action) && endsWith(action.type, INCREASE);
-}
-
-export function isDecrease(action) {
-  return isProgress(action) && endsWith(action.type, DECREASE);
-}
-
-export function isInit(action) {
-  return isProgress(action) && endsWith(action.type, INIT);
-}
