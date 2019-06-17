@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.18](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.10.17...@36node/template-cra-redux@0.10.18) (2019-06-17)
+
+
+### Bug Fixes
+
+* pet.createPet ([acd0427](https://github.com/36node/tpl-react-redux/commit/acd0427))
+
+
+
+
+
 ## [0.10.17](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.10.16...@36node/template-cra-redux@0.10.17) (2019-06-17)
 
 **Note:** Version bump only for package @36node/template-cra-redux
