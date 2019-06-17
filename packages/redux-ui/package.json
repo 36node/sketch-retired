@@ -13,6 +13,9 @@
   "template": "cra-redux",
   "files": [
     ".circleci",
+    "index.js",
+    "index.d.ts",
+    "base",
     "bin",
     "lib",
     "typings",
