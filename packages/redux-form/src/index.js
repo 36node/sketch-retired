@@ -5,7 +5,7 @@ import {
   registerMutilFieldsOf,
   changeMutilFieldsOf,
 } from "./action";
-import { registerForm } from "./forms";
+import { registerForm, Forms } from "./forms";
 import { camelCaseKey } from "./lib";
 
 class Form {
@@ -65,7 +65,7 @@ export function createFormActions(key, opts = {}) {
     throw new Error("Form need a key");
   }
 
-  const form = new Form(key, opts.reduxPath);
+  const form = Forms.get(key) || new Form(key, opts.reduxPath);
   registerForm(form);
   return form.actions;
 }
