@@ -40,7 +40,9 @@ interface ProgressActions {
   ) => IncreaseAction;
 }
 
-declare class Progress extends ReduxUiBase {}
+declare class Progress extends ReduxUiBase {
+  actions: ProgressActions;
+}
 
 export function createProgressActions(
   key: String,
@@ -48,9 +50,6 @@ export function createProgressActions(
 ): ProgressActions;
 
 export function isProgress(action: BaseAction): Boolean;
-export function isIncrease(action: BaseAction): Boolean;
-export function isDecrease(action: BaseAction): Boolean;
-export function isInit(action: BaseAction): Boolean;
 
 export function createProgressSelector(
   key: String,
@@ -58,3 +57,9 @@ export function createProgressSelector(
 ): (state: Object) => ProgressState;
 
 export const progressReducer: Reducer;
+
+export const ProgressTypes: {
+  increase: String;
+  decrease: String;
+  init: String;
+};

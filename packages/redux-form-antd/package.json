@@ -1,34 +1,31 @@
 {
-  "name": "@36node/redux-ui",
-  "version": "0.0.8",
-  "description": "A higher order component decorator some functions using Redux and React ",
+  "name": "@36node/redux-form-antd",
+  "version": "0.0.0",
+  "description": "A higher order component decorator form using @36node/redux-form and antd form",
   "repository": {
-    "url": "36node/redux-ui",
+    "url": "36node/redux-form-antd",
     "type": "git"
   },
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
-  "template": "cra-redux",
+  "template": "react-component",
   "files": [
     ".circleci",
-    "index.js",
-    "index.d.ts",
-    "base",
     "bin",
     "lib",
     "typings",
     "README.md",
-    "assign",
-    "progress",
-    "toggle"
+    "src"
   ],
   "config-overrides-path": "../cli/config-overrides",
-  "module": "index.js",
-  "typings": "index.d.ts",
+  "module": "dist/index.js",
+  "typings": "typings/index.d.ts",
+  "main": "dist/index.js",
   "scripts": {
-    "format": "prettier --trailing-comma es5 --write '**/*.js'",
+    "build": "sketch build",
+    "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "lint": "sketch lint src",
     "release": "standard-version && git push --follow-tags origin master",
     "test": "NODE_ENV=test sketch test --env=node"
@@ -52,19 +49,26 @@
     ]
   },
   "dependencies": {
-    "lodash": "^4.17.11",
-    "redux-saga": "^1.0.2",
-    "reselect": "^4.0.0"
+    "@types/react": "^16.8.8",
+    "@types/react-redux": "^7.1.0",
+    "lodash": "^4.17.11"
+  },
+  "peerDependencies": {
+    "@36node/redux-form": "^0.0.0",
+    "antd": "^3.15.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^6.0.1"
   },
   "devDependencies": {
     "@36node/eslint-config": "^0.4.0",
-    "@36node/sketch": "^0.11.11",
+    "@36node/sketch": "^0.11.7",
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4",
-    "standard-version": "^5.0.2"
+    "standard-version": "^6.0.1"
   },
   "jest": {
     "displayName": "unit",

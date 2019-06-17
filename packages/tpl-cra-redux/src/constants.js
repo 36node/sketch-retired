@@ -16,4 +16,7 @@ export const NS = {
     ASSIGN_EXP: "REDUX_UI.ASSIGN_EXP",
     PROGRESS_EXP: "REDUX_UI.PROGRESS_EXP",
   },
+  REDUX_FORM: {
+    FORM_EXP: "REDUX_FORM.FORM_EXP",
+  },
 };

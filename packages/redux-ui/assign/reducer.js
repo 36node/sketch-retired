@@ -1,4 +1,4 @@
-import { isAssign, isSet } from "./action";
+import { isAssign, Types } from "./action";
 import { Assigns } from "./assigns";
 import { setWith, clone, get } from "lodash";
 
@@ -8,9 +8,9 @@ export const initState = {
 };
 
 function r(state = initState, action) {
-  const { payload = {}, meta = {} } = action;
+  const { payload = {}, meta = {}, type } = action;
 
-  if (isSet(action)) {
+  if (type === Types.set) {
     return {
       ...state,
       assign: payload.assign,
@@ -25,6 +25,8 @@ export default function reducer(state = {}, action) {
   if (!isAssign(action)) return state;
 
   const { key } = action;
+
+  if (!key) return state;
 
   const assign = Assigns.get(key);
 

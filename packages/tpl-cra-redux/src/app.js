@@ -11,6 +11,7 @@ import Nav from "./containers/nav";
 import Logo from "./components/logo";
 import Loading from "./components/loading";
 import { Content, Footer, Header } from "./components/layout";
+import ReduxForm from "./containers/redux-form";
 
 const Home = Loadable({
   loader: () => import("./containers/home"),
@@ -24,6 +25,7 @@ const Github = Loadable({
   loader: () => import("./containers/github"),
   loading: Loading,
 });
+
 const Login = Loadable({
   loader: () => import("./containers/login"),
   loading: Loading,
@@ -63,6 +65,7 @@ const Main = () => (
       <Route path="/github" component={Github} />
       <Route path="/pet-store" component={PetStore} />
       <Route path="/redux-ui" component={ReduxUi} />
+      <Route path="/redux-form" component={ReduxForm} />
     </Content>
     <Footer>Template-CRA-Redux ©2019 Created by 36node</Footer>
   </Layout>

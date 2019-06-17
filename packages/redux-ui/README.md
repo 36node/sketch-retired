@@ -1,4 +1,4 @@
-# Redux api
+# Redux ui
 
 ## Use
 
