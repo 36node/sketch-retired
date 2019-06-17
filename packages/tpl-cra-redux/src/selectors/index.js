@@ -4,11 +4,6 @@ import { createToggleSelector } from "@36node/redux-ui/toggle";
 import { createAssignSelector } from "@36node/redux-ui/assign";
 import { createProgressSelector } from "@36node/redux-ui/progress";
 import { createSelector } from "reselect";
-import { createFormSelector } from "@36node/redux-form";
-
-export const reduxFormSelectors = {
-  formExample: createFormSelector(CS.NS.REDUX_FORM.FORM_EXP),
-};
 
 export const reduxUiSelectors = {
   toggleExample: createToggleSelector(CS.NS.REDUX_UI.TOGGLE_EXP),

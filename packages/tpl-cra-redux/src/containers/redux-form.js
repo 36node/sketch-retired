@@ -13,14 +13,12 @@ import {
   Button,
 } from "antd";
 
-import createForm from "../hocs/redux-form";
-import { reduxFormActions } from "../actions";
-import { reduxFormSelectors } from "../selectors";
+import createForm from "@36node/redux-form-antd";
 
 const Option = Select.Option;
 
 // use hoc to bind antd form and redux-form
-@createForm(reduxFormActions.formExample, reduxFormSelectors.formExample)
+@createForm("SAMPLE_FORM")
 class ReduxFormExample extends PureComponent {
   render() {
     // do not use form.getFieldDecorator
@@ -164,7 +162,7 @@ class ReduxFormExample extends PureComponent {
   };
 
   handleReset = initialValues => {
-    this.props.dispatch(reduxFormActions.formExample.reset(initialValues));
+    this.props.reset(initialValues);
   };
 }
 

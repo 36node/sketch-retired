@@ -1,6 +1,6 @@
 import { Reducer, Action } from "redux";
 
-interface BaseAction extends Action {
+export interface BaseAction extends Action {
   meta?: Object;
   key: String;
 }
@@ -11,11 +11,11 @@ export class ReduxForm {
   actions: FormActions;
 }
 
-interface Option {
+export interface Option {
   reduxPath?: String;
 }
 
-interface FieldState {
+export interface FieldState {
   name: String; //field name
   dirty?: Boolean; // is dirty
   touched?: Boolean; // is touched
@@ -24,41 +24,41 @@ interface FieldState {
   errors?: any; // validate errors
 }
 
-interface RegisterField {
+export interface RegisterField {
   name: String;
   initialValue?: any;
 }
 
-interface Fields {
+export interface Fields {
   [name: String]: FieldState;
 }
 
-interface FormState {
+export interface FormState {
   fields: Fields;
   meta?: Object;
 }
 
-interface ResetAction extends BaseAction {
+export interface ResetAction extends BaseAction {
   payload?: { initialValues: Object };
 }
 
-interface RegisterFieldAction extends BaseAction {
+export interface RegisterFieldAction extends BaseAction {
   payload: RegisterField;
 }
 
-interface RegisterMutilFieldsAction extends BaseAction {
+export interface RegisterMutilFieldsAction extends BaseAction {
   payload: { fields: [RegisterField] };
 }
 
-interface ChangeFieldAction extends BaseAction {
+export interface ChangeFieldAction extends BaseAction {
   payload: FieldState;
 }
 
-interface ChangeMutilFieldsAction extends BaseAction {
+export interface ChangeMutilFieldsAction extends BaseAction {
   payload: { fields: [FieldState] };
 }
 
-interface FormActions {
+export interface FormActions {
   reset: (initialValues: Object, meta?: Object) => ResetAction;
   registerField: (name: String, meta?: Object) => RegisterFieldAction;
   registerMutilFields: (

@@ -8,11 +8,6 @@ import { github, petstore, auth } from "../sdk";
 import { createToggleActions } from "@36node/redux-ui/toggle";
 import { createAssignActions } from "@36node/redux-ui/assign";
 import { createProgressActions } from "@36node/redux-ui/progress";
-import { createFormActions } from "@36node/redux-form";
-
-export const reduxFormActions = {
-  formExample: createFormActions(CS.NS.REDUX_FORM.FORM_EXP),
-};
 
 export const reduxUiActions = {
   toggleExample: createToggleActions(CS.NS.REDUX_UI.TOGGLE_EXP),
