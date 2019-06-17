@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.8](https://github.com/36node/redux-ui/compare/@36node/redux-ui@0.0.7...@36node/redux-ui@0.0.8) (2019-06-17)
+
+
+### Bug Fixes
+
+* redux-ui package files ([d133839](https://github.com/36node/redux-ui/commit/d133839))
+
+
+
+
+
 ## [0.0.7](https://github.com/36node/redux-ui/compare/@36node/redux-ui@0.0.6...@36node/redux-ui@0.0.7) (2019-06-16)
 
 **Note:** Version bump only for package @36node/redux-ui
