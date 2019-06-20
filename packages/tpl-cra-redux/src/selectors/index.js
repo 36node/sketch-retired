@@ -5,6 +5,10 @@ import { createAssignSelector } from "@36node/redux-ui/assign";
 import { createProgressSelector } from "@36node/redux-ui/progress";
 import { createSelector } from "reselect";
 
+export const reduxXlsxSelectors = {
+  listPets: apiSelector(CS.NS.REDUX_XLSX.PETS_XLSX),
+};
+
 export const reduxUiSelectors = {
   toggleExample: createToggleSelector(CS.NS.REDUX_UI.TOGGLE_EXP),
   assignExample: createAssignSelector(CS.NS.REDUX_UI.ASSIGN_EXP),

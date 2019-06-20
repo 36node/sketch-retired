@@ -19,4 +19,7 @@ export const NS = {
   REDUX_FORM: {
     FORM_EXP: "REDUX_FORM.FORM_EXP",
   },
+  REDUX_XLSX: {
+    PETS_XLSX: "REDUX_XLSX.PETS_XLSX",
+  },
 };

@@ -82,6 +82,7 @@
     "@36node/redux-api": "^0.1.10",
     "@36node/redux-form-antd": "^0.0.1",
     "@36node/redux-ui": "^0.0.9",
+    "@36node/redux-xlsx": "^0.0.0",
     "@36node/template-react-component": "^0.3.14",
     "@36node/template-sdk": "^0.9.16",
     "@types/jest": "^24.0.11",
@@ -99,7 +100,8 @@
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
-    "styled-components": "^4.1.3"
+    "styled-components": "^4.1.3",
+    "reselect": "^4.0.0"
   },
   "browserslist": [
     "extends @36node/browserslist-config"
