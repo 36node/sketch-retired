@@ -1,4 +1,5 @@
 /* global jQuery, _ */
+/* eslint-disable */
 var CSV = {};
 
 // Note that provision of jQuery is optional (it is **only** needed if you use fetch on a remote file)
