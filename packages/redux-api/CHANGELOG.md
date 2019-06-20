@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.13](https://github.com/36node/sketch/compare/@36node/redux-api@0.1.12...@36node/redux-api@0.1.13) (2019-06-20)
+
+**Note:** Version bump only for package @36node/redux-api
+
+
+
+
+
 ## [0.1.12](https://github.com/36node/redux-api/compare/@36node/redux-api@0.1.10...@36node/redux-api@0.1.12) (2019-06-20)
 
 **Note:** Version bump only for package @36node/redux-api
