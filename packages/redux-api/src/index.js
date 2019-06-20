@@ -1,5 +1,5 @@
 import { requestOf, clearOf, refreshOf } from "./actions";
-import { registerSaga } from "./saga";
+import { registerSaga, Apis } from "./saga";
 import makeApiSelector from "./selector";
 import { camelCaseKey } from "./lib";
 
@@ -74,6 +74,10 @@ export function createApiActions(key, opts = {}) {
 
   if (!opts.endpoint) {
     throw new Error("Api need an endpoint function");
+  }
+
+  if (Apis.has(key)) {
+    return Apis.get(key).actions;
   }
 
   const api = new Api(key, opts.endpoint, opts.schema, opts.reduxPath);

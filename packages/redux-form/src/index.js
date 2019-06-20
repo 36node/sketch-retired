@@ -59,7 +59,11 @@ export function createFormActions(key, opts = {}) {
     throw new Error("Form need a key");
   }
 
-  const form = Forms.get(key) || new Form(key, opts.reduxPath);
+  if (Forms.has(key)) {
+    return Forms.get(key).actions;
+  }
+
+  const form = new Form(key, opts.reduxPath);
   registerForm(form);
   return form.actions;
 }

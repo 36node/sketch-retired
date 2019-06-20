@@ -29,6 +29,11 @@ const data = [
     title: "redux-form",
     icon: "form",
   },
+  {
+    path: "/redux-xlsx",
+    title: "redux-xlsx",
+    icon: "table",
+  },
 ];
 
 @withRouter

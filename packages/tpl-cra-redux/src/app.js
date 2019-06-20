@@ -12,6 +12,7 @@ import Logo from "./components/logo";
 import Loading from "./components/loading";
 import { Content, Footer, Header } from "./components/layout";
 import ReduxForm from "./containers/redux-form";
+import ReduxXlsx from "./containers/redux-xlsx";
 
 const Home = Loadable({
   loader: () => import("./containers/home"),
@@ -66,6 +67,7 @@ const Main = () => (
       <Route path="/pet-store" component={PetStore} />
       <Route path="/redux-ui" component={ReduxUi} />
       <Route path="/redux-form" component={ReduxForm} />
+      <Route path="/redux-xlsx" component={ReduxXlsx} />
     </Content>
     <Footer>Template-CRA-Redux ©2019 Created by 36node</Footer>
   </Layout>

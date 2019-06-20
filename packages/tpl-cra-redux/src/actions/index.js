@@ -9,6 +9,8 @@ import { createToggleActions } from "@36node/redux-ui/toggle";
 import { createAssignActions } from "@36node/redux-ui/assign";
 import { createProgressActions } from "@36node/redux-ui/progress";
 
+export { default as reduxXlsxActions } from "./pets-xlsx";
+
 export const reduxUiActions = {
   toggleExample: createToggleActions(CS.NS.REDUX_UI.TOGGLE_EXP),
   assignExample: createAssignActions(CS.NS.REDUX_UI.ASSIGN_EXP),
