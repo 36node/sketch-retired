@@ -3,7 +3,7 @@
   "version": "0.0.9",
   "description": "A higher order component decorator some functions using Redux and React ",
   "repository": {
-    "url": "36node/redux-ui",
+    "url": "36node/sketch",
     "type": "git"
   },
   "license": "MIT",
@@ -12,14 +12,12 @@
   },
   "template": "cra-redux",
   "files": [
-    ".circleci",
     "index.js",
     "index.d.ts",
     "base",
     "bin",
     "lib",
     "typings",
-    "README.md",
     "assign",
     "progress",
     "toggle"

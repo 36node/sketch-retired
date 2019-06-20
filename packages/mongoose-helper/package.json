@@ -3,7 +3,7 @@
   "version": "0.2.2",
   "description": "A module boilerplate for nodejs and web.",
   "repository": {
-    "url": "36node/mongoose-helper",
+    "url": "36node/sketch",
     "type": "git"
   },
   "license": "MIT",
