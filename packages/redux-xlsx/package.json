@@ -1,0 +1,82 @@
+{
+  "name": "@36node/redux-xlsx",
+  "version": "0.0.0",
+  "description": "An redux libary for import or export xlsx",
+  "repository": {
+    "url": "36node/redux-xlsx",
+    "type": "git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "template": "react-component",
+  "files": [
+    ".circleci",
+    "bin",
+    "dist",
+    "src",
+    "lib",
+    "typings",
+    "README.md"
+  ],
+  "config-overrides-path": "../cli/config-overrides",
+  "module": "src/index.js",
+  "typings": "typings/index.d.ts",
+  "scripts": {
+    "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
+    "lint": "sketch lint src",
+    "release": "standard-version",
+    "test": "sketch test --env=jsdom"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint && CI=true NODE_ENV=test npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "redux-saga": "^1.0.2",
+    "reselect": "^4.0.0",
+    "xlsx": "^0.14.3"
+  },
+  "peerDependencies": {
+    "xlsx": "^0.14.3"
+  },
+  "devDependencies": {
+    "@36node/eslint-config": "^0.6.1",
+    "@36node/sketch": "^0.11.11",
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.2",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "1.17.1",
+    "standard-version": "^6.0.1"
+  },
+  "jest": {
+    "displayName": "unit",
+    "testMatch": [
+      "<rootDir>/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ]
+  }
+}
