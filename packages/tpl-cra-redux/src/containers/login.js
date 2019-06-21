@@ -61,9 +61,12 @@ const LoginBox = styled("div")`
 export default class Login extends React.PureComponent {
   handleSubmit = e => {
     e.preventDefault();
+    const { from = { pathname: "/" } } = this.props.location.state || {};
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        this.props.dispatch(globalActions.login.request({ body: values }));
+        this.props.dispatch(
+          globalActions.login.request({ body: values }, { from })
+        );
       }
     });
   };

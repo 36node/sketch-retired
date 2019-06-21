@@ -1,33 +1,29 @@
-import * as CS from "../constants";
 import { apiSelector } from "@36node/redux-api";
 import { createToggleSelector } from "@36node/redux-ui/toggle";
 import { createAssignSelector } from "@36node/redux-ui/assign";
 import { createProgressSelector } from "@36node/redux-ui/progress";
-import { createSelector } from "reselect";
+
+import { NS } from "../constants";
+import { petSchema, repoSchema } from "../schemas";
 
 export const reduxXlsxSelectors = {
-  listPets: apiSelector(CS.NS.REDUX_XLSX.PETS_XLSX),
+  listPets: apiSelector(NS.REDUX_XLSX.PETS_XLSX),
 };
 
 export const reduxUiSelectors = {
-  toggleExample: createToggleSelector(CS.NS.REDUX_UI.TOGGLE_EXP),
-  assignExample: createAssignSelector(CS.NS.REDUX_UI.ASSIGN_EXP),
-  progressExample: createProgressSelector(CS.NS.REDUX_UI.PROGRESS_EXP),
+  toggleExample: createToggleSelector(NS.REDUX_UI.TOGGLE_EXP),
+  assignExample: createAssignSelector(NS.REDUX_UI.ASSIGN_EXP),
+  progressExample: createProgressSelector(NS.REDUX_UI.PROGRESS_EXP),
 };
 
 export const petStoreSelectors = {
-  listPets: apiSelector(CS.NS.PET_STORE.LIST_PETS),
+  listPets: apiSelector(NS.PET_STORE.LIST_PETS, [petSchema]),
 };
 
 export const githubSelectors = {
-  listRepos: apiSelector(CS.NS.GITHUB.LIST_REPOS),
+  listRepos: apiSelector(NS.GITHUB.LIST_REPOS, [repoSchema]),
 };
 
 export const globalSelectors = {
-  session: createSelector(
-    apiSelector(CS.NS.GLOBAL.LOGIN),
-    state => {
-      return state.result || {};
-    }
-  ),
+  session: apiSelector("session"),
 };

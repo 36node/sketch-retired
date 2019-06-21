@@ -9,6 +9,8 @@ import {
 } from "lodash";
 import moment from "moment";
 
+import history from "./history";
+
 /**
  * add rounding function to Number class
  * @param {Number} number 需要定义精度的数
@@ -81,3 +83,5 @@ export function tryParseJson(jsonStr) {
     return result;
   }
 }
+
+export { history };

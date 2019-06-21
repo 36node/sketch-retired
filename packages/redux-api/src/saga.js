@@ -80,12 +80,11 @@ export function* callAPI(key, action, meta) {
   } catch (err) {
     yield put({
       type: failureOf(key),
-      payload: err,
+      error: err,
       key,
       meta,
     });
     epError = err;
-    console.error(err);
   }
 
   if (sagaHooks.afterRequest) {

@@ -20,11 +20,7 @@ class Api {
     this._key = key;
     this._endpoint = endpoint;
     this._schema = schema;
-
-    // default redux path
-    if (!reduxPath) {
-      this._reduxPath = camelCaseKey(key);
-    }
+    this._reduxPath = reduxPath || camelCaseKey(key);
   }
 
   get endpoint() {
