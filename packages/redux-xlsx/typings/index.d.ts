@@ -92,7 +92,7 @@ export interface ExportState {
 }
 
 export interface ImportOpts {
-  breforeHandle: (records: [object]) => any;
+  beforeHandle: (records: [object]) => any;
   handleRecord: (row: number, record: object, worker: number) => any;
   workerCount: number;
 }
