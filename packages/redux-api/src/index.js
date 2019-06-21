@@ -20,7 +20,7 @@ class Api {
     this._key = key;
     this._endpoint = endpoint;
     this._schema = schema;
-    this._reduxPath = reduxPath || camelCaseKey(key);
+    this._reduxPath = camelCaseKey(reduxPath || key);
   }
 
   get endpoint() {
