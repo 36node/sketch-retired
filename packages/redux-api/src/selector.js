@@ -2,7 +2,6 @@ import { get } from "lodash";
 import { createSelector } from "reselect";
 import { denormalize } from "normalizr";
 import { initState } from "./reducer";
-import { Apis } from "./saga";
 import { camelCaseKey } from "./lib";
 
 const entitiesSelector = state => state.entities;
@@ -12,21 +11,18 @@ export const makeStateSelector = path => state =>
 
 /**
  *
- * @param {string} key api key
+ * @param {string} key api key or redux state key
+ * @param {object} schema output data schema
  * @returns {function(object) => object} selector
  */
-const makeApiSelector = (key, reduxPath) => {
-  const path = reduxPath || camelCaseKey(key);
+const makeApiSelector = (key, schema) => {
+  const path = camelCaseKey(key);
   const stateSelector = makeStateSelector(path);
 
   return createSelector(
     stateSelector,
     entitiesSelector,
     (state, entities) => {
-      const api = Apis.get(key);
-      if (!api) return {};
-      const schema = api.schema;
-
       const { result } = state;
       if (!result || !schema) return state;
       const deResult = denormalize(result, schema, entities);

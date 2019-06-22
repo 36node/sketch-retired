@@ -4,7 +4,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import { Layout, Breadcrumb } from "antd";
 import Loadable from "react-loadable";
 
-import history from "./history";
+import { history } from "./lib";
 import ProtectedRoute from "./containers/protect";
 
 import Nav from "./containers/nav";

@@ -10,7 +10,7 @@ import { petstore } from "../sdk";
 import { message } from "antd";
 import { reduxXlsxSelectors } from "../selectors";
 import { createXlsxActions } from "@36node/redux-xlsx";
-import { petSchema } from "../selectors/schemas";
+import { petSchema } from "../schemas";
 
 const key = CS.NS.REDUX_XLSX.PETS_XLSX;
 

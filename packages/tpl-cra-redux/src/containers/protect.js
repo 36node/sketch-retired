@@ -4,11 +4,17 @@ import { Route, Redirect } from "react-router";
 
 import { globalSelectors } from "../selectors";
 
+function hasSession(state = {}) {
+  const result = state.result || {};
+  if (result.id && result.token) return true;
+  return false;
+}
+
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props => {
-      if (!rest.session.token) {
+      if (!hasSession(rest.session)) {
         return (
           <Redirect
             to={{
