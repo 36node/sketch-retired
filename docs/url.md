@@ -105,6 +105,14 @@ Add `_like` to filter (RegExp supported)
 GET /posts?title_like=server
 ```
 
+`_group` support groupBy some field
+
+**suggestion: ** Do not mix analytic api and business api
+
+```curl
+GET /statistics/post?_group=author
+```
+
 ### Array wildcard
 
 If a field is an array, like:
