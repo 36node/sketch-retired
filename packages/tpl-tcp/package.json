@@ -15,6 +15,7 @@
     ".circleci",
     "bin",
     "dist",
+    "test",
     "typings",
     "README.md",
     "src"
