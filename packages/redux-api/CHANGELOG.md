@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/36node/sketch/compare/@36node/redux-api@0.1.13...@36node/redux-api@0.2.0) (2019-06-22)
+
+
+### Features
+
+* add login/auto/remember for cra-redux ([#119](https://github.com/36node/sketch/issues/119)) ([a2da9aa](https://github.com/36node/sketch/commit/a2da9aa))
+
+
+
+
+
 ## [0.1.13](https://github.com/36node/sketch/compare/@36node/redux-api@0.1.12...@36node/redux-api@0.1.13) (2019-06-20)
 
 **Note:** Version bump only for package @36node/redux-api
