@@ -107,7 +107,7 @@ GET /posts?title_like=server
 
 `_group` support groupBy some field
 
-**suggestion: ** Do not mix analytic api and business api
+**suggestion**: Do not mix analytic api and business api
 
 ```curl
 GET /statistics/post?_group=author
