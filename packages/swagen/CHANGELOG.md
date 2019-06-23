@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.6](https://github.com/36node/sketch/compare/@36node/swagen@0.12.5...@36node/swagen@0.12.6) (2019-06-23)
+
+
+### Bug Fixes
+
+* **swagen:** helper toRoute and toDollar with global, close [#111](https://github.com/36node/sketch/issues/111) ([75b8a38](https://github.com/36node/sketch/commit/75b8a38))
+
+
+
+
+
 ## [0.12.5](https://github.com/36node/sketch/compare/@36node/swagen@0.12.4...@36node/swagen@0.12.5) (2019-06-20)
 
 **Note:** Version bump only for package @36node/swagen
