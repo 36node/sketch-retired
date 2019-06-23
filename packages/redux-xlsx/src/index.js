@@ -46,9 +46,12 @@ class Xlsx {
         type: TYPES.IMPORT_RESET,
         key: this.key,
       }),
-      importCancel: () => ({
-        type: TYPES.IMPORT_CANCEL,
+      importPause: reason => ({
+        type: TYPES.IMPORT_PAUSE,
         key: this.key,
+        payload: {
+          pauseReason: reason,
+        },
       }),
       export: (
         { columns, fileName = "export", fileType = "xlsx", params = {} },
@@ -83,7 +86,7 @@ export function createXlsxActions(key, opts = {}) {
   return xlsx.actions;
 }
 
-export { default as xlsxReducer } from "./reducer";
+export { default as xlsxReducer, ImportStatus } from "./reducer";
 
 export { createExportSelector, createImportSelector } from "./selector";
 

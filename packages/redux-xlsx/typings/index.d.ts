@@ -63,7 +63,7 @@ export interface ExportAction extends BaseAction {
 
 export interface ImportResetAction extends BaseAction {}
 
-export interface ImportCancelAction extends BaseAction {}
+export interface ImportPausAction extends BaseAction {}
 
 export interface XlsxActions {
   import: (
@@ -75,16 +75,20 @@ export interface XlsxActions {
     { columns: Columns, fileName: string, fileType: string, params: object },
     meta: Object
   ) => ExportAction;
+
   importReset: () => ImportResetAction;
-  importCancel: () => ImportCancelAction;
+
+  /**
+   * Cancel import prgress and clear import redux state
+   */
+  importPause: () => ImportPauseAction;
 }
 
 export interface ImportState {
-  results: [any]; // handle result
   total: number; // total record count
   count: number; // current importted count
-  status: "NOT_STARTED" | "FILE_ERROR" | "ERROR" | "IMPORTING" | "FINISHED"; // import status
-  error: any; // file error or other error
+  status: "NOT_STARTED" | "ERROR" | "IMPORTING" | "FINISHED" | "PAUSE"; // import status
+  error?: any; // file error or other error
 }
 
 export interface ExportState {
@@ -92,8 +96,13 @@ export interface ExportState {
 }
 
 export interface ImportOpts {
-  beforeHandle: (records: [object]) => any;
-  handleRecord: (row: number, record: object, worker: number) => any;
+  /**
+   * Before import hook, return false means stop import progress
+   */
+  beforeImport: (records: [object]) => boolean;
+  handleRecord: (row: number, record: object, worker: number) => any; // on handle import record
+  onFinished: () => any; // hook on finished
+  onError: () => any; // hook on error
   workerCount: number;
 }
 
@@ -104,8 +113,8 @@ export interface ExportOpts {
 declare class Xlsx {
   key: string;
   reduxPath?: string;
-  importOpts?: object;
-  exportOpts?: object;
+  importOpts?: ImportOpts;
+  exportOpts?: ExportOpts;
   actions: XlsxActions;
 }
 
@@ -124,3 +133,11 @@ export function createExportSelector(
 ): (state: Object) => ExportState;
 
 export const watchXlsx: AllEffect;
+
+export const ImportStatus: {
+  NOT_STARTED: string;
+  ERROR: string;
+  IMPORTING: string;
+  FINISHED: string;
+  PAUSE: string;
+};

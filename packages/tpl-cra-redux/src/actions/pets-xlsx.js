@@ -40,32 +40,21 @@ const petsXlsx = createXlsxActions(key, {
     dataSource: exportDataSource,
   },
   importOpts: {
-    beforeHandle: beforeImportHandle,
+    beforeImport,
     handleRecord: handleImportRecord,
     workerCount: 3,
   },
 });
 
-function beforeImportHandle(records = []) {
+function beforeImport(records = []) {
   console.log("import records:", records);
   console.log(
     "before import handle hook, you can validate records or cancel import"
   );
-
-  return {
-    successes: {},
-    failures: {},
-  };
 }
 
 function handleImportRecord(row, record) {
   console.log("Handle record:", record, "in row", row);
-
-  return {
-    row,
-    result: "SUCCESS",
-    message: "RIGHT",
-  };
 }
 
 export default {
