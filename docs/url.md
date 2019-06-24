@@ -157,6 +157,7 @@ or list the fields to exclude (which implies all other fields are included).
   offset: 10,
   sort: "-createdBy", // if array should be: ["-createdBy", "views"]
   select: ["views", "body"], // if single should be: "views"
+  group: ["ns", "author"], // group by
   filter: {
     age: {
       $lt: 10,  // age_lt
