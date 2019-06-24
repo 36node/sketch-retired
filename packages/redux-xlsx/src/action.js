@@ -9,11 +9,11 @@ export function isXlsx(action = {}) {
 // import xlsx
 export const IMPORT = "IMPORT";
 
-// reset import state
+// stop import and reset import state
 export const IMPORT_RESET = "IMPORT_RESET";
 
-// cancel import
-export const IMPORT_CANCEL = "IMPORT_CANCEL";
+// pause import
+export const IMPORT_PAUSE = "IMPORT_PAUSE";
 
 // import record handle result
 export const IMPORT_HANDLE_RESULT = "IMPORT_HANDLE_RESULT";
@@ -30,8 +30,8 @@ export const SET_EXPORT_STATE = "SET_EXPORT_STATE";
 export const TYPES = {
   IMPORT: `${PREFIX}/${IMPORT}`,
   IMPORT_HANDLE_RESULT: `${PREFIX}/${IMPORT_HANDLE_RESULT}`,
-  IMPORT_CANCEL: `${PREFIX}/${IMPORT_CANCEL}}`,
-  IMPORT_RESET: `${PREFIX}/${IMPORT_RESET}}`,
+  IMPORT_PAUSE: `${PREFIX}/${IMPORT_PAUSE}`,
+  IMPORT_RESET: `${PREFIX}/${IMPORT_RESET}`,
   SET_IMPORT_STATE: `${PREFIX}/${SET_IMPORT_STATE}`,
   SET_EXPORT_STATE: `${PREFIX}/${SET_EXPORT_STATE}`,
   EXPORT: `${PREFIX}/${EXPORT}`,

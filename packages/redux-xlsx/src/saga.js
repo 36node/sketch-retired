@@ -13,7 +13,7 @@ import { toJsonData, toTableData } from "./lib";
 import { isFunction } from "lodash";
 import CSV from "./csv";
 import XLSX from "xlsx";
-import { ERROR, FILE_ERROR, IMPORTING, FINISHED } from "./reducer";
+import { ERROR, IMPORTING, FINISHED } from "./reducer";
 import { Xlsxs } from "./xlsxs";
 import { channel } from "redux-saga";
 import { createImportSelector } from "./selector";
@@ -114,12 +114,11 @@ export function isFile(file = {}) {
 function* hander(key, chan, handleRecord) {
   while (true) {
     const { row, record } = yield take(chan);
-    const result = yield call(handleRecord, row, record);
+    yield call(handleRecord, row, record);
 
     yield put({
       type: TYPES.IMPORT_HANDLE_RESULT,
       key,
-      payload: result,
     });
   }
 }
@@ -163,7 +162,7 @@ export function* handleImport(key, dataSource, columns, xlsx) {
 
   const importOpts = xlsx.importOpts;
 
-  const { beforeHandle, handleRecord, workerCount } = importOpts;
+  const { beforeImport, handleRecord, workerCount } = importOpts;
 
   let records = [];
   try {
@@ -180,25 +179,21 @@ export function* handleImport(key, dataSource, columns, xlsx) {
       type: TYPES.SET_IMPORT_STATE,
       key,
       payload: {
-        status: FILE_ERROR,
+        status: ERROR,
         error: "File read error",
       },
     });
-    return;
+    throw error;
   }
 
   // before handle
-  if (beforeHandle) {
-    const ret = yield call(beforeHandle, records);
+  if (beforeImport) {
+    const ret = yield call(beforeImport, records);
 
-    if (ret) {
-      yield put({
-        type: TYPES.SET_IMPORT_STATE,
-        key,
-        payload: {
-          ...ret,
-        },
-      });
+    if (ret === false) {
+      // stop import progress
+      yield call(clearImport, key);
+      return;
     }
   }
 
@@ -231,6 +226,7 @@ function* watchImportFinished() {
 
       const { total, count } = importState;
 
+      // check is finished
       if (count >= total) {
         yield put({
           type: TYPES.SET_IMPORT_STATE,
@@ -241,6 +237,11 @@ function* watchImportFinished() {
         });
 
         yield call(clearImport, key);
+
+        const { onFinished } = xlsx.importOpts;
+        if (onFinished) {
+          yield fork(onFinished);
+        }
       }
     }
   }
@@ -284,10 +285,12 @@ function* clearImport(key) {
 /**
  * watch import progress cancel or reset
  */
-export function* watchImportCancel() {
+export function* watchImportPause() {
   while (true) {
-    const action = yield take([TYPES.IMPORT_CANCEL, TYPES.IMPORT_RESET]);
+    const action = yield take([TYPES.IMPORT_PAUSE, TYPES.IMPORT_RESET]);
     const { key } = action;
+
+    console.log(action.payload);
 
     yield call(clearImport, key);
   }
@@ -310,29 +313,31 @@ export function* watchImport(action = {}) {
     throw new Error(`redux-xlsx: import action should has dataSource!`);
   }
 
-  if (!Xlsxs.has(key)) {
-    throw new Error(`redux-xlsx: ${key} of xlsx not registerred!`);
-  }
-
-  try {
-    // dataSource is file object
-    if (isFile(dataSource)) {
-      // begin import
+  // dataSource is file object
+  if (isFile(dataSource)) {
+    try {
       const task = yield call(handleImport, key, dataSource, columns, xlsx);
       ImportTasks.set(key, task);
-    } else {
-      throw new Error(`redux-xlsx: import action dataSource must be a file!`);
+    } catch (error) {
+      yield put({
+        type: TYPES.SET_IMPORT_STATE,
+        key,
+        payload: {
+          status: ERROR,
+          error,
+        },
+      });
+
+      yield call(clearImport, key);
+      const { onError } = xlsx.importOpts;
+
+      if (onError) {
+        yield fork(onError, error);
+      }
     }
-  } catch (error) {
-    console.log(error);
-    yield put({
-      type: TYPES.SET_IMPORT_STATE,
-      key,
-      payload: {
-        status: ERROR,
-        error,
-      },
-    });
+    // begin import
+  } else {
+    throw new Error(`redux-xlsx: import action dataSource must be a file!`);
   }
 }
 
@@ -417,7 +422,7 @@ export default function* watchXlsx() {
   yield all([
     takeLatest(TYPES.IMPORT, watchImport),
     takeLatest(TYPES.EXPORT, watchExport),
-    fork(watchImportCancel),
+    fork(watchImportPause),
     fork(watchImportFinished),
   ]);
 }

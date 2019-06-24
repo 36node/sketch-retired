@@ -3,14 +3,21 @@ import { Xlsxs } from "./xlsxs";
 import { clone, setWith, get } from "lodash";
 
 export const NOT_STARTED = "NOT_STARTED"; // import not begin
-export const FILE_ERROR = "FILE_ERROR"; // import file read error
 export const ERROR = "ERROR"; // file read error
 export const IMPORTING = "IMPORTING"; // is importing
 export const FINISHED = "FINISHED"; // import finshed
+export const PAUSE = "PAUSE"; // import pause
+
+export const ImportStatus = {
+  NOT_STARTED,
+  ERROR,
+  IMPORTING,
+  FINISHED,
+  PAUSE,
+};
 
 export const initState = {
   import: {
-    results: [], // handle result
     total: 0, // total record count
     count: 0, // current importted count
     status: NOT_STARTED, // import status
@@ -41,17 +48,24 @@ function r(state = initState, action = {}) {
           ...payload,
         },
       };
+    case TYPES.IMPORT_PAUSE: {
+      return {
+        ...state,
+        import: {
+          ...state.import,
+          status: PAUSE,
+        },
+      };
+    }
     case TYPES.IMPORT_HANDLE_RESULT: {
       return {
         ...state,
         import: {
           ...state.import,
           count: state.import.count + 1,
-          results: [...state.import.results, payload],
         },
       };
     }
-    case TYPES.IMPORT_CANCEL:
     case TYPES.IMPORT_RESET: {
       return {
         ...state,
