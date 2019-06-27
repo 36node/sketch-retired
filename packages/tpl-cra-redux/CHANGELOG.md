@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.4](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.11.3...@36node/template-cra-redux@0.11.4) (2019-06-27)
+
+
+### Bug Fixes
+
+* **tpl-cra-redux:** fix refresh session 404 ([06eee1c](https://github.com/36node/tpl-react-redux/commit/06eee1c))
+
+
+
+
+
 ## [0.11.3](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.11.2...@36node/template-cra-redux@0.11.3) (2019-06-27)
 
 
