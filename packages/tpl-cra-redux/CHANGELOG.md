@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.3](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.11.2...@36node/template-cra-redux@0.11.3) (2019-06-27)
+
+
+### Bug Fixes
+
+* **tpl-cra-redux:** session in localstorage ([e0c6094](https://github.com/36node/tpl-react-redux/commit/e0c6094))
+
+
+
+
+
 ## [0.11.2](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.11.1...@36node/template-cra-redux@0.11.2) (2019-06-24)
 
 **Note:** Version bump only for package @36node/template-cra-redux
