@@ -1,20 +1,17 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Route, Redirect } from "react-router";
 
-import { globalSelectors } from "../selectors";
+import { TOKEN } from "../constants";
 
-function hasSession(state = {}) {
-  const result = state.result || {};
-  if (result.id && result.token) return true;
-  return false;
+function isAuth() {
+  return !!sessionStorage.getItem(TOKEN);
 }
 
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props => {
-      if (!hasSession(rest.session)) {
+      if (!isAuth()) {
         return (
           <Redirect
             to={{
@@ -30,6 +27,4 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-export default connect(state => ({ session: globalSelectors.session(state) }))(
-  ProtectedRoute
-);
+export default ProtectedRoute;

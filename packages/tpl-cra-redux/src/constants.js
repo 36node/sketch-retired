@@ -1,3 +1,7 @@
+export const SESSION_ID = "session_id";
+export const TOKEN = "token";
+export const LOGIN_URL = "/login";
+
 export const NS = {
   PET_STORE: {
     LIST_PETS: "PET_STORE.LIST_PETS",

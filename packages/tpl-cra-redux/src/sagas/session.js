@@ -3,17 +3,13 @@ import { call, delay, fork, put, takeLatest } from "redux-saga/effects";
 import { message } from "antd";
 
 import { history } from "../lib";
-import { petstore } from "../sdk";
-import { NS } from "../constants";
+import { LOGIN_URL, NS, SESSION_ID, TOKEN } from "../constants";
 import { globalActions } from "../actions";
 
-const SESSION_ID = "session_id";
-const LOGIN_URL = "/login";
 const reloginRequest = globalActions.refreshSession.request;
 
 function* login({ payload = {}, meta = {} }) {
   const { result = {} } = payload;
-
   if (!result.id) {
     throw new Error("missing session id");
   }
@@ -22,12 +18,13 @@ function* login({ payload = {}, meta = {} }) {
   }
 
   // session id is a refresh token for jwt
-  // store in localstorage
+  // store in localstorage and session storage
   localStorage.setItem(SESSION_ID, result.id);
-  petstore.token = result.token;
+  sessionStorage.setItem(TOKEN, result.token);
 
   // go back where we from
   const { from = { pathname: "/" } } = meta;
+
   if (history.location.pathname === LOGIN_URL) {
     yield call(history.push, from);
   }
@@ -35,18 +32,17 @@ function* login({ payload = {}, meta = {} }) {
 
 function* logout() {
   localStorage.removeItem(SESSION_ID);
-  petstore.token = undefined;
-
+  sessionStorage.removeItem(TOKEN);
   yield call(history.push, LOGIN_URL);
 }
 
 function* reLogin(from) {
   while (true) {
     const sessionId = localStorage.getItem(SESSION_ID);
-    if (sessionId) {
+    if (sessionId && history.location.pathname !== LOGIN_URL) {
       yield put(reloginRequest({ sessionId }, { from }));
     }
-    yield delay(10 * 6 * 1000);
+    yield delay(10 * 60 * 1000);
   }
 }
 
