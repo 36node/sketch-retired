@@ -1,4 +1,4 @@
-import { successOf, isFailure } from "@36node/redux-api";
+import { failureOf, successOf, isFailure } from "@36node/redux-api";
 import { call, delay, fork, put, takeLatest } from "redux-saga/effects";
 import { message } from "antd";
 
@@ -46,9 +46,12 @@ function* reLogin(from) {
   }
 }
 
-function* flashError({ error }) {
+function* flashError({ error, type }) {
   message.error(error.msg || "API Request Error");
   if (error.status === 401) {
+    yield logout();
+  }
+  if (error.status === 404 && type === failureOf(NS.GLOBAL.REFRESH)) {
     yield logout();
   }
 }
