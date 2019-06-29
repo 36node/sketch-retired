@@ -17,6 +17,7 @@
     "typings"
   ],
   "config-overrides-path": "../cli/config-overrides",
+  "main": "src/index.js",
   "module": "src/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {

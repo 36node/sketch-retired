@@ -23,6 +23,7 @@
     "toggle"
   ],
   "config-overrides-path": "../cli/config-overrides",
+  "main": "src/index.js",
   "module": "index.js",
   "typings": "index.d.ts",
   "scripts": {
