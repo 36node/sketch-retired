@@ -1,6 +1,6 @@
 {
   "name": "@36node/redux-form",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A higher order component decorator form using Redux and React ",
   "repository": {
     "url": "36node/sketch",

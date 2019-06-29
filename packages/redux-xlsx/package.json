@@ -1,6 +1,6 @@
 {
   "name": "@36node/redux-xlsx",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "An redux libary for import or export xlsx",
   "repository": {
     "url": "36node/sketch",

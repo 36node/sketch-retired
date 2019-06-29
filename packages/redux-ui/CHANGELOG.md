@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.11](https://github.com/36node/sketch/compare/@36node/redux-ui@0.0.10...@36node/redux-ui@0.0.11) (2019-06-29)
+
+
+### Bug Fixes
+
+* redux-xxx add main entry in package json ([9ca3f7d](https://github.com/36node/sketch/commit/9ca3f7d))
+
+
+
+
+
 ## [0.0.10](https://github.com/36node/sketch/compare/@36node/redux-ui@0.0.9...@36node/redux-ui@0.0.10) (2019-06-20)
 
 **Note:** Version bump only for package @36node/redux-ui

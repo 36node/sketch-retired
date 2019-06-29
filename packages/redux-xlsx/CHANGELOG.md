@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.6](https://github.com/36node/sketch/compare/@36node/redux-xlsx@0.0.5...@36node/redux-xlsx@0.0.6) (2019-06-29)
+
+
+### Bug Fixes
+
+* redux-xxx add main entry in package json ([9ca3f7d](https://github.com/36node/sketch/commit/9ca3f7d))
+
+
+
+
+
 ## [0.0.5](https://github.com/36node/sketch/compare/@36node/redux-xlsx@0.0.4...@36node/redux-xlsx@0.0.5) (2019-06-24)
 
 **Note:** Version bump only for package @36node/redux-xlsx

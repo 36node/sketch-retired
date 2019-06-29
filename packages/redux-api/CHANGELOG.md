@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/36node/sketch/compare/@36node/redux-api@0.2.0...@36node/redux-api@0.2.1) (2019-06-29)
+
+
+### Bug Fixes
+
+* redux-xxx add main entry in package json ([9ca3f7d](https://github.com/36node/sketch/commit/9ca3f7d))
+
+
+
+
+
 # [0.2.0](https://github.com/36node/sketch/compare/@36node/redux-api@0.1.13...@36node/redux-api@0.2.0) (2019-06-22)
 
 
