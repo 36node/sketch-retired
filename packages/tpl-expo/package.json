@@ -1,4 +1,6 @@
 {
+  "name": "@36node/template-expo",
+  "version": "0.0.1",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",

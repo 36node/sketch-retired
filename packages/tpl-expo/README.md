@@ -14,6 +14,7 @@
 1. Redux -> Redux Saga -> @360node/xxx
 2. Router -> React Navigation
 3. SDK -> Mock
+4. Some params in the expo need to be fixed by `sketch init` command.
 
 ## Guide Line
 
@@ -21,7 +22,8 @@
 1. Install `Xcode`
 2. Register on [expo](https://expo.io/)
 3. Register for apple developer(For iOS only)
-4. 
+4. Register for Android key? (Need to be confirmed)
+5. Install Expo on iOS and Android for testing on mobiles
 
 ### CircleCi
 

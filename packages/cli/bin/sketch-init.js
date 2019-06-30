@@ -14,6 +14,7 @@ const enableTpls = [
   "service",
   "tcp",
   "react-component",
+  "expo",
 ];
 
 function gitUser() {
