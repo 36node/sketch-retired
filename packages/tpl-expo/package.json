@@ -1,0 +1,45 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "start:android": "expo start --android",
+    "start:ios": "expo start --ios",
+    "start:web": "expo start --web",
+    "eject": "expo eject",
+    "build:android": "expo build:android",
+    "build:ios": "expo build:ios",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@36node/fetch": "^0.6.0",
+    "@36node/redux-api": "^0.2.0",
+    "@36node/redux-form": "0.0.4",
+    "@36node/redux-ui": "0.0.10",
+    "@36node/redux-xlsx": "0.0.5",
+    "@36node/template-sdk": "^0.9.18",
+    "expo": "^33.0.0",
+    "normalizr": "^3.4.0",
+    "react": "16.8.3",
+    "react-dom": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native-web": "^0.11.4",
+    "react-navigation": "^3.11.0",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.4",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.1.1",
+    "expo-cli": "^2.21.1",
+    "jest-expo": "^33.0.2",
+    "react-test-renderer": "^16.8.6"
+  },
+  "private": true,
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)"
+    ]
+  }
+}
