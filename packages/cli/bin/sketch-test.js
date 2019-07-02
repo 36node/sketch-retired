@@ -11,6 +11,7 @@ program
   .option("-c, --config", "specify config file")
   .option("--testMatch", "test glob match")
   .option("--coverage", "test with coverage")
+  .option("--runInBand", "run all tests serially")
   .option("--env", "which env for test")
   .parse(process.argv);
 
