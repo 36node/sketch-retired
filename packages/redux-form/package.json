@@ -1,6 +1,6 @@
 {
   "name": "@36node/redux-form",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A higher order component decorator form using Redux and React ",
   "repository": {
     "url": "36node/sketch",
@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@36node/eslint-config": "^0.4.0",
-    "@36node/sketch": "^0.11.12",
+    "@36node/sketch": "^0.11.13",
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "husky": "^1.3.1",
