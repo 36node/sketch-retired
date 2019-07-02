@@ -36,7 +36,7 @@
     "connect-pause": "^0.1.0",
     "cross-spawn": "^6.0.5",
     "customize-cra": "^0.2.13",
-    "esm": "3.2.23",
+    "esm": "3.2.25",
     "fs-extra": "^7.0.0",
     "git-config-path": "^1.0.1",
     "import-cwd": "^2.1.0",
