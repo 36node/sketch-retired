@@ -29,7 +29,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "jest": "^24.8.0",
+    "jest": "^24.7.1",
     "@types/jest": "^24.0.15",
     "@36node/eslint-config": "^0.6.1",
     "@36node/swagen": "^0.12.6",
