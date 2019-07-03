@@ -21,7 +21,7 @@ it("should group with tag", () => {
   );
 
   expect(ret.length).toBe(2);
-  expect(_.sumBy(ret, "count")).toBe(pets.length);
+  expect(_.sumBy(ret, "_count")).toBe(pets.length);
 });
 
 it("should group with month", () => {
@@ -48,8 +48,8 @@ it("should group with month", () => {
     }
   );
 
-  expect(_.sumBy(ret, "count")).toBe(pets.length);
-  expect(_.sumBy(ret, r => r.count * r.grade)).toBe(_.sumBy(pets, "grade"));
+  expect(_.sumBy(ret, "_count")).toBe(pets.length);
+  expect(_.sumBy(ret, r => r._count * r.grade)).toBe(_.sumBy(pets, "grade"));
 });
 
 const pets = [

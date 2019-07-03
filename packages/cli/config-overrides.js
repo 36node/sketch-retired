@@ -111,7 +111,7 @@ module.exports = {
           });
         }
 
-        mockServer(app, { db, rewrites, routers }, shouldMockReq);
+        mockServer({ app, db, rewrites, routers, shouldMock: shouldMockReq });
 
         return app;
       }

@@ -8,13 +8,18 @@ const { handleAggs } = require("./aggregation");
  * @param {Object} opts
  * @param {Function} shouldMock
  */
-function MockServer(app, opts, shouldMock) {
-  const { db = {}, rewrites = {}, routers = [], aggregations = {} } = opts;
+function MockServer(opts) {
+  const {
+    db = {},
+    rewrites = {},
+    routers = [],
+    aggregations = {},
+    shouldMock,
+  } = opts;
+
+  const app = opts.app ? opts.app : jsonServer.create();
 
   const dbRouter = jsonServer.router(db);
-  //   const middlewares = jsonServer.defaults();
-
-  //   app.use(middlewares);
 
   // rewrites
   app.use(jsonServer.rewriter(rewrites));
@@ -55,6 +60,8 @@ function MockServer(app, opts, shouldMock) {
       return next();
     });
   }
+
+  return app;
 }
 
 module.exports = MockServer;

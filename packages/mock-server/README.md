@@ -15,16 +15,13 @@ $ yarn install @36node/mock-server
 ```js
 #!/usr/bin/env node
 
-const express = require("express");
-
 const mockServer = require("@36node/mock-server");
 
-const app = express().set("json spaces", 2);
 
 // db: 同json-server https://github.com/typicode/json-server#getting-started
 // rewrites: 同json-server https://github.com/typicode/json-server#rewriter-example
 // routes: 同json-server custom-middle https://github.com/typicode/json-server#add-middlewares
-mockServer(app, { db = {}, rewrites = {}, routers = [] });
+const app = mockServer({ db = {}, rewrites = {}, routers = [] });
 
 app.listen(3000, () => {
   console.log("JSON Server is running on port 3000");
@@ -81,7 +78,7 @@ module.exports = {
           });
         }
 
-        mockServer(app, { db, rewrites, routers }, shouldMockReq);
+        mockServer({ app, db, rewrites, routers, shouldMockReq });
 
         return app;
       }
@@ -104,24 +101,25 @@ module.exports = {
 
 ## Api
 
-mockServer(app, opts, shouldMock)
+mockServer(opts)
 
 参数:
 
-1. app: Express.Application
-2. opts: Object
+1. opts: Object
 
    db: // 同 json-server 的 db 配置 https://github.com/typicode/json-server#getting-started
 
-   rewrites: 同 json-server https://github.com/typicode/json-server#rewriter-example
+   rewrites (Optional): 同 json-server https://github.com/typicode/json-server#rewriter-example
 
-   routes: [Express.Middleware] 同 json-server custom-middle https://github.com/typicode/json-server#add-middlewares
+   routes (Optional): [Express.Middleware] 同 json-server custom-middle https://github.com/typicode/json-server#add-middlewares
 
-   aggregations: Object 见下文 Aggregation
+   aggregations (Optional): Object 见下文 Aggregation
 
-3. shouldMock (Optional): (req, res) => Boolean
+   app (Optional): Express.Application, 如果没有则自动新建
 
-   判断 request 是否使用 mock-server 的 中间件
+   shouldMock (Optional): (req, res) => Boolean, 判断 request 是否使用 mock-server 的 中间件
+
+返回：Express.Appliction
 
 ## Aggregation
 
@@ -182,7 +180,7 @@ DELETE /pets/{petId}
 
 ### 简单分组
 
-如果需要统计 pets 中猫和狗的数量, 可以对 tag 分组，默认会统计不同 tag 分组的 count
+如果需要统计 pets 中猫和狗的数量, 可以对 tag 分组，默认会统计不同 tag 分组的 \_count
 
 请求:
 
@@ -196,11 +194,11 @@ GET /pets?_group=tag
 [
   {
     "tag": "CAT",
-    "count": 56
+    "_count": 56
   },
   {
     "tag": "DOG",
-    "count": 44
+    "_count": 44
   }
 ]
 ```
@@ -240,12 +238,12 @@ GET /pets?_group=tag&_group=birthAt.month
   {
     "tag": "CAT",
     "birthAt": "2017-08-31T16:00:00.000Z",
-    "count": 2
+    "_count": 2
   },
   {
     "tag": "DOG",
     "birthAt": "2013-02-28T16:00:00.000Z",
-    "count": 1
+    "_count": 1
   },
   ...
 ]
@@ -272,12 +270,12 @@ GET /pets?_group=tag&_select=grade
 [
   {
     "tag": "CAT",
-    "count": 56,
+    "_count": 56,
     "grade": 172
   },
   {
     "tag": "DOG",
-    "count": 44,
+    "_count": 44,
     "grade": 148
   }
 ]
@@ -314,13 +312,13 @@ GET /pets?_group=tag&_group=birthAt.year&_select=grade
   {
     "tag": "CAT",
     "birthAt": "2008-12-31T16:00:00.000Z",
-    "count": 4,
+    "_count": 4,
     "grade": 3.75
   },
   {
     "tag": "CAT",
     "birthAt": "2009-12-31T16:00:00.000Z",
-    "count": 10,
+    "_count": 10,
     "grade": 3.4
   },
   ...

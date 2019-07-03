@@ -134,7 +134,7 @@ function handleAggs(aggs = {}, req, res) {
     const ret = {};
 
     // no select add count field in result
-    ret.count = records.length;
+    ret._count = records.length;
 
     if (select) {
       for (let s of select) {

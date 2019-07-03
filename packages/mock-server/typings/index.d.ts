@@ -4,16 +4,14 @@ import { Request, IRouterHandler } from "express-serve-static-core";
 declare module "@36node/mock-server" {
   interface MockOpts {
     db: object;
-    rewrites: object;
-    routers: [IRouterHandler];
-    aggregations: object;
+    rewrites?: object;
+    routers?: [IRouterHandler];
+    aggregations?: object;
+    app?: Application;
+    shouldMock?: (req: Request) => Boolean;
   }
 
-  function MockServer(
-    app: Application,
-    opts: MockOpts,
-    shouldMock?: (req: Request) => Boolean
-  ): void;
+  function MockServer(opts: MockOpts): Application;
 
   export = MockServer;
 }
