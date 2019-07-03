@@ -44,11 +44,21 @@ declare namespace SDK {
       limit?: number;
       offset?: number;
       sort?: string;
+      select?: string;
+      group?: string;
 
       filter: {
         tag?: string;
         age: {
           $gt?: number;
+        };
+        birthAt: {
+          $gt?: string;
+          $lt?: string;
+        };
+        grade: {
+          $gt?: string;
+          $lt?: string;
         };
       };
     };
@@ -95,12 +105,17 @@ declare namespace SDK {
     age: number;
     name: string;
     tag: string;
+    birthAt: string;
+    grade: number;
   };
 
   type PetDoc = {
     name: string;
     tag: string;
     age: number;
+    birthAt: string;
+    count: number;
+    grade: number;
   };
 
   type Err = {

@@ -27,6 +27,7 @@
     "test": "react-scripts test --env=node"
   },
   "dependencies": {
+    "@36node/mock-server": "^0.0.0",
     "@36node/query-normalizr": "^0.4.4",
     "@babel/plugin-proposal-decorators": "7.4.4",
     "babel-loader": "8.0.5",
@@ -41,6 +42,7 @@
     "git-config-path": "^1.0.1",
     "import-cwd": "^2.1.0",
     "inquirer": "^6.0.0",
+    "jest": "24.7.1",
     "jest-styled-components": "6.3.1",
     "json-server": "^0.15.0",
     "jsonfile": "^4.0.0",
