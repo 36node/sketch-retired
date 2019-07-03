@@ -1,4 +1,5 @@
 const generate = require("./pet");
+const _ = require("lodash");
 
 const myRouter = (req, res, next) => {
   /** example */
@@ -30,6 +31,12 @@ const mock = ({ count = 100 }) => ({
   rewrites,
 
   routers: [myRouter],
+
+  aggregations: {
+    "/pets": {
+      grade: records => _.sumBy(records, "grade") / records.length,
+    },
+  },
 });
 
 module.exports = mock;

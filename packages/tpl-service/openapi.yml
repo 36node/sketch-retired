@@ -40,6 +40,18 @@ paths:
           required: false
           schema:
             type: string
+        - name: _select
+          in: query
+          description: Fields to select
+          required: false
+          schema:
+            type: string
+        - name: _group
+          in: query
+          description: Dimensions to group
+          required: false
+          schema:
+            type: string
         - name: tag
           in: query
           description: Tag of pet
@@ -52,6 +64,34 @@ paths:
           required: false
           schema:
             type: integer
+        - name: birthAt_gt
+          in: query
+          description: Return Pet after than given birthAt
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: birthAt_lt
+          in: query
+          description: Return Pet before than given birthAt
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: grade_gt
+          in: query
+          description: Return Pet grade great than given grade
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: grade_lt
+          in: query
+          description: Return Pet grade little than given grade
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         "200":
           description: A paged array of pets
@@ -74,19 +114,22 @@ paths:
                         "id": 1,
                         "name": "aa",
                         "tag": "red",
-                        "age": 3
+                        "age": 3,
+                        "grade": 5,
                       },
                       {
                         "id": 2,
                         "name": "bb",
                         "tag": "happy",
                         "age": 5
+                        "grade": 4,
                       },
                       {
                         "id": 3,
                         "name": "cc",
                         "tag": "husky",
-                        "age": 6
+                        "age": 6,
+                        "grade": 3,
                       }
                     ]
         "401":
@@ -112,7 +155,8 @@ paths:
                   {
                     "name": "dd",
                     "tag": "red",
-                    "age": 5
+                    "age": 5,
+                    "grade": 3,
                   }
       responses:
         "201":
@@ -128,7 +172,8 @@ paths:
                       "id": 4,
                       "name": "dd",
                       "tag": "red",
-                      "age": 5
+                      "age": 5,
+                      "grade": 3,
                     }
         "401":
           $ref: "#/components/responses/Unauthorized"
@@ -162,7 +207,8 @@ paths:
                       "id": 3,
                       "name": "cc",
                       "tag": "red",
-                      "age": 6
+                      "age": 6,
+                      "grade": 3
                     }
         "401":
           $ref: "#/components/responses/Unauthorized"
@@ -266,6 +312,13 @@ components:
           type: string
         tag:
           type: string
+        birthAt:
+          type: string
+          format: date
+        grade:
+          type: integer
+          format: int32
+
     PetDoc:
       required:
         - name
@@ -277,6 +330,16 @@ components:
         age:
           type: integer
           format: int32
+        birthAt:
+          type: string
+          format: date
+        count:
+          type: integer
+          format: int32
+        grade:
+          type: integer
+          format: int32
+        
     Err:
       type: object
       properties:
