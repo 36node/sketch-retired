@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/36node/sketch/compare/@36node/sketch@0.11.13...@36node/sketch@0.12.0) (2019-07-03)
+
+
+### Features
+
+* add runInBand option for sketch test ([#123](https://github.com/36node/sketch/issues/123)) ([#127](https://github.com/36node/sketch/issues/127)) ([a8cbae5](https://github.com/36node/sketch/commit/a8cbae5))
+
+
+
+
+
 ## [0.11.13](https://github.com/36node/sketch/compare/@36node/sketch@0.11.12...@36node/sketch@0.11.13) (2019-07-02)
 
 
