@@ -6,7 +6,6 @@ const {
   addDecoratorsLegacy,
   addWebpackPlugin,
 } = require("customize-cra");
-const jsonServer = require("json-server");
 const pause = require("connect-pause");
 const importCwd = require("import-cwd");
 const path = require("path");
@@ -18,7 +17,7 @@ const defaultServerOpts = { delay: 500 };
 const { serverOpts = defaultServerOpts, db = {}, rewrites = {}, routers = [] } =
   importCwd.silent("./mock") || {};
 
-const { toJsonServer } = require("@36node/query-normalizr");
+const mockServer = require("@36node/mock-server");
 
 const addWebpackRules = rules => config => {
   if (!config.module) {
@@ -94,9 +93,7 @@ module.exports = {
        * mock server hoc
        * @param {Express.Application} app
        */
-      function mockServer(app) {
-        const jsonRouter = jsonServer.router(db);
-
+      function configMock(app) {
         const shouldMockReq = req => {
           return (
             req.method !== "GET" ||
@@ -114,29 +111,7 @@ module.exports = {
           });
         }
 
-        app.use(jsonServer.rewriter(rewrites));
-
-        // user defined routers
-        app.use(jsonServer.bodyParser);
-
-        // user query normalizr
-        app.use((req, res, next) => {
-          if (shouldMockReq(req)) {
-            req.query = toJsonServer(req.query);
-            return next();
-          }
-          return next();
-        });
-
-        routers.forEach(router => app.use(router));
-
-        // json server router
-        app.use((req, res, next) => {
-          if (shouldMockReq(req)) {
-            return jsonRouter(req, res, next);
-          }
-          return next();
-        });
+        mockServer(app, { db, rewrites, routers }, shouldMockReq);
 
         return app;
       }
@@ -144,7 +119,7 @@ module.exports = {
       const prev = config.before;
 
       config.before = compose(
-        mockServer,
+        configMock,
         app => {
           prev(app);
           return app;

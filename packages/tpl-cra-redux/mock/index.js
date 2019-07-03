@@ -2,31 +2,25 @@
  * Here we use json-server, find more in https://github.com/typicode/json-server
  */
 
-const faker = require("faker");
 const _ = require("lodash");
+const petsMockFn = require("@36node/template-sdk/mock");
 
-const fakePets = count =>
-  _.range(count).map((val, index) => ({
-    id: faker.random.uuid(),
-    name: faker.name.lastName(),
-    tag: faker.random.arrayElement(["CAT", "DOG"]),
-    owner: faker.name.firstName(),
-    age: faker.random.number(15),
-  }));
+const petsMock = petsMockFn({});
 
 module.exports = {
   /**
    * mock data
    */
   db: {
-    pets: fakePets(100),
+    ...petsMock.db,
   },
 
   /**
    * rewrite the url if needed
    */
   rewrite: {
-    "/vehicles/*/logs": "/logs",
-    "/vehicles/:vid/records": "/records?vehicleId=:vid",
+    ...petsMock.rewrites,
   },
+
+  routers: [petsMock.routers],
 };
