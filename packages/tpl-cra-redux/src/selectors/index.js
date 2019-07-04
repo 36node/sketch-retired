@@ -1,7 +1,9 @@
 import { createApiSelector } from "@36node/redux-api";
-import { createToggleSelector } from "@36node/redux-ui/toggle";
-import { createAssignSelector } from "@36node/redux-ui/assign";
-import { createProgressSelector } from "@36node/redux-ui/progress";
+import {
+  createToggleSelector,
+  createAssignSelector,
+  createProgressSelector,
+} from "@36node/redux-ui";
 
 import { NS } from "../constants";
 import { petSchema, repoSchema } from "../schemas";
