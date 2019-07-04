@@ -9157,6 +9157,13 @@ get-caller-file@^2.0.1:
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
+get-lerna-packages@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/get-lerna-packages/-/get-lerna-packages-0.1.1.tgz#37aaaac36fd14f00082f17b1096dd6c69290cef9"
+  integrity sha512-venxkvga57gOUZoTmXZlJ0zHc8cmvsx7Y0GTMcoEK/7OCEK3PLpG5gVTbUUMJaLxbzK13AWQdKPf1LSkuEfWqA==
+  dependencies:
+    glob "^7.1.2"
+
 get-object@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/get-object/-/get-object-0.2.0.tgz#d92ff7d5190c64530cda0543dac63a3d47fe8c0c"
@@ -12050,6 +12057,13 @@ left-pad@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/left-pad/-/left-pad-1.3.0.tgz#5b8a3a7765dfe001261dde915589e782f8c94d1e"
   integrity sha512-XI5MPzVNApjAyhQzphX8BkmKsKUxD4LdyK24iZeQGinBN9yTQT3bFlCBy/aVx2HrNcqQGsdot8ghrjyrvMCoEA==
+
+lerna-alias@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/lerna-alias/-/lerna-alias-3.0.2.tgz#61d7d79b182849e98ee4cdca0127f714f8712d4d"
+  integrity sha512-3Ly21S1gn+j+yt2zMN0mB5ull1U46HYHb1ksjCznuuac/YWI4gf3EYNwxHNz7W4MdezTF4SClHRbJsmfu/8wyQ==
+  dependencies:
+    get-lerna-packages "^0.1.0"
 
 lerna@^3.13.1:
   version "3.15.0"
@@ -18005,6 +18019,15 @@ rollup-plugin-preserve-shebang@^0.1.6:
   integrity sha512-b+psdlXZOjmlnKmL6/YAkR8PR15VPcUNXdT35urBRJ8jE6UxHyb4HXeeN3qRZJbMJJaX1eRP72XwH6IvGFh5Jw==
   dependencies:
     magic-string "^0.22.4"
+
+rollup-plugin-replace@^1.1.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-replace/-/rollup-plugin-replace-1.2.1.tgz#6307ee15f223aa1fd3207cd3c08052468f180daf"
+  integrity sha512-l9Pgb7bh5Wx18+qM9iOWZ/CKcwyKJETLAwCh6bjKwTOgTzNH3KmKDWI/X/ToNA7fA/68chhFyvISvreRxWFVtw==
+  dependencies:
+    magic-string "^0.22.4"
+    minimatch "^3.0.2"
+    rollup-pluginutils "^2.0.1"
 
 rollup-plugin-sizes@^0.4.2:
   version "0.4.2"

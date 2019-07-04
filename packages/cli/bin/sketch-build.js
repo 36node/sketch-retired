@@ -1,8 +1,16 @@
 const program = require("commander");
 const spawn = require("cross-spawn");
-const _ = require("lodash");
+const path = require("path");
 
 const { getPackage } = require("../dist");
+
+const reduxLibaryRollupConfig = path.join(
+  __dirname,
+  "..",
+  "config",
+  "redux-library",
+  "rollup.config.js"
+);
 
 program
   .option("--external", "skip bundle external packages")
@@ -41,16 +49,12 @@ switch (template.toLowerCase()) {
     args.push("--format", "cjs,es");
     break;
   case "redux-library":
-    require("./build-script/redux-library")().then(({ stats, warnings }) => {
-      if (!_.isEmpty(warnings)) {
-        console.warn(warnings);
-      }
+    command = "rollup";
+    args = [];
+    args.push("--config", reduxLibaryRollupConfig);
+    args.push("--sourcemap");
+    break;
 
-      console.log("build complete...");
-      process.exit(0);
-    });
-
-    return;
   default:
     throw new Error(`template ${template} not supported`);
 }
