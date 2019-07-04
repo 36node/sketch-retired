@@ -45,7 +45,7 @@ declare namespace SDK {
       offset?: number;
       sort?: string;
       select?: string;
-      group?: string;
+      group?: string | [string];
 
       filter: {
         tag?: string;
@@ -65,7 +65,7 @@ declare namespace SDK {
   };
 
   type ListPetsResponse = {
-    body: Array<Pet>;
+    body: [Pet];
     headers: {
       xTotalCount: number;
     };
@@ -100,24 +100,37 @@ declare namespace SDK {
     petId: string;
   };
 
-  type Pet = {
-    id: string;
-    age: number;
-    name: string;
-    tag: string;
-    birthAt: string;
-    grade: number;
-  };
-
   type PetDoc = {
     name: string;
-    tag: string;
+    tag: "DOG" | "CAT";
     age: number;
     birthAt: string;
-    count: number;
     grade: number;
   };
-
+  type Pet = {
+    id: string;
+    name: string;
+    tag: "DOG" | "CAT";
+    age: number;
+    birthAt: string;
+    grade: number;
+  };
+  type PetOrDoc =
+    | {
+        name: string;
+        tag: "DOG" | "CAT";
+        age: number;
+        birthAt: string;
+        grade: number;
+      }
+    | {
+        id: string;
+        name: string;
+        tag: "DOG" | "CAT";
+        age: number;
+        birthAt: string;
+        grade: number;
+      };
   type Err = {
     code: string;
     message: string;

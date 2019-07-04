@@ -202,12 +202,12 @@ const ListParamsNStr = `
   query:{
     limit?: number;
     offset?: number;
-    sort?: Array<string>;
+    sort?: [string];
     group?: string;
     _exist?: string;
 
     filter:{
-        tag?: Array<string>;
+        tag?: [string];
         age: {
             $gt?: number;
             $lt?: number;
@@ -216,7 +216,7 @@ const ListParamsNStr = `
             $gte?: number;
             $lte?: number;
         }
-        type?: Array<string>;
+        type?: [string];
         plate: {
             $regex?: string;
         }
