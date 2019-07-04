@@ -101,7 +101,8 @@
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "xlsx": "^0.14.3"
   },
   "browserslist": [
     "extends @36node/browserslist-config"
