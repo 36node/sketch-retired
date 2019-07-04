@@ -31,7 +31,7 @@ switch (template.toLowerCase()) {
     command = "microbundle";
     args.push("--jsx", "React.createElement");
     args.push("--format", "cjs");
-    // args.push("--external", "styled-components");
+    args.push("--external", "styled-components,lodash");
     break;
 
   case "tcp":

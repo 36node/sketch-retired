@@ -45,11 +45,11 @@ const filterWarningsPlugin = new FilterWarningsPlugin({
   exclude: /mini-css-extract-plugin[^]*Conflicting order between:/,
 });
 
-const printConfig = config => {
-  console.log(JSON.stringify(config, null, 2));
-  process.exit(0);
-  return config;
-};
+// const printConfig = config => {
+//   console.log(JSON.stringify(config, null, 2));
+//   process.exit(0);
+//   return config;
+// };
 
 module.exports = {
   webpack: override(

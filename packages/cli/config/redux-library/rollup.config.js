@@ -1,6 +1,5 @@
 const { terser } = require("rollup-plugin-terser");
 const alias = require("rollup-plugin-alias");
-const lernaAlias = require("lerna-alias").rollup;
 const nodeResolve = require("rollup-plugin-node-resolve");
 const commonjs = require("rollup-plugin-commonjs");
 
@@ -14,8 +13,6 @@ const pkg = require(paths.modulePackageJson);
 const deps = Object.keys(pkg.dependencies || {});
 const peerDeps = Object.keys(pkg.peerDependencies || {});
 
-let aliases = lernaAlias();
-
 const createConfig = ({ input, output, env, min = false }) => ({
   input,
   output,
@@ -26,7 +23,6 @@ const createConfig = ({ input, output, env, min = false }) => ({
   plugins: [
     nodeResolve(),
     commonjs(),
-    alias(aliases),
     babel({
       exclude: "node_modules/**",
     }),

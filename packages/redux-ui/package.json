@@ -21,9 +21,6 @@
   "module": "dist/index.esm.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "format": "prettier --trailing-comma es5 --write '**/*.js'",
-    "lint": "sketch lint src",
-    "release": "standard-version && git push --follow-tags origin master",
     "test": "NODE_ENV=test sketch test --env=node",
     "build": "sketch build"
   },
