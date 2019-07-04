@@ -7,7 +7,7 @@ import { NS } from "../constants";
 import { petSchema, repoSchema } from "../schemas";
 
 export const reduxXlsxSelectors = {
-  listPets: createApiSelector(NS.REDUX_XLSX.PETS_XLSX),
+  listPets: createApiSelector(NS.REDUX_XLSX.PETS_XLSX, [petSchema]),
 };
 
 export const reduxUiSelectors = {
