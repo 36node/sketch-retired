@@ -3,10 +3,6 @@ import { Types } from "./action";
 import { registerAssign, Assigns } from "./assigns";
 
 class Assign extends ReduxUiBase {
-  constructor(key, reduxPath) {
-    super(key, reduxPath);
-  }
-
   get actions() {
     return {
       set: (assign, meta = {}) => ({

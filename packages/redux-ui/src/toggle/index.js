@@ -3,10 +3,6 @@ import { registerToggle, Toggles } from "./toggles";
 import { ReduxUiBase } from "../base";
 
 class Toggle extends ReduxUiBase {
-  constructor(key, reduxPath) {
-    super(key, reduxPath);
-  }
-
   get actions() {
     return {
       open: (meta = {}) => ({
