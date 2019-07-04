@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/36node/sketch/compare/@36node/template-service@0.12.6...@36node/template-service@0.13.0) (2019-07-04)
+
+
+### Features
+
+* swagen support enum and oneOf ([#108](https://github.com/36node/sketch/issues/108)) ([a348b1f](https://github.com/36node/sketch/commit/a348b1f))
+
+
+
+
+
 ## [0.12.6](https://github.com/36node/sketch/compare/@36node/template-service@0.12.5...@36node/template-service@0.12.6) (2019-07-03)
 
 **Note:** Version bump only for package @36node/template-service
