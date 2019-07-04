@@ -27,7 +27,7 @@
   "main": "dist/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "sketch build",
+    "build": "sketch build --external styled-components",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "lint": "sketch lint src",
     "release": "standard-version",
