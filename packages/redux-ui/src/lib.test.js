@@ -1,4 +1,4 @@
-import { camelCaseKey } from ".";
+import { camelCaseKey } from "./utils";
 
 test("should camel key", () => {
   const testKey = "GITHUB.REPOS";

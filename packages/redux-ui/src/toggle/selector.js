@@ -1,4 +1,4 @@
-import { camelCaseKey } from "../lib";
+import { camelCaseKey } from "../utils";
 import { get } from "lodash";
 import { initState } from "./reducer";
 import { createSelector } from "reselect";
