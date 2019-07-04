@@ -9,6 +9,7 @@ export const initState = {
   result: null,
   request: {},
   meta: {},
+  total: 0,
 };
 
 function r(state = initState, action = {}) {

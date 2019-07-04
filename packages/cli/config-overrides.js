@@ -45,6 +45,12 @@ const filterWarningsPlugin = new FilterWarningsPlugin({
   exclude: /mini-css-extract-plugin[^]*Conflicting order between:/,
 });
 
+const printConfig = config => {
+  console.log(JSON.stringify(config, null, 2));
+  process.exit(0);
+  return config;
+};
+
 module.exports = {
   webpack: override(
     // for eslint
@@ -80,6 +86,7 @@ module.exports = {
       },
     ]),
     addWebpackPlugin(filterWarningsPlugin)
+    // printConfig // for debug
   ),
   devServer: function(configFunction) {
     return function(proxy, allowedHost) {

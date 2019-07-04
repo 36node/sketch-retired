@@ -10,18 +10,20 @@
   "publishConfig": {
     "access": "public"
   },
-  "template": "cra-redux",
+  "template": "redux-library",
   "files": [
+    "dist",
     "bin",
-    "src",
-    "typings"
+    "typings",
+    "src"
   ],
   "config-overrides-path": "../cli/config-overrides",
-  "main": "src/index.js",
-  "module": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "test": "NODE_ENV=test sketch test --env=node"
+    "test": "NODE_ENV=test sketch test --env=node",
+    "build": "sketch build"
   },
   "commitlint": {
     "extends": [
@@ -42,7 +44,9 @@
     ]
   },
   "dependencies": {
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.11"
+  },
+  "peerDependencies": {
     "normalizr": "^3.3.0",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0"

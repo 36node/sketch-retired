@@ -17,14 +17,16 @@
     "config-overrides.js",
     "dist",
     "template",
-    "typings"
+    "typings",
+    "config"
   ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "typings/index.d.ts",
   "scripts": {
     "build": "microbundle build --format cjs",
-    "test": "react-scripts test --env=node"
+    "test": "react-scripts test --env=node",
+    "test-config": "NODE_ENV=production node config/react-component-build/webpack.config.js"
   },
   "dependencies": {
     "@36node/mock-server": "^0.0.2",

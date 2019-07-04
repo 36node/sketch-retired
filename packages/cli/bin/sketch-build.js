@@ -1,5 +1,6 @@
 const program = require("commander");
 const spawn = require("cross-spawn");
+const _ = require("lodash");
 
 const { getPackage } = require("../dist");
 
@@ -22,7 +23,9 @@ switch (template.toLowerCase()) {
     command = "microbundle";
     args.push("--jsx", "React.createElement");
     args.push("--format", "cjs");
+    // args.push("--external", "styled-components");
     break;
+
   case "tcp":
   case "service":
     command = "microbundle";
@@ -37,6 +40,17 @@ switch (template.toLowerCase()) {
     command = "microbundle";
     args.push("--format", "cjs,es");
     break;
+  case "redux-library":
+    require("./build-script/redux-library")().then(({ stats, warnings }) => {
+      if (!_.isEmpty(warnings)) {
+        console.warn(warnings);
+      }
+
+      console.log("build complete...");
+      process.exit(0);
+    });
+
+    return;
   default:
     throw new Error(`template ${template} not supported`);
 }
