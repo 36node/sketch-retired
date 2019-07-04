@@ -1,4 +1,4 @@
-import { apiSelector } from "@36node/redux-api";
+import { createApiSelector } from "@36node/redux-api";
 import { createToggleSelector } from "@36node/redux-ui/toggle";
 import { createAssignSelector } from "@36node/redux-ui/assign";
 import { createProgressSelector } from "@36node/redux-ui/progress";
@@ -7,7 +7,7 @@ import { NS } from "../constants";
 import { petSchema, repoSchema } from "../schemas";
 
 export const reduxXlsxSelectors = {
-  listPets: apiSelector(NS.REDUX_XLSX.PETS_XLSX),
+  listPets: createApiSelector(NS.REDUX_XLSX.PETS_XLSX),
 };
 
 export const reduxUiSelectors = {
@@ -17,13 +17,13 @@ export const reduxUiSelectors = {
 };
 
 export const petStoreSelectors = {
-  listPets: apiSelector(NS.PET_STORE.LIST_PETS, [petSchema]),
+  listPets: createApiSelector(NS.PET_STORE.LIST_PETS, [petSchema]),
 };
 
 export const githubSelectors = {
-  listRepos: apiSelector(NS.GITHUB.LIST_REPOS, [repoSchema]),
+  listRepos: createApiSelector(NS.GITHUB.LIST_REPOS, [repoSchema]),
 };
 
 export const globalSelectors = {
-  session: apiSelector("session"),
+  session: createApiSelector("session"),
 };
