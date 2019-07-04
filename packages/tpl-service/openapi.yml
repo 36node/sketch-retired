@@ -51,7 +51,11 @@ paths:
           description: Dimensions to group
           required: false
           schema:
-            type: string
+            oneOf:
+              - type: string
+              - type: array
+                items:
+                  type: string
         - name: tag
           in: query
           description: Tag of pet
@@ -298,20 +302,19 @@ components:
           schema:
             $ref: "#/components/schemas/Err"
   schemas:
-    Pet:
+    PetDoc:
+      type: object
       required:
-        - id
         - name
       properties:
-        id:
-          type: string
-        age:
-          type: integer
-          format: int32
         name:
           type: string
         tag:
           type: string
+          enum: ['DOG', "CAT"]
+        age:
+          type: integer
+          format: int32
         birthAt:
           type: string
           format: date
@@ -319,26 +322,21 @@ components:
           type: integer
           format: int32
 
-    PetDoc:
-      required:
-        - name
-      properties:
-        name:
-          type: string
-        tag:
-          type: string
-        age:
-          type: integer
-          format: int32
-        birthAt:
-          type: string
-          format: date
-        count:
-          type: integer
-          format: int32
-        grade:
-          type: integer
-          format: int32
+    Pet:
+      allOf:
+        - $ref: "#/components/schemas/PetDoc"
+        - type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+            
+    PetOrDoc:
+      oneOf:
+        - $ref: "#/components/schemas/PetDoc"
+        - $ref: "#/components/schemas/Pet"
+
         
     Err:
       type: object

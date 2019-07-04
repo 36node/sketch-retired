@@ -14,12 +14,24 @@ hbsHelper({
  * @returns {String} parsed type
  */
 export function getSchemaType(schema = {}) {
-  let { type, $ref, items, properties = {} } = schema;
+  let { type, $ref, items, properties = {}, oneOf } = schema;
+
+  if (oneOf) {
+    return oneOf.map(i => getSchemaType(i)).join("|");
+  }
+
+  if (schema.enum) {
+    if (type === "string") {
+      return schema.enum.map(e => `"${e}"`).join("|");
+    } else {
+      return schema.enum.join("|");
+    }
+  }
 
   if (type === "integer") return "number";
   if (type === "float") return "number";
   if (type === "array") {
-    return `Array<${getSchemaType(items)}>`;
+    return `[${getSchemaType(items)}]`;
   }
 
   if (type === "object") {

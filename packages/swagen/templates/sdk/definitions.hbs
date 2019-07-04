@@ -74,13 +74,6 @@ declare namespace SDK {
   {{/each}}
   {{/each}}
   {{#each components.schemas}}
-  {{#if properties}}
-  type {{capitalize @key}} = {
-    {{#each properties}}
-    {{@key}}: {{{schemaType this}}};
-    {{/each}}
-  }
-
-  {{/if}}
+  type {{capitalize @key}} = {{{schemaType this}}};
   {{/each}}
 }

@@ -92,15 +92,23 @@ function parseSwagger(swagger) {
  * @param {*} schema openapi schema object
  */
 function handleAllOf(schema) {
-  if (!schema.allOf) return schema;
+  if (schema.oneOf) {
+    return {
+      oneOf: schema.oneOf.map(r => handleAllOf(r)),
+    };
+  }
 
-  return reduceRight(
-    schema.allOf,
-    (acc, cur) => {
-      return merge(acc, handleAllOf(cur));
-    },
-    {}
-  );
+  if (schema.allOf) {
+    return reduceRight(
+      schema.allOf,
+      (acc, cur) => {
+        return merge(acc, handleAllOf(cur));
+      },
+      {}
+    );
+  }
+
+  return schema;
 }
 
 function handleSchemas(schemas = {}) {
@@ -143,6 +151,8 @@ export default async function parse(source, options = {}) {
       // only parse swagger object, does not resolve $ref pointers or dereference anything
       api = unresolvedApi;
     }
+
+    // console.log(JSON.stringify(api, null, 2));
   } catch (e) {
     console.error("Can not load the content of the Swagger specification file");
     console.error(e);
