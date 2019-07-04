@@ -3,9 +3,10 @@ import MediaQuery from "react-responsive";
 import { connect } from "react-redux";
 import DocumentTitle from "react-document-title";
 import { Button, Row } from "antd";
+import { Container, Jumbotron } from "../components/layout";
+
 import Sample from "@36node/template-react-component";
 
-import { Container, Jumbotron } from "../components/layout";
 import { globalActions } from "../actions";
 
 @connect(state => ({}))
