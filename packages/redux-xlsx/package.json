@@ -42,11 +42,13 @@
       "git add"
     ]
   },
-  "peerDependencies": {
+  "dependencies": {
     "xlsx": "^0.14.3",
     "lodash": "^4.17.11",
-    "redux-saga": "^1.0.2",
     "reselect": "^4.0.0"
+  },
+  "peerDependencies": {
+    "redux-saga": "^1.0.2"
   },
   "devDependencies": {
     "@36node/eslint-config": "^0.6.1",

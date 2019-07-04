@@ -14,22 +14,12 @@ const pkg = require(paths.modulePackageJson);
 const deps = Object.keys(pkg.dependencies || {});
 const peerDeps = Object.keys(pkg.peerDependencies || {});
 
-const makeExternalPredicate = externalArr => {
-  if (!externalArr.length) {
-    return () => false;
-  }
-  const pattern = new RegExp(`^(${externalArr.join("|")})($|/)`);
-  return id => pattern.test(id);
-};
-
 let aliases = lernaAlias();
 
-const createConfig = ({ input, output, external, env, min = false }) => ({
+const createConfig = ({ input, output, env, min = false }) => ({
   input,
   output,
-  external: makeExternalPredicate(
-    external === "peers" ? peerDeps : deps.concat(peerDeps)
-  ),
+  external: deps.concat(peerDeps),
   treeshake: {
     propertyReadSideEffects: false,
   },
@@ -61,7 +51,6 @@ const createConfig = ({ input, output, external, env, min = false }) => ({
 });
 
 const productionBase = {
-  external: "peers",
   env: "production",
   min: true,
 };
