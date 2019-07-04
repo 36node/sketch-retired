@@ -1,5 +1,5 @@
 import { requestOf, clearOf, refreshOf } from "./actions";
-import { registerSaga, Apis } from "./saga";
+import { registerSaga, Apis } from "./apis";
 import makeApiSelector from "./selector";
 import { camelCaseKey } from "./lib";
 

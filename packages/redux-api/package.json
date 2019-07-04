@@ -18,8 +18,8 @@
     "src"
   ],
   "config-overrides-path": "../cli/config-overrides",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "typings": "typings/index.d.ts",
   "scripts": {
     "test": "NODE_ENV=test sketch test --env=node",
@@ -43,10 +43,8 @@
       "git add"
     ]
   },
-  "dependencies": {
-    "lodash": "^4.17.11"
-  },
   "peerDependencies": {
+    "lodash": "^4.17.11",
     "normalizr": "^3.3.0",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0"
