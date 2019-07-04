@@ -10,18 +10,19 @@
   "publishConfig": {
     "access": "public"
   },
-  "template": "react-component",
+  "template": "redux-library",
   "files": [
     "bin",
-    "src",
+    "dist",
     "typings"
   ],
   "config-overrides-path": "../cli/config-overrides",
-  "main": "src/index.js",
-  "module": "src/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "src/index.esm.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "test": "sketch test --env=jsdom"
+    "test": "sketch test --env=jsdom",
+    "build": "sketch build"
   },
   "commitlint": {
     "extends": [
@@ -41,14 +42,11 @@
       "git add"
     ]
   },
-  "dependencies": {
+  "peerDependencies": {
+    "xlsx": "^0.14.3",
     "lodash": "^4.17.11",
     "redux-saga": "^1.0.2",
-    "reselect": "^4.0.0",
-    "xlsx": "^0.14.3"
-  },
-  "peerDependencies": {
-    "xlsx": "^0.14.3"
+    "reselect": "^4.0.0"
   },
   "devDependencies": {
     "@36node/eslint-config": "^0.6.1",
