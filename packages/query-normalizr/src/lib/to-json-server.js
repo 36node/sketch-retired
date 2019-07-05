@@ -1,14 +1,23 @@
 import { safeToNumber, safeToArray } from "./util";
 import pickBy from "lodash/pickBy";
+/**
+ * deprecated
+ */
+
 import startsWith from "lodash/startsWith";
 import isNil from "lodash/isNil";
 import trimStart from "lodash/trimStart";
 
 /**
  * 将url中的query 转换为 json server 的query 格式
+ * @deprecated
  * @param {string} fromUrl query object from url
  */
 export default function toJsonServer(fromUrl) {
+  console.warn(
+    "toJsonServer in query-normalizr is deprecated! Please use @36node/mock-server"
+  );
+
   const filters = pickBy(fromUrl, (_, key) => !startsWith(key, "_"));
   const others = pickBy(fromUrl, (_, key) => startsWith(key, "_"));
 
