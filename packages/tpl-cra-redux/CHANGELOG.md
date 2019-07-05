@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.9](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.11.8...@36node/template-cra-redux@0.11.9) (2019-07-05)
+
+
+### Bug Fixes
+
+* build tpl-react-component ([239dce6](https://github.com/36node/tpl-react-redux/commit/239dce6))
+* ci build error ([e159486](https://github.com/36node/tpl-react-redux/commit/e159486))
+* export listApi use schema ([979c316](https://github.com/36node/tpl-react-redux/commit/979c316))
+
+
+
+
+
 ## [0.11.8](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.11.7...@36node/template-cra-redux@0.11.8) (2019-07-04)
 
 **Note:** Version bump only for package @36node/template-cra-redux

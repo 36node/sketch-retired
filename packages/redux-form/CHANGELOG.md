@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.9](https://github.com/36node/sketch/compare/@36node/redux-form@0.0.8...@36node/redux-form@0.0.9) (2019-07-05)
+
+
+### Bug Fixes
+
+* redux-xxx peerDep ([ac47399](https://github.com/36node/sketch/commit/ac47399))
+
+
+
+
+
 ## [0.0.8](https://github.com/36node/sketch/compare/@36node/redux-form@0.0.7...@36node/redux-form@0.0.8) (2019-07-04)
 
 **Note:** Version bump only for package @36node/redux-form

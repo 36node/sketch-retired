@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.10](https://github.com/36node/sketch/compare/@36node/redux-xlsx@0.0.9...@36node/redux-xlsx@0.0.10) (2019-07-05)
+
+
+### Bug Fixes
+
+* jest version warning ([0119d9f](https://github.com/36node/sketch/commit/0119d9f))
+* redux-xxx peerDep ([ac47399](https://github.com/36node/sketch/commit/ac47399))
+
+
+
+
+
 ## [0.0.9](https://github.com/36node/sketch/compare/@36node/redux-xlsx@0.0.8...@36node/redux-xlsx@0.0.9) (2019-07-04)
 
 **Note:** Version bump only for package @36node/redux-xlsx

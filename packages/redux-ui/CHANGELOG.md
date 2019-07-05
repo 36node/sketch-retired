@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.15](https://github.com/36node/sketch/compare/@36node/redux-ui@0.0.14...@36node/redux-ui@0.0.15) (2019-07-05)
+
+
+### Bug Fixes
+
+* redux-xxx peerDep ([ac47399](https://github.com/36node/sketch/commit/ac47399))
+* unnecessary constructor ([8ca73ee](https://github.com/36node/sketch/commit/8ca73ee))
+
+
+
+
+
 ## [0.0.14](https://github.com/36node/sketch/compare/@36node/redux-ui@0.0.13...@36node/redux-ui@0.0.14) (2019-07-04)
 
 **Note:** Version bump only for package @36node/redux-ui

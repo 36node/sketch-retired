@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/36node/sketch/compare/@36node/redux-api@0.2.4...@36node/redux-api@0.3.0) (2019-07-05)
+
+
+### Bug Fixes
+
+* redux-xxx peerDep ([ac47399](https://github.com/36node/sketch/commit/ac47399))
+
+
+### Features
+
+* redux-library build ([f3f2726](https://github.com/36node/sketch/commit/f3f2726))
+
+
+
+
+
 ## [0.2.4](https://github.com/36node/sketch/compare/@36node/redux-api@0.2.3...@36node/redux-api@0.2.4) (2019-07-04)
 
 **Note:** Version bump only for package @36node/redux-api

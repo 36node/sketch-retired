@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/36node/sketch/compare/@36node/template-service@0.13.0...@36node/template-service@0.13.1) (2019-07-05)
+
+
+### Bug Fixes
+
+* jest version warning ([0119d9f](https://github.com/36node/sketch/commit/0119d9f))
+
+
+
+
+
 # [0.13.0](https://github.com/36node/sketch/compare/@36node/template-service@0.12.6...@36node/template-service@0.13.0) (2019-07-04)
 
 
