@@ -1,18 +1,26 @@
 const { handleAggs } = require("./aggregation");
-const querystring = require("querystring");
 const _ = require("lodash");
+
+const aggConfigs = {
+  "/pets": {
+    grade: "avg",
+    count: records => records.length,
+  },
+};
 
 it("should group with tag", () => {
   const query = {
     _group: ["tag"],
   };
   const ret = handleAggs(
-    {},
+    aggConfigs,
     {
+      // fake req
       path: "/pets",
-      url: `/pets?${querystring.stringify(query)}`,
+      cusQuery: query,
     },
     {
+      // fake res
       locals: {
         data: pets,
       },
@@ -21,24 +29,20 @@ it("should group with tag", () => {
   );
 
   expect(ret.length).toBe(2);
-  expect(_.sumBy(ret, "_count")).toBe(pets.length);
+  expect(_.sumBy(ret, "count")).toBe(pets.length);
 });
 
 it("should group with month", () => {
   const query = {
     _group: ["birthAt.year", "birthAt.month"],
-    _select: ["grade"],
+    _limit: 100,
   };
 
   const ret = handleAggs(
-    {
-      "/pets": {
-        grade: "avg",
-      },
-    },
+    aggConfigs,
     {
       path: "/pets",
-      url: `/pets?${querystring.stringify(query)}`,
+      cusQuery: query,
     },
     {
       locals: {
@@ -48,8 +52,8 @@ it("should group with month", () => {
     }
   );
 
-  expect(_.sumBy(ret, "_count")).toBe(pets.length);
-  expect(_.sumBy(ret, r => r._count * r.grade)).toBe(_.sumBy(pets, "grade"));
+  expect(_.sumBy(ret, "count")).toBe(pets.length);
+  expect(_.sumBy(ret, r => r.count * r.grade)).toBe(_.sumBy(pets, "grade"));
 });
 
 const pets = [

@@ -34,7 +34,8 @@ const mock = ({ count = 100 }) => ({
 
   aggregations: {
     "/pets": {
-      grade: records => _.sumBy(records, "grade") / records.length,
+      grade: "avg",
+      count: records => records.length,
     },
   },
 });

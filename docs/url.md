@@ -143,11 +143,11 @@ or
 _select=title,body
 ```
 
-_prefixing a path with `-` will flag that path as excluded.
-When a path does not have the `-` prefix, it is included_
-A projection must be either inclusive or exclusive.
-In other words, you must either list the fields to include (which excludes all others),
-or list the fields to exclude (which implies all other fields are included).
+_prefixing a path with `-` will flag that path as excluded._
+_When a path does not have the `-` prefix, it is included_
+_A projection must be either inclusive or exclusive._
+_In other words, you must either list the fields to include (which excludes all others),_
+_or list the fields to exclude (which implies all other fields are included)._
 
 ## Query In Our Service
 
