@@ -34,6 +34,13 @@ declare module "@36node/redux-api" {
     reduxPath?: String;
   }
 
+  interface ApiState {
+    result: object | [object];
+    total: number;
+    loading: boolean;
+    meta: object;
+  }
+
   interface Hooks {
     beforeRequest?: (key: String, action: Action, api: Api) => Boolean;
     afterRequest?: (key: String, action: Action, api: Api) => void;
@@ -45,7 +52,7 @@ declare module "@36node/redux-api" {
     refresh: (meta: Object) => Action;
   }
 
-  export type Selector = (state: Object) => Object;
+  export type Selector = (state: Object) => ApiState;
   export type Endpoint<T> = (payload: T) => Promise<EpResult>;
 
   export const apiReducers: ApiReducers;
@@ -63,7 +70,8 @@ declare module "@36node/redux-api" {
     opts: ApiCreateOpts<T>
   ): ApiActions<T>;
 
-  export function apiSelector(key: String, reduxPath?: String): Selector;
+  export function createApiSelector(key: String, schema?: Schema): Selector;
+  export function apiSelector(key: String, schema?: Schema): Selector;
 
   export function isApi(action: Action): Boolean;
   export function isSuccess(action: Action): Boolean;

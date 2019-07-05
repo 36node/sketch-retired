@@ -1,7 +1,16 @@
 const program = require("commander");
 const spawn = require("cross-spawn");
+const path = require("path");
 
 const { getPackage } = require("../dist");
+
+const reduxLibaryRollupConfig = path.join(
+  __dirname,
+  "..",
+  "config",
+  "redux-library",
+  "rollup.config.js"
+);
 
 program
   .option("--external", "skip bundle external packages")
@@ -22,7 +31,9 @@ switch (template.toLowerCase()) {
     command = "microbundle";
     args.push("--jsx", "React.createElement");
     args.push("--format", "cjs");
+    // args.push("--external", "styled-components,lodash");
     break;
+
   case "tcp":
   case "service":
     command = "microbundle";
@@ -37,6 +48,13 @@ switch (template.toLowerCase()) {
     command = "microbundle";
     args.push("--format", "cjs,es");
     break;
+  case "redux-library":
+    command = "rollup";
+    args = [];
+    args.push("--config", reduxLibaryRollupConfig);
+    args.push("--sourcemap");
+    break;
+
   default:
     throw new Error(`template ${template} not supported`);
 }

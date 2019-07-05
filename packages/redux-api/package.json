@@ -10,18 +10,20 @@
   "publishConfig": {
     "access": "public"
   },
-  "template": "cra-redux",
+  "template": "redux-library",
   "files": [
+    "dist",
     "bin",
-    "src",
-    "typings"
+    "typings",
+    "src"
   ],
   "config-overrides-path": "../cli/config-overrides",
-  "main": "src/index.js",
-  "module": "src/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "test": "NODE_ENV=test sketch test --env=node"
+    "test": "NODE_ENV=test sketch test --env=node",
+    "build": "sketch build"
   },
   "commitlint": {
     "extends": [
@@ -42,10 +44,12 @@
     ]
   },
   "dependencies": {
+    "reselect": "^4.0.0",
     "lodash": "^4.17.11",
-    "normalizr": "^3.3.0",
-    "redux-saga": "^1.0.2",
-    "reselect": "^4.0.0"
+    "normalizr": "^3.3.0"
+  },
+  "peerDependencies": {
+    "redux-saga": "^1.0.2"
   },
   "devDependencies": {
     "@36node/eslint-config": "^0.4.0",

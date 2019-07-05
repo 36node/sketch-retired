@@ -10,16 +10,16 @@ import {
   select,
 } from "redux-saga/effects";
 import { normalize } from "normalizr";
-import { isRequest, isRefresh } from "./actions";
+import {
+  isRequest,
+  isRefresh,
+  successOf,
+  failureOf,
+  requestOf,
+} from "./actions";
 import { humps } from "./lib";
-import { successOf, failureOf, requestOf } from "@36node/redux-api";
 import { makeStateSelector } from "./selector";
-
-export const Apis = new Map();
-
-export function registerSaga(key, api) {
-  Apis.set(key, api);
-}
+import { Apis } from "./apis";
 
 // hooks
 const sagaHooks = {

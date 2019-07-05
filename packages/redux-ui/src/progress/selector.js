@@ -1,12 +1,12 @@
-import { camelCaseKey } from "../lib";
+import { camelCaseKey } from "../utils";
 import { get } from "lodash";
 import { initState } from "./reducer";
 import { createSelector } from "reselect";
 
 export const makeStateSelector = path => state =>
-  get(state.assigns, path) || initState;
+  get(state.progresses, path) || initState;
 
-const createAssignSelector = (key, reduxPath) => {
+const createProgressSelector = (key, reduxPath) => {
   const path = reduxPath || camelCaseKey(key);
 
   const stateSelector = makeStateSelector(path);
@@ -19,4 +19,4 @@ const createAssignSelector = (key, reduxPath) => {
   );
 };
 
-export default createAssignSelector;
+export default createProgressSelector;

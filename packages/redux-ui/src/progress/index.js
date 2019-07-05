@@ -3,10 +3,6 @@ import { ReduxUiBase } from "../base";
 import { registerProgress, Progresses } from "./progresses";
 
 class Progress extends ReduxUiBase {
-  constructor(key, reduxPath) {
-    super(key, reduxPath);
-  }
-
   get actions() {
     return {
       increase: (step = 1, meta = {}) => ({

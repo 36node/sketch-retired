@@ -1,5 +1,5 @@
 import { requestOf, clearOf, refreshOf } from "./actions";
-import { registerSaga, Apis } from "./saga";
+import { registerSaga, Apis } from "./apis";
 import makeApiSelector from "./selector";
 import { camelCaseKey } from "./lib";
 
@@ -81,6 +81,13 @@ export function createApiActions(key, opts = {}) {
   return api.actions;
 }
 
-export function apiSelector(key, reduxPath) {
-  return makeApiSelector(key, reduxPath);
+export function createApiSelector(key, schema) {
+  return makeApiSelector(key, schema);
+}
+
+export function apiSelector(key, schema) {
+  console.warn(
+    "apiSelector function is deprecated, please use createApiSelector "
+  );
+  return makeApiSelector(key, schema);
 }

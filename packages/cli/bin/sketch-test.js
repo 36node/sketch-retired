@@ -28,6 +28,7 @@ switch (template) {
   case "module":
   case "react-component":
   case "sdk":
+  case "redux-library":
     command = "react-app-rewired";
     break;
   case "tcp":

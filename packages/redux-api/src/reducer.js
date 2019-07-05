@@ -2,13 +2,14 @@
 import { get, union, setWith, clone, mergeWith, isArray } from "lodash";
 
 import { isApi, isRequest, isFailure, isSuccess, isClear } from "./actions";
-import { Apis } from "./saga";
+import { Apis } from "./apis";
 
 export const initState = {
   loading: false,
   result: null,
   request: {},
   meta: {},
+  total: 0,
 };
 
 function r(state = initState, action = {}) {

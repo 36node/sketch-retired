@@ -1,4 +1,4 @@
-import { camelCaseKey } from "../lib";
+import { camelCaseKey } from "../utils";
 
 export class ReduxUiBase {
   constructor(key, reduxPath) {
