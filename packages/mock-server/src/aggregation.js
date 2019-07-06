@@ -1,26 +1,7 @@
 const _ = require("lodash");
 const moment = require("moment");
 const querystring = require("querystring");
-
-const parseUrlQuery = url => {
-  const urls = url.split("?");
-
-  if (!urls[1]) return {};
-
-  return querystring.parse(urls[1]);
-};
-
-const safeToArray = field => {
-  if (!field) return;
-
-  if (typeof field === "string") {
-    return [field];
-  }
-
-  if (_.isArray(field)) return field;
-
-  return;
-};
+const { safeToArray } = require("./util");
 
 // time dimension
 const timeDims = [
@@ -88,16 +69,16 @@ const parseGroup = group => {
 
 function handleAggs(aggs = {}, req, res) {
   const path = req.path;
-  const query = parseUrlQuery(req.url) || {};
-  const agg = aggs[path] || {};
+  const query = req.cusQuery || {};
+  const agg = aggs[path];
   const data = res.locals.data;
 
+  if (!agg) return data;
   if (!_.isArray(data)) return data;
 
-  const { _group, _select } = query;
+  const { _group, _limit = 10, _start = 0, _order, _sort } = query;
 
   const group = safeToArray(_group);
-  const select = safeToArray(_select);
 
   if (!group) return data;
 
@@ -115,10 +96,7 @@ function handleAggs(aggs = {}, req, res) {
     );
   });
 
-  // set total header
-  res.setHeader("X-Total-Count", _.keys(grouped).length);
-
-  return _.keys(grouped).map(k => {
+  const result = _.keys(grouped).map(k => {
     const fileds = querystring.parse(k);
     // records in group key
     const records = grouped[k];
@@ -130,46 +108,52 @@ function handleAggs(aggs = {}, req, res) {
       dimensions[parsed[i].field] = fileds[i];
     }
 
-    // result
-    const ret = {};
-
-    // no select add count field in result
-    ret._count = records.length;
-
-    if (select) {
-      for (let s of select) {
-        const aggConfig = agg[s] || "sum";
-
-        let aggFun;
-
-        if (_.isString(aggConfig)) {
-          switch (aggConfig) {
-            case "sum":
-              aggFun = rs => _.sumBy(rs, r => r[s]);
-              break;
-            case "avg":
-              aggFun = rs => _.sumBy(rs, r => r[s]) / rs.length;
-              break;
-            default:
-              break;
-          }
-        }
-
-        if (_.isFunction(aggConfig)) {
-          aggFun = aggConfig;
-        }
-
-        if (aggFun) {
-          ret[s] = aggFun(records);
+    // cal all metrics
+    const metrics = _.mapValues(agg, (aggConfig = "sum", m) => {
+      let aggFun;
+      if (_.isString(aggConfig)) {
+        switch (aggConfig) {
+          case "sum":
+            aggFun = rs => _.sumBy(rs, r => r[m]);
+            break;
+          case "avg":
+            aggFun = rs => _.sumBy(rs, r => r[m]) / rs.length;
+            break;
+          default:
+            throw new Error("Not support aggregation config: " + aggConfig);
         }
       }
-    }
+      if (_.isFunction(aggConfig)) {
+        aggFun = aggConfig;
+      }
+
+      return aggFun(records);
+    });
 
     return {
+      id: querystring.stringify(dimensions),
       ...dimensions,
-      ...ret,
+      ...metrics,
     };
   });
+
+  // set total header
+  res.setHeader("X-Total-Count", result.length);
+
+  let chain = _.chain(result);
+
+  // handle sort
+  if (_sort) {
+    const _sortSet = _sort.split(",");
+    const _orderSet = (_order || "").split(",").map(s => s.toLowerCase());
+    chain = chain.orderBy(_sortSet, _orderSet);
+  }
+
+  chain = chain.slice(_start, _start + _limit);
+
+  // add id
+
+  return chain.value();
 }
 
 module.exports.handleAggs = handleAggs;

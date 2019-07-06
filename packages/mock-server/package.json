@@ -20,7 +20,6 @@
   "typings": "typings/index.d.ts",
   "config-overrides-path": "../cli/config-overrides",
   "dependencies": {
-    "@36node/query-normalizr": "^0.4.4",
     "express": "^4.17.0",
     "humps": "^2.0.1",
     "json-server": "^0.15.0",
