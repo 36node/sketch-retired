@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.9](https://github.com/36node/sketch/compare/@36node/template-tcp@0.6.8...@36node/template-tcp@0.6.9) (2019-07-06)
+
+**Note:** Version bump only for package @36node/template-tcp
+
+
+
+
+
 ## [0.6.8](https://github.com/36node/sketch/compare/@36node/template-tcp@0.6.7...@36node/template-tcp@0.6.8) (2019-07-05)
 
 
