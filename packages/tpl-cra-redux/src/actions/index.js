@@ -3,8 +3,8 @@
 import { NS } from "../constants";
 
 import { createApiActions } from "@36node/redux-api";
-import { petSchema, repoSchema } from "../schemas";
-import { github, petstore, auth } from "../sdk";
+import { repoSchema } from "../schemas";
+import { github, auth } from "../sdk";
 import {
   createToggleActions,
   createAssignActions,
@@ -12,6 +12,8 @@ import {
 } from "@36node/redux-ui";
 
 export { default as reduxXlsxActions } from "./pets-xlsx";
+
+export { petStoreActions } from "./pet-store";
 
 export const reduxUiActions = {
   toggleExample: createToggleActions(NS.REDUX_UI.TOGGLE_EXP),
@@ -23,24 +25,6 @@ export const githubActions = {
   listRepos: createApiActions(NS.GITHUB.LIST_REPOS, {
     endpoint: github.repo.listRepos,
     schema: [repoSchema],
-  }),
-};
-
-/**
- * pet store actions
- */
-export const petStoreActions = {
-  listPets: createApiActions(NS.PET_STORE.LIST_PETS, {
-    endpoint: petstore.pet.listPets,
-    schema: [petSchema],
-  }),
-  createPet: createApiActions(NS.PET_STORE.CREATE_PET, {
-    endpoint: petstore.pet.createPet,
-    schema: petSchema,
-  }),
-  getPet: createApiActions(NS.PET_STORE.GET_PET, {
-    endpoint: petstore.pet.showPetById,
-    schema: petSchema,
   }),
 };
 
