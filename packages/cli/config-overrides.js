@@ -14,8 +14,13 @@ const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
 const stopMock = process.env.MOCK === "false" || process.env.MOCK === "FALSE";
 const antdTheme = importCwd.silent("./antd.theme") || {};
 const defaultServerOpts = { delay: 500 };
-const { serverOpts = defaultServerOpts, db = {}, rewrites = {}, routers = [] } =
-  importCwd.silent("./mock") || {};
+const {
+  serverOpts = defaultServerOpts,
+  db = {},
+  rewrites = {},
+  routers = [],
+  aggregations = {},
+} = importCwd.silent("./mock") || {};
 
 const mockServer = require("@36node/mock-server");
 
@@ -118,7 +123,14 @@ module.exports = {
           });
         }
 
-        mockServer({ app, db, rewrites, routers, shouldMock: shouldMockReq });
+        mockServer({
+          app,
+          db,
+          rewrites,
+          routers,
+          aggregations,
+          shouldMock: shouldMockReq,
+        });
 
         return app;
       }

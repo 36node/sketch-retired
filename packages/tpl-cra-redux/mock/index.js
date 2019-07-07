@@ -23,4 +23,6 @@ module.exports = {
   },
 
   routers: [petsMock.routers],
+
+  aggregations: petsMock.aggregations,
 };
