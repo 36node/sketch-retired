@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.11](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.11.10...@36node/template-cra-redux@0.11.11) (2019-07-07)
+
+
+### Bug Fixes
+
+* devServer aggregation config ([3f6c68b](https://github.com/36node/tpl-react-redux/commit/3f6c68b))
+
+
+
+
+
 ## [0.11.10](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.11.9...@36node/template-cra-redux@0.11.10) (2019-07-06)
 
 **Note:** Version bump only for package @36node/template-cra-redux

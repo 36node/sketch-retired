@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.2](https://github.com/36node/sketch/compare/@36node/sketch@0.13.1...@36node/sketch@0.13.2) (2019-07-07)
+
+
+### Bug Fixes
+
+* devServer aggregation config ([3f6c68b](https://github.com/36node/sketch/commit/3f6c68b))
+
+
+
+
+
 ## [0.13.1](https://github.com/36node/sketch/compare/@36node/sketch@0.13.0...@36node/sketch@0.13.1) (2019-07-06)
 
 **Note:** Version bump only for package @36node/sketch
