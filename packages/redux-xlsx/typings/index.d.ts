@@ -141,3 +141,13 @@ export const ImportStatus: {
   FINISHED: string;
   PAUSE: string;
 };
+
+export const XlsxTypes: {
+  IMPORT: string;
+  IMPORT_HANDLE_RESULT: string;
+  IMPORT_PAUSE: string;
+  IMPORT_RESET: string;
+  SET_IMPORT_STATE: string;
+  SET_EXPORT_STATE: string;
+  EXPORT: string;
+};

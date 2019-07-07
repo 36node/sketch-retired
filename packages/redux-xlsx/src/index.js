@@ -10,6 +10,8 @@ class Xlsx {
 
     if (!reduxPath) {
       this._reduxPath = camelCaseKey(key);
+    } else {
+      this.reduxPath = reduxPath;
     }
   }
 
@@ -91,3 +93,5 @@ export { default as xlsxReducer, ImportStatus } from "./reducer";
 export { createExportSelector, createImportSelector } from "./selector";
 
 export { default as watchXlsx } from "./saga";
+
+export { TYPES as XlsxTypes } from "./action";
