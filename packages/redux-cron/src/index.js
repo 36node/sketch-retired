@@ -7,12 +7,7 @@ export class Cron {
     this._key = key;
 
     this._onTick = onTick;
-
-    if (!reduxPath) {
-      this._reduxPath = camelCaseKey(key);
-    } else {
-      this._reduxPath = reduxPath;
-    }
+    this._reduxPath = camelCaseKey(reduxPath || key);
   }
 
   get key() {

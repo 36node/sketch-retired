@@ -8,11 +8,7 @@ class Xlsx {
     this._importOpts = importOpts;
     this._exportOpts = exportOpts;
 
-    if (!reduxPath) {
-      this._reduxPath = camelCaseKey(key);
-    } else {
-      this.reduxPath = reduxPath;
-    }
+    this._reduxPath = camelCaseKey(reduxPath || key);
   }
 
   get key() {
