@@ -1,4 +1,4 @@
-# Redux form
+# Redux Cron
 
 An redux library for doing cron job
 
