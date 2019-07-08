@@ -1,5 +1,5 @@
 const { safeToNumber, safeToArray } = require("./util.js");
-const { pickBy, startsWith, isNil, trimStart } = require("lodash");
+const { pickBy, startsWith, isNil, trimStart, endsWith } = require("lodash");
 
 /**
  * 将url中的query 转换为 json server 的query 格式
@@ -40,6 +40,14 @@ function toJsonServer(fromUrl) {
   if (!isNil(_populate)) {
     const embed = safeToArray(_populate);
     ret._embed = embed.join(",");
+  }
+
+  // 将 _gt，_lt  转换为 _gte 和 _lte
+  for (const key in filters) {
+    if (endsWith(key, "_lt") || endsWith(key, "_gt")) {
+      filters[key + "e"] = filters[key];
+      delete filters[key];
+    }
   }
 
   return {
