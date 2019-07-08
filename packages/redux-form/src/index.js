@@ -5,9 +5,7 @@ import { camelCaseKey } from "./lib";
 class Form {
   constructor(key, reduxPath) {
     this._key = key;
-    if (!reduxPath) {
-      this._reduxPath = camelCaseKey(key);
-    }
+    this._reduxPath = camelCaseKey(reduxPath || key);
   }
 
   get key() {

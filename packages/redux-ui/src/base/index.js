@@ -3,9 +3,7 @@ import { camelCaseKey } from "../utils";
 export class ReduxUiBase {
   constructor(key, reduxPath) {
     this._key = key;
-    if (!reduxPath) {
-      this._reduxPath = camelCaseKey(key);
-    }
+    this._reduxPath = camelCaseKey(reduxPath || key);
   }
 
   get key() {

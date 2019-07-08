@@ -8,9 +8,7 @@ class Xlsx {
     this._importOpts = importOpts;
     this._exportOpts = exportOpts;
 
-    if (!reduxPath) {
-      this._reduxPath = camelCaseKey(key);
-    }
+    this._reduxPath = camelCaseKey(reduxPath || key);
   }
 
   get key() {
@@ -91,3 +89,5 @@ export { default as xlsxReducer, ImportStatus } from "./reducer";
 export { createExportSelector, createImportSelector } from "./selector";
 
 export { default as watchXlsx } from "./saga";
+
+export { TYPES as XlsxTypes } from "./action";
