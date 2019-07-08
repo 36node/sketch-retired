@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.13](https://github.com/36node/sketch/compare/@36node/redux-xlsx@0.0.12...@36node/redux-xlsx@0.0.13) (2019-07-08)
+
+**Note:** Version bump only for package @36node/redux-xlsx
+
+
+
+
+
 ## [0.0.12](https://github.com/36node/sketch/compare/@36node/redux-xlsx@0.0.11...@36node/redux-xlsx@0.0.12) (2019-07-07)
 
 **Note:** Version bump only for package @36node/redux-xlsx
