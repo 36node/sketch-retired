@@ -1,6 +1,6 @@
 {
   "name": "@36node/mock-server",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A mock server based on json-server",
   "repository": {
     "url": "36node/sketch",
