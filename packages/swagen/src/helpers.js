@@ -161,6 +161,29 @@ export function normalizeQuery(parameters = []) {
 
   const filters = Object.keys(filter).map(k => {
     const param = getParam(k);
+
+    const likeParm = getParam(`${k}_like`);
+
+    // xx_like && xx all in openapi file
+    if (likeParm && param) {
+      return {
+        name: k,
+        schema: {
+          oneOf: [
+            {
+              type: "object",
+              properties: {
+                $regex: {
+                  type: "string",
+                },
+              },
+            },
+            param.schema,
+          ],
+        },
+      };
+    }
+
     if (param) return param;
     else {
       const f = filter[k];
