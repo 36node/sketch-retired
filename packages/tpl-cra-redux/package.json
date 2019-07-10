@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-cra-redux",
-  "version": "0.11.13",
+  "version": "0.11.14",
   "description": "A react boilerplate based on CRA",
   "license": "MIT",
   "publishConfig": {
@@ -57,7 +57,7 @@
   "devDependencies": {
     "@36node/browserslist-config": "^0.1.1",
     "@36node/eslint-config": "^0.6.1",
-    "@36node/sketch": "^0.13.4",
+    "@36node/sketch": "^0.13.5",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
     "@storybook/addon-actions": "^5.0.3",
@@ -79,13 +79,13 @@
   },
   "dependencies": {
     "@36node/fetch": "^0.6.0",
-    "@36node/redux-api": "^0.3.4",
-    "@36node/redux-cron": "^0.0.2",
-    "@36node/redux-form-antd": "^0.0.12",
-    "@36node/redux-ui": "^0.0.19",
-    "@36node/redux-xlsx": "^0.0.14",
-    "@36node/template-react-component": "^0.3.23",
-    "@36node/template-sdk": "^0.10.5",
+    "@36node/redux-api": "^0.3.5",
+    "@36node/redux-cron": "^0.0.3",
+    "@36node/redux-form-antd": "^0.0.13",
+    "@36node/redux-ui": "^0.0.20",
+    "@36node/redux-xlsx": "^0.0.15",
+    "@36node/template-react-component": "^0.3.24",
+    "@36node/template-sdk": "^0.10.6",
     "@types/jest": "^24.0.11",
     "antd": "^3.15.1",
     "history": "^4.9.0",
