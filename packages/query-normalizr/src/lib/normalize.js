@@ -70,9 +70,7 @@ export default function normalize(fromUrl) {
   }, {});
 
   if (!isEmpty(filter)) {
-    ret.filter = camelizeKeys(filter, (key, convert) =>
-      key === "id" ? "_id" : convert(key)
-    );
+    ret.filter = camelizeKeys(filter, (key, convert) => convert(key));
   }
 
   return {
