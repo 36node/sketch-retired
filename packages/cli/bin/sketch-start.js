@@ -3,7 +3,7 @@ const spawn = require("cross-spawn");
 
 const { getPackage } = require("../dist");
 
-program.parse(process.argv);
+program.option("--entry", "main entry file").parse(process.argv);
 
 let command;
 let args = [];
@@ -20,7 +20,7 @@ switch (template) {
   case "tcp":
   case "service":
     command = "nodemon";
-    args = ["--harmony", "-r", "esm", "src/server.js"];
+    args = ["--harmony", "-r", "esm", program.entry || "src/server.js"];
     break;
   default:
     throw new Error(`start ${template} not supported`);
