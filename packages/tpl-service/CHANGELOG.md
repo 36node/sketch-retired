@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.7](https://github.com/36node/sketch/compare/@36node/template-service@0.13.6...@36node/template-service@0.13.7) (2019-07-11)
+
+
+### Bug Fixes
+
+* remove mongoose deprecated warning ([11876e1](https://github.com/36node/sketch/commit/11876e1))
+* type jest move to dev ([8873b02](https://github.com/36node/sketch/commit/8873b02))
+
+
+
+
+
 ## [0.13.6](https://github.com/36node/sketch/compare/@36node/template-service@0.13.5...@36node/template-service@0.13.6) (2019-07-10)
 
 **Note:** Version bump only for package @36node/template-service

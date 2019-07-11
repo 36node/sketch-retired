@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.24](https://github.com/undefined/undefined/compare/@36node/template-cli@0.7.23...@36node/template-cli@0.7.24) (2019-07-11)
+
+
+### Bug Fixes
+
+* type jest move to dev ([8873b02](https://github.com/undefined/undefined/commit/8873b02))
+
+
+
+
+
 ## [0.7.23](https://github.com/undefined/undefined/compare/@36node/template-cli@0.7.22...@36node/template-cli@0.7.23) (2019-07-10)
 
 **Note:** Version bump only for package @36node/template-cli

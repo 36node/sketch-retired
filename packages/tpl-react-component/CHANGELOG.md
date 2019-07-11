@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.25](https://github.com/36node/sketch/compare/@36node/template-react-component@0.3.24...@36node/template-react-component@0.3.25) (2019-07-11)
+
+
+### Bug Fixes
+
+* type jest move to dev ([8873b02](https://github.com/36node/sketch/commit/8873b02))
+
+
+
+
+
 ## [0.3.24](https://github.com/36node/sketch/compare/@36node/template-react-component@0.3.23...@36node/template-react-component@0.3.24) (2019-07-10)
 
 **Note:** Version bump only for package @36node/template-react-component

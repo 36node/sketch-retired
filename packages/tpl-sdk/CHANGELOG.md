@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.7](https://github.com/36node/sketch/compare/@36node/template-sdk@0.10.6...@36node/template-sdk@0.10.7) (2019-07-11)
+
+
+### Bug Fixes
+
+* type jest move to dev ([8873b02](https://github.com/36node/sketch/commit/8873b02))
+
+
+
+
+
 ## [0.10.6](https://github.com/36node/sketch/compare/@36node/template-sdk@0.10.5...@36node/template-sdk@0.10.6) (2019-07-10)
 
 **Note:** Version bump only for package @36node/template-sdk

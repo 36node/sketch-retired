@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.14](https://github.com/36node/sketch/compare/@36node/template-tcp@0.6.13...@36node/template-tcp@0.6.14) (2019-07-11)
+
+
+### Bug Fixes
+
+* type jest move to dev ([8873b02](https://github.com/36node/sketch/commit/8873b02))
+
+
+
+
+
 ## [0.6.13](https://github.com/36node/sketch/compare/@36node/template-tcp@0.6.12...@36node/template-tcp@0.6.13) (2019-07-10)
 
 **Note:** Version bump only for package @36node/template-tcp
