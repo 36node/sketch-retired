@@ -10,6 +10,7 @@ let args = [];
 
 const pkg = getPackage();
 const template = pkg.template || "module";
+const entry = program.entry || "src/server.js";
 
 switch (template) {
   case "cra":
@@ -20,7 +21,7 @@ switch (template) {
   case "tcp":
   case "service":
     command = "nodemon";
-    args = ["--harmony", "-r", "esm", program.entry || "src/server.js"];
+    args = ["--harmony", "-r", "esm", entry];
     break;
   default:
     throw new Error(`start ${template} not supported`);
