@@ -3,7 +3,7 @@ const spawn = require("cross-spawn");
 
 const { getPackage } = require("../dist");
 
-program.option("--entry", "main entry file").parse(process.argv);
+program.option("--entry <file>", "main entry file").parse(process.argv);
 
 let command;
 let args = [];
