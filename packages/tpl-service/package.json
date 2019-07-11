@@ -83,7 +83,6 @@
     "@36node/mongoose-helper": "^0.2.3",
     "@36node/query-normalizr": "^0.4.6",
     "@koa/cors": "^3.0.0",
-    "@types/jest": "^24.0.12",
     "dotenv": "^7.0.0",
     "koa": "^2.7.0",
     "koa-body": "^4.1.0",
