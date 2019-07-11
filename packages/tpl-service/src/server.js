@@ -13,6 +13,7 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_CONNECTION, {
   useCreateIndex: true,
   useNewUrlParser: true,
+  useFindAndModify: false,
   auto_reconnect: true,
   reconnectInterval: 30 * 1000,
   reconnectTries: 1000,

@@ -8,6 +8,7 @@ describe("Pet model", () => {
     mongoose.connect(global.__MONGO_URI__, {
       useCreateIndex: true,
       useNewUrlParser: true,
+      useFindAndModify: false,
     });
   });
 
