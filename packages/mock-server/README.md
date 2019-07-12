@@ -1,5 +1,7 @@
 # @36node/mock-server
 
+[![version][0]][1] [![downloads][2]][3]
+
 mock-server 基于 json-server， 为了更好的提供数据 mock 服务.
 
 ## Install
@@ -393,3 +395,8 @@ Tips:
 
 1. 在返回结果中，birthAt 当前月的起始时间（UTC），如果使用其他粒度，则类似。
 2. 如果同时传入统一字段的多个时间粒度，比如 `_group=birthAt.year&_group=birthAt.month`, 则较小的时间粒度(month)会生效.
+
+[0]: https://img.shields.io/npm/v/@36node/mock-server.svg?style=flat
+[1]: https://npmjs.com/package/@36node/mock-server
+[2]: https://img.shields.io/npm/dm/@36node/mock-server.svg?style=flat
+[3]: https://npmjs.com/package/@36node/mock-server

@@ -1,5 +1,7 @@
 # redux-api
 
+[![version][0]][1] [![downloads][2]][3]
+
 Redux-api is a library which can easily write client to communicate with backends. It generates actions and selectors for making ajax calls to API endpoint. Also, it use saga to change ajax state and save result in redux store with few config.
 
 ## Use
@@ -110,3 +112,8 @@ import { apiSelector } from "@36node/redux-api";
 })
 class SomeContainer extends React.Component {}
 ```
+
+[0]: https://img.shields.io/npm/v/@36node/redux-api.svg?style=flat
+[1]: https://npmjs.com/package/@36node/redux-api
+[2]: https://img.shields.io/npm/dm/@36node/redux-api.svg?style=flat
+[3]: https://npmjs.com/package/@36node/redux-api
