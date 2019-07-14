@@ -46,6 +46,35 @@ visit [jwt.io](jwt.io) for more.
 
 public key and private key in folder `./ssl`
 
+## packages
+
+| package name | version | download|
+|---------|-----------|------------|
+| browserslist-config | ![npm (scoped)](https://img.shields.io/npm/v/@36node/browserslist-config.svg) | ![npm](https://img.shields.io/npm/dm/@36node/browserslist-config.svg) |
+| cli | ![npm (scoped)](https://img.shields.io/npm/v/@36node/sketch.svg) | ![npm](https://img.shields.io/npm/dm/@36node/sketch.svg)
+| eslint-config | ![npm (scoped)](https://img.shields.io/npm/v/@36node/eslint-config.svg) | ![npm](https://img.shields.io/npm/dm/@36node/eslint-config.svg)
+| fastman | ![npm (scoped)](https://img.shields.io/npm/v/@36node/fastman.svg) | ![npm](https://img.shields.io/npm/dm/@36node/fastman.svg)
+| fetch | ![npm (scoped)](https://img.shields.io/npm/v/@36node/fetch.svg) | ![npm](https://img.shields.io/npm/dm/@36node/fetch.svg)
+| koa-health | ![npm (scoped)](https://img.shields.io/npm/v/@36node/koa-health.svg) | ![npm](https://img.shields.io/npm/dm/@36node/koa-health.svg)
+| koa-openapi | ![npm (scoped)](https://img.shields.io/npm/v/@36node/koa-openapi.svg) | ![npm](https://img.shields.io/npm/dm/@36node/koa-openapi.svg)
+| mock-server | ![npm (scoped)](https://img.shields.io/npm/v/@36node/mock-server.svg) | ![npm](https://img.shields.io/npm/dm/@36node/mock-server.svg)
+| mongoose-helper | ![npm (scoped)](https://img.shields.io/npm/v/@36node/mongoose-helper.svg) | ![npm](https://img.shields.io/npm/dm/@36node/mongoose-helper.svg)
+| query-normalizr | ![npm (scoped)](https://img.shields.io/npm/v/@36node/query-normalizr.svg) | ![npm](https://img.shields.io/npm/dm/@36node/query-normalizr.svg)
+| redux-api | ![npm (scoped)](https://img.shields.io/npm/v/@36node/redux-api.svg) | ![npm](https://img.shields.io/npm/dm/@36node/redux-api.svg)
+| redux-cron | ![npm (scoped)](https://img.shields.io/npm/v/@36node/redux-cron.svg) | ![npm](https://img.shields.io/npm/dm/@36node/redux-cron.svg)
+| redux-form | ![npm (scoped)](https://img.shields.io/npm/v/@36node/redux-form.svg) | ![npm](https://img.shields.io/npm/dm/@36node/redux-form.svg)
+| redux-form-antd | ![npm (scoped)](https://img.shields.io/npm/v/@36node/redux-form-antd.svg) | ![npm](https://img.shields.io/npm/dm/@36node/redux-form-antd.svg)
+| redux-ui | ![npm (scoped)](https://img.shields.io/npm/v/@36node/redux-ui.svg) | ![npm](https://img.shields.io/npm/dm/@36node/redux-ui.svg)
+| redux-xlsx | ![npm (scoped)](https://img.shields.io/npm/v/@36node/redux-xlsx.svg) | ![npm](https://img.shields.io/npm/dm/@36node/redux-xlsx.svg)
+| swagen | ![npm (scoped)](https://img.shields.io/npm/v/@36node/swagen.svg) | ![npm](https://img.shields.io/npm/dm/@36node/swagen.svg)
+| tpl-cli | ![npm (scoped)](https://img.shields.io/npm/v/@36node/template-cli.svg) | ![npm](https://img.shields.io/npm/dm/@36node/template-cli.svg)
+| tpl-cra-redux | ![npm (scoped)](https://img.shields.io/npm/v/@36node/template-cra-redux.svg) | ![npm](https://img.shields.io/npm/dm/@36node/template-cra-redux.svg)
+| tpl-module | ![npm (scoped)](https://img.shields.io/npm/v/@36node/template-module.svg) | ![npm](https://img.shields.io/npm/dm/@36node/template-module.svg)
+| tpl-react-component | ![npm (scoped)](https://img.shields.io/npm/v/@36node/template-react-component.svg) | ![npm](https://img.shields.io/npm/dm/@36node/template-react-component.svg)
+| tpl-sdk | ![npm (scoped)](https://img.shields.io/npm/v/@36node/template-sdk.svg) | ![npm](https://img.shields.io/npm/dm/@36node/template-sdk.svg)
+| tpl-service | ![npm (scoped)](https://img.shields.io/npm/v/@36node/template-service.svg) | ![npm](https://img.shields.io/npm/dm/@36node/template-service.svg)
+| tpl-tcp | ![npm (scoped)](https://img.shields.io/npm/v/@36node/template-tcp.svg) | ![npm](https://img.shields.io/npm/dm/@36node/template-tcp.svg)
+
 ## Contributing
 
 1. Fork it!

@@ -37,7 +37,7 @@ Authored and maintained by 36node with help from contributors ([list](https://gi
 
 > [github.com/zzswang](https://github.com/zzswang) · GitHub [@36node](https://github.com/36node)
 
-[0]: https://img.shields.io/npm/v/@36node/sketch.svg?style=flat-square
+[0]: https://img.shields.io/npm/v/@36node/sketch.svg?style=flat
 [1]: https://npmjs.org/package/@36node/sketch
-[2]: https://img.shields.io/npm/dm/@36node/sketch.svg?style=flat-square
+[2]: https://img.shields.io/npm/dm/@36node/sketch.svg?style=flat
 [3]: https://npmjs.org/package/@36node/sketch

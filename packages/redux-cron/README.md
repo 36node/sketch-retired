@@ -2,6 +2,8 @@
 
 An redux library for doing cron job
 
+[![version][0]][1] [![downloads][2]][3]
+
 ## Use
 
 ### Config redux
@@ -68,3 +70,8 @@ const selector = createCronSelector("SOME_KEY");
 // use
 const cronState = selector(state);
 ```
+
+[0]: https://img.shields.io/npm/v/@36node/redux-cron.svg?style=flat
+[1]: https://npmjs.com/package/@36node/redux-cron
+[2]: https://img.shields.io/npm/dm/@36node/redux-cron.svg?style=flat
+[3]: https://npmjs.com/package/@36node/redux-cron

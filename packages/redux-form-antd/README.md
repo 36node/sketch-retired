@@ -1,4 +1,6 @@
-# Redex From Antd
+# Redex Form Antd
+
+[![version][0]][1] [![downloads][2]][3]
 
 A HOC for antd form, to connect @36node/redux-form
 
@@ -190,3 +192,8 @@ export interface ReduxFormAntdProps
   fields: Fields;
 }
 ```
+
+[0]: https://img.shields.io/npm/v/@36node/redux-form-antd.svg?style=flat
+[1]: https://npmjs.com/package/@36node/redux-form-antd
+[2]: https://img.shields.io/npm/dm/@36node/redux-form-antd.svg?style=flat
+[3]: https://npmjs.com/package/@36node/redux-form-antd
