@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/36node/sketch/compare/@36node/mock-server@0.0.6...@36node/mock-server@0.0.7) (2019-07-15)
+
+
+### Bug Fixes
+
+* miss depdency moment ([63d1bb6](https://github.com/36node/sketch/commit/63d1bb6))
+
+
+
+
+
 ## [0.0.6](https://github.com/36node/sketch/compare/@36node/mock-server@0.0.5...@36node/mock-server@0.0.6) (2019-07-10)
 
 **Note:** Version bump only for package @36node/mock-server

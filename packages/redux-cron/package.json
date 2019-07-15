@@ -1,6 +1,6 @@
 {
   "name": "@36node/redux-cron",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "An redux libary for do cron job",
   "repository": {
     "url": "36node/sketch",
@@ -50,8 +50,8 @@
     "redux-saga": "^1.0.2"
   },
   "devDependencies": {
-    "@36node/eslint-config": "^0.6.1",
-    "@36node/sketch": "^0.13.8",
+    "@36node/eslint-config": "^0.6.2",
+    "@36node/sketch": "^0.13.9",
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "@types/jest": "^24.0.12",

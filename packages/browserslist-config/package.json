@@ -1,6 +1,6 @@
 {
   "name": "@36node/browserslist-config",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Browserslist configuration used by 36node team",
   "repository": "36node/sketch",
   "publishConfig": {
