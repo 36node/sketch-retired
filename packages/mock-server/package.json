@@ -23,7 +23,8 @@
     "express": "^4.17.0",
     "humps": "^2.0.1",
     "json-server": "^0.15.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0"
   },
   "scripts": {
     "test": "jest"
