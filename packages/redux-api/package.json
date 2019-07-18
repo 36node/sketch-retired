@@ -1,6 +1,6 @@
 {
   "name": "@36node/redux-api",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "description": "A higher order component decorator for restful apis using Redux and React ",
   "repository": {
     "url": "36node/sketch",

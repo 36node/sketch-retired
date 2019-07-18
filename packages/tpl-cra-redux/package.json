@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-cra-redux",
-  "version": "0.11.18",
+  "version": "0.11.19",
   "description": "A react boilerplate based on CRA",
   "license": "MIT",
   "publishConfig": {
@@ -80,7 +80,7 @@
   },
   "dependencies": {
     "@36node/fetch": "^0.6.0",
-    "@36node/redux-api": "^0.3.9",
+    "@36node/redux-api": "^0.3.10",
     "@36node/redux-cron": "^0.0.7",
     "@36node/redux-form-antd": "^0.0.17",
     "@36node/redux-ui": "^0.0.24",
