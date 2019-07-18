@@ -58,7 +58,7 @@ const customizer = (objValue, srcValue, key, object, source, stack) => {
 
 export function entitiesReducer(state = {}, action) {
   if (action.payload && action.payload.entities) {
-    return mergeWith(state, action.payload.entities, customizer);
+    return mergeWith({}, state, action.payload.entities, customizer);
   }
   return state;
 }
