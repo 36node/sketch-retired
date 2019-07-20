@@ -46,7 +46,7 @@ export default class SDK {
       const { query, headers } = req;
 
       return fetch(`${this.base}/pets`, {
-        method: "get",
+        method: "GET",
         query: denormalize(query),
         headers: { Authorization: this.auth, ...headers },
       });
@@ -63,7 +63,7 @@ export default class SDK {
       if (!body) throw new Error("requetBody is required for createPet");
 
       return fetch(`${this.base}/pets`, {
-        method: "post",
+        method: "POST",
         body,
         headers: { Authorization: this.auth, ...headers },
       });
@@ -80,7 +80,7 @@ export default class SDK {
       if (!petId) throw new Error("petId is required for showPetById");
 
       return fetch(`${this.base}/pets/${petId}`, {
-        method: "get",
+        method: "GET",
         headers: { Authorization: this.auth, ...headers },
       });
     },
@@ -97,7 +97,7 @@ export default class SDK {
       if (!body) throw new Error("requetBody is required for updatePet");
 
       return fetch(`${this.base}/pets/${petId}`, {
-        method: "put",
+        method: "PATCH",
         body,
         headers: { Authorization: this.auth, ...headers },
       });
@@ -114,7 +114,7 @@ export default class SDK {
       if (!petId) throw new Error("petId is required for deletePet");
 
       return fetch(`${this.base}/pets/${petId}`, {
-        method: "delete",
+        method: "DELETE",
         headers: { Authorization: this.auth, ...headers },
       });
     },

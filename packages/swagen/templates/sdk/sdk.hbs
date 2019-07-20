@@ -82,7 +82,7 @@ export default class SDK {
       {{/with}}
 
       return fetch(`${this.base}{{toDollar path}}`, {
-        method: "{{method}}",
+        method: "{{toUpperCase method}}",
         {{#withParamQuery parameters}}
         query: denormalize(query),
         {{/withParamQuery}}

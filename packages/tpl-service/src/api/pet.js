@@ -87,7 +87,7 @@ export default class API {
     router.get("/pets", ...this.middlewares("listPets"), listPets);
     router.post("/pets", ...this.middlewares("createPet"), createPet);
     router.get("/pets/:petId", ...this.middlewares("showPetById"), showPetById);
-    router.put("/pets/:petId", ...this.middlewares("updatePet"), updatePet);
+    router.patch("/pets/:petId", ...this.middlewares("updatePet"), updatePet);
     router.delete("/pets/:petId", ...this.middlewares("deletePet"), deletePet);
   }
 

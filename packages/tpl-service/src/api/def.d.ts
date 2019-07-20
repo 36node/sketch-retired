@@ -3,18 +3,28 @@ interface ListPetsRequest {
     limit?: number;
     offset?: number;
     sort?: string;
+    select?: string;
+    group?: string | [string];
 
     filter: {
       tag?: string;
       age: {
         $gt?: number;
       };
+      birthAt: {
+        $gt?: string;
+        $lt?: string;
+      };
+      grade: {
+        $gt?: string;
+        $lt?: string;
+      };
     };
   };
 }
 
 interface ListPetsResponse {
-  body: Array<Pet>;
+  body: [Pet];
   headers: {
     xTotalCount: number;
   };
@@ -49,16 +59,20 @@ interface DeletePetRequest {
   petId: string;
 }
 
-interface Pet {
-  id: string;
-  age: number;
-  name: string;
-  tag: string;
-}
 interface PetDoc {
   name: string;
-  tag: string;
+  tag: "DOG" | "CAT";
   age: number;
+  birthAt: string;
+  grade: number;
+}
+interface Pet {
+  id: string;
+  name: string;
+  tag: "DOG" | "CAT";
+  age: number;
+  birthAt: string;
+  grade: number;
 }
 interface Err {
   code: string;

@@ -299,3 +299,7 @@ Handlebars.registerHelper("toRoute", function(path) {
 Handlebars.registerHelper("toDollar", function(path) {
   return path.replace(/{(.*?)}/g, "$$$&");
 });
+
+Handlebars.registerHelper("toUpperCase", function(str) {
+  return str.toUpperCase();
+});

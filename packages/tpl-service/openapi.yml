@@ -221,7 +221,7 @@ paths:
         "500":
           $ref: "#/components/responses/InternalError"
 
-    put:
+    patch:
       summary: Update pet
       operationId: updatePet
       tags:
