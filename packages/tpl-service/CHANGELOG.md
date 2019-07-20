@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.11](https://github.com/36node/sketch/compare/@36node/template-service@0.13.10...@36node/template-service@0.13.11) (2019-07-20)
+
+
+### Bug Fixes
+
+* sdk metho to upper case ([6e3f984](https://github.com/36node/sketch/commit/6e3f984))
+
+
+
+
+
 ## [0.13.10](https://github.com/36node/sketch/compare/@36node/template-service@0.13.9...@36node/template-service@0.13.10) (2019-07-15)
 
 **Note:** Version bump only for package @36node/template-service
