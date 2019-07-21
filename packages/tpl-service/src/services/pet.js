@@ -1,7 +1,7 @@
 import { pick } from "lodash";
 
 import API from "../api/pet";
-import Pet from "../models/pet";
+import { PetModel } from "../models";
 
 export class Service extends API {
   /**
@@ -14,7 +14,7 @@ export class Service extends API {
     const load = async (ctx, next) => {
       let { petId } = ctx.params;
       if (petId) {
-        ctx.state.pet = await Pet.get(petId);
+        ctx.state.pet = await PetModel.get(petId);
         if (!ctx.state.pet) {
           throw ctx.throw(404, `pet ${petId} not found.`);
         }
@@ -33,7 +33,7 @@ export class Service extends API {
    */
   async listPets(req, ctx) {
     const { limit = 10, offset = 0, sort, filter } = req.query;
-    const result = await Pet.list({ limit, offset, sort, filter });
+    const result = await PetModel.list({ limit, offset, sort, filter });
 
     return {
       body: result.docs,
@@ -50,9 +50,9 @@ export class Service extends API {
    * @param {import("koa").Context} ctx koa context
    * @returns {CreatePetsResponse} The Pet created
    */
-  async createPets(req, ctx) {
+  async createPet(req, ctx) {
     const { body } = req;
-    const pet = await Pet.create(body);
+    const pet = await PetModel.create(body);
     return { body: pet };
   }
 

@@ -24,20 +24,18 @@
     "openapi.yml",
     "README.md"
   ],
-  "bin": {
-    "start": "bin/server.js"
-  },
   "config-overrides-path": "../cli/config-overrides",
   "main": "dist/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "sketch build src/{server,index}.js",
+    "build": "sketch build src/{job, server,index}.js",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "gen:api": "swagen koa openapi.yml ./src/api && npm run format",
     "gen:postman": "swagen postman openapi.yml postman.json",
     "lint": "sketch lint src",
     "release": "standard-version",
-    "start": "sketch start",
+    "start": "sketch start | pino-pretty -i hostname,pid -t 'SYS:yyyy-mm-dd HH:MM:ss'",
+    "start:job": "sketch start --entry src/job.js | pino-pretty -i hostname,pid -t 'SYS:yyyy-mm-dd HH:MM:ss'",
     "test": "sketch test",
     "test:int": "sketch test -c test/jest.config.js"
   },
@@ -74,6 +72,7 @@
     "jest-runner-newman": "^1.0.5",
     "lint-staged": "^8.1.5",
     "newman": "^4.4.1",
+    "pino-pretty": "^3.2.0",
     "prettier": "1.17.1",
     "standard-version": "^6.0.1"
   },
