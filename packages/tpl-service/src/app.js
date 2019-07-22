@@ -11,13 +11,14 @@ import koaPinoLogger from "koa-pino-logger";
 import jwt from "koa-jwt";
 import Router from "koa-tree-router";
 import { queryNormalizr } from "@36node/query-normalizr";
+import health from "@36node/koa-health";
+import openapi from "@36node/koa-openapi";
 
 import logger from "./lib/log";
 import { BASE, NODE_ENV } from "./config";
-import health from "@36node/koa-health";
-import openapi from "@36node/koa-openapi";
-import petsService from "./services/pet";
+import { petService } from "./services";
 import pkg from "../package.json";
+import { someMid } from "./middlewares";
 
 const app = new Koa2();
 const router = new Router({ prefix: BASE });
@@ -27,7 +28,7 @@ const openapiFile = fs.createReadStream(path.join(__dirname, "../openapi.yml"));
 /**
  * register services
  */
-petsService.bind(router);
+petService.bind(router);
 
 /**
  * logger
@@ -49,6 +50,7 @@ app
   .use(cors({ exposeHeaders: ["Link", "X-Total-Count"] }))
   .use(jwt({ secret: publicKey }))
   .use(body())
+  .use(someMid())
   .use(queryNormalizr())
   .use(compress({ threshold: 2048 }))
   .use(router.routes());

@@ -23,4 +23,6 @@ COPY --from=build /build/node_modules node_modules/
 COPY ./ ./
 
 # Start
-CMD bin/server.js
+CMD dist/server.js
+# Start Job
+# CMD dist/job.js
