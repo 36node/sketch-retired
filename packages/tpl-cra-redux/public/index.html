@@ -28,7 +28,8 @@
     </noscript>
     <script>
       (function initRuntimeConfig() {
-        'use runtime env';
+        var magic = 'use runtime env';
+        eval('magic="no uglify here"');
       })();
     </script>
     <div id="root"></div>
