@@ -1,4 +1,4 @@
-FROM zzswang/docker-nginx-react:v0.5.0
+FROM zzswang/docker-nginx-react:v0.8.0
 
 ENV DEBUG=off \
   NODE_ENV=production \
