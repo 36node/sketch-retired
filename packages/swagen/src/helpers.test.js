@@ -207,17 +207,17 @@ const ListParamsNStr = `
     _exist?: string;
 
     filter:{
-        tag?: [string];
-        age: {
+        "tag"?: [string];
+        "age": {
             $gt?: number;
             $lt?: number;
         }
-        level: {
+        "level": {
             $gte?: number;
             $lte?: number;
         }
-        type?: [string];
-        plate: {
+        "type"?: [string];
+        "plate": {
             $regex?: string;
         }
     }
