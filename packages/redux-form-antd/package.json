@@ -1,6 +1,6 @@
 {
   "name": "@36node/redux-form-antd",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "A higher order component decorator form using @36node/redux-form and antd form",
   "repository": {
     "url": "36node/sketch",
@@ -42,7 +42,7 @@
     ]
   },
   "dependencies": {
-    "@36node/redux-form": "^0.0.20",
+    "@36node/redux-form": "^0.0.21",
     "@types/react": "^16.8.8",
     "@types/react-redux": "^7.1.0",
     "lodash": "^4.17.11"

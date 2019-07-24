@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.27](https://github.com/36node/sketch/compare/@36node/redux-ui@0.0.26...@36node/redux-ui@0.0.27) (2019-07-24)
+
+
+### Bug Fixes
+
+* some index.d.ts errors ([f7337e0](https://github.com/36node/sketch/commit/f7337e0))
+
+
+
+
+
 ## [0.0.26](https://github.com/36node/sketch/compare/@36node/redux-ui@0.0.25...@36node/redux-ui@0.0.26) (2019-07-24)
 
 **Note:** Version bump only for package @36node/redux-ui
