@@ -211,10 +211,10 @@ export function normalizeQuery(parameters = []) {
     filter:{
       {{#each filters}}
         {{#if (not operators)}}
-        {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
+        "{{name}}"{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
         {{/if}}
         {{#if operators}}
-        {{name}}: {
+        "{{name}}": {
           {{#each operators}}
             {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
           {{/each}}
@@ -250,7 +250,7 @@ Handlebars.registerHelper("withParamQuery", function(parameters, options) {
 });
 
 Handlebars.registerHelper("normalizeQuery", function(parameters) {
-  return normalizeQuery(parameters);
+  return new Handlebars.SafeString(normalizeQuery(parameters));
 });
 
 Handlebars.registerHelper("withParamHeader", function(parameters, options) {
