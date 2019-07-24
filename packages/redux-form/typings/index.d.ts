@@ -69,7 +69,7 @@ export interface FormActions {
     name: String,
     fieldState: FieldState,
     meta?: Object
-  ) => SetAction;
+  ) => ChangeFieldAction;
   changeMutilFields: (
     fields: [FieldState],
     meta?: Object

@@ -154,7 +154,7 @@ declare module "@36node/redux-ui" {
   export function createAssignActions(
     key: String,
     opts?: Assign.Options
-  ): AssignActions;
+  ): Assign.Actions;
 
   export const assignReducer: Reducer;
 
