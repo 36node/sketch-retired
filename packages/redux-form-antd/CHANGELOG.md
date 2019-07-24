@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.19](https://github.com/36node/sketch/compare/@36node/redux-form-antd@0.0.18...@36node/redux-form-antd@0.0.19) (2019-07-24)
+
+**Note:** Version bump only for package @36node/redux-form-antd
+
+
+
+
+
 ## [0.0.18](https://github.com/36node/sketch/compare/@36node/redux-form-antd@0.0.17...@36node/redux-form-antd@0.0.18) (2019-07-20)
 
 **Note:** Version bump only for package @36node/redux-form-antd

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.4](https://github.com/36node/sketch/compare/@36node/swagen@0.13.3...@36node/swagen@0.13.4) (2019-07-24)
+
+
+### Bug Fixes
+
+* support vehicle.model in swagen query, close [#134](https://github.com/36node/sketch/issues/134) ([87363b0](https://github.com/36node/sketch/commit/87363b0))
+* test ([9bfd257](https://github.com/36node/sketch/commit/9bfd257))
+
+
+
+
+
 ## [0.13.3](https://github.com/36node/sketch/compare/@36node/swagen@0.13.2...@36node/swagen@0.13.3) (2019-07-20)
 
 
