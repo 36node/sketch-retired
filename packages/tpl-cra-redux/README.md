@@ -66,10 +66,10 @@ module.exports = {
 note: _这段写起来难度有点大，先用中文写_
 
 ```sh
-yarn storybook
+yarn styleguide
 ```
 
-会打开 storybook 界面，专门用于组件开发
+会打开 styleguide 界面，专门用于组件开发
 
 ### 基本哲学
 
@@ -85,7 +85,7 @@ yarn storybook
 
 - Antd
 - React-Router v4
-- Story-Book
+- Style Guide
 - React-Media
 - Redux
 - Saga
@@ -107,7 +107,6 @@ src
 ├── sagas
 ├── sdk
 ├── selectors
-├── stories
 ├── app.js
 ├── config.js
 ├── constants.js
@@ -151,8 +150,6 @@ global.js   ## 公共的 action
 - 如果是一个复杂组件，需要用数据来辅助测试，那么单独建立一个数据文件 fixtures.js
 
 无状态对一个组件来说是十分重要的，如果确实存在一些行为只在组件内部起作用，可以考虑做成非受控组件，或者用 uncontrollable 组件来包装。
-
-组件还会有样例在 storybook 中体现。
 
 #### containers
 
@@ -232,10 +229,6 @@ vehicle.js  ## 车辆详情
 global.js   ## 公共的 selectors
 ```
 
-#### stories
-
-`storybook` 的目录，用来展示 `components` 下的组件，是组件化开发的实践基础。
-
 #### 根目录文件
 
 - app.js: 应用总入口，跟路由和 `layout` 在这里
@@ -271,11 +264,13 @@ REACT_APP_STORE_BASE=https://api.36node.com/petstore/v0
 
 ### 容器化部署配置
 
-通过Docker镜像部署时，添加环境变量
+通过 Docker 镜像部署时，添加环境变量
+
 ```sh
 REACT_APP_STORE_BASE=https://api.36node.com/petstore/v0
 ```
-将覆盖编译时的REACT_APP_STORE_BASE配置。
+
+将覆盖编译时的 REACT_APP_STORE_BASE 配置。
 
 ## Author
 
