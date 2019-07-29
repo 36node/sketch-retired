@@ -1,9 +1,13 @@
 laylout example:
 
 ```js
-import "antd/dist/antd.css";
+import Container from "./container";
+import Content from "./content";
+import Footer from "./footer";
+import Header from "./header";
+import Jumbotron from "./jumbotron";
+import Title from "./title";
 import { Layout } from "antd";
-import { Container, Content, Footer, Jumbotron, Title, Header } from ".";
 
 <Layout>
   <Header>Here are the Header. </Header>

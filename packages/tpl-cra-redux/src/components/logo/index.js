@@ -19,4 +19,5 @@ const Logo = styled.img.attrs({ src: svg })`
   float: left;
 `;
 
+/** @component */
 export default Logo;

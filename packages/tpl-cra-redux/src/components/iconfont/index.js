@@ -10,4 +10,5 @@ IconFont.propTypes = {
   type: PropTypes.string,
 };
 
+/** @component */
 export default IconFont;
