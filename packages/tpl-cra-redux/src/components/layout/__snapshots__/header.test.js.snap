@@ -2,9 +2,8 @@
 
 exports[`should renders correctly 1`] = `
 .c0 {
-  position: fixed;
-  z-index: 1;
   width: 100%;
+  color: white;
 }
 
 <header
