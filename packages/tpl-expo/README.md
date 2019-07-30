@@ -26,6 +26,33 @@
 3. Register for apple developer(For iOS only)
 4. Register for Android key? (Need to be confirmed)
 5. Install Expo on iOS and Android for testing on mobiles
+6. Install `expo-cli` by `npm install -g expo-cli` or `yarn global add expo-cli` 
+
+### How to run
+
+1. `yarn`
+2. `yarn start` then do as the promotion.
+3. You can make actions such as `Run on iOS simulator` or `Run on Android device/emulator`
+
+#### How to run as ios
+
+1. Run `yarn start:ios` then iOS simulator will start.
+2. Find `Expo` app on iOS simulator and open it.
+3. Open your app in `Expo` and you will find the page.
+
+#### How to run as android
+
+1. Install `expo` on your android phone.
+2. Toggle your android phone `debugger mode` to `on`.
+3. Plug your android phone to your computer.
+4. Run `yarn start:android`.
+5. Open `expo` on your phone and start develop.
+
+### How to test
+
+Run `yarn test`
+
+
 
 ### CircleCi
 

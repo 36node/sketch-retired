@@ -6,6 +6,40 @@ import { get, set } from "lodash";
 import download from "./download-npm-package";
 import * as jsonfile from "./lib/jsonfile-then";
 
+async function initExpo(tpl, dest = ".", options = {}, spinner) {
+  try {
+    const pkgFile = path.join(dest, "package.json");
+    const pkgJson = await jsonfile.readFile(pkgFile);
+    delete pkgJson.version;
+    delete pkgJson.name;
+    await jsonfile.writeFile(pkgFile, pkgJson, { spaces: 2 });
+    spinner.succeed(`Package.json cooked! ${path.resolve(dest)}`);
+  } catch (err) {
+    spinner.fail("Modifying package.json failed.");
+    throw err;
+  }
+
+  try {
+    spinner.text = "Modifying app.json ...";
+    spinner.start();
+    const appFile = path.join(dest, "app.json");
+    const appJson = await jsonfile.readFile(appFile);
+
+    let { appName, appSlug, bundleIdentifier, androidPackage } = options;
+    appJson.expo.version = "0.0.0";
+
+    appJson.expo.name = appName;
+    appJson.expo.slug = appSlug;
+    appJson.expo.ios.bundleIdentifier = bundleIdentifier;
+    appJson.expo.android.package = androidPackage;
+    await jsonfile.writeFile(appFile, appJson, { spaces: 2 });
+    spinner.succeed(`App.json cooked! ${path.resolve(dest)}`);
+  } catch (err) {
+    spinner.fail("Modifying app.json failed.");
+    throw err;
+  }
+}
+
 export default async function init(tpl, dest = ".", options = {}) {
   const pkg = `@36node/template-${tpl}`;
   const spinner = ora(`Downloading template ${pkg}...`);
@@ -30,6 +64,10 @@ export default async function init(tpl, dest = ".", options = {}) {
   } catch (err) {
     spinner.fail("Generating basic files failed!");
     throw err;
+  }
+
+  if (tpl === "expo") {
+    return initExpo(tpl, dest, options, spinner);
   }
 
   try {

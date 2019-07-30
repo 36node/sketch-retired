@@ -33,7 +33,6 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^5.1.1",
-    "expo-cli": "^2.21.1",
     "jest-expo": "^33.0.2",
     "react-test-renderer": "^16.8.6"
   },
