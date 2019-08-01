@@ -95,7 +95,7 @@ describe("Test xlsx lib", () => {
         { s: { r: 0, c: 3 }, e: { r: 0, c: 4 } },
         { s: { r: 0, c: 5 }, e: { r: 0, c: 5 } },
       ],
-      "!ref": "A1:G6",
+      "!ref": "A1:G5",
     };
 
     expect(ws).toEqual(expected);

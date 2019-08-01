@@ -50,7 +50,7 @@ export function toJsonData(columns = [], ws = {}) {
 
     const ret = [];
     // 数据每行循环
-    for (let r = headerRows + 1; r < range.e.r; r++) {
+    for (let r = headerRows + 1; r <= range.e.r; r++) {
       const row = {};
       for (let c = 0; c < range.e.c; c++) {
         const column = colMap.get(c);
@@ -154,7 +154,7 @@ export function toTableData(columns = [], data = []) {
     tableData["!merges"] = merges;
     tableData["!ref"] = XLSX.utils.encode_range({
       s: { r: 0, c: 0 },
-      e: { r: row, c: flatColumns.length },
+      e: { r: row - 1, c: flatColumns.length },
     });
 
     resolve(tableData);
