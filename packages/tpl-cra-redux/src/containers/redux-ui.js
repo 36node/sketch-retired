@@ -4,9 +4,8 @@
 
 import React, { Component, PureComponent } from "react";
 import DocumentTitle from "react-document-title";
-import { Container, Jumbotron } from "../components/layout";
-import { reduxUiActions } from "../actions";
 import { connect } from "react-redux";
+import { isNil } from "lodash";
 import {
   Switch,
   Row,
@@ -20,10 +19,14 @@ import {
   Divider,
   Progress,
 } from "antd";
+
+import Layout from "../components/layout";
+
+import { reduxUiActions } from "../actions";
 import { reduxUiSelectors } from "../selectors";
-import { isNil } from "lodash";
 
 const Option = Select.Option;
+const { Container, Jumbotron } = Layout;
 
 @connect(state => {
   const step = reduxUiSelectors.progressExample(state).step;

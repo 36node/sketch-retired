@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import DocumentTitle from "react-document-title";
-import { Container, Jumbotron } from "../components/layout";
+import Layout from "../components/layout";
+
 import {
   Divider,
   Table,
@@ -18,6 +19,7 @@ import { connect } from "react-redux";
 import { isEmpty } from "lodash";
 import createForm from "@36node/redux-form-antd";
 
+const { Container, Jumbotron } = Layout;
 const TableColumns = [
   { title: "name", dataIndex: "name", key: "name" },
   { title: "owner", dataIndex: "owner", key: "owner" },

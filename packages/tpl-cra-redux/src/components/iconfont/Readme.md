@@ -31,8 +31,8 @@ const Icons = [
 
 <Box>
   {Icons.map(i => (
-    <Icon>
-      <IconFont type={i} key={i} />
+    <Icon key={i}>
+      <IconFont type={i} />
       <div>{i}</div>
     </Icon>
   ))}

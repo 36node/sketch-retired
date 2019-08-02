@@ -1,12 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Layout, Form, Icon, Input, Button, Checkbox } from "antd";
+import { Form, Icon, Input, Button, Checkbox } from "antd";
 import styled from "styled-components";
 import DocumentTitle from "react-document-title";
 
+import Layout from "../components/layout";
+
 import { globalActions } from "../actions";
 
-import { Content } from "../components/layout";
+const { Content } = Layout;
 
 const FormItem = Form.Item;
 

@@ -3,11 +3,13 @@ import MediaQuery from "react-responsive";
 import { connect } from "react-redux";
 import DocumentTitle from "react-document-title";
 import { Button, Row } from "antd";
-import { Container, Jumbotron } from "../components/layout";
-
 import Sample from "@36node/template-react-component";
 
+import Layout from "../components/layout";
+
 import { globalActions } from "../actions";
+
+const { Container, Jumbotron } = Layout;
 
 @connect(state => ({}))
 export default class extends React.PureComponent {

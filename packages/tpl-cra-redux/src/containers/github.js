@@ -2,10 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import DocumentTitle from "react-document-title";
 
+import Layout from "../components/layout";
+
 import { githubActions } from "../actions";
 import { githubSelectors } from "../selectors";
 
-import { Container, Jumbotron } from "../components/layout";
+const { Container, Jumbotron } = Layout;
 
 @connect(state => {
   const listReposState = githubSelectors.listRepos(state) || {};
