@@ -1,4 +1,4 @@
-Loading example:
+# Loading example
 
 ```js
 <Loading />

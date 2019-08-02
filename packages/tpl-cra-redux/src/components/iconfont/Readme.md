@@ -1,4 +1,4 @@
-IconFont example:
+# IconFont example
 
 ```js
 import React, { PureComponent } from "react";

@@ -1,4 +1,4 @@
-Logo example:
+# Logo example
 
 ```js
 <Logo />

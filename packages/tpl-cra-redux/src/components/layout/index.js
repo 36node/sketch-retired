@@ -1,4 +1,4 @@
-import { Layout } from "antd";
+import { Layout as LayoutOrign } from "antd";
 import styled from "styled-components";
 
 import Container from "./container";
@@ -8,16 +8,16 @@ import Header from "./header";
 import Jumbotron from "./jumbotron";
 import Title from "./title";
 
-const LayoutExt = styled(Layout)`
+const Layout = styled(LayoutOrign)`
   width: 100%;
 `;
 
-LayoutExt.Container = Container;
-LayoutExt.Content = Content;
-LayoutExt.Footer = Footer;
-LayoutExt.Header = Header;
-LayoutExt.Jumbotron = Jumbotron;
-LayoutExt.Title = Title;
+Layout.Container = Container;
+Layout.Content = Content;
+Layout.Footer = Footer;
+Layout.Header = Header;
+Layout.Jumbotron = Jumbotron;
+Layout.Title = Title;
 
 /** @component */
-export default LayoutExt;
+export default Layout;
