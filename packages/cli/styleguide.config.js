@@ -1,5 +1,7 @@
 const { override, addBabelPlugin, addLessLoader } = require("customize-cra");
-const antdTheme = require("./antd.theme");
+const importCwd = require("import-cwd");
+const antdTheme = importCwd.silent("./antd.theme") || {};
+const path = require("path");
 
 const webpackConfig = override(
   // for styled-components
@@ -25,4 +27,5 @@ const webpackConfig = override(
 module.exports = {
   webpackConfig,
   skipComponentsWithoutExample: true,
+  components: path.join(process.cwd(), "src/components/**/*.js"),
 };
