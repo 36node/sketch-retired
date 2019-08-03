@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import DocumentTitle from "react-document-title";
-import { Container, Jumbotron } from "../components/layout";
+import Layout from "../components/layout";
 
 import {
   Switch,
@@ -16,6 +16,7 @@ import {
 import createForm from "@36node/redux-form-antd";
 
 const Option = Select.Option;
+const { Container, Jumbotron } = Layout;
 
 // use hoc to bind antd form and redux-form
 @createForm("SAMPLE_FORM")

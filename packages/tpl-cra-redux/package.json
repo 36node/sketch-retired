@@ -13,7 +13,6 @@
   "template": "cra-redux",
   "files": [
     ".circleci",
-    ".storybook",
     "bin",
     "mock",
     "public",
@@ -33,8 +32,9 @@
     "release": "standard-version",
     "server": "serve -s build",
     "start": "REACT_APP_VERSION=$npm_package_version sketch start",
-    "storybook": "start-storybook -p 9009 -s public",
-    "test": "sketch test --env=jsdom"
+    "test": "sketch test --env=jsdom",
+    "styleguide": "styleguidist server --config ../cli/styleguide.config.js",
+    "styleguide:build": "styleguidist build --config ../cli/styleguide.config.js"
   },
   "commitlint": {
     "extends": [
@@ -60,14 +60,6 @@
     "@36node/sketch": "^0.13.11",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
-    "@storybook/addon-actions": "^5.0.3",
-    "@storybook/addon-info": "^5.0.6",
-    "@storybook/addon-knobs": "^5.0.6",
-    "@storybook/addon-links": "^5.0.3",
-    "@storybook/addon-notes": "^5.0.6",
-    "@storybook/addon-viewport": "^5.0.6",
-    "@storybook/addons": "^5.0.3",
-    "@storybook/react": "^5.0.3",
     "@types/jest": "^24.0.11",
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
@@ -76,6 +68,7 @@
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
     "prettier": "1.17.1",
+    "react-styleguidist": "^9.1.13",
     "standard-version": "^6.0.1"
   },
   "dependencies": {

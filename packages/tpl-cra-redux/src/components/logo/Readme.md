@@ -1,0 +1,5 @@
+# Logo example
+
+```js
+<Logo />
+```

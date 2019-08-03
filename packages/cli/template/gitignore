@@ -58,3 +58,6 @@ tmp
 # try files
 .try*
 .playground
+
+# styleguide
+styleguide

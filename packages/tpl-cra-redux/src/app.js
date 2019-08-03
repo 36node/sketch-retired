@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader/root";
 import { Router, Route, Switch } from "react-router-dom";
-import { Layout, Breadcrumb } from "antd";
+import { Breadcrumb } from "antd";
 import Loadable from "react-loadable";
 
 import { history } from "./lib";
-import ProtectedRoute from "./containers/protect";
 
-import Nav from "./containers/nav";
-import Logo from "./components/logo";
-import Loading from "./components/loading";
-import { Content, Footer, Header } from "./components/layout";
+import ProtectedRoute from "./containers/protect";
 import ReduxForm from "./containers/redux-form";
 import ReduxXlsx from "./containers/redux-xlsx";
+import Nav from "./containers/nav";
+import Layout from "./components/layout";
+import Logo from "./components/logo";
+import Loading from "./components/loading";
+
+const { Content, Footer, Header } = Layout;
 
 const Home = Loadable({
   loader: () => import("./containers/home"),

@@ -7,9 +7,11 @@ import { petStoreSelectors } from "../selectors";
 import { Table, Card, Select, Button } from "antd";
 import { isEmpty } from "lodash";
 
-import { Container } from "../components/layout";
+import Layout from "../components/layout";
 import styled from "styled-components";
 import { CronStatus } from "@36node/redux-cron";
+
+const { Container } = Layout;
 
 /**
  * Pets table

@@ -17,6 +17,7 @@ class Loading extends Component {
   }
 }
 
+/** @component */
 export default styled(Loading)`
   height: 100vh;
   width: 100%;

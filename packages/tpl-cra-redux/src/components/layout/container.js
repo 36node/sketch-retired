@@ -6,4 +6,5 @@ const Container = styled.div`
   min-height: 280px;
 `;
 
+/** @component */
 export default Container;

@@ -1,6 +1,7 @@
 import path from "path";
 import ora from "ora";
 import { copy, remove, move } from "fs-extra";
+import { get, set } from "lodash";
 
 import download from "./download-npm-package";
 import * as jsonfile from "./lib/jsonfile-then";
@@ -49,6 +50,23 @@ export default async function init(tpl, dest = ".", options = {}) {
       pkgJson["config-overrides-path"] =
         "node_modules/@36node/sketch/config-overrides";
     }
+
+    if (get(pkgJson, "scripts.styleguide")) {
+      set(
+        pkgJson,
+        "scripts.styleguide",
+        "styleguidist server --config node_modules/@36node/sketch/styleguide.config.js"
+      );
+    }
+
+    if (get(pkgJson, "scripts.styleguide:build")) {
+      set(
+        pkgJson,
+        "scripts.styleguide:build",
+        "styleguidist build --config node_modules/@36node/sketch/styleguide.config.js"
+      );
+    }
+
     await jsonfile.writeFile(pkgFile, pkgJson, { spaces: 2 });
     spinner.succeed(`Package.json cooked! ${path.resolve(dest)}`);
   } catch (err) {
