@@ -12,4 +12,5 @@ program
   .command("lint [dest]", "use eslint to check js language")
   .command("start", "start development")
   .command("test [pattern]", "test package")
+  .command("clean", "clean package")
   .parse(process.argv);
