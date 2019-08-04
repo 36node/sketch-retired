@@ -20,6 +20,12 @@ const Home = Loadable({
   loader: () => import("./containers/home"),
   loading: Loading,
 });
+const Login = Loadable({
+  loader: () => import("./containers/login"),
+  loading: Loading,
+});
+
+// extra sample code begin
 const PetStore = Loadable({
   loader: () => import("./containers/pet-store"),
   loading: Loading,
@@ -28,16 +34,11 @@ const Github = Loadable({
   loader: () => import("./containers/github"),
   loading: Loading,
 });
-
-const Login = Loadable({
-  loader: () => import("./containers/login"),
-  loading: Loading,
-});
-
 const ReduxUi = Loadable({
   loader: () => import("./containers/redux-ui"),
   loading: Loading,
 });
+// extra sample code end
 
 class App extends Component {
   render() {
@@ -61,15 +62,19 @@ const Main = () => (
     <Content>
       <Breadcrumb style={{ margin: "16px 0" }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
+        {/* extra sample code begin */}
         <Breadcrumb.Item>PetStore</Breadcrumb.Item>
         <Breadcrumb.Item>Github</Breadcrumb.Item>
+        {/* extra sample code end */}
       </Breadcrumb>
       <Route path="/" exact component={Home} />
+      {/* extra sample code begin */}
       <Route path="/github" component={Github} />
       <Route path="/pet-store" component={PetStore} />
       <Route path="/redux-ui" component={ReduxUi} />
       <Route path="/redux-form" component={ReduxForm} />
       <Route path="/redux-xlsx" component={ReduxXlsx} />
+      {/* extra sample code end */}
     </Content>
     <Footer>Template-CRA-Redux ©2019 Created by 36node</Footer>
   </Layout>
