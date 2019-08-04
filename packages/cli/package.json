@@ -26,6 +26,7 @@
   "typings": "typings/index.d.ts",
   "scripts": {
     "build": "microbundle build --format cjs",
+    "dev": "microbundle watch --format cjs",
     "test": "react-scripts test --env=node"
   },
   "dependencies": {
