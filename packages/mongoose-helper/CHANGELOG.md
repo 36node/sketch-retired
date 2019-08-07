@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.2.4...@36node/mongoose-helper@0.2.5) (2019-08-07)
+
+
+### Bug Fixes
+
+* boolean filter parse ([ca50919](https://github.com/36node/sketch/commit/ca50919))
+
+
+
+
+
 ## [0.2.4](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.2.3...@36node/mongoose-helper@0.2.4) (2019-08-07)
 
 
