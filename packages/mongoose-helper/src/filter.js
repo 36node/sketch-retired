@@ -1,4 +1,5 @@
 import { camelizeKeys } from "humps";
+import { isNil } from "lodash";
 
 /**
  * Build filter for list function
@@ -14,7 +15,7 @@ export default function build(raw, schema) {
     // 参考：https://github.com/36node/sketch/blob/master/packages/query-normalizr/README.md#query-in-service-qis
 
     let val = raw[key];
-    if (!val) return acc;
+    if (isNil(val)) return acc;
 
     // array
     if (Array.isArray(val)) {
@@ -51,6 +52,8 @@ export default function build(raw, schema) {
 
     if (key === "q") acc["$text"] = { $search: val };
     // TODO: should use schema.Path(key) to get type
+    else if (val === "true") acc[key] = true;
+    else if (val === "false") acc[key] = false;
     else if (val === "*") acc[key] = { $ne: [] };
     else if (val === "none") acc[key] = { $eq: [] };
     else acc[key] = val;

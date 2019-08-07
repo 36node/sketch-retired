@@ -38,6 +38,30 @@ test("should build filter * and none", () => {
   });
 });
 
+test("should build filter 'true' or 'false'", () => {
+  const raw = {
+    onsite: "true",
+    toggle: "false",
+  };
+
+  expect(build(raw)).toEqual({
+    onsite: true,
+    toggle: false,
+  });
+});
+
+test("should not build filter true or false", () => {
+  const raw = {
+    onsite: true,
+    toggle: false,
+  };
+
+  expect(build(raw)).toEqual({
+    onsite: true,
+    toggle: false,
+  });
+});
+
 test("should build filter q", () => {
   const raw = {
     q: "hello",
