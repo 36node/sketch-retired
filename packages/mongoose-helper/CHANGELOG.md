@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.2.3...@36node/mongoose-helper@0.2.4) (2019-08-07)
+
+
+### Bug Fixes
+
+* remove boolean transform ([4324212](https://github.com/36node/sketch/commit/4324212))
+
+
+
+
+
 ## [0.2.3](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.2.2...@36node/mongoose-helper@0.2.3) (2019-06-20)
 
 **Note:** Version bump only for package @36node/mongoose-helper
