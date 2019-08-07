@@ -5,16 +5,16 @@
 ## Install
 
 ```bash
-yarn add module
+yarn add @36node/koa-openapi
 ```
 
 ## Usage
 
 ```js
-import module from "module";
+import openapi from "@36node/koa-openapi";
 
-module();
-//=> foo
+const openapiFile = fs.createReadStream(path.join(__dirname, "../openapi.yml"));
+koaapp.use(openapi({ url: `${BASE}/openapi.yml`, file: openapiFile }));
 ```
 
 ## Contributing
