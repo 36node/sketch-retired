@@ -51,8 +51,6 @@ export default function build(raw, schema) {
 
     if (key === "q") acc["$text"] = { $search: val };
     // TODO: should use schema.Path(key) to get type
-    else if (val === "true") acc[key] = true;
-    else if (val === "false") acc[key] = false;
     else if (val === "*") acc[key] = { $ne: [] };
     else if (val === "none") acc[key] = { $eq: [] };
     else acc[key] = val;
