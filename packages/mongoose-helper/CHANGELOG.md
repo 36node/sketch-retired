@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.6](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.2.5...@36node/mongoose-helper@0.2.6) (2019-08-08)
+
+
+### Bug Fixes
+
+* build error ([50f0a2e](https://github.com/36node/sketch/commit/50f0a2e))
+
+
+
+
+
 ## [0.2.5](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.2.4...@36node/mongoose-helper@0.2.5) (2019-08-07)
 
 
