@@ -1,5 +1,7 @@
 # Expo Template
 
+It only works after sketch init.
+
 ## Framework
 
 ### DONE
@@ -26,7 +28,7 @@
 3. Register for apple developer(For iOS only)
 4. Register for Android key? (Need to be confirmed)
 5. Install Expo on iOS and Android for testing on mobiles
-6. Install `expo-cli` by `npm install -g expo-cli` or `yarn global add expo-cli` 
+6. Install `expo-cli` by `npm install -g expo-cli` or `yarn global add expo-cli`
 
 ### How to run
 
@@ -43,6 +45,7 @@
 #### How to run as android
 
 ##### On your phone
+
 1. Install `expo` on your android phone
 2. Toggle your android phone `debugger mode` to `on`.
 3. Plug your android phone to your computer.
@@ -50,6 +53,7 @@
 5. Open `expo` on your phone and start develop.
 
 ##### On the emulator
+
 1. Open `Android Studio` and init
 2. Open `Config` => `AVD`
 3. Install a new virtual device
@@ -60,8 +64,6 @@
 ### How to test
 
 Run `yarn test`
-
-
 
 ### CircleCi
 
