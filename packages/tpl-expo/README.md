@@ -21,7 +21,7 @@
 
 ### Pre Actions
 
-1. Install `Xcode`
+1. Install `Xcode` and `Android Studio`
 2. Register on [expo](https://expo.io/)
 3. Register for apple developer(For iOS only)
 4. Register for Android key? (Need to be confirmed)
@@ -42,11 +42,20 @@
 
 #### How to run as android
 
-1. Install `expo` on your android phone.
+##### On your phone
+1. Install `expo` on your android phone
 2. Toggle your android phone `debugger mode` to `on`.
 3. Plug your android phone to your computer.
 4. Run `yarn start:android`.
 5. Open `expo` on your phone and start develop.
+
+##### On the emulator
+1. Open `Android Studio` and init
+2. Open `Config` => `AVD`
+3. Install a new virtual device
+4. Start emulator
+5. Click `Run on Android device/emulator`
+6. Open expo on emulator and start developing
 
 ### How to test
 
