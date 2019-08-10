@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-expo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "node_modules/expo/AppEntry.js",
   "license": "MIT",
   "publishConfig": {
