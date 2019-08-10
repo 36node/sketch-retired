@@ -1,8 +1,17 @@
 {
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/expo",
+      "**/expo-*",
+      "**/react-native",
+      "**/react-native/**",
+      "**/jest-expo"
+    ]
+  },
   "scripts": {
     "bootstrap": "yarn install && lerna bootstrap",
     "build": "lerna run build --scope=@36node/sketch && lerna run build",

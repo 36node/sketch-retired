@@ -42,6 +42,6 @@ export default async (pkg, dest) => {
 
     return dest;
   } catch (err) {
-    Promise.reject(err);
+    return Promise.reject(err);
   }
 };

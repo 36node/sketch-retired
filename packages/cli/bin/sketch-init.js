@@ -14,6 +14,7 @@ const enableTpls = [
   "service",
   "tcp",
   "react-component",
+  "expo",
 ];
 
 function gitUser() {
@@ -43,16 +44,43 @@ const questions = [
     name: "name",
     message: "What is your package name?",
     default: baseFolderName,
+    when: ansers => ansers.template !== "expo",
+  },
+  {
+    name: "appName",
+    message: "What is your app name?",
+    validate: input => !!input.trim(),
+    when: ansers => ansers.template === "expo",
+  },
+  {
+    name: "appSlug",
+    message: "What is your app slug?",
+    validate: input => !!input.trim(),
+    when: ansers => ansers.template === "expo",
+  },
+  {
+    name: "bundleIdentifier",
+    message: "What is your app ios bundle identifier?Example: expo.36node.com.",
+    validate: input => !!input.trim(),
+    when: ansers => ansers.template === "expo",
+  },
+  {
+    name: "androidPackage",
+    message: "What is your app android package?Example: expo.36node.com.",
+    validate: input => !!input.trim(),
+    when: ansers => ansers.template === "expo",
   },
   {
     name: "owner",
     message: "Who is package's owner?",
     default: gitUser().name,
+    when: ansers => ansers.template !== "expo",
   },
   {
     name: "scope",
     message: "What is the package scope?",
     default: "",
+    when: ansers => ansers.template !== "expo",
   },
 ];
 
