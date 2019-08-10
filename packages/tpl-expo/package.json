@@ -2,6 +2,30 @@
   "name": "@36node/template-expo",
   "version": "0.0.1",
   "main": "node_modules/expo/AppEntry.js",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "url": "36node/tpl-react-redux",
+    "type": "git"
+  },
+  "template": "expo",
+  "files": [
+    ".circleci",
+    ".expo",
+    "assets",
+    "bin",
+    "mock",
+    "public",
+    "src",
+    ".watchmanconfig",
+    "App.js",
+    "app.json",
+    "babel.config.js",
+    "package.json",
+    "README.md"
+  ],
   "scripts": {
     "start": "expo start",
     "start:android": "expo start --android",
@@ -36,7 +60,6 @@
     "jest-expo": "^33.0.2",
     "react-test-renderer": "^16.9.0"
   },
-  "private": true,
   "jest": {
     "preset": "jest-expo",
     "transformIgnorePatterns": [
