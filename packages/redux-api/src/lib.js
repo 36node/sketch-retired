@@ -22,8 +22,6 @@ function createHumps(keyConverter) {
   };
 }
 
-export const humps = createHumps(camelCase);
-
 /**
  * camel case key
  * @param {String} key
@@ -34,3 +32,5 @@ export const camelCaseKey = key => {
     .map(k => camelCase(k))
     .join(".");
 };
+
+export const humps = createHumps(camelCaseKey);
