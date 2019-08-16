@@ -18,7 +18,7 @@
     "dist"
   ],
   "bin": {
-    "fastman": "dist/fastman.js"
+    "fastman": "bin/fastman.js"
   },
   "config-overrides-path": "../cli/config-overrides",
   "scripts": {
