@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.8](https://github.com/36node/sketch/compare/@36node/fastman@0.4.7...@36node/fastman@0.4.8) (2019-08-16)
+
+
+### Bug Fixes
+
+* fastman ([427e50e](https://github.com/36node/sketch/commit/427e50e))
+
+
+
+
+
 ## [0.4.7](https://github.com/36node/sketch/compare/@36node/fastman@0.4.6...@36node/fastman@0.4.7) (2019-08-16)
 
 
