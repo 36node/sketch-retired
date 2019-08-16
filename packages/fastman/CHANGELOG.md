@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.9](https://github.com/36node/sketch/compare/@36node/fastman@0.4.8...@36node/fastman@0.4.9) (2019-08-16)
+
+
+### Bug Fixes
+
+* fastman release ([cf6670f](https://github.com/36node/sketch/commit/cf6670f))
+
+
+
+
+
 ## [0.4.8](https://github.com/36node/sketch/compare/@36node/fastman@0.4.7...@36node/fastman@0.4.8) (2019-08-16)
 
 
