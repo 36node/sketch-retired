@@ -29,6 +29,12 @@ export function singleCollection(id) {
   });
 }
 
+/**
+ * Update collection
+ *
+ * @param {string} id id
+ * @param {object} collection update body
+ */
 export function updateCollection(id, collection) {
   return fetch(`https://api.getpostman.com/collections/${id}`, {
     method: "PUT",
@@ -37,6 +43,11 @@ export function updateCollection(id, collection) {
   }).then(result => result.body.collection);
 }
 
+/**
+ * Create collection
+ *
+ * @param {object} collection create body
+ */
 export function createCollection(collection) {
   return fetch("https://api.getpostman.com/collections", {
     method: "POST",
