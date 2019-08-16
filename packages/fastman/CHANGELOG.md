@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/36node/sketch/compare/@36node/fastman@0.4.3...@36node/fastman@0.4.4) (2019-08-16)
+
+
+### Bug Fixes
+
+* fastman bin ([edaa04f](https://github.com/36node/sketch/commit/edaa04f))
+
+
+
+
+
 ## [0.4.3](https://github.com/36node/sketch/compare/@36node/fastman@0.4.2...@36node/fastman@0.4.3) (2019-08-16)
 
 
