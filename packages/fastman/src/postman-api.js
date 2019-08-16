@@ -44,3 +44,16 @@ export function createCollection(collection) {
     body: { collection },
   }).then(result => result.body.collection);
 }
+
+/**
+ * Delete postman collection
+ *
+ * @param {string} id id of collection tobe delelted
+ */
+export function deleteCollection(id) {
+  return fetch(`https://api.getpostman.com/collections/${id}`, {
+    method: "DELETE",
+    headers: getHeaders(),
+    body: "",
+  }).then(result => result.body.collection);
+}
