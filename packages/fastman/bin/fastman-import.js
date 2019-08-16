@@ -5,9 +5,6 @@ const { helpers, apis } = require("../dist");
 
 program.parse(process.argv);
 
-const stdout = console.log.bind(console);
-const stderr = console.error.bind(console);
-
 /**
  *  import collection file
  * @param {string} file collection file path
@@ -17,8 +14,8 @@ async function importing(file) {
 
   console.log(`importing ${file} ...`);
   if (typeof file === "undefined") {
-    stderr("collection file not given!");
-    process.exit(1);
+    console.error("collection file not given!");
+    process.exit(-1);
   }
 
   const collection = jsonfile.readFileSync(file);
@@ -27,15 +24,21 @@ async function importing(file) {
   const found = collections.find(c => c.name === info.name);
 
   if (found) {
-    await apis.updateCollection(found.id, collection);
-    stdout("updated collection", info.name);
-  } else {
-    await apis.createCollection(collection);
-    stdout("created collection", info.name);
+    console.error(
+      `Collection ${
+        info.name
+      } is existed, please use "fastman delete [collectionId]" first.`
+    );
+    process.exit(-1);
   }
+
+  await apis.createCollection(collection);
+  console.log(`Collection ${info.name} created.`);
 }
 
-importing(program.file).catch(err => {
-  stderr(err);
-  process.exit(1);
+const postmanFile = program.args[0] || "postman.json";
+
+importing(postmanFile).catch(err => {
+  console.error(err);
+  process.exit(-1);
 });

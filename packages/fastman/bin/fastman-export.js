@@ -30,7 +30,9 @@ async function exporting(name, dist) {
   jsonfile.writeFileSync(file, collection, { spaces: 2 });
 }
 
-exporting(program.name, program.dist)
+const [name = "noname", dist = "./"] = program.args || [];
+
+exporting(name, dist)
   .then(() => console.log("exporting success."))
   .catch(err => {
     stderr(err);

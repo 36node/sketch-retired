@@ -23,6 +23,7 @@ Options:
 Commands:
   config [options]      config fastman, like postman api key eg..
   ls                    list collections exist in postman
+  delete [id]           delete collection by id
   import [file]         import a collection file to postman
   export [name] [dist]  export collection file with name, saved in dist
 ```

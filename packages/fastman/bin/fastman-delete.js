@@ -4,10 +4,17 @@ const { apis } = require("../dist");
 
 program.parse(process.argv);
 
+const collectionId = program.args[0];
+
+if (!collectionId) {
+  console.error("Please provide collection id.");
+  process.exit(1);
+}
+
 apis
-  .deleteCollection(program.collectionId)
+  .deleteCollection(collectionId)
   .then(result => {
-    console.log(`Delete ${program.collectionId} Successfully.`);
+    console.log(`Delete ${collectionId} Successfully.`);
   })
   .catch(err => {
     console.error(err);
