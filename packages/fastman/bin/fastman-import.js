@@ -15,6 +15,7 @@ const stderr = console.error.bind(console);
 async function importing(file) {
   await helpers.checkApiKey();
 
+  console.log(`importing ${file} ...`);
   if (typeof file === "undefined") {
     stderr("collection file not given!");
     process.exit(1);
