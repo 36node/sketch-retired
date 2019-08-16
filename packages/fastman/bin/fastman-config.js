@@ -1,6 +1,6 @@
 const program = require("commander");
 
-const helpers = require("../dist");
+const { helpers } = require("../dist");
 
 program
   .option("-a, --api-key <apiKey>", "Config api key of postman")

@@ -1,8 +1,7 @@
 const program = require("commander");
 const jsonfile = require("jsonfile");
 
-const helpers = require("../dist");
-const apis = require("../dist");
+const { helpers, apis } = require("../dist");
 
 program.parse(process.argv);
 
