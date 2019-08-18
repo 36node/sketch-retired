@@ -1,6 +1,6 @@
 import path from "path";
 import ora from "ora";
-import fs from "fs";
+import fs from "fs-extra";
 import readline from "readline";
 import { remove } from "fs-extra";
 import { exec } from "child_process";
@@ -14,14 +14,18 @@ const extraDependencyRegInJS = new RegExp(
   "g"
 );
 
-function traverseDir(path, callback) {
+function traverseDir(path) {
   const iterator = fs.readdirSync(path);
-  iterator.forEach(file => {
+  iterator.forEach(async file => {
     const info = fs.statSync(path + "/" + file);
     if (info.isDirectory()) {
       traverseDir(`${path}/${file}`);
     } else {
-      if (callback) callback(`${path}/${file}`);
+      let target = `${path}/${file}`;
+      let result = await fs.readFileSync(target, "utf8");
+      result = result.replace(extraDependencyRegInJS, "");
+      result = result.replace(extraDependencyRegInJsx, "");
+      await fs.writeFileSync(target, result, "utf8");
     }
   });
 }
@@ -50,19 +54,7 @@ export default async function clean(dest = ".", options = {}) {
   try {
     spinner.text = "Removing dependencies ...";
     spinner.start();
-    traverseDir(dest + "/src", path => {
-      fs.readFile(path, "utf8", async (err, data) => {
-        if (err) {
-          throw err;
-        }
-        let result = data;
-        result = result.replace(extraDependencyRegInJS, "");
-        result = result.replace(extraDependencyRegInJsx, "");
-        await fs.writeFile(path, result, "utf8", function(err) {
-          if (err) throw err;
-        });
-      });
-    });
+    traverseDir(dest + "/src");
     spinner.succeed(
       `Removing extra dependencies succeed! ${path.resolve(dest)}`
     );
@@ -72,16 +64,13 @@ export default async function clean(dest = ".", options = {}) {
   }
 
   // prettier files
-  // NEED CODE REVIEW; Doesn't work!
+  // TODO: write it more elegantly
   const child = exec(
     `prettier --trailing-comma es5 --write '${dest}/src/**/*.js'`,
     (error, stdout, stderr) => {
       spinner.text = "Prettier files ...";
       spinner.start();
-      console.log("stdout: " + stdout);
-      console.log("stderr: " + stderr);
       if (error !== null) {
-        console.log("exec error: " + error);
         spinner.fail("Prettier files failed.");
       } else {
         spinner.succeed(
