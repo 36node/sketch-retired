@@ -3,3 +3,6 @@ src/containers/pet-store.js
 src/containers/redux-form.js
 src/containers/redux-ui.js
 src/containers/redux-xlsx.js
+src/actions/pet-store.js
+src/actions/pets-xlsx.js
+src/schemas/index.js
