@@ -3,6 +3,7 @@ import ora from "ora";
 import fs from "fs";
 import readline from "readline";
 import { remove } from "fs-extra";
+import { exec } from "child_process";
 
 const extraDependencyRegInJsx = new RegExp(
   "({\\/\\* extra sample code begin \\*\\/\\})[\\n\\s\\S]*?({\\/\\* extra sample code end \\*\\/\\})",
@@ -69,4 +70,25 @@ export default async function clean(dest = ".", options = {}) {
     spinner.fail("Removing extra dependencies failed.");
     throw err;
   }
+
+  // prettier files
+  // NEED CODE REVIEW; Doesn't work!
+  const child = exec(
+    `prettier --trailing-comma es5 --write '${dest}/src/**/*.js'`,
+    (error, stdout, stderr) => {
+      spinner.text = "Prettier files ...";
+      spinner.start();
+      console.log("stdout: " + stdout);
+      console.log("stderr: " + stderr);
+      if (error !== null) {
+        console.log("exec error: " + error);
+        spinner.fail("Prettier files failed.");
+      } else {
+        spinner.succeed(
+          `Removing extra dependencies succeed! ${path.resolve(dest)}`
+        );
+      }
+    }
+  );
+  child();
 }

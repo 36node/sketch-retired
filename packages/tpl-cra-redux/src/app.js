@@ -7,8 +7,10 @@ import Loadable from "react-loadable";
 import { history } from "./lib";
 
 import ProtectedRoute from "./containers/protect";
+// extra sample code begin
 import ReduxForm from "./containers/redux-form";
 import ReduxXlsx from "./containers/redux-xlsx";
+// extra sample code end
 import Nav from "./containers/nav";
 import Layout from "./components/layout";
 import Logo from "./components/logo";
