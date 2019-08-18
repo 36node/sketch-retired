@@ -49,6 +49,7 @@
     "jest-styled-components": "6.3.1",
     "json-server": "^0.15.0",
     "jsonfile": "^4.0.0",
+    "klaw-sync": "^6.0.0",
     "lerna-alias": "^3.0.2",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",

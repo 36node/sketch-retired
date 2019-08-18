@@ -1,5 +1,6 @@
 import path from "path";
 import ora from "ora";
+import klawSync from "klaw-sync";
 import fs from "fs-extra";
 import readline from "readline";
 import { remove } from "fs-extra";
@@ -14,20 +15,12 @@ const extraDependencyRegInJS = new RegExp(
   "g"
 );
 
-function traverseDir(path) {
-  const iterator = fs.readdirSync(path);
-  iterator.forEach(async file => {
-    const info = fs.statSync(path + "/" + file);
-    if (info.isDirectory()) {
-      traverseDir(`${path}/${file}`);
-    } else {
-      let target = `${path}/${file}`;
-      let result = await fs.readFileSync(target, "utf8");
-      result = result.replace(extraDependencyRegInJS, "");
-      result = result.replace(extraDependencyRegInJsx, "");
-      await fs.writeFileSync(target, result, "utf8");
-    }
-  });
+async function cleanDependenciesInFile(target) {
+  const { path } = target;
+  let result = await fs.readFileSync(path, "utf8");
+  result = result.replace(extraDependencyRegInJS, "");
+  result = result.replace(extraDependencyRegInJsx, "");
+  await fs.writeFileSync(path, result, "utf8");
 }
 
 export default async function clean(dest = ".", options = {}) {
@@ -50,11 +43,15 @@ export default async function clean(dest = ".", options = {}) {
     spinner.fail("Removing extra template files failed!");
     throw err;
   }
+
   // remove extra files' dependencies
   try {
     spinner.text = "Removing dependencies ...";
     spinner.start();
-    traverseDir(dest + "/src");
+    const files = klawSync(dest + "/src", { nodir: true });
+    for (let i = 0, len = files.length; i < len; i++) {
+      cleanDependenciesInFile(files[i]);
+    }
     spinner.succeed(
       `Removing extra dependencies succeed! ${path.resolve(dest)}`
     );
