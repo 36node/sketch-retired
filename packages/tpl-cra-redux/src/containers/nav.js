@@ -9,7 +9,7 @@ const data = [
     title: "home",
     icon: "home",
   },
-  // extra sample code begin
+  // template-example-start
   {
     path: "/pet-store",
     title: "pet-store",
@@ -35,7 +35,7 @@ const data = [
     title: "redux-xlsx",
     icon: "table",
   },
-  // extra sample code end
+  // template-example-end
 ];
 
 @withRouter

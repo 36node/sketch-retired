@@ -7,10 +7,10 @@ import Loadable from "react-loadable";
 import { history } from "./lib";
 
 import ProtectedRoute from "./containers/protect";
-// extra sample code begin
+// template-example-start
 import ReduxForm from "./containers/redux-form";
 import ReduxXlsx from "./containers/redux-xlsx";
-// extra sample code end
+// template-example-end
 import Nav from "./containers/nav";
 import Layout from "./components/layout";
 import Logo from "./components/logo";
@@ -27,7 +27,7 @@ const Login = Loadable({
   loading: Loading,
 });
 
-// extra sample code begin
+// template-example-start
 const PetStore = Loadable({
   loader: () => import("./containers/pet-store"),
   loading: Loading,
@@ -40,7 +40,7 @@ const ReduxUi = Loadable({
   loader: () => import("./containers/redux-ui"),
   loading: Loading,
 });
-// extra sample code end
+// template-example-end
 
 class App extends Component {
   render() {
@@ -64,19 +64,19 @@ const Main = () => (
     <Content>
       <Breadcrumb style={{ margin: "16px 0" }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
-        {/* extra sample code begin */}
+        {/* template-example-start */}
         <Breadcrumb.Item>PetStore</Breadcrumb.Item>
         <Breadcrumb.Item>Github</Breadcrumb.Item>
-        {/* extra sample code end */}
+        {/* template-example-end */}
       </Breadcrumb>
       <Route path="/" exact component={Home} />
-      {/* extra sample code begin */}
+      {/* template-example-start */}
       <Route path="/github" component={Github} />
       <Route path="/pet-store" component={PetStore} />
       <Route path="/redux-ui" component={ReduxUi} />
       <Route path="/redux-form" component={ReduxForm} />
       <Route path="/redux-xlsx" component={ReduxXlsx} />
-      {/* extra sample code end */}
+      {/* template-example-end */}
     </Content>
     <Footer>Template-CRA-Redux ©2019 Created by 36node</Footer>
   </Layout>
