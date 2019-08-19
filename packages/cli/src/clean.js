@@ -7,20 +7,20 @@ import { remove } from "fs-extra";
 import { exec } from "child_process";
 
 const extraDependencyRegInJsx = new RegExp(
-  "({\\/\\* extra sample code begin \\*\\/\\})[\\n\\s\\S]*?({\\/\\* extra sample code end \\*\\/\\})",
+  "({\\/\\* template-example-start \\*\\/\\})[\\n\\s\\S]*?({\\/\\* template-example-end \\*\\/\\})",
   "g"
 );
 const extraDependencyRegInJS = new RegExp(
-  "// extra sample code begin[\\n\\s\\S]*?// extra sample code end",
+  "// template-example-start[\\n\\s\\S]*?// template-example-end",
   "g"
 );
 
-async function cleanDependenciesInFile(target) {
+function cleanDependenciesInFile(target) {
   const { path } = target;
-  let result = await fs.readFileSync(path, "utf8");
+  let result = fs.readFileSync(path, "utf8");
   result = result.replace(extraDependencyRegInJS, "");
   result = result.replace(extraDependencyRegInJsx, "");
-  await fs.writeFileSync(path, result, "utf8");
+  fs.writeFileSync(path, result, "utf8");
 }
 
 export default async function clean(dest = ".", options = {}) {
@@ -37,7 +37,6 @@ export default async function clean(dest = ".", options = {}) {
       await remove(path.join(dest, ignoreFilePath));
     });
 
-    await remove(path.join(dest, "CHANGELOG.md"));
     spinner.succeed("Removing extra template files success!");
   } catch (err) {
     spinner.fail("Removing extra template files failed!");
