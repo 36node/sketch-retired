@@ -3,28 +3,29 @@ import {
   successOf,
   failureOf,
   isSuccess,
-  createApiActions,
+  createApiAction,
 } from "@36node/redux-api";
-import * as CS from "../constants";
+import { actionTypes } from "../constants";
 import { petstore } from "../sdk";
 import { message } from "antd";
 import { reduxXlsxSelectors } from "../selectors";
 import { createXlsxActions } from "@36node/redux-xlsx";
 import { petSchema } from "../schemas";
 
-const key = CS.NS.REDUX_XLSX.PETS_XLSX;
+const baseType = actionTypes.REDUX_XLSX.PETS_XLSX;
 
-const listPetsForExport = createApiActions(key, {
-  endpoint: petstore.pet.listPets,
+const listPetsForExport = createApiAction(baseType, petstore.pet.listPets, {
   schema: [petSchema],
 });
 
 function* exportDataSource(params = {}) {
   const { query } = params;
-  const apiRequst = listPetsForExport.request;
 
-  yield put(apiRequst({ query }));
-  const apiResultAction = yield take([successOf(key), failureOf(key)]);
+  yield put(listPetsForExport({ query }));
+  const apiResultAction = yield take([
+    successOf(baseType),
+    failureOf(baseType),
+  ]);
 
   if (isSuccess(apiResultAction)) {
     const apiResult = yield select(reduxXlsxSelectors.listPets);
@@ -35,7 +36,7 @@ function* exportDataSource(params = {}) {
   }
 }
 
-const petsXlsx = createXlsxActions(key, {
+const petsXlsx = createXlsxActions(baseType, {
   exportOpts: {
     dataSource: exportDataSource,
   },

@@ -17,8 +17,8 @@ const { Container } = Layout;
  * Pets table
  */
 @connect(state => {
-  const listPetsState = petStoreSelectors.listPets(state) || {};
-  const autoPagerState = petStoreSelectors.autoPager(state);
+  const listPetsState = petStoreSelectors.selectPets(state) || {};
+  const autoPagerState = petStoreSelectors.selectPager(state);
 
   return {
     pets: listPetsState.result,
@@ -69,7 +69,7 @@ class PetsTable extends React.PureComponent {
       query.sort = (order === "ascend" ? "" : "-") + field;
     }
 
-    this.props.dispatch(petStoreActions.listPets.request({ query }));
+    this.props.dispatch(petStoreActions.listPets({ query }));
   };
 
   onCronStart = () => {
@@ -88,7 +88,7 @@ class PetsTable extends React.PureComponent {
     const { query } = this.props;
 
     this.props.dispatch(
-      petStoreActions.listPets.request({
+      petStoreActions.listPets({
         query: {
           ...query,
           limit: 10,

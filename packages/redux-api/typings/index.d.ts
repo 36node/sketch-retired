@@ -1,10 +1,10 @@
 import { Schema } from "normalizr";
-import { SagaIterator } from "redux-saga";
+import { Saga } from "redux-saga";
 import { Reducer } from "redux";
 
 declare module "@36node/redux-api" {
   /**
-   * endport result
+   * endpoint result
    * 20x or 30x result
    */
   interface EpResult {
@@ -13,75 +13,85 @@ declare module "@36node/redux-api" {
   }
 
   interface Meta {
-    append?: Boolean;
+    append?: boolean;
   }
 
+  interface ErrorDetail {
+    path: string;
+    desc: string;
+    code: number;
+  }
+
+  interface Error {
+    name: string;
+    type: string;
+    message: string;
+    details: [ErrorDetail];
+  }
+
+  type KeyFunction = (payload: object) => string;
   interface Action {
     type: string;
     payload?: object;
     key: string;
     meta: Meta;
+    error: Error;
   }
 
-  interface ApiReducers {
-    apis: Reducer;
-    entities: Reducer;
-  }
-
-  interface ApiCreateOpts<T> {
-    endpoint: Endpoint<T>;
+  interface CreateApiActionOpts {
+    key?: string | KeyFunction;
     schema?: Schema;
-    reduxPath?: String;
+    meta: Meta;
   }
 
   interface ApiState {
+    request: object;
     result: object | [object];
     total: number;
     loading: boolean;
     meta: object;
   }
 
-  interface Hooks {
-    beforeRequest?: (key: String, action: Action, api: Api) => Boolean;
-    afterRequest?: (key: String, action: Action, api: Api) => void;
+  type Selector = (state: object) => ApiState;
+  type Endpoint<T> = (payload: T) => Promise<EpResult>;
+  type ApiAction<T> = (payload: T, meta: Meta) => Action;
+
+  interface ApiReducers {
+    api: Reducer<ApiState, Action>;
+    entities: Reducer<ApiState, Action>;
   }
 
-  interface ApiActions<T> {
-    request: (payload: T, meta: Object) => Action;
-    clear: (meta: Object) => Action;
-    refresh: (meta: Object) => Action;
-  }
+  /**
+   * action
+   */
+  export function isApi(action: Action): boolean;
+  export function isRequest(action: Action): boolean;
+  export function isSuccess(action: Action): boolean;
+  export function isFailure(action: Action): boolean;
+  export function requestOf(type: string): boolean;
+  export function successOf(type: string): boolean;
+  export function failureOf(type: string): boolean;
 
-  export type Selector = (state: Object) => ApiState;
-  export type Endpoint<T> = (payload: T) => Promise<EpResult>;
+  export function createApiAction<T>(
+    base: string,
+    endpoint: Endpoint<T>,
+    options: CreateApiActionOpts
+  ): ApiAction<T>;
 
+  /**
+   * reducer
+   */
   export const apiReducers: ApiReducers;
 
-  export function apiReducer(state: Object, action: Action): void;
+  /**
+   * selector
+   * @param key state key in store
+   * @param schema schema of state.result
+   */
+  export function createApiSelector(key: string, schema?: Schema): Selector;
 
-  export function entitiesReducer(state: Object, action: Action): void;
-
-  export function* watchApis(): void;
-
-  export function registerHooks(hooks: Hooks): void;
-
-  export function createApiActions<T>(
-    key: String,
-    opts: ApiCreateOpts<T>
-  ): ApiActions<T>;
-
-  export function createApiSelector(key: String, schema?: Schema): Selector;
-  export function apiSelector(key: String, schema?: Schema): Selector;
-
-  export function isApi(action: Action): Boolean;
-  export function isSuccess(action: Action): Boolean;
-  export function isFailure(action: Action): Boolean;
-  export function isClear(action: Action): Boolean;
-  export function isRefresh(action: Action): Boolean;
-
-  export function successOf(key: String): String;
-  export function failureOf(key: String): String;
-  export function requestOf(key: String): String;
-  export function clearOf(key: String): String;
-  export function refreshOf(key: String): String;
+  /**
+   * saga
+   */
+  export const watchApi: Saga;
 }

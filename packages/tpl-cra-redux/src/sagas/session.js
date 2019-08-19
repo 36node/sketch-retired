@@ -1,12 +1,12 @@
-import { failureOf, successOf, isFailure } from "@36node/redux-api";
+import { successOf, isFailure } from "@36node/redux-api";
 import { call, delay, fork, put, takeLatest } from "redux-saga/effects";
 import { message } from "antd";
 
 import { history } from "../lib";
-import { LOGIN_URL, NS, SESSION_ID, TOKEN } from "../constants";
+import { LOGIN_URL, actionTypes, SESSION_ID, TOKEN } from "../constants";
 import { globalActions } from "../actions";
 
-const reloginRequest = globalActions.refreshSession.request;
+const reloginRequest = globalActions.reLogin;
 
 function* login({ payload = {}, meta = {} }) {
   const { result = {} } = payload;
@@ -51,17 +51,14 @@ function* flashError({ error, type }) {
   if (error.status === 401) {
     yield logout();
   }
-  if (error.status === 404 && type === failureOf(NS.GLOBAL.REFRESH)) {
-    yield logout();
-  }
 }
 
 export default function* watchSession() {
   const from = history.location || "/";
   // refresh jwt token
   yield fork(reLogin, from);
-  yield takeLatest(successOf(NS.GLOBAL.LOGIN), login);
-  yield takeLatest(successOf(NS.GLOBAL.REFRESH), login);
-  yield takeLatest(successOf(NS.GLOBAL.LOGOUT), logout);
+  yield takeLatest(successOf(actionTypes.LOGIN), login);
+  yield takeLatest(successOf(actionTypes.RELOGIN), login);
+  yield takeLatest(successOf(actionTypes.LOGOUT), logout);
   yield takeLatest(isFailure, flashError);
 }

@@ -27,6 +27,8 @@ function createHumps(keyConverter) {
  * @param {String} key
  */
 export const camelCaseKey = key => {
+  if (typeof key !== "string") return key;
+
   return key
     .split(".")
     .map(k => camelCase(k))

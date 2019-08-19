@@ -5,29 +5,29 @@ import {
   createProgressSelector,
 } from "@36node/redux-ui";
 
-import { NS } from "../constants";
+import { actionTypes, storeKeys } from "../constants";
 import { petSchema, repoSchema } from "../schemas";
 import { createCronSelector } from "@36node/redux-cron";
 
 export const reduxXlsxSelectors = {
-  listPets: createApiSelector(NS.REDUX_XLSX.PETS_XLSX, [petSchema]),
+  listPets: createApiSelector(actionTypes.REDUX_XLSX.PETS_XLSX, [petSchema]),
 };
 
 export const reduxUiSelectors = {
-  toggleExample: createToggleSelector(NS.REDUX_UI.TOGGLE_EXP),
-  assignExample: createAssignSelector(NS.REDUX_UI.ASSIGN_EXP),
-  progressExample: createProgressSelector(NS.REDUX_UI.PROGRESS_EXP),
+  toggleExample: createToggleSelector(actionTypes.REDUX_UI.TOGGLE_EXP),
+  assignExample: createAssignSelector(actionTypes.REDUX_UI.ASSIGN_EXP),
+  progressExample: createProgressSelector(actionTypes.REDUX_UI.PROGRESS_EXP),
 };
 
 export const petStoreSelectors = {
-  listPets: createApiSelector(NS.PET_STORE.LIST_PETS, [petSchema]),
-  autoPager: createCronSelector(NS.PET_STORE.PAGE_CRON),
+  selectPets: createApiSelector(storeKeys.petStore.pets, [petSchema]),
+  selectPager: createCronSelector(actionTypes.PET_STORE.PAGE_CRON),
 };
 
 export const githubSelectors = {
-  listRepos: createApiSelector(NS.GITHUB.LIST_REPOS, [repoSchema]),
+  selectRepos: createApiSelector(storeKeys.github.repos, [repoSchema]),
 };
 
 export const globalSelectors = {
-  session: createApiSelector("session"),
+  selectSession: createApiSelector(storeKeys.session),
 };

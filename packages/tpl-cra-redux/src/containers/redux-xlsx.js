@@ -88,7 +88,7 @@ class ExportOptionForm extends PureComponent {
 }
 
 @connect(state => {
-  const listPetsState = petStoreSelectors.listPets(state) || {};
+  const listPetsState = petStoreSelectors.selectPets(state) || {};
 
   return {
     pets: listPetsState.result,
@@ -122,7 +122,7 @@ class ReduxXlsxExample extends PureComponent {
       query.sort = (order === "ascend" ? "" : "-") + field;
     }
 
-    this.props.dispatch(petStoreActions.listPets.request({ query }));
+    this.props.dispatch(petStoreActions.listPets({ query }));
   };
 
   renderTitle() {

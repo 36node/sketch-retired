@@ -10,7 +10,7 @@ import { githubSelectors } from "../selectors";
 const { Container, Jumbotron } = Layout;
 
 @connect(state => {
-  const listReposState = githubSelectors.listRepos(state) || {};
+  const listReposState = githubSelectors.selectRepos(state) || {};
   return {
     repos: listReposState.result || [],
   };
@@ -21,7 +21,7 @@ export default class extends React.PureComponent {
   }
 
   fetchRepos = () => {
-    this.props.dispatch(githubActions.listRepos.request({ org: "36node" }));
+    this.props.dispatch(githubActions.listRepos({ org: "36node" }));
   };
 
   render() {

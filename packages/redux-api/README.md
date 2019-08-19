@@ -4,6 +4,18 @@
 
 Redux-api is a library which can easily write client to communicate with backends. It generates actions and selectors for making ajax calls to API endpoint. Also, it use saga to change ajax state and save result in redux store with few config.
 
+The action of api is something like:
+
+```js
+{
+  type: "@api/xxxx/REQUEST", // type of API action
+  key: "",  // key in store
+  payload: {},
+  meta: { append: true },
+  error: {},
+}
+```
+
 ## Use
 
 ### Config reducer

@@ -1,47 +1,46 @@
 /// <reference path='../sdk/.github.d.ts' />
 
-import { NS } from "../constants";
-
-import { createApiActions } from "@36node/redux-api";
-import { repoSchema } from "../schemas";
-import { github, auth } from "../sdk";
+import { createApiAction } from "@36node/redux-api";
 import {
   createToggleActions,
   createAssignActions,
   createProgressActions,
 } from "@36node/redux-ui";
 
-export { default as reduxXlsxActions } from "./pets-xlsx";
+import { actionTypes, storeKeys } from "../constants";
+import { repoSchema } from "../schemas";
+import { github, auth } from "../sdk";
+import * as petStoreActions from "./pet-store";
 
-export { petStoreActions } from "./pet-store";
+export { default as reduxXlsxActions } from "./pets-xlsx";
+export { petStoreActions };
 
 export const reduxUiActions = {
-  toggleExample: createToggleActions(NS.REDUX_UI.TOGGLE_EXP),
-  assignExample: createAssignActions(NS.REDUX_UI.ASSIGN_EXP),
-  progressExample: createProgressActions(NS.REDUX_UI.PROGRESS_EXP),
+  toggleExample: createToggleActions(actionTypes.REDUX_UI.TOGGLE_EXP),
+  assignExample: createAssignActions(actionTypes.REDUX_UI.ASSIGN_EXP),
+  progressExample: createProgressActions(actionTypes.REDUX_UI.PROGRESS_EXP),
 };
 
 export const githubActions = {
-  listRepos: createApiActions(NS.GITHUB.LIST_REPOS, {
-    endpoint: github.repo.listRepos,
-    schema: [repoSchema],
-  }),
+  listRepos: createApiAction(
+    actionTypes.GITHUB.LIST_REPOS,
+    github.repo.listRepos,
+    {
+      key: storeKeys.github.repos,
+      schema: [repoSchema],
+    }
+  ),
 };
 
 export const globalActions = {
-  refreshSession: createApiActions(NS.GLOBAL.REFRESH, {
-    endpoint: auth.session.getSession,
-    reduxPath: "session",
+  reLogin: createApiAction(actionTypes.RELOGIN, auth.session.getSession, {
+    key: storeKeys.session,
   }),
-  login: createApiActions(NS.GLOBAL.LOGIN, {
-    endpoint: auth.session.createSession,
-    reduxPath: "session",
+  login: createApiAction(actionTypes.LOGIN, auth.session.createSession, {
+    key: storeKeys.session,
   }),
-  logout: createApiActions(NS.GLOBAL.LOGOUT, {
-    endpoint: auth.session.deleteSession,
-    reduxPath: "session",
+  logout: createApiAction(actionTypes.LOGOUT, auth.session.deleteSession, {
+    key: storeKeys.session,
   }),
-  unauth: createApiActions(NS.GLOBAL.UNAUTH, {
-    endpoint: auth.session.unauth,
-  }),
+  unauth: createApiAction(actionTypes.UNAUTH, auth.session.unauth),
 };

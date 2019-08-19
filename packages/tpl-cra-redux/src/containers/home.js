@@ -14,11 +14,11 @@ const { Container, Jumbotron } = Layout;
 @connect(state => ({}))
 export default class extends React.PureComponent {
   handleLogout = () => {
-    this.props.dispatch(globalActions.logout.request());
+    this.props.dispatch(globalActions.logout());
   };
 
   handleUnauth = () => {
-    this.props.dispatch(globalActions.unauth.request());
+    this.props.dispatch(globalActions.unauth());
   };
 
   render() {

@@ -1,8 +1,8 @@
 /// <reference path='../typings/index.d.ts' />
+
 import { get, union, setWith, clone, mergeWith, isArray } from "lodash";
 
-import { isApi, isRequest, isFailure, isSuccess, isClear } from "./actions";
-import { Apis } from "./apis";
+import { isApi, isRequest, isFailure, isSuccess } from "./action";
 
 export const initState = {
   loading: false,
@@ -27,7 +27,6 @@ function r(state = initState, action = {}) {
       loading: false,
       result: append ? union(result, state.result) : result,
       total: xTotalCount && Number(xTotalCount),
-      meta: { ...state.meta, ...meta },
     };
   }
 
@@ -36,12 +35,7 @@ function r(state = initState, action = {}) {
       ...state,
       loading: false,
       error,
-      meta: { ...state.meta, ...meta },
     };
-  }
-
-  if (isClear(action)) {
-    return initState;
   }
 
   return state;
@@ -56,7 +50,10 @@ const customizer = (objValue, srcValue, key, object, source, stack) => {
   }
 };
 
-export function entitiesReducer(state = {}, action) {
+/**
+ * entities reducer
+ */
+function entitiesReducer(state = {}, action) {
   if (action.payload && action.payload.entities) {
     return mergeWith({}, state, action.payload.entities, customizer);
   }
@@ -65,33 +62,18 @@ export function entitiesReducer(state = {}, action) {
 
 /**
  * api root reducer
- * @param {Object} state state
- * @param {import("@36node/redux-api").Action} action action
  */
-export function apiReducer(state = {}, action) {
+function apiReducer(state = {}, action = {}) {
+  if (!isApi(action)) return state;
+
   const { key } = action;
-
-  if (isApi(action)) {
-    // key not register
-    const api = Apis.get(key);
-
-    if (!api) {
-      return state;
-    }
-
-    return setWith(
-      { ...state },
-      api.reduxPath,
-      r(get(state, api.reduxPath), action),
-      clone
-    );
-  }
-  return state;
+  return setWith({ ...state }, key, r(get(state, key), action), clone);
 }
 
-const apiReducers = {
-  apis: apiReducer,
+/**
+ * @type {import("@36node/redux-api").apiReducers}
+ */
+export const apiReducers = {
+  api: apiReducer,
   entities: entitiesReducer,
 };
-
-export default apiReducers;

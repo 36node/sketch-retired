@@ -1,93 +1,13 @@
-import { requestOf, clearOf, refreshOf } from "./actions";
-import { registerSaga, Apis } from "./apis";
-import makeApiSelector from "./selector";
-import { camelCaseKey } from "./lib";
-
-export { default as apiReducers, apiReducer, entitiesReducer } from "./reducer";
-export { watchApis, registerHooks } from "./saga";
 export {
   isApi,
-  isSuccess,
   isRequest,
+  isSuccess,
   isFailure,
+  requestOf,
   successOf,
   failureOf,
-  requestOf,
-} from "./actions";
-
-class Api {
-  constructor(key, endpoint, schema, reduxPath) {
-    this._key = key;
-    this._endpoint = endpoint;
-    this._schema = schema;
-    this._reduxPath = camelCaseKey(reduxPath || key);
-  }
-
-  get endpoint() {
-    return this._endpoint;
-  }
-
-  get key() {
-    return this._key;
-  }
-
-  get schema() {
-    return this._schema;
-  }
-
-  get reduxPath() {
-    return this._reduxPath;
-  }
-
-  get actions() {
-    return {
-      request: (payload, meta = {}) => ({
-        type: requestOf(this.key),
-        key: this.key,
-        payload,
-        meta,
-      }),
-
-      clear: (meta = {}) => ({
-        type: clearOf(this.key),
-        key: this.key,
-        meta,
-      }),
-
-      refresh: (meta = {}) => ({
-        type: refreshOf(this.key),
-        key: this.key,
-        meta,
-      }),
-    };
-  }
-}
-
-export function createApiActions(key, opts = {}) {
-  if (!key) {
-    throw new Error("Api need a key!");
-  }
-
-  if (!opts.endpoint) {
-    throw new Error("Api need an endpoint function");
-  }
-
-  if (Apis.has(key)) {
-    return Apis.get(key).actions;
-  }
-
-  const api = new Api(key, opts.endpoint, opts.schema, opts.reduxPath);
-  registerSaga(key, api);
-  return api.actions;
-}
-
-export function createApiSelector(key, schema) {
-  return makeApiSelector(key, schema);
-}
-
-export function apiSelector(key, schema) {
-  console.warn(
-    "apiSelector function is deprecated, please use createApiSelector "
-  );
-  return makeApiSelector(key, schema);
-}
+  createApiAction,
+} from "./action";
+export { apiReducers } from "./reducer";
+export { watchApi } from "./saga";
+export { createApiSelector } from "./selector";

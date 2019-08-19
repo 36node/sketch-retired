@@ -1,23 +1,23 @@
 import { get } from "lodash";
 import { createSelector } from "reselect";
 import { denormalize } from "normalizr";
+
 import { initState } from "./reducer";
 import { camelCaseKey } from "./lib";
 
 const entitiesSelector = state => state.entities;
 
-export const makeStateSelector = path => state =>
-  get(state.apis, path) || initState;
+export const createStateSelector = path => state =>
+  get(state.api, path) || initState;
 
 /**
  *
- * @param {string} key api key or redux state key
- * @param {object} schema output data schema
+ * @param {string} key store key
  * @returns {function(object) => object} selector
  */
-const makeApiSelector = (key, schema) => {
+export const createApiSelector = (key, schema) => {
   const path = camelCaseKey(key);
-  const stateSelector = makeStateSelector(path);
+  const stateSelector = createStateSelector(path);
 
   return createSelector(
     stateSelector,
@@ -30,5 +30,3 @@ const makeApiSelector = (key, schema) => {
     }
   );
 };
-
-export default makeApiSelector;
