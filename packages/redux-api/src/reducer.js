@@ -8,7 +8,6 @@ export const initState = {
   loading: false,
   result: null,
   request: {},
-  meta: {},
   total: 0,
 };
 
@@ -18,7 +17,7 @@ function r(state = initState, action = {}) {
   const { append = false } = meta;
 
   if (isRequest(action)) {
-    return { ...state, loading: true, request: payload, meta };
+    return { ...state, loading: true, request: payload };
   }
 
   if (isSuccess(action)) {
