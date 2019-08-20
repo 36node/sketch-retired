@@ -3,7 +3,9 @@
 import { NS } from "../constants";
 
 import { createApiActions } from "@36node/redux-api";
+// template-example-start
 import { repoSchema } from "../schemas";
+// template-example-end
 import { github, auth } from "../sdk";
 import {
   createToggleActions,
@@ -11,6 +13,7 @@ import {
   createProgressActions,
 } from "@36node/redux-ui";
 
+// template-example-start
 export { default as reduxXlsxActions } from "./pets-xlsx";
 
 export { petStoreActions } from "./pet-store";
@@ -27,6 +30,7 @@ export const githubActions = {
     schema: [repoSchema],
   }),
 };
+// template-example-end
 
 export const globalActions = {
   refreshSession: createApiActions(NS.GLOBAL.REFRESH, {
