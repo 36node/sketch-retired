@@ -66,6 +66,7 @@
     "rollup-plugin-replace": "^1.1.1",
     "tar": "^4.4.4",
     "tmp": "^0.0.33",
+    "webpack-dev-server": "3.2.1",
     "webpack-filter-warnings-plugin": "^1.2.1"
   }
 }
