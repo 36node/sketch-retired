@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.17](https://github.com/36node/sketch/compare/@36node/redux-api@0.3.16...@36node/redux-api@0.3.17) (2019-09-02)
+
+
+### Bug Fixes
+
+* redux-api append order ([dca688f](https://github.com/36node/sketch/commit/dca688f))
+
+
+
+
+
 ## [0.3.16](https://github.com/36node/sketch/compare/@36node/redux-api@0.3.15...@36node/redux-api@0.3.16) (2019-08-22)
 
 **Note:** Version bump only for package @36node/redux-api
