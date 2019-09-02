@@ -25,7 +25,7 @@ function r(state = initState, action = {}) {
     return {
       ...state,
       loading: false,
-      result: append ? union(result, state.result) : result,
+      result: append ? union(state.result, result) : result,
       total: xTotalCount && Number(xTotalCount),
       meta: { ...state.meta, ...meta },
     };
