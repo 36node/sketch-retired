@@ -1,0 +1,64 @@
+{
+  "name": "@36node/redux-antd",
+  "version": "0.0.0",
+  "description": "A higher order component decorator for @36node/redux and antd",
+  "repository": {
+    "url": "36node/sketch",
+    "type": "git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "template": "react-component",
+  "files": [
+    "typings",
+    "dist"
+  ],
+  "config-overrides-path": "../cli/config-overrides",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "typings/index.d.ts",
+  "scripts": {
+    "build": "sketch build",
+    "test": "NODE_ENV=test sketch test --env=node"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint && npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@36node/redux": "^0.0.0",
+    "lodash": "^4.17.11"
+  },
+  "peerDependencies": {
+    "antd": "^3.15.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^6.0.1"
+  },
+  "jest": {
+    "displayName": "unit",
+    "testMatch": [
+      "<rootDir>/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ]
+  }
+}

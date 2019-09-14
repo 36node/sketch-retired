@@ -1,32 +1,3 @@
 export const SESSION_ID = "session_id";
 export const TOKEN = "token";
 export const LOGIN_URL = "/login";
-
-export const NS = {
-  PET_STORE: {
-    LIST_PETS: "PET_STORE.LIST_PETS",
-    CREATE_PET: "CREATE_PET.CREATE_PET",
-    GET_PET: "PET_STORE.GET_PET",
-    PAGE_CRON: "PET_STORE.PAGE_CRON",
-  },
-  GITHUB: {
-    LIST_REPOS: "GITHUB.LIST_REPOS",
-  },
-  GLOBAL: {
-    LOGIN: "GLOBAL.LOGIN",
-    LOGOUT: "GLOBAL.LOGOUT",
-    REFRESH: "GLOBAL.REFRESH",
-    UNAUTH: "GLOBAL.UNAUTH",
-  },
-  REDUX_UI: {
-    TOGGLE_EXP: "REDUX_UI.TOGGLE_EXP",
-    ASSIGN_EXP: "REDUX_UI.ASSIGN_EXP",
-    PROGRESS_EXP: "REDUX_UI.PROGRESS_EXP",
-  },
-  REDUX_FORM: {
-    FORM_EXP: "REDUX_FORM.FORM_EXP",
-  },
-  REDUX_XLSX: {
-    PETS_XLSX: "REDUX_XLSX.PETS_XLSX",
-  },
-};

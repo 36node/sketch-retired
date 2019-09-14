@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { withRouter } from "react-router";
 import { NavLink } from "react-router-dom";
 import { Menu, Icon } from "antd";
@@ -30,11 +30,6 @@ const data = [
     title: "redux-form",
     icon: "form",
   },
-  {
-    path: "/redux-xlsx",
-    title: "redux-xlsx",
-    icon: "table",
-  },
   // template-example-end
 ];
 
@@ -43,21 +38,23 @@ export default class Nav extends React.Component {
   render() {
     const { pathname } = this.props.location;
     return (
-      <Menu
-        theme="dark"
-        mode="horizontal"
-        defaultSelectedKeys={[pathname]}
-        style={{ lineHeight: "64px" }}
-      >
-        {data.map(item => (
-          <Menu.Item key={item.path}>
-            <NavLink to={item.path}>
-              <Icon type={item.icon} />
-              {item.title}
-            </NavLink>
-          </Menu.Item>
-        ))}
-      </Menu>
+      <Fragment>
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={[pathname]}
+          style={{ lineHeight: "64px" }}
+        >
+          {data.map(item => (
+            <Menu.Item key={item.path}>
+              <NavLink to={item.path}>
+                <Icon type={item.icon} />
+                {item.title}
+              </NavLink>
+            </Menu.Item>
+          ))}
+        </Menu>
+      </Fragment>
     );
   }
 }

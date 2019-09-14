@@ -14,6 +14,7 @@ const reduxLibaryRollupConfig = path.join(
 
 program
   .option("--external", "skip bundle external packages")
+  .option("--watch", "watch on build")
   .parse(process.argv);
 
 let command;

@@ -33,11 +33,13 @@
       "git add"
     ]
   },
-  "dependencies": {
+  "devDependencies": {
     "@36node/eslint-config": "*",
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "@types/jest": "^24.0.11",
+    "@types/react": "^16.8.8",
+    "@types/react-redux": "^7.1.0",
     "husky": "^1.3.1",
     "lerna": "^3.13.1",
     "lint-staged": "^8.1.5",

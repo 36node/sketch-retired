@@ -1,14 +1,15 @@
 import { fork, all } from "redux-saga/effects";
-import { watchApis } from "@36node/redux-api";
-import watchSession from "./session";
+import { watchApi, watchCron, watchHelper } from "@36node/redux";
 import { watchXlsx } from "@36node/redux-xlsx";
-import { watchCron } from "@36node/redux-cron";
+
+import watchSession from "./session";
 
 export default function* root() {
   yield all([
-    fork(watchApis),
+    fork(watchHelper),
+    fork(watchApi),
+    fork(watchCron),
     fork(watchSession),
     fork(watchXlsx),
-    fork(watchCron),
   ]);
 }

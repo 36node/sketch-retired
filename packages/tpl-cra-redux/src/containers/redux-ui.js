@@ -3,7 +3,6 @@
  */
 
 import React, { Component, PureComponent } from "react";
-import DocumentTitle from "react-document-title";
 import { connect } from "react-redux";
 import { isNil } from "lodash";
 import {
@@ -19,74 +18,63 @@ import {
   Divider,
   Progress,
 } from "antd";
+import {
+  makeProgress,
+  makeProgressSelector,
+  makeAssign,
+  makeAssignSelector,
+  makeToggle,
+  makeToggleSelector,
+} from "@36node/redux";
 
 import Layout from "../components/layout";
-
-import { reduxUiActions } from "../actions";
-import { reduxUiSelectors } from "../selectors";
 
 const Option = Select.Option;
 const { Container, Jumbotron } = Layout;
 
-@connect(state => {
-  const step = reduxUiSelectors.progressExample(state).step;
+const progress = makeProgress("ui");
+const progressSelector = makeProgressSelector("ui");
+const assign = makeAssign("ui");
+const assignSelector = makeAssignSelector("ui");
+const toggle = makeToggle("ui");
+const toggleSelector = makeToggleSelector("ui");
 
-  return {
-    step,
-  };
-})
+@connect(progressSelector)
 class ProgressExample extends PureComponent {
-  onIncrease = () => {
-    this.props.dispatch(reduxUiActions.progressExample.increase(5));
-  };
-
-  onDecrease = () => {
-    this.props.dispatch(reduxUiActions.progressExample.decrease(5));
-  };
-
-  onReset = () => {
-    this.props.dispatch(reduxUiActions.progressExample.init());
-  };
+  onIncrease = () => this.props.dispatch(progress.increase(5));
+  onDecrease = () => this.props.dispatch(progress.decrease(5));
+  onReset = () => this.props.dispatch(progress.reset());
 
   render() {
     return (
       <Row type="flex" align="middle">
         <Col span={2}>Progress Example:</Col>
-
-        <Col span={4} offset={1}>
-          <Progress type="circle" percent={this.props.step} />
+        <Col span={5} offset={1}>
+          <Progress type="circle" percent={this.props.pos} />
         </Col>
 
-        <Col span={2}>
-          <Button icon="plus" type="primary" onClick={this.onIncrease}>
-            Increase
-          </Button>
-        </Col>
-        <Col span={2}>
-          <Button icon="plus" onClick={this.onDecrease}>
-            Decrease
-          </Button>
-        </Col>
-        <Col span={2}>
-          <Button type="danger" onClick={this.onReset}>
-            Reset
-          </Button>
+        <Col span={16}>
+          <Button.Group>
+            <Button icon="plus" type="primary" onClick={this.onIncrease}>
+              Increase
+            </Button>
+            <Button icon="plus" onClick={this.onDecrease}>
+              Decrease
+            </Button>
+            <Button type="danger" onClick={this.onReset}>
+              Reset
+            </Button>
+          </Button.Group>
         </Col>
       </Row>
     );
   }
 }
 
-@connect(state => {
-  const assign = reduxUiSelectors.assignExample(state).assign;
-
-  return {
-    assign,
-  };
-})
+@connect(state => ({ assign: assignSelector(state) }))
 @Form.create({
   onValuesChange: (props, changedValues, allValues) => {
-    props.dispatch(reduxUiActions.assignExample.set(allValues));
+    props.dispatch(assign(allValues));
   },
 })
 class AssignExample extends Component {
@@ -96,8 +84,8 @@ class AssignExample extends Component {
       wrapperCol: { span: 14 },
     };
 
+    const { assign } = this.props;
     const { getFieldDecorator } = this.props.form;
-    const { assign = {} } = this.props;
     return (
       <Row type="flex" align="middle">
         <Col span={2}>Assign Example:</Col>
@@ -194,76 +182,50 @@ class AssignExample extends Component {
   }
 }
 
-@connect(state => {
-  const toggle = reduxUiSelectors.toggleExample(state).toggle;
-
-  return {
-    toggle,
-  };
-})
+@connect(state => ({
+  value: toggleSelector(state),
+}))
 class ToggleExample extends Component {
-  onChange = checked => {
-    this.props.dispatch(reduxUiActions.toggleExample.set(checked));
-  };
-
-  onOpen = () => {
-    this.props.dispatch(reduxUiActions.toggleExample.open());
-  };
-
-  onClose = () => {
-    this.props.dispatch(reduxUiActions.toggleExample.close());
-  };
+  onChange = () => this.props.dispatch(toggle());
+  onOpen = () => this.props.dispatch(toggle(true));
+  onClose = () => this.props.dispatch(toggle(false));
 
   render() {
-    const { toggle } = this.props;
+    const { value } = this.props;
 
     return (
       <Row type="flex" align="middle">
         <Col span={2}>Toggle example:</Col>
-
-        <Col span={2} offset={1}>
-          <Switch value={toggle} onChange={this.onChange} />
+        <Col span={3} offset={1}>
+          <Switch checked={value} onChange={this.onChange} />
         </Col>
-
-        <Col span={3}>
-          <Button disabled={toggle} onClick={this.onOpen} type="primary">
-            Open Toggle
-          </Button>
-        </Col>
-
-        <Col span={3}>
-          <Button disabled={!toggle} onClick={this.onClose}>
-            Close Toggle
-          </Button>
+        <Col span={18}>
+          <Button.Group>
+            <Button disabled={value} onClick={this.onOpen} type="primary">
+              ON
+            </Button>
+            <Button disabled={!value} onClick={this.onClose}>
+              OFF
+            </Button>
+          </Button.Group>
         </Col>
       </Row>
     );
   }
 }
 
-@connect(state => {
-  return {};
-})
 export default class ReduxUi extends Component {
   render() {
     return (
-      <DocumentTitle title="@36node - Redux Ui Example">
-        <Container>
-          <Jumbotron> Redux ui. </Jumbotron>
-
-          <Divider />
-
-          <ToggleExample />
-
-          <Divider />
-
-          <AssignExample />
-
-          <Divider />
-
-          <ProgressExample />
-        </Container>
-      </DocumentTitle>
+      <Container>
+        <Jumbotron> Redux ui. </Jumbotron>
+        <Divider />
+        <ToggleExample />
+        <Divider />
+        <AssignExample />
+        <Divider />
+        <ProgressExample />
+      </Container>
     );
   }
 }

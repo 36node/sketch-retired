@@ -1,153 +1,100 @@
-import { Reducer, Action } from "redux";
-import { Selector } from "reselect";
-import { AllEffect } from "redux-saga/effects";
-export interface Column {
-  // column header title
-  title: String;
-  // dataIndex
-  dataIndex: String;
-  // format data when import
-  importFormat: (val: any) => any;
-  // format data when export
-  exportFormat: (val: any) => any;
+import { Schema } from "normalizr";
+import { Saga } from "redux-saga";
+import { PutEffect } from "redux-saga/effects";
+import { Reducer } from "redux";
+import {
+  Action,
+  ActionCreator,
+  KeyPattern,
+  Error,
+  Selector,
+} from "@36node/redux";
 
-  // disable export
-  disableExport: Boolean;
+declare module "@36node/redux-xlsx" {
+  interface Column {
+    title: string;
+    dataIndex: string;
+  }
 
-  // disable import
-  disableImport: Boolean;
-}
+  interface XlsxState {
+    importing: boolean;
+    exporting: boolean;
+    error: Error;
+    rows: [object];
+  }
 
-export declare type Columns = [Column];
+  interface ImportPayload {
+    file?: File;
+    rows?: [object];
+  }
 
-export declare type FileTypes = "xlsx" | "csv";
+  interface ExportPayload {
+    rows?: [object];
+  }
 
-export declare type Aoo = [Object];
+  interface ActionsMakerOpts {
+    columns: [Column];
+  }
 
-export declare type ImportDataSource = File;
+  interface ActionsCreator {
+    import: ActionCreator<ImportPayload>;
+    export: ActionCreator<ExportPayload>;
+  }
 
-export interface Descriptor {
-  [key: String]: ValidationRule;
-}
+  /********************************************
+   * xlsx                                     *
+   ********************************************/
 
-export interface Option {
-  reduxPath?: String;
-  exportOpts: ExportOpts;
-  importOpts: ImportOpts;
-}
+  interface xlsxTypes {
+    IMPORT_START: string;
+    IMPORT_SUCCESS: string;
+    IMPORT_FAILURE: string;
+    EXPORT_START: string;
+    EXPORT_SUCCESS: string;
+    EXPORT_FAILURE: string;
+    UPDATE_SHEET: string;
+    UPDATE_CELL: string;
+  }
 
-interface BaseAction extends Action {
-  meta?: Object;
-  key: String;
-}
+  interface XlsxReducerRoot {
+    xlsx: Reducer<XlsxState, Action<ImportPayload | ExportPayload>>;
+  }
 
-export interface ImportAction extends BaseAction {
-  payload: {
-    dataSource: ImportDataSource;
-  };
-  meta: {
-    columns: Columns;
-    descriptor: Descriptor;
-  };
-}
+  export const watchXlsx: Saga;
+  export const xlsxReducerRoot: XlsxReducerRoot;
 
-export interface ExportAction extends BaseAction {
-  payload: {
-    fileName: String;
-    fileType: FileTypes;
-  };
-  meta: {
-    columns: Columns;
-  };
-}
-
-export interface ImportResetAction extends BaseAction {}
-
-export interface ImportPausAction extends BaseAction {}
-
-export interface XlsxActions {
-  import: (
-    { columns: Columns, dataSource: ImportDataSource },
-    meta?: Object
-  ) => ImportAction;
-
-  export: (
-    { columns: Columns, fileName: string, fileType: string, params: object },
-    meta: Object
-  ) => ExportAction;
-
-  importReset: () => ImportResetAction;
+  export function tapImportStart(key: string, saga: Saga): void;
+  export function tapImportSuccess(key: string, saga: Saga): void;
+  export function tapImportFailure(key: string, saga: Saga): void;
+  export function tapExportStart(key: string, saga: Saga): void;
+  export function tapExportSuccess(key: string, saga: Saga): void;
+  export function tapExportFailure(key: string, saga: Saga): void;
 
   /**
-   * Cancel import prgress and clear import redux state
+   * action type is xlsx or not
+   * @param action action
    */
-  importPause: () => ImportPauseAction;
-}
+  export function isXlsx(
+    action: Action<ImportPayload | ExportPayload>
+  ): boolean;
 
-export interface ImportState {
-  total: number; // total record count
-  count: number; // current importted count
-  status: "NOT_STARTED" | "ERROR" | "IMPORTING" | "FINISHED" | "PAUSE"; // import status
-  error?: any; // file error or other error
-}
-
-export interface ExportState {
-  loading: Boolean;
-}
-
-export interface ImportOpts {
   /**
-   * Before import hook, return false means stop import progress
+   * make xlsx's actions creator
+   * @param key redux store's key
+   * @param options params
    */
-  beforeImport: (records: [object]) => boolean;
-  handleRecord: (row: number, record: object, worker: number) => any; // on handle import record
-  onFinished: () => any; // hook on finished
-  onError: () => any; // hook on error
-  workerCount: number;
+  export function makeXlsx(
+    key: KeyPattern,
+    options?: ActionsMakerOpts
+  ): ActionsCreator;
+
+  /**
+   * make xlsx's selector
+   * @param key redux store's key
+   * @param init default state
+   */
+  export function makeXlsxSelector(
+    key: string,
+    init?: XlsxState
+  ): Selector<XlsxState>;
 }
-
-export interface ExportOpts {
-  dataSource: Aoo | Function;
-}
-
-declare class Xlsx {
-  key: string;
-  reduxPath?: string;
-  importOpts?: ImportOpts;
-  exportOpts?: ExportOpts;
-  actions: XlsxActions;
-}
-
-export const xlsxReducer: Reducer;
-
-export function createXlsxActions(key: String, opts: Option): XlsxActions;
-
-export function createImportSelector(
-  key: String,
-  reduxPath: String
-): (state: Object) => ImportState;
-
-export function createExportSelector(
-  key: String,
-  reduxPath: String
-): (state: Object) => ExportState;
-
-export const watchXlsx: AllEffect;
-
-export const ImportStatus: {
-  NOT_STARTED: string;
-  ERROR: string;
-  IMPORTING: string;
-  FINISHED: string;
-  PAUSE: string;
-};
-
-export const XlsxTypes: {
-  IMPORT: string;
-  IMPORT_HANDLE_RESULT: string;
-  IMPORT_PAUSE: string;
-  IMPORT_RESET: string;
-  SET_IMPORT_STATE: string;
-  SET_EXPORT_STATE: string;
-  EXPORT: string;
-};

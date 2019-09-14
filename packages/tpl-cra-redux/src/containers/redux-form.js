@@ -1,7 +1,5 @@
 import React, { PureComponent } from "react";
-import DocumentTitle from "react-document-title";
-import Layout from "../components/layout";
-
+import { connect } from "react-redux";
 import {
   Switch,
   Form,
@@ -11,19 +9,22 @@ import {
   Radio,
   Divider,
   Button,
+  Row,
+  Col,
 } from "antd";
+import { makeForm, makeFormSelector } from "@36node/redux";
+import { createForm } from "@36node/redux-antd";
+import { isNil } from "lodash";
 
-import createForm from "@36node/redux-form-antd";
+import Layout from "../components/layout";
 
 const Option = Select.Option;
 const { Container, Jumbotron } = Layout;
 
-// use hoc to bind antd form and redux-form
-@createForm("SAMPLE_FORM")
+@createForm("example")
 class ReduxFormExample extends PureComponent {
   render() {
-    // do not use form.getFieldDecorator
-    const { getFieldDecorator } = this.props;
+    const { getFieldDecorator } = this.props.form;
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 14 },
@@ -91,7 +92,7 @@ class ReduxFormExample extends PureComponent {
         </Form.Item>
 
         <Form.Item label="Slider">
-          {getFieldDecorator("slider")(
+          {getFieldDecorator("slider", { initialValue: 20 })(
             <Slider
               marks={{
                 0: "A",
@@ -106,7 +107,7 @@ class ReduxFormExample extends PureComponent {
         </Form.Item>
 
         <Form.Item label="Radio.Group">
-          {getFieldDecorator("radio-group")(
+          {getFieldDecorator("radio.group")(
             <Radio.Group>
               <Radio value="a">item 1</Radio>
               <Radio value="b">item 2</Radio>
@@ -130,23 +131,6 @@ class ReduxFormExample extends PureComponent {
           >
             Reset
           </Button>
-
-          <Button
-            style={{ marginLeft: 8 }}
-            onClick={() => {
-              this.handleReset({
-                select: "usa",
-                "radio-group": "c",
-                switch: true,
-                slider: 60,
-                "input-number": 4,
-                "select-multiple": ["red"],
-              });
-            }}
-            type="danger"
-          >
-            Reset(with initial value)
-          </Button>
         </Form.Item>
       </Form>
     );
@@ -163,22 +147,63 @@ class ReduxFormExample extends PureComponent {
   };
 
   handleReset = initialValues => {
-    this.props.reset(initialValues);
+    this.props.form.resetFields(initialValues);
   };
 }
 
+const form = makeForm("example");
+const formSelector = makeFormSelector("example");
+
+@connect(state => ({
+  form: formSelector(state),
+}))
 export default class ReduxForm extends PureComponent {
+  handleSetSelect = () => {
+    this.props.dispatch(
+      form.saveFields({
+        fields: {
+          select: {
+            name: "select",
+            value: "usa",
+            touched: true,
+            dirty: false,
+            validating: false,
+          },
+        },
+      })
+    );
+  };
+
   render() {
+    const { fields } = this.props.form;
     return (
-      <DocumentTitle title="@36node - ">
-        <Container>
-          <Jumbotron> Redux Form. </Jumbotron>
+      <Container>
+        <Jumbotron> Redux Form. </Jumbotron>
+        <Row style={{ padding: 30 }}>
+          {Object.keys(fields).map(k => {
+            const val = isNil(fields[k]) ? "" : fields[k];
 
-          <Divider />
-
-          <ReduxFormExample />
-        </Container>
-      </DocumentTitle>
+            return (
+              <Row key={k}>
+                <Col span={6}>{k}:</Col>
+                <Col span={18}>{JSON.stringify(val, 0, 2)}</Col>
+              </Row>
+            );
+          })}
+        </Row>
+        <Row style={{ padding: 20 }}>
+          <Button
+            onClick={this.handleSetSelect}
+            style={{ marginLeft: 8 }}
+            type="danger"
+            ghost
+          >
+            Set Select to USA from another component
+          </Button>
+        </Row>
+        <Divider />
+        <ReduxFormExample />
+      </Container>
     );
   }
 }
