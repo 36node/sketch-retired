@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.35](https://github.com/36node/sketch/compare/@36node/template-react-component@0.3.34...@36node/template-react-component@0.3.35) (2019-09-19)
+
+
+### Bug Fixes
+
+* tpl-react-component test ([0002394](https://github.com/36node/sketch/commit/0002394))
+
+
+
+
+
 ## [0.3.34](https://github.com/36node/sketch/compare/@36node/template-react-component@0.3.33...@36node/template-react-component@0.3.34) (2019-08-22)
 
 **Note:** Version bump only for package @36node/template-react-component
