@@ -76,7 +76,7 @@ src
 
 ---
 
-## 鸭子模式
+## 结合鸭子模式
 
 - 在 container 中，具象化 action、selector 以及如果需要用到 saga taps。
 - 某个 container 文件夹里，尽量包含这个业务相关所有具体实例化代码。
