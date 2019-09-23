@@ -161,14 +161,12 @@ export default class ReduxForm extends PureComponent {
   handleSetSelect = () => {
     this.props.dispatch(
       form.saveFields({
-        fields: {
-          select: {
-            name: "select",
-            value: "usa",
-            touched: true,
-            dirty: false,
-            validating: false,
-          },
+        select: {
+          name: "select",
+          value: "usa",
+          touched: true,
+          dirty: false,
+          validating: false,
         },
       })
     );
