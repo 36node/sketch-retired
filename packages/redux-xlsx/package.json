@@ -1,6 +1,6 @@
 {
   "name": "@36node/redux-xlsx",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "An redux libary for import or export xlsx",
   "repository": {
     "url": "36node/sketch",
@@ -43,7 +43,7 @@
     ]
   },
   "dependencies": {
-    "@36node/redux": "^0.0.1",
+    "@36node/redux": "^0.0.2",
     "xlsx": "^0.15.1"
   },
   "peerDependencies": {

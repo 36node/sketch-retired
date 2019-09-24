@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.17](https://github.com/36node/sketch/compare/@36node/sketch@0.13.16...@36node/sketch@0.13.17) (2019-09-24)
+
+
+### Bug Fixes
+
+* sketch test add detectOpenHandles and forceExit, close [#153](https://github.com/36node/sketch/issues/153) ([f34379d](https://github.com/36node/sketch/commit/f34379d))
+
+
+
+
+
 ## [0.13.16](https://github.com/36node/sketch/compare/@36node/sketch@0.13.15...@36node/sketch@0.13.16) (2019-09-19)
 
 **Note:** Version bump only for package @36node/sketch

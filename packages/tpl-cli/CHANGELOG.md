@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.35](https://github.com/undefined/undefined/compare/@36node/template-cli@0.7.34...@36node/template-cli@0.7.35) (2019-09-24)
+
+**Note:** Version bump only for package @36node/template-cli
+
+
+
+
+
 ## [0.7.34](https://github.com/undefined/undefined/compare/@36node/template-cli@0.7.33...@36node/template-cli@0.7.34) (2019-09-19)
 
 **Note:** Version bump only for package @36node/template-cli
