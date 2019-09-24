@@ -13,6 +13,8 @@ program
   .option("--coverage", "test with coverage")
   .option("--runInBand", "run all tests serially")
   .option("--env", "which env for test")
+  .option("--detectOpenHandles", "for debug")
+  .option("--forceExit", "force exit")
   .parse(process.argv);
 
 let command;
