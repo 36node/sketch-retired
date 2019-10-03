@@ -171,7 +171,7 @@ declare module "@36node/redux" {
     SAVE_FIELDS: string;
   }
 
-  interface FormMakers {
+  interface FormMaker {
     reset: ActionCreator<ResetFormPayload>;
     saveFields: ActionCreator<SaveFieldsPayload>;
   }
@@ -181,12 +181,12 @@ declare module "@36node/redux" {
   }
 
   interface FormReducerRoot {
-    cron: Reducer<FormState, Action<ResetFormPayload | SaveFieldsPayload>>;
+    form: Reducer<FormState, Action<ResetFormPayload | SaveFieldsPayload>>;
   }
 
   export const formTypes: FormTypes;
   export const isForm: CheckAction;
-  export function makeForm(key: string): FormMakers;
+  export function makeForm(key: string): FormMaker;
 
   export const formReducerRoot: FormReducerRoot;
   export const makeFormSelector: SelectorMaker<FormState>;

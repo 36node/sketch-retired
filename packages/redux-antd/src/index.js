@@ -1,1 +1,2 @@
-export { createForm } from "./form.js";
+export { createForm } from "./form";
+export { createTable } from "./table";

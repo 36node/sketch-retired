@@ -12,8 +12,8 @@ import { columns } from "./table";
  */
 const listPets = store.makeListPets("export");
 const selectPets = makeApiSelector("export");
-export const xlsxActions = makeXlsx("pets", { columns });
-export const selectXlsx = makeXlsxSelector("pets");
+export const xlsxActions = makeXlsx("store", { columns });
+export const selectXlsx = makeXlsxSelector("store");
 
 @connect(state => ({
   petList: selectPets(state),
