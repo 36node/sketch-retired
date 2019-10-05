@@ -6,6 +6,7 @@ export {
   rePut,
   tapOn,
   watchHelper,
+  KEY,
 } from "./lib";
 
 /**

@@ -64,6 +64,9 @@ declare module "@36node/redux" {
   type SelectorMaker<T> = (key: string, initState?: T) => Selector<T>;
   type CheckAction = (action: Action<any>) => boolean;
 
+  /********************************************
+   * lib                                      *
+   ********************************************/
   export function isAction(
     pattern: string | Function | [string],
     key?: string
@@ -80,6 +83,7 @@ declare module "@36node/redux" {
   ) => Reducer<any, Action<any>>;
 
   export const makeSelector: SelectorMaker<T>;
+  export function KEY(entry: string): string;
 
   /********************************************
    * assign                                   *

@@ -78,3 +78,18 @@ export const makeSelector = (key, initState = {}) => state => {
   if (!key) throw new Error("key is required for selector");
   return get(state, key) || initState;
 };
+
+/**
+ * standardize key usage
+ * @param {string} entry key
+ * @returns key
+ */
+export const KEY = entry => {
+  if (keys.has(entry)) {
+    throw new Error(`key ${entry} should not be used duplicated.`);
+  }
+
+  keys.add(entry);
+  return entry;
+};
+const keys = new Set();
