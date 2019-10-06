@@ -2,9 +2,9 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "jest-styled-components";
 
-import Title from "./title";
+import Center from "./center";
 
 it("should renders correctly", () => {
-  const tree = renderer.create(<Title>somthing</Title>).toJSON();
+  const tree = renderer.create(<Center>somthing</Center>).toJSON();
   expect(tree).toMatchSnapshot();
 });

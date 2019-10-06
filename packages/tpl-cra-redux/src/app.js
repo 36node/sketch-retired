@@ -2,6 +2,7 @@ import React from "react";
 import { hot } from "react-hot-loader/root";
 import { Router, Route, Switch } from "react-router-dom";
 import Loadable from "react-loadable";
+import { Layout } from "antd";
 
 import { history } from "./lib";
 import Logo from "./components/logo";
@@ -10,7 +11,6 @@ import ProtectedRoute from "./containers/protect";
 import ReduxForm from "./containers/redux-form";
 // template-example-end
 import Nav from "./containers/nav";
-import Layout from "./components/layout";
 import Loading from "./components/loading";
 import Home from "./containers/home";
 import Login from "./containers/login";
@@ -42,12 +42,12 @@ const App = () => (
 );
 
 const Main = () => (
-  <Layout>
+  <Layout style={{ minHeight: "100vh" }}>
     <Header>
       <Logo />
       <Nav />
     </Header>
-    <Content>
+    <Content style={{ padding: "0 50px" }}>
       <Switch>
         <Route path="/" exact component={Home} />
         {/* template-example-start */}
@@ -58,7 +58,9 @@ const Main = () => (
         {/* template-example-end */}
       </Switch>
     </Content>
-    <Footer>Template-CRA-Redux ©2019 Created by 36node</Footer>
+    <Footer style={{ textAlign: "center" }}>
+      Template-CRA-Redux ©2019 Created by 36node
+    </Footer>
   </Layout>
 );
 

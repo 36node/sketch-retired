@@ -1,13 +1,12 @@
 import React from "react";
-import { Form, Icon, Input, Button, Checkbox } from "antd";
+import { Form, Icon, Input, Button, Checkbox, Layout } from "antd";
 import styled from "styled-components";
 import { createForm } from "@36node/redux-antd";
 
-import Layout from "../../components/layout";
+import Center from "../../components/layout/center";
 import { auth } from "../../actions/api";
 import { domain } from "../../constants";
 
-const { Content } = Layout;
 const FormItem = Form.Item;
 const login = auth.makeLogin(domain.session);
 
@@ -67,58 +66,48 @@ export default class Login extends React.PureComponent {
 
     return (
       <Layout>
-        <Content>
-          <LoginContainer>
-            <LoginBox>
-              <div className="login-logo">
-                <img
-                  src="/images/logo.png"
-                  width="48px"
-                  height="48px"
-                  alt="logo"
-                />
-                <div>
-                  <div className="title">TEMPLATE-CRA-REDUX</div>
-                  <div className="subtitle">@36node</div>
-                </div>
+        <Center>
+          <LoginBox>
+            <div className="login-logo">
+              <img
+                src="/images/logo.png"
+                width="48px"
+                height="48px"
+                alt="logo"
+              />
+              <div>
+                <div className="title">TEMPLATE-CRA-REDUX</div>
+                <div className="subtitle">@36node</div>
               </div>
-              <Form onSubmit={this.handleSubmit} className="login-form">
-                <FormItem>
-                  <Username />
-                </FormItem>
-                <FormItem>
-                  <Password />
-                </FormItem>
-                <FormItem>
-                  <RememberMe initialValue={true} />
-                  <a className="login-form-forgot" href="/">
-                    Forgot password
-                  </a>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    className="login-form-button"
-                  >
-                    Log in
-                  </Button>
-                  Or <a href="/">register now!</a>
-                </FormItem>
-              </Form>
-            </LoginBox>
-          </LoginContainer>
-        </Content>
+            </div>
+            <Form onSubmit={this.handleSubmit} className="login-form">
+              <FormItem>
+                <Username />
+              </FormItem>
+              <FormItem>
+                <Password />
+              </FormItem>
+              <FormItem>
+                <RememberMe initialValue={true} />
+                <a className="login-form-forgot" href="/">
+                  Forgot password
+                </a>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="login-form-button"
+                >
+                  Log in
+                </Button>
+                Or <a href="/">register now!</a>
+              </FormItem>
+            </Form>
+          </LoginBox>
+        </Center>
       </Layout>
     );
   }
 }
-
-const LoginContainer = styled("div")`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 const LoginBox = styled("div")`
   padding: 0px 24px 0 24px;

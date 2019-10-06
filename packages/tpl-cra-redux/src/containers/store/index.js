@@ -1,19 +1,18 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { put, select } from "redux-saga/effects";
-import { Card, Icon } from "antd";
+import { Breadcrumb, Card, Icon } from "antd";
 import { Switch, Route } from "react-router-dom";
 import { makeCron, makeCronSelector, tapCronTick } from "@36node/redux";
 
 import PetsTable, { listPets, selectPets } from "./table";
 import Exporter from "./exporter";
 import Importer from "./importer";
-import Layout from "../../components/layout";
+import withBreadCrumb from "../../components/withBreadCrumb";
 import Button from "../../components/button";
 import { domain } from "../../constants";
 
 const PAGER_KEY = domain.store.pager;
-const { Container, Title } = Layout;
 
 /**
  * actions and selectors
@@ -35,6 +34,7 @@ tapCronTick(PAGER_KEY, function*(action) {
   );
 });
 
+@withBreadCrumb("Pet-Store")
 @connect(state => ({
   cron: selectCron(state),
   pets: selectPets(state),
@@ -55,7 +55,7 @@ export default class extends React.PureComponent {
 
     return (
       <div>
-        <Title>Pets in store</Title>
+        <h1>Pets in store</h1>
         <span
           style={{
             paddingRight: 12,
@@ -95,7 +95,10 @@ export default class extends React.PureComponent {
 
   render() {
     return (
-      <Container>
+      <Fragment>
+        <Breadcrumb style={{ margin: "16px 0" }}>
+          <Breadcrumb.Item>Store</Breadcrumb.Item>
+        </Breadcrumb>
         <Card title={this.renderTitle()} extra={this.renderExtra()}>
           <PetsTable />
         </Card>
@@ -103,7 +106,7 @@ export default class extends React.PureComponent {
           <Route exact path="/*/export" component={Exporter} />
           <Route exact path="/*/import" component={Importer} />
         </Switch>
-      </Container>
+      </Fragment>
     );
   }
 }

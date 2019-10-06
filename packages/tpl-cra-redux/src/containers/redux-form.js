@@ -16,11 +16,12 @@ import { makeForm, makeFormSelector } from "@36node/redux";
 import { createForm } from "@36node/redux-antd";
 import { isNil } from "lodash";
 
-import Layout from "../components/layout";
+import withBreadCrumb from "../components/withBreadCrumb";
+import Container from "../components/layout/container";
+import Jumbotron from "../components/layout/jumbotron";
 
 const REDUX_FORM_KEY = "reduxForm";
 const Option = Select.Option;
-const { Container, Jumbotron } = Layout;
 
 @createForm(REDUX_FORM_KEY)
 class ReduxFormExample extends PureComponent {
@@ -155,6 +156,7 @@ class ReduxFormExample extends PureComponent {
 const form = makeForm(REDUX_FORM_KEY);
 const formSelector = makeFormSelector(REDUX_FORM_KEY);
 
+@withBreadCrumb("UI-Example", "Form")
 @connect(state => ({
   form: formSelector(state),
 }))

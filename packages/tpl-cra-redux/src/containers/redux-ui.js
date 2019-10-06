@@ -27,11 +27,12 @@ import {
   makeToggleSelector,
 } from "@36node/redux";
 
-import Layout from "../components/layout";
+import withBreadCrumb from "../components/withBreadCrumb";
+import Container from "../components/layout/container";
+import Jumbotron from "../components/layout/jumbotron";
 
 const UI_KEY = "reduxUI";
 const Option = Select.Option;
-const { Container, Jumbotron } = Layout;
 
 const progress = makeProgress(UI_KEY);
 const progressSelector = makeProgressSelector(UI_KEY);
@@ -215,6 +216,7 @@ class ToggleExample extends Component {
   }
 }
 
+@withBreadCrumb("UI-Example", "UI")
 export default class ReduxUi extends Component {
   render() {
     return (

@@ -3,6 +3,7 @@
 exports[`should renders correctly 1`] = `
 .c0 {
   font-size: 2rem;
+  padding: 15px 0;
 }
 
 <div
