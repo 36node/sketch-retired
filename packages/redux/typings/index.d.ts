@@ -83,7 +83,6 @@ declare module "@36node/redux" {
   ) => Reducer<any, Action<any>>;
 
   export const makeSelector: SelectorMaker<T>;
-  export function KEY(entry: string): string;
 
   /********************************************
    * assign                                   *

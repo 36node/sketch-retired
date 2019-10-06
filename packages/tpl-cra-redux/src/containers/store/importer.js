@@ -8,31 +8,33 @@ import { makeCron, makeCronSelector, tapCronTick } from "@36node/redux";
 
 import { store } from "../../actions/api";
 import { STORE_CREATE_PET } from "../../actions/types";
-import { selectXlsx, xlsxActions } from "./exporter";
+import { selectXlsx, xlsxActions } from "./table";
+import { domain } from "../../constants";
 
 /**
  * actions and selectors
  */
-const createPet = store.makeCreatePet("importer", {}, { parallel: true });
-const cronActions = makeCron("importer");
-const selectCron = makeCronSelector("importer");
-const progressActions = makeProgress("importer");
-const selectProgress = makeProgressSelector("importer");
+const IMPORTER_KEY = domain.store.importer;
+const createPet = store.makeCreatePet(IMPORTER_KEY, {}, { parallel: true });
+const cronActions = makeCron(IMPORTER_KEY);
+const selectCron = makeCronSelector(IMPORTER_KEY);
+const progressActions = makeProgress(IMPORTER_KEY);
+const selectProgress = makeProgressSelector(IMPORTER_KEY);
 
 /**
  * saga effects
  */
-tapCronTick("importer", function*(action) {
+tapCronTick(IMPORTER_KEY, function*(action) {
   const { pos } = action.payload;
   const xlsx = yield select(selectXlsx);
   yield put(createPet({ body: xlsx.rows[pos - 1] }));
 });
 
-tapOn(STORE_CREATE_PET.SUCCESS, "importer", function*(action) {
+tapOn(STORE_CREATE_PET.SUCCESS, IMPORTER_KEY, function*(action) {
   yield put(progressActions.increase());
 });
 
-tapOn(STORE_CREATE_PET.FAILURE, "importer", () => {
+tapOn(STORE_CREATE_PET.FAILURE, IMPORTER_KEY, () => {
   message("Failed to import pets");
 });
 

@@ -2,18 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import { Modal } from "antd";
 import { makeApiSelector } from "@36node/redux";
-import { makeXlsx, makeXlsxSelector } from "@36node/redux-xlsx";
 
 import { store } from "../../actions/api";
-import { columns } from "./table";
+import { selectXlsx, xlsxActions } from "./table";
+import { domain } from "../../constants";
 
 /**
  * actions and selectors
  */
-const listPets = store.makeListPets("export");
-const selectPets = makeApiSelector("export");
-export const xlsxActions = makeXlsx("store", { columns });
-export const selectXlsx = makeXlsxSelector("store");
+const EXPORTER_KEY = domain.store.exporter;
+const listPets = store.makeListPets(EXPORTER_KEY);
+const selectPets = makeApiSelector(EXPORTER_KEY);
 
 @connect(state => ({
   petList: selectPets(state),

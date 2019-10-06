@@ -6,10 +6,11 @@ import Sample from "@36node/template-react-component";
 
 import Layout from "../../components/layout";
 import { auth } from "../../actions/api";
+import { domain } from "../../constants";
 
 const { Container, Jumbotron } = Layout;
-const logout = auth.makeLogout("session");
-const unAuth = auth.makeUnAuth("session");
+const logout = auth.makeLogout(domain.session);
+const unAuth = auth.makeUnAuth(domain.session);
 
 @connect(state => ({}))
 export default class extends React.PureComponent {

@@ -29,15 +29,16 @@ import {
 
 import Layout from "../components/layout";
 
+const UI_KEY = "reduxUI";
 const Option = Select.Option;
 const { Container, Jumbotron } = Layout;
 
-const progress = makeProgress("ui");
-const progressSelector = makeProgressSelector("ui");
-const assign = makeAssign("ui");
-const assignSelector = makeAssignSelector("ui");
-const toggle = makeToggle("ui");
-const toggleSelector = makeToggleSelector("ui");
+const progress = makeProgress(UI_KEY);
+const progressSelector = makeProgressSelector(UI_KEY);
+const assign = makeAssign(UI_KEY);
+const assignSelector = makeAssignSelector(UI_KEY);
+const toggle = makeToggle(UI_KEY);
+const toggleSelector = makeToggleSelector(UI_KEY);
 
 @connect(progressSelector)
 class ProgressExample extends PureComponent {

@@ -4,10 +4,12 @@ import { makeApiSelector } from "@36node/redux";
 
 import Layout from "../../components/layout";
 import { github } from "../../actions/api";
+import { domain } from "../../constants";
 
 const { Container, Jumbotron } = Layout;
-const listRepos = github.makeListRepos("github", { org: "36node" });
-const selectRepos = makeApiSelector("github");
+const REPOS_KEY = domain.github.repos;
+const listRepos = github.makeListRepos(REPOS_KEY, { org: "36node" });
+const selectRepos = makeApiSelector(REPOS_KEY);
 
 @connect(state => {
   const listReposState = selectRepos(state);

@@ -18,10 +18,11 @@ import { isNil } from "lodash";
 
 import Layout from "../components/layout";
 
+const REDUX_FORM_KEY = "reduxForm";
 const Option = Select.Option;
 const { Container, Jumbotron } = Layout;
 
-@createForm("example")
+@createForm(REDUX_FORM_KEY)
 class ReduxFormExample extends PureComponent {
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -151,13 +152,13 @@ class ReduxFormExample extends PureComponent {
   };
 }
 
-const form = makeForm("example");
-const formSelector = makeFormSelector("example");
+const form = makeForm(REDUX_FORM_KEY);
+const formSelector = makeFormSelector(REDUX_FORM_KEY);
 
 @connect(state => ({
   form: formSelector(state),
 }))
-export default class ReduxForm extends PureComponent {
+export default class extends PureComponent {
   handleSetSelect = () => {
     this.props.dispatch(
       form.saveFields({

@@ -2,19 +2,13 @@ import React from "react";
 import { Table } from "antd";
 import { makeApiSelector } from "@36node/redux";
 import { createTable } from "@36node/redux-antd";
+import { makeXlsx, makeXlsxSelector } from "@36node/redux-xlsx";
 
 import { store } from "../../actions/api";
+import { domain } from "../../constants";
 
-/**
- * actions and selectors
- */
-export const listPets = store.makeListPets("store");
-export const selectPets = makeApiSelector("store");
-
-/**
- * data
- */
-export const columns = [
+const PETS_KEY = domain.store.pets;
+const columns = [
   { title: "name", dataIndex: "name", key: "name" },
   { title: "owner", dataIndex: "owner", key: "owner" },
   {
@@ -27,9 +21,17 @@ export const columns = [
 ];
 
 /**
+ * actions and selectors
+ */
+export const listPets = store.makeListPets(PETS_KEY);
+export const selectPets = makeApiSelector(PETS_KEY);
+export const xlsxActions = makeXlsx(PETS_KEY, { columns });
+export const selectXlsx = makeXlsxSelector(PETS_KEY);
+
+/**
  * Pets table
  */
-@createTable("store", { apiAction: listPets, apiSelector: selectPets })
+@createTable(PETS_KEY, { apiAction: listPets, apiSelector: selectPets })
 export default class extends React.Component {
   render() {
     return <Table columns={columns} {...this.props.table} />;

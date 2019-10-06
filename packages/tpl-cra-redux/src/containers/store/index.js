@@ -10,19 +10,21 @@ import Exporter from "./exporter";
 import Importer from "./importer";
 import Layout from "../../components/layout";
 import Button from "../../components/button";
+import { domain } from "../../constants";
 
+const PAGER_KEY = domain.store.pager;
 const { Container, Title } = Layout;
 
 /**
  * actions and selectors
  */
-const cronActions = makeCron("pager");
-const selectCron = makeCronSelector("pager");
+const cronActions = makeCron(PAGER_KEY);
+const selectCron = makeCronSelector(PAGER_KEY);
 
 /**
  * saga effects
  */
-tapCronTick("pager", function*(action) {
+tapCronTick(PAGER_KEY, function*(action) {
   const { payload } = action;
   const petsState = yield select(selectPets);
   const { query } = petsState.request;

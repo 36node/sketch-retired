@@ -1,18 +1,17 @@
 import React from "react";
 import { Form, Icon, Input, Button, Checkbox } from "antd";
 import styled from "styled-components";
-import { KEY } from "@36node/redux";
 import { createForm } from "@36node/redux-antd";
 
 import Layout from "../../components/layout";
 import { auth } from "../../actions/api";
+import { domain } from "../../constants";
 
-const SESSION = KEY("session");
 const { Content } = Layout;
 const FormItem = Form.Item;
-const login = auth.makeLogin(SESSION);
+const login = auth.makeLogin(domain.session);
 
-@createForm(SESSION)
+@createForm("login")
 export default class Login extends React.PureComponent {
   handleSubmit = e => {
     e.preventDefault();
