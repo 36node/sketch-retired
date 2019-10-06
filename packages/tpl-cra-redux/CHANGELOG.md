@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.0...@36node/template-cra-redux@0.12.1) (2019-10-06)
+
+
+### Bug Fixes
+
+* form fileds and redux key ([8b2dc42](https://github.com/36node/tpl-react-redux/commit/8b2dc42))
+* introduce domain key ([86666d6](https://github.com/36node/tpl-react-redux/commit/86666d6))
+
+
+
+
+
 # [0.12.0](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.11.31...@36node/template-cra-redux@0.12.0) (2019-10-03)
 
 

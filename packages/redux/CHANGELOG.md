@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/36node/sketch/compare/@36node/redux@0.1.0...@36node/redux@0.1.1) (2019-10-06)
+
+
+### Bug Fixes
+
+* form fileds and redux key ([8b2dc42](https://github.com/36node/sketch/commit/8b2dc42))
+* introduce domain key ([86666d6](https://github.com/36node/sketch/commit/86666d6))
+
+
+
+
+
 # [0.1.0](https://github.com/36node/sketch/compare/@36node/redux@0.0.2...@36node/redux@0.1.0) (2019-10-03)
 
 
