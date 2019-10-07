@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.1...@36node/redux-antd@0.1.2) (2019-10-07)
+
+
+### Bug Fixes
+
+* configureStore in redux ([719897f](https://github.com/36node/sketch/commit/719897f))
+
+
+
+
+
 ## [0.1.1](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.0...@36node/redux-antd@0.1.1) (2019-10-06)
 
 **Note:** Version bump only for package @36node/redux-antd

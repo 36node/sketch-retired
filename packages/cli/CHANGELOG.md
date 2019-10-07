@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.18](https://github.com/36node/sketch/compare/@36node/sketch@0.13.17...@36node/sketch@0.13.18) (2019-10-07)
+
+
+### Bug Fixes
+
+* redux-session ([c8beb1d](https://github.com/36node/sketch/commit/c8beb1d))
+
+
+
+
+
 ## [0.13.17](https://github.com/36node/sketch/compare/@36node/sketch@0.13.16...@36node/sketch@0.13.17) (2019-09-24)
 
 
