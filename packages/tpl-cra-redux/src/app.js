@@ -63,4 +63,4 @@ const Main = () => (
   </Layout>
 );
 
-export default process.env.NODE_ENV === "development" ? hot(App) : App;
+export default (process.env.NODE_ENV === "development" ? hot(App) : App);
