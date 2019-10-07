@@ -3,7 +3,10 @@ import { Saga } from "redux-saga";
 import { PutEffect } from "redux-saga/effects";
 import { Reducer, Store } from "redux";
 import { Component } from "React";
+import * as effects from "redux-saga/effects";
+
 export { Provider, connect } from "react-redux";
+export { effects };
 
 declare module "@36node/redux" {
   /**

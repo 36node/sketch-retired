@@ -1,19 +1,16 @@
-import { call, delay, put, takeLatest } from "redux-saga/effects";
+import { isFailure, effects } from "@36node/redux";
 import { message } from "antd";
-import { isFailure } from "@36node/redux";
 
-import { history } from "../lib";
-import { auth } from "../actions/api";
-import { LOGIN, REFRESH, LOGOUT } from "../actions/types";
+import { history } from "./history";
+import { SESSION_ID, TOKEN, LOGIN_URL, REFRESh_TOKEN_DELAY } from "./constants";
 
-const SESSION_ID = "session_id";
-const TOKEN = "token";
-const LOGIN_URL = "/login";
-const REFRESh_TOKEN_DELAY = 30 * 60 * 1000;
+const { call, delay, put, takeLatest } = effects;
 
-export default function* watchSession() {
-  const refresh = auth.makeRefresh("session");
-
+export function makeSessionWatcher({
+  refresh,
+  loginSuccessTypes = [],
+  logoutSuccessTypes = [],
+} = {}) {
   function* login({ payload = {}, meta = {} }) {
     const { result = {} } = payload;
     if (!result.id) {
@@ -50,13 +47,18 @@ export default function* watchSession() {
     }
   }
 
-  /** refresh session at first time open app, maybe redirect by protected router, set from */
-  const sessionId = localStorage.getItem(SESSION_ID);
-  if (sessionId) {
-    yield put(refresh({ sessionId }, { from: history.location }));
-  }
+  return function* watchSession() {
+    /**
+     * refresh session at first time open app,
+     * maybe redirect by protected router, set from
+     */
+    const sessionId = localStorage.getItem(SESSION_ID);
+    if (sessionId) {
+      yield put(refresh({ sessionId }));
+    }
 
-  yield takeLatest([LOGIN.SUCCESS, REFRESH.SUCCESS], login);
-  yield takeLatest(LOGOUT.SUCCESS, logout);
-  yield takeLatest(isFailure, flashError);
+    yield takeLatest(loginSuccessTypes, login);
+    yield takeLatest(logoutSuccessTypes, logout);
+    yield takeLatest(isFailure, flashError);
+  };
 }

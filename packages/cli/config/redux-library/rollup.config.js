@@ -16,16 +16,17 @@ const peerDeps = Object.keys(pkg.peerDependencies || {});
 const createConfig = ({ input, output, env, min = false }) => ({
   input,
   output,
-  external: deps.concat(peerDeps),
+  external: deps.concat(peerDeps).concat("redux-saga/effects"),
   treeshake: {
     propertyReadSideEffects: false,
   },
   plugins: [
     nodeResolve(),
-    commonjs(),
     babel({
+      presets: ["@babel/preset-react"],
       exclude: "node_modules/**",
     }),
+    commonjs(),
     min &&
       terser({
         compress: {

@@ -1,3 +1,4 @@
+import * as effects from "redux-saga/effects";
 export { Provider, connect } from "react-redux";
 
 export {
@@ -8,9 +9,10 @@ export {
   rePut,
   tapOn,
   watchHelper,
-  // inject,
+  inject,
   configureStore,
 } from "./lib";
+export { effects };
 
 /**
  * assign

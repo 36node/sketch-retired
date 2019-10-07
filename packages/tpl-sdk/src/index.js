@@ -13,9 +13,9 @@ export default class SDK {
    * @returns {string} auth header
    * */
   get auth() {
-    if (this.token) {
-      return `Bearer ${this.token}`;
-    }
+    let token = this.token;
+    if (typeof token === "function") token = token();
+    if (token) return `Bearer ${token}`;
 
     return "";
   }

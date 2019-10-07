@@ -3,10 +3,9 @@ import { hot } from "react-hot-loader/root";
 import { Router, Route, Switch } from "react-router-dom";
 import Loadable from "react-loadable";
 import { Layout } from "antd";
+import { history, ProtectedRoute } from "@36node/redux-session";
 
-import { history } from "./lib";
 import Logo from "./components/logo";
-import ProtectedRoute from "./containers/protect";
 // template-example-start
 import ReduxForm from "./containers/redux-form";
 // template-example-end
@@ -36,7 +35,7 @@ const App = () => (
   <Router history={history}>
     <Switch>
       <Route path="/login" component={Login} />
-      <ProtectedRoute component={Main} />
+      <ProtectedRoute redirect="/login" component={Main} />
     </Switch>
   </Router>
 );
@@ -64,4 +63,4 @@ const Main = () => (
   </Layout>
 );
 
-export default (process.env.NODE_ENV === "development" ? hot(App) : App);
+export default process.env.NODE_ENV === "development" ? hot(App) : App;

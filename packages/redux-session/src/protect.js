@@ -1,13 +1,13 @@
 import React from "react";
-import { Route, Redirect } from "react-router";
+import { Route, Redirect } from "react-router-dom";
 
-import { TOKEN } from "../constants";
+import { TOKEN } from "./constants";
 
 function isAuth() {
   return !!sessionStorage.getItem(TOKEN);
 }
 
-const ProtectedRoute = ({ component: Component, ...rest }) => (
+export const ProtectedRoute = ({ component: Component, redirect, ...rest }) => (
   <Route
     {...rest}
     render={props => {
@@ -15,7 +15,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
         return (
           <Redirect
             to={{
-              pathname: "/login",
+              pathname: redirect,
               state: { from: props.location },
             }}
           />
@@ -26,5 +26,3 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
     }}
   />
 );
-
-export default ProtectedRoute;

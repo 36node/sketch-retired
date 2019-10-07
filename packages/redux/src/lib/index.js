@@ -2,7 +2,7 @@ import { clone, get, isArray, setWith } from "lodash";
 
 export * from "./humps";
 export * from "./saga";
-// export * from "./injector";
+export * from "./injector";
 export * from "./store";
 
 /**

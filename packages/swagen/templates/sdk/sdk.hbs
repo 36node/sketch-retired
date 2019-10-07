@@ -14,11 +14,11 @@ export default class SDK {
    * @returns {string} auth header
    * */
   get auth() {
-    if (this.token) {
-      {{#if components.securitySchemes.bearerAuth }}
-      return `Bearer ${this.token}`;
-      {{/if}}
-    }
+    {{#if components.securitySchemes.bearerAuth }}
+    let token = this.token;
+    if (typeof token === "function") token = token();
+    if (token) return `Bearer ${token}`;
+    {{/if}}
 
     return "";
   }
