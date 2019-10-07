@@ -1,7 +1,9 @@
 import { Schema } from "normalizr";
 import { Saga } from "redux-saga";
 import { PutEffect } from "redux-saga/effects";
-import { Reducer } from "redux";
+import { Reducer, Store } from "redux";
+import { Component } from "React";
+export { Provider, connect } from "react-redux";
 
 declare module "@36node/redux" {
   /**
@@ -83,6 +85,8 @@ declare module "@36node/redux" {
   ) => Reducer<any, Action<any>>;
 
   export const makeSelector: SelectorMaker<T>;
+  export function configureStore(rootReducers: Object): Store;
+  export function inject(reducers: Object, saga: Saga): Component;
 
   /********************************************
    * assign                                   *

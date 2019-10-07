@@ -1,7 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Modal } from "antd";
-import { makeApiSelector } from "@36node/redux";
+import { connect, makeApiSelector } from "@36node/redux";
 
 import { store } from "../../actions/api";
 import { selectXlsx, xlsxActions } from "./table";

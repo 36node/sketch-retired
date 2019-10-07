@@ -1,4 +1,3 @@
-import { combineReducers } from "redux";
 import { xlsxReducerRoot } from "@36node/redux-xlsx";
 import {
   apiReducerRoot,
@@ -9,7 +8,7 @@ import {
   formReducerRoot,
 } from "@36node/redux";
 
-export default combineReducers({
+const reducers = {
   ...apiReducerRoot,
   ...assignReducerRoot,
   ...toggleReducerRoot,
@@ -17,4 +16,6 @@ export default combineReducers({
   ...progressReducerRoot,
   ...formReducerRoot,
   ...xlsxReducerRoot,
-});
+};
+
+export default reducers;

@@ -1,9 +1,13 @@
 import React, { Fragment } from "react";
-import { connect } from "react-redux";
 import { put, select } from "redux-saga/effects";
 import { Breadcrumb, Card, Icon } from "antd";
 import { Switch, Route } from "react-router-dom";
-import { makeCron, makeCronSelector, tapCronTick } from "@36node/redux";
+import {
+  connect,
+  makeCron,
+  makeCronSelector,
+  tapCronTick,
+} from "@36node/redux";
 
 import PetsTable, { listPets, selectPets } from "./table";
 import Exporter from "./exporter";

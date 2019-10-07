@@ -1,3 +1,5 @@
+export { Provider, connect } from "react-redux";
+
 export {
   isAction,
   makeAction,
@@ -6,6 +8,8 @@ export {
   rePut,
   tapOn,
   watchHelper,
+  // inject,
+  configureStore,
 } from "./lib";
 
 /**

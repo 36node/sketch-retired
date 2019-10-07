@@ -1,7 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Modal } from "antd";
-import { makeProgress, makeProgressSelector, tapOn } from "@36node/redux";
+import {
+  connect,
+  makeProgress,
+  makeProgressSelector,
+  tapOn,
+} from "@36node/redux";
 import { put, select } from "redux-saga/effects";
 import { Upload, Button, Icon, message, Progress, Row } from "antd";
 import { makeCron, makeCronSelector, tapCronTick } from "@36node/redux";

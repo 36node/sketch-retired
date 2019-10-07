@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect } from "@36node/redux";
 
 const defaultPageSize = 10;
 

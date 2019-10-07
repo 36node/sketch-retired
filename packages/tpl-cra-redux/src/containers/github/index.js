@@ -1,6 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
-import { makeApiSelector } from "@36node/redux";
+import { connect, makeApiSelector } from "@36node/redux";
 import { Skeleton } from "antd";
 
 import Container from "../../components/layout/container";

@@ -2,6 +2,8 @@ import { clone, get, isArray, setWith } from "lodash";
 
 export * from "./humps";
 export * from "./saga";
+// export * from "./injector";
+export * from "./store";
 
 /**
  * Is an action of @36node/redux

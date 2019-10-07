@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import { connect } from "react-redux";
 import {
   Switch,
   Form,
@@ -12,7 +11,7 @@ import {
   Row,
   Col,
 } from "antd";
-import { makeForm, makeFormSelector } from "@36node/redux";
+import { connect, makeForm, makeFormSelector } from "@36node/redux";
 import { createForm } from "@36node/redux-antd";
 import { isNil } from "lodash";
 

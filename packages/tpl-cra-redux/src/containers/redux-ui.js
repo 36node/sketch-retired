@@ -3,7 +3,6 @@
  */
 
 import React, { Component, PureComponent } from "react";
-import { connect } from "react-redux";
 import { isNil } from "lodash";
 import {
   Switch,
@@ -19,6 +18,7 @@ import {
   Progress,
 } from "antd";
 import {
+  connect,
   makeProgress,
   makeProgressSelector,
   makeAssign,
