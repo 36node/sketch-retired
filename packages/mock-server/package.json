@@ -1,6 +1,6 @@
 {
   "name": "@36node/mock-server",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A mock server based on json-server",
   "repository": {
     "url": "36node/sketch",
@@ -30,7 +30,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@36node/eslint-config": "^0.6.3",
+    "@36node/eslint-config": "^0.6.4",
     "@36node/swagen": "^0.13.5",
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
