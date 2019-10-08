@@ -1,12 +1,10 @@
 import { Schema } from "normalizr";
-import { Saga } from "redux-saga";
+import { Saga, EffectMiddleware } from "redux-saga";
 import { PutEffect } from "redux-saga/effects";
 import { Reducer, Store } from "redux";
 import { Component } from "React";
-import * as effects from "redux-saga/effects";
 
 export { Provider, connect } from "react-redux";
-export { effects };
 
 declare module "@36node/redux" {
   /**
@@ -280,6 +278,7 @@ declare module "@36node/redux" {
   export function isRequest(action: Action<any>): boolean;
   export function isSuccess(action: Action<any>): boolean;
   export function isFailure(action: Action<any>): boolean;
+  export function reput<A extends Action<any>>(action: A): PutEffect<A>;
 
   /**
    * make api types

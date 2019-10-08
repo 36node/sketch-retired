@@ -1,4 +1,3 @@
-import * as effects from "redux-saga/effects";
 export { Provider, connect } from "react-redux";
 
 export {
@@ -6,13 +5,9 @@ export {
   makeAction,
   makeReducer,
   makeSelector,
-  rePut,
-  tapOn,
-  watchHelper,
   inject,
   configureStore,
 } from "./lib";
-export { effects };
 
 /**
  * assign
@@ -42,7 +37,7 @@ export {
 } from "./api/action";
 export { apiReducerRoot } from "./api/reducer";
 export { makeApiSelector } from "./api/selector";
-export { watchApi } from "./api/saga";
+export { watchApi, reput } from "./api/saga";
 
 /**
  * cron

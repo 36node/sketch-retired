@@ -1,8 +1,9 @@
-import { call, cancel, fork, take, put } from "redux-saga/effects";
+import { call, cancel, fork, select, take, put } from "redux-saga/effects";
 import { normalize } from "normalizr";
 
 import { isRequest } from "./action";
 import { schemaMap } from "./selector";
+import { makeApiSelector } from "./selector";
 import { humps } from "../lib";
 
 function* callAPI(action = {}) {
@@ -50,4 +51,15 @@ export function* watchApi() {
     if (!meta.parallel && tasks[entry]) yield cancel(tasks[entry]); //cancel last task of same key
     tasks[entry] = yield fork(callAPI, action);
   }
+}
+
+export function* reput(action) {
+  const { key } = action;
+  const selector = makeApiSelector(key);
+  const state = select(selector);
+  const refreshAction = {
+    ...action,
+    payload: { ...state.request, ...action.payload },
+  };
+  yield put(refreshAction);
 }

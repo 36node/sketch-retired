@@ -12,7 +12,7 @@ export function configureStore(rootReducers) {
 
   /** ability to inject saga and reducer dynamically, not ready for production */
   store.runSaga = saga => {
-    sagaMiddleware.run(saga);
+    sagaMiddleware.run(saga, store.getState);
   };
   store.runReducer = reducers => {
     store.replaceReducer(combineReducers({ ...rootReducers, ...reducers }));
