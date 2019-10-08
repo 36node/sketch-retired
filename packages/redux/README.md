@@ -173,12 +173,9 @@ const makeListPets = createApiMaker(
 );
 
 const listPets = makeListPets("someKey");
-const resetSome = makeApiReset("someKey);
 
 // list pets from service
 dispatch(listPets({ query: {} }));
-// reset the key with init state
-dispatch(resetSome());
 ```
 
 ### Api Reducer

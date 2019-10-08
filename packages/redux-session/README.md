@@ -2,14 +2,15 @@
 
 [![version][0]][1] [![downloads][2]][3]
 
-Work with Xlsx and redux, focus on manage xlsx data in state, import from file to state, and export from state to file.
-
 ## Session Actions
 
 ```js
-import { login, logout, refresh, withSession } from "@36node/redux-session";
-
-store.dispatch(login());
+import {
+  makeSessionWatcher,
+  withSession,
+  history,
+  ProtectedRoute,
+} from "@36node/redux-session";
 ```
 
 [0]: https://img.shields.io/npm/v/@36node/redux-session.svg?style=flat

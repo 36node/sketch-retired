@@ -4,6 +4,9 @@
 
 HOC for antd to connect @36node/redux
 
+- table
+- form
+
 ## Install
 
 ```sh
