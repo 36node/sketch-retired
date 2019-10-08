@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.4](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.3...@36node/template-cra-redux@0.12.4) (2019-10-08)
+
+
+### Bug Fixes
+
+* eslint unknown conflict ([cd68331](https://github.com/36node/tpl-react-redux/commit/cd68331))
+
+
+
+
+
 ## [0.12.3](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.2...@36node/template-cra-redux@0.12.3) (2019-10-08)
 
 
