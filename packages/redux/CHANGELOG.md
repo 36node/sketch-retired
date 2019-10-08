@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/36node/sketch/compare/@36node/redux@0.1.2...@36node/redux@0.1.3) (2019-10-08)
+
+
+### Bug Fixes
+
+* **redux:** remove tapOn and rePut ([3629f71](https://github.com/36node/sketch/commit/3629f71))
+* **redux:** tapOnLatest and reputApi ([cc2163d](https://github.com/36node/sketch/commit/cc2163d))
+* tapOn and reputApi ([dbfb78e](https://github.com/36node/sketch/commit/dbfb78e))
+
+
+
+
+
 ## [0.1.2](https://github.com/36node/sketch/compare/@36node/redux@0.1.1...@36node/redux@0.1.2) (2019-10-07)
 
 

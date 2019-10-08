@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.20](https://github.com/36node/sketch/compare/@36node/template-sdk@0.10.19...@36node/template-sdk@0.10.20) (2019-10-08)
+
+**Note:** Version bump only for package @36node/template-sdk
+
+
+
+
+
 ## [0.10.19](https://github.com/36node/sketch/compare/@36node/template-sdk@0.10.18...@36node/template-sdk@0.10.19) (2019-10-07)
 
 

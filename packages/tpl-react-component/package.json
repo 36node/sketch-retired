@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-react-component",
-  "version": "0.3.37",
+  "version": "0.3.38",
   "description": "A module boilerplate for react component.",
   "repository": {
     "url": "36node/sketch",
@@ -59,8 +59,8 @@
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
-    "@36node/eslint-config": "^0.6.2",
-    "@36node/sketch": "^0.13.18",
+    "@36node/eslint-config": "^0.6.3",
+    "@36node/sketch": "^0.13.19",
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "@storybook/addon-actions": "^5.0.3",

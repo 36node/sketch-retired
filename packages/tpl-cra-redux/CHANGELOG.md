@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.3](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.2...@36node/template-cra-redux@0.12.3) (2019-10-08)
+
+
+### Bug Fixes
+
+* tapOn and reputApi ([dbfb78e](https://github.com/36node/tpl-react-redux/commit/dbfb78e))
+
+
+
+
+
 ## [0.12.2](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.1...@36node/template-cra-redux@0.12.2) (2019-10-07)
 
 
