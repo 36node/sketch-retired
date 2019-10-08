@@ -76,7 +76,8 @@ declare module "@36node/redux" {
   ): CheckAction;
   export const makeAction: ActionMaker<any>;
 
-  export function tapOn(type: string, key: string, saga: Saga): void;
+  export function tapOn(type: string, key: string, saga: Saga): Saga;
+  export function tapOnLatest(type: string, key: string, saga: Saga): Saga;
   export function rePut(action: Action<any>): void;
   export function watchHelper(): Saga;
 
@@ -278,7 +279,7 @@ declare module "@36node/redux" {
   export function isRequest(action: Action<any>): boolean;
   export function isSuccess(action: Action<any>): boolean;
   export function isFailure(action: Action<any>): boolean;
-  export function reput<A extends Action<any>>(action: A): PutEffect<A>;
+  export function reputApi<A extends Action<any>>(action: A): PutEffect<A>;
 
   /**
    * make api types

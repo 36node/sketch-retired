@@ -7,6 +7,8 @@ export {
   makeSelector,
   inject,
   configureStore,
+  tapOn,
+  tapOnLatest,
 } from "./lib";
 
 /**
@@ -37,7 +39,7 @@ export {
 } from "./api/action";
 export { apiReducerRoot } from "./api/reducer";
 export { makeApiSelector } from "./api/selector";
-export { watchApi, reput } from "./api/saga";
+export { watchApi, reputApi } from "./api/saga";
 
 /**
  * cron

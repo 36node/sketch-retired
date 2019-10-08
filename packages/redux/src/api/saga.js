@@ -53,7 +53,7 @@ export function* watchApi() {
   }
 }
 
-export function* reput(action) {
+export function* reputApi(action) {
   const { key } = action;
   const selector = makeApiSelector(key);
   const state = select(selector);
