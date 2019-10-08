@@ -56,7 +56,7 @@ export function* watchApi() {
 export function* reputApi(action) {
   const { key } = action;
   const selector = makeApiSelector(key);
-  const state = select(selector);
+  const state = yield select(selector);
   const refreshAction = {
     ...action,
     payload: { ...state.request, ...action.payload },

@@ -78,7 +78,6 @@ declare module "@36node/redux" {
 
   export function tapOn(type: string, key: string, saga: Saga): Saga;
   export function tapOnLatest(type: string, key: string, saga: Saga): Saga;
-  export function rePut(action: Action<any>): void;
   export function watchHelper(): Saga;
 
   export const makeReducer: (
@@ -88,7 +87,7 @@ declare module "@36node/redux" {
 
   export const makeSelector: SelectorMaker<T>;
   export function configureStore(rootReducers: Object): Store;
-  export function inject(reducers: Object, saga: Saga): Component;
+  export function withSaga(...sagas: [Saga]): Component;
 
   /********************************************
    * assign                                   *

@@ -10,10 +10,8 @@ export function configureStore(rootReducers) {
     composeEnhancers(applyMiddleware(sagaMiddleware))
   );
 
-  /** ability to inject saga and reducer dynamically, not ready for production */
-  store.runSaga = saga => {
-    sagaMiddleware.run(saga, store.getState);
-  };
+  /** for code splitting */
+  store.runSaga = sagaMiddleware.run;
   store.runReducer = reducers => {
     store.replaceReducer(combineReducers({ ...rootReducers, ...reducers }));
   };

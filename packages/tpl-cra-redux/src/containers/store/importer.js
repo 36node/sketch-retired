@@ -5,6 +5,7 @@ import {
   makeProgress,
   makeProgressSelector,
   tapOn,
+  withSaga,
 } from "@36node/redux";
 import { put, select } from "redux-saga/effects";
 import { Upload, Button, Icon, message, Progress, Row } from "antd";
@@ -28,20 +29,22 @@ const selectProgress = makeProgressSelector(IMPORTER_KEY);
 /**
  * saga effects
  */
-tapCronTick(IMPORTER_KEY, function*(action) {
-  const { pos } = action.payload;
-  const xlsx = yield select(selectXlsx);
-  yield put(createPet({ body: xlsx.rows[pos - 1] }));
-});
-
-tapOn(STORE_CREATE_PET.SUCCESS, IMPORTER_KEY, function*(action) {
-  yield put(progressActions.increase());
-});
-
-tapOn(STORE_CREATE_PET.FAILURE, IMPORTER_KEY, () => {
-  message("Failed to import pets");
-});
-
+@withSaga(
+  tapCronTick(IMPORTER_KEY, function*(action) {
+    const { pos } = action.payload;
+    const xlsx = yield select(selectXlsx);
+    yield put(createPet({ body: xlsx.rows[pos - 1] }));
+  }),
+  tapOn(STORE_CREATE_PET.SUCCESS, IMPORTER_KEY, function*(action) {
+    yield put(progressActions.increase());
+  }),
+  tapOn(STORE_CREATE_PET.FAILURE, IMPORTER_KEY, () => {
+    message("Failed to import pets");
+  })
+)
+/**
+ * data
+ */
 @connect(state => {
   const xlsx = selectXlsx(state);
   const cron = selectCron(state);
@@ -49,6 +52,9 @@ tapOn(STORE_CREATE_PET.FAILURE, IMPORTER_KEY, () => {
   const finish = progress.max === progress.pos;
   return { cron, xlsx, progress, finish };
 })
+/**
+ * ui
+ */
 export default class extends React.Component {
   state = {
     fileReady: false,

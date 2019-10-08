@@ -5,7 +5,7 @@ export {
   makeAction,
   makeReducer,
   makeSelector,
-  inject,
+  withSaga,
   configureStore,
   tapOn,
   tapOnLatest,

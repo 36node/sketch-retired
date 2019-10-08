@@ -35,7 +35,7 @@ export const domain = {
     importer: "store.importer",
     exporter: "store.exporter",
     progress: "store.progress",
-    pager: "store.pager",
+    refresh: "store.refresh",
   },
   session: "session",
   message: {

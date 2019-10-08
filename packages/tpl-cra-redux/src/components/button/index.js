@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "antd";
-
-import { history } from "../../lib";
+import { history } from "@36node/redux-session";
 
 const ButtonAntd = ({ linkTo, linkMode, ...props }) =>
   linkTo ? (
@@ -12,7 +11,6 @@ const ButtonAntd = ({ linkTo, linkMode, ...props }) =>
         if (linkMode === "replace") {
           history.replace(linkTo);
         } else {
-          console.log("history push to", linkTo);
           history.push(linkTo);
         }
       }}

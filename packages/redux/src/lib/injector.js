@@ -1,20 +1,23 @@
 import React, { Component } from "react";
 import { ReactReduxContext } from "react-redux";
 
-/** ability to inject saga and reducer dynamically, not ready for production */
-const inject = (saga, reducers) => WrappedComponent => {
+/** for code splitting */
+export const withSaga = (...sagaArr) => WrappedComponent => {
   class Injector extends Component {
     constructor(props) {
       super(props);
+      this.tasks = [];
 
       const { reduxContext } = props;
-
-      if (saga) reduxContext.store.runSaga(saga);
-      if (reducers) reduxContext.store.runReducer(reducers);
+      if (sagaArr) this.tasks = sagaArr.map(s => reduxContext.store.runSaga(s));
     }
 
     render() {
       return <WrappedComponent {...this.props} />;
+    }
+
+    componentWillUnmount() {
+      this.tasks.forEach(task => task.cancel());
     }
   }
 
@@ -27,4 +30,3 @@ const inject = (saga, reducers) => WrappedComponent => {
   };
   return Wrapped;
 };
-export { inject };

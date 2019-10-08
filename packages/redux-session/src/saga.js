@@ -1,10 +1,9 @@
-import { isFailure, effects } from "@36node/redux";
+import { call, delay, put, takeLatest } from "redux-saga/effects";
+import { isFailure } from "@36node/redux";
 import { message } from "antd";
 
 import { history } from "./history";
 import { SESSION_ID, TOKEN, LOGIN_URL, REFRESh_TOKEN_DELAY } from "./constants";
-
-const { call, delay, put, takeLatest } = effects;
 
 export function makeSessionWatcher({
   refresh,
