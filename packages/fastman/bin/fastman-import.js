@@ -25,9 +25,7 @@ async function importing(file) {
 
   if (found) {
     console.error(
-      `Collection ${
-        info.name
-      } is existed, please use "fastman delete [collectionId]" first.`
+      `Collection ${info.name} is existed, please use "fastman delete [collectionId]" first.`
     );
     process.exit(-1);
   }

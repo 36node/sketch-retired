@@ -63,7 +63,7 @@ function generateResponse(res) {
   };
 }
 
-export default (typeof fetch === "function"
+export default typeof fetch === "function"
   ? fetch.bind()
   : function(url, options) {
       options = options || {};
@@ -71,4 +71,4 @@ export default (typeof fetch === "function"
         .request(options.method || "get", url, options.body, options.headers)
         .then(res => Promise.resolve(generateResponse(res)))
         .catch(res => Promise.reject(generateResponse(res)));
-    });
+    };
