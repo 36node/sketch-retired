@@ -1,4 +1,4 @@
-import { isArray } from "lodash";
+import { isArray, merge } from "lodash";
 
 /**
  * Is an action of @36node/redux
@@ -28,12 +28,7 @@ export const makeAction = (type, keyPattern, initPayload, initMeta = {}) => (
   meta = {}
 ) => {
   let key = keyPattern;
-  const rMeta = { ...initMeta, ...meta };
-  const rPayload =
-    typeof payload === "object"
-      ? { ...initPayload, ...payload }
-      : payload || initPayload;
-
+  const rPayload = merge({}, initPayload, payload);
   if (typeof keyPattern === "function") key = keyPattern(rPayload);
 
   if (!type) {
@@ -44,6 +39,6 @@ export const makeAction = (type, keyPattern, initPayload, initMeta = {}) => (
     type,
     key,
     payload: rPayload,
-    meta: rMeta,
+    meta: merge({}, initMeta, meta),
   };
 };

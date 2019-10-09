@@ -1,5 +1,6 @@
 import { call, cancel, fork, select, take, put } from "redux-saga/effects";
 import { normalize } from "normalizr";
+import { merge } from "lodash";
 
 import { isRequest } from "./action";
 import { schemaMap } from "./selector";
@@ -59,7 +60,7 @@ export function* reputApi(action) {
   const state = yield select(selector);
   const refreshAction = {
     ...action,
-    payload: { ...state.request, ...action.payload },
+    payload: merge({ ...state.request }, action.payload),
   };
   yield put(refreshAction);
 }

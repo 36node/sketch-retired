@@ -37,6 +37,7 @@ export const STORE_BASE = env("STORE_BASE", "");
 export const VERSION = env("VERSION");
 
 /* eslint-disable */
-console.log("STORE_BASE: ", STORE_BASE);
-console.log("VERSION: ", VERSION);
+console.log(`VERSION:${VERSION}`);
+console.log(`STORE_BASE:${STORE_BASE}`);
+
 /* eslint-disable */
