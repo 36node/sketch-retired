@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.6](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.5...@36node/template-cra-redux@0.12.6) (2019-10-09)
+
+
+### Bug Fixes
+
+* **redux:** deep merge initPayload and initMeta ([13f0314](https://github.com/36node/tpl-react-redux/commit/13f0314))
+
+
+
+
+
 ## [0.12.5](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.4...@36node/template-cra-redux@0.12.5) (2019-10-08)
 
 **Note:** Version bump only for package @36node/template-cra-redux

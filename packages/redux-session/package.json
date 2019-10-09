@@ -1,6 +1,6 @@
 {
   "name": "@36node/redux-session",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "An redux libary for session manager",
   "repository": {
     "url": "36node/sketch",
@@ -43,7 +43,7 @@
     ]
   },
   "dependencies": {
-    "@36node/redux": "^0.1.4",
+    "@36node/redux": "^0.1.5",
     "history": "^4.10.1"
   },
   "peerDependencies": {
