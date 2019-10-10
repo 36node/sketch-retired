@@ -1,6 +1,6 @@
 {
   "name": "@36node/redux-xlsx",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "An redux libary for xlsx manipulation",
   "repository": {
     "url": "36node/sketch",
@@ -43,7 +43,7 @@
     ]
   },
   "dependencies": {
-    "@36node/redux": "^0.1.5",
+    "@36node/redux": "^0.1.6",
     "xlsx": "^0.15.1"
   },
   "peerDependencies": {

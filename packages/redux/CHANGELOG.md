@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/36node/sketch/compare/@36node/redux@0.1.5...@36node/redux@0.1.6) (2019-10-10)
+
+
+### Bug Fixes
+
+* **redux:** payload not object type for action initPayload ([098d9d7](https://github.com/36node/sketch/commit/098d9d7))
+
+
+
+
+
 ## [0.1.5](https://github.com/36node/sketch/compare/@36node/redux@0.1.4...@36node/redux@0.1.5) (2019-10-09)
 
 
