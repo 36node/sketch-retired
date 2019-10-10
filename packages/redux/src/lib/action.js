@@ -27,13 +27,16 @@ export const makeAction = (type, keyPattern, initPayload, initMeta = {}) => (
   payload,
   meta = {}
 ) => {
-  let key = keyPattern;
-  const rPayload = merge({}, initPayload, payload);
-  if (typeof keyPattern === "function") key = keyPattern(rPayload);
-
   if (!type) {
     throw new Error("Type is required for action.");
   }
+
+  let key = keyPattern;
+  const rPayload =
+    typeof payload === "object"
+      ? merge({}, initPayload, payload)
+      : payload || initPayload;
+  if (typeof keyPattern === "function") key = keyPattern(rPayload);
 
   return {
     type,
