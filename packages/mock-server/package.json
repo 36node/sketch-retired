@@ -40,7 +40,7 @@
     "jest": "^24.7.1",
     "json-server": "^0.15.0",
     "lint-staged": "^8.1.5",
-    "prettier": "1.17.1",
+    "prettier": "^1.18.2",
     "standard-version": "^6.0.1"
   }
 }
