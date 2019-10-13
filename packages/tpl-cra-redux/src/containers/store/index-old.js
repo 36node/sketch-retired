@@ -9,7 +9,7 @@ import {
   reputApi,
 } from "@36node/redux";
 
-import PetsTable, { listPets, selectPets } from "./table";
+import { listPets, selectPets } from "./table";
 import withBreadCrumb from "../../components/withBreadCrumb";
 import Button from "../../components/button";
 import { domain } from "../../constants";

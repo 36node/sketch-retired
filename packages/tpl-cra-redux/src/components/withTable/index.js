@@ -8,7 +8,6 @@ import styled from "styled-components";
 
 import createExporter from "./exporter";
 import createImporter from "./importer";
-import FilterDropdown from "./filterDropdown";
 
 export const withTable = (
   key,
