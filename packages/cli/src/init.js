@@ -26,11 +26,14 @@ async function initExpo(tpl, dest = ".", options = {}, spinner) {
     const appJson = await jsonfile.readFile(appFile);
 
     let { appName, appSlug, bundleIdentifier, androidPackage } = options;
+    appJson.expo = appJson.expo || {};
     appJson.expo.version = "0.0.0";
 
     appJson.expo.name = appName;
     appJson.expo.slug = appSlug;
+    appJson.expo.ios = appJson.expo.ios || {};
     appJson.expo.ios.bundleIdentifier = bundleIdentifier;
+    appJson.expo.android = appJson.expo.android || {};
     appJson.expo.android.package = androidPackage;
     await jsonfile.writeFile(appFile, appJson, { spaces: 2 });
     spinner.succeed(`App.json cooked! ${path.resolve(dest)}`);
