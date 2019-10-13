@@ -57,12 +57,14 @@ export default async function init(tpl, dest = ".", options = {}) {
   try {
     spinner.text = "Generating common template files ...";
     spinner.start();
-    await copy(path.join(__dirname, "../template"), dest, { overwrite: false });
     await remove(path.join(dest, "CHANGELOG.md"));
-    await move(path.join(dest, "gitignore"), path.join(dest, ".gitignore"));
-    spinner.succeed("Generating basic files success!");
+    await copy(path.join(__dirname, "../template"), dest, { overwrite: false });
+    await move(path.join(dest, "gitignore"), path.join(dest, ".gitignore"), {
+      overwrite: true,
+    });
+    spinner.succeed("Generating common template files success!");
   } catch (err) {
-    spinner.fail("Generating basic files failed!");
+    spinner.fail("Generating common template files failed!");
     throw err;
   }
 
