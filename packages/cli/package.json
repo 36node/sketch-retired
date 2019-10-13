@@ -1,6 +1,6 @@
 {
   "name": "@36node/sketch",
-  "version": "0.13.21",
+  "version": "0.13.22",
   "description": "Cli for @36node/sketch",
   "repository": "36node/sketch",
   "publishConfig": {
