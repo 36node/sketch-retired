@@ -5,7 +5,7 @@ const defaultPageSize = 10;
 
 export const createTable = (
   key,
-  { apiAction, apiSelector = () => {} } = {}
+  { columns, apiAction, apiSelector = () => {} } = {}
 ) => Component => {
   class WithTable extends React.Component {
     componentDidMount() {
@@ -49,14 +49,15 @@ export const createTable = (
       }
 
       const table = {
+        columns,
         pagination,
         rowKey: "id",
         loading,
-        onChange: this.handleChange,
         dataSource: result,
+        onChange: this.handleChange,
       };
 
-      return <Component table={table} {...rest} />;
+      return <Component table={table} apiData={apiData} {...rest} />;
     }
   }
 

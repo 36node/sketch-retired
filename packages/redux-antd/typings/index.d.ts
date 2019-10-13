@@ -1,9 +1,12 @@
 import { FormComponentProps, FormCreateOption } from "antd/lib/form/Form";
 import { FormWrappedProps } from "antd/lib/form/interface";
+import { Action } from "redux";
+
+type Selector = (state: object) => object;
 
 interface CreateTableOptions {
-  defaultPageSize: string;
-  apiMaker: Function;
+  apiAction: Action;
+  apiSelector: Selector;
 }
 
 export const createForm: <TOwnProps extends FormComponentProps<any>>(

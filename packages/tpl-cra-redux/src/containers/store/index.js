@@ -1,105 +1,43 @@
-import React, { Fragment } from "react";
-import { Breadcrumb, Card, Icon } from "antd";
-import { Switch, Route } from "react-router-dom";
-import {
-  connect,
-  makeCron,
-  makeCronSelector,
-  tapCronTick,
-  withSaga,
-  reputApi,
-} from "@36node/redux";
+import React from "react";
+import { Table } from "antd";
+import { makeApiSelector } from "@36node/redux";
+import { makeXlsx, makeXlsxSelector } from "@36node/redux-xlsx";
 
-import PetsTable, { listPets, selectPets } from "./table";
-import Exporter from "./exporter";
-import Importer from "./importer";
-import withBreadCrumb from "../../components/withBreadCrumb";
-import Button from "../../components/button";
+import { withTable } from "../../components/withTable";
+import { store } from "../../actions/api";
 import { domain } from "../../constants";
 
-const REFRESH_KEY = domain.store.refresh;
+const PETS_KEY = domain.store.pets;
+const columns = [
+  { title: "name", dataIndex: "name", key: "name" },
+  { title: "owner", dataIndex: "owner", key: "owner", hide: true },
+  {
+    title: "tag",
+    dataIndex: "tag",
+    key: "tag",
+    filters: [{ text: "CAT", value: "CAT" }, { text: "DOG", value: "DOG" }],
+  },
+  { title: "age", dataIndex: "age", key: "age", sorter: true },
+];
 
 /**
  * actions and selectors
  */
-const cronActions = makeCron(REFRESH_KEY);
-const selectCron = makeCronSelector(REFRESH_KEY);
+export const listPets = store.makeListPets(PETS_KEY);
+export const selectPets = makeApiSelector(PETS_KEY);
+export const xlsxActions = makeXlsx(PETS_KEY, { columns });
+export const selectXlsx = makeXlsxSelector(PETS_KEY);
 
 /**
- * saga effects
+ * Pets table
  */
-@withSaga(
-  tapCronTick(REFRESH_KEY, function*(action) {
-    yield reputApi(listPets());
-  })
-)
-/**
- * data
- */
-@connect(state => ({
-  cron: selectCron(state),
-  total: selectPets(state).total,
-}))
-/**
- * ui
- */
-@withBreadCrumb("Pet-Store")
-export default class extends React.PureComponent {
-  startCron = () =>
-    this.props.dispatch(
-      cronActions.start({
-        interval: 2000,
-      })
-    );
-  stopCron = () => this.props.dispatch(cronActions.stop());
-  resetCron = () => this.props.dispatch(cronActions.reset());
-
-  renderExtra = () => {
-    const { total } = this.props;
-
-    return (
-      <div>
-        <span style={{ marginRight: 24 }}>total {total}</span>
-        <Button.Group>
-          <Button linkTo="/pet-store/export">
-            <Icon type="download" /> Export
-          </Button>
-          <Button linkTo="/pet-store/import">
-            <Icon type="upload" /> import
-          </Button>
-        </Button.Group>
-      </div>
-    );
-  };
-
+@withTable(PETS_KEY, {
+  columns,
+  makeList: store.makeListPets,
+  makeCreate: store.makeCreatePet,
+})
+export default class extends React.Component {
   render() {
-    const { cron } = this.props;
-
-    return (
-      <Fragment>
-        <Breadcrumb style={{ margin: "16px 0" }}>
-          <Breadcrumb.Item>Store</Breadcrumb.Item>
-        </Breadcrumb>
-        <Card title="Pets in store" extra={this.renderExtra()}>
-          <Button.Group>
-            {cron.running ? (
-              <Button onClick={this.stopCron} type="danger">
-                Auto refresh Stop
-              </Button>
-            ) : (
-              <Button type="primary" onClick={this.startCron}>
-                Auto refresh Start
-              </Button>
-            )}
-            <Button onClick={this.resetCron}>Reset</Button>
-          </Button.Group>
-          <PetsTable />
-        </Card>
-        <Switch>
-          <Route exact path="/*/export" component={Exporter} />
-          <Route exact path="/*/import" component={Importer} />
-        </Switch>
-      </Fragment>
-    );
+    return <Table {...this.props.table} />;
   }
 }

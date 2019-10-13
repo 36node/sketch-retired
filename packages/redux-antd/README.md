@@ -13,7 +13,7 @@ HOC for antd to connect @36node/redux
 yarn install @36node/redux-antd
 ```
 
-## Use
+## createForm
 
 It is quite easy to put antd-form into redux, just use createForm, and done.
 
@@ -33,6 +33,44 @@ class ReduxFormExample extends PureComponent {
         ... antd form ...
       </Form>
     );
+  }
+}
+```
+
+## createTable
+
+```js
+import React from "react";
+import { Table } from "antd";
+import { makeApiSelector } from "@36node/redux";
+import { createTable } from "@36node/redux-antd";
+
+const PETS_KEY = "pets";
+const columns = [
+  { title: "name", dataIndex: "name", key: "name" },
+  { title: "owner", dataIndex: "owner", key: "owner" },
+  {
+    title: "tag",
+    dataIndex: "tag",
+    key: "tag",
+    filters: [{ text: "CAT", value: "CAT" }, { text: "DOG", value: "DOG" }],
+  },
+  { title: "age", dataIndex: "age", key: "age", sorter: true },
+];
+
+/**
+ * actions and selectors
+ */
+export const listPets = store.makeListPets(PETS_KEY);
+export const selectPets = makeApiSelector(PETS_KEY);
+
+/**
+ * Pets table
+ */
+@createTable(PETS_KEY, { apiAction: listPets, apiSelector: selectPets })
+export default class extends React.Component {
+  render() {
+    return <Table columns={columns} {...this.props.table} />;
   }
 }
 ```

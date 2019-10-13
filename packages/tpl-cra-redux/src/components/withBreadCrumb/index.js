@@ -2,6 +2,11 @@ import React, { Fragment } from "react";
 import { Breadcrumb } from "antd";
 import { NavLink } from "react-router-dom";
 
+/**
+ * crumbs example
+ *
+ * [["Home", "/home"], ["SubPage1", "/home/subpage"], "SubPage2", "Current Title"]
+ */
 export default (...crumbs) => WrappedComponent => {
   const hocComponent = ({ ...props }) => (
     <Fragment>
