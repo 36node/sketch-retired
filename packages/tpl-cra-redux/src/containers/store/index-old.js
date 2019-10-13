@@ -73,21 +73,18 @@ export default class extends React.PureComponent {
     const { cron } = this.props;
 
     return (
-      <Card title="Pets in store" extra={this.renderExtra()}>
-        <Button.Group>
-          {cron.running ? (
-            <Button onClick={this.stopCron} type="danger">
-              Auto refresh Stop
-            </Button>
-          ) : (
-            <Button type="primary" onClick={this.startCron}>
-              Auto refresh Start
-            </Button>
-          )}
-          <Button onClick={this.resetCron}>Reset</Button>
-        </Button.Group>
-        <PetsTable />
-      </Card>
+      <Button.Group>
+        {cron.running ? (
+          <Button onClick={this.stopCron} type="danger">
+            Auto refresh Stop
+          </Button>
+        ) : (
+          <Button type="primary" onClick={this.startCron}>
+            Auto refresh Start
+          </Button>
+        )}
+        <Button onClick={this.resetCron}>Reset</Button>
+      </Button.Group>
     );
   }
 }
