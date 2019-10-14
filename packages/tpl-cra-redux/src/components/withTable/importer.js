@@ -1,15 +1,18 @@
 import React from "react";
 import { Modal } from "antd";
+import { connect } from "react-redux";
+import { put, select } from "redux-saga/effects";
+import { Upload, Button, Icon, message, Progress, Row } from "antd";
+
 import {
-  connect,
   makeProgress,
   makeProgressSelector,
   tapOn,
   withSaga,
+  makeCron,
+  makeCronSelector,
+  tapCronTick,
 } from "@36node/redux";
-import { put, select } from "redux-saga/effects";
-import { Upload, Button, Icon, message, Progress, Row } from "antd";
-import { makeCron, makeCronSelector, tapCronTick } from "@36node/redux";
 
 export default (key, { selectXlsx, xlsxActions, makeCreate }) => {
   /**

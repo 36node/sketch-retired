@@ -1,6 +1,7 @@
 import React from "react";
-import { connect, makeApiSelector } from "@36node/redux";
+import { connect } from "react-redux";
 import { Skeleton } from "antd";
+import { makeApiSelector } from "@36node/redux";
 
 import Container from "../../components/layout/container";
 import Jumbotron from "../../components/layout/jumbotron";

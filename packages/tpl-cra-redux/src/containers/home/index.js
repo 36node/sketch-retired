@@ -1,6 +1,6 @@
 import React from "react";
 import MediaQuery from "react-responsive";
-import { connect } from "@36node/redux";
+import { connect } from "react-redux";
 import { Button, Row } from "antd";
 import Sample from "@36node/template-react-component";
 

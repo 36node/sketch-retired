@@ -42,14 +42,15 @@
     ]
   },
   "dependencies": {
-    "@36node/redux": "^0.1.8",
     "lodash": "^4.17.11"
   },
   "peerDependencies": {
+    "@36node/redux": "^0.1.8",
     "antd": "^3.15.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-redux": "^6.0.1"
+    "react-redux": "^6.0.1",
+    "redux-saga": "^1.0.2"
   },
   "jest": {
     "displayName": "unit",

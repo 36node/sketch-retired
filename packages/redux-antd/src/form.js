@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 import { Form } from "antd";
 import { isPlainObject, mapValues } from "lodash";
-import { connect, makeForm, makeFormSelector } from "@36node/redux";
+import { connect } from "react-redux";
+import { makeForm, makeFormSelector } from "@36node/redux";
 
 function flatFields(ob) {
   let result = {};

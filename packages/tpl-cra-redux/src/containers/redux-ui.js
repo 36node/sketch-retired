@@ -4,6 +4,7 @@
 
 import React, { Component, PureComponent } from "react";
 import { isNil } from "lodash";
+import { connect } from "react-redux";
 import {
   Switch,
   Row,
@@ -18,7 +19,6 @@ import {
   Progress,
 } from "antd";
 import {
-  connect,
   makeProgress,
   makeProgressSelector,
   makeAssign,

@@ -1,5 +1,3 @@
-export { Provider, connect } from "react-redux";
-
 export {
   isAction,
   makeAction,

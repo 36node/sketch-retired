@@ -4,8 +4,6 @@ import { PutEffect } from "redux-saga/effects";
 import { Reducer, Store } from "redux";
 import { Component } from "React";
 
-export { Provider, connect } from "react-redux";
-
 declare module "@36node/redux" {
   /**
    * endpoint result

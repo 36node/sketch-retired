@@ -43,11 +43,11 @@
     ]
   },
   "dependencies": {
-    "@36node/redux": "^0.1.8",
     "xlsx": "^0.15.1"
   },
   "peerDependencies": {
-    "normalizr": "^3.4.1",
+    "@36node/redux": "^0.1.8",
+    "react-redux": "^6.0.1",
     "redux-saga": "^1.0.2"
   },
   "jest": {

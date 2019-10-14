@@ -11,7 +11,8 @@ import {
   Row,
   Col,
 } from "antd";
-import { connect, makeForm, makeFormSelector } from "@36node/redux";
+import { connect } from "react-redux";
+import { makeForm, makeFormSelector } from "@36node/redux";
 import { createForm } from "@36node/redux-antd";
 import { isNil } from "lodash";
 

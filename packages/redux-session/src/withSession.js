@@ -1,4 +1,5 @@
-import { connect, makeApiSelector } from "@36node/redux";
+import { connect } from "react-redux";
+import { makeApiSelector } from "@36node/redux";
 
 export const withSession = key => {
   const selector = makeApiSelector(key);
