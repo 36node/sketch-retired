@@ -22,7 +22,7 @@
   "config-overrides-path": "../cli/config-overrides",
   "scripts": {
     "build": "NODE_ENV=production sketch build",
-    "test": "NODE_ENV=test sketch test --env=node"
+    "test2": "NODE_ENV=test sketch test --env=node"
   },
   "peerDependencies": {
     "@types/mongoose": "^5.2.19",

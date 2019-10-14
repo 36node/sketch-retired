@@ -23,7 +23,7 @@
   "typings": "typings/index.d.ts",
   "scripts": {
     "build": "sketch build src/{browser,index}.js",
-    "test": "NODE_ENV=test sketch test --env=node"
+    "test2": "NODE_ENV=test sketch test --env=node"
   },
   "dependencies": {
     "decode-uri-component": "^0.2.0",
