@@ -1,13 +1,33 @@
 import React from "react";
-import { merge } from "lodash";
+import { merge, isEmpty } from "lodash";
 import { makeApiSelector } from "@36node/redux";
 import { createTable } from "@36node/redux-antd";
 import { makeXlsx, makeXlsxSelector } from "@36node/redux-xlsx";
-import { Card, Icon, Tooltip } from "antd";
+import { Card, Dropdown, Icon, Tooltip } from "antd";
 import styled from "styled-components";
 
+import FilterTree from "./filterTree";
 import createExporter from "./exporter";
 import createImporter from "./importer";
+
+function filterColumn(columns, checkedKeys = []) {
+  if (!columns) return;
+
+  return columns
+    .map(c => ({ ...c, children: filterColumn(c.children, checkedKeys) }))
+    .filter(c => checkedKeys.includes(c.key) || !isEmpty(c.children));
+}
+
+function getCheckedKeys(columns = []) {
+  let keys = [];
+  for (let column of columns) {
+    if (!column.hide) {
+      keys.push(column.key);
+      keys = keys.concat(getCheckedKeys(column.children));
+    }
+  }
+  return keys;
+}
 
 export const withTable = (
   key,
@@ -34,6 +54,7 @@ export const withTable = (
     state = {
       importerOpen: false,
       exporterOpen: false,
+      checkedKeys: getCheckedKeys(columns),
     };
 
     toggleImporter = () => {
@@ -55,6 +76,10 @@ export const withTable = (
       this.props.dispatch(list(newRequest));
     };
 
+    handleFilterKeys = checkedKeys => {
+      this.setState({ checkedKeys });
+    };
+
     renderExtra = () => {
       const { apiData = {} } = this.props;
       return (
@@ -66,15 +91,20 @@ export const withTable = (
             <Tool title="刷新">
               <Icon type="sync" onClick={this.handleRefreshFirstPage} />
             </Tool>
-            <Tool title="筛选">
-              {/* <FilterDropdown
-                value={this.showedColumns()}
-                onChange={this.onColumnsFilterChange}
-                items={TableColumns.map(c => ({ key: c.key, name: c.title }))}
-              > */}
-              <Icon type="filter" />
-              {/* </FilterDropdown> */}
-            </Tool>
+            <Dropdown
+              overlay={
+                <FilterTree
+                  columns={columns}
+                  onChange={this.handleFilterKeys}
+                  value={this.state.checkedKeys}
+                />
+              }
+              trigger={["click"]}
+            >
+              <Tool title="筛选">
+                <Icon type="filter" />
+              </Tool>
+            </Dropdown>
             <Tool title="导入">
               <Icon type="upload" onClick={this.toggleImporter} />
             </Tool>
@@ -88,7 +118,9 @@ export const withTable = (
 
     render() {
       const { table, ...rest } = this.props;
-
+      table.columns = filterColumn(columns, this.state.checkedKeys);
+      console.log(this.state.checkedKeys);
+      console.log(table.columns);
       return (
         <Card title="Pets in store" extra={this.renderExtra()}>
           <Component table={table} {...rest} />
@@ -106,7 +138,6 @@ export const withTable = (
   }
 
   return createTable(key, {
-    columns,
     apiAction: list,
     apiSelector: selectList,
   })(Container);
