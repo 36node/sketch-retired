@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.8](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.2.7...@36node/mongoose-helper@0.2.8) (2019-10-14)
+
+
+### Bug Fixes
+
+* tmp disable test for mongoose-helper and fetch ([8d92019](https://github.com/36node/sketch/commit/8d92019))
+
+
+
+
+
 ## [0.2.7](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.2.6...@36node/mongoose-helper@0.2.7) (2019-10-14)
 
 
