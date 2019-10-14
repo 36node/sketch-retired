@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.8](https://github.com/36node/sketch/compare/@36node/query-normalizr@0.4.7...@36node/query-normalizr@0.4.8) (2019-10-14)
+
+
+### Bug Fixes
+
+* query-normalizr publish ([2272f8c](https://github.com/36node/sketch/commit/2272f8c))
+
+
+
+
+
 ## [0.4.7](https://github.com/36node/sketch/compare/@36node/query-normalizr@0.4.6...@36node/query-normalizr@0.4.7) (2019-10-14)
 
 
