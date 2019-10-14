@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.42](https://github.com/undefined/undefined/compare/@36node/template-cli@0.7.41...@36node/template-cli@0.7.42) (2019-10-14)
+
+
+### Bug Fixes
+
+* m.js ([084a0a4](https://github.com/undefined/undefined/commit/084a0a4))
+
+
+
+
+
 ## [0.7.41](https://github.com/undefined/undefined/compare/@36node/template-cli@0.7.40...@36node/template-cli@0.7.41) (2019-10-13)
 
 **Note:** Version bump only for package @36node/template-cli

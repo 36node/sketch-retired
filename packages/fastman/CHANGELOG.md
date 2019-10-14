@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.12](https://github.com/36node/sketch/compare/@36node/fastman@0.4.11...@36node/fastman@0.4.12) (2019-10-14)
+
+
+### Bug Fixes
+
+* m.js ([084a0a4](https://github.com/36node/sketch/commit/084a0a4))
+
+
+
+
+
 ## [0.4.11](https://github.com/36node/sketch/compare/@36node/fastman@0.4.10...@36node/fastman@0.4.11) (2019-10-10)
 
 **Note:** Version bump only for package @36node/fastman

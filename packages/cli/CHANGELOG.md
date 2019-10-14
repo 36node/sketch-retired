@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.24](https://github.com/36node/sketch/compare/@36node/sketch@0.13.23...@36node/sketch@0.13.24) (2019-10-14)
+
+
+### Bug Fixes
+
+* m.js ([084a0a4](https://github.com/36node/sketch/commit/084a0a4))
+
+
+
+
+
 ## [0.13.23](https://github.com/36node/sketch/compare/@36node/sketch@0.13.22...@36node/sketch@0.13.23) (2019-10-13)
 
 

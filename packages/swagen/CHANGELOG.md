@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.7](https://github.com/36node/sketch/compare/@36node/swagen@0.13.6...@36node/swagen@0.13.7) (2019-10-14)
+
+
+### Bug Fixes
+
+* m.js ([084a0a4](https://github.com/36node/sketch/commit/084a0a4))
+
+
+
+
+
 ## [0.13.6](https://github.com/36node/sketch/compare/@36node/swagen@0.13.5...@36node/swagen@0.13.6) (2019-10-10)
 
 **Note:** Version bump only for package @36node/swagen
