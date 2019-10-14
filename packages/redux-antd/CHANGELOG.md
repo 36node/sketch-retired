@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.9](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.8...@36node/redux-antd@0.1.9) (2019-10-14)
+
+
+### Bug Fixes
+
+* add hoc table example ([99108e2](https://github.com/36node/sketch/commit/99108e2))
+* remove connect and provider in @36node/redux ([b820eb9](https://github.com/36node/sketch/commit/b820eb9))
+
+
+
+
+
 ## [0.1.8](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.7...@36node/redux-antd@0.1.8) (2019-10-13)
 
 **Note:** Version bump only for package @36node/redux-antd

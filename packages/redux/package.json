@@ -1,6 +1,6 @@
 {
   "name": "@36node/redux",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A set of predefined actions, reducers, selectors and sagas for 36node team",
   "repository": {
     "url": "36node/sketch",

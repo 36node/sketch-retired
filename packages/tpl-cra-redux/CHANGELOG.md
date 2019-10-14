@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.10](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.9...@36node/template-cra-redux@0.12.10) (2019-10-14)
+
+
+### Bug Fixes
+
+* add hoc table example ([99108e2](https://github.com/36node/tpl-react-redux/commit/99108e2))
+* remove connect and provider in @36node/redux ([b820eb9](https://github.com/36node/tpl-react-redux/commit/b820eb9))
+* **tpl-cra-redux:** building dependenceis ([9e5c4c5](https://github.com/36node/tpl-react-redux/commit/9e5c4c5))
+
+
+
+
+
 ## [0.12.9](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.8...@36node/template-cra-redux@0.12.9) (2019-10-13)
 
 **Note:** Version bump only for package @36node/template-cra-redux

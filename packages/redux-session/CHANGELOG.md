@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.9](https://github.com/36node/sketch/compare/@36node/redux-session@0.0.8...@36node/redux-session@0.0.9) (2019-10-14)
+
+
+### Bug Fixes
+
+* remove connect and provider in @36node/redux ([b820eb9](https://github.com/36node/sketch/commit/b820eb9))
+* **tpl-cra-redux:** building dependenceis ([9e5c4c5](https://github.com/36node/sketch/commit/9e5c4c5))
+
+
+
+
+
 ## [0.0.8](https://github.com/36node/sketch/compare/@36node/redux-session@0.0.7...@36node/redux-session@0.0.8) (2019-10-13)
 
 **Note:** Version bump only for package @36node/redux-session
