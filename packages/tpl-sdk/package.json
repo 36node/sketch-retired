@@ -22,7 +22,7 @@
   ],
   "config-overrides-path": "../cli/config-overrides",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.m.js",
   "typings": "typings/index.d.ts",
   "scripts": {
     "build": "sketch build",

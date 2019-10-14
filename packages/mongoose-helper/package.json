@@ -17,7 +17,7 @@
     "typings"
   ],
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.m.js",
   "typings": "typings/index.d.ts",
   "config-overrides-path": "../cli/config-overrides",
   "scripts": {

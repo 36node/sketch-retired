@@ -25,9 +25,9 @@
     "foo": "bin/foo.js"
   },
   "config-overrides-path": "../cli/config-overrides",
-  "browser": "dist/browser.mjs",
+  "browser": "dist/browser.m.js",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.m.js",
   "typings": "typings/index.d.ts",
   "scripts": {
     "build": "sketch build",

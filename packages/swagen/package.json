@@ -12,7 +12,7 @@
   },
   "template": "cli",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.m.js",
   "files": [
     "bin",
     "dist",
