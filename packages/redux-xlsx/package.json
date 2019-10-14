@@ -43,10 +43,12 @@
     ]
   },
   "dependencies": {
+    "lodash": "^4.17.11",
     "xlsx": "^0.15.1"
   },
   "peerDependencies": {
     "@36node/redux": "^0.1.8",
+    "react": "^16.0.0",
     "react-redux": "^6.0.1",
     "redux-saga": "^1.0.2"
   },
