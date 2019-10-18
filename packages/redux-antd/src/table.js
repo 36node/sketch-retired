@@ -15,8 +15,8 @@ export const createTable = (
     fetch = (pagination = {}, filters = {}, sort = {}) => {
       // fetching data only when api maker is provided
       if (!apiAction) return;
-
-      const query = {};
+      // query could be changed from outside
+      const query = { ...this.props.apiData.request.query };
       const { current = 1, pageSize = defaultPageSize } = pagination;
       query.limit = pageSize;
       query.offset = (current - 1) * pageSize;

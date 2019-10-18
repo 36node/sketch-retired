@@ -119,8 +119,6 @@ export const withTable = (
     render() {
       const { table, ...rest } = this.props;
       table.columns = filterColumn(columns, this.state.checkedKeys);
-      console.log(this.state.checkedKeys);
-      console.log(table.columns);
       return (
         <Card title="Pets in store" extra={this.renderExtra()}>
           <Component table={table} {...rest} />
