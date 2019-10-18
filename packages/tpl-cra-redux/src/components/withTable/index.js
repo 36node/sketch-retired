@@ -118,10 +118,10 @@ export const withTable = (
 
     render() {
       const { table, ...rest } = this.props;
-      table.columns = filterColumn(columns, this.state.checkedKeys);
+      const filtered = filterColumn(columns, this.state.checkedKeys);
       return (
         <Card title="Pets in store" extra={this.renderExtra()}>
-          <Component table={table} {...rest} />
+          <Component columns={filtered} {...table} {...rest} />
           <Exporter
             visible={this.state.exporterOpen}
             onToggle={this.toggleExporter}

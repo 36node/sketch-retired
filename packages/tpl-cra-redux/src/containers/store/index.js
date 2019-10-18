@@ -75,7 +75,7 @@ const selectCron = makeCronSelector(REFRESH_KEY);
   makeList: store.makeListPets,
   makeCreate: store.makeCreatePet,
 })
-export default class extends React.Component {
+export default class extends React.PureComponent {
   startCron = () =>
     this.props.dispatch(
       cronActions.start({
@@ -86,7 +86,7 @@ export default class extends React.Component {
   resetCron = () => this.props.dispatch(cronActions.reset());
 
   render() {
-    const { cron } = this.props;
+    const { cron, ...rest } = this.props;
 
     return (
       <>
@@ -102,7 +102,7 @@ export default class extends React.Component {
           )}
           <Button onClick={this.resetCron}>Reset</Button>
         </Button.Group>
-        <Table {...this.props.table} />
+        <Table {...rest} />
       </>
     );
   }
