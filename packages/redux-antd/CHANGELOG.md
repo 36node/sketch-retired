@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.10](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.9...@36node/redux-antd@0.1.10) (2019-10-18)
+
+
+### Bug Fixes
+
+* **redux-antd:** table query merge before paginate ([7ecbbf4](https://github.com/36node/sketch/commit/7ecbbf4))
+
+
+
+
+
 ## [0.1.9](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.8...@36node/redux-antd@0.1.9) (2019-10-14)
 
 

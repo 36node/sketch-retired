@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.14](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.13...@36node/template-cra-redux@0.12.14) (2019-10-18)
+
+
+### Bug Fixes
+
+* **redux-antd:** table query merge before paginate ([7ecbbf4](https://github.com/36node/tpl-react-redux/commit/7ecbbf4))
+
+
+
+
+
 ## [0.12.13](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.12...@36node/template-cra-redux@0.12.13) (2019-10-14)
 
 **Note:** Version bump only for package @36node/template-cra-redux
