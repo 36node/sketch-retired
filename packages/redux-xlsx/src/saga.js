@@ -63,15 +63,13 @@ function writeFile(name, type, columns, rows) {
 
       // TODO1: columns 支持children
       // TODO2: 支持宽度定义
-      const keys = columns.map(c => c.dataIndex);
-      const data = rows.map(r => pickF(r, keys));
-      const ws = XLSX.utils.json_to_sheet(data, {
-        header: columns.map(c => c.title),
-      });
-
-      /** create workbook */
       const file = `${name}.${type}`;
       const wb = XLSX.utils.book_new();
+      const keys = columns.map(c => c.dataIndex);
+      const data = rows.map(r => pickF(r, keys));
+      const ws = XLSX.utils.json_to_sheet(data);
+
+      XLSX.utils.sheet_add_aoa(ws, [columns.map(c => c.title)]);
       XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
       XLSX.writeFile(wb, file, { bookType: type });
       resolve(file);
