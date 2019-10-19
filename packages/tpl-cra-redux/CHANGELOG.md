@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.15](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.14...@36node/template-cra-redux@0.12.15) (2019-10-19)
+
+
+### Bug Fixes
+
+* withTable columns filter with pure component ([d6ecba4](https://github.com/36node/tpl-react-redux/commit/d6ecba4))
+
+
+
+
+
 ## [0.12.14](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.13...@36node/template-cra-redux@0.12.14) (2019-10-18)
 
 
