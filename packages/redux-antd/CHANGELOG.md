@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.11](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.10...@36node/redux-antd@0.1.11) (2019-10-21)
+
+
+### Bug Fixes
+
+* create table param adjust ([28b3d1c](https://github.com/36node/sketch/commit/28b3d1c))
+
+
+
+
+
 ## [0.1.10](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.9...@36node/redux-antd@0.1.10) (2019-10-18)
 
 

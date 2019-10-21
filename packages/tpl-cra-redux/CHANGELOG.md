@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.16](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.15...@36node/template-cra-redux@0.12.16) (2019-10-21)
+
+
+### Bug Fixes
+
+* create table param adjust ([28b3d1c](https://github.com/36node/tpl-react-redux/commit/28b3d1c))
+
+
+
+
+
 ## [0.12.15](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.14...@36node/template-cra-redux@0.12.15) (2019-10-19)
 
 
