@@ -5,7 +5,7 @@ const defaultPageSize = 10;
 
 export const createTable = (
   key,
-  { apiAction, apiSelector = () => {} } = {}
+  { list, listSelector = () => {} } = {}
 ) => Component => {
   class WithTable extends React.Component {
     componentDidMount() {
@@ -14,9 +14,9 @@ export const createTable = (
 
     fetch = (pagination = {}, filters = {}, sort = {}) => {
       // fetching data only when api maker is provided
-      if (!apiAction) return;
+      if (!list) return;
       // query could be changed from outside
-      const query = { ...this.props.apiData.request.query };
+      const query = { ...this.props.listState.request.query };
       const { current = 1, pageSize = defaultPageSize } = pagination;
       query.limit = pageSize;
       query.offset = (current - 1) * pageSize;
@@ -28,7 +28,7 @@ export const createTable = (
       const { field, order } = sort;
       if (field) query.sort = (order === "ascend" ? "" : "-") + field;
 
-      this.props.dispatch(apiAction({ query }));
+      this.props.dispatch(list({ query }));
     };
 
     handleChange = (pagination = {}, filters = {}, sort = {}) => {
@@ -36,8 +36,8 @@ export const createTable = (
     };
 
     render() {
-      const { apiData = {}, ...rest } = this.props;
-      const { loading = false, result = [], total, request = {} } = apiData;
+      const { listState = {}, ...rest } = this.props;
+      const { loading = false, result = [], total, request = {} } = listState;
       const { limit = 10, offset = 0 } = request.query || {};
       const pagination = {};
 
@@ -56,12 +56,12 @@ export const createTable = (
         onChange: this.handleChange,
       };
 
-      return <Component table={table} apiData={apiData} {...rest} />;
+      return <Component table={table} listState={listState} {...rest} />;
     }
   }
 
   const Connected = connect((state, props) => ({
-    apiData: apiSelector(state),
+    listState: listSelector(state),
   }))(WithTable);
 
   return Connected;

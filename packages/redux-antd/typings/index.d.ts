@@ -5,8 +5,8 @@ import { Action } from "redux";
 type Selector = (state: object) => object;
 
 interface CreateTableOptions {
-  apiAction: Action;
-  apiSelector: Selector;
+  list: Action;
+  listSelector: Selector;
 }
 
 export const createForm: <TOwnProps extends FormComponentProps<any>>(

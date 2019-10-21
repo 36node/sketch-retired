@@ -34,7 +34,7 @@ export const withTable = (
   { columns, makeList, makeCreate } = {}
 ) => Component => {
   const list = makeList(key);
-  const selectList = makeApiSelector(key);
+  const listSelector = makeApiSelector(key);
   const xlsxActions = makeXlsx(key, { columns });
   const selectXlsx = makeXlsxSelector(key);
 
@@ -136,8 +136,8 @@ export const withTable = (
   }
 
   return createTable(key, {
-    apiAction: list,
-    apiSelector: selectList,
+    list,
+    listSelector,
   })(Container);
 };
 
