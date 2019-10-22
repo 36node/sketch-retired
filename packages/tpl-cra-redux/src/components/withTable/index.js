@@ -70,9 +70,8 @@ export const withTable = (
     };
 
     handleRefreshFirstPage = () => {
-      const { apiData = {} } = this.props;
-      const { request = {} } = apiData;
-      const newRequest = merge({}, request, { query: { offset: 0 } });
+      const { listState = {} } = this.props;
+      const newRequest = merge({}, listState.request, { query: { offset: 0 } });
       this.props.dispatch(list(newRequest));
     };
 
@@ -81,11 +80,11 @@ export const withTable = (
     };
 
     renderExtra = () => {
-      const { apiData = {} } = this.props;
+      const { listState = {} } = this.props;
       return (
         <div>
           <span style={{ marginRight: 24, color: "#595959" }}>
-            total {apiData.total}
+            total {listState.total}
           </span>
           <span>
             <Tool title="刷新">
