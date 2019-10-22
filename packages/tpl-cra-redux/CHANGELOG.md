@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.17](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.16...@36node/template-cra-redux@0.12.17) (2019-10-22)
+
+
+### Bug Fixes
+
+* **tpl-cra-redux:** apiData to listState ([13cccb6](https://github.com/36node/tpl-react-redux/commit/13cccb6))
+
+
+
+
+
 ## [0.12.16](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.15...@36node/template-cra-redux@0.12.16) (2019-10-21)
 
 
