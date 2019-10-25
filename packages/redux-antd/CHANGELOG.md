@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.13](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.12...@36node/redux-antd@0.1.13) (2019-10-25)
+
+
+### Bug Fixes
+
+* **redux-antd:** fetchOnMount ([96473c0](https://github.com/36node/sketch/commit/96473c0))
+
+
+
+
+
 ## [0.1.12](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.11...@36node/redux-antd@0.1.12) (2019-10-25)
 
 
