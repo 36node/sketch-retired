@@ -14,18 +14,16 @@ import {
   tapCronTick,
 } from "@36node/redux";
 
-export default (key, { selectXlsx, xlsxActions, makeCreate }) => {
+export default (IMPORTER_KEY, { create, xlsxActions, xlsxSelector }) => {
   /**
    * actions and selectors
    */
-  const IMPORTER_KEY = key;
-  const createPet = makeCreate(IMPORTER_KEY, {}, { parallel: true });
+  const CREATE_TYPES = create().meta.types;
+  const CREATE_KEY = create().key;
   const cronActions = makeCron(IMPORTER_KEY);
-  const selectCron = makeCronSelector(IMPORTER_KEY);
+  const cronSelector = makeCronSelector(IMPORTER_KEY);
   const progressActions = makeProgress(IMPORTER_KEY);
-  const selectProgress = makeProgressSelector(IMPORTER_KEY);
-
-  const STORE_CREATE_PET = createPet().meta.types;
+  const progressSelector = makeProgressSelector(IMPORTER_KEY);
 
   /**
    * saga effects
@@ -33,13 +31,13 @@ export default (key, { selectXlsx, xlsxActions, makeCreate }) => {
   @withSaga(
     tapCronTick(IMPORTER_KEY, function*(action) {
       const { pos } = action.payload;
-      const xlsx = yield select(selectXlsx);
-      yield put(createPet({ body: xlsx.rows[pos - 1] }));
+      const xlsx = yield select(xlsxSelector);
+      yield put(create({ body: xlsx.rows[pos - 1] }));
     }),
-    tapOn(STORE_CREATE_PET.SUCCESS, IMPORTER_KEY, function*(action) {
+    tapOn(CREATE_TYPES.SUCCESS, CREATE_KEY, function*(action) {
       yield put(progressActions.increase());
     }),
-    tapOn(STORE_CREATE_PET.FAILURE, IMPORTER_KEY, () => {
+    tapOn(CREATE_TYPES.FAILURE, CREATE_KEY, () => {
       message("Failed to import");
     })
   )
@@ -47,9 +45,9 @@ export default (key, { selectXlsx, xlsxActions, makeCreate }) => {
    * data
    */
   @connect(state => {
-    const xlsx = selectXlsx(state);
-    const cron = selectCron(state);
-    const progress = selectProgress(state);
+    const xlsx = xlsxSelector(state);
+    const cron = cronSelector(state);
+    const progress = progressSelector(state);
     const finish = progress.max === progress.pos;
     return { cron, xlsx, progress, finish };
   })
@@ -97,7 +95,7 @@ export default (key, { selectXlsx, xlsxActions, makeCreate }) => {
     };
 
     render() {
-      const { finish, progress, cron, visible } = this.props;
+      const { finish, progress, cron } = this.props;
       const { fileReady } = this.state;
 
       const okText = finish
@@ -110,7 +108,7 @@ export default (key, { selectXlsx, xlsxActions, makeCreate }) => {
       return (
         <Modal
           title="Import from Excel file"
-          visible={visible}
+          visible={true}
           onOk={handleOk}
           okButtonProps={{ disabled: !fileReady }}
           okText={okText}

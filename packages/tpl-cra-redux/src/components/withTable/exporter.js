@@ -1,19 +1,14 @@
 import React from "react";
 import { Modal } from "antd";
 import { connect } from "react-redux";
-import { makeApiSelector } from "@36node/redux";
 
-export default (key, { selectXlsx, xlsxActions, makeList }) => {
-  /**
-   * actions and selectors
-   */
-  const EXPORTER_KEY = key;
-  const list = makeList(EXPORTER_KEY);
-  const selectList = makeApiSelector(EXPORTER_KEY);
-
+export default (
+  EXPORTER_KEY,
+  { title, xlsxSelector, xlsxActions, list, listSelector }
+) => {
   @connect(state => ({
-    petList: selectList(state),
-    xlsx: selectXlsx(state),
+    listState: listSelector(state),
+    xlsx: xlsxSelector(state),
   }))
   class Exporter extends React.Component {
     componentDidMount() {
@@ -25,23 +20,21 @@ export default (key, { selectXlsx, xlsxActions, makeList }) => {
     };
 
     handleOk = () => {
-      const { result } = this.props.petList;
+      const { result } = this.props.listState;
       if (this.props.onToggle) this.props.onToggle();
-
       this.props.dispatch(
-        xlsxActions.export({ name: "pet", type: "xlsx", rows: result })
+        xlsxActions.export({ name: title, type: "xlsx", rows: result })
       );
     };
 
     render() {
-      const { loading, result } = this.props.petList;
+      const { loading, result } = this.props.listState;
       const { exporting } = this.props.xlsx;
-      const { visible = false } = this.props;
 
       return (
         <Modal
           title="Exporting"
-          visible={visible}
+          visible={true}
           onOk={this.handleOk}
           okText="Export"
           confirmLoading={loading || exporting}

@@ -1,6 +1,5 @@
 import React from "react";
-import { merge, isEmpty } from "lodash";
-import { makeApiSelector } from "@36node/redux";
+import { get, isEmpty } from "lodash";
 import { createTable } from "@36node/redux-antd";
 import { makeXlsx, makeXlsxSelector } from "@36node/redux-xlsx";
 import { Card, Dropdown, Icon, Tooltip } from "antd";
@@ -10,9 +9,10 @@ import FilterTree from "./filterTree";
 import createExporter from "./exporter";
 import createImporter from "./importer";
 
+const defaultPageSize = 10;
+
 function filterColumn(columns, checkedKeys = []) {
   if (!columns) return;
-
   return columns
     .map(c => ({ ...c, children: filterColumn(c.children, checkedKeys) }))
     .filter(c => checkedKeys.includes(c.key) || !isEmpty(c.children));
@@ -31,23 +31,32 @@ function getCheckedKeys(columns = []) {
 
 export const withTable = (
   key,
-  { columns, makeList, makeCreate } = {}
+  {
+    SearchForm, // 查询使用到的 form 组件
+    title,
+    columns,
+    create,
+    list,
+    listSelector,
+    listForExportor,
+    listSelectorForExporter,
+  } = {}
 ) => Component => {
-  const list = makeList(key);
-  const listSelector = makeApiSelector(key);
   const xlsxActions = makeXlsx(key, { columns });
-  const selectXlsx = makeXlsxSelector(key);
+  const xlsxSelector = makeXlsxSelector(key);
 
-  const Exporter = createExporter(`${key}Exporter`, {
-    makeList,
-    selectXlsx,
+  const Exporter = createExporter(key, {
+    title,
+    list: listForExportor || list, // 如果没提供额外的 action，那么只导出第一页
+    listSelector: listSelectorForExporter || listSelector,
+    xlsxSelector,
     xlsxActions,
   });
 
-  const Impoter = createImporter(`${key}Exporter`, {
-    selectXlsx,
+  const Impoter = createImporter(key, {
+    create,
     xlsxActions,
-    makeCreate,
+    xlsxSelector,
   });
 
   class Container extends React.PureComponent {
@@ -69,10 +78,17 @@ export const withTable = (
       });
     };
 
-    handleRefreshFirstPage = () => {
-      const { listState = {} } = this.props;
-      const newRequest = merge({}, listState.request, { query: { offset: 0 } });
-      this.props.dispatch(list(newRequest));
+    handleRefresh = () => {
+      this.handleFetch();
+    };
+
+    handleFetch = (filter, page = 1) => {
+      const query = {
+        ...get(this.props, "listState.request.query"),
+        offset: (page - 1) * defaultPageSize,
+      };
+      if (filter) query.filter = filter;
+      this.props.dispatch(list({ query }));
     };
 
     handleFilterKeys = checkedKeys => {
@@ -87,8 +103,8 @@ export const withTable = (
             total {listState.total}
           </span>
           <span>
-            <Tool title="刷新">
-              <Icon type="sync" onClick={this.handleRefreshFirstPage} />
+            <Tool title="refresh">
+              <Icon type="sync" onClick={this.handleRefresh} />
             </Tool>
             <Dropdown
               overlay={
@@ -100,14 +116,14 @@ export const withTable = (
               }
               trigger={["click"]}
             >
-              <Tool title="筛选">
+              <Tool title="filter">
                 <Icon type="filter" />
               </Tool>
             </Dropdown>
-            <Tool title="导入">
+            <Tool title="import">
               <Icon type="upload" onClick={this.toggleImporter} />
             </Tool>
-            <Tool title="导出">
+            <Tool title="export">
               <Icon type="download" onClick={this.toggleExporter} />
             </Tool>
           </span>
@@ -119,22 +135,29 @@ export const withTable = (
       const { table, ...rest } = this.props;
       const filtered = filterColumn(columns, this.state.checkedKeys);
       return (
-        <Card title="Pets in store" extra={this.renderExtra()}>
-          <Component columns={filtered} {...table} {...rest} />
-          <Exporter
-            visible={this.state.exporterOpen}
-            onToggle={this.toggleExporter}
-          />
-          <Impoter
-            visible={this.state.importerOpen}
-            onToggle={this.toggleImporter}
-          />
-        </Card>
+        <>
+          {SearchForm && (
+            <Card style={{ marginBottom: 8 }}>
+              <SearchForm onFetch={this.handleFetch} />
+            </Card>
+          )}
+          <Card title={title} extra={this.renderExtra()}>
+            <Component columns={filtered} {...table} {...rest} />
+            {this.state.exporterOpen && (
+              <Exporter onToggle={this.toggleExporter} />
+            )}
+            {this.state.importerOpen && (
+              <Impoter onToggle={this.toggleImporter} />
+            )}
+          </Card>
+        </>
       );
     }
   }
 
   return createTable(key, {
+    defaultPageSize,
+    columns,
     list,
     listSelector,
   })(Container);

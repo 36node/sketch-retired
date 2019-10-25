@@ -1,11 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const defaultPageSize = 10;
-
 export const createTable = (
   key,
-  { list, listSelector = () => {} } = {}
+  { defaultPageSize = 10, list, listSelector = () => {} } = {}
 ) => Component => {
   class WithTable extends React.Component {
     componentDidMount() {

@@ -9,7 +9,6 @@ import {
   withSaga,
   reputApi,
 } from "@36node/redux";
-import { makeXlsx, makeXlsxSelector } from "@36node/redux-xlsx";
 
 import withBreadCrumb from "../../components/withBreadCrumb";
 import { withTable } from "../../components/withTable";
@@ -17,6 +16,7 @@ import { store } from "../../actions/api";
 import { domain } from "../../constants";
 
 const PETS_KEY = domain.store.pets;
+
 const columns = [
   { title: "name", dataIndex: "name", key: "name", frozen: true },
   {
@@ -38,10 +38,9 @@ const columns = [
 /**
  * actions and selectors
  */
-export const listPets = store.makeListPets(PETS_KEY);
-export const selectPets = makeApiSelector(PETS_KEY);
-export const xlsxActions = makeXlsx(PETS_KEY, { columns });
-export const selectXlsx = makeXlsxSelector(PETS_KEY);
+const listPets = store.makeListPets(PETS_KEY);
+const listPetsSelector = makeApiSelector(PETS_KEY);
+const createPet = store.makeCreatePet("nobody", {}, { parallel: true });
 
 const REFRESH_KEY = domain.store.refresh;
 
@@ -64,16 +63,17 @@ const selectCron = makeCronSelector(REFRESH_KEY);
  */
 @connect(state => ({
   cron: selectCron(state),
-  total: selectPets(state).total,
 }))
 /**
  * table
  */
 @withBreadCrumb("Pet-Store")
 @withTable(PETS_KEY, {
+  title: "Pets in Store",
   columns,
-  makeList: store.makeListPets,
-  makeCreate: store.makeCreatePet,
+  create: createPet,
+  list: listPets,
+  listSelector: listPetsSelector,
 })
 export default class extends React.PureComponent {
   startCron = () =>
