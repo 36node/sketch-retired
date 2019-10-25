@@ -36,6 +36,7 @@ export const withTable = (
     title,
     columns,
     create,
+    createSelector,
     list,
     listSelector,
     listForExportor,
@@ -54,7 +55,9 @@ export const withTable = (
   });
 
   const Impoter = createImporter(key, {
+    title,
     create,
+    createSelector,
     xlsxActions,
     xlsxSelector,
   });

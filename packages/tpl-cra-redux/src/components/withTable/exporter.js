@@ -33,7 +33,7 @@ export default (
 
       return (
         <Modal
-          title="Exporting"
+          title={`Exporting - ${title}`}
           visible={true}
           onOk={this.handleOk}
           okText="Export"

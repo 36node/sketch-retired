@@ -14,7 +14,7 @@ import {
   tapCronTick,
 } from "@36node/redux";
 
-export default (IMPORTER_KEY, { create, xlsxActions, xlsxSelector }) => {
+export default (IMPORTER_KEY, { title, create, xlsxActions, xlsxSelector }) => {
   /**
    * actions and selectors
    */
@@ -107,7 +107,7 @@ export default (IMPORTER_KEY, { create, xlsxActions, xlsxSelector }) => {
 
       return (
         <Modal
-          title="Import from Excel file"
+          title={`Importing - ${title}`}
           visible={true}
           onOk={handleOk}
           okButtonProps={{ disabled: !fileReady }}
