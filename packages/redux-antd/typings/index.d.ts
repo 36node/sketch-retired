@@ -7,6 +7,7 @@ type Selector = (state: object) => object;
 
 interface CreateTableOptions {
   defaultPageSize: number; // default 10
+  fetchOnMount: boolean; // default true
   columns: [ColumnProps<any>];
   list: Action;
   listSelector: Selector;

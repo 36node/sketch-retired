@@ -3,11 +3,17 @@ import { connect } from "react-redux";
 
 export const createTable = (
   key,
-  { defaultPageSize = 10, columns, list, listSelector = () => {} } = {}
+  {
+    defaultPageSize = 10,
+    fetchOnMount = true,
+    columns,
+    list,
+    listSelector = () => {},
+  } = {}
 ) => Component => {
   class WithTable extends React.Component {
     componentDidMount() {
-      this.fetch();
+      if (fetchOnMount) this.fetch();
     }
 
     fetch = (pagination = {}, filters = {}, sort = {}) => {
