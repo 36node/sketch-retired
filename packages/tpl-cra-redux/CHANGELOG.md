@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.18](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.17...@36node/template-cra-redux@0.12.18) (2019-10-25)
+
+
+### Bug Fixes
+
+* **tpl-cra-redux:** fix with table ([454ff4a](https://github.com/36node/tpl-react-redux/commit/454ff4a))
+* import export title ([15eda83](https://github.com/36node/tpl-react-redux/commit/15eda83))
+* table columns ([2058597](https://github.com/36node/tpl-react-redux/commit/2058597))
+
+
+
+
+
 ## [0.12.17](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.16...@36node/template-cra-redux@0.12.17) (2019-10-22)
 
 
