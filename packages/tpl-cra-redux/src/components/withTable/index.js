@@ -133,7 +133,7 @@ export const withTable = (
 
     render() {
       const { table, ...rest } = this.props;
-      const filtered = filterColumn(columns, this.state.checkedKeys);
+      const filtered = filterColumn(table.columns, this.state.checkedKeys);
       return (
         <>
           {SearchForm && (
@@ -142,7 +142,7 @@ export const withTable = (
             </Card>
           )}
           <Card title={title} extra={this.renderExtra()}>
-            <Component columns={filtered} {...table} {...rest} />
+            <Component {...table} columns={filtered} {...rest} />
             {this.state.exporterOpen && (
               <Exporter onToggle={this.toggleExporter} />
             )}

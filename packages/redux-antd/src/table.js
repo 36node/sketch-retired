@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 export const createTable = (
   key,
-  { defaultPageSize = 10, list, listSelector = () => {} } = {}
+  { defaultPageSize = 10, columns, list, listSelector = () => {} } = {}
 ) => Component => {
   class WithTable extends React.Component {
     componentDidMount() {
@@ -50,6 +50,7 @@ export const createTable = (
         pagination,
         rowKey: "id",
         loading,
+        columns,
         dataSource: result,
         onChange: this.handleChange,
       };
