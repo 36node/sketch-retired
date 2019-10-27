@@ -25,14 +25,22 @@ export const createTable = (
       query.limit = pageSize;
       query.offset = (current - 1) * pageSize;
 
-      Object.keys(filters).forEach(k => {
-        query[k] = filters[k];
-      });
+      Object.keys(filters)
+        .filter(k => Boolean(filters[k]))
+        .forEach(k => {
+          if (!query.filter) query.filter = {};
+          query.filter[k] = filters[k];
+        });
 
       const { field, order } = sort;
       if (field) query.sort = (order === "ascend" ? "" : "-") + field;
 
-      this.props.dispatch(list({ query }));
+      this.props.dispatch(
+        list({
+          ...this.props.listState.request,
+          query,
+        })
+      );
     };
 
     handleChange = (pagination = {}, filters = {}, sort = {}) => {
