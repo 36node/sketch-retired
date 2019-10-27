@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.14](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.13...@36node/redux-antd@0.1.14) (2019-10-27)
+
+
+### Bug Fixes
+
+* redux antd table([#157](https://github.com/36node/sketch/issues/157)) ([#158](https://github.com/36node/sketch/issues/158)) ([3d32e35](https://github.com/36node/sketch/commit/3d32e35))
+
+
+
+
+
 ## [0.1.13](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.12...@36node/redux-antd@0.1.13) (2019-10-25)
 
 
