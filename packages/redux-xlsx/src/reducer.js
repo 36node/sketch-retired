@@ -6,7 +6,7 @@ export const initState = {
   importing: false,
   exporting: false,
   error: {},
-  rows: [],
+  result: [],
 };
 
 function r(state = initState, action = {}) {
@@ -22,7 +22,7 @@ function r(state = initState, action = {}) {
       return {
         ...state,
         importing: false,
-        rows: payload,
+        result: payload,
       };
     case xlsxTypes.IMPORT_FAILURE:
       return {

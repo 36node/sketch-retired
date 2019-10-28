@@ -8,6 +8,12 @@ import { xlsxTypes, isXlsx } from "./action";
 /**
  * columns 的数据格式，均参考 antd table
  * https://ant.design/components/table-cn/#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8
+ *
+ * column 中特殊含义字段
+ *
+ * - key: 字段名称，通常用于导入
+ * - dataIndex: 字段读取路径，通常用于导出
+ *
  */
 
 function readFile(file, columns) {
@@ -23,8 +29,20 @@ function readFile(file, columns) {
       const ws = wb.Sheets[wsname];
 
       /** to json */
-      const arr = XLSX.utils.sheet_to_json(ws);
-      resolve(arr);
+      // TODO1: columns 支持children
+      const rows = XLSX.utils.sheet_to_json(ws);
+
+      /**
+       * 字段转换
+       * 把 columns key 对应到 excel 表格的表头
+       */
+      const mapKey = item =>
+        columns.reduce(
+          (newItem, col) => ({ ...newItem, [col.key]: item[col.title] }),
+          {}
+        );
+
+      resolve(rows.map(mapKey));
     };
     reader.onerror = e => {
       reject(e);
@@ -65,7 +83,7 @@ function writeFile(name, type, columns, rows) {
       // TODO2: 支持宽度定义
       const file = `${name}.${type}`;
       const wb = XLSX.utils.book_new();
-      const keys = columns.map(c => c.dataIndex);
+      const keys = columns.map(c => c.dataIndex).filter(val => val);
       const data = rows.map(r => pickF(r, keys));
       const ws = XLSX.utils.json_to_sheet(data);
 
