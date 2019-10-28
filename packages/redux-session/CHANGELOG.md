@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.10](https://github.com/36node/sketch/compare/@36node/redux-session@0.0.9...@36node/redux-session@0.0.10) (2019-10-28)
+
+
+### Bug Fixes
+
+* **redux-session:** remove antd ([bd5c455](https://github.com/36node/sketch/commit/bd5c455))
+
+
+
+
+
 ## [0.0.9](https://github.com/36node/sketch/compare/@36node/redux-session@0.0.8...@36node/redux-session@0.0.9) (2019-10-14)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.14](https://github.com/36node/sketch/compare/@36node/redux-xlsx@0.1.13...@36node/redux-xlsx@0.1.14) (2019-10-28)
+
+
+### Bug Fixes
+
+* **redux-xlsx:** fix some bug ([0046649](https://github.com/36node/sketch/commit/0046649))
+
+
+
+
+
 ## [0.1.13](https://github.com/36node/sketch/compare/@36node/redux-xlsx@0.1.12...@36node/redux-xlsx@0.1.13) (2019-10-19)
 
 
