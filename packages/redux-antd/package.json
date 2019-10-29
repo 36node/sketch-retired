@@ -1,6 +1,6 @@
 {
   "name": "@36node/redux-antd",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "A higher order component decorator for @36node/redux and antd",
   "repository": {
     "url": "36node/sketch",
