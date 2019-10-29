@@ -34,6 +34,7 @@ export const createTable = (
 
       const { field, order } = sort;
       if (field) query.sort = (order === "ascend" ? "" : "-") + field;
+      else delete query.sort;
 
       this.props.dispatch(
         list({
