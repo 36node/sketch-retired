@@ -13,10 +13,19 @@ export const createTable = (
 ) => Component => {
   class WithTable extends React.Component {
     componentDidMount() {
-      if (fetchOnMount) this.fetch();
+      if (fetchOnMount) {
+        this.props.dispatch(
+          list({
+            query: {
+              limit: defaultPageSize,
+              offset: 0,
+            },
+          })
+        );
+      }
     }
 
-    fetch = (pagination = {}, filters = {}, sort = {}) => {
+    handleChange = (pagination = {}, filters = {}, sort = {}) => {
       // fetching data only when api maker is provided
       if (!list) return;
       // query could be changed from outside
@@ -42,10 +51,6 @@ export const createTable = (
           query,
         })
       );
-    };
-
-    handleChange = (pagination = {}, filters = {}, sort = {}) => {
-      this.fetch(pagination, filters, sort);
     };
 
     render() {
