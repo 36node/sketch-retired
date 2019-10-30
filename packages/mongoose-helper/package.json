@@ -1,6 +1,6 @@
 {
   "name": "@36node/mongoose-helper",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "A module boilerplate for nodejs and web.",
   "repository": {
     "url": "36node/sketch",
