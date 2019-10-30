@@ -1,6 +1,13 @@
 import { camelizeKeys } from "humps";
 import { isNil } from "lodash";
 
+// 目前用空格作为分隔符，可以增加新的分隔符
+const quote = (str = "") =>
+  str
+    .split(" ")
+    .map(frag => `"${frag}"`)
+    .join(" ");
+
 /**
  * Build filter for list function
  *
@@ -50,7 +57,7 @@ export default function build(raw, schema) {
       return acc;
     }
 
-    if (key === "q") acc["$text"] = { $search: val };
+    if (key === "q") acc["$text"] = { $search: quote(val) };
     // TODO: should use schema.Path(key) to get type
     else if (val === "true") acc[key] = true;
     else if (val === "false") acc[key] = false;
