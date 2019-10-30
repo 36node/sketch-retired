@@ -1,6 +1,7 @@
 import { call, cancel, fork, put, take } from "redux-saga/effects";
 import { tapOn } from "@36node/redux";
 import XLSX from "xlsx";
+import { set } from "lodash";
 
 import { pickF } from "./lib";
 import { xlsxTypes, isXlsx } from "./action";
@@ -38,7 +39,8 @@ function readFile(file, columns) {
        */
       const mapKey = item =>
         columns.reduce(
-          (newItem, col) => ({ ...newItem, [col.key]: item[col.title] }),
+          (newItem, col) =>
+            set(newItem, col.key || col.dataIndex, item[col.title]),
           {}
         );
 

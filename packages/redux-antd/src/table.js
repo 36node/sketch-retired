@@ -41,8 +41,9 @@ export const createTable = (
           query.filter[k] = filters[k];
         });
 
-      const { field, order } = sort;
-      if (field) query.sort = (order === "ascend" ? "" : "-") + field;
+      const { column, field, order } = sort;
+      if (column)
+        query.sort = (order === "ascend" ? "" : "-") + (column.key || field);
       else delete query.sort;
 
       this.props.dispatch(
