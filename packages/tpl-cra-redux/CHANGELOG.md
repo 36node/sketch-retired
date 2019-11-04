@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.25](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.24...@36node/template-cra-redux@0.12.25) (2019-11-04)
+
+**Note:** Version bump only for package @36node/template-cra-redux
+
+
+
+
+
 ## [0.12.24](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.23...@36node/template-cra-redux@0.12.24) (2019-10-30)
 
 **Note:** Version bump only for package @36node/template-cra-redux
