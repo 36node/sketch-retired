@@ -11,7 +11,7 @@ export const createTable = (
     listSelector = () => {},
   } = {}
 ) => Component => {
-  class WithTable extends React.Component {
+  class ComponentWithTable extends React.Component {
     componentDidMount() {
       if (fetchOnMount) {
         this.props.dispatch(
@@ -26,8 +26,9 @@ export const createTable = (
     }
 
     handleChange = (pagination = {}, filters = {}, sort = {}) => {
-      // fetching data only when api maker is provided
+      // fetching data only when list is provided
       if (!list) return;
+
       // query could be changed from outside
       const query = { ...this.props.listState.request.query };
       const { current = 1, pageSize = defaultPageSize } = pagination;
@@ -82,7 +83,7 @@ export const createTable = (
 
   const Connected = connect((state, props) => ({
     listState: listSelector(state),
-  }))(WithTable);
+  }))(ComponentWithTable);
 
   return Connected;
 };
