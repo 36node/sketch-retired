@@ -1,5 +1,6 @@
 import React from "react";
-import { get, isEmpty } from "lodash";
+import { get, isEmpty, isNil } from "lodash";
+import { makeApiSelector } from "@36node/redux";
 import { createTable } from "@36node/redux-antd";
 import { makeXlsx, makeXlsxSelector } from "@36node/redux-xlsx";
 import { Card, Dropdown, Icon, Tooltip } from "antd";
@@ -10,7 +11,6 @@ import createExporter from "./exporter";
 import createImporter from "./importer";
 
 const defaultPageSize = 10;
-
 function filterColumn(columns, checkedKeys = []) {
   if (!columns) return;
   return columns
@@ -21,7 +21,7 @@ function filterColumn(columns, checkedKeys = []) {
 function getCheckedKeys(columns = []) {
   let keys = [];
   for (let column of columns) {
-    if (!column.hide) {
+    if (!column.hidden) {
       keys.push(column.key);
       keys = keys.concat(getCheckedKeys(column.children));
     }
@@ -29,31 +29,64 @@ function getCheckedKeys(columns = []) {
   return keys;
 }
 
+function emptyRender(val) {
+  if (isNil(val)) return "--";
+  return val;
+}
+
+const fakeAction = () => ({ payload: {}, meta: { types: {} } });
+
 export const withTable = (
   key,
   {
     SearchForm, // 查询使用到的 form 组件
-    title,
-    columns,
-    create,
-    list,
-    listSelector,
-    listForExportor,
-    listSelectorForExporter,
+    total = true, // 显示总计， TODO: 可以是 ReactNode 节点
+    refresh = true, // 显示刷新
+    filter = true, // 显示筛选器
+    exporter = true, // 显示导出
+    importer = false, // 显示导入
+    title, // 表格标题
+    columns: inColumns, // 列
+    fetchOnMount = true, // 表格第一次加载的时候获取数据
+    create = fakeAction, // 上传时创建 row
+    list = fakeAction, // 下载列表
+    makeListSelector, // 对 list selector 进行增强
+    makeXlsxSelector: enhanceXlsxSelector, // 对 xlsx selector 进行增强
   } = {}
 ) => Component => {
-  const xlsxActions = makeXlsx(key, { columns });
-  const xlsxSelector = makeXlsxSelector(key);
+  const EXPORTER_KEY = `${key}Exporter`;
+  const IMPORTER_KEY = `${key}Importer`;
+  const EXPORTER_LIMIT = 5000;
+  const columns = inColumns.map(col => ({ render: emptyRender, ...col }));
 
-  const Exporter = createExporter(key, {
+  /**
+   * 准备 selector 和 actions
+   */
+  const xlsxActions = makeXlsx(key, {
+    columns: columns.filter(c => Boolean(c.dataIndex)),
+  });
+  const listForExportor = (payload = {}, meta) => {
+    const action = list(payload, meta);
+    action.key = EXPORTER_KEY;
+    action.payload.query = { ...payload.query, limit: EXPORTER_LIMIT };
+    return action;
+  };
+  let xlsxSelector = makeXlsxSelector(key);
+  let listSelector = makeApiSelector(key);
+  if (makeListSelector) listSelector = makeListSelector(listSelector);
+  let exporterSelector = makeApiSelector(EXPORTER_KEY);
+  if (makeListSelector) exporterSelector = makeListSelector(exporterSelector);
+  if (enhanceXlsxSelector) xlsxSelector = enhanceXlsxSelector(xlsxSelector);
+
+  const Exporter = createExporter(EXPORTER_KEY, {
     title,
-    list: listForExportor || list, // 如果没提供额外的 action，那么只导出第一页
-    listSelector: listSelectorForExporter || listSelector,
+    list: listForExportor,
+    listSelector: exporterSelector,
     xlsxSelector,
     xlsxActions,
   });
 
-  const Impoter = createImporter(key, {
+  const Impoter = createImporter(IMPORTER_KEY, {
     title,
     create,
     xlsxActions,
@@ -62,15 +95,27 @@ export const withTable = (
 
   class Container extends React.PureComponent {
     state = {
-      importerOpen: false,
       exporterOpen: false,
+      importerOpen: false,
       checkedKeys: getCheckedKeys(columns),
     };
 
-    toggleImporter = () => {
-      this.setState({
-        importerOpen: !this.state.importerOpen,
-      });
+    handleRefresh = () => {
+      const { listState } = this.props;
+      this.handleFetch(listState.request);
+    };
+
+    handleFetch = (payload = {}, page = 1) => {
+      const query = {
+        ...get(this.props, "listState.request.query"),
+        offset: (page - 1) * defaultPageSize,
+        ...payload.query,
+      };
+      this.props.dispatch(list({ ...payload, query }));
+    };
+
+    handleFilterKeys = checkedKeys => {
+      this.setState({ checkedKeys });
     };
 
     toggleExporter = () => {
@@ -79,21 +124,10 @@ export const withTable = (
       });
     };
 
-    handleRefresh = () => {
-      this.handleFetch();
-    };
-
-    handleFetch = (filter, page = 1) => {
-      const query = {
-        ...get(this.props, "listState.request.query"),
-        offset: (page - 1) * defaultPageSize,
-      };
-      if (filter) query.filter = filter;
-      this.props.dispatch(list({ query }));
-    };
-
-    handleFilterKeys = checkedKeys => {
-      this.setState({ checkedKeys });
+    toggleImporter = () => {
+      this.setState({
+        importerOpen: !this.state.importerOpen,
+      });
     };
 
     renderExtra = () => {
@@ -101,57 +135,65 @@ export const withTable = (
       return (
         <div>
           <span style={{ marginRight: 24, color: "#595959" }}>
-            total {listState.total}
+            总计 {listState.total}
           </span>
           <span>
-            <Tool title="refresh">
-              <Icon type="sync" onClick={this.handleRefresh} />
-            </Tool>
-            <Dropdown
-              overlay={
-                <FilterTree
-                  columns={columns}
-                  onChange={this.handleFilterKeys}
-                  value={this.state.checkedKeys}
-                />
-              }
-              trigger={["click"]}
-            >
-              <Tool title="filter">
-                <Icon type="filter" />
+            {total && (
+              <Tool title="刷新">
+                <Icon type="sync" onClick={this.handleRefresh} />
               </Tool>
-            </Dropdown>
-            <Tool title="import">
-              <Icon type="upload" onClick={this.toggleImporter} />
-            </Tool>
-            <Tool title="export">
-              <Icon type="download" onClick={this.toggleExporter} />
-            </Tool>
+            )}
+            {filter && (
+              <Dropdown
+                overlay={
+                  <FilterTree
+                    columns={columns}
+                    onChange={this.handleFilterKeys}
+                    value={this.state.checkedKeys}
+                  />
+                }
+                trigger={["click"]}
+              >
+                <Tool title="筛选">
+                  <Icon type="filter" />
+                </Tool>
+              </Dropdown>
+            )}
+            {importer && (
+              <Tool title="导入">
+                <Icon type="upload" onClick={this.toggleImporter} />
+              </Tool>
+            )}
+            {exporter && (
+              <Tool title="导出">
+                <Icon type="download" onClick={this.toggleExporter} />
+              </Tool>
+            )}
           </span>
         </div>
       );
     };
 
     render() {
-      const { table, ...rest } = this.props;
-      const filtered = filterColumn(table.columns, this.state.checkedKeys);
+      const { table, listState, className, ...rest } = this.props;
+      const filtered = filterColumn(columns, this.state.checkedKeys);
       return (
-        <>
-          {SearchForm && (
-            <Card style={{ marginBottom: 8 }}>
-              <SearchForm onFetch={this.handleFetch} />
-            </Card>
-          )}
+        <div className={className}>
+          {SearchForm && <SearchForm onFetch={this.handleFetch} />}
           <Card title={title} extra={this.renderExtra()}>
             <Component {...table} columns={filtered} {...rest} />
             {this.state.exporterOpen && (
-              <Exporter onToggle={this.toggleExporter} />
+              <Exporter
+                onToggle={this.toggleExporter}
+                columns={filtered}
+                request={listState.request}
+              />
             )}
-            {this.state.importerOpen && (
+            {Impoter && this.state.importerOpen && (
               <Impoter onToggle={this.toggleImporter} />
             )}
           </Card>
-        </>
+        </div>
       );
     }
   }
@@ -161,6 +203,7 @@ export const withTable = (
     columns,
     list,
     listSelector,
+    fetchOnMount,
   })(Container);
 };
 

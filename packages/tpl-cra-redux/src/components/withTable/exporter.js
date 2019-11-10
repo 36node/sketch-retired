@@ -3,7 +3,7 @@ import { Modal } from "antd";
 import { connect } from "react-redux";
 
 export default (
-  EXPORTER_KEY,
+  key,
   { title, xlsxSelector, xlsxActions, list, listSelector }
 ) => {
   @connect(state => ({
@@ -12,7 +12,8 @@ export default (
   }))
   class Exporter extends React.Component {
     componentDidMount() {
-      this.props.dispatch(list());
+      // 所见即所得，导出的结果是 table 里看得到的
+      this.props.dispatch(list(this.props.request));
     }
 
     handleCancel = () => {
@@ -20,10 +21,14 @@ export default (
     };
 
     handleOk = () => {
-      const { result } = this.props.listState;
+      const { columns = [], listState = {} } = this.props;
+      const { result } = listState;
       if (this.props.onToggle) this.props.onToggle();
       this.props.dispatch(
-        xlsxActions.export({ name: title, type: "xlsx", rows: result })
+        xlsxActions.export(
+          { name: title, type: "xlsx", rows: result },
+          { columns }
+        )
       );
     };
 
@@ -33,18 +38,18 @@ export default (
 
       return (
         <Modal
-          title={`Exporting - ${title}`}
+          title={`导出 - ${title}`}
           visible={true}
           onOk={this.handleOk}
-          okText="Export"
+          okText="导出"
           confirmLoading={loading || exporting}
           onCancel={this.handleCancel}
           width={800}
         >
           {loading ? (
-            <p>Preparint data... </p>
+            <p>正在准备数据... </p>
           ) : (
-            <div> {`Click OK to download ${result.length} pets`} </div>
+            <div> {`下载选中的${result.length}条记录`} </div>
           )}
         </Modal>
       );

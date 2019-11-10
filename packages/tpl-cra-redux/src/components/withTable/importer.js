@@ -3,7 +3,6 @@ import { Modal } from "antd";
 import { connect } from "react-redux";
 import { put, select } from "redux-saga/effects";
 import { Upload, Button, Icon, message, Progress, Row } from "antd";
-
 import {
   makeProgress,
   makeProgressSelector,
@@ -13,6 +12,10 @@ import {
   makeCronSelector,
   tapCronTick,
 } from "@36node/redux";
+
+const DOING = "DOING";
+const TODO = "TODO";
+const DONE = "DONE";
 
 export default (IMPORTER_KEY, { title, create, xlsxActions, xlsxSelector }) => {
   /**
@@ -32,7 +35,7 @@ export default (IMPORTER_KEY, { title, create, xlsxActions, xlsxSelector }) => {
     tapCronTick(IMPORTER_KEY, function*(action) {
       const { pos } = action.payload;
       const xlsx = yield select(xlsxSelector);
-      yield put(create({ body: xlsx.rows[pos - 1] }));
+      yield put(create({ body: xlsx.result[pos - 1] }));
     }),
     tapOn(CREATE_TYPES.SUCCESS, CREATE_KEY, function*(action) {
       yield put(progressActions.increase());
@@ -48,16 +51,26 @@ export default (IMPORTER_KEY, { title, create, xlsxActions, xlsxSelector }) => {
     const xlsx = xlsxSelector(state);
     const cron = cronSelector(state);
     const progress = progressSelector(state);
-    const finish = progress.max === progress.pos;
-    return { cron, xlsx, progress, finish };
+    return { cron, xlsx, progress };
   })
   /**
    * ui
    */
-  class Exporter extends React.Component {
+  class Importer extends React.Component {
     state = {
       fileReady: false,
+      step: TODO,
     };
+
+    static getDerivedStateFromProps(nextProps, preState) {
+      const { progress } = nextProps;
+
+      if (preState.step === DOING && progress.max === progress.pos) {
+        return { ...preState, step: DONE };
+      }
+
+      return null;
+    }
 
     close = () => {
       this.props.dispatch(cronActions.stop());
@@ -67,7 +80,7 @@ export default (IMPORTER_KEY, { title, create, xlsxActions, xlsxSelector }) => {
 
     upload = () => {
       const { xlsx } = this.props;
-      const max = xlsx.rows.length;
+      const max = xlsx.result.length;
 
       this.props.dispatch(
         cronActions.start({
@@ -82,6 +95,7 @@ export default (IMPORTER_KEY, { title, create, xlsxActions, xlsxSelector }) => {
           pos: 0,
         })
       );
+      this.setState({ step: DOING });
     };
 
     selectFile = file => {
@@ -91,28 +105,41 @@ export default (IMPORTER_KEY, { title, create, xlsxActions, xlsxSelector }) => {
           file,
         })
       );
+      this.props.dispatch(
+        progressActions.reset({
+          max: 100,
+          pos: 0,
+        })
+      );
       return false;
     };
 
-    render() {
-      const { finish, progress, cron } = this.props;
-      const { fileReady } = this.state;
+    OkText = {
+      TODO: "开始导入",
+      DOING: "导入中...",
+      DONE: "完成",
+    };
 
-      const okText = finish
-        ? "Complete"
-        : cron.running
-        ? "Uploading..."
-        : "Start Import";
-      const handleOk = finish ? this.close : this.upload;
+    HandleOk = {
+      TODO: this.upload,
+      DONE: this.close,
+    };
+
+    render() {
+      const { progress } = this.props;
+      const { fileReady, step } = this.state;
+
+      const okText = this.OkText[step];
+      const handleOk = this.HandleOk[step];
 
       return (
         <Modal
-          title={`Importing - ${title}`}
+          title={`导入 - ${title}`}
           visible={true}
           onOk={handleOk}
           okButtonProps={{ disabled: !fileReady }}
           okText={okText}
-          confirmLoading={cron.running}
+          confirmLoading={step === DOING}
           onCancel={this.close}
           width={800}
         >
@@ -123,7 +150,9 @@ export default (IMPORTER_KEY, { title, create, xlsxActions, xlsxSelector }) => {
           </Upload>
           {fileReady && (
             <Row style={{ marginTop: 30 }}>
-              <Progress percent={progress.pos} />
+              <Progress
+                percent={Math.floor((progress.pos / progress.max) * 100)}
+              />
             </Row>
           )}
         </Modal>
@@ -131,5 +160,5 @@ export default (IMPORTER_KEY, { title, create, xlsxActions, xlsxSelector }) => {
     }
   }
 
-  return Exporter;
+  return Importer;
 };
