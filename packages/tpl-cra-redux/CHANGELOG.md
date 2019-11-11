@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.25...@36node/template-cra-redux@0.13.0) (2019-11-11)
+
+
+### Features
+
+* withTable ([#160](https://github.com/36node/tpl-react-redux/issues/160)) ([52f8fc9](https://github.com/36node/tpl-react-redux/commit/52f8fc9))
+
+
+
+
+
 ## [0.12.25](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.12.24...@36node/template-cra-redux@0.12.25) (2019-11-04)
 
 **Note:** Version bump only for package @36node/template-cra-redux
