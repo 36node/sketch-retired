@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Table } from "antd";
 import { connect } from "react-redux";
 import {
-  makeApiSelector,
   makeCron,
   makeCronSelector,
   tapCronTick,
@@ -18,28 +17,44 @@ import { domain } from "../../constants";
 const PETS_KEY = domain.store.pets;
 
 const columns = [
-  { title: "name", dataIndex: "name", key: "name", frozen: true },
+  { title: "name", dataIndex: "name", key: "name" /* fixed: true */ },
+  { title: "owner", dataIndex: "owner", key: "owner" },
   {
-    title: "Pet's  owner and tag",
-    key: "parent",
-    children: [
-      { title: "owner", dataIndex: "owner", key: "owner" },
-      {
-        title: "tag",
-        dataIndex: "tag",
-        key: "tag",
-        filters: [{ text: "CAT", value: "CAT" }, { text: "DOG", value: "DOG" }],
-      },
-    ],
+    title: "tag",
+    dataIndex: "tag",
+    key: "tag",
+    filters: [{ text: "CAT", value: "CAT" }, { text: "DOG", value: "DOG" }],
   },
-  { title: "age", dataIndex: "age", key: "age", sorter: true, hide: true },
+  {
+    title: "age",
+    dataIndex: "age",
+    key: "age",
+    sorter: true,
+    hidden: true,
+  },
+  // // 复合列
+  // {
+  //   title: "Pet's  owner and tag",
+  //   key: "parent",
+  //   children: [
+  //     { title: "owner", dataIndex: "owner", key: "owner" },
+  //     {
+  //       title: "tag",
+  //       dataIndex: "tag",
+  //       key: "tag",
+  //       filters: [
+  //         { text: "CAT", value: "CAT" },
+  //         { text: "DOG", value: "DOG" },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
 
 /**
  * actions and selectors
  */
 const listPets = store.makeListPets(PETS_KEY);
-const listPetsSelector = makeApiSelector(PETS_KEY);
 const createPet = store.makeCreatePet("nobody", {}, { parallel: true });
 
 const REFRESH_KEY = domain.store.refresh;
@@ -73,7 +88,7 @@ const selectCron = makeCronSelector(REFRESH_KEY);
   columns,
   create: createPet,
   list: listPets,
-  listSelector: listPetsSelector,
+  importer: true,
 })
 export default class extends React.PureComponent {
   startCron = () =>
@@ -102,7 +117,7 @@ export default class extends React.PureComponent {
           )}
           <Button onClick={this.resetCron}>Reset</Button>
         </Button.Group>
-        <Table {...rest} />
+        <Table /*scroll={{ x: "max-content" }}*/ {...rest} />
       </>
     );
   }
