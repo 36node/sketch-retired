@@ -18,12 +18,20 @@ const PETS_KEY = domain.store.pets;
 
 const columns = [
   { title: "name", dataIndex: "name", key: "name" /* fixed: true */ },
-  { title: "owner", dataIndex: "owner", key: "owner" },
+
+  // 复合列
   {
-    title: "tag",
-    dataIndex: "tag",
-    key: "tag",
-    filters: [{ text: "CAT", value: "CAT" }, { text: "DOG", value: "DOG" }],
+    title: "Pet's  owner and tag",
+    key: "parent",
+    children: [
+      { title: "owner", dataIndex: "owner", key: "owner" },
+      {
+        title: "tag",
+        dataIndex: "tag",
+        key: "tag",
+        filters: [{ text: "CAT", value: "CAT" }, { text: "DOG", value: "DOG" }],
+      },
+    ],
   },
   {
     title: "age",
@@ -32,23 +40,6 @@ const columns = [
     sorter: true,
     hidden: true,
   },
-  // // 复合列
-  // {
-  //   title: "Pet's  owner and tag",
-  //   key: "parent",
-  //   children: [
-  //     { title: "owner", dataIndex: "owner", key: "owner" },
-  //     {
-  //       title: "tag",
-  //       dataIndex: "tag",
-  //       key: "tag",
-  //       filters: [
-  //         { text: "CAT", value: "CAT" },
-  //         { text: "DOG", value: "DOG" },
-  //       ],
-  //     },
-  //   ],
-  // },
 ];
 
 /**

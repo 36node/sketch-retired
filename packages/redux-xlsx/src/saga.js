@@ -3,7 +3,7 @@ import { tapOn } from "@36node/redux";
 import XLSX from "xlsx";
 import { set } from "lodash";
 
-import { pickF } from "./lib";
+import { pickF, getChildColumns, getValues } from "./lib";
 import { xlsxTypes, isXlsx } from "./action";
 
 /**
@@ -85,11 +85,21 @@ function writeFile(name, type, columns, rows) {
       // TODO2: 支持宽度定义
       const file = `${name}.${type}`;
       const wb = XLSX.utils.book_new();
-      const keys = columns.map(c => c.dataIndex).filter(val => val);
+      // const keys = columns.map(c => c.dataIndex).filter(val => val);
+      const keys = getChildColumns(columns);
       const data = rows.map(r => pickF(r, keys));
+      const [title, merge] = getValues(columns);
+      // 插入超过1行的数据时，会覆盖原数据
+      for (let i = 0; i < title.length - 1; i++) data.unshift([]);
       const ws = XLSX.utils.json_to_sheet(data);
 
-      XLSX.utils.sheet_add_aoa(ws, [columns.map(c => c.title)]);
+      // XLSX.utils.sheet_add_aoa(ws, [columns.map(c => c.title)]);
+      XLSX.utils.sheet_add_aoa(ws, title);
+      if (merge.length > 0) {
+        if (!ws["!merges"]) ws["!merges"] = [...merge];
+        else ws["!merges"].concat(merge);
+      }
+
       XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
       XLSX.writeFile(wb, file, { bookType: type });
       resolve(file);
