@@ -32,23 +32,20 @@ const columns = [
     sorter: true,
     hidden: true,
   },
-  // // 复合列
-  // {
-  //   title: "Pet's  owner and tag",
-  //   key: "parent",
-  //   children: [
-  //     { title: "owner", dataIndex: "owner", key: "owner" },
-  //     {
-  //       title: "tag",
-  //       dataIndex: "tag",
-  //       key: "tag",
-  //       filters: [
-  //         { text: "CAT", value: "CAT" },
-  //         { text: "DOG", value: "DOG" },
-  //       ],
-  //     },
-  //   ],
-  // },
+  // 复合列
+  {
+    title: "Pet's  owner and tag",
+    key: "parent",
+    children: [
+      { title: "owner", dataIndex: "owner", key: "inner-owner" },
+      {
+        title: "tag",
+        dataIndex: "tag",
+        key: "inner-tag",
+        filters: [{ text: "CAT", value: "CAT" }, { text: "DOG", value: "DOG" }],
+      },
+    ],
+  },
 ];
 
 /**
