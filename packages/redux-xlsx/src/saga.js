@@ -29,9 +29,14 @@ function readFile(file, columns) {
       const wsname = wb.SheetNames[0];
       const ws = wb.Sheets[wsname];
 
+      const { flattenCs, maxDeep } = genHeaderCells(columns);
+
       /** to json */
       // TODO1: columns 支持children
-      const rows = XLSX.utils.sheet_to_json(ws);
+      const rows = XLSX.utils.sheet_to_json(ws, {
+        header: flattenCs.map(c => c.title), // flattenCs
+        range: maxDeep + 1, // 跳过表头
+      });
 
       /**
        * 字段转换
