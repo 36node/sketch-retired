@@ -3,7 +3,7 @@ import { tapOn } from "@36node/redux";
 import XLSX from "xlsx";
 import { set } from "lodash";
 
-import { pickF } from "./lib";
+import { pickF, genHeaderCells } from "./lib";
 import { xlsxTypes, isXlsx } from "./action";
 
 /**
@@ -29,9 +29,14 @@ function readFile(file, columns) {
       const wsname = wb.SheetNames[0];
       const ws = wb.Sheets[wsname];
 
+      const { flattenCs, maxDeep } = genHeaderCells(columns);
+
       /** to json */
       // TODO1: columns 支持children
-      const rows = XLSX.utils.sheet_to_json(ws);
+      const rows = XLSX.utils.sheet_to_json(ws, {
+        header: flattenCs.map(c => c.dataIndex), // flattenCs
+        range: maxDeep + 1, // 跳过表头
+      });
 
       /**
        * 字段转换
@@ -81,19 +86,23 @@ function writeFile(name, type, columns, rows) {
     try {
       /** convert from array of arrays to worksheet */
 
-      // TODO1: columns 支持children
-      // TODO2: 支持宽度定义
+      // TODO: 支持宽度定义
+      const { headerCells: ws, flattenCs, maxDeep } = genHeaderCells(columns);
+
       const file = `${name}.${type}`;
       const wb = XLSX.utils.book_new();
-      const keys = columns.map(c => c.dataIndex).filter(val => val);
-      const data = rows.map(r => pickF(r, keys));
-      const ws = XLSX.utils.json_to_sheet(data);
+      const keys = flattenCs.map(c => c.dataIndex).filter(val => val);
+      const data = rows.map(r => pickF(r, keys)).map(r => keys.map(k => r[k]));
 
-      XLSX.utils.sheet_add_aoa(ws, [columns.map(c => c.title)]);
+      XLSX.utils.sheet_add_aoa(ws, data, {
+        origin: { r: maxDeep + 1, c: 0 },
+      });
+
       XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
       XLSX.writeFile(wb, file, { bookType: type });
       resolve(file);
     } catch (error) {
+      console.error(error);
       reject(error);
     }
   });

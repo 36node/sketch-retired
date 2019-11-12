@@ -63,7 +63,7 @@ export const withTable = (
    * 准备 selector 和 actions
    */
   const xlsxActions = makeXlsx(key, {
-    columns: columns.filter(c => Boolean(c.dataIndex)),
+    columns: columns.filter(c => Boolean(c.dataIndex) || !isEmpty(c.children)),
   });
   const listForExportor = (payload = {}, meta) => {
     const action = list(payload, meta);
