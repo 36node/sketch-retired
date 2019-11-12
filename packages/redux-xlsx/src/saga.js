@@ -34,7 +34,7 @@ function readFile(file, columns) {
       /** to json */
       // TODO1: columns 支持children
       const rows = XLSX.utils.sheet_to_json(ws, {
-        header: flattenCs.map(c => c.title), // flattenCs
+        header: flattenCs.map(c => c.dataIndex), // flattenCs
         range: maxDeep + 1, // 跳过表头
       });
 
