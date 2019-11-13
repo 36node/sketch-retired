@@ -33,6 +33,7 @@ export const genHeaderCells = (columns = []) => {
   ) => {
     let currentCol = col;
     let ret = {};
+    let width = 0;
 
     cs.forEach(c => {
       ret[XLSX.utils.encode_cell({ c: currentCol, r: row })] = {
@@ -41,13 +42,18 @@ export const genHeaderCells = (columns = []) => {
       };
       if (c.children) {
         // 如果有children 处理表头横向合并
-        const childrenRet = genHeader(c.children, row + 1, currentCol);
+        const { ret: childrenRet, widthRet } = genHeader(
+          c.children,
+          row + 1,
+          currentCol
+        );
         ret = { ...ret, ...childrenRet };
         merges.push({
           s: { r: row, c: currentCol },
-          e: { r: row, c: currentCol + c.children.length - 1 },
+          e: { r: row, c: currentCol + c.children.length + widthRet - 1 },
         });
-        currentCol += c.children.length;
+        currentCol += c.children.length + widthRet;
+        width++;
       } else {
         // 纵向合并
         if (maxDeep - row > 0) {
@@ -60,10 +66,10 @@ export const genHeaderCells = (columns = []) => {
         flattenCs.push(c);
       }
     });
-    return ret;
+    return { ret, widthRet: width };
   };
 
-  const headerCells = genHeader(columns);
+  const { ret: headerCells } = genHeader(columns);
 
   headerCells["!merges"] = merges;
   headerCells["!ref"] = XLSX.utils.encode_range({
