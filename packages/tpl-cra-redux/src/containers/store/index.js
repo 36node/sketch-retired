@@ -16,22 +16,48 @@ import { domain } from "../../constants";
 
 const PETS_KEY = domain.store.pets;
 
+// 多重复合列
+// const columns = [
+//   {
+//     title: "AT",
+//     key: "A",
+//     children: [
+//       {
+//         title: "CT",
+//         key: "C",
+//         children: [
+//           {
+//             title: "ET",
+//             key: "name",
+//             dataIndex: "name",
+//             children: undefined,
+//           },
+//           {
+//             title: "FT",
+//             key: "owner",
+//             dataIndex: "owner",
+//             children: undefined,
+//           },
+//         ],
+//       },
+//       {
+//         title: "DT",
+//         key: "tag",
+//         dataIndex: "tag",
+//         children: undefined,
+//       },
+//     ],
+//   },
+//   {
+//     title: "BT",
+//     dataIndex: "age",
+//     key: "age",
+//     children: undefined,
+//   },
+// ];
+
 const columns = [
   { title: "name", dataIndex: "name", key: "name" /* fixed: true */ },
-  { title: "owner", dataIndex: "owner", key: "owner" },
-  {
-    title: "tag",
-    dataIndex: "tag",
-    key: "tag",
-    filters: [{ text: "CAT", value: "CAT" }, { text: "DOG", value: "DOG" }],
-  },
-  {
-    title: "age",
-    dataIndex: "age",
-    key: "age",
-    sorter: true,
-    hidden: true,
-  },
   // 复合列
   {
     title: "Pet's  owner and tag",
@@ -45,6 +71,13 @@ const columns = [
         filters: [{ text: "CAT", value: "CAT" }, { text: "DOG", value: "DOG" }],
       },
     ],
+  },
+  {
+    title: "age",
+    dataIndex: "age",
+    key: "age",
+    sorter: true,
+    hidden: true,
   },
 ];
 
