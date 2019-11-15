@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.2](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.13.1...@36node/template-cra-redux@0.13.2) (2019-11-15)
+
+
+### Bug Fixes
+
+* export ([#163](https://github.com/36node/tpl-react-redux/issues/163)) ([cad2088](https://github.com/36node/tpl-react-redux/commit/cad2088))
+
+
+
+
+
 ## [0.13.1](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.13.0...@36node/template-cra-redux@0.13.1) (2019-11-12)
 
 **Note:** Version bump only for package @36node/template-cra-redux

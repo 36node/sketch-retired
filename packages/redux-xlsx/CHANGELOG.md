@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.17](https://github.com/36node/sketch/compare/@36node/redux-xlsx@0.1.16...@36node/redux-xlsx@0.1.17) (2019-11-15)
+
+
+### Bug Fixes
+
+* export ([#163](https://github.com/36node/sketch/issues/163)) ([cad2088](https://github.com/36node/sketch/commit/cad2088))
+
+
+
+
+
 ## [0.1.16](https://github.com/36node/sketch/compare/@36node/redux-xlsx@0.1.15...@36node/redux-xlsx@0.1.16) (2019-11-12)
 
 **Note:** Version bump only for package @36node/redux-xlsx
