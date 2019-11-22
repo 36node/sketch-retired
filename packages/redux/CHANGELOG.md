@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/36node/sketch/compare/@36node/redux@0.1.13...@36node/redux@0.2.0) (2019-11-22)
+
+
+### Features
+
+* **redux:** api action meta.dumb ([e1e2055](https://github.com/36node/sketch/commit/e1e2055))
+
+
+
+
+
 ## [0.1.13](https://github.com/36node/sketch/compare/@36node/redux@0.1.12...@36node/redux@0.1.13) (2019-10-28)
 
 
