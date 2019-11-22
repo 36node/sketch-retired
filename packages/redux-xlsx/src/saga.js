@@ -1,7 +1,6 @@
 import { call, cancel, fork, put, take } from "redux-saga/effects";
 import { tapOn } from "@36node/redux";
 import XLSX from "xlsx";
-import { set } from "lodash";
 
 import { pickF, genHeaderCells } from "./lib";
 import { xlsxTypes, isXlsx } from "./action";
@@ -31,25 +30,12 @@ function readFile(file, columns) {
 
       const { flattenCs, maxDeep } = genHeaderCells(columns);
 
-      /** to json */
-      // TODO1: columns 支持children
+      /** 把 columns key 对应到 excel 表格的表头 */
       const rows = XLSX.utils.sheet_to_json(ws, {
-        header: flattenCs.map(c => c.dataIndex), // flattenCs
+        header: flattenCs.map(c => c.key || c.dataIndex), // flattenCs
         range: maxDeep + 1, // 跳过表头
       });
-
-      /**
-       * 字段转换
-       * 把 columns key 对应到 excel 表格的表头
-       */
-      const mapKey = item =>
-        columns.reduce(
-          (newItem, col) =>
-            set(newItem, col.key || col.dataIndex, item[col.title]),
-          {}
-        );
-
-      resolve(rows.map(mapKey));
+      resolve(rows);
     };
     reader.onerror = e => {
       reject(e);
