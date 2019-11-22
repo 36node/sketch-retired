@@ -63,11 +63,11 @@ const columns = [
     title: "Pet's  owner and tag",
     key: "parent",
     children: [
-      { title: "owner", dataIndex: "owner", key: "inner-owner" },
+      { title: "owner", dataIndex: "owner", key: "owner" },
       {
         title: "tag",
         dataIndex: "tag",
-        key: "inner-tag",
+        key: "tag",
         filters: [{ text: "CAT", value: "CAT" }, { text: "DOG", value: "DOG" }],
       },
     ],
