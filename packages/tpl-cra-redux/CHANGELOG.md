@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.5](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.13.4...@36node/template-cra-redux@0.13.5) (2019-11-22)
+
+
+### Bug Fixes
+
+* pet stroe import ([#164](https://github.com/36node/tpl-react-redux/issues/164)) ([3a664b0](https://github.com/36node/tpl-react-redux/commit/3a664b0))
+
+
+
+
+
 ## [0.13.4](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.13.3...@36node/template-cra-redux@0.13.4) (2019-11-22)
 
 **Note:** Version bump only for package @36node/template-cra-redux
