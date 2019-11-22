@@ -20,7 +20,7 @@ declare module "@36node/redux" {
   interface Meta {
     append?: boolean; // append in state, not replace
     from?: string; // which url the action from
-    invisible?: boolean; // will not show in state
+    dumb?: boolean; // will not show in state
     parallel?: boolean; // allow parallel running in saga
     rePut?: boolean; // allow reput
   }

@@ -15,6 +15,8 @@ function r(state = initState, action = {}) {
   const { xTotalCount, result } = payload;
   const { append = false } = meta;
 
+  if (meta.dumb) return state; // dumb 配置，不进入 state，通常用于批量上传等
+
   if (isRequest(action)) {
     return { ...state, loading: true, request: payload };
   }
@@ -58,9 +60,9 @@ const customizer = (objValue, srcValue, key, object, source, stack) => {
 /**
  * entities reducer
  */
-function entitiesReducer(state = {}, action) {
-  if (action.payload && action.payload.entities) {
-    return mergeWith({}, state, action.payload.entities, customizer);
+function entitiesReducer(state = {}, { payload = {}, meta = {} } = {}) {
+  if (!meta.dumb && payload.entities) {
+    return mergeWith({}, state, payload.entities, customizer);
   }
   return state;
 }
