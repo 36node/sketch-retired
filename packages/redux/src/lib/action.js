@@ -1,4 +1,4 @@
-import { isArray, merge } from "lodash";
+import { isArray, mergeWith } from "lodash";
 
 const notMergeArray = (objValue, srcValue, key, object, source, stack) => {
   if (isArray(srcValue)) {
@@ -40,7 +40,7 @@ export const makeAction = (type, keyPattern, initPayload, initMeta = {}) => (
   let key = keyPattern;
   const rPayload =
     typeof payload === "object"
-      ? merge({}, initPayload, payload, notMergeArray)
+      ? mergeWith({}, initPayload, payload, notMergeArray)
       : payload || initPayload;
   if (typeof keyPattern === "function") key = keyPattern(rPayload);
 
@@ -48,6 +48,6 @@ export const makeAction = (type, keyPattern, initPayload, initMeta = {}) => (
     type,
     key,
     payload: rPayload,
-    meta: merge({}, initMeta, meta, notMergeArray),
+    meta: mergeWith({}, initMeta, meta, notMergeArray),
   };
 };
