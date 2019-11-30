@@ -22,7 +22,7 @@ function readFile(file, columns) {
     reader.onload = async e => {
       /** read workbook */
       const data = e.target.result;
-      const wb = XLSX.read(data, { type: "binary" });
+      const wb = XLSX.read(data, { type: "binary", cellDates: true });
 
       /** grab first sheet */
       const wsname = wb.SheetNames[0];
