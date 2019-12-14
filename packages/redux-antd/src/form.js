@@ -21,13 +21,20 @@ function flatFields(ob) {
   return result;
 }
 
-export function createForm(key) {
+/**
+ * createForm 创建表单，在 antd 的基础上进行包装，链接 redux
+ *
+ * @param {string} key redux 的 key
+ * @param {object} options - 选项
+ * @param {boolean} options.resetOnUnMount - 卸载时是否清空 redux 状态
+ */
+export function createForm(key, { resetOnUnMount }) {
   const actions = makeForm(key);
   const selector = makeFormSelector(key);
 
   class BasicForm extends React.PureComponent {
     componentWillUnmount() {
-      this.props.dispatch(actions.reset());
+      if (resetOnUnMount) this.props.dispatch(actions.reset());
     }
 
     render() {
