@@ -28,7 +28,7 @@ function flatFields(ob) {
  * @param {object} options - 选项
  * @param {boolean} options.resetOnUnMount - 卸载时是否清空 redux 状态
  */
-export function createForm(key, { resetOnUnMount } = {}) {
+export function createForm(key, { resetOnUnMount = true } = {}) {
   const actions = makeForm(key);
   const selector = makeFormSelector(key);
 
