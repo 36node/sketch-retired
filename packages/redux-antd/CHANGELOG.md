@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.20](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.19...@36node/redux-antd@0.1.20) (2019-12-14)
+
+
+### Bug Fixes
+
+* resetOnUnMount ([2889c88](https://github.com/36node/sketch/commit/2889c88))
+
+
+
+
+
 ## [0.1.19](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.18...@36node/redux-antd@0.1.19) (2019-12-14)
 
 
