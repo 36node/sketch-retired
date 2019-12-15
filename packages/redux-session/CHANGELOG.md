@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/36node/sketch/compare/@36node/redux-session@0.0.10...@36node/redux-session@0.1.0) (2019-12-15)
+
+
+### Features
+
+* **redux-session:** remember login ([#166](https://github.com/36node/sketch/issues/166)) ([aceb876](https://github.com/36node/sketch/commit/aceb876))
+
+
+
+
+
 ## [0.0.10](https://github.com/36node/sketch/compare/@36node/redux-session@0.0.9...@36node/redux-session@0.0.10) (2019-10-28)
 
 

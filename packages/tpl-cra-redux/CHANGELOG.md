@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.13.10...@36node/template-cra-redux@0.14.0) (2019-12-15)
+
+
+### Features
+
+* **redux-session:** remember login ([#166](https://github.com/36node/tpl-react-redux/issues/166)) ([aceb876](https://github.com/36node/tpl-react-redux/commit/aceb876))
+
+
+
+
+
 ## [0.13.10](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.13.9...@36node/template-cra-redux@0.13.10) (2019-12-14)
 
 **Note:** Version bump only for package @36node/template-cra-redux
