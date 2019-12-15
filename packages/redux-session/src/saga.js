@@ -11,6 +11,8 @@ export function makeSessionWatcher({
 } = {}) {
   function* login({ payload = {}, meta = {} }) {
     const { result = {} } = payload;
+    const { from, remember = true } = meta;
+
     if (!result.id) {
       throw new Error("missing session id");
     }
@@ -19,12 +21,15 @@ export function makeSessionWatcher({
     }
 
     /** session id is a refresh token for jwt */
-    localStorage.setItem(SESSION_ID, result.id);
+    if (remember) {
+      localStorage.setItem(SESSION_ID, result.id);
+    }
     sessionStorage.setItem(TOKEN, result.token);
+    sessionStorage.setItem(SESSION_ID, result.id);
 
     /** go back where we from */
-    if (meta.from) {
-      yield call(history.push, meta.from);
+    if (from) {
+      yield call(history.push, from);
     }
 
     /** refresh token after 10 minutes */
@@ -34,6 +39,7 @@ export function makeSessionWatcher({
 
   function* logout() {
     localStorage.removeItem(SESSION_ID);
+    sessionStorage.removeItem(SESSION_ID);
     sessionStorage.removeItem(TOKEN);
     yield call(history.push, LOGIN_URL, { from: history.location });
   }
@@ -48,10 +54,15 @@ export function makeSessionWatcher({
     /**
      * refresh session at first time open app,
      * maybe redirect by protected router, set from
+     *
+     * session id will be in session storage if not with remember feature
      */
-    const sessionId = localStorage.getItem(SESSION_ID);
+    const sessionId =
+      localStorage.getItem(SESSION_ID) || sessionStorage.getItem(SESSION_ID);
     if (sessionId) {
-      yield put(refresh({ sessionId }));
+      yield put(
+        refresh({ sessionId }, { from: history.location, remember: false })
+      );
     }
 
     yield takeLatest(loginSuccessTypes, login);

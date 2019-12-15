@@ -17,7 +17,9 @@ export default class Login extends React.PureComponent {
     const { from = { pathname: "/" } } = this.props.location.state || {};
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        this.props.dispatch(login({ body: values }, { from }));
+        this.props.dispatch(
+          login({ body: values }, { from, remember: values.remember })
+        );
       }
     });
   };
