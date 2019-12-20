@@ -27,6 +27,7 @@ function r(state = initState, action = {}) {
       loading: false,
       result: append ? union(state.result, result) : result,
       total: xTotalCount && Number(xTotalCount),
+      error: undefined,
     };
   }
 
