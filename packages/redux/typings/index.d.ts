@@ -1,7 +1,7 @@
 import { Schema } from "normalizr";
 import { Saga, EffectMiddleware } from "redux-saga";
 import { PutEffect } from "redux-saga/effects";
-import { Reducer, Store } from "redux";
+import { Reducer, Store, Middleware } from "redux";
 import { Component } from "React";
 
 declare module "@36node/redux" {
@@ -84,7 +84,10 @@ declare module "@36node/redux" {
   ) => Reducer<any, Action<any>>;
 
   export const makeSelector: SelectorMaker<T>;
-  export function configureStore(rootReducers: Object): Store;
+  export function configureStore(
+    rootReducers: Object,
+    ...middlewates: [Middleware]
+  ): Store;
   export function withSaga(...sagas: [Saga]): Component;
 
   /********************************************
