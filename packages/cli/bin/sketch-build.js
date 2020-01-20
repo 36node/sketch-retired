@@ -39,10 +39,12 @@ switch (template.toLowerCase()) {
   case "service":
     command = "microbundle";
     args.push("--format", "cjs");
+    args.push("--target", "node");
     break;
   case "cli":
     command = "microbundle";
     args.push("--format", "cjs");
+    args.push("--target", "node");
     break;
   case "module":
   case "sdk":
