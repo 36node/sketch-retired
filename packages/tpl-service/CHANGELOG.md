@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.35](https://github.com/36node/sketch/compare/@36node/template-service@0.13.34...@36node/template-service@0.13.35) (2020-02-07)
+
+
+### Bug Fixes
+
+* **tpl-service:** cors for health and openapi ([eeeab25](https://github.com/36node/sketch/commit/eeeab25))
+
+
+
+
+
 ## [0.13.34](https://github.com/36node/sketch/compare/@36node/template-service@0.13.33...@36node/template-service@0.13.34) (2020-01-20)
 
 **Note:** Version bump only for package @36node/template-service
