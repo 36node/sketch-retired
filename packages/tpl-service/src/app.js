@@ -45,9 +45,9 @@ if (NODE_ENV !== "production") {
  */
 app
   .use(helmet())
+  .use(cors({ exposeHeaders: ["Link", "X-Total-Count"] }))
   .use(health({ url: `${BASE}/health`, version: pkg.version }))
   .use(openapi({ url: `${BASE}/openapi.yml`, file: openapiFile }))
-  .use(cors({ exposeHeaders: ["Link", "X-Total-Count"] }))
   .use(jwt({ secret: publicKey }))
   .use(body())
   .use(someMid())
