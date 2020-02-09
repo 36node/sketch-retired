@@ -18,7 +18,7 @@ jobs:
           command: yarn install
       - run:
           name: Build Package
-          command: NODE_ENV=production yarn build
+          command: REACT_APP_BUILD=`date '+%Y%m%d-%H%M%S'` NODE_ENV=production yarn build
       - save_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:

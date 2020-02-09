@@ -33,11 +33,19 @@ function env(name, init) {
   return value;
 }
 
-export const STORE_BASE = env("STORE_BASE", "");
+/**
+ * chore
+ */
 export const VERSION = env("VERSION");
+export const BUILD = env("BUILD", "19730101-000000");
+
+/**
+ * app
+ */
+export const STORE_BASE = env("STORE_BASE", "");
 
 /* eslint-disable */
 console.log(`VERSION:${VERSION}`);
+console.log(`BUILD:${BUILD}`);
 console.log(`STORE_BASE:${STORE_BASE}`);
-
 /* eslint-disable */
