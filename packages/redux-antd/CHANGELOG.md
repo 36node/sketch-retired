@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.21...@36node/redux-antd@0.2.0) (2020-03-31)
+
+
+### Features
+
+* cra-redux with antd 4.1, close [#174](https://github.com/36node/sketch/issues/174) ([cf84b3b](https://github.com/36node/sketch/commit/cf84b3b))
+
+
+
+
+
 ## [0.1.21](https://github.com/36node/sketch/compare/@36node/redux-antd@0.1.20...@36node/redux-antd@0.1.21) (2019-12-14)
 
 

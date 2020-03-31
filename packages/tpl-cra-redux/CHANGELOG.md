@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.14.7...@36node/template-cra-redux@0.15.0) (2020-03-31)
+
+
+### Features
+
+* cra-redux with antd 4.1, close [#174](https://github.com/36node/tpl-react-redux/issues/174) ([cf84b3b](https://github.com/36node/tpl-react-redux/commit/cf84b3b))
+
+
+
+
+
 ## [0.14.7](https://github.com/36node/tpl-react-redux/compare/@36node/template-cra-redux@0.14.6...@36node/template-cra-redux@0.14.7) (2020-02-10)
 
 **Note:** Version bump only for package @36node/template-cra-redux
