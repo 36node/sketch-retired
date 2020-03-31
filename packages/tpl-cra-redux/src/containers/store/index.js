@@ -57,11 +57,15 @@ const PETS_KEY = domain.store.pets;
 // ];
 
 const columns = [
-  { title: "name", dataIndex: "name", key: "name" /* fixed: true */ },
+  {
+    title: "name",
+    dataIndex: "name",
+    key: "name",
+    /* fixed: true ,*/
+  },
   // 复合列
   {
     title: "Pet's  owner and tag",
-    key: "parent",
     children: [
       { title: "owner", dataIndex: "owner", key: "owner" },
       {
@@ -132,7 +136,6 @@ export default class extends React.PureComponent {
 
   render() {
     const { cron, ...rest } = this.props;
-
     return (
       <>
         <Button.Group>
@@ -147,7 +150,7 @@ export default class extends React.PureComponent {
           )}
           <Button onClick={this.resetCron}>Reset</Button>
         </Button.Group>
-        <Table /*scroll={{ x: "max-content" }}*/ {...rest} />
+        <Table {...rest} />
       </>
     );
   }

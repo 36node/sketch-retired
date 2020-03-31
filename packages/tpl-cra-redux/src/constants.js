@@ -28,7 +28,7 @@ export const LOGIN_URL = "/login";
 export const domain = {
   github: {
     repos: "github.repos",
-    exporter: "store.exporter",
+    exporter: "github.exporter",
   },
   store: {
     pets: "store.pets",

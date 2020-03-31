@@ -5,7 +5,6 @@ import {
   toggleReducerRoot,
   cronReducerRoot,
   progressReducerRoot,
-  formReducerRoot,
 } from "@36node/redux";
 
 const reducers = {
@@ -14,7 +13,6 @@ const reducers = {
   ...toggleReducerRoot,
   ...cronReducerRoot,
   ...progressReducerRoot,
-  ...formReducerRoot,
   ...xlsxReducerRoot,
 };
 

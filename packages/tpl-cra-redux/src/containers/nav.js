@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { NavLink, withRouter } from "react-router-dom";
-import { Menu, Icon } from "antd";
+import { Menu } from "antd";
 
 import { menu } from "../config";
 
@@ -12,7 +12,7 @@ const renderMenu = menu => {
         key={item.title}
         title={
           <span>
-            {item.icon && <Icon type={item.icon} />}
+            {item.icon}
             {item.title}
           </span>
         }
@@ -22,7 +22,7 @@ const renderMenu = menu => {
     ) : (
       <Menu.Item key={item.path}>
         <NavLink to={item.path}>
-          {item.icon && <Icon type={item.icon} />}
+          {item.icon}
           {item.title}
         </NavLink>
       </Menu.Item>

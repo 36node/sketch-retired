@@ -26,6 +26,7 @@ import {
   makeToggle,
   makeToggleSelector,
 } from "@36node/redux";
+import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 
 import withBreadCrumb from "../components/withBreadCrumb";
 import Container from "../components/layout/container";
@@ -57,10 +58,14 @@ class ProgressExample extends PureComponent {
 
         <Col span={16}>
           <Button.Group>
-            <Button icon="plus" type="primary" onClick={this.onIncrease}>
+            <Button
+              icon={<PlusOutlined />}
+              type="primary"
+              onClick={this.onIncrease}
+            >
               Increase
             </Button>
-            <Button icon="plus" onClick={this.onDecrease}>
+            <Button icon={<MinusOutlined />} onClick={this.onDecrease}>
               Decrease
             </Button>
             <Button type="danger" onClick={this.onReset}>
@@ -73,103 +78,99 @@ class ProgressExample extends PureComponent {
   }
 }
 
-@connect(state => ({ assign: assignSelector(state) }))
-@Form.create({
-  onValuesChange: (props, changedValues, allValues) => {
-    props.dispatch(assign(allValues));
-  },
-})
+@connect(state => ({ vals: assignSelector(state) }))
 class AssignExample extends Component {
+  onValuesChange = (changedValues, allValues) => {
+    console.log(changedValues);
+    this.props.dispatch(assign(allValues));
+  };
+
   render() {
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 14 },
     };
 
-    const { assign } = this.props;
-    const { getFieldDecorator } = this.props.form;
+    const { vals } = this.props;
+
     return (
       <Row type="flex" align="middle">
         <Col span={2}>Assign Example:</Col>
         <Col span={8} offset={1}>
-          <Form {...formItemLayout}>
-            <Form.Item label="Select" hasFeedback>
-              {getFieldDecorator("select", {
-                rules: [
-                  { required: true, message: "Please select your country!" },
-                ],
-              })(
-                <Select placeholder="Please select a country">
-                  <Option value="china">China</Option>
-                  <Option value="usa">U.S.A</Option>
-                </Select>
-              )}
+          <Form
+            {...formItemLayout}
+            initialValues={{ "some-number": 3 }}
+            onValuesChange={this.onValuesChange}
+          >
+            <Form.Item
+              name="select"
+              label="Select"
+              rules={[
+                { required: true, message: "Please select your country!" },
+              ]}
+              hasFeedback
+            >
+              <Select placeholder="Please select a country">
+                <Option value="china">China</Option>
+                <Option value="usa">U.S.A</Option>
+              </Select>
             </Form.Item>
 
-            <Form.Item label="Select[multiple]">
-              {getFieldDecorator("select-multiple", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please select your favourite colors!",
-                    type: "array",
-                  },
-                ],
-              })(
-                <Select
-                  mode="multiple"
-                  placeholder="Please select favourite colors"
-                >
-                  <Option value="red">Red</Option>
-                  <Option value="green">Green</Option>
-                  <Option value="blue">Blue</Option>
-                </Select>
-              )}
+            <Form.Item
+              name="select-multiple"
+              label="Select[multiple]"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select your favourite colors!",
+                  type: "array",
+                },
+              ]}
+            >
+              <Select
+                mode="multiple"
+                placeholder="Please select favourite colors"
+              >
+                <Option value="red">Red</Option>
+                <Option value="green">Green</Option>
+                <Option value="blue">Blue</Option>
+              </Select>
             </Form.Item>
 
-            <Form.Item label="InputNumber">
-              {getFieldDecorator("input-number", { initialValue: 3 })(
-                <InputNumber min={1} max={10} />
-              )}
-              <span className="ant-form-text"> machines</span>
+            <Form.Item name="some-number" label="SomeNumber">
+              <InputNumber min={1} max={10} />
             </Form.Item>
 
-            <Form.Item label="Switch">
-              {getFieldDecorator("switch", { valuePropName: "checked" })(
-                <Switch />
-              )}
+            <Form.Item name="switch" label="Switch" valuePropName="checked">
+              <Switch />
             </Form.Item>
 
-            <Form.Item label="Slider">
-              {getFieldDecorator("slider")(
-                <Slider
-                  marks={{
-                    0: "A",
-                    20: "B",
-                    40: "C",
-                    60: "D",
-                    80: "E",
-                    100: "F",
-                  }}
-                />
-              )}
+            <Form.Item name="slider" label="Slider">
+              <Slider
+                marks={{
+                  0: "A",
+                  20: "B",
+                  40: "C",
+                  60: "D",
+                  80: "E",
+                  100: "F",
+                }}
+              />
             </Form.Item>
 
-            <Form.Item label="Radio.Group">
-              {getFieldDecorator("radio-group")(
-                <Radio.Group>
-                  <Radio value="a">item 1</Radio>
-                  <Radio value="b">item 2</Radio>
-                  <Radio value="c">item 3</Radio>
-                </Radio.Group>
-              )}
+            <Form.Item name="radio-group" label="Radio.Group">
+              <Radio.Group>
+                <Radio value="a">item 1</Radio>
+                <Radio value="b">item 2</Radio>
+                <Radio value="c">item 3</Radio>
+              </Radio.Group>
             </Form.Item>
           </Form>
         </Col>
 
         <Col offset={1} span={8}>
-          {Object.keys(assign).map(k => {
-            const val = isNil(assign[k]) ? "" : assign[k];
+          {Object.keys(vals).map(k => {
+            const val = isNil(vals[k]) ? "" : vals[k];
 
             return (
               <Row key={k} style={{ padding: 20 }}>

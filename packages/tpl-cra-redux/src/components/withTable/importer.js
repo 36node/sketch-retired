@@ -2,7 +2,8 @@ import React from "react";
 import { Modal } from "antd";
 import { connect } from "react-redux";
 import { put, select } from "redux-saga/effects";
-import { Upload, Button, Icon, message, Progress, Row } from "antd";
+import { Upload, Button, message, Progress, Row } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 import {
   makeProgress,
   makeProgressSelector,
@@ -145,7 +146,7 @@ export default (IMPORTER_KEY, { title, create, xlsxActions, xlsxSelector }) => {
         >
           <Upload beforeUpload={this.selectFile}>
             <Button>
-              <Icon type="upload" /> Select Excel File
+              <UploadOutlined /> Select Excel File
             </Button>
           </Upload>
           {fileReady && (

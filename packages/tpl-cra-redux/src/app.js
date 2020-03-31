@@ -6,9 +6,6 @@ import { Layout } from "antd";
 import { history, ProtectedRoute } from "@36node/redux-session";
 
 import Logo from "./components/logo";
-// template-example-start
-import ReduxForm from "./containers/redux-form";
-// template-example-end
 import Nav from "./containers/nav";
 import Loading from "./components/loading";
 import Home from "./containers/home";
@@ -16,7 +13,7 @@ import Login from "./containers/login";
 
 const { Content, Footer, Header } = Layout;
 
-// // template-example-start
+/* template-example-start */
 const PetStore = Loadable({
   loader: () => import("./containers/store"),
   loading: Loading,
@@ -29,7 +26,7 @@ const ReduxUi = Loadable({
   loader: () => import("./containers/redux-ui"),
   loading: Loading,
 });
-// template-example-end
+/* template-example-end */
 
 const App = () => (
   <Router history={history}>
@@ -53,7 +50,6 @@ const Main = () => (
         <Route path="/github" component={Github} />
         <Route path="/pet-store" component={PetStore} />
         <Route path="/redux-ui" component={ReduxUi} />
-        <Route path="/redux-form" component={ReduxForm} />
         {/* template-example-end */}
       </Switch>
     </Content>

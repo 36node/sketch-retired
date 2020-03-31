@@ -1,71 +1,66 @@
 import React from "react";
-import { Form, Icon, Input, Button, Checkbox, Layout } from "antd";
+import { connect } from "react-redux";
+import { Form, Input, Button, Checkbox, Layout } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-import { createForm } from "@36node/redux-antd";
 
 import Center from "../../components/layout/center";
 import { auth } from "../../actions/api";
 import { domain } from "../../constants";
 
-const FormItem = Form.Item;
 const login = auth.makeLogin(domain.session);
 
-@createForm("login")
-export default class Login extends React.PureComponent {
-  handleSubmit = e => {
-    e.preventDefault();
-    const { from = { pathname: "/" } } = this.props.location.state || {};
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        this.props.dispatch(
-          login({ body: values }, { from, remember: values.remember })
-        );
-      }
-    });
-  };
+const Username = () => (
+  <Form.Item
+    name="username"
+    rules={[
+      {
+        required: true,
+        message: "Please input your username!",
+      },
+    ]}
+  >
+    <Input
+      prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
+      placeholder="Username"
+    />
+  </Form.Item>
+);
 
-  fileds = {
-    Username: ({ initialValue }) =>
-      this.props.form.getFieldDecorator("username", {
-        initialValue,
-        rules: [
-          {
-            required: true,
-            message: "Please input your username!",
-          },
-        ],
-      })(
-        <Input
-          prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
-          placeholder="Username"
-        />
-      ),
-    Password: ({ initialValue }) =>
-      this.props.form.getFieldDecorator("password", {
-        initialValue,
-        rules: [
-          {
-            required: true,
-            message: "Please input your Password!",
-          },
-        ],
-      })(
-        <Input
-          prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
-          type="password"
-          placeholder="Password"
-        />
-      ),
-    RememberMe: ({ initialValue }) =>
-      this.props.form.getFieldDecorator("remember", {
-        initialValue,
-        valuePropName: "checked",
-      })(<Checkbox>Remember me</Checkbox>),
+const Password = () => (
+  <Form.Item
+    name="password"
+    rules={[
+      {
+        required: true,
+        message: "Please input your password!",
+      },
+    ]}
+  >
+    <Input
+      prefix={<LockOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
+      type="password"
+      placeholder="Password"
+    />
+  </Form.Item>
+);
+
+const RememberMe = () => (
+  <Form.Item name="remember" valuePropName="checked" noStyle>
+    <Checkbox>Remember me</Checkbox>
+  </Form.Item>
+);
+
+@connect()
+export default class Login extends React.PureComponent {
+  handleLogin = values => {
+    const { from = { pathname: "/" } } = this.props.location.state || {};
+    this.props.dispatch(
+      login({ body: values }, { from, remember: values.remember })
+    );
   };
 
   render() {
-    const { Username, Password, RememberMe } = this.fileds;
-
     return (
       <Layout>
         <Center>
@@ -82,27 +77,25 @@ export default class Login extends React.PureComponent {
                 <div className="subtitle">@36node</div>
               </div>
             </div>
-            <Form onSubmit={this.handleSubmit} className="login-form">
-              <FormItem>
-                <Username />
-              </FormItem>
-              <FormItem>
-                <Password />
-              </FormItem>
-              <FormItem>
-                <RememberMe initialValue={true} />
-                <a className="login-form-forgot" href="/">
-                  Forgot password
-                </a>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="login-form-button"
-                >
-                  Log in
-                </Button>
-                Or <a href="/">register now!</a>
-              </FormItem>
+            <Form
+              onFinish={this.handleLogin}
+              className="login-form"
+              initialValues={{ remember: true }}
+            >
+              <Username />
+              <Password />
+              <RememberMe />
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+              >
+                Log in
+              </Button>
+              <a className="login-form-forgot" href="/">
+                Forgot password
+              </a>
+              Or <a href="/">register now!</a>
             </Form>
           </LoginBox>
         </Center>
@@ -141,7 +134,7 @@ const LoginBox = styled("div")`
   }
 
   .login-form-forgot {
-    max-width: 300px;
+    margin-right: 5px;
   }
 
   .login-form-button {

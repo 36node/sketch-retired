@@ -1,33 +1,32 @@
+import React from "react";
+import {
+  HomeOutlined,
+  ShopOutlined,
+  GithubOutlined,
+  FormOutlined,
+} from "@ant-design/icons";
+
 export const menu = [
   {
     path: "/",
     title: "Home",
-    icon: "home",
+    icon: <HomeOutlined />,
   },
-  // template-example-start
+  /* template-example-start */
   {
     path: "/pet-store",
     title: "Pet-store",
-    icon: "shop",
+    icon: <ShopOutlined />,
   },
   {
     path: "/github",
     title: "Github",
-    icon: "github",
+    icon: <GithubOutlined />,
   },
   {
     title: "UI-Example",
-    icon: "form",
-    children: [
-      {
-        path: "/redux-ui",
-        title: "Redux-UI",
-      },
-      {
-        path: "/redux-form",
-        title: "Redux-Form",
-      },
-    ],
+    path: "/redux-ui",
+    icon: <FormOutlined />,
   },
-  // template-example-end
+  /* template-example-end */
 ];

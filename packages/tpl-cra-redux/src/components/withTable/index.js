@@ -3,7 +3,13 @@ import { get, isEmpty, isNil } from "lodash";
 import { makeApiSelector } from "@36node/redux";
 import { createTable } from "@36node/redux-antd";
 import { makeXlsx, makeXlsxSelector } from "@36node/redux-xlsx";
-import { Card, Dropdown, Icon, Tooltip } from "antd";
+import { Card, Dropdown, Tooltip } from "antd";
+import {
+  SyncOutlined,
+  FilterOutlined,
+  UploadOutlined,
+  DownloadOutlined,
+} from "@ant-design/icons";
 import styled from "styled-components";
 
 import FilterTree from "./filterTree";
@@ -14,7 +20,13 @@ const defaultPageSize = 10;
 function filterColumn(columns, checkedKeys = []) {
   if (!columns) return;
   return columns
-    .map(c => ({ ...c, children: filterColumn(c.children, checkedKeys) }))
+    .map(c => {
+      const children = filterColumn(c.children, checkedKeys);
+      if (children) {
+        return { ...c, children };
+      }
+      return c;
+    })
     .filter(c => checkedKeys.includes(c.key) || !isEmpty(c.children));
 }
 
@@ -140,7 +152,7 @@ export const withTable = (
           <span>
             {total && (
               <Tool title="刷新">
-                <Icon type="sync" onClick={this.handleRefresh} />
+                <SyncOutlined onClick={this.handleRefresh} />
               </Tool>
             )}
             {filter && (
@@ -155,18 +167,18 @@ export const withTable = (
                 trigger={["click"]}
               >
                 <Tool title="筛选">
-                  <Icon type="filter" />
+                  <FilterOutlined />
                 </Tool>
               </Dropdown>
             )}
             {importer && (
               <Tool title="导入">
-                <Icon type="upload" onClick={this.toggleImporter} />
+                <UploadOutlined onClick={this.toggleImporter} />
               </Tool>
             )}
             {exporter && (
               <Tool title="导出">
-                <Icon type="download" onClick={this.toggleExporter} />
+                <DownloadOutlined onClick={this.toggleExporter} />
               </Tool>
             )}
           </span>
