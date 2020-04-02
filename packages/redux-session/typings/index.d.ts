@@ -13,5 +13,6 @@ declare module "@36node/redux-session" {
   export function withSession(key: string): HOC;
   export const history: History;
   export const ProtectedRoute: Component;
-  export function getToken(): String;
+  export function getToken(): string;
+  export function useSession(key: string);
 }

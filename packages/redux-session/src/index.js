@@ -1,7 +1,7 @@
 import { TOKEN } from "./constants";
 
 export { makeSessionWatcher } from "./saga";
-export { withSession } from "./withSession";
+export { useSession, withSession } from "./withSession";
 export { history } from "./history";
 export { ProtectedRoute } from "./protect";
 
