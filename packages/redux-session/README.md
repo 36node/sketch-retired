@@ -8,8 +8,10 @@
 import {
   makeSessionWatcher,
   withSession,
+  useSession,
   history,
   ProtectedRoute,
+  getToken,
 } from "@36node/redux-session";
 ```
 
