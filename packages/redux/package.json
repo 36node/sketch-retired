@@ -46,12 +46,12 @@
     "fast-memoize": "^2.5.1",
     "lodash": "^4.17.11",
     "normalizr": "^3.4.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
     "reselect": "^4.0.0"
   },
   "peerDependencies": {
     "react": "^16.0.0",
-    "react-redux": "^6.0.1",
-    "redux": "^4.0.1",
     "redux-saga": "^1.0.2"
   },
   "devDependencies": {

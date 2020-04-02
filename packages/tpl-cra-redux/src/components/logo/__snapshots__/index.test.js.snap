@@ -2,8 +2,8 @@
 
 exports[`should renders correctly 1`] = `
 .c0 {
-  -webkit-animation: iVXCSc infinite 20s linear;
-  animation: iVXCSc infinite 20s linear;
+  -webkit-animation: fvtopB infinite 20s linear;
+  animation: fvtopB infinite 20s linear;
   width: 60px;
   height: 31px;
   margin: 16px 24px 16px -16px;
