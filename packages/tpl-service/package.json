@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-service",
-  "version": "0.13.36",
+  "version": "0.13.37",
   "description": "A service boilerplate with openapi,rest and mongodb.",
   "repository": {
     "url": "36node/sketch",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@36node/eslint-config": "^0.6.4",
-    "@36node/sketch": "^0.13.28",
+    "@36node/sketch": "^0.13.29",
     "@36node/swagen": "^0.13.8",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",

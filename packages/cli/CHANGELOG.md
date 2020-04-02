@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.29](https://github.com/36node/sketch/compare/@36node/sketch@0.13.28...@36node/sketch@0.13.29) (2020-04-02)
+
+
+### Bug Fixes
+
+* test break ([b913cc6](https://github.com/36node/sketch/commit/b913cc6))
+
+
+
+
+
 ## [0.13.28](https://github.com/36node/sketch/compare/@36node/sketch@0.13.27...@36node/sketch@0.13.28) (2020-02-10)
 
 **Note:** Version bump only for package @36node/sketch
