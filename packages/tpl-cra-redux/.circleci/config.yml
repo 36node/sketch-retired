@@ -2,11 +2,12 @@ version: 2
 
 defaults: &defaults
   working_directory: ~/repo
+  environment:
+    TZ: "Asia/Shanghai"
   docker:
-    - image: circleci/node:10
+    - image: circleci/node:12
 
 jobs:
-
   build:
     <<: *defaults
     steps:
@@ -54,7 +55,7 @@ jobs:
       - run:
           name: Setup Environment Variables
           command: |
-            echo "export TAG=`if test $CIRCLE_TAG; then echo $CIRCLE_TAG; else echo "$CIRCLE_BRANCH"; fi`" >> $BASH_ENV
+            echo "export TAG=`if test $CIRCLE_TAG; then echo $CIRCLE_TAG; else echo "$CIRCLE_SHA1"; fi`" >> $BASH_ENV
             source $BASH_ENV
       - run:
           name: Build and Push Image
@@ -68,7 +69,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "b1:ae:28:64:a6:7f:88:27:a9:6c:12:a7:85:d9:4e:03"
+            - "15:94:c7:13:68:ce:72:50:04:b0:03:c8:e1:c6:96:f0"
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
@@ -89,31 +90,33 @@ workflows:
   main:
     jobs:
       - build:
-          filters:  # required since `release` has tag filters AND requires `build`
+          filters:
+            branches:
+              only:
+                - master
+                - /.*/
             tags:
-              only: /.*/
+              only:
+                - /v.*/
       - test:
           requires:
             - build
-          filters:  # required since `release` has tag filters AND requires `test`
+          filters:
+            branches:
+              only:
+                - master
+                - /.*/
             tags:
-              only: /.*/
+              only:
+                - /v.*/
       - release:
           context: production
           requires:
             - test
           filters:
-            tags:
-              only: /v.*/
-            branches:
-              ignore: /.*/
-  nightly:
-    triggers:
-      - schedule:
-          cron: "20 20 * * *"
-          filters:
             branches:
               only:
                 - master
-    jobs:
-      - bump
+            tags:
+              only:
+                - /v.*/
