@@ -23,7 +23,7 @@ import { someMid } from "./middlewares";
 const app = new Koa2();
 const router = new Router({ prefix: BASE });
 const publicKey = fs.readFileSync(path.join(__dirname, "../ssl/rsa_jwt.pub"));
-const openapiFile = fs.createReadStream(path.join(__dirname, "../openapi.yml"));
+const openapiFile = fs.readFileSync(path.join(__dirname, "../openapi.yml"));
 
 /**
  * register services
