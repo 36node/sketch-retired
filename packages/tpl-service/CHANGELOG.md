@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.38](https://github.com/36node/sketch/compare/@36node/template-service@0.13.37...@36node/template-service@0.13.38) (2020-04-03)
+
+
+### Bug Fixes
+
+* **tpl-service:** openapi.yml ([f1def08](https://github.com/36node/sketch/commit/f1def08))
+
+
+
+
+
 ## [0.13.37](https://github.com/36node/sketch/compare/@36node/template-service@0.13.36...@36node/template-service@0.13.37) (2020-04-02)
 
 **Note:** Version bump only for package @36node/template-service
