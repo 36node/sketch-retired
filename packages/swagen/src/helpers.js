@@ -92,7 +92,7 @@ export function hasJsonBody(operation) {
 export function getJsonBodySchema(operation) {
   const bodySchema = get(operation, ["response", "content", "schema"], null);
   if (bodySchema) {
-    return JSON.stringify(stripProps(bodySchema), null, 2);
+    return JSON.stringify(stripProps(bodySchema, "description"), null, 2);
   }
   return null;
 }
