@@ -1,6 +1,7 @@
 import fs from "fs";
 import Handlebars from "handlebars";
 import prettier from "prettier";
+import { cloneDeep } from "lodash";
 
 /**
  * Make directory
@@ -74,4 +75,18 @@ export function generateFile(tplFile, toFile, data, prettierOpts = {}) {
     }),
     "utf8"
   );
+}
+
+/**
+ * 递归删除 object or array 里的属性
+ *
+ * @param {object} obj 目标对象
+ * @param {string} props 字段名数组
+ */
+export function stripProps(obj, ...props) {
+  for (let prop in obj) {
+    if (props.includes(prop)) delete obj[prop];
+    else if (typeof obj[prop] === "object") stripProps(obj[prop], ...props);
+  }
+  return obj;
 }

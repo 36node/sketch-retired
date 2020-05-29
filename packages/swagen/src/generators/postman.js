@@ -1,4 +1,4 @@
-import { get, toString, toUpper, mergeWith } from "lodash";
+import { get, toString, toUpper, mergeWith, upperCase } from "lodash";
 import {
   Collection,
   ItemGroup,
@@ -16,6 +16,8 @@ import fs from "fs";
 
 import parse from "../parse";
 import { generateTemplate, formatPath } from "../lib";
+
+const constantCase = str => upperCase(str).replace(/ /g, "_");
 
 class PostmanGenerator {
   constructor(swagger, templatePath) {
@@ -51,7 +53,7 @@ class PostmanGenerator {
   genUrl(operation) {
     const operationPath = get(operation, "path", "/");
     const url = new Url();
-    url.host = `{{host}}`;
+    url.host = `{{BASE}}`;
     url.path = [formatPath(operationPath)];
     return url;
   }
@@ -91,7 +93,7 @@ class PostmanGenerator {
             bearer: [
               {
                 key: "token",
-                value: "{{token}}",
+                value: "{{TOKEN}}",
                 type: "string",
               },
             ],
@@ -110,7 +112,7 @@ class PostmanGenerator {
     if (body) {
       const raw = {};
       for (let k in body) {
-        raw[k] = `{{${k}}}`;
+        raw[k] = `{{${constantCase(k)}}}`;
       }
 
       request.body = new RequestBody({

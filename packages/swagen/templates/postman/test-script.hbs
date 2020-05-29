@@ -1,3 +1,7 @@
+{{#withJsonBody this}}
+  var bodySchema = {{{jsonBodySchema this}}};
+{{/withJsonBody}}
+
 {{#withResponseStatus this}}
 pm.test("Status code is {{response.status}}", function () {
   pm.response.to.have.status({{response.status}});
@@ -6,7 +10,6 @@ pm.test("Status code is {{response.status}}", function () {
 
 {{#withJsonBody this}}
 pm.test("Json body schema test", function(){
-  var bodySchema = {{{jsonBodySchema this}}};
   pm.expect(tv4.validate(pm.response.json(), bodySchema)).to.be.true;
 })
 {{/withJsonBody}}

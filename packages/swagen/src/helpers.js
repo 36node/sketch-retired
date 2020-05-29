@@ -3,6 +3,8 @@ import hbsHelper from "handlebars-helpers";
 import { upperFirst, get } from "lodash";
 import { normalize } from "@36node/query-normalizr";
 
+import { stripProps } from "./lib";
+
 hbsHelper({
   handlebars: Handlebars,
 });
@@ -90,7 +92,7 @@ export function hasJsonBody(operation) {
 export function getJsonBodySchema(operation) {
   const bodySchema = get(operation, ["response", "content", "schema"], null);
   if (bodySchema) {
-    return JSON.stringify(bodySchema, null, 2);
+    return JSON.stringify(stripProps(bodySchema), null, 2);
   }
   return null;
 }
