@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/36node/sketch/compare/@36node/swagen@0.14.0...@36node/swagen@0.15.0) (2020-05-29)
+
+
+### Features
+
+* postman body schema drop description, [#176](https://github.com/36node/sketch/issues/176) ([9a85d00](https://github.com/36node/sketch/commit/9a85d00))
+
+
+
+
+
 # [0.14.0](https://github.com/36node/sketch/compare/@36node/swagen@0.13.8...@36node/swagen@0.14.0) (2020-05-29)
 
 
