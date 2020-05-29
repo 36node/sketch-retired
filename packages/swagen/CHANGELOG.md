@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/36node/sketch/compare/@36node/swagen@0.13.8...@36node/swagen@0.14.0) (2020-05-29)
+
+
+### Features
+
+* postman body constant case, close [#176](https://github.com/36node/sketch/issues/176)"" ([02068cf](https://github.com/36node/sketch/commit/02068cf))
+
+
+
+
+
 ## [0.13.8](https://github.com/36node/sketch/compare/@36node/swagen@0.13.7...@36node/swagen@0.13.8) (2019-10-14)
 
 **Note:** Version bump only for package @36node/swagen
