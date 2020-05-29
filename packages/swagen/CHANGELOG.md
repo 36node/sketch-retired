@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1](https://github.com/36node/sketch/compare/@36node/swagen@0.15.0...@36node/swagen@0.15.1) (2020-05-29)
+
+
+### Bug Fixes
+
+* postman variables camelcase ([feb8627](https://github.com/36node/sketch/commit/feb8627))
+
+
+
+
+
 # [0.15.0](https://github.com/36node/sketch/compare/@36node/swagen@0.14.0...@36node/swagen@0.15.0) (2020-05-29)
 
 
