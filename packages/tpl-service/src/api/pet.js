@@ -1,7 +1,53 @@
 /// <reference path='./def.d.ts' />
 import createError from "http-errors";
 
+import { validate } from "../middlewares";
+
 export default class API {
+  listPetsReqSchema = {
+    type: "object",
+    required: [],
+    properties: {
+      query: {
+        type: "object",
+        required: [],
+        properties: {
+          _limit: {
+            type: "number",
+            max: 100,
+          },
+        },
+      },
+    },
+  };
+  listPetsResSchema = {
+    type: "object",
+    properties: {
+      headers: {
+        type: "object",
+        required: ["x-total-count"],
+        properties: {
+          "x-total-count": {
+            type: "number",
+          },
+        },
+      },
+      content: {
+        type: "array",
+        required: ["id", "name"],
+        properties: {
+          id: {
+            type: "string",
+            pattern: "^[a-f\\d]{23}$",
+          },
+          name: {
+            type: "string",
+          },
+        },
+      },
+    },
+  };
+
   /**
    * Bind service to router
    *
@@ -12,14 +58,7 @@ export default class API {
       const req = {
         query: ctx.normalizedQuery || {},
       };
-
       const res = await this.listPets(req, ctx);
-
-      if (!res.body) throw createError(500, "should have body in response");
-
-      if (!res.headers || res.headers.xTotalCount === undefined)
-        throw createError(500, "should have header X-Total-Count in response");
-
       ctx.body = res.body;
       ctx.set("X-Total-Count", res.headers.xTotalCount);
       ctx.status = 200;
@@ -84,7 +123,12 @@ export default class API {
       ctx.status = 204;
     };
 
-    router.get("/pets", ...this.middlewares("listPets"), listPets);
+    router.get(
+      "/pets",
+      validate(this.listPetsReqSchema, this.listPetsResSchema),
+      ...this.middlewares("listPets"),
+      listPets
+    );
     router.post("/pets", ...this.middlewares("createPet"), createPet);
     router.get("/pets/:petId", ...this.middlewares("showPetById"), showPetById);
     router.patch("/pets/:petId", ...this.middlewares("updatePet"), updatePet);

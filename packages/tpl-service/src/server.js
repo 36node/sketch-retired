@@ -6,11 +6,13 @@ import { app, config, logger } from "./index";
 
 const { PORT, MONGODB_CONNECTION } = config;
 
+logger.info(config, "config list");
+
 /**
  * connect to mongodb
  */
-mongoose.Promise = Promise;
 mongoose.connect(MONGODB_CONNECTION, {
+  useUnifiedTopology: true,
   useCreateIndex: true,
   useNewUrlParser: true,
   useFindAndModify: false,
@@ -20,9 +22,11 @@ mongoose.connect(MONGODB_CONNECTION, {
   keepAlive: true,
   connectTimeoutMS: 30 * 1000,
 });
-// mongoose.connection.on("open", async () => {
-//   // some init function
-// });
+
+mongoose.connection.on("open", async () => {
+  logger.info("mongodb connected");
+});
+
 mongoose.connection.on("error", () => {
   logger.error("mongodb connection error");
 });
@@ -33,3 +37,5 @@ mongoose.connection.on("error", () => {
 app.listen(PORT, () =>
   logger.info(`[${process.env.NODE_ENV}] http server start on port ${PORT} 🚀`)
 );
+
+app.on("error", err => console.error(err));

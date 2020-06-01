@@ -102,6 +102,7 @@ paths:
           headers:
             X-Total-Count:
               description: Total count of all warnings match the query
+              required: true
               schema:
                 type: integer
           content:
@@ -311,7 +312,7 @@ components:
           type: string
         tag:
           type: string
-          enum: ['DOG', "CAT"]
+          enum: ["DOG", "CAT"]
         age:
           type: integer
           format: int32
@@ -331,13 +332,12 @@ components:
           properties:
             id:
               type: string
-            
+
     PetOrDoc:
       oneOf:
         - $ref: "#/components/schemas/PetDoc"
         - $ref: "#/components/schemas/Pet"
 
-        
     Err:
       type: object
       properties:

@@ -18,7 +18,7 @@ import logger from "./lib/log";
 import { BASE, NODE_ENV } from "./config";
 import { petService } from "./services";
 import pkg from "../package.json";
-import { someMid } from "./middlewares";
+import { errHandler } from "./middlewares";
 
 const app = new Koa2();
 const router = new Router({ prefix: BASE });
@@ -44,13 +44,13 @@ if (NODE_ENV !== "production") {
  * application
  */
 app
+  .use(errHandler())
   .use(helmet())
   .use(cors({ exposeHeaders: ["Link", "X-Total-Count"] }))
   .use(health({ url: `${BASE}/health`, version: pkg.version }))
   .use(openapi({ url: `${BASE}/openapi.yml`, file: openapiFile }))
   .use(jwt({ secret: publicKey }))
   .use(body())
-  .use(someMid())
   .use(queryNormalizr())
   .use(compress({ threshold: 2048 }))
   .use(router.routes());

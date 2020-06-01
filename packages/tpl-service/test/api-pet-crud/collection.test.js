@@ -1,11 +1,13 @@
-const { handleResult } = require("jest-runner-newman/handle-result");
-const newman = require("newman");
+import { handleResult } from "jest-runner-newman/handle-result";
+import newman from "newman";
 
-module.exports = newman.run(
+const collection = require.resolve("./collection.json");
+const environment = require.resolve("../env.json");
+
+export default newman.run(
   {
-    collection: require.resolve("./collection.json"),
-    iterationData: require.resolve("./data.json"),
-    environment: require.resolve("./env.json"),
+    collection,
+    environment,
     reporters: ["cli"],
   },
   (err, result) => {
