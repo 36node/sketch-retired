@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/36node/sketch/compare/@36node/sketch@0.14.1...@36node/sketch@0.15.0) (2020-06-15)
+
+
+### Features
+
+* **tpl-service:** fix test and postman swgen, [#178](https://github.com/36node/sketch/issues/178) [#179](https://github.com/36node/sketch/issues/179) ([297c791](https://github.com/36node/sketch/commit/297c791))
+
+
+
+
+
 ## [0.14.1](https://github.com/36node/sketch/compare/@36node/sketch@0.14.0...@36node/sketch@0.14.1) (2020-06-15)
 
 **Note:** Version bump only for package @36node/sketch

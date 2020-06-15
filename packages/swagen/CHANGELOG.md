@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/36node/sketch/compare/@36node/swagen@0.16.1...@36node/swagen@0.17.0) (2020-06-15)
+
+
+### Bug Fixes
+
+* **swagen:** fix test ([77387d4](https://github.com/36node/sketch/commit/77387d4))
+
+
+### Features
+
+* **tpl-service:** fix test and postman swagen, [#178](https://github.com/36node/sketch/issues/178) [#179](https://github.com/36node/sketch/issues/179) ([a1b310a](https://github.com/36node/sketch/commit/a1b310a))
+
+
+
+
+
 ## [0.16.1](https://github.com/36node/sketch/compare/@36node/swagen@0.16.0...@36node/swagen@0.16.1) (2020-06-15)
 
 

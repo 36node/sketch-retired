@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.3.0...@36node/mongoose-helper@0.4.0) (2020-06-15)
+
+
+### Features
+
+* **tpl-service:** fix test and postman swagen, [#178](https://github.com/36node/sketch/issues/178) [#179](https://github.com/36node/sketch/issues/179) ([a1b310a](https://github.com/36node/sketch/commit/a1b310a))
+* **tpl-service:** fix test and postman swgen, [#178](https://github.com/36node/sketch/issues/178) [#179](https://github.com/36node/sketch/issues/179) ([297c791](https://github.com/36node/sketch/commit/297c791))
+
+
+
+
+
 # [0.3.0](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.2.9...@36node/mongoose-helper@0.3.0) (2020-06-15)
 
 
