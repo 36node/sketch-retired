@@ -1,8 +1,6 @@
 import path from "path";
 
-import parse from "../parse";
-import "../helpers";
-import { mkdir, generateFile } from "../lib";
+import { mkdir, generateFile, parse } from "../lib";
 
 /**
  * Genereate code for sdk

@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --harmony -r esm
 
 const program = require("commander");
 
@@ -11,6 +11,6 @@ program
   .command("update [dest]", "update a package in dest dir")
   .command("build", "build package")
   .command("lint [dest]", "use eslint to check js language")
-  .command("start", "start development")
+  .command("start [entry]", "start development")
   .command("test [pattern]", "test package")
   .parse(process.argv);

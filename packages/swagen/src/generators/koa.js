@@ -1,7 +1,6 @@
 import path from "path";
-import "../helpers";
-import parse from "../parse";
-import { generateFile, mkdir } from "../lib";
+
+import { generate, mkdir, parse } from "../lib";
 
 /**
  * Generate code for koa server api
@@ -9,25 +8,25 @@ import { generateFile, mkdir } from "../lib";
  * @param {string} opts.dist code dist
  * @param {string} opts.yamlFile openapi file path
  */
-export default function genKoa({ dist, yamlFile, templatePath }) {
-  parse(yamlFile)
+export default function genKoa({
+  dist = process.cwd(),
+  yamlFile,
+  templatePath,
+}) {
+  mkdir(dist);
+  return parse(yamlFile)
     .then(function(swagger) {
       const { api } = swagger;
       const tplAPI = path.join(templatePath, "koa", "api.hbs");
       const tplDef = path.join(templatePath, "koa", "definitions.hbs");
-
-      if (dist) {
-        mkdir(dist);
-      }
-      const finalDist = dist || process.cwd();
-
-      generateFile(tplDef, path.join(finalDist, "def.d.ts"), swagger, {
-        parser: "typescript",
-      });
+      const tplSchema = path.join(templatePath, "koa", "schema.hbs");
 
       for (let name in api) {
-        if (api[name])
-          generateFile(tplAPI, path.join(finalDist, `${name}.js`), api[name]);
+        generate(tplAPI, path.join(dist, `${name}.js`), api[name]);
+        generate(tplSchema, path.join(dist, `${name}.schema.js`), api[name]);
+        generate(tplDef, path.join(dist, `${name}.d.ts`), api[name], {
+          parser: "typescript",
+        });
       }
     })
     .catch(err => console.error(err));

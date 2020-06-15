@@ -3,14 +3,14 @@ const spawn = require("cross-spawn");
 
 const { getPackage } = require("../dist");
 
-program.option("--entry <file>", "main entry file").parse(process.argv);
+program.option("--noPretty", "make the json log pretty").parse(process.argv);
 
 let command;
 let args = [];
 
 const pkg = getPackage();
 const template = pkg.template || "module";
-const entry = program.entry || "src/server.js";
+const entry = program.args[0] || "bin/server.js";
 
 switch (template) {
   case "cra":
@@ -20,8 +20,15 @@ switch (template) {
     break;
   case "tcp":
   case "service":
-    command = "nodemon";
-    args = ["--harmony", "-r", "esm", entry];
+    command = "sh";
+    args = [
+      "-c",
+      `nodemon --harmony -r esm ${entry}${
+        !program.noPretty
+          ? " | pino-pretty -i hostname,pid -t 'SYS:yyyy-mm-dd HH:MM:ss'}"
+          : ""
+      }`,
+    ];
     break;
   default:
     throw new Error(`start ${template} not supported`);

@@ -1,0 +1,921 @@
+{
+  "info": {
+    "_postman_id": "abd64cfd-8645-485e-b9ab-ad81b5a014a9",
+    "name": "store-pet-curd",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create a pet",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "9e0f2523-7342-4120-88b5-ed1ee1874eac",
+            "exec": [
+              "var Ajv = require('ajv');",
+              "var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: [\"int32\"] });",
+              "",
+              "pm.test(\"Status code is 201\", function () {",
+              "  pm.response.to.have.status(201);",
+              "});",
+              "",
+              "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}}};",
+              "pm.test(\"Json body schema test\", function(){",
+              "  const res = {",
+              "    content: pm.response.json(),",
+              "    headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
+              "  }",
+              "  pm.expect(ajv.validate(schema, data)).to.be.true;",
+              "  pm.globals.set(\"pet_curd_pet_id\", res.content.id);",
+              "})",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "795883c8-2bf0-443d-9fc5-f441e228b9b0",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\"\n}",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/pets",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pets"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "78861a2c-943b-4069-bd8b-5cde475a2bd0",
+          "name": "Response_201",
+          "originalRequest": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pets"
+              ]
+            }
+          },
+          "status": "The Pet created",
+          "code": 201,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": null
+        }
+      ]
+    },
+    {
+      "name": "Find pet by id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "6481d2e3-fe3a-450e-b955-b4ad30104ae0",
+            "exec": [
+              "var Ajv = require('ajv');",
+              "var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: [\"int32\"] });",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}}};",
+              "pm.test(\"Json body schema test\", function(){",
+              "  const res = {",
+              "    content: pm.response.json(),",
+              "    headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
+              "  }",
+              "  pm.expect(ajv.validate(schema, data)).to.be.true;",
+              "})",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "f476457f-92d4-465c-8c7b-a526aa6f5be8",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/pets/:petId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pets",
+            ":petId"
+          ],
+          "variable": [
+            {
+              "key": "petId",
+              "value": "{{pet_curd_pet_id}}",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "e2963b0b-00ee-4e06-aa76-0937ecc8172c",
+          "name": "Response_200",
+          "originalRequest": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pets/:petId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pets",
+                ":petId"
+              ],
+              "variable": [
+                {
+                  "key": "petId",
+                  "value": "petId"
+                }
+              ]
+            }
+          },
+          "status": "Expected response to a valid request",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": null
+        }
+      ]
+    },
+    {
+      "name": "Find pet by wrong id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a28c4380-a224-437f-8c18-a7b1026721d0",
+            "exec": [
+              "var Ajv = require('ajv');",
+              "var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: [\"int32\"] });",
+              "",
+              "pm.test(\"Status code is 404\", function () {",
+              "  pm.response.to.have.status(404);",
+              "});",
+              "",
+              "const schema = {",
+              "  type: \"object\",",
+              "  required: [\"name\"],",
+              "  properties: {",
+              "    name: {",
+              "      type: \"string\"",
+              "    },",
+              "    message: {",
+              "      type: \"string\"",
+              "    },",
+              "    code: {",
+              "      type: \"string\"",
+              "    },",
+              "    path: {",
+              "      type: \"string\"",
+              "    },",
+              "    value: {",
+              "      type: \"string\"",
+              "    },",
+              "    keyword: {",
+              "      type: \"string\"",
+              "    }",
+              "  }",
+              "}",
+              "",
+              "pm.test(\"err schema test\", function(){",
+              "  pm.expect(ajv.validate(schema, pm.response.json())).to.be.true;",
+              "})",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "9446f20f-705c-42c5-9916-ec180f09bbc8",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/pets/5ee6d60435d1603c47d0263b",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pets",
+            "5ee6d60435d1603c47d0263b"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "4896e9c0-4cf2-4b49-9974-0a823248bbef",
+          "name": "Response_200",
+          "originalRequest": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pets/:petId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pets",
+                ":petId"
+              ],
+              "variable": [
+                {
+                  "key": "petId",
+                  "value": "petId"
+                }
+              ]
+            }
+          },
+          "status": "Expected response to a valid request",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": null
+        }
+      ]
+    },
+    {
+      "name": "Update pet",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "95914efd-0005-47f7-a8a2-b863b45c1fab",
+            "exec": [
+              "var Ajv = require('ajv');",
+              "var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: [\"int32\"] });",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}}};",
+              "pm.test(\"Json body schema test\", function(){",
+              "  const res = {",
+              "    content: pm.response.json(),",
+              "    headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
+              "  }",
+              "  pm.expect(ajv.validate(schema, data)).to.be.true;",
+              "})",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "3bbe3dc7-6e65-4fad-b92e-ddc5767b264a",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\"\n}",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/pets/:petId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pets",
+            ":petId"
+          ],
+          "variable": [
+            {
+              "key": "petId",
+              "value": "{{pet_curd_pet_id}}",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "1851c86b-4cba-47b7-93f4-543d0b08c790",
+          "name": "Response_200",
+          "originalRequest": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pets/:petId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pets",
+                ":petId"
+              ],
+              "variable": [
+                {
+                  "key": "petId",
+                  "value": "petId"
+                }
+              ]
+            }
+          },
+          "status": "The pet",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": null
+        }
+      ]
+    },
+    {
+      "name": "List all pets",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "61c94f53-40ee-43b5-a084-00c4609579c6",
+            "exec": [
+              "var Ajv = require('ajv');",
+              "var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: [\"int32\"] });",
+              "",
+              "var res = {",
+              "  content: pm.response.json(),",
+              "  headers: headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
+              "}",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"result count should right\", function () {",
+              "  pm.expect(res.content.length).to.equal(1);",
+              "  pm.expect(res.headers[\"X-Total-Count\"]).to.be.above(1);",
+              "})",
+              "",
+              "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"type\":\"array\",\"items\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}},\"headers\":{\"type\":\"object\",\"required\":[\"X-Total-Count\"],\"properties\":{\"X-Total-Count\":{\"type\":\"integer\"}}}}};",
+              "pm.test(\"Json body schema test\", function(){",
+              "  pm.expect(ajv.validate(schema, data)).to.be.true;",
+              "})",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "6087d5be-7c29-4aaf-b5ed-348a093a33d9",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/pets?_limit=1&tag=CAT",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pets"
+          ],
+          "query": [
+            {
+              "key": "_limit",
+              "value": "1"
+            },
+            {
+              "key": "tag",
+              "value": "CAT"
+            },
+            {
+              "key": "age_gt",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "_select",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "birthAt_gt",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "birthAt_lt",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "grade_gt",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "grade_lt",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "cdd12957-89a2-40cc-be9a-66dea787a5ed",
+          "name": "Response_200",
+          "originalRequest": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{host}}/pets?_limit=10&tag=&age_gt=&_select=&tag=&age_gt=&birthAt_gt=&birthAt_lt=&grade_gt=&grade_lt=",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "pets"
+              ],
+              "query": [
+                {
+                  "key": "_limit",
+                  "value": "10"
+                },
+                {
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "key": "age_gt",
+                  "value": ""
+                },
+                {
+                  "key": "_select",
+                  "value": ""
+                },
+                {
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "key": "age_gt",
+                  "value": ""
+                },
+                {
+                  "key": "birthAt_gt",
+                  "value": ""
+                },
+                {
+                  "key": "birthAt_lt",
+                  "value": ""
+                },
+                {
+                  "key": "grade_gt",
+                  "value": ""
+                },
+                {
+                  "key": "grade_lt",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "status": "A paged array of pets",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Total-Count",
+              "value": "unset"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"aa\",\n    \"tag\": \"red\",\n    \"age\": 3\n  },\n  {\n    \"id\": 2,\n    \"name\": \"bb\",\n    \"tag\": \"happy\",\n    \"age\": 5\n  },\n  {\n    \"id\": 3,\n    \"name\": \"cc\",\n    \"tag\": \"husky\",\n    \"age\": 6\n  }\n]\n"
+        }
+      ]
+    },
+    {
+      "name": "deletePet",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "5d8b8f1c-9d5a-4eca-9824-8d8ca8e212fb",
+            "exec": [
+              "var Ajv = require('ajv');",
+              "var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: [\"int32\"] });",
+              "",
+              "pm.test(\"Status code is 204\", function () {",
+              "  pm.response.to.have.status(204);",
+              "});",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "c4d46215-843c-42b9-bfe9-75af10e22d74",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/pets/:petId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pets",
+            ":petId"
+          ],
+          "variable": [
+            {
+              "key": "petId",
+              "value": "{{pet_curd_pet_id}}",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "9ef00b52-93cf-4fe3-a8fa-604a75f2a6a3",
+          "name": "Response_204",
+          "originalRequest": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pets/:petId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pets",
+                ":petId"
+              ],
+              "variable": [
+                {
+                  "key": "petId",
+                  "value": "petId"
+                }
+              ]
+            }
+          },
+          "status": "pet deleted",
+          "code": 204,
+          "_postman_previewlanguage": "Text",
+          "header": [],
+          "cookie": [],
+          "responseTime": null,
+          "body": null
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "8c6cff73-b837-4f91-bfcf-52ea7d6872bd",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "09de23be-a766-4d39-adb4-05327763f9b4",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "470ffa83-ac87-453f-991c-e68a7306b547",
+      "key": "age",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "id": "55bd9001-aad9-42d8-a3b5-c94e5a8a0b7b",
+      "key": "name",
+      "value": "tom",
+      "type": "string"
+    },
+    {
+      "id": "fb72167f-3daf-482b-98d4-f36560d6512f",
+      "key": "tag",
+      "value": "CAT",
+      "type": "string"
+    },
+    {
+      "id": "dff0c607-eaf5-46d1-b97c-635b8f219534",
+      "key": "owner",
+      "value": "r",
+      "type": "string"
+    },
+    {
+      "id": "b9348ae7-60c1-4d80-bfe9-89a754ff0712",
+      "key": "birthAt",
+      "value": "2020-01-01",
+      "type": "string"
+    },
+    {
+      "id": "a0b7d075-aedf-4d35-8eb0-d34f9211f422",
+      "key": "grade",
+      "value": "1",
+      "type": "string"
+    }
+  ]
+}

@@ -7,7 +7,9 @@ const formatError = err => ({
   type: err.type,
   code: err.code,
   message: err.message,
-  details: err.details,
+  path: err.path,
+  value: err.value,
+  keyword: err.keyword,
 });
 
 export default () => {

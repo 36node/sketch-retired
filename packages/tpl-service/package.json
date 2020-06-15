@@ -28,16 +28,14 @@
   "main": "dist/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "sketch build src/{job,server,index}.js",
     "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
     "gen:api": "swagen koa openapi.yml ./src/api && npm run format",
     "gen:postman": "swagen postman openapi.yml postman.json",
     "lint": "sketch lint src",
     "release": "standard-version",
-    "start": "sketch start | pino-pretty -i hostname,pid -t 'SYS:yyyy-mm-dd HH:MM:ss'",
-    "start:job": "sketch start --entry src/job.js | pino-pretty -i hostname,pid -t 'SYS:yyyy-mm-dd HH:MM:ss'",
-    "test": "sketch test",
-    "test:int": "sketch test -c test/jest.config.js"
+    "start": "sketch start",
+    "test": "jest test",
+    "test:int": "sketch test --config test/jest.config.js"
   },
   "commitlint": {
     "extends": [
@@ -82,6 +80,7 @@
     "@36node/mongoose-helper": "^0.2.9",
     "@36node/query-normalizr": "^0.4.8",
     "@koa/cors": "^3.0.0",
+    "ajv": "^6.12.2",
     "dotenv": "^7.0.0",
     "koa": "^2.7.0",
     "koa-body": "^4.1.0",

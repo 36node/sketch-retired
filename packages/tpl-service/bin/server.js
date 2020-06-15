@@ -1,9 +1,10 @@
-#!/usr/bin/env node
-
+#!/usr/bin/env node --harmony -r esm
+import Debug from "debug";
 import mongoose from "mongoose";
 
-import { app, config, logger } from "./index";
+import { app, config, logger } from "../src";
 
+const debug = Debug("store:server");
 const { PORT, MONGODB_CONNECTION } = config;
 
 logger.info(config, "config list");
@@ -24,10 +25,11 @@ mongoose.connect(MONGODB_CONNECTION, {
 });
 
 mongoose.connection.on("open", async () => {
-  logger.info("mongodb connected");
+  debug("mongodb connected");
 });
 
 mongoose.connection.on("error", () => {
+  debug("mongodb connection error");
   logger.error("mongodb connection error");
 });
 

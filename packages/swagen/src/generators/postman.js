@@ -14,10 +14,11 @@ import jsonfile from "jsonfile";
 import path from "path";
 import fs from "fs";
 
-import parse from "../parse";
-import { generateTemplate, formatPath } from "../lib";
+import { build, formatPath, parse } from "../lib";
 
 class PostmanGenerator {
+  _variable = {};
+
   constructor(swagger, templatePath) {
     this.swagger = swagger;
     this.templatePath = templatePath;
@@ -101,16 +102,13 @@ class PostmanGenerator {
     }
 
     // generate request body
-    const body = get(
-      operation,
-      ["requestBody", "content", "schema", "properties"],
-      null
-    );
+    const body = get(operation, ["requestBody", "content", "properties"], null);
 
     if (body) {
       const raw = {};
       for (let k in body) {
         raw[k] = `{{${k}}}`;
+        this._variable[k] = { key: k };
       }
 
       request.body = new RequestBody({
@@ -131,7 +129,7 @@ class PostmanGenerator {
         if (param.in === "path") {
           request.url.variables.add({
             id: param.name,
-            value: param.name,
+            value: `{{${param.name}}}`,
             type: get(param, "schema.type", "string"),
           });
         }
@@ -162,7 +160,7 @@ class PostmanGenerator {
     const resp = new Response();
     resp.name = `Response_${status}`;
     resp.originalRequest = this.genRequest(operation);
-    resp.code = status;
+    resp.code = Number(status);
     resp.status = description || "OK";
     const headerList = new HeaderList();
     if (content) {
@@ -202,7 +200,7 @@ class PostmanGenerator {
     item.responses.append(this.genResponse(operation));
 
     const tplTest = path.join(this.templatePath, "postman", "test-script.hbs");
-    const testContent = generateTemplate(tplTest, operation);
+    const testContent = build(tplTest, operation);
 
     // console.log(testContent);
 
@@ -240,6 +238,7 @@ class PostmanGenerator {
     for (let n in api) {
       collection.items.add(this.genFolder(api[n], components));
     }
+    collection.variable = Object.values(this._variable);
     return collection;
   }
 }

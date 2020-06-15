@@ -1,5 +1,4 @@
 import mongooseHidden from "mongoose-hidden";
-import Filter from "./filter";
 
 export default function(schema, options) {
   // soft delete
@@ -16,11 +15,13 @@ export default function(schema, options) {
 
 /**
  * @template T
+ * @extends {import('mongoose').Model}
  */
 class Base {
   /**
    * Get by id
    * @param {string} id - The objectId of model.
+   * @param {string?} populate - The objectId of model.
    * @returns {Promise<T>}
    */
   static get(id, populate = "") {
@@ -30,8 +31,23 @@ class Base {
   }
 
   /**
+   * Soft delete document by id
+   * @param id id of document
+   */
+  static delete(id) {
+    return this.findByIdAndDelete(id).exec();
+  }
+
+  /**
+   * alias of delete
+   * @param id id of document
+   */
+  static remove(id) {
+    return this.delete(id);
+  }
+
+  /**
    * Update or create object with given id
-   *
    * @param {*} id id of doc
    * @param {*} update body tobe updated
    * @returns {Promise<T>}
@@ -45,18 +61,16 @@ class Base {
   }
 
   /**
-   * @typedef ListResult
-   * @prop {number} ListResult.total number of total documents.
-   * @prop {Array<T>} ListResult.docs documents to be returned.
-   */
-
-  /**
-   * List objects in descending order of 'updatedAt' timestamp.
-   *
-   * @param {number} offset - Number of objects to be skipped.
-   * @param {number} limit - Limit number of objects to be returned.
-   * @param {Object} conditions - Query condition.
-   * @returns {Promise<ListResult>}
+   * List documents
+   * @param {Object} conditions - query condition.
+   * @param {object} conditions.filter - mongo query.
+   * @param {number} conditions.lean - return pure json.
+   * @param {number} conditions.limit - limit number of docs to be returned.
+   * @param {number} conditions.offset - number of docs to be skipped.
+   * @param {string} conditions.populate - populate some reference fields.
+   * @param {string} conditions.select - select fileds.
+   * @param {string} conditions.sort - sort by.
+   * @returns {Promise<Array<T>>}
    */
   static list({
     filter = {},
@@ -66,14 +80,11 @@ class Base {
     populate = "",
     select,
     sort = "-updatedAt",
+    //TODO: support grouup
   } = {}) {
-    // make sure we default query not deleted docs
-    filter = new Filter(filter);
+    // default query not deleted docs
     if (!filter.deleted) filter.deleted = false;
-
-    // build filter
-    const count = this.countDocuments(filter).exec();
-    const query = this.find(filter)
+    return this.find(filter)
       .sort(sort)
       .skip(Number(offset))
       .limit(Number(limit))
@@ -81,15 +92,20 @@ class Base {
       .select(select)
       .lean(lean)
       .exec();
-
-    return Promise.all([count, query]).then(([total, docs]) => ({
-      total,
-      docs,
-    }));
   }
 
   /**
-   * Soft remove.
+   * Count documents.
+   * @param {object} filter - mongo query.
+   * @returns {Promise<number>}
+   */
+  static count(filter = {}) {
+    if (!filter.deleted) filter.deleted = false;
+    return this.countDocuments(filter).exec();
+  }
+
+  /**
+   * Soft delete.
    *
    * @returns {Promise<T>}
    */
@@ -98,6 +114,15 @@ class Base {
       deletedAt: new Date(),
       deleted: true,
     }).save();
+  }
+
+  /**
+   * Alias of delete.
+   *
+   * @returns {Promise<T>}
+   */
+  remove() {
+    return this.delete();
   }
 
   /**

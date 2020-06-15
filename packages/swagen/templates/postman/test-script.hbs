@@ -1,6 +1,5 @@
-{{#withJsonBody this}}
-var bodySchema = {{{jsonBodySchema this}}};
-{{/withJsonBody}}
+var Ajv = require('ajv');
+var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: ["int32"] });
 
 {{#withResponseStatus this}}
 pm.test("Status code is {{response.status}}", function () {
@@ -8,8 +7,13 @@ pm.test("Status code is {{response.status}}", function () {
 });
 {{/withResponseStatus}}
 
-{{#withJsonBody this}}
+{{#if responseSchema}}
+const schema = {{{JSONstringify responseSchema}}};
 pm.test("Json body schema test", function(){
-  pm.expect(tv4.validate(pm.response.json(), bodySchema)).to.be.true;
+  const res = {
+    content: pm.response.json(),
+    headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})
+  }
+  pm.expect(ajv.validate(schema, data)).to.be.true;
 })
-{{/withJsonBody}}
+{{/if}}

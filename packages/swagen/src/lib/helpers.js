@@ -1,9 +1,6 @@
 import Handlebars from "handlebars";
 import hbsHelper from "handlebars-helpers";
 import { upperFirst, get } from "lodash";
-import { normalize } from "@36node/query-normalizr";
-
-import { stripProps } from "./lib";
 
 hbsHelper({
   handlebars: Handlebars,
@@ -92,7 +89,7 @@ export function hasJsonBody(operation) {
 export function getJsonBodySchema(operation) {
   const bodySchema = get(operation, ["response", "content", "schema"], null);
   if (bodySchema) {
-    return JSON.stringify(stripProps(bodySchema, "description"), null, 2);
+    return JSON.stringify(bodySchema, null, 2);
   }
   return null;
 }
@@ -124,118 +121,12 @@ export function requireParamType(parameters = [], type) {
   return false;
 }
 
-export function normalizeQuery(parameters = []) {
-  const queryParams = parameters.filter(p => p.in === "query");
-
-  // 将query params 转换成可以被 normalize 转换的数据格式
-  const mockQuery = {};
-  for (let p of queryParams) {
-    mockQuery[p.name] = p.name;
-  }
-
-  const normalized = normalize(mockQuery);
-
-  const { filter = {}, ...rest } = normalized;
-
-  const isRegExp = o => {
-    return (
-      typeof o !== "undefined" &&
-      Object.prototype.toString.call(o) === "[object RegExp]"
-    );
-  };
-
-  const getParam = name => {
-    if (!isRegExp(name)) {
-      return queryParams.find(p => p.name === name);
-    } else {
-      // 如果是正则表达式 _like, 则特殊处理
-      return queryParams.find(p => p.name === name.source);
-    }
-  };
-
-  const params = Object.keys(rest).map(k => {
-    const param = getParam(rest[k]);
-    return {
-      ...param,
-      name: k,
-    };
-  });
-
-  const filters = Object.keys(filter).map(k => {
-    const param = getParam(k);
-
-    const likeParm = getParam(`${k}_like`);
-
-    // xx_like && xx all in openapi file
-    if (likeParm && param) {
-      return {
-        name: k,
-        schema: {
-          oneOf: [
-            {
-              type: "object",
-              properties: {
-                $regex: {
-                  type: "string",
-                },
-              },
-            },
-            param.schema,
-          ],
-        },
-      };
-    }
-
-    if (param) return param;
-    else {
-      const f = filter[k];
-      const opers = Object.keys(f).map(o => {
-        return {
-          ...getParam(f[o]),
-          name: o,
-        };
-      });
-
-      return {
-        name: k,
-        operators: opers,
-      };
-    }
-  });
-
-  const tpl = `
-  query:{
-    {{#each params}}
-    {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
-    {{/each}}
-
-    {{#if filters}}
-    filter:{
-      {{#each filters}}
-        {{#if (not operators)}}
-        "{{name}}"{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
-        {{/if}}
-        {{#if operators}}
-        "{{name}}": {
-          {{#each operators}}
-            {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
-          {{/each}}
-        }
-        {{/if}}
-      {{/each}}
-    }
-    {{/if}}
-  }
-  `;
-
-  const template = Handlebars.compile(tpl);
-  const content = template({ params, filters });
-  return content;
-}
-
 /**
  * Handlebars helpers
  */
+Handlebars.registerHelper("decapitalize", str => {
+  return str.charAt(0).toLowerCase() + str.slice(1);
+});
 
 Handlebars.registerHelper("schemaType", schema => {
   return getSchemaType(schema);
@@ -245,14 +136,16 @@ Handlebars.registerHelper("jsonBodySchema", operation => {
   return getJsonBodySchema(operation);
 });
 
-Handlebars.registerHelper("withParamQuery", function(parameters, options) {
-  return hasParamType(parameters, "query")
+Handlebars.registerHelper("withParamPath", function(parameters, options) {
+  return hasParamType(parameters, "path")
     ? options.fn(this)
     : options.inverse(this);
 });
 
-Handlebars.registerHelper("normalizeQuery", function(parameters) {
-  return new Handlebars.SafeString(normalizeQuery(parameters));
+Handlebars.registerHelper("withParamQuery", function(parameters, options) {
+  return hasParamType(parameters, "query")
+    ? options.fn(this)
+    : options.inverse(this);
 });
 
 Handlebars.registerHelper("withParamHeader", function(parameters, options) {

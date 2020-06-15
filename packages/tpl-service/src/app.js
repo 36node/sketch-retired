@@ -1,3 +1,5 @@
+// @ts-check
+
 import fs from "fs";
 import path from "path";
 
@@ -10,7 +12,6 @@ import koaLogger from "koa-logger";
 import koaPinoLogger from "koa-pino-logger";
 import jwt from "koa-jwt";
 import Router from "koa-tree-router";
-import { queryNormalizr } from "@36node/query-normalizr";
 import health from "@36node/koa-health";
 import openapi from "@36node/koa-openapi";
 
@@ -51,7 +52,6 @@ app
   .use(openapi({ url: `${BASE}/openapi.yml`, file: openapiFile }))
   .use(jwt({ secret: publicKey }))
   .use(body())
-  .use(queryNormalizr())
   .use(compress({ threshold: 2048 }))
   .use(router.routes());
 

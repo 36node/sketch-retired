@@ -1,35 +1,18 @@
-/// <reference path='./def.d.ts' />
-import createError from "http-errors";
+//@ts-check
+
+import * as schemas from "./{{name}}.schema.js";
+import { validate } from "../middlewares";
 
 export default class API {
   /**
    * Bind service to router
    *
-   * @param {Object} router the koa compatible router
+   * @param {import("koa-tree-router")} router the koa compatible router
+   * @returns {API} this
    */
   bind(router) {
   {{#each operations}}
-    const {{name}} = async ctx => {
-      {{#each parameters}}
-      {{#if required}}
-      {{#is in "path"}}
-      if (!ctx.params.{{name}}) throw createError(400, "{{name}} in {{in}} is required.");
-      {{/is}}
-
-      {{#is in "query"}}
-      if (!ctx.query.{{name}}) throw createError(400, "{{name}} in {{in}} is required.");
-      {{/is}}
-
-      {{#is in "header"}}
-      if (!ctx.headers["{{name}}"]) throw createError(400, "{{name}} in {{in}} is required.");
-      {{/is}}
-
-      {{#is in "cookie"}}
-      if (!ctx.cookies.get({{name}}))  throw createError(400, "{{name}} in {{in}} is required.")
-      {{/is}}
-      {{/if}}
-      {{/each}}
-
+    const {{decapitalize name}} = async ctx => {
       {{#or parameters requestBody}}
       const req = {
         {{#each parameters}}
@@ -38,13 +21,13 @@ export default class API {
         {{/is}}
         {{/each}}
         {{#withParamQuery parameters}}
-        query: ctx.normalizedQuery || {},
+        query: ctx.query,
         {{/withParamQuery}}
         {{#withParamHeader parameters}}
         headers: {
           {{#each parameters}}
           {{#is in "header"}}
-          {{name}}: ctx.headers["{{name}}"]),
+          {{name}}: ctx.headers["{{name}}"],
           {{/is}}
           {{/each}}
         },
@@ -53,40 +36,37 @@ export default class API {
         cookies: {
           {{#each parameters}}
           {{#is in "cookie"}}
-          {{name}}: ctx.cookies.get({{name}}),
+          {{name}}: ctx.cookies.get({{name}},
           {{/is}}
           {{/each}}
         },
         {{/withParamCookie}}
         {{#with requestBody}}
         body: ctx.request.body,
-        {{/with}}
+        {{/with}} 
       };
-
       {{/or}}
-      {{#or response.content response.headers}}const res = {{/or}}await this.{{name}}({{#or parameters requestBody}}req,{{/or}}ctx);
-
+      {{#or response.content response.headers}}const res = {{/or}}await this.{{decapitalize name}}({{#or parameters requestBody}}req,{{/or}}ctx);
       {{#if response.content}}
-      if (!res.body) throw createError(500, "should have body in response");
-
+      ctx.body = res.content;
       {{/if}}
       {{#each response.headers}}
-      if (!res.headers || res.headers.{{camelcase @key}} === undefined) throw createError(500, "should have header {{@key}} in response");
-
-      {{/each}}
-      {{#if response.content}}
-      ctx.body = res.body;
-      {{/if}}
-      {{#each response.headers}}
-      ctx.set("{{@key}}", res.headers.{{camelcase @key}});
+      ctx.set("{{@key}}", res.headers["{{@key}}"]);
       {{/each}}
       ctx.status = {{response.status}};
     };
 
   {{/each}}
   {{#each operations}}
-    router.{{method}}("{{toRoute path}}", ...this.middlewares("{{name}}"), {{name}});
+    router.{{method}}(
+      "{{toRoute path}}",
+      validate({{#if requestSchema}}schemas.{{decapitalize name}}ReqSchema{{else}}null{{/if}}{{#if responseSchema}}, schemas.{{decapitalize name}}ResSchema{{/if}}),
+      ...this.middlewares("{{name}}"),
+      {{name}}
+    );
   {{/each}}
+
+    return this;
   }
 
   /**
@@ -96,8 +76,9 @@ export default class API {
   /**
    * Ability to inject some middlewares
    *
+   * @abstract
    * @param {string} operation name of operation
-   * @returns {function[]} middlewares
+   * @returns {Array<import("koa").Middleware>} middlewares
    */
   middlewares(operation) {
     return [];
@@ -109,14 +90,14 @@ export default class API {
    *
    * @abstract
    {{#or parameters requestBody}}
-   * @param { {{~capitalize name}}Request} req {{name}} request
+   * @param {import("../api/{{../name}}").{{~capitalize name}}Request} req {{name}} request
    {{/or}}
    * @param {import("koa").Context} ctx koa context
    {{#or response.content response.headers}}
-   * @returns { {{~capitalize name}}Response} {{response.description}}
+   * @returns {Promise<import("../api/{{../name}}").{{~capitalize name}}Response>} {{response.description}}
    {{/or}}
    */
-  {{name}}({{#or parameters requestBody}}req,{{/or}}ctx) {
+  {{decapitalize name}}({{#or parameters requestBody}}req,{{/or}}ctx) {
     throw new Error("not implemented");
   }
 {{/each}}

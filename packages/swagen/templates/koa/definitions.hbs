@@ -1,62 +1,30 @@
-{{#each api}}
+import { Context, Middleware } from "koa";
+import Router from "koa-tree-router";
+
 {{#each operations}}
-{{#or parameters requestBody}}
-interface {{capitalize name}}Request  {
-  {{#each parameters}}
-  {{#is in "path"}}
-  {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
-  {{/is}}
-  {{/each}}
-  {{#withParamQuery parameters}}
-  {{normalizeQuery parameters}}
-  {{/withParamQuery}}
-  {{#withParamHeader parameters}}
-  headers: {
-    {{#each parameters}}
-    {{#is in "header"}}
-    {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
-    {{/is}}
-    {{/each}}
-  };
-  {{/withParamHeader}}
-  {{#withParamCookie parameters}}
-  cookies: {
-    {{#each parameters}}
-    {{#is in "cookie"}}
-    {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
-    {{/is}}
-    {{/each}}
-  };
-  {{/withParamCookie}}
-  {{#with requestBody}}
-  body: {{{schemaType content.schema}}};
-  {{/with}}
-};
-
-{{/or}}
-{{#or response.content response.headers}}
-interface {{capitalize name}}Response  {
-  {{#with response.content}}
-  body: {{{schemaType schema}}};
-  {{/with}}
-  {{#with response.headers}}
-  headers: {
-    {{#each this}}
-    {{camelcase @key}}: {{{schemaType schema}}};
-    {{/each}}
-  };
-  {{/with}}
-}
-
-{{/or}}
-{{/each}}
-{{/each}}
-{{#each components.schemas}}
-{{#if properties}}
-interface {{capitalize @key}}  {
-  {{#each properties}}
-  {{@key}}: {{{schemaType this}}};
-  {{/each}}
-}
+{{#if requestDef}}
+{{{requestDef}}};
+{{/if}}
+{{#if responseDef}}
+{{{responseDef}}};
 {{/if}}
 {{/each}}
+
+declare global {
+  {{#each operations}}
+  {{#if requestDef}}
+  type {{{capitalize name}}}Request = {{{capitalize name}}}Request;
+  {{/if}}
+  {{#if responseDef}}
+  type {{{capitalize name}}}Response = {{{capitalize name}}}Response;
+  {{/if}}
+  {{/each}}
+}
+
+export default class API {
+  middleware(operation: string): Array<Middleware>;
+  bind(router: Router): API;
+  {{#each operations}}
+  {{name}}({{#if requestDef}}req: {{capitalize name}}Request, {{/if}}ctx: Context): {{#if responseDef}}Promise<{{capitalize name}}Response>{{else}}void{{/if}};
+  {{/each}}
+}

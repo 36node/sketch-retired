@@ -1,0 +1,8 @@
+{{#each operations}}
+{{#if requestSchema}}
+export const {{decapitalize name}}ReqSchema = {{{JSONstringify requestSchema}}};
+{{/if}}
+{{#if responseSchema}}
+export const {{decapitalize name}}ResSchema = {{{JSONstringify responseSchema}}};
+{{/if}}
+{{/each}}

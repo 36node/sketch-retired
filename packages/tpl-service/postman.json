@@ -1,0 +1,739 @@
+{
+  "item": [
+    {
+      "id": "2b1b0b46-4da2-4d9d-ad09-04c49589e37f",
+      "name": "pet",
+      "item": [
+        {
+          "id": "00926086-8644-49f4-87cf-f148a86a3596",
+          "response": [
+            {
+              "id": "3b932e15-32fa-46e0-92ae-56829d803480",
+              "header": [
+                {
+                  "key": "Content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Total-Count",
+                  "value": "unset"
+                }
+              ],
+              "cookie": [],
+              "name": "Response_200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pets"
+                  ],
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "age_gt",
+                      "value": ""
+                    },
+                    {
+                      "key": "_select",
+                      "value": ""
+                    },
+                    {
+                      "key": "tag",
+                      "value": ""
+                    },
+                    {
+                      "key": "age_gt",
+                      "value": ""
+                    },
+                    {
+                      "key": "birthAt_gt",
+                      "value": ""
+                    },
+                    {
+                      "key": "birthAt_lt",
+                      "value": ""
+                    },
+                    {
+                      "key": "grade_gt",
+                      "value": ""
+                    },
+                    {
+                      "key": "grade_lt",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [],
+                  "raw": "{{host}}/pets?_limit=10&tag=&age_gt="
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "method": "GET",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "type": "string",
+                      "value": "{{token}}",
+                      "key": "token"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                }
+              },
+              "code": 200,
+              "status": "A paged array of pets",
+              "_postman_previewlanguage": "Text",
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"aa\",\n    \"tag\": \"red\",\n    \"age\": 3\n  },\n  {\n    \"id\": 2,\n    \"name\": \"bb\",\n    \"tag\": \"happy\",\n    \"age\": 5\n  },\n  {\n    \"id\": 3,\n    \"name\": \"cc\",\n    \"tag\": \"husky\",\n    \"age\": 6\n  }\n]\n"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61c94f53-40ee-43b5-a084-00c4609579c6",
+                "type": "text/javascript",
+                "exec": [
+                  "var Ajv = require('ajv');",
+                  "var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: [\"int32\"] });",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const resSchema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"type\":\"array\",\"items\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}},\"headers\":{\"type\":\"object\",\"required\":[\"X-Total-Count\"],\"properties\":{\"X-Total-Count\":{\"type\":\"integer\"}}}}};",
+                  "pm.test(\"Json body schema test\", function(){",
+                  "  const res = {",
+                  "    content: pm.response.json(),",
+                  "    headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
+                  "  }",
+                  "  pm.expect(ajv.validate(schema, data)).to.be.true;",
+                  "})",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": {
+              "path": [
+                "pets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "_limit",
+                  "value": "3"
+                },
+                {
+                  "key": "tag",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "age_gt",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "_select",
+                  "value": ""
+                },
+                {
+                  "key": "tag",
+                  "value": ""
+                },
+                {
+                  "key": "age_gt",
+                  "value": ""
+                },
+                {
+                  "key": "birthAt_gt",
+                  "value": ""
+                },
+                {
+                  "key": "birthAt_lt",
+                  "value": ""
+                },
+                {
+                  "key": "grade_gt",
+                  "value": ""
+                },
+                {
+                  "key": "grade_lt",
+                  "value": ""
+                }
+              ],
+              "variable": [],
+              "raw": "{{baseUrl}}/pets?_limit=3"
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "type": "string",
+                  "value": "{{token}}",
+                  "key": "token"
+                }
+              ]
+            }
+          },
+          "name": "List all pets",
+          "description": "List all pets"
+        },
+        {
+          "id": "3fcf9f58-e331-4992-af8a-593456af9384",
+          "response": [
+            {
+              "id": "50a37c9a-8490-4115-ba15-6a5ebe23cd11",
+              "header": [
+                {
+                  "key": "Content-type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "name": "Response_201",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pets"
+                  ],
+                  "host": "{{baseUrl}}",
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "type": "string",
+                      "value": "{{token}}",
+                      "key": "token"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\"\n}"
+                }
+              },
+              "code": 201,
+              "status": "The Pet created"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9e0f2523-7342-4120-88b5-ed1ee1874eac",
+                "type": "text/javascript",
+                "exec": [
+                  "var Ajv = require('ajv');",
+                  "var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: [\"int32\"] });",
+                  "",
+                  "pm.test(\"Status code is 201\", function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "const resSchema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}}};",
+                  "pm.test(\"Json body schema test\", function(){",
+                  "  const res = {",
+                  "    content: pm.response.json(),",
+                  "    headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
+                  "  }",
+                  "  pm.expect(ajv.validate(schema, data)).to.be.true;",
+                  "})",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": {
+              "path": [
+                "pets"
+              ],
+              "host": "{{baseUrl}}",
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "type": "string",
+                  "value": "{{token}}",
+                  "key": "token"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\"\n}"
+            }
+          },
+          "name": "Create a pet",
+          "description": "Create a pet"
+        },
+        {
+          "id": "43b6d8c8-1fa9-49eb-81e9-fe29de9bedeb",
+          "response": [
+            {
+              "id": "8c93c108-bf14-493d-a13d-e4449edf764e",
+              "header": [
+                {
+                  "key": "Content-type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "name": "Response_200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pets/:petId"
+                  ],
+                  "host": "{{baseUrl}}",
+                  "query": [],
+                  "variable": [
+                    {
+                      "id": "petId",
+                      "type": "string",
+                      "value": "petId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "type": "string",
+                      "value": "{{token}}",
+                      "key": "token"
+                    }
+                  ]
+                }
+              },
+              "code": 200,
+              "status": "Expected response to a valid request"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6481d2e3-fe3a-450e-b955-b4ad30104ae0",
+                "type": "text/javascript",
+                "exec": [
+                  "var Ajv = require('ajv');",
+                  "var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: [\"int32\"] });",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const resSchema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}}};",
+                  "pm.test(\"Json body schema test\", function(){",
+                  "  const res = {",
+                  "    content: pm.response.json(),",
+                  "    headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
+                  "  }",
+                  "  pm.expect(ajv.validate(schema, data)).to.be.true;",
+                  "})",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": {
+              "path": [
+                "pets/:petId"
+              ],
+              "host": "{{baseUrl}}",
+              "query": [],
+              "variable": [
+                {
+                  "id": "petId",
+                  "type": "string",
+                  "value": "petId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "type": "string",
+                  "value": "{{token}}",
+                  "key": "token"
+                }
+              ]
+            }
+          },
+          "name": "Find pet by id",
+          "description": "Find pet by id"
+        },
+        {
+          "id": "95afc268-a867-4c15-a220-28b29e34d299",
+          "response": [
+            {
+              "id": "468a5b72-c4cb-4498-aaa8-b5b987782bc1",
+              "header": [
+                {
+                  "key": "Content-type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "name": "Response_200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pets/:petId"
+                  ],
+                  "host": "{{baseUrl}}",
+                  "query": [],
+                  "variable": [
+                    {
+                      "id": "petId",
+                      "type": "string",
+                      "value": "petId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "type": "string",
+                      "value": "{{token}}",
+                      "key": "token"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\"\n}"
+                }
+              },
+              "code": 200,
+              "status": "The pet"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "95914efd-0005-47f7-a8a2-b863b45c1fab",
+                "type": "text/javascript",
+                "exec": [
+                  "var Ajv = require('ajv');",
+                  "var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: [\"int32\"] });",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const resSchema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}}};",
+                  "pm.test(\"Json body schema test\", function(){",
+                  "  const res = {",
+                  "    content: pm.response.json(),",
+                  "    headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
+                  "  }",
+                  "  pm.expect(ajv.validate(schema, data)).to.be.true;",
+                  "})",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": {
+              "path": [
+                "pets/:petId"
+              ],
+              "host": "{{baseUrl}}",
+              "query": [],
+              "variable": [
+                {
+                  "id": "petId",
+                  "type": "string",
+                  "value": "petId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "type": "string",
+                  "value": "{{token}}",
+                  "key": "token"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\"\n}"
+            }
+          },
+          "name": "Update pet",
+          "description": "Update pet"
+        },
+        {
+          "id": "af9c825f-830e-4bed-ade8-e0cde4790503",
+          "response": [
+            {
+              "id": "33ca7f81-88e1-418e-a882-5260ce7c6717",
+              "header": [],
+              "cookie": [],
+              "name": "Response_204",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pets/:petId"
+                  ],
+                  "host": "{{baseUrl}}",
+                  "query": [],
+                  "variable": [
+                    {
+                      "id": "petId",
+                      "type": "string",
+                      "value": "petId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "type": "string",
+                      "value": "{{token}}",
+                      "key": "token"
+                    }
+                  ]
+                }
+              },
+              "code": 204,
+              "status": "pet deleted"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5d8b8f1c-9d5a-4eca-9824-8d8ca8e212fb",
+                "type": "text/javascript",
+                "exec": [
+                  "var Ajv = require('ajv');",
+                  "var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: [\"int32\"] });",
+                  "",
+                  "pm.test(\"Status code is 204\", function () {",
+                  "  pm.response.to.have.status(204);",
+                  "});",
+                  "",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": {
+              "path": [
+                "pets/:petId"
+              ],
+              "host": "{{baseUrl}}",
+              "query": [],
+              "variable": [
+                {
+                  "id": "petId",
+                  "type": "string",
+                  "value": "petId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "type": "string",
+                  "value": "{{token}}",
+                  "key": "token"
+                }
+              ]
+            }
+          },
+          "name": "deletePet",
+          "description": "deletePet"
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "8c6cff73-b837-4f91-bfcf-52ea7d6872bd",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "09de23be-a766-4d39-adb4-05327763f9b4",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "age",
+      "id": "062c5bf4-bbbf-4626-8a9b-796ba1459817",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "name",
+      "id": "d2cb2690-0ad5-4567-ac35-c127f9b1ce00",
+      "value": "tom",
+      "type": "string"
+    },
+    {
+      "key": "tag",
+      "id": "8e33287e-2580-4fb0-ac13-8ebc52b6425f",
+      "value": "cute",
+      "type": "string"
+    },
+    {
+      "key": "owner",
+      "id": "2e28707f-652a-4210-be85-f02fa6580d6c",
+      "value": "r",
+      "type": "string"
+    },
+    {
+      "key": "category",
+      "id": "538b8dad-4a90-402f-9bd4-de07377bd7bb",
+      "value": "DOG",
+      "type": "string"
+    }
+  ],
+  "info": {
+    "_postman_id": "3211375b-6abe-4eb2-b029-64f89e9a14a9",
+    "name": "Swagger Petstore",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  }
+}

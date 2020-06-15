@@ -4,7 +4,7 @@ const program = require("commander");
 const path = require("path");
 
 const pkg = require("../package.json");
-const { koa, sdk, postman, mock } = require("../dist");
+const { koa, sdk, postman } = require("../dist");
 
 program.version(pkg.version);
 
@@ -38,21 +38,6 @@ program
   .action((yamlFile, targetFile) => {
     try {
       postman({ yamlFile, targetFile, templatePath });
-    } catch (error) {
-      console.error(error);
-    }
-  });
-
-program
-  .command("mock [yamlFile] [dist]")
-  .option(
-    "-c, --count [count]",
-    "Add count of mock data to generate, default is 10"
-  )
-  .description("Transform openapi file to json-server data file")
-  .action((yamlFile, dist, { count }) => {
-    try {
-      mock({ yamlFile, dist, count });
     } catch (error) {
       console.error(error);
     }

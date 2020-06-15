@@ -105,12 +105,10 @@ Add `_like` to filter (RegExp supported)
 GET /posts?title_like=server
 ```
 
-`_group` support groupBy some field
-
-**suggestion**: Do not mix analytic api and business api
+`_not` means not like
 
 ```curl
-GET /statistics/post?_group=author
+GET /statistics/post?title_not=server
 ```
 
 ### Array wildcard
@@ -149,32 +147,41 @@ _A projection must be either inclusive or exclusive._
 _In other words, you must either list the fields to include (which excludes all others),_
 _or list the fields to exclude (which implies all other fields are included)._
 
-## Query In Our Service
+### Group
 
-```js
+support groupBy some field
+
+**suggestion**: Do not mix analytic api and business api
+
+```curl
+GET /statistics/post?_group=author
+```
+
+### Populate
+
+support to populate reference
+
+```curl
+GET /statistics/post?_populate=author
+```
+
+without populate
+
+```
 {
-  limit: 10,
-  offset: 10,
-  sort: "-createdBy", // if array should be: ["-createdBy", "views"]
-  select: ["views", "body"], // if single should be: "views"
-  group: ["ns", "author"], // group by
-  filter: {
-    age: {
-      $lt: 10,  // age_lt
-      $gt: 5,   // age_gt
-    },
-    tag: {
-      $ne: "pretty",  // tag_ne
-    },
-    name: "sherry",
-    title: {
-      $regex: /^hello .* world$/i,  // like
-    },
-    assignees: "*",
-    followers: "none",
-    q: "hello"
-  }
+  title: "a",
+  author: "12345",
 }
 ```
 
-- 其中非 `_` 开头的字段都将放到 filter property 下面。
+with populate
+
+```
+{
+  title: "a",
+  author: {
+    id: "12345",
+    name: "aaa",
+  },
+}
+```

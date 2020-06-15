@@ -1,6 +1,6 @@
 openapi: "3.0.0"
 info:
-  version: 0.1.0
+  version: v0
   title: Petstore Service
   license:
     name: MIT
@@ -26,6 +26,7 @@ paths:
             type: integer
             format: int32
             default: 10
+            maximum: 1000
         - name: _offset
           in: query
           description: How many items to escape
@@ -45,17 +46,9 @@ paths:
           description: Fields to select
           required: false
           schema:
-            type: string
-        - name: _group
-          in: query
-          description: Dimensions to group
-          required: false
-          schema:
-            oneOf:
-              - type: string
-              - type: array
-                items:
-                  type: string
+            type: array
+            items:
+              type: string
         - name: tag
           in: query
           description: Tag of pet
@@ -198,6 +191,7 @@ paths:
           description: The id of the pet to retrieve
           schema:
             type: string
+            pattern: "[a-f\\d]{24}"
       responses:
         "200":
           description: Expected response to a valid request
@@ -222,7 +216,7 @@ paths:
         "500":
           $ref: "#/components/responses/InternalError"
 
-    patch:
+    put:
       summary: Update pet
       operationId: updatePet
       tags:
@@ -234,6 +228,7 @@ paths:
           description: The id of pet
           schema:
             type: string
+            pattern: "[a-f\\d]{24}"
       requestBody:
         description: Pet to be updated
         required: true
@@ -267,6 +262,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: "[a-f\\d]{24}"
       responses:
         "204":
           description: pet deleted
@@ -310,6 +306,7 @@ components:
       properties:
         name:
           type: string
+          description: pet's name
         tag:
           type: string
           enum: ["DOG", "CAT"]
@@ -326,28 +323,48 @@ components:
     Pet:
       allOf:
         - $ref: "#/components/schemas/PetDoc"
-        - type: object
-          required:
-            - id
-          properties:
-            id:
-              type: string
+        - $ref: "#/components/schemas/MongoDefault"
 
-    PetOrDoc:
-      oneOf:
-        - $ref: "#/components/schemas/PetDoc"
-        - $ref: "#/components/schemas/Pet"
+    MongoDefault:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+        updateAt:
+          type: string
+          format: time
+        updateBy:
+          type: string
+        createAt:
+          type: string
+          format: time
+        createBy:
+          type: string
 
     Err:
       type: object
+      required:
+        - name
+        - message
       properties:
         code:
+          type: array
+          items:
+            type: string
+        keyword:
           type: string
         message:
+          type: number
+        name:
           type: string
-      required:
-        - code
-        - message
+        path:
+          type: string
+        type:
+          type: string
+        value:
+          type: string
 
   securitySchemes:
     bearerAuth: # arbitrary name for the security scheme

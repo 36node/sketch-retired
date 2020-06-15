@@ -4,4 +4,5 @@ module.exports = {
   runner: "jest-runner-newman",
   globalSetup: "./jest.setup.js",
   globalTeardown: "./jest.teardown.js",
+  testTimeout: 10000,
 };

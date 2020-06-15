@@ -2,7 +2,7 @@
 
 [![version][0]][1] [![downloads][2]][3]
 
-这里 query-normalizr 的作用: 将 url 中的 query 规则化成方便 sdk 和 service 层调用的数据格式。
+这里 query-normalizr 的作用: 将经过类型转换的 koa query 规则化成对应数据库的 query。
 
 ## Install
 
@@ -13,110 +13,54 @@ yarn add @36node/query-normalizr
 ## Usage
 
 ```js
-import { queryNormalizr } from "@36node/query-normalizr";
+import { toMongooseQuery } from "@36node/query-normalizr";
 
-// koa app
-app.use(normalizr(queryNormalizr));
-```
-
-## API
-
-### middleware
-
-```js
-normalizr(options);
-
-// return koa middleware
-```
-
-### normalize
-
-```js
-import { normalize } from "@36node/query-normalizr";
-import qs from "query-string";
-
-const queryStr =
-  " _expand=department&_group=type&_limit=10&_offset=0&_populate=user&_select=name&_select=age&_sort=updatedAt&_sort=-createdAt&age_gt=10&age_lt=20&level_gte=10&level_lte=20&plate_like=沪A&plate_like=沪B&tag_ne=pretty&title_like=hello&type=test1&type=test2";
-
-normalize(qs.parse(queryStr));
-
+console.log(rawQuery);
 /*
-return {
-  limit: 10,
-  offset: 0,
-  sort: ["updatedAt", "-createdAt"],
-  populate: "user",
-  select: ["name", "age"],
-  group: "type",
-  filter: {
-    age: {
-      $gt: "10",
-      $lt: "20",
-    },
-    level: {
-      $gte: "10",
-      $lte: "20",
-    },
-    plate: {
-      $regex: [/沪A/i, /沪B/i],
-    },
-    tag: {
-      $ne: "pretty",
-    },
-    title: {
-      $regex: /hello/i,
-    },
-    type: ["test1", "test2"]
-  },
-  _expand: "department",
+{
+  _limit: 10,
+  _offset: 10,
+  _sort: "-createdBy",
+  _populate: "user",
+  _select: ["views", "body"],
+  _group: ["ns", "author"],
+  age_lt: 10,
+  age_gt: 5,
+  tag_ne: "pretty",
+  name: "sherry",
+  title_like: "hello",
+  assignees: "*",
+  followers: "none",
+  q: hello"
 };
 */
-```
-
-### denormalize
-
-```js
-import { denormalize } from "@36node/query-normalizr";
-import qs from "query-string";
-
-const queryObj = {
+const mQuery = toMongooseQuery(rawQuery);
+console.log(mQuery);
+/*
+{
   limit: 10,
-  offset: 0,
-  sort: ["updatedAt", "-createdAt"],
-  populate: "user",
-  select: ["name", "age"],
-  group: "type",
+  offset: 10,
+  sort: "-createdBy", // if array should be: ["-createdBy", "views"]
+  select: ["views", "body"], // if single should be: "views"
+  group: ["ns", "author"], // group by
+  populate: "author",
   filter: {
     age: {
-      $gt: "10",
-      $lt: "20",
-    },
-    level: {
-      $gte: "10",
-      $lte: "20",
-    },
-    plate: {
-      $regex: [/沪A/i, /沪B/i],
+      $lt: 10,  // age_lt
+      $gt: 5,   // age_gt
     },
     tag: {
-      $ne: "pretty",
+      $ne: "pretty",  // tag_ne
     },
-    title: {
-      $regex: /hello/i,
-    },
-    type: ["test1", "test2"],
-  },
-  _expand: "department",
-};
-
-qs.stringfy(denormalize(queryObj));
-
-// return " _expand=department&_group=type&_limit=10&_offset=0&_populate=user&_select=name&_select=age&_sort=updatedAt&_sort=-createdAt&age_gt=10&age_lt=20&assignees=%2A&followers=none&level_gte=10&level_lte=20&plate_like=%E6%B2%AAA&plate_like=%E6%B2%AAB&q=hello&tag_ne=pretty&title_like=hello&type=test1&type=test2"
+    name: "sherry",
+    title: /hello/i,  // like
+    assignees: { $ne: [] },
+    followers: { $eq: [] },
+    $text: { $search: "hello" }
+  }
+}
+*/
 ```
-
-## What is query normalizr
-
-![image](https://user-images.githubusercontent.com/4343458/53739979-0c2d6f00-3ece-11e9-9c32-9516ecea9c25.png)
 
 ### Query in route (QIR)
 

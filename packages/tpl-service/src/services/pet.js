@@ -1,44 +1,65 @@
+// @ts-check
+
 import { pick } from "lodash";
+import Debug from "debug";
+import createError from "http-errors";
+import { toMongooseQuery } from "@36node/query-normalizr";
 
 import API from "../api/pet";
 import { PetModel } from "../models";
 
+const debug = Debug("store:service:pet");
+
+/**
+ * 根据 petId 加载 pet
+ *
+ * @param {string} petId pet's id
+ * @returns {Promise<import("../models/pet").PetDocument>}
+ */
+const loadPet = async petId => {
+  const pet = await PetModel.get(petId);
+  if (!pet) {
+    throw createError(404, `pet ${petId} not found`, {
+      path: "petId",
+      value: petId,
+    });
+  }
+  return pet;
+};
+
 export class Service extends API {
+  _middlewares = {
+    showPetById: [],
+  };
+
   /**
    * Ability to inject some middlewares
    *
+   * @override
    * @param {string} operation name of operation
-   * @returns {function[]} middlewares
+   * @returns {Array<import("koa").Middleware>} middlewares
    */
   middlewares(operation) {
-    const load = async (ctx, next) => {
-      let { petId } = ctx.params;
-      if (petId) {
-        ctx.state.pet = await PetModel.get(petId);
-        if (!ctx.state.pet) {
-          throw ctx.throw(404, `pet ${petId} not found.`);
-        }
-      }
-      await next();
-    };
-    return [load];
+    return this._middlewares[operation] || [];
   }
 
   /**
    * List all pets
    *
-   * @param {ListPetsRequest} req listPets request
-   * @param {import("koa").Context} ctx koa context
-   * @returns {ListPetsResponse} A paged array of pets
+   * @override
+   * @param {import("../api/pet").ListPetsRequest} req listPets request
+   * @param {import("koa").Context} [ctx] koa context
+   * @returns {Promise<import("../api/pet").ListPetsResponse>} A paged array of pets
    */
   async listPets(req, ctx) {
-    const { limit = 10, offset = 0, sort, filter } = req.query;
-    const result = await PetModel.list({ limit, offset, sort, filter });
+    const query = toMongooseQuery(ctx.query);
+    const docs = await PetModel.list(query);
+    const count = await PetModel.count(query.filter);
 
     return {
-      body: result.docs,
+      content: docs.map(o => o.toJSON()),
       headers: {
-        xTotalCount: result.total,
+        "X-Total-Count": count,
       },
     };
   }
@@ -46,49 +67,57 @@ export class Service extends API {
   /**
    * Create a pet
    *
-   * @param {CreatePetsRequest} req createPets request
-   * @param {import("koa").Context} ctx koa context
-   * @returns {CreatePetsResponse} The Pet created
+   * @override
+   * @param {import("../api/pet").CreatePetRequest} req createPet request
+   * @param {import("koa").Context} [ctx] koa context
+   * @returns {Promise<import("../api/pet").CreatePetResponse>} The Pet created
    */
   async createPet(req, ctx) {
     const { body } = req;
+    debug("crete pet with body %o", body);
     const pet = await PetModel.create(body);
-    return { body: pet };
+    debug("creted pet %o", pet);
+    return { content: pet.toJSON() };
   }
 
   /**
    * Find pet by id
    *
-   * @param {ShowPetByIdRequest} req showPetById request
+   * @override
+   * @param {import("../api/pet").ShowPetByIdRequest} req showPetById request
    * @param {import("koa").Context} ctx koa context
-   * @returns {ShowPetByIdResponse} Expected response to a valid request
+   * @returns {Promise<import("../api/pet").ShowPetByIdResponse>} Expected response to a valid request
    */
   async showPetById(req, ctx) {
-    return { body: ctx.state.pet };
-  }
-
-  /**t
-   * Update pet
-   *
-   * @param {UpdatePetRequest} req updatePet request
-   * @param {import("koa").Context} ctx koa context
-   * @returns {UpdatePetResponse} The pet
-   */
-  async updatePet(req, ctx) {
-    const pet = ctx.state.pet;
-    const doc = pick(req.body, ["name", "tag", "age"]);
-    await pet.set(doc).save();
-    return { body: pet };
+    const pet = await loadPet(req.petId);
+    return { content: pet.toJSON() };
   }
 
   /**
-   * Delete pet by id
+   * Update pet
    *
-   * @param {DeletePetRequest} req deletePet request
+   * @override
+   * @param {import("../api/pet").UpdatePetRequest} req updatePet request
    * @param {import("koa").Context} ctx koa context
+   * @returns {Promise<import("../api/pet").UpdatePetResponse>} The pet
+   */
+  async updatePet(req, ctx) {
+    const pet = await loadPet(req.petId);
+    const doc = pick(req.body, ["name", "tag", "age"]);
+    await pet.set(doc).save();
+    return { content: pet.toJSON() };
+  }
+
+  /**
+   * Delete pet
+   *
+   * @override
+   * @param {import("../api/pet").DeletePetRequest} req deletePet request
+   * @param {import("koa").Context} [ctx] koa context
    */
   async deletePet(req, ctx) {
-    await ctx.state.pet.delete();
+    const pet = await loadPet(req.petId);
+    await pet.delete();
   }
 }
 

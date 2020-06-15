@@ -1,41 +1,80 @@
 import Ajv from "ajv";
 import { get } from "lodash";
+import Debug from "debug";
 
-const ajv = new Ajv({ coerceTypes: true });
+const debug = Debug("store:validate");
 
-const buildErr = (errors, data) => ({
+const ajv = new Ajv({
+  coerceTypes: "array",
+  // removeAdditional: "all", // strip any property not in openapi.yml
+  unknownFormats: ["int32"],
+});
+
+const buildAjvErr = (error = {}, data) => ({
   type: "validation",
-  details: errors.map(item => ({
-    keyword: item.keyword,
-    path: item.dataPath.replace(/^\./, ""),
-    message: item.message,
-    value: get(data, item.dataPath.replace(/^\./, "")),
-  })),
+  keyword: error.keyword,
+  path: error.dataPath.replace(/^\./, ""),
+  message: error.message,
+  value: get(data, error.dataPath.replace(/^\./, "")),
 });
 
 export default (reqSchema, resSchema) => {
   return async (ctx, next) => {
-    const validateReq = ajv.compile(reqSchema);
-    const req = {
-      ...ctx.params,
-      query: ctx.query, // before normalize
-      headers: ctx.headers,
-      cookies: ctx.cookies,
-    };
-    if (!validateReq(req)) {
-      ctx.throw(400, `request is invalid`, buildErr(validateReq.errors, req));
+    if (reqSchema) {
+      const validateReq = ajv.compile(reqSchema);
+      const req = {
+        ...ctx.params,
+        body: ctx.request.body,
+        query: ctx.query,
+        headers: ctx.headers,
+        cookies: ctx.cookies,
+      };
+      if (!validateReq(req)) {
+        ctx.throw(
+          400,
+          `request is invalid`,
+          buildAjvErr(validateReq.errors[0], req) // return first error
+        );
+      }
     }
 
     await next();
 
-    const validateRes = ajv.compile(resSchema);
-    const res = {
-      content: ctx.body,
-      headers: ctx.response.headers,
-      cookies: ctx.cookies,
-    };
-    if (!validateRes(res)) {
-      ctx.throw(500, `response is invalid`, buildErr(validateRes.errors, res));
+    if (resSchema) {
+      const validateRes = ajv.compile(lowerCaseHeaders(resSchema));
+      const res = {
+        content: ctx.body,
+        headers: ctx.response.headers,
+        cookies: ctx.cookies,
+      };
+      if (!validateRes(res)) {
+        ctx.throw(500, buildAjvErr(validateRes.errors[0], res));
+      }
     }
   };
 };
+
+/**
+ * 忽略 headers 大小写，schema 也转成小写
+ *
+ * @param {object} schema 原始 schema
+ * @returns {object} 供 ajv 校验使用的 schema
+ */
+function lowerCaseHeaders(schema) {
+  if (!schema.properties || !schema.properties.headers) return schema;
+  const headers = schema.properties.headers;
+  const properties = Object.keys(headers.properties).reduce(
+    (c, k) => ({ ...c, [k.toLowerCase()]: headers.properties[k] }),
+    {}
+  );
+  return {
+    ...schema,
+    properties: {
+      ...schema.properties,
+      headers: {
+        ...schema.headers,
+        properties,
+      },
+    },
+  };
+}
