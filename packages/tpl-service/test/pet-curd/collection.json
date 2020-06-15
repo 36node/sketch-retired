@@ -27,7 +27,7 @@
               "    headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
               "  }",
               "  pm.expect(ajv.validate(schema, data)).to.be.true;",
-              "  pm.globals.set(\"pet_curd_pet_id\", res.content.id);",
+              "  pm.environment.set(\"petId\", res.content.id);",
               "})",
               "",
               ""
@@ -197,7 +197,7 @@
           "variable": [
             {
               "key": "petId",
-              "value": "{{pet_curd_pet_id}}",
+              "value": "{{petId}}",
               "type": "string"
             }
           ]
@@ -467,7 +467,7 @@
           "variable": [
             {
               "key": "petId",
-              "value": "{{pet_curd_pet_id}}",
+              "value": "{{petId}}",
               "type": "string"
             }
           ]
@@ -548,7 +548,7 @@
               "",
               "var res = {",
               "  content: pm.response.json(),",
-              "  headers: headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
+              "  headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
               "}",
               "",
               "pm.test(\"Status code is 200\", function () {",
@@ -557,12 +557,12 @@
               "",
               "pm.test(\"result count should right\", function () {",
               "  pm.expect(res.content.length).to.equal(1);",
-              "  pm.expect(res.headers[\"X-Total-Count\"]).to.be.above(1);",
+              "  pm.expect(Number(res.headers[\"X-Total-Count\"])).to.be.above(1);",
               "})",
               "",
               "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"type\":\"array\",\"items\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}},\"headers\":{\"type\":\"object\",\"required\":[\"X-Total-Count\"],\"properties\":{\"X-Total-Count\":{\"type\":\"integer\"}}}}};",
               "pm.test(\"Json body schema test\", function(){",
-              "  pm.expect(ajv.validate(schema, data)).to.be.true;",
+              "  pm.expect(ajv.validate(schema, res)).to.be.true;",
               "})",
               ""
             ],
@@ -802,7 +802,7 @@
           "variable": [
             {
               "key": "petId",
-              "value": "{{pet_curd_pet_id}}",
+              "value": "{{petId}}",
               "type": "string"
             }
           ]
@@ -882,37 +882,37 @@
   ],
   "variable": [
     {
-      "id": "470ffa83-ac87-453f-991c-e68a7306b547",
+      "id": "18df5b99-1690-4d1a-adcf-6aaea9aafea4",
       "key": "age",
       "value": "1",
       "type": "string"
     },
     {
-      "id": "55bd9001-aad9-42d8-a3b5-c94e5a8a0b7b",
+      "id": "b222b061-e5a8-441e-98b1-1c1d3caaebb8",
       "key": "name",
       "value": "tom",
       "type": "string"
     },
     {
-      "id": "fb72167f-3daf-482b-98d4-f36560d6512f",
+      "id": "dbd978e5-5451-4349-ae91-c5541fae8940",
       "key": "tag",
       "value": "CAT",
       "type": "string"
     },
     {
-      "id": "dff0c607-eaf5-46d1-b97c-635b8f219534",
+      "id": "b532baa5-ef96-4e12-b894-eafac0b6776b",
       "key": "owner",
       "value": "r",
       "type": "string"
     },
     {
-      "id": "b9348ae7-60c1-4d80-bfe9-89a754ff0712",
+      "id": "296a6b9d-fea8-4aaa-8e49-ea3b25d3cfec",
       "key": "birthAt",
       "value": "2020-01-01",
       "type": "string"
     },
     {
-      "id": "a0b7d075-aedf-4d35-8eb0-d34f9211f422",
+      "id": "da2c0d5d-273a-4e3f-a9a7-32ee9d5387f8",
       "key": "grade",
       "value": "1",
       "type": "string"

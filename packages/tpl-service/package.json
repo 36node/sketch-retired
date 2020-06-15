@@ -34,7 +34,7 @@
     "lint": "sketch lint src",
     "release": "standard-version",
     "start": "sketch start",
-    "test": "jest test",
+    "test": "sketch test",
     "test:int": "sketch test --config test/jest.config.js"
   },
   "commitlint": {

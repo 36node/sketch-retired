@@ -1,6 +1,6 @@
 import mongooseHidden from "mongoose-hidden";
 
-export default function(schema, options) {
+export default function (schema, options) {
   // soft delete
   schema.add({ deleted: { type: Boolean, default: false, index: true } });
   schema.add({ deletedAt: { type: Date } });
@@ -25,25 +25,20 @@ class Base {
    * @returns {Promise<T>}
    */
   static get(id, populate = "") {
-    return this.findById(id)
-      .populate(populate)
-      .exec();
+    return this.findById(id).populate(populate).exec();
   }
 
   /**
    * Soft delete document by id
    * @param id id of document
+   * @returns {Promise<T>}
    */
-  static delete(id) {
-    return this.findByIdAndDelete(id).exec();
-  }
-
-  /**
-   * alias of delete
-   * @param id id of document
-   */
-  static remove(id) {
-    return this.delete(id);
+  static softDelete(id) {
+    return this.findByIdAndUpdate(
+      id,
+      { deletedAt: new Date(), deleted: true },
+      { new: true }
+    ).exec();
   }
 
   /**
@@ -109,20 +104,11 @@ class Base {
    *
    * @returns {Promise<T>}
    */
-  delete() {
+  softDelete() {
     return this.set({
       deletedAt: new Date(),
       deleted: true,
     }).save();
-  }
-
-  /**
-   * Alias of delete.
-   *
-   * @returns {Promise<T>}
-   */
-  remove() {
-    return this.delete();
   }
 
   /**

@@ -6,6 +6,7 @@ describe("Pet model", () => {
   beforeAll(async () => {
     mongoose.Promise = Promise;
     mongoose.connect(global.__MONGO_URI__, {
+      useUnifiedTopology: true,
       useCreateIndex: true,
       useNewUrlParser: true,
       useFindAndModify: false,
