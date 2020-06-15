@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1](https://github.com/36node/sketch/compare/@36node/sketch@0.15.0...@36node/sketch@0.15.1) (2020-06-15)
+
+
+### Bug Fixes
+
+* sdk build ([41cb06b](https://github.com/36node/sketch/commit/41cb06b))
+
+
+
+
+
 # [0.15.0](https://github.com/36node/sketch/compare/@36node/sketch@0.14.1...@36node/sketch@0.15.0) (2020-06-15)
 
 
