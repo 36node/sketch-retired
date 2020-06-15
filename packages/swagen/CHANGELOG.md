@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.1](https://github.com/36node/sketch/compare/@36node/swagen@0.16.0...@36node/swagen@0.16.1) (2020-06-15)
+
+
+### Bug Fixes
+
+* **swagen:** remove helper test ([a5798b7](https://github.com/36node/sketch/commit/a5798b7))
+
+
+
+
+
 # [0.16.0](https://github.com/36node/sketch/compare/@36node/swagen@0.15.2...@36node/swagen@0.16.0) (2020-06-15)
 
 
