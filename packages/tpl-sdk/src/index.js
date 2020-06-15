@@ -1,5 +1,4 @@
 import fetch from "@36node/fetch";
-import { denormalize } from "@36node/query-normalizr";
 
 export default class SDK {
   /**@type {string} **/
@@ -47,7 +46,7 @@ export default class SDK {
 
       return fetch(`${this.base}/pets`, {
         method: "GET",
-        query: denormalize(query),
+        query,
         headers: { Authorization: this.auth, ...headers },
       });
     },

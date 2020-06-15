@@ -1,4 +1,4 @@
-#!/usr/bin/env node --harmony -r esm
+#!/usr/bin/env node
 
 const program = require("commander");
 
