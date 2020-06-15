@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.2.9...@36node/mongoose-helper@0.3.0) (2020-06-15)
+
+
+### Features
+
+* **tpl-service:** swagger testable, close [#178](https://github.com/36node/sketch/issues/178) [#179](https://github.com/36node/sketch/issues/179) ([e376b55](https://github.com/36node/sketch/commit/e376b55))
+
+
+
+
+
 ## [0.2.9](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.2.8...@36node/mongoose-helper@0.2.9) (2019-10-30)
 
 

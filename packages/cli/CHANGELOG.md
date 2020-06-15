@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/36node/sketch/compare/@36node/sketch@0.13.33...@36node/sketch@0.14.0) (2020-06-15)
+
+
+### Features
+
+* **tpl-service:** swagger testable, close [#178](https://github.com/36node/sketch/issues/178) [#179](https://github.com/36node/sketch/issues/179) ([e376b55](https://github.com/36node/sketch/commit/e376b55))
+
+
+
+
+
 ## [0.13.33](https://github.com/36node/sketch/compare/@36node/sketch@0.13.32...@36node/sketch@0.13.33) (2020-05-29)
 
 **Note:** Version bump only for package @36node/sketch

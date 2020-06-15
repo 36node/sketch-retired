@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/36node/sketch/compare/@36node/swagen@0.15.2...@36node/swagen@0.16.0) (2020-06-15)
+
+
+### Features
+
+* **tpl-service:** swagger testable, close [#178](https://github.com/36node/sketch/issues/178) [#179](https://github.com/36node/sketch/issues/179) ([e376b55](https://github.com/36node/sketch/commit/e376b55))
+
+
+
+
+
 ## [0.15.2](https://github.com/36node/sketch/compare/@36node/swagen@0.15.1...@36node/swagen@0.15.2) (2020-05-29)
 
 

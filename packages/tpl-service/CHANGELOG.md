@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/36node/sketch/compare/@36node/template-service@0.13.42...@36node/template-service@0.14.0) (2020-06-15)
+
+
+### Features
+
+* **tpl-service:** add debug for validate, close [#178](https://github.com/36node/sketch/issues/178) [#179](https://github.com/36node/sketch/issues/179) ([6c6b28b](https://github.com/36node/sketch/commit/6c6b28b))
+* **tpl-service:** swagger testable, [#178](https://github.com/36node/sketch/issues/178) ([192c323](https://github.com/36node/sketch/commit/192c323))
+* **tpl-service:** swagger testable, close [#178](https://github.com/36node/sketch/issues/178) [#179](https://github.com/36node/sketch/issues/179) ([e376b55](https://github.com/36node/sketch/commit/e376b55))
+
+
+
+
+
 ## [0.13.42](https://github.com/36node/sketch/compare/@36node/template-service@0.13.41...@36node/template-service@0.13.42) (2020-05-29)
 
 **Note:** Version bump only for package @36node/template-service
