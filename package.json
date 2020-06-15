@@ -11,6 +11,7 @@
     "format": "prettier --trailing-comma es5 --write 'packages/**/*.js'",
     "lint": "eslint packages/*/src",
     "publish:all": "lerna publish from-git --registry https://registry.npmjs.org",
+    "prerelease": "yarn test",
     "release": "lerna version --conventional-commits --push -m 'chore(release): publish'",
     "test": "CI=true lerna run test -- --coverage"
   },
