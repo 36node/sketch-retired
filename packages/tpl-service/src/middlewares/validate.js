@@ -36,6 +36,7 @@ export default (reqSchema, resSchema) => {
           buildAjvErr(validateReq.errors[0], req) // return first error
         );
       }
+      debug("validate request success");
     }
 
     await next();
@@ -50,6 +51,7 @@ export default (reqSchema, resSchema) => {
       if (!validateRes(res)) {
         ctx.throw(500, buildAjvErr(validateRes.errors[0], res));
       }
+      debug("validate response success");
     }
   };
 };
