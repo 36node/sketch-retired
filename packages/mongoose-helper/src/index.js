@@ -1,6 +1,6 @@
 import mongooseHidden from "mongoose-hidden";
 
-export default function (schema, options) {
+export default function(schema, options) {
   // soft delete
   schema.add({ deleted: { type: Boolean, default: false, index: true } });
   schema.add({ deletedAt: { type: Date } });
@@ -25,7 +25,9 @@ class Base {
    * @returns {Promise<T>}
    */
   static get(id, populate = "") {
-    return this.findById(id).populate(populate).exec();
+    return this.findById(id)
+      .populate(populate)
+      .exec();
   }
 
   /**

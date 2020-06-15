@@ -16,7 +16,7 @@ const debug = Debug("store:service:pet");
  * @param {string} petId pet's id
  * @returns {Promise<import("../models/pet").PetDocument>}
  */
-const loadPet = async (petId) => {
+const loadPet = async petId => {
   const pet = await PetModel.get(petId);
   if (!pet) {
     throw createError(404, `pet ${petId} not found`, {
@@ -57,7 +57,7 @@ export class Service extends API {
     const count = await PetModel.count(query.filter);
 
     return {
-      content: docs.map((o) => o.toJSON()),
+      content: docs.map(o => o.toJSON()),
       headers: {
         "X-Total-Count": count,
       },
