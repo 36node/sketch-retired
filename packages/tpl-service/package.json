@@ -33,7 +33,9 @@
     "gen:postman": "swagen postman openapi.yml postman.json",
     "lint": "sketch lint src",
     "release": "standard-version",
+    "server": "bin/server.sj",
     "start": "sketch start",
+    "sync": "bin/sync.js",
     "test": "sketch test",
     "test:int": "sketch test --config test/jest.config.js"
   },

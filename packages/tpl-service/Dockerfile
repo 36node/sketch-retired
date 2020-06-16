@@ -1,4 +1,4 @@
-FROM node:10-alpine AS build
+FROM node:14-alpine AS build
 
 # install tools and deps for node-gyp
 RUN apk add --no-cache --virtual .gyp \
@@ -10,7 +10,7 @@ WORKDIR /build
 COPY package.json yarn.lock ./
 RUN yarn --prod
 
-FROM node:10-alpine
+FROM node:14-alpine
 ENV TZ Asia/Shanghai
 
 ENV DEBUG=off \
@@ -23,6 +23,4 @@ COPY --from=build /build/node_modules node_modules/
 COPY ./ ./
 
 # Start
-CMD dist/server.js
-# Start Job
-# CMD dist/job.js
+CMD "npm run server"

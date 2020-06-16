@@ -1,4 +1,5 @@
 #!/usr/bin/env node --harmony -r esm
+
 import Debug from "debug";
 import mongoose from "mongoose";
 

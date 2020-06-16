@@ -1,5 +1,6 @@
 *
-!dist
+!bin
+!src
 !ssl
 !openapi.yml
 !package.json

@@ -7,7 +7,6 @@ defaults: &defaults
     - image: mongo:4
 
 jobs:
-
   build:
     <<: *defaults
     steps:
@@ -17,9 +16,6 @@ jobs:
       - run:
           name: Install Dependences
           command: yarn install
-      - run:
-          name: Build Package
-          command: NODE_ENV=production yarn build
       - save_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
@@ -97,13 +93,13 @@ workflows:
   main:
     jobs:
       - build:
-          filters:  # required since `release` has tag filters AND requires `build`
+          filters: # required since `release` has tag filters AND requires `build`
             tags:
               only: /.*/
       - test:
           requires:
             - build
-          filters:  # required since `release` has tag filters AND requires `test`
+          filters: # required since `release` has tag filters AND requires `test`
             tags:
               only: /.*/
       - release:
@@ -115,10 +111,10 @@ workflows:
               only: /v.*/
             branches:
               ignore: /.*/
-  nightly:
+  weekly:
     triggers:
       - schedule:
-          cron: "20 20 * * *"
+          cron: "0 23 * * 6"
           filters:
             branches:
               only:
