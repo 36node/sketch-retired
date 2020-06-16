@@ -6,7 +6,6 @@ defaults: &defaults
     - image: circleci/node:10
 
 jobs:
-
   build:
     <<: *defaults
     steps:
@@ -91,10 +90,10 @@ workflows:
           filters:
             branches:
               only: master
-  nightly:
+  weekly:
     triggers:
       - schedule:
-          cron: "20 20 * * *"
+          cron: "0 23 * * 6"
           filters:
             branches:
               only:

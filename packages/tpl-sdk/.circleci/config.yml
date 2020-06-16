@@ -6,7 +6,6 @@ defaults: &defaults
     - image: circleci/node:10
 
 jobs:
-
   build:
     <<: *defaults
     steps:
@@ -85,13 +84,13 @@ workflows:
   main:
     jobs:
       - build:
-          filters:  # required since `release` has tag filters AND requires `build`
+          filters: # required since `release` has tag filters AND requires `build`
             tags:
               only: /.*/
       - test:
           requires:
             - build
-          filters:  # required since `release` has tag filters AND requires `test`
+          filters: # required since `release` has tag filters AND requires `test`
             tags:
               only: /.*/
       - release:
@@ -103,10 +102,10 @@ workflows:
               only: /v.*/
             branches:
               ignore: /.*/
-  nightly:
+  weekly:
     triggers:
       - schedule:
-          cron: "20 20 * * *"
+          cron: "0 23 * * 6"
           filters:
             branches:
               only:

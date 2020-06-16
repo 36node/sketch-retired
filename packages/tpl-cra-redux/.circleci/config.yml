@@ -90,33 +90,31 @@ workflows:
   main:
     jobs:
       - build:
-          filters:
-            branches:
-              only:
-                - master
-                - /.*/
+          filters: # required since `release` has tag filters AND requires `build`
             tags:
-              only:
-                - /v.*/
+              only: /.*/
       - test:
           requires:
             - build
-          filters:
-            branches:
-              only:
-                - master
-                - /.*/
+          filters: # required since `release` has tag filters AND requires `test`
             tags:
-              only:
-                - /v.*/
+              only: /.*/
       - release:
           context: production
           requires:
             - test
           filters:
+            tags:
+              only: /v.*/
+            branches:
+              ignore: /.*/
+  weekly:
+    triggers:
+      - schedule:
+          cron: "0 23 * * 6"
+          filters:
             branches:
               only:
                 - master
-            tags:
-              only:
-                - /v.*/
+    jobs:
+      - bump
