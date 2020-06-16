@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-module",
-  "version": "0.9.53",
+  "version": "0.9.54",
   "description": "A module boilerplate for nodejs and web.",
   "repository": {
     "url": "36node/sketch",
