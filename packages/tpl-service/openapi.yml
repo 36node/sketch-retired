@@ -350,9 +350,7 @@ components:
         - message
       properties:
         code:
-          type: array
-          items:
-            type: string
+          type: string
         keyword:
           type: string
         message:

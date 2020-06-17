@@ -17,6 +17,17 @@
     eslint-plugin-prettier "3.x"
     eslint-plugin-react "7.x"
 
+"@36node/mock-server@^0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@36node/mock-server/-/mock-server-0.0.22.tgz#5d200607cd2e0d7ab4d584d7c6faa3b4be36fcbe"
+  integrity sha512-h53D9GqX4xKWThMkg/bCsbk83uY+gy+xameK++tkPXz103TIrvYC1eQLUNDKQFtzMCpgkrWKe8cX3KIeooB3dA==
+  dependencies:
+    express "^4.17.0"
+    humps "^2.0.1"
+    json-server "^0.15.0"
+    lodash "^4.17.11"
+    moment "^2.24.0"
+
 "@36node/whisper@^0.1.0":
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/@36node/whisper/-/whisper-0.1.11.tgz#879cf1010eb2b0dd67b2f7a4863e22a67410eff2"
