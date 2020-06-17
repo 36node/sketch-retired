@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.3](https://github.com/36node/sketch/compare/@36node/template-service@0.15.2...@36node/template-service@0.15.3) (2020-06-17)
+
+
+### Bug Fixes
+
+* export constants ([7f95736](https://github.com/36node/sketch/commit/7f95736))
+
+
+
+
+
 ## [0.15.2](https://github.com/36node/sketch/compare/@36node/template-service@0.15.1...@36node/template-service@0.15.2) (2020-06-16)
 
 **Note:** Version bump only for package @36node/template-service
