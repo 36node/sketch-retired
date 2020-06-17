@@ -6,4 +6,6 @@ import * as models from "./models";
 import * as services from "./services";
 
 export * from "./lib";
+export * from "./constants";
+
 export { app, config, jobs, models, services };
