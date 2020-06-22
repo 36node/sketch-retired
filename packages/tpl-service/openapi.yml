@@ -351,18 +351,25 @@ components:
       properties:
         code:
           type: string
-        keyword:
-          type: string
-        message:
-          type: number
-        name:
-          type: string
-        path:
-          type: string
         type:
           type: string
-        value:
+        message:
+          type: boolean
+        name:
           type: string
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              keyword:
+                type: string
+              message:
+                type: string
+              path:
+                type: string
+              value:
+                type: string
 
   securitySchemes:
     bearerAuth: # arbitrary name for the security scheme

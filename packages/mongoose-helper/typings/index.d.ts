@@ -77,5 +77,14 @@ declare module "@36node/mongoose-helper" {
    * Mongoose helper for 36node team.
    */
   var _: (schema: mongoose.Schema, options?: object) => void;
+  export const defaultSchemaOptions = {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+    toObject: {
+      virtuals: true,
+    },
+  };
   export = _;
 }

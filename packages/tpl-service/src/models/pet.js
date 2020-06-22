@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import helper from "@36node/mongoose-helper";
+import helper, { defaultSchemaOptions } from "@36node/mongoose-helper";
 
 export const petSchema = new mongoose.Schema(
   {
@@ -9,15 +9,7 @@ export const petSchema = new mongoose.Schema(
     age: Number,
     category: { type: String, enum: ["CAT", "DOG"] },
   },
-  {
-    timestamps: true,
-    toJSON: {
-      virtuals: true,
-    },
-    toObject: {
-      virtuals: true,
-    },
-  }
+  defaultSchemaOptions
 );
 
 class Pet {

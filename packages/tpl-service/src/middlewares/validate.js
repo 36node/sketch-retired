@@ -10,12 +10,14 @@ const ajv = new Ajv({
   unknownFormats: ["int32"],
 });
 
-const buildAjvErr = (error = {}, data) => ({
+const buildAjvErr = (errors = [], data) => ({
   type: "validation",
-  keyword: error.keyword,
-  path: error.dataPath.replace(/^\./, ""),
-  message: error.message,
-  value: get(data, error.dataPath.replace(/^\./, "")),
+  details: errors.map(error => ({
+    keyword: error.keyword,
+    path: error.dataPath.replace(/^\./, ""),
+    message: error.message,
+    value: get(data, error.dataPath.replace(/^\./, "")),
+  })),
 });
 
 export default (reqSchema, resSchema) => {
@@ -33,7 +35,7 @@ export default (reqSchema, resSchema) => {
         ctx.throw(
           400,
           `request is invalid`,
-          buildAjvErr(validateReq.errors[0], req) // return first error
+          buildAjvErr(validateReq.errors, req) // return first error
         );
       }
       debug("validate request success");
@@ -49,7 +51,7 @@ export default (reqSchema, resSchema) => {
         cookies: ctx.cookies,
       };
       if (!validateRes(res)) {
-        ctx.throw(500, buildAjvErr(validateRes.errors[0], res));
+        ctx.throw(500, buildAjvErr(validateRes.errors, res));
       }
       debug("validate response success");
     }

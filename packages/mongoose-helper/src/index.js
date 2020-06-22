@@ -13,6 +13,16 @@ export default function(schema, options) {
   });
 }
 
+export const defaultSchemaOptions = {
+  timestamps: true,
+  toJSON: {
+    virtuals: true,
+  },
+  toObject: {
+    virtuals: true,
+  },
+};
+
 /**
  * @template T
  * @extends {import('mongoose').Model}
