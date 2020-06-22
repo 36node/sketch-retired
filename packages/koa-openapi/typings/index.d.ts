@@ -12,5 +12,6 @@ declare module "@36node/koa-openapi" {
    * @param {String} options.url 路径，默认 /openapi
    * @param {String} options.file openapi.yml文件路径
    */
-  export function openapi(options: Options): Function;
+  function openapi(options: Options): Koa.Middleware;
+  export = openapi;
 }

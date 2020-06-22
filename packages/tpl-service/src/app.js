@@ -1,5 +1,4 @@
 // @ts-check
-
 import fs from "fs";
 import path from "path";
 
@@ -24,7 +23,6 @@ import { errHandler } from "./middlewares";
 const app = new Koa2();
 const router = new Router({ prefix: BASE });
 const publicKey = fs.readFileSync(path.join(__dirname, "../ssl/rsa_jwt.pub"));
-const openapiFile = fs.readFileSync(path.join(__dirname, "../openapi.yml"));
 
 /**
  * register services
@@ -49,7 +47,12 @@ app
   .use(helmet())
   .use(cors({ exposeHeaders: ["Link", "X-Total-Count"] }))
   .use(health({ url: `${BASE}/health`, version: pkg.version }))
-  .use(openapi({ url: `${BASE}/openapi.yml`, file: openapiFile }))
+  .use(
+    openapi({
+      url: `${BASE}/openapi.yml`,
+      file: path.join(__dirname, "../openapi.yml"),
+    })
+  )
   .use(jwt({ secret: publicKey }))
   .use(body())
   .use(compress({ threshold: 2048 }))

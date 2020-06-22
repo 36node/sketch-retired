@@ -12,5 +12,6 @@ declare module "@36node/koa-health" {
    * @param {String} options.url 路径，默认 /health
    * @param {String} options.version the version of api
    */
-  export function health(options: Options): Function;
+  function health(options: Options): Koa.Middleware;
+  export = health;
 }
