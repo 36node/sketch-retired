@@ -24,7 +24,6 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
-      "pre-commit": "lint-staged",
       "pre-push": "yarn lint && CI=true NODE_ENV=test yarn test"
     }
   },

@@ -7,7 +7,7 @@ import { escape } from "./lib/regex";
  * @param {String} options.url 路径，默认 /openapi
  * @param {String} options.version the version of api
  */
-export default function ({ url = "/openapi", file } = {}) {
+export default function({ url = "/openapi", file } = {}) {
   if (!url) throw new Error("url is required for openapi middleware");
   if (!file)
     throw new Error(
