@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-service",
-  "version": "0.15.4",
+  "version": "0.15.5",
   "description": "A service boilerplate with openapi,rest and mongodb.",
   "repository": {
     "url": "36node/sketch",
@@ -77,8 +77,8 @@
     "standard-version": "^6.0.1"
   },
   "dependencies": {
-    "@36node/koa-health": "^0.1.1",
-    "@36node/koa-openapi": "^0.1.5",
+    "@36node/koa-health": "^0.1.2",
+    "@36node/koa-openapi": "^0.1.6",
     "@36node/mongoose-helper": "^0.4.0",
     "@36node/query-normalizr": "^0.5.0",
     "@koa/cors": "^3.0.0",
