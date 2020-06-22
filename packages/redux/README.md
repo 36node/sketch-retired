@@ -4,6 +4,8 @@
 
 A set of predefined actions, reducers, selectors and sagas for 36node team.
 
+@36node/redux 将会有较大改动。注意避雷。
+
 ## Assign
 
 Save any value to redux.
