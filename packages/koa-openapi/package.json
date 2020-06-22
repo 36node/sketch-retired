@@ -1,6 +1,6 @@
 {
   "name": "@36node/koa-openapi",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "koa openapi middleware for 36node team.",
   "repository": {
     "url": "36node/sketch",
