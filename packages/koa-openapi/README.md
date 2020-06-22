@@ -12,9 +12,12 @@ yarn add @36node/koa-openapi
 
 ```js
 import openapi from "@36node/koa-openapi";
-
-const openapiFile = fs.createReadStream(path.join(__dirname, "../openapi.yml"));
-koaapp.use(openapi({ url: `${BASE}/openapi.yml`, file: openapiFile }));
+app.use(
+  openapi({
+    url: `${BASE}/openapi.yml`,
+    file: path.join(__dirname, "../openapi.yml"),
+  })
+);
 ```
 
 ## Contributing

@@ -11,10 +11,9 @@ yarn add module
 ## Usage
 
 ```js
-import module from "module";
+import health from "@36node/koa-health";
 
-module();
-//=> foo
+app.use(health({ url: `${BASE}/health`, version: pkg.version }));
 ```
 
 ## Contributing
