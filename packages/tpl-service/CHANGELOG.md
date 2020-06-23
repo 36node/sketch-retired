@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.8](https://github.com/36node/sketch/compare/@36node/template-service@0.15.7...@36node/template-service@0.15.8) (2020-06-23)
+
+
+### Bug Fixes
+
+* **mongoose-helper:** do not export default and name together ([a3d30ed](https://github.com/36node/sketch/commit/a3d30ed))
+
+
+
+
+
 ## [0.15.7](https://github.com/36node/sketch/compare/@36node/template-service@0.15.6...@36node/template-service@0.15.7) (2020-06-22)
 
 **Note:** Version bump only for package @36node/template-service
