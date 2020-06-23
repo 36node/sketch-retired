@@ -50,7 +50,7 @@ declare module "mongoose" {
      *
      * @param id id of document
      */
-    delete(id: string): Promise<this>;
+    softDelete(id: string): Promise<this>;
   }
 
   interface Document
@@ -61,7 +61,7 @@ declare module "mongoose" {
      * Soft delete itself.
      * It will set the deleted flag.
      */
-    delete(): Promise<this>;
+    softDelete(): Promise<this>;
     /**
      * Restore itself.
      * It will unset the deleted flag.
