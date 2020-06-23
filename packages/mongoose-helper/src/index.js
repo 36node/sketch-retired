@@ -1,6 +1,6 @@
 import mongooseHidden from "mongoose-hidden";
 
-export default function(schema, options) {
+export function helper(schema, options) {
   // soft delete
   schema.add({ deleted: { type: Boolean, default: false, index: true } });
   schema.add({ deletedAt: { type: Date } });
@@ -13,7 +13,7 @@ export default function(schema, options) {
   });
 }
 
-export const defaultSchemaOptions = {
+export const defaultOptions = {
   timestamps: true,
   toJSON: {
     virtuals: true,
@@ -27,7 +27,7 @@ export const defaultSchemaOptions = {
  * @template T
  * @extends {import('mongoose').Model}
  */
-class Base {
+export class Base {
   /**
    * Get by id
    * @param {string} id - The objectId of model.

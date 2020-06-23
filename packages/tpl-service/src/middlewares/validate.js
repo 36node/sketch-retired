@@ -1,3 +1,5 @@
+// @ts-check
+
 import Ajv from "ajv";
 import { get } from "lodash";
 import Debug from "debug";

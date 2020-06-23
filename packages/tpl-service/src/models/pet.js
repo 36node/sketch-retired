@@ -1,5 +1,7 @@
+// @ts-check
+
 import mongoose from "mongoose";
-import helper, { defaultSchemaOptions } from "@36node/mongoose-helper";
+import { helper, defaultOptions } from "@36node/mongoose-helper";
 
 export const petSchema = new mongoose.Schema(
   {
@@ -9,9 +11,8 @@ export const petSchema = new mongoose.Schema(
     age: Number,
     category: { type: String, enum: ["CAT", "DOG"] },
   },
-  defaultSchemaOptions
+  defaultOptions
 );
-
 class Pet {
   /** @type {string} */
   name;
