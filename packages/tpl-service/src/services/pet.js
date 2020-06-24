@@ -85,7 +85,7 @@ export class Service extends API {
    *
    * @override
    * @param {import("../api/pet").ShowPetByIdRequest} req showPetById request
-   * @param {import("koa").Context} ctx koa context
+   * @param {import("koa").Context} [ctx] koa context
    * @returns {Promise<import("../api/pet").ShowPetByIdResponse>} Expected response to a valid request
    */
   async showPetById(req, ctx) {
@@ -98,7 +98,7 @@ export class Service extends API {
    *
    * @override
    * @param {import("../api/pet").UpdatePetRequest} req updatePet request
-   * @param {import("koa").Context} ctx koa context
+   * @param {import("koa").Context} [ctx] koa context
    * @returns {Promise<import("../api/pet").UpdatePetResponse>} The pet
    */
   async updatePet(req, ctx) {

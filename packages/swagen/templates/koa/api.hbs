@@ -92,7 +92,7 @@ export default class API {
    {{#or parameters requestBody}}
    * @param {import("../api/{{../name}}").{{~capitalize name}}Request} req {{name}} request
    {{/or}}
-   * @param {import("koa").Context} ctx koa context
+   * @param {import("koa").Context} [ctx] koa context
    {{#or response.content response.headers}}
    * @returns {Promise<import("../api/{{../name}}").{{~capitalize name}}Response>} {{response.description}}
    {{/or}}

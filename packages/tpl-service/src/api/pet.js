@@ -111,7 +111,7 @@ export default class API {
    *
    * @abstract
    * @param {import("../api/pet").ListPetsRequest} req listPets request
-   * @param {import("koa").Context} ctx koa context
+   * @param {import("koa").Context} [ctx] koa context
    * @returns {Promise<import("../api/pet").ListPetsResponse>} A paged array of pets
    */
   listPets(req, ctx) {
@@ -123,7 +123,7 @@ export default class API {
    *
    * @abstract
    * @param {import("../api/pet").CreatePetRequest} req createPet request
-   * @param {import("koa").Context} ctx koa context
+   * @param {import("koa").Context} [ctx] koa context
    * @returns {Promise<import("../api/pet").CreatePetResponse>} The Pet created
    */
   createPet(req, ctx) {
@@ -135,7 +135,7 @@ export default class API {
    *
    * @abstract
    * @param {import("../api/pet").ShowPetByIdRequest} req showPetById request
-   * @param {import("koa").Context} ctx koa context
+   * @param {import("koa").Context} [ctx] koa context
    * @returns {Promise<import("../api/pet").ShowPetByIdResponse>} Expected response to a valid request
    */
   showPetById(req, ctx) {
@@ -147,7 +147,7 @@ export default class API {
    *
    * @abstract
    * @param {import("../api/pet").UpdatePetRequest} req updatePet request
-   * @param {import("koa").Context} ctx koa context
+   * @param {import("koa").Context} [ctx] koa context
    * @returns {Promise<import("../api/pet").UpdatePetResponse>} The pet
    */
   updatePet(req, ctx) {
@@ -159,7 +159,7 @@ export default class API {
    *
    * @abstract
    * @param {import("../api/pet").DeletePetRequest} req deletePet request
-   * @param {import("koa").Context} ctx koa context
+   * @param {import("koa").Context} [ctx] koa context
    */
   deletePet(req, ctx) {
     throw new Error("not implemented");

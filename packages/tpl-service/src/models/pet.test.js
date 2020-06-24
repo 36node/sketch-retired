@@ -22,8 +22,6 @@ describe("Pet model", () => {
       name: "cali",
       tag: "cute",
       owner: "tom",
-      age: 1,
-      category: "CAT",
     };
 
     const pet = await Pet.create(doc);
