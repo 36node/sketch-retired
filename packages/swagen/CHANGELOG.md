@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/36node/sketch/compare/@36node/swagen@0.17.0...@36node/swagen@0.17.1) (2020-06-24)
+
+
+### Bug Fixes
+
+* swagen ([eb68c8c](https://github.com/36node/sketch/commit/eb68c8c))
+
+
+
+
+
 # [0.17.0](https://github.com/36node/sketch/compare/@36node/swagen@0.16.1...@36node/swagen@0.17.0) (2020-06-15)
 
 

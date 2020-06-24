@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.9](https://github.com/36node/sketch/compare/@36node/template-service@0.15.8...@36node/template-service@0.15.9) (2020-06-24)
+
+
+### Bug Fixes
+
+* swagen ([eb68c8c](https://github.com/36node/sketch/commit/eb68c8c))
+
+
+
+
+
 ## [0.15.8](https://github.com/36node/sketch/compare/@36node/template-service@0.15.7...@36node/template-service@0.15.8) (2020-06-23)
 
 
