@@ -14,7 +14,7 @@ export function helper(schema, options) {
 }
 
 export const defaultOptions = {
-  timestamps: true,
+  timestamps: { createdAt: "createAt", updatedAt: "updateAt" },
   toJSON: {
     virtuals: true,
   },
