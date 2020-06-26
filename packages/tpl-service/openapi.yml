@@ -334,12 +334,12 @@ components:
           type: string
         updateAt:
           type: string
-          format: time
+          format: date-time
         updateBy:
           type: string
         createAt:
           type: string
-          format: time
+          format: date-time
         createBy:
           type: string
 
