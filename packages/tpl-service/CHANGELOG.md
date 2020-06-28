@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.13](https://github.com/36node/sketch/compare/@36node/template-service@0.15.12...@36node/template-service@0.15.13) (2020-06-28)
+
+
+### Bug Fixes
+
+* **tpl-service:** update role with prefix ([f46f1cb](https://github.com/36node/sketch/commit/f46f1cb))
+
+
+
+
+
 ## [0.15.12](https://github.com/36node/sketch/compare/@36node/template-service@0.15.11...@36node/template-service@0.15.12) (2020-06-28)
 
 
