@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.12](https://github.com/36node/sketch/compare/@36node/template-service@0.15.11...@36node/template-service@0.15.12) (2020-06-28)
+
+
+### Bug Fixes
+
+* **tpl-service:** test fail ([4d68726](https://github.com/36node/sketch/commit/4d68726))
+* **tpl-service:** update with latest thoughts ([ea80f01](https://github.com/36node/sketch/commit/ea80f01))
+* **tpl-service:** user non strict equal for mongoose object id ([4e3e6af](https://github.com/36node/sketch/commit/4e3e6af))
+* openapi.yml ([3f624b0](https://github.com/36node/sketch/commit/3f624b0))
+
+
+
+
+
 ## [0.15.11](https://github.com/36node/sketch/compare/@36node/template-service@0.15.10...@36node/template-service@0.15.11) (2020-06-26)
 
 **Note:** Version bump only for package @36node/template-service

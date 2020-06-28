@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.4.3...@36node/mongoose-helper@0.4.4) (2020-06-28)
+
+
+### Bug Fixes
+
+* **tpl-service:** update with latest thoughts ([ea80f01](https://github.com/36node/sketch/commit/ea80f01))
+
+
+
+
+
 ## [0.4.3](https://github.com/36node/sketch/compare/@36node/mongoose-helper@0.4.2...@36node/mongoose-helper@0.4.3) (2020-06-26)
 
 
