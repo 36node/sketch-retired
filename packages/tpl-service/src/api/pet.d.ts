@@ -20,11 +20,12 @@ export interface ListPetsResponse {
     /**
      * pet's name
      */
-    name: string;
+    name?: string;
     tag?: "DOG" | "CAT";
     age?: number;
     birthAt?: string;
     grade?: number;
+    owner?: string;
   } & {
     id: string;
     updateAt?: string;
@@ -41,11 +42,14 @@ export interface CreatePetRequest {
     /**
      * pet's name
      */
-    name: string;
+    name?: string;
     tag?: "DOG" | "CAT";
     age?: number;
     birthAt?: string;
     grade?: number;
+    owner?: string;
+  } & {
+    [k: string]: any;
   };
 }
 export interface CreatePetResponse {
@@ -53,11 +57,12 @@ export interface CreatePetResponse {
     /**
      * pet's name
      */
-    name: string;
+    name?: string;
     tag?: "DOG" | "CAT";
     age?: number;
     birthAt?: string;
     grade?: number;
+    owner?: string;
   } & {
     id: string;
     updateAt?: string;
@@ -74,11 +79,12 @@ export interface ShowPetByIdResponse {
     /**
      * pet's name
      */
-    name: string;
+    name?: string;
     tag?: "DOG" | "CAT";
     age?: number;
     birthAt?: string;
     grade?: number;
+    owner?: string;
   } & {
     id: string;
     updateAt?: string;
@@ -93,11 +99,12 @@ export interface UpdatePetRequest {
     /**
      * pet's name
      */
-    name: string;
+    name?: string;
     tag?: "DOG" | "CAT";
     age?: number;
     birthAt?: string;
     grade?: number;
+    owner?: string;
   };
 }
 export interface UpdatePetResponse {
@@ -105,11 +112,12 @@ export interface UpdatePetResponse {
     /**
      * pet's name
      */
-    name: string;
+    name?: string;
     tag?: "DOG" | "CAT";
     age?: number;
     birthAt?: string;
     grade?: number;
+    owner?: string;
   } & {
     id: string;
     updateAt?: string;

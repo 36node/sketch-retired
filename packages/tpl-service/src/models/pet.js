@@ -7,7 +7,7 @@ export const petSchema = new mongoose.Schema(
   {
     name: String,
     tag: String,
-    owner: String,
+    owner: mongoose.SchemaTypes.ObjectId,
     age: Number,
     category: { type: String, enum: ["CAT", "DOG"] },
   },

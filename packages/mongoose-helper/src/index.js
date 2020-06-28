@@ -86,7 +86,7 @@ export class Base {
     offset = 0,
     populate = "",
     select,
-    sort = "-updatedAt",
+    sort = "-updateAt",
     //TODO: support grouup
   } = {}) {
     // default query not deleted docs

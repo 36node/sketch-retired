@@ -11,26 +11,35 @@
         {
           "listen": "test",
           "script": {
-            "id": "9e0f2523-7342-4120-88b5-ed1ee1874eac",
+            "id": "1265e69b-8071-4715-83c7-ba98b27a2c5c",
             "exec": [
               "var Ajv = require('ajv');",
               "var ajv = new Ajv({ logger: console, coerceTypes: true, unknownFormats: [\"int32\"] });",
+              "",
+              "const res = {",
+              "  content: pm.response.json(),",
+              "  headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
+              "}",
+              "",
+              "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}}};",
               "",
               "pm.test(\"Status code is 201\", function () {",
               "  pm.response.to.have.status(201);",
               "});",
               "",
-              "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}}};",
               "pm.test(\"Json body schema test\", function(){",
-              "  const res = {",
-              "    content: pm.response.json(),",
-              "    headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
-              "  }",
               "  pm.expect(ajv.validate(schema, data)).to.be.true;",
-              "  pm.environment.set(\"petId\", res.content.id);",
               "})",
               "",
-              ""
+              "pm.test(\"result data test\", function(){",
+              "  pm.expect(res.content.name).equal(pm.variables.get(\"name\"));",
+              "  pm.expect(res.content.age.toString()).equal(pm.variables.get(\"age\"));",
+              "  pm.expect(res.content.tag).equal(pm.variables.get(\"tag\"));",
+              "  pm.expect(res.content.owner).equal(pm.variables.get(\"user\"));",
+              "})",
+              "",
+              "// 为后续测试准备数据",
+              "pm.environment.set(\"petId\", res.content.id);"
             ],
             "type": "text/javascript"
           }
@@ -64,7 +73,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\"\n}",
+          "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": {{age}},\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": {{grade}},\n  \"owner\": \"{{user}}\"\n}",
           "options": {
             "raw": {}
           }
@@ -536,6 +545,249 @@
       ]
     },
     {
+      "name": "userX can't update pet",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "2febf2d2-a739-4330-a73f-39ffc06dcfc4",
+            "exec": [
+              "pm.test(\"Status code is 403\", function () {",
+              "  pm.response.to.have.status(403);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "e35015bc-4707-48b3-b6f4-f7e681aeb634",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{tokenX}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\"\n}",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/pets/:petId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pets",
+            ":petId"
+          ],
+          "variable": [
+            {
+              "key": "petId",
+              "value": "{{petId}}",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "c034c6e6-7195-4a2e-b20d-eff085019e01",
+          "name": "Response_200",
+          "originalRequest": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pets/:petId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pets",
+                ":petId"
+              ],
+              "variable": [
+                {
+                  "key": "petId",
+                  "value": "petId"
+                }
+              ]
+            }
+          },
+          "status": "The pet",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": null
+        }
+      ]
+    },
+    {
+      "name": "Create another pet",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "846bb8bf-0653-46d2-809a-d957577000cd",
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {",
+              "  pm.response.to.have.status(201);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "b6d0ccdf-f959-4bf5-bfe0-f63b7ab60d76",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\",\n  \"owner\": \"{{user}}\"\n}",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/pets",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pets"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "61eae70a-ccf8-4a39-8ce6-9158a05f00b5",
+          "name": "Response_201",
+          "originalRequest": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{name}}\",\n  \"tag\": \"{{tag}}\",\n  \"age\": \"{{age}}\",\n  \"birthAt\": \"{{birthAt}}\",\n  \"grade\": \"{{grade}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pets"
+              ]
+            }
+          },
+          "status": "The Pet created",
+          "code": 201,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": null
+        }
+      ]
+    },
+    {
       "name": "List all pets",
       "event": [
         {
@@ -551,16 +803,17 @@
               "  headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
               "}",
               "",
+              "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"type\":\"array\",\"items\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}},\"headers\":{\"type\":\"object\",\"required\":[\"X-Total-Count\"],\"properties\":{\"X-Total-Count\":{\"type\":\"integer\"}}}}};",
+              "",
               "pm.test(\"Status code is 200\", function () {",
               "  pm.response.to.have.status(200);",
               "});",
               "",
               "pm.test(\"result count should right\", function () {",
-              "  pm.expect(res.content.length).to.equal(1);",
+              "  pm.expect(res.content.length).to.equal(2);",
               "  pm.expect(Number(res.headers[\"X-Total-Count\"])).to.be.above(1);",
               "})",
               "",
-              "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"type\":\"array\",\"items\":{\"allOf\":[{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"pet's name\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"}}}]}},\"headers\":{\"type\":\"object\",\"required\":[\"X-Total-Count\"],\"properties\":{\"X-Total-Count\":{\"type\":\"integer\"}}}}};",
               "pm.test(\"Json body schema test\", function(){",
               "  pm.expect(ajv.validate(schema, res)).to.be.true;",
               "})",
@@ -597,7 +850,7 @@
           }
         ],
         "url": {
-          "raw": "{{baseUrl}}/pets?_limit=1&tag=CAT",
+          "raw": "{{baseUrl}}/pets?_limit=2&tag=CAT",
           "host": [
             "{{baseUrl}}"
           ],
@@ -607,7 +860,7 @@
           "query": [
             {
               "key": "_limit",
-              "value": "1"
+              "value": "2"
             },
             {
               "key": "tag",
@@ -882,39 +1135,45 @@
   ],
   "variable": [
     {
-      "id": "18df5b99-1690-4d1a-adcf-6aaea9aafea4",
+      "id": "a4295301-28d7-44ab-9106-41ea66e0732f",
       "key": "age",
       "value": "1",
       "type": "string"
     },
     {
-      "id": "b222b061-e5a8-441e-98b1-1c1d3caaebb8",
+      "id": "dd3b3cfd-a7a2-4c4f-88ce-f1cf1aab7fb6",
       "key": "name",
       "value": "tom",
       "type": "string"
     },
     {
-      "id": "dbd978e5-5451-4349-ae91-c5541fae8940",
+      "id": "16434abe-f92b-46f0-af83-421f50519cda",
       "key": "tag",
       "value": "CAT",
       "type": "string"
     },
     {
-      "id": "b532baa5-ef96-4e12-b894-eafac0b6776b",
-      "key": "owner",
-      "value": "r",
-      "type": "string"
-    },
-    {
-      "id": "296a6b9d-fea8-4aaa-8e49-ea3b25d3cfec",
+      "id": "38b1bd58-4d15-49ab-8e8a-9484ec797b96",
       "key": "birthAt",
       "value": "2020-01-01",
       "type": "string"
     },
     {
-      "id": "da2c0d5d-273a-4e3f-a9a7-32ee9d5387f8",
+      "id": "56a604bf-c90b-4c2e-be27-c54754090371",
       "key": "grade",
       "value": "1",
+      "type": "string"
+    },
+    {
+      "id": "45e1131b-a9b0-4954-a859-76ce95862fdc",
+      "key": "userX",
+      "value": "5cb9a4edc48ad400120d28a7",
+      "type": "string"
+    },
+    {
+      "id": "5ab8da0a-0224-40b0-bcde-6ea7a41b3b7c",
+      "key": "tokenX",
+      "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNWNiOWE0ZWRjNDhhZDQwMDEyMGQyOGE3IiwiZXhwIjoyNTU3MDM1MjU4LCJucyI6Ii9hZHZlbnR1cmVyIn0.Lzzxd4INuDl-cRLre6fNuaVC8i5ylKki3BvU3ehKmjgORfknuAlsBmLLV0QDrQG49hEmBpPyPRVXH7ksiuf_jyOsq5wRIksQpx58iK7qBIGCC6Fgeka4XUkLZ281r_JO8_07ShYyP3l5QOcyMVVZq0Q038_BZ-TPDt8yYtKFpbU",
       "type": "string"
     }
   ]

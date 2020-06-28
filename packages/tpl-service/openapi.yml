@@ -146,7 +146,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PetDoc"
+              $ref: "#/components/schemas/PetDocForCreate"
             examples:
               default:
                 value: |
@@ -298,11 +298,10 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/Err"
+
   schemas:
     PetDoc:
       type: object
-      required:
-        - name
       properties:
         name:
           type: string
@@ -319,6 +318,15 @@ components:
         grade:
           type: integer
           format: int32
+        owner:
+          type: string
+
+    PetDocForCreate:
+      allOf:
+        - $ref: "#/components/schemas/PetDoc"
+        - type: object
+          required:
+            - name
 
     Pet:
       allOf:

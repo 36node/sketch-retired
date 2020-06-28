@@ -53,7 +53,7 @@ app
       file: path.join(__dirname, "../openapi.yml"),
     })
   )
-  .use(jwt({ secret: publicKey }))
+  .use(jwt({ secret: publicKey, key: "jwt" }))
   .use(body())
   .use(compress({ threshold: 2048 }))
   .use(router.routes());

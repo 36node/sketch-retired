@@ -1,3 +1,3 @@
-import PetModel from "./pet";
+import Pet from "./pet";
 
-export { PetModel };
+export { Pet };

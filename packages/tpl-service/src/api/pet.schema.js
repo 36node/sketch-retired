@@ -35,13 +35,13 @@ export const listPetsResSchema = {
         allOf: [
           {
             type: "object",
-            required: ["name"],
             properties: {
               name: { type: "string", description: "pet's name" },
               tag: { type: "string", enum: ["DOG", "CAT"] },
               age: { type: "integer", format: "int32" },
               birthAt: { type: "string", format: "date" },
               grade: { type: "integer", format: "int32" },
+              owner: { type: "string" },
             },
           },
           {
@@ -49,9 +49,9 @@ export const listPetsResSchema = {
             required: ["id"],
             properties: {
               id: { type: "string" },
-              updateAt: { type: "string", format: "time" },
+              updateAt: { type: "string", format: "date-time" },
               updateBy: { type: "string" },
-              createAt: { type: "string", format: "time" },
+              createAt: { type: "string", format: "date-time" },
               createBy: { type: "string" },
             },
           },
@@ -70,15 +70,20 @@ export const createPetReqSchema = {
   required: ["body"],
   properties: {
     body: {
-      type: "object",
-      required: ["name"],
-      properties: {
-        name: { type: "string", description: "pet's name" },
-        tag: { type: "string", enum: ["DOG", "CAT"] },
-        age: { type: "integer", format: "int32" },
-        birthAt: { type: "string", format: "date" },
-        grade: { type: "integer", format: "int32" },
-      },
+      allOf: [
+        {
+          type: "object",
+          properties: {
+            name: { type: "string", description: "pet's name" },
+            tag: { type: "string", enum: ["DOG", "CAT"] },
+            age: { type: "integer", format: "int32" },
+            birthAt: { type: "string", format: "date" },
+            grade: { type: "integer", format: "int32" },
+            owner: { type: "string" },
+          },
+        },
+        { type: "object", required: ["name"] },
+      ],
     },
   },
 };
@@ -90,13 +95,13 @@ export const createPetResSchema = {
       allOf: [
         {
           type: "object",
-          required: ["name"],
           properties: {
             name: { type: "string", description: "pet's name" },
             tag: { type: "string", enum: ["DOG", "CAT"] },
             age: { type: "integer", format: "int32" },
             birthAt: { type: "string", format: "date" },
             grade: { type: "integer", format: "int32" },
+            owner: { type: "string" },
           },
         },
         {
@@ -104,9 +109,9 @@ export const createPetResSchema = {
           required: ["id"],
           properties: {
             id: { type: "string" },
-            updateAt: { type: "string", format: "time" },
+            updateAt: { type: "string", format: "date-time" },
             updateBy: { type: "string" },
-            createAt: { type: "string", format: "time" },
+            createAt: { type: "string", format: "date-time" },
             createBy: { type: "string" },
           },
         },
@@ -127,13 +132,13 @@ export const showPetByIdResSchema = {
       allOf: [
         {
           type: "object",
-          required: ["name"],
           properties: {
             name: { type: "string", description: "pet's name" },
             tag: { type: "string", enum: ["DOG", "CAT"] },
             age: { type: "integer", format: "int32" },
             birthAt: { type: "string", format: "date" },
             grade: { type: "integer", format: "int32" },
+            owner: { type: "string" },
           },
         },
         {
@@ -141,9 +146,9 @@ export const showPetByIdResSchema = {
           required: ["id"],
           properties: {
             id: { type: "string" },
-            updateAt: { type: "string", format: "time" },
+            updateAt: { type: "string", format: "date-time" },
             updateBy: { type: "string" },
-            createAt: { type: "string", format: "time" },
+            createAt: { type: "string", format: "date-time" },
             createBy: { type: "string" },
           },
         },
@@ -158,13 +163,13 @@ export const updatePetReqSchema = {
     petId: { type: "string", pattern: "[a-f\\d]{24}" },
     body: {
       type: "object",
-      required: ["name"],
       properties: {
         name: { type: "string", description: "pet's name" },
         tag: { type: "string", enum: ["DOG", "CAT"] },
         age: { type: "integer", format: "int32" },
         birthAt: { type: "string", format: "date" },
         grade: { type: "integer", format: "int32" },
+        owner: { type: "string" },
       },
     },
   },
@@ -177,13 +182,13 @@ export const updatePetResSchema = {
       allOf: [
         {
           type: "object",
-          required: ["name"],
           properties: {
             name: { type: "string", description: "pet's name" },
             tag: { type: "string", enum: ["DOG", "CAT"] },
             age: { type: "integer", format: "int32" },
             birthAt: { type: "string", format: "date" },
             grade: { type: "integer", format: "int32" },
+            owner: { type: "string" },
           },
         },
         {
@@ -191,9 +196,9 @@ export const updatePetResSchema = {
           required: ["id"],
           properties: {
             id: { type: "string" },
-            updateAt: { type: "string", format: "time" },
+            updateAt: { type: "string", format: "date-time" },
             updateBy: { type: "string" },
-            createAt: { type: "string", format: "time" },
+            createAt: { type: "string", format: "date-time" },
             createBy: { type: "string" },
           },
         },

@@ -52,7 +52,7 @@ class PostmanGenerator {
   genUrl(operation) {
     const operationPath = get(operation, "path", "/");
     const url = new Url();
-    url.host = `{{BASE}}`;
+    url.host = `{{baseUrl}}`;
     url.path = [formatPath(operationPath)];
     return url;
   }
