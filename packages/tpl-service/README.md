@@ -100,11 +100,11 @@ Find more in [@36node/sketch/docs/url.md](https://github.com/36node/sketch/blob/
 
 动态角色
 
-- OWNER 指 pet's owner
+- PET_STORE_OWNER 指 pet's owner
 
 固定角色
 
-- BREEDER: 饲养员
+- PET_STORE_BREEDER: 饲养员
 - USER(保留角色): 普通用户，其实是一个无角色
 - ADMIN(保留角色): 包含所有角色的所有权限，测试中不一一测试，单元测试中做一次 ADMIN 角色解析，看是否能够解析成所有角色即可。
 
