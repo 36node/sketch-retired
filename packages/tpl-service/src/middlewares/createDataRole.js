@@ -15,7 +15,7 @@ export default async (ctx, next) => {
   console.log("jwt", jwt);
 
   // 注意这里 owner 是 mongo 的 objectId
-  if (owner && owner.equals(jwt.user)) {
+  if (owner == jwt.user /*eslint-disable-line*/) {
     jwt.roles.push(Role.OWNER);
   }
 
