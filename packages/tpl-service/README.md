@@ -96,6 +96,49 @@ fastman export "Petstore Service" ./test/xxxx/collection.json
 
 Find more in [@36node/sketch/docs/url.md](https://github.com/36node/sketch/blob/master/docs/url.md)
 
+## 权限定义
+
+动态角色
+
+- OWNER 指 pet's owner
+
+固定角色
+
+- BREEDER: 饲养员
+- USER(保留角色): 普通用户，其实是一个无角色
+- ADMIN(保留角色): 包含所有角色的所有权限，测试中不一一测试，单元测试中做一次 ADMIN 角色解析，看是否能够解析成所有角色即可。
+
+有两个用户可以用于测试
+
+- Admin
+
+```
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNWNiOWE0ZWRjNDhhZDQwMDEyMGQyOGEwIiwiZXhwIjoyNTU3MDM1MjU4LCJyb2xlcyI6WyJBRE1JTiJdLCJucyI6Ii9hZHZlbnR1cmVyIn0.DJ7lG-6cI5E8dIq8o6cIk5YCS66GV75Km7EW03GxGzWxigQm6hZsqVeGRruyrwJ6De-3VrS9Rcz7srdPyZpyzHV1VaHd_Xxw1iY2UKPwiVZsnvLgcNIwFQmar6E3pQaBxyT7PT8E4aNwhKPcVDWs-D8Osi5QH6HftFMoW-ZHQJ0
+```
+
+```json
+{
+  "user": "5cb9a4edc48ad400120d28a0",
+  "exp": 2557035258,
+  "roles": ["ADMIN"],
+  "ns": "/adventurer"
+}
+```
+
+- User
+
+```
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNWNiOWE0ZWRjNDhhZDQwMDEyMGQyOGIwIiwiZXhwIjoyNTU3MDM1MjU4LCJucyI6Ii9hZHZlbnR1cmVyIn0.gKb4bRq2RN_gFO03nYDYgjeqTsNdTvmjcnjLbvSfmXVRbX2B0jxl0gaPN31EKfOg1GKkRUxY-y9oqYITajOAcfqfUFGj4p-42iXL8IFiKO8aLmmQl7AuTo_Z0wfL630w8ZSeunfJ4VhbucaCzghzBHPqdD73QdibqNOyK0S8s8E
+```
+
+```json
+{
+  "user": "5cb9a4edc48ad400120d28b0",
+  "exp": 2557035258,
+  "ns": "/adventurer"
+}
+```
+
 ## Contributing
 
 1. Fork it!

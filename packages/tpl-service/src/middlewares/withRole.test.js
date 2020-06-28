@@ -25,7 +25,7 @@ describe("withRole test", () => {
     const mock = {
       state: {
         jwt: {
-          roles: ["PM"],
+          roles: ["OWNER"],
         },
       },
     };
@@ -33,7 +33,7 @@ describe("withRole test", () => {
     let message = false;
 
     try {
-      await withRole(Role.PM)(mock, noop);
+      await withRole(Role.OWNER)(mock, noop);
     } catch (err) {
       message = err.message;
     }
