@@ -14,8 +14,8 @@ const debug = Debug("store:service:pet");
 export class Service extends API {
   _middlewares = {
     showPetById: [loadPet],
-    updatePet: [loadPet, createDataRole, withRole(Role.OWNER)],
-    deletePet: [loadPet, createDataRole, withRole(Role.OWNER)],
+    updatePet: [loadPet, createDataRole, withRole(Role.PET_STORE_OWNER)],
+    deletePet: [loadPet, createDataRole, withRole(Role.PET_STORE_OWNER)],
   };
 
   /**

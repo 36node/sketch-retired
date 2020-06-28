@@ -11,12 +11,9 @@ export default async (ctx, next) => {
   const { owner } = pet;
   jwt.roles = jwt.roles || [];
 
-  console.log("pet", pet);
-  console.log("jwt", jwt);
-
   // 注意这里 owner 是 mongo 的 objectId
   if (owner == jwt.user /*eslint-disable-line*/) {
-    jwt.roles.push(Role.OWNER);
+    jwt.roles.push(Role.PET_STORE_OWNER);
   }
 
   return next();

@@ -18,9 +18,9 @@ export const Role = {
   /**
    * 固定角色
    */
-  BREEDER: "BREEDER",
+  PET_STORE_BREEDER: "BREEDER",
   /**
    * 数据角色
    */
-  OWNER: "OWNER",
+  PET_STORE_OWNER: "OWNER",
 };
