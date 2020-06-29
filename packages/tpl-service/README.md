@@ -24,37 +24,58 @@ yarn test:int
 ### Folder structures
 
 ```sh
-bin
-./src
-├── api
-├── config
-├── lib
-├── middleware
-├── services
-├── app.js
-├── index.js
-├── server.js
-└── task.js
+├── Dockerfile
+├── README.md
+├── bin
+│   ├── build-docker.sh
+│   ├── bump.sh
+│   ├── server.js
+│   └── sync.js
+├── docker-compose.yml
+├── jest-mongodb-config.js
+├── openapi.yml
+├── package.json
+├── src
+│   ├── api
+│   ├── app.js
+│   ├── config
+│   ├── constants.js
+│   ├── index.js
+│   ├── jobs
+│   ├── lib
+│   ├── middlewares
+│   ├── models
+│   └── services
+├── ssl
+│   ├── rsa_jwt.key
+│   └── rsa_jwt.pub
+└── test
+    ├── env.json
+    ├── jest.config.js
+    ├── jest.setup.js
+    ├── jest.teardown.js
+    └── pet-curd
 ```
 
-- bin: 受限于 nodejs 的原生能力限制，该目录下要求采用 commonjs 写法; bin 目录用于辅助项目执行。
+- bin: 防止入口文件以及一些编译辅助的脚本。
 - src: source 目录只负责输出模块。
-- api: 自动生成的 api 目录包含 koa 桩代码
-- config: 配置入口，用 dotenv
-- lib: 基础库
-- middleware: koa 中间件
-- services: api 的实现
-- app.js: 主程序
-- index.js: 引用目录
-- server.js: 服务器启动入口
-- task.js: 任务入口
+- src/api: 自动生成的 api 目录包含 koa 桩代码
+- src/config: 配置入口，用 dotenv
+- src/lib: 基础库
+- src/middleware: koa 中间件
+- src/services: api 的实现
+- src/jobs: 实现 deamon 等任务逻辑
+- src/app.js: 主程序
+- src/index.js: 引用目录
+- test: 集成测试
+- openapi.yml: api 定义文件
+- docker-compose.yml: 服务需要依赖的第三方服务
 
 目录引用原则：
 
-- config 文件是唯一的例外
-- services and tasks 引用 models
+- config 被全局引用
+- services and jobs 引用 models
 - lib 目录可以被任何文件引用
-- lib 目录内部不要出现交叉引用
 
 ### default token
 
