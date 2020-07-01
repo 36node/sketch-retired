@@ -10,8 +10,9 @@ const stderr = console.error.bind(console);
 async function ls() {
   await helpers.checkApiKey();
   const collections = await apis.listCollections();
+
   for (let c of collections) {
-    stdout(c.id, c.name);
+    stdout(c.uid, c.name);
   }
 }
 

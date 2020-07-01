@@ -7,32 +7,21 @@ program.parse(process.argv);
 
 const stderr = console.error.bind(console);
 
-async function exporting(name, dist) {
+async function exporting(uid, filepath) {
   await helpers.checkApiKey();
-  if (typeof name === "undefined") {
-    stderr("collection name not given!");
-    process.exit(1);
-  }
-  const collections = await apis.listCollections();
-  const found = collections.find(c => c.name === name);
-
-  if (!found) {
-    stderr(`collection ${name} not found!`);
+  if (typeof uid === "undefined") {
+    stderr("collection uid not given!");
     process.exit(1);
   }
 
-  let file = dist;
-  if (typeof file === "undefined") {
-    file = `./${name}.postman_collection.json`;
-  }
-
-  const collection = await apis.singleCollection(found.id);
-  jsonfile.writeFileSync(file, collection, { spaces: 2 });
+  const collection = await apis.singleCollection(uid);
+  jsonfile.writeFileSync(filepath, collection, { spaces: 2 });
 }
 
-const [name = "noname", dist = "./"] = program.args || [];
+const [uid = "nouid", filepath = "./postman_collection.json"] =
+  program.args || [];
 
-exporting(name, dist)
+exporting(uid, filepath)
   .then(() => console.log("exporting success."))
   .catch(err => {
     stderr(err);

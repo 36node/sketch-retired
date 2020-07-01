@@ -8,10 +8,10 @@ program
   .version(pkg.version)
   .command("config", "config fastman, like postman api key eg..")
   .command("ls", "list collections exist in postman")
-  .command("delete [collectionId]", "delete a collection by id")
+  .command("delete [uid]", "delete a collection by uid")
   .command("import [file]", "import a collection file to postman")
   .command(
-    "export [name] [dist]",
-    "export collection file with name, saved in dist"
+    "export [uid] [filepath]",
+    "export collection file with name, saved in filepath(default is ./postman_collection.json)"
   )
   .parse(process.argv);
