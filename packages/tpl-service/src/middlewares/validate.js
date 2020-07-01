@@ -1,25 +1,82 @@
 // @ts-check
 
 import Ajv from "ajv";
-import { get } from "lodash";
+import { get, merge, cloneDeep } from "lodash";
 import Debug from "debug";
 
 const debug = Debug("store:validate");
 
+/**
+ * override oneOf keywords support removeAdditional option
+ * @param {import('ajv').Ajv} ajv
+ */
+function oneOfRA(ajv) {
+  ajv.removeKeyword("oneOf");
+  ajv.addKeyword("oneOf", {
+    compile: function(schemas) {
+      return function(data) {
+        for (const schema of schemas) {
+          const validator = ajv.compile(schema);
+
+          // use clone data to prevent data modify
+          const testData = cloneDeep(data);
+          const ret = validator(testData);
+
+          if (ret) {
+            // modify data for removeAddtional
+            validator(data);
+            return ret;
+          }
+        }
+        return false;
+      };
+    },
+    modifying: true,
+    metaSchema: {
+      type: "array",
+      items: [{ type: "object" }],
+    },
+    errors: false,
+  });
+}
+
+/**
+ * override allOf keywords support removeAdditional option
+ * @param {import('ajv').Ajv} ajv
+ */
+function allOfRA(ajv) {
+  ajv.removeKeyword("allOf");
+  ajv.addKeyword("allOf", {
+    macro: function(schema) {
+      return merge({}, ...schema);
+    },
+    metaSchema: {
+      type: "array",
+      items: [{ type: "object" }],
+    },
+    errors: true,
+  });
+}
+
 const ajv = new Ajv({
   coerceTypes: "array",
-  // removeAdditional: "all", // strip any property not in openapi.yml
+  removeAdditional: "all", // strip any property not in openapi.yml
   unknownFormats: ["int32"],
 });
 
+allOfRA(ajv);
+oneOfRA(ajv);
+
 const buildAjvErr = (errors = [], data) => ({
   type: "validation",
-  details: errors.map(error => ({
-    keyword: error.keyword,
-    path: error.dataPath.replace(/^\./, ""),
-    message: error.message,
-    value: get(data, error.dataPath.replace(/^\./, "")),
-  })),
+  details: errors
+    .filter(error => error.keyword !== "allOf")
+    .map(error => ({
+      keyword: error.keyword,
+      path: error.dataPath.replace(/^\./, ""),
+      message: error.message,
+      value: get(data, error.dataPath.replace(/^\./, "")),
+    })),
 });
 
 export default (reqSchema, resSchema) => {
