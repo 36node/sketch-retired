@@ -59,10 +59,10 @@ export function createCollection(collection) {
 /**
  * Delete postman collection
  *
- * @param {string} id id of collection tobe delelted
+ * @param {string} uid id of collection tobe delelted
  */
-export function deleteCollection(id) {
-  return fetch(`https://api.getpostman.com/collections/${id}`, {
+export function deleteCollection(uid) {
+  return fetch(`https://api.getpostman.com/collections/${uid}`, {
     method: "DELETE",
     headers: getHeaders(),
     body: "",
