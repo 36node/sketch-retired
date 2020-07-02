@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.55](https://github.com/36node/sketch/compare/@36node/template-module@0.9.54...@36node/template-module@0.9.55) (2020-07-02)
+
+**Note:** Version bump only for package @36node/template-module
+
+
+
+
+
 ## [0.9.54](https://github.com/36node/sketch/compare/@36node/template-module@0.9.53...@36node/template-module@0.9.54) (2020-06-16)
 
 **Note:** Version bump only for package @36node/template-module

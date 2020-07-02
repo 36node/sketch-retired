@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.2](https://github.com/36node/sketch/compare/@36node/sketch@0.15.1...@36node/sketch@0.15.2) (2020-07-02)
+
+
+### Bug Fixes
+
+* remove .key file in ignore ([2906f0b](https://github.com/36node/sketch/commit/2906f0b))
+
+
+
+
+
 ## [0.15.1](https://github.com/36node/sketch/compare/@36node/sketch@0.15.0...@36node/sketch@0.15.1) (2020-06-15)
 
 

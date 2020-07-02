@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/36node/sketch/compare/@36node/template-service@0.15.14...@36node/template-service@0.16.0) (2020-07-02)
+
+
+### Features
+
+* **tpl-service:** ajv support oneOf allOf ([bf39ec9](https://github.com/36node/sketch/commit/bf39ec9))
+
+
+
+
+
 ## [0.15.14](https://github.com/36node/sketch/compare/@36node/template-service@0.15.13...@36node/template-service@0.15.14) (2020-06-29)
 
 **Note:** Version bump only for package @36node/template-service

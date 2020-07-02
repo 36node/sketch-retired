@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/36node/sketch/compare/@36node/fastman@0.4.13...@36node/fastman@0.5.0) (2020-07-02)
+
+
+### Features
+
+* **fastman:** ls show uid & delete by uid ([#183](https://github.com/36node/sketch/issues/183)) ([99fe326](https://github.com/36node/sketch/commit/99fe326))
+
+
+
+
+
 ## [0.4.13](https://github.com/36node/sketch/compare/@36node/fastman@0.4.12...@36node/fastman@0.4.13) (2019-10-14)
 
 **Note:** Version bump only for package @36node/fastman

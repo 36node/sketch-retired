@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-cli",
-  "version": "0.7.55",
+  "version": "0.7.56",
   "description": "A module boilerplate for nodejs and web.",
   "repository": {
     "url": "undefined/undefined",
@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@36node/eslint-config": "^0.6.4",
-    "@36node/sketch": "^0.15.1",
+    "@36node/sketch": "^0.15.2",
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "@types/jest": "^24.0.12",
