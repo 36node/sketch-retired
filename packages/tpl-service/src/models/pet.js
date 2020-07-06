@@ -5,7 +5,7 @@ import { helper, defaultOptions } from "@36node/mongoose-helper";
 
 export const petSchema = new mongoose.Schema(
   {
-    name: String,
+    name: { type: String, required: true },
     tag: String,
     owner: mongoose.SchemaTypes.ObjectId,
     age: Number,
@@ -13,32 +13,26 @@ export const petSchema = new mongoose.Schema(
   },
   defaultOptions
 );
-class Pet {
-  /** @type {string} */
-  name;
-  /** @type {string} */
-  tag;
-  /** @type {number} */
-  age;
-  /** @type {string} */
-  owner;
-  /** @type {("CAT"|"DOG")} */
-  category;
-}
 
 /**
- * output
+ * @typedef {Object} PetDoc
+ * @property {string} name - 名称
+ * @property {string=} tag - 标签
+ * @property {number=} age - 年龄
+ * @property {mongoose.Schema.Types.ObjectId=} owner - 拥有者
  */
+export class Pet {}
+
 petSchema.loadClass(Pet);
 petSchema.plugin(helper);
 
 /**
- * @typedef {mongoose.Document & Pet} PetDocument
+ * @typedef {mongoose.Document & Pet & PetDoc} PetDocument
  */
 
 /**
  * @type {mongoose.Model<PetDocument>}
  */
-let Model = mongoose.model("Pet", petSchema);
+const Model = mongoose.model("Pet", petSchema);
 
 export default Model;

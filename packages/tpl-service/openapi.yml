@@ -327,6 +327,10 @@ components:
         - type: object
           required:
             - name
+          properties:
+            name:
+              type: string
+              description: pet's name
 
     Pet:
       allOf:

@@ -22,8 +22,10 @@ export const listPetsReqSchema = {
         grade_gt: { type: "string", format: "date" },
         grade_lt: { type: "string", format: "date" },
       },
+      additionalProperties: false,
     },
   },
+  additionalProperties: false,
 };
 export const listPetsResSchema = {
   type: "object",
@@ -43,6 +45,7 @@ export const listPetsResSchema = {
               grade: { type: "integer", format: "int32" },
               owner: { type: "string" },
             },
+            additionalProperties: false,
           },
           {
             type: "object",
@@ -54,6 +57,7 @@ export const listPetsResSchema = {
               createAt: { type: "string", format: "date-time" },
               createBy: { type: "string" },
             },
+            additionalProperties: false,
           },
         ],
       },
@@ -62,8 +66,10 @@ export const listPetsResSchema = {
       type: "object",
       required: ["X-Total-Count"],
       properties: { "X-Total-Count": { type: "integer" } },
+      additionalProperties: false,
     },
   },
+  additionalProperties: false,
 };
 export const createPetReqSchema = {
   type: "object",
@@ -81,11 +87,18 @@ export const createPetReqSchema = {
             grade: { type: "integer", format: "int32" },
             owner: { type: "string" },
           },
+          additionalProperties: false,
         },
-        { type: "object", required: ["name"] },
+        {
+          type: "object",
+          required: ["name"],
+          properties: { name: { type: "string", description: "pet's name" } },
+          additionalProperties: false,
+        },
       ],
     },
   },
+  additionalProperties: false,
 };
 export const createPetResSchema = {
   type: "object",
@@ -103,6 +116,7 @@ export const createPetResSchema = {
             grade: { type: "integer", format: "int32" },
             owner: { type: "string" },
           },
+          additionalProperties: false,
         },
         {
           type: "object",
@@ -114,15 +128,18 @@ export const createPetResSchema = {
             createAt: { type: "string", format: "date-time" },
             createBy: { type: "string" },
           },
+          additionalProperties: false,
         },
       ],
     },
   },
+  additionalProperties: false,
 };
 export const showPetByIdReqSchema = {
   type: "object",
   required: ["petId"],
   properties: { petId: { type: "string", pattern: "[a-f\\d]{24}" } },
+  additionalProperties: false,
 };
 export const showPetByIdResSchema = {
   type: "object",
@@ -140,6 +157,7 @@ export const showPetByIdResSchema = {
             grade: { type: "integer", format: "int32" },
             owner: { type: "string" },
           },
+          additionalProperties: false,
         },
         {
           type: "object",
@@ -151,10 +169,12 @@ export const showPetByIdResSchema = {
             createAt: { type: "string", format: "date-time" },
             createBy: { type: "string" },
           },
+          additionalProperties: false,
         },
       ],
     },
   },
+  additionalProperties: false,
 };
 export const updatePetReqSchema = {
   type: "object",
@@ -171,8 +191,10 @@ export const updatePetReqSchema = {
         grade: { type: "integer", format: "int32" },
         owner: { type: "string" },
       },
+      additionalProperties: false,
     },
   },
+  additionalProperties: false,
 };
 export const updatePetResSchema = {
   type: "object",
@@ -190,6 +212,7 @@ export const updatePetResSchema = {
             grade: { type: "integer", format: "int32" },
             owner: { type: "string" },
           },
+          additionalProperties: false,
         },
         {
           type: "object",
@@ -201,13 +224,16 @@ export const updatePetResSchema = {
             createAt: { type: "string", format: "date-time" },
             createBy: { type: "string" },
           },
+          additionalProperties: false,
         },
       ],
     },
   },
+  additionalProperties: false,
 };
 export const deletePetReqSchema = {
   type: "object",
   required: ["petId"],
   properties: { petId: { type: "string", pattern: "[a-f\\d]{24}" } },
+  additionalProperties: false,
 };

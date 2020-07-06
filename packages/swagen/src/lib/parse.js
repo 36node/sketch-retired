@@ -8,25 +8,19 @@ const initObjSchema = (properties = {}) => ({
   properties,
 });
 
-function _wrapForDef(obj) {
+/**
+ * 对 schema 做一定的补充和变化，使得 ajv 和 compile to typedef 能正确工作
+ */
+function _transSchema(obj) {
   if (typeof obj !== "object") return obj;
   const newobj = isArray(obj) ? [...obj] : { ...obj };
-  if (obj.type === "object" && obj.properties) {
+  if (obj.type === "object") {
     newobj.additionalProperties = false;
   }
   for (let prop in obj) {
-    newobj[prop] = _wrapForDef(obj[prop]);
+    newobj[prop] = _transSchema(obj[prop]);
   }
   return newobj;
-}
-
-/**
- * ajv 的缺陷
- *
- * TODO: https://github.com/ajv-validator/ajv/issues/1231
- */
-function _transSchema(schema) {
-  return schema;
 }
 
 /**
@@ -81,9 +75,8 @@ function getResponseSchema({ headers, content }) {
  * @param {object} schema
  */
 function getDef(schema, name) {
-  const defSchema = _wrapForDef(schema);
-  if (defSchema) {
-    return compile(defSchema, name, { unknownAny: false, bannerComment: null });
+  if (schema) {
+    return compile(schema, name, { unknownAny: false, bannerComment: null });
   }
 }
 

@@ -49,7 +49,10 @@ export interface CreatePetRequest {
     grade?: number;
     owner?: string;
   } & {
-    [k: string]: any;
+    /**
+     * pet's name
+     */
+    name: string;
   };
 }
 export interface CreatePetResponse {
