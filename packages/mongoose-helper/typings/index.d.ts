@@ -21,7 +21,7 @@ declare module "mongoose" {
      * @param id id of document
      * @param populate which fields want to populate
      */
-    get(id: string, populate?: string): Promise<T>;
+    get(id: string, populate?: string): Promise<this>;
 
     /**
      * Update or Create a document with given id
@@ -29,14 +29,14 @@ declare module "mongoose" {
      * @param id given id
      * @param update document content
      */
-    upsert(id: string, update: T): Promise<T>;
+    upsert(id: string, update: T): Promise<this>;
 
     /**
      * List documents with limit and offset
      *
      * @param opt list options
      */
-    list(opt?: ListOptions): Promise<Array<T>>;
+    list(opt?: ListOptions): Promise<Array<this>>;
 
     /**
      * Count documents

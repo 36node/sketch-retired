@@ -24,15 +24,15 @@ export const defaultOptions = {
 };
 
 /**
- * @template T
- * @extends {import('mongoose').Model}
+ * @typedef {import("mongoose").Model} Model
  */
-export class Base {
+
+class Base {
   /**
    * Get by id
    * @param {string} id - The objectId of model.
    * @param {string?} populate - The objectId of model.
-   * @returns {Promise<T>}
+   * @returns {Promise<this>}
    */
   static get(id, populate = "") {
     return this.findById(id)
@@ -43,7 +43,7 @@ export class Base {
   /**
    * Soft delete document by id
    * @param id id of document
-   * @returns {Promise<T>}
+   * @returns {Promise<this>}
    */
   static softDelete(id) {
     return this.findByIdAndUpdate(
@@ -57,7 +57,7 @@ export class Base {
    * Update or create object with given id
    * @param {*} id id of doc
    * @param {*} update body tobe updated
-   * @returns {Promise<T>}
+   * @returns {Promise<this>}
    */
   static upsert(id, update) {
     return this.findByIdAndUpdate(id, update, {
@@ -77,7 +77,7 @@ export class Base {
    * @param {string} conditions.populate - populate some reference fields.
    * @param {string} conditions.select - select fileds.
    * @param {string} conditions.sort - sort by.
-   * @returns {Promise<Array<T>>}
+   * @returns {Promise<Array<this>>}
    */
   static list({
     filter = {},
@@ -114,7 +114,7 @@ export class Base {
   /**
    * Soft delete.
    *
-   * @returns {Promise<T>}
+   * @returns {Promise<this>}
    */
   softDelete() {
     return this.set({
@@ -126,7 +126,7 @@ export class Base {
   /**
    * Get document back after soft removed.
    *
-   * @returns {Promise<T>}
+   * @returns {Promise<this>}
    */
   restore() {
     return this.set({
