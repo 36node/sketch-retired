@@ -5,7 +5,6 @@ import { validate } from "../middlewares";
 
 /**
  * @typedef {Object} State
- * @property {import("../models/pet").PetDocument} pet - pet model
  */
 
 export default class {
