@@ -23,10 +23,6 @@ export const defaultOptions = {
   },
 };
 
-/**
- * @typedef {import("mongoose").Model} Model
- */
-
 class Base {
   /**
    * Get by id

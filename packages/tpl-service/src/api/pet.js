@@ -3,12 +3,17 @@
 import * as schemas from "./pet.schema.js";
 import { validate } from "../middlewares";
 
-export default class API {
+/**
+ * @typedef {Object} State
+ * @property {import("../models/pet").PetDocument} pet - pet model
+ */
+
+export default class {
   /**
    * Bind service to router
    *
    * @param {import("koa-tree-router")} router the koa compatible router
-   * @returns {API} this
+   * @returns {this}
    */
   bind(router) {
     const listPets = async ctx => {
@@ -100,7 +105,7 @@ export default class API {
    *
    * @abstract
    * @param {string} operation name of operation
-   * @returns {Array<import("koa").Middleware>} middlewares
+   * @returns {Array<import("koa").Middleware<State>>} middlewares
    */
   middlewares(operation) {
     return [];
@@ -111,7 +116,7 @@ export default class API {
    *
    * @abstract
    * @param {import("../api/pet").ListPetsRequest} req listPets request
-   * @param {import("koa").Context} [ctx] koa context
+   * @param {import("../api/pet").Context<State>} [ctx] koa context
    * @returns {Promise<import("../api/pet").ListPetsResponse>} A paged array of pets
    */
   listPets(req, ctx) {
@@ -123,7 +128,7 @@ export default class API {
    *
    * @abstract
    * @param {import("../api/pet").CreatePetRequest} req createPet request
-   * @param {import("koa").Context} [ctx] koa context
+   * @param {import("../api/pet").Context<State>} [ctx] koa context
    * @returns {Promise<import("../api/pet").CreatePetResponse>} The Pet created
    */
   createPet(req, ctx) {
@@ -135,7 +140,7 @@ export default class API {
    *
    * @abstract
    * @param {import("../api/pet").ShowPetByIdRequest} req showPetById request
-   * @param {import("koa").Context} [ctx] koa context
+   * @param {import("../api/pet").Context<State>} [ctx] koa context
    * @returns {Promise<import("../api/pet").ShowPetByIdResponse>} Expected response to a valid request
    */
   showPetById(req, ctx) {
@@ -147,7 +152,7 @@ export default class API {
    *
    * @abstract
    * @param {import("../api/pet").UpdatePetRequest} req updatePet request
-   * @param {import("koa").Context} [ctx] koa context
+   * @param {import("../api/pet").Context<State>} [ctx] koa context
    * @returns {Promise<import("../api/pet").UpdatePetResponse>} The pet
    */
   updatePet(req, ctx) {
@@ -159,7 +164,7 @@ export default class API {
    *
    * @abstract
    * @param {import("../api/pet").DeletePetRequest} req deletePet request
-   * @param {import("koa").Context} [ctx] koa context
+   * @param {import("../api/pet").Context<State>} [ctx] koa context
    */
   deletePet(req, ctx) {
     throw new Error("not implemented");

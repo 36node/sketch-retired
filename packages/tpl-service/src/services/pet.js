@@ -11,6 +11,11 @@ import { Role } from "../constants";
 
 const debug = Debug("store:service:pet");
 
+/**
+ * @typedef {Object} State
+ * @property {import("../models/pet").PetDocument} pet - pet model
+ */
+
 export class Service extends API {
   _middlewares = {
     showPetById: [loadPet],
@@ -23,7 +28,7 @@ export class Service extends API {
    *
    * @override
    * @param {string} operation name of operation
-   * @returns {Array<import("koa").Middleware>} middlewares
+   * @returns {Array<import("koa").Middleware<State>>} middlewares
    */
   middlewares(operation) {
     return this._middlewares[operation] || [];
@@ -33,8 +38,8 @@ export class Service extends API {
    * List all pets
    *
    * @override
-   * @param {import("../api/pet").ListPetsRequest} req listPets request
-   * @returns {Promise<import("../api/pet").ListPetsResponse>} A paged array of pets
+   * @param {API.ListPetsRequest} req listPets request
+   * @returns {Promise<API.ListPetsResponse>} A paged array of pets
    */
   async listPets(req) {
     const query = toMongooseQuery(req.query);
@@ -53,8 +58,8 @@ export class Service extends API {
    * Create a pet
    *
    * @override
-   * @param {import("../api/pet").CreatePetRequest} req createPet request
-   * @returns {Promise<import("../api/pet").CreatePetResponse>} The Pet created
+   * @param {API.CreatePetRequest} req createPet request
+   * @returns {Promise<API.CreatePetResponse>} The Pet created
    */
   async createPet(req) {
     debug("crete pet with body %o", req.body);
@@ -66,9 +71,9 @@ export class Service extends API {
    * Find pet by id
    *
    * @override
-   * @param {import("../api/pet").ShowPetByIdRequest} req showPetById request
-   * @param {import("koa").Context} [ctx] koa context
-   * @returns {Promise<import("../api/pet").ShowPetByIdResponse>} Expected response to a valid request
+   * @param {API.ShowPetByIdRequest} req showPetById request
+   * @param {API.Context<State>} [ctx] koa context
+   * @returns {Promise<API.ShowPetByIdResponse>} Expected response to a valid request
    */
   async showPetById(req, ctx) {
     const { pet } = ctx.state;
@@ -79,9 +84,9 @@ export class Service extends API {
    * Update pet
    *
    * @override
-   * @param {import("../api/pet").UpdatePetRequest} req updatePet request
-   * @param {import("koa").Context} [ctx] koa context
-   * @returns {Promise<import("../api/pet").UpdatePetResponse>} The pet
+   * @param {API.UpdatePetRequest} req updatePet request
+   * @param {API.Context<State>} ctx koa context
+   * @returns {Promise<API.UpdatePetResponse>} The pet
    */
   async updatePet(req, ctx) {
     const { pet } = ctx.state;
@@ -94,8 +99,8 @@ export class Service extends API {
    * Delete pet
    *
    * @override
-   * @param {import("../api/pet").DeletePetRequest} req deletePet request
-   * @param {import("koa").Context} [ctx] koa context
+   * @param {API.DeletePetRequest} req deletePet request
+   * @param {API.Context<State>} [ctx] koa context
    */
   async deletePet(req, ctx) {
     const { pet } = ctx.state;

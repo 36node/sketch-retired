@@ -22,13 +22,15 @@ export const petSchema = new mongoose.Schema(
  */
 
 /**
- * @typedef {mongoose.Document & PetDoc} PetDocument
+ * @typedef {mongoose.Document & PetDoc & Pet} PetDocument
  */
 
 /**
- * TODO: 遗憾，Pet class 内部没法认出 PetDoc 的属性
+ * TODO: 弥补遗憾
+ *
+ * 遗憾: Pet内部无法实现语法提示
  */
-class Pet extends mongoose.Model {
+class Pet {
   /**
    * static function example
    *
@@ -39,10 +41,10 @@ class Pet extends mongoose.Model {
   }
 
   /**
-   * @param {number} a - some param
+   * @param {string} a - some param
    */
   method(a) {
-    this.age = a;
+    this.tag = a;
   }
 }
 
@@ -54,11 +56,11 @@ petSchema.loadClass(Pet);
 petSchema.plugin(helper);
 
 /**
- * @typedef {mongoose.Model<PetDocument & Pet>} PetModel
+ * @typedef {mongoose.Model<PetDocument, Pet>} PetModel
  */
 
 /**
- * @type {typeof Pet & PetModel}
+ * @type {PetModel & typeof Pet}
  */
 const Model = mongoose.model("Pet", petSchema);
 

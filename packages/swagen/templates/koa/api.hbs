@@ -3,12 +3,17 @@
 import * as schemas from "./{{name}}.schema.js";
 import { validate } from "../middlewares";
 
-export default class API {
+/**
+ * @typedef {Object} State
+ * @property {import("../models/pet").PetDocument} pet - pet model
+ */
+
+export default class {
   /**
    * Bind service to router
    *
    * @param {import("koa-tree-router")} router the koa compatible router
-   * @returns {API} this
+   * @returns {this}
    */
   bind(router) {
   {{#each operations}}
@@ -78,7 +83,7 @@ export default class API {
    *
    * @abstract
    * @param {string} operation name of operation
-   * @returns {Array<import("koa").Middleware>} middlewares
+   * @returns {Array<import("koa").Middleware<State>>} middlewares
    */
   middlewares(operation) {
     return [];
@@ -92,7 +97,7 @@ export default class API {
    {{#or parameters requestBody}}
    * @param {import("../api/{{../name}}").{{~capitalize name}}Request} req {{name}} request
    {{/or}}
-   * @param {import("koa").Context} [ctx] koa context
+   * @param {import("../api/{{../name}}").Context<State>} [ctx] koa context
    {{#or response.content response.headers}}
    * @returns {Promise<import("../api/{{../name}}").{{~capitalize name}}Response>} {{response.description}}
    {{/or}}

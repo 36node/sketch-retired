@@ -1,30 +1,25 @@
 import { Context, Middleware } from "koa";
-import Router from "koa-tree-router";
+import Router, { RouterContext } from "koa-tree-router";
 
-{{#each operations}}
-{{#if requestDef}}
-{{{requestDef}}};
-{{/if}}
-{{#if responseDef}}
-{{{responseDef}}};
-{{/if}}
-{{/each}}
-
-declare global {
+declare namespace API {
   {{#each operations}}
   {{#if requestDef}}
-  type {{{capitalize name}}}Request = {{{capitalize name}}}Request;
+  {{{requestDef}}};
   {{/if}}
   {{#if responseDef}}
-  type {{{capitalize name}}}Response = {{{capitalize name}}}Response;
+  {{{responseDef}}};
   {{/if}}
   {{/each}}
+
+  type Context<StateT, CustomT = {}> = RouterContext<StateT, CustomT>;
 }
 
-export default class API {
+declare class API {
   middleware(operation: string): Array<Middleware>;
   bind(router: Router): API;
   {{#each operations}}
-  {{name}}({{#if requestDef}}req: {{capitalize name}}Request, {{/if}}ctx: Context): {{#if responseDef}}Promise<{{capitalize name}}Response>{{else}}void{{/if}};
+  {{name}}({{#if requestDef}}req: API.{{capitalize name}}Request, {{/if}}ctx: API.Context): {{#if responseDef}}Promise<API.{{capitalize name}}Response>{{else}}Promise<void>{{/if}};
   {{/each}}
 }
+
+export = API;
