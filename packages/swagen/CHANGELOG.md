@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.5](https://github.com/36node/sketch/compare/@36node/swagen@0.17.4...@36node/swagen@0.17.5) (2020-07-11)
+
+
+### Bug Fixes
+
+* mongo model typing ([5ff3cd1](https://github.com/36node/sketch/commit/5ff3cd1))
+
+
+
+
+
 ## [0.17.4](https://github.com/36node/sketch/compare/@36node/swagen@0.17.3...@36node/swagen@0.17.4) (2020-07-06)
 
 
