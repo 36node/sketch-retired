@@ -27,6 +27,7 @@ declare namespace API {
       birthAt?: string;
       grade?: number;
       owner?: string;
+      other1?: string;
     } & {
       id: string;
       updateAt?: string;
@@ -49,6 +50,7 @@ declare namespace API {
       birthAt?: string;
       grade?: number;
       owner?: string;
+      other2?: string;
     } & {
       /**
        * pet's name
@@ -67,6 +69,7 @@ declare namespace API {
       birthAt?: string;
       grade?: number;
       owner?: string;
+      other1?: string;
     } & {
       id: string;
       updateAt?: string;
@@ -89,6 +92,7 @@ declare namespace API {
       birthAt?: string;
       grade?: number;
       owner?: string;
+      other1?: string;
     } & {
       id: string;
       updateAt?: string;
@@ -109,6 +113,7 @@ declare namespace API {
       birthAt?: string;
       grade?: number;
       owner?: string;
+      other2?: string;
     };
   }
   export interface UpdatePetResponse {
@@ -122,6 +127,7 @@ declare namespace API {
       birthAt?: string;
       grade?: number;
       owner?: string;
+      other1?: string;
     } & {
       id: string;
       updateAt?: string;

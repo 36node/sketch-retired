@@ -1,8 +1,10 @@
 export const listPetsReqSchema = {
+  additionalProperties: false,
   type: "object",
   required: [],
   properties: {
     query: {
+      additionalProperties: false,
       type: "object",
       required: [],
       properties: {
@@ -22,12 +24,11 @@ export const listPetsReqSchema = {
         grade_gt: { type: "string", format: "date" },
         grade_lt: { type: "string", format: "date" },
       },
-      additionalProperties: false,
     },
   },
-  additionalProperties: false,
 };
 export const listPetsResSchema = {
+  additionalProperties: false,
   type: "object",
   required: [],
   properties: {
@@ -36,6 +37,7 @@ export const listPetsResSchema = {
       items: {
         allOf: [
           {
+            additionalProperties: false,
             type: "object",
             properties: {
               name: { type: "string", description: "pet's name" },
@@ -44,10 +46,11 @@ export const listPetsResSchema = {
               birthAt: { type: "string", format: "date" },
               grade: { type: "integer", format: "int32" },
               owner: { type: "string" },
+              other1: { type: "string", readOnly: true },
             },
-            additionalProperties: false,
           },
           {
+            additionalProperties: false,
             type: "object",
             required: ["id"],
             properties: {
@@ -57,27 +60,27 @@ export const listPetsResSchema = {
               createAt: { type: "string", format: "date-time" },
               createBy: { type: "string" },
             },
-            additionalProperties: false,
           },
         ],
       },
     },
     headers: {
+      additionalProperties: false,
       type: "object",
       required: ["X-Total-Count"],
       properties: { "X-Total-Count": { type: "integer" } },
-      additionalProperties: false,
     },
   },
-  additionalProperties: false,
 };
 export const createPetReqSchema = {
+  additionalProperties: false,
   type: "object",
   required: ["body"],
   properties: {
     body: {
       allOf: [
         {
+          additionalProperties: false,
           type: "object",
           properties: {
             name: { type: "string", description: "pet's name" },
@@ -86,27 +89,28 @@ export const createPetReqSchema = {
             birthAt: { type: "string", format: "date" },
             grade: { type: "integer", format: "int32" },
             owner: { type: "string" },
+            other2: { type: "string", writeOnly: true },
           },
-          additionalProperties: false,
         },
         {
+          additionalProperties: false,
           type: "object",
           required: ["name"],
           properties: { name: { type: "string", description: "pet's name" } },
-          additionalProperties: false,
         },
       ],
     },
   },
-  additionalProperties: false,
 };
 export const createPetResSchema = {
+  additionalProperties: false,
   type: "object",
   required: [],
   properties: {
     content: {
       allOf: [
         {
+          additionalProperties: false,
           type: "object",
           properties: {
             name: { type: "string", description: "pet's name" },
@@ -115,10 +119,11 @@ export const createPetResSchema = {
             birthAt: { type: "string", format: "date" },
             grade: { type: "integer", format: "int32" },
             owner: { type: "string" },
+            other1: { type: "string", readOnly: true },
           },
-          additionalProperties: false,
         },
         {
+          additionalProperties: false,
           type: "object",
           required: ["id"],
           properties: {
@@ -128,26 +133,26 @@ export const createPetResSchema = {
             createAt: { type: "string", format: "date-time" },
             createBy: { type: "string" },
           },
-          additionalProperties: false,
         },
       ],
     },
   },
-  additionalProperties: false,
 };
 export const showPetByIdReqSchema = {
+  additionalProperties: false,
   type: "object",
   required: ["petId"],
   properties: { petId: { type: "string", pattern: "[a-f\\d]{24}" } },
-  additionalProperties: false,
 };
 export const showPetByIdResSchema = {
+  additionalProperties: false,
   type: "object",
   required: [],
   properties: {
     content: {
       allOf: [
         {
+          additionalProperties: false,
           type: "object",
           properties: {
             name: { type: "string", description: "pet's name" },
@@ -156,10 +161,11 @@ export const showPetByIdResSchema = {
             birthAt: { type: "string", format: "date" },
             grade: { type: "integer", format: "int32" },
             owner: { type: "string" },
+            other1: { type: "string", readOnly: true },
           },
-          additionalProperties: false,
         },
         {
+          additionalProperties: false,
           type: "object",
           required: ["id"],
           properties: {
@@ -169,19 +175,19 @@ export const showPetByIdResSchema = {
             createAt: { type: "string", format: "date-time" },
             createBy: { type: "string" },
           },
-          additionalProperties: false,
         },
       ],
     },
   },
-  additionalProperties: false,
 };
 export const updatePetReqSchema = {
+  additionalProperties: false,
   type: "object",
   required: ["petId", "body"],
   properties: {
     petId: { type: "string", pattern: "[a-f\\d]{24}" },
     body: {
+      additionalProperties: false,
       type: "object",
       properties: {
         name: { type: "string", description: "pet's name" },
@@ -190,19 +196,20 @@ export const updatePetReqSchema = {
         birthAt: { type: "string", format: "date" },
         grade: { type: "integer", format: "int32" },
         owner: { type: "string" },
+        other2: { type: "string", writeOnly: true },
       },
-      additionalProperties: false,
     },
   },
-  additionalProperties: false,
 };
 export const updatePetResSchema = {
+  additionalProperties: false,
   type: "object",
   required: [],
   properties: {
     content: {
       allOf: [
         {
+          additionalProperties: false,
           type: "object",
           properties: {
             name: { type: "string", description: "pet's name" },
@@ -211,10 +218,11 @@ export const updatePetResSchema = {
             birthAt: { type: "string", format: "date" },
             grade: { type: "integer", format: "int32" },
             owner: { type: "string" },
+            other1: { type: "string", readOnly: true },
           },
-          additionalProperties: false,
         },
         {
+          additionalProperties: false,
           type: "object",
           required: ["id"],
           properties: {
@@ -224,16 +232,14 @@ export const updatePetResSchema = {
             createAt: { type: "string", format: "date-time" },
             createBy: { type: "string" },
           },
-          additionalProperties: false,
         },
       ],
     },
   },
-  additionalProperties: false,
 };
 export const deletePetReqSchema = {
+  additionalProperties: false,
   type: "object",
   required: ["petId"],
   properties: { petId: { type: "string", pattern: "[a-f\\d]{24}" } },
-  additionalProperties: false,
 };

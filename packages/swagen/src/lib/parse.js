@@ -11,14 +11,19 @@ const initObjSchema = (properties = {}) => ({
 /**
  * 对 schema 做一定的补充和变化，使得 ajv 和 compile to typedef 能正确工作
  */
-function _transSchema(obj) {
+function _transSchema(obj, isRequest = false) {
   if (typeof obj !== "object") return obj;
-  const newobj = isArray(obj) ? [...obj] : { ...obj };
+  const newobj = isArray(obj) ? [] : {};
   if (obj.type === "object") {
     newobj.additionalProperties = false;
   }
   for (let prop in obj) {
-    newobj[prop] = _transSchema(obj[prop]);
+    if (
+      (isRequest && !obj[prop].readOnly) ||
+      (!isRequest && !obj[prop].writeOnly)
+    ) {
+      newobj[prop] = _transSchema(obj[prop], isRequest);
+    }
   }
   return newobj;
 }
@@ -47,7 +52,7 @@ function getRequestSchema({ parameters = [], requestBody }) {
     schema.required.push("body");
   }
 
-  if (!isEmpty(schema.properties)) return _transSchema(schema);
+  if (!isEmpty(schema.properties)) return _transSchema(schema, true);
 }
 
 /**

@@ -49,7 +49,7 @@ class Pet {
 }
 
 petSchema.pre("save", async function() {
-  console.log("pre save *********************");
+  // console.log("pre save *********************");
 });
 
 petSchema.loadClass(Pet);

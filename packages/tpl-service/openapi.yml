@@ -320,6 +320,12 @@ components:
           format: int32
         owner:
           type: string
+        other1:
+          type: string
+          readOnly: true
+        other2:
+          type: string
+          writeOnly: true
 
     PetDocForCreate:
       allOf:
