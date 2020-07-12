@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.5](https://github.com/36node/sketch/compare/@36node/template-service@0.16.4...@36node/template-service@0.16.5) (2020-07-12)
+
+
+### Bug Fixes
+
+* swagen support readOnly and writeOnly, close [#177](https://github.com/36node/sketch/issues/177) ([97283e7](https://github.com/36node/sketch/commit/97283e7))
+
+
+
+
+
 ## [0.16.4](https://github.com/36node/sketch/compare/@36node/template-service@0.16.3...@36node/template-service@0.16.4) (2020-07-11)
 
 **Note:** Version bump only for package @36node/template-service

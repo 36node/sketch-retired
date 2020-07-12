@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.7](https://github.com/36node/sketch/compare/@36node/swagen@0.17.6...@36node/swagen@0.17.7) (2020-07-12)
+
+
+### Bug Fixes
+
+* swagen support readOnly and writeOnly, close [#177](https://github.com/36node/sketch/issues/177) ([97283e7](https://github.com/36node/sketch/commit/97283e7))
+
+
+
+
+
 ## [0.17.6](https://github.com/36node/sketch/compare/@36node/swagen@0.17.5...@36node/swagen@0.17.6) (2020-07-11)
 
 
