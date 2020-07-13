@@ -1,0 +1,118 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:10
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependences
+          command: yarn install
+      - run:
+          name: Build Package
+          command: NODE_ENV=production yarn build
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - .
+
+  test:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Eslint
+          command: yarn lint
+      - run:
+          name: Unit Test
+          command: NODE_ENV=test yarn test --coverage
+      - run:
+          name: Upload Coverage
+          command: bash <(curl -s https://codecov.io/bash)
+
+  release:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - setup_remote_docker
+      - run:
+          name: Setup Environment Variables
+          command: |
+            echo "export TAG=`if test $CIRCLE_TAG; then echo $CIRCLE_TAG; else echo "$CIRCLE_BRANCH"; fi`" >> $BASH_ENV
+            source $BASH_ENV
+      - run:
+          name: Build and Push Image
+          command: |
+            unset CI
+            chmod +x bin/build-docker.sh
+            bin/build-docker.sh $TAG $DOCKER_USER $DOCKER_PASS $DOCKER_REGISTRY
+
+  bump:
+    <<: *defaults
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "b1:ae:28:64:a6:7f:88:27:a9:6c:12:a7:85:d9:4e:03"
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependences
+          command: yarn install
+      - run:
+          name: git config
+          command: |
+            git config --global user.email "robot@circleci.com"
+            git config --global user.name "robot"
+      - run:
+          name: bump version
+          command: bin/bump.sh
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - build:
+          filters: # required since `release` has tag filters AND requires `build`
+            tags:
+              only: /.*/
+      # - test:
+      #     requires:
+      #       - build
+      #     filters:  # required since `release` has tag filters AND requires `test`
+      #       tags:
+      #         only: /.*/
+      - release:
+          context: production
+          requires:
+            - build
+          filters:
+            tags:
+              only: /v.*/
+            branches:
+              ignore: /.*/
+  nightly:
+    triggers:
+      - schedule:
+          cron: "20 20 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - bump
