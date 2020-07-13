@@ -21,7 +21,7 @@ describe("Pet model", () => {
   it("should insert a doc into collection", async () => {
     const doc = {
       name: "cali",
-      tag: "cute",
+      tag: "CAT",
       owner: "5cb9a4edc48ad400120d28b0",
     };
 
