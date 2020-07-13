@@ -14,11 +14,7 @@ const initObjSchema = (properties = {}) => ({
 function _transSchema(obj, isRequest = false) {
   if (typeof obj !== "object") return obj;
   const newobj = isArray(obj) ? [] : {};
-  if (
-    obj.format === "date" ||
-    obj.format === "date-time" ||
-    obj.format === "time"
-  ) {
+  if (obj.format === "date-time") {
     newobj.tsType = "Date";
   }
   if (obj.type === "object") {
