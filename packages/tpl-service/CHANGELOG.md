@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.7](https://github.com/36node/sketch/compare/@36node/template-service@0.16.6...@36node/template-service@0.16.7) (2020-07-13)
+
+
+### Bug Fixes
+
+* **swagen:** support format date ([f8121f1](https://github.com/36node/sketch/commit/f8121f1))
+* **tpl-service:** test ([932be4f](https://github.com/36node/sketch/commit/932be4f))
+
+
+
+
+
 ## [0.16.6](https://github.com/36node/sketch/compare/@36node/template-service@0.16.5...@36node/template-service@0.16.6) (2020-07-13)
 
 
