@@ -93,7 +93,7 @@ export default (reqSchema, resSchema) => {
       if (!validateReq(req)) {
         ctx.throw(
           400,
-          `request is invalid`,
+          "request is invalid",
           buildAjvErr(validateReq.errors, req) // return first error
         );
       }
@@ -110,7 +110,12 @@ export default (reqSchema, resSchema) => {
         cookies: ctx.cookies,
       };
       if (!validateRes(res)) {
-        ctx.throw(500, buildAjvErr(validateRes.errors, res));
+        debug("res.content %o", res);
+        ctx.throw(
+          500,
+          "response is invalid",
+          buildAjvErr(validateRes.errors, res)
+        );
       }
       debug("validate response success");
     }

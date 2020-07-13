@@ -146,7 +146,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PetDocForCreate"
+              $ref: "#/components/schemas/PetCreateDoc"
             examples:
               default:
                 value: |
@@ -327,7 +327,7 @@ components:
           type: string
           writeOnly: true
 
-    PetDocForCreate:
+    PetCreateDoc:
       allOf:
         - $ref: "#/components/schemas/PetDoc"
         - type: object

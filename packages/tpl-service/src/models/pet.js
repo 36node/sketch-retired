@@ -4,11 +4,10 @@ import { helper, defaultOptions } from "@36node/mongoose-helper";
 export const petSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
-    tag: String,
     owner: mongoose.SchemaTypes.ObjectId,
     age: Number,
-    category: { type: String, enum: ["CAT", "DOG"] },
-    birthAt: Date,
+    tag: { type: String, enum: ["CAT", "DOG"] },
+    birthAt: String,
   },
   defaultOptions
 );
@@ -16,11 +15,12 @@ export const petSchema = new mongoose.Schema(
 /**
  * @typedef {Object} PetDoc
  * @property {string} name - 名称
- * @property {string} [tag] - 标签
+ * @property {"CAT"|"DOG"} [tag] - 标签
  * @property {number} [age] - 年龄
- * @property {"CAT"|"DOG"} [category] - 类别
  * @property {mongoose.Schema.Types.ObjectId} [owner] - 拥有者
- * @property {Date} [birthAt] - 拥有者
+ * @property {string} [birthAt] - 出生日期
+ * @property {number} [grade] - 年级
+ * @property {string} [other2] - other2
  */
 
 /**
@@ -43,11 +43,9 @@ class Pet {
   }
 
   /**
-   * @param {string} a - some param
+   * @param {PetCreateDoc} doc - some param
    */
-  method(a) {
-    this.tag = a;
-  }
+  method(doc) {}
 }
 
 petSchema.pre("save", async function() {
