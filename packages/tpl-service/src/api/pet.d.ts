@@ -10,10 +10,10 @@ declare namespace API {
       _select?: string[];
       tag?: string;
       age_gt?: number;
-      birthAt_gt?: string;
-      birthAt_lt?: string;
-      grade_gt?: string;
-      grade_lt?: string;
+      birthAt_gt?: Date;
+      birthAt_lt?: Date;
+      grade_gt?: Date;
+      grade_lt?: Date;
     };
   }
   export interface ListPetsResponse {
@@ -24,15 +24,15 @@ declare namespace API {
       name?: string;
       tag?: "DOG" | "CAT";
       age?: number;
-      birthAt?: string;
+      birthAt?: Date;
       grade?: number;
       owner?: string;
       other1?: string;
     } & {
       id: string;
-      updateAt?: string;
+      updateAt?: Date;
       updateBy?: string;
-      createAt?: string;
+      createAt?: Date;
       createBy?: string;
     })[];
     headers?: {
@@ -47,7 +47,7 @@ declare namespace API {
       name?: string;
       tag?: "DOG" | "CAT";
       age?: number;
-      birthAt?: string;
+      birthAt?: Date;
       grade?: number;
       owner?: string;
       other2?: string;
@@ -66,15 +66,15 @@ declare namespace API {
       name?: string;
       tag?: "DOG" | "CAT";
       age?: number;
-      birthAt?: string;
+      birthAt?: Date;
       grade?: number;
       owner?: string;
       other1?: string;
     } & {
       id: string;
-      updateAt?: string;
+      updateAt?: Date;
       updateBy?: string;
-      createAt?: string;
+      createAt?: Date;
       createBy?: string;
     };
   }
@@ -89,15 +89,15 @@ declare namespace API {
       name?: string;
       tag?: "DOG" | "CAT";
       age?: number;
-      birthAt?: string;
+      birthAt?: Date;
       grade?: number;
       owner?: string;
       other1?: string;
     } & {
       id: string;
-      updateAt?: string;
+      updateAt?: Date;
       updateBy?: string;
-      createAt?: string;
+      createAt?: Date;
       createBy?: string;
     };
   }
@@ -110,7 +110,7 @@ declare namespace API {
       name?: string;
       tag?: "DOG" | "CAT";
       age?: number;
-      birthAt?: string;
+      birthAt?: Date;
       grade?: number;
       owner?: string;
       other2?: string;
@@ -124,15 +124,15 @@ declare namespace API {
       name?: string;
       tag?: "DOG" | "CAT";
       age?: number;
-      birthAt?: string;
+      birthAt?: Date;
       grade?: number;
       owner?: string;
       other1?: string;
     } & {
       id: string;
-      updateAt?: string;
+      updateAt?: Date;
       updateBy?: string;
-      createAt?: string;
+      createAt?: Date;
       createBy?: string;
     };
   }

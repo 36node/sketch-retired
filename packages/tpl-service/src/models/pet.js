@@ -8,6 +8,7 @@ export const petSchema = new mongoose.Schema(
     owner: mongoose.SchemaTypes.ObjectId,
     age: Number,
     category: { type: String, enum: ["CAT", "DOG"] },
+    birthAt: Date,
   },
   defaultOptions
 );
@@ -15,10 +16,11 @@ export const petSchema = new mongoose.Schema(
 /**
  * @typedef {Object} PetDoc
  * @property {string} name - 名称
- * @property {string=} tag - 标签
- * @property {number=} age - 年龄
- * @property {"CAT"|"DOG"=} category - 类别
- * @property {mongoose.Schema.Types.ObjectId=} owner - 拥有者
+ * @property {string} [tag] - 标签
+ * @property {number} [age] - 年龄
+ * @property {"CAT"|"DOG"} [category] - 类别
+ * @property {mongoose.Schema.Types.ObjectId} [owner] - 拥有者
+ * @property {Date} [birthAt] - 拥有者
  */
 
 /**

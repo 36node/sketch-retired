@@ -1,4 +1,4 @@
-import { get, camelCase, isEmpty, isArray } from "lodash";
+import { get, camelCase, isEmpty, isArray, map } from "lodash";
 import SwaggerParser from "swagger-parser";
 import { compile } from "json-schema-to-typescript";
 
@@ -14,6 +14,13 @@ const initObjSchema = (properties = {}) => ({
 function _transSchema(obj, isRequest = false) {
   if (typeof obj !== "object") return obj;
   const newobj = isArray(obj) ? [] : {};
+  if (
+    obj.format === "date" ||
+    obj.format === "date-time" ||
+    obj.format === "time"
+  ) {
+    newobj.tsType = "Date";
+  }
   if (obj.type === "object") {
     newobj.additionalProperties = false;
   }
@@ -81,7 +88,10 @@ function getResponseSchema({ headers, content }) {
  */
 function getDef(schema, name) {
   if (schema) {
-    return compile(schema, name, { unknownAny: false, bannerComment: null });
+    return compile(schema, name, {
+      unknownAny: false,
+      bannerComment: null,
+    });
   }
 }
 
