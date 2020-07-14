@@ -1,4 +1,4 @@
-import { get, camelCase, isEmpty, isArray, map } from "lodash";
+import { get, camelCase, isEmpty, isArray } from "lodash";
 import SwaggerParser from "swagger-parser";
 import { compile } from "json-schema-to-typescript";
 

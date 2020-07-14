@@ -8,7 +8,7 @@ pm.test("Status code is {{response.status}}", function () {
 {{/withResponseStatus}}
 
 {{#if responseSchema}}
-const schema = {{{JSONstringify responseSchema}}};
+const schema = {{{postmanAjvSchema responseSchema}}};
 const res = {
   content: pm.response.json(),
   headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})

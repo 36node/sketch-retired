@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 import hbsHelper from "handlebars-helpers";
-import { upperFirst, get } from "lodash";
+import { upperFirst, get, isArray } from "lodash";
 
 hbsHelper({
   handlebars: Handlebars,
@@ -122,6 +122,27 @@ export function requireParamType(parameters = [], type) {
 }
 
 /**
+ * 移除不必要的字段，确保 ajv 校验不失败
+ *
+ * @param {Object} obj schema
+ */
+export function cutSchema(obj) {
+  if (typeof obj !== "object") return obj;
+  if (isArray(obj)) return obj.map(cutSchema);
+  const {
+    description,
+    example,
+    tsType,
+    additionalProperties,
+    writeOnly,
+    readOnly,
+    ...newObj
+  } = obj;
+  Object.keys(newObj).map(key => (newObj[key] = cutSchema(newObj[key])));
+  return newObj;
+}
+
+/**
  * Handlebars helpers
  */
 Handlebars.registerHelper("decapitalize", str => {
@@ -197,4 +218,8 @@ Handlebars.registerHelper("toDollar", function(path) {
 
 Handlebars.registerHelper("toUpperCase", function(str) {
   return str.toUpperCase();
+});
+
+Handlebars.registerHelper("postmanAjvSchema", schema => {
+  return JSON.stringify(cutSchema(schema));
 });
