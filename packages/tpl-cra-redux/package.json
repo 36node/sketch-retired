@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-cra-redux",
-  "version": "0.15.29",
+  "version": "0.15.30",
   "description": "A react boilerplate based on CRA",
   "license": "MIT",
   "publishConfig": {
@@ -79,7 +79,7 @@
     "@36node/redux-session": "^0.1.5",
     "@36node/redux-xlsx": "^0.1.19",
     "@36node/template-react-component": "^0.3.58",
-    "@36node/template-sdk": "^0.10.49",
+    "@36node/template-sdk": "^0.10.50",
     "@ant-design/icons": "^4.0.5",
     "antd": "^4.1.0",
     "lodash": "^4.17.11",

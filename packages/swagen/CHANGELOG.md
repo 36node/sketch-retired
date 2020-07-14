@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.10](https://github.com/36node/sketch/compare/@36node/swagen@0.17.9...@36node/swagen@0.17.10) (2020-07-14)
+
+
+### Bug Fixes
+
+* **tpl-service:** swagen ([d3c2e80](https://github.com/36node/sketch/commit/d3c2e80))
+
+
+
+
+
 ## [0.17.9](https://github.com/36node/sketch/compare/@36node/swagen@0.17.8...@36node/swagen@0.17.9) (2020-07-13)
 
 
