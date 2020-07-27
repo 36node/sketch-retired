@@ -1,6 +1,6 @@
 import path from "path";
 
-import { mkdir, generateFile, parse } from "../lib";
+import { mkdir, generate, parse } from "../lib";
 
 /**
  * Genereate code for sdk
@@ -27,15 +27,11 @@ export default function genSDK({ yamlFile, dist = "./", templatePath }) {
 
       const finalDist = dist || process.cwd();
 
-      generateFile(
-        tplDef,
-        path.join(finalDist, "typings", `index.d.ts`),
-        tplData,
-        {
-          parser: "typescript",
-        }
-      );
-      generateFile(tplSdk, path.join(finalDist, "src", `index.js`), tplData);
+      generate(tplDef, path.join(finalDist, "typings", `index.d.ts`), tplData, {
+        parser: "typescript",
+      });
+
+      generate(tplSdk, path.join(finalDist, "src", `index.js`), tplData);
     })
     .catch(err => console.error(err));
 }

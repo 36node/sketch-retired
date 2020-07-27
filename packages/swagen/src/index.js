@@ -1,6 +1,5 @@
 import koa from "./generators/koa";
 import postman from "./generators/postman";
-// import sdk from "./generators/sdk";
+import sdk from "./generators/sdk";
 
-// export { koa, postman, sdk };
-export { koa, postman };
+export { koa, postman, sdk };

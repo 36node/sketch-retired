@@ -118,6 +118,7 @@ export const withTable = (
     };
 
     handleFetch = (payload = {}, page = 1) => {
+      console.log("handleFetch");
       const query = {
         ...get(this.props, "listState.request.query"),
         offset: (page - 1) * defaultPageSize,

@@ -1,21 +1,21 @@
-export = SDK;
 
 declare class SDK {
-  constructor(opts?: SDK.Options);
+  constructor(opts?: Options);
 
   base: string;
-  token: string;
+  token: string | (() => string);
   auth: string;
 
   {{#each api}}
-  {{@key}}: SDK.{{capitalize @key}}API;
+  {{@key}}: {{capitalize @key}}API;
   {{/each}}
 }
 
-declare namespace SDK {
+declare global {
+
   export interface Options {
     base?: string;
-    token?: string;
+    token?: string | (() => string);
   }
 
   {{#each api}}
@@ -31,49 +31,14 @@ declare namespace SDK {
 
   {{#each api}}
   {{#each operations}}
-  {{#or parameters requestBody}}
-  type {{capitalize name}}Request = {
-    {{#each parameters}}
-    {{#is in "path"}}
-    {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
-    {{/is}}
-    {{/each}}
-    {{#withParamQuery parameters}}
-    {{normalizeQuery parameters}}
-    {{/withParamQuery}}
-    {{#withParamHeader parameters}}
-    headers: {
-      {{#each parameters}}
-      {{#is in "header"}}
-      {{name}}{{#unless required}}?{{/unless}}: {{{schemaType schema}}};
-      {{/is}}
-      {{/each}}
-    };
-    {{/withParamHeader}}
-    {{#with requestBody}}
-    body: {{{schemaType content.schema}}};
-    {{/with}}
-  }
-  {{/or}}
-
-  {{#or response.content response.headers}}
-  type {{capitalize name}}Response = {
-    {{#with response.content}}
-    body: {{{schemaType schema}}};
-    {{/with}}
-    {{#with response.headers}}
-    headers: {
-      {{#each this}}
-      {{camelcase @key}}: {{{schemaType schema}}};
-      {{/each}}
-    };
-    {{/with}}
-  }
-  {{/or}}
-
+  {{#if requestDef}}
+  {{{requestDef}}};
+  {{/if}}
+  {{#if responseDef}}
+  {{{responseDef}}};
+  {{/if}}
   {{/each}}
-  {{/each}}
-  {{#each components.schemas}}
-  type {{capitalize @key}} = {{{schemaType this}}};
   {{/each}}
 }
+
+export = SDK;

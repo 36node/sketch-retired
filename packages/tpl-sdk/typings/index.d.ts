@@ -1,19 +1,17 @@
-export = SDK;
-
 declare class SDK {
-  constructor(opts?: SDK.Options);
+  constructor(opts?: Options);
 
   base: string;
-  token: string;
+  token: string | (() => string);
   auth: string;
 
-  pet: SDK.PetAPI;
+  pet: PetAPI;
 }
 
-declare namespace SDK {
+declare global {
   export interface Options {
     base?: string;
-    token?: string;
+    token?: string | (() => string);
   }
 
   export interface PetAPI {
@@ -39,100 +37,143 @@ declare namespace SDK {
     deletePet(req: DeletePetRequest): Promise<DeletePetResponse>;
   }
 
-  type ListPetsRequest = {
-    query: {
-      limit?: number;
-      offset?: number;
-      sort?: string;
-      select?: string;
-      group?: string | [string];
-
-      filter: {
-        tag?: string;
-        age: {
-          $gt?: number;
-        };
-        birthAt: {
-          $gt?: string;
-          $lt?: string;
-        };
-        grade: {
-          $gt?: string;
-          $lt?: string;
-        };
-      };
+  export interface ListPetsRequest {
+    query?: {
+      _limit?: number;
+      _offset?: number;
+      _sort?: string;
+      _select?: string[];
+      tag?: string;
+      age_gt?: number;
+      birthAt_gt?: string;
+      birthAt_lt?: string;
+      grade_gt?: string;
+      grade_lt?: string;
     };
-  };
-
-  type ListPetsResponse = {
-    body: [Pet];
-    headers: {
-      xTotalCount: number;
+  }
+  export interface ListPetsResponse {
+    content?: ({
+      /**
+       * pet's name
+       */
+      name?: string;
+      tag?: "DOG" | "CAT";
+      age?: number;
+      birthAt?: string;
+      grade?: number;
+      owner?: string;
+      other1?: string;
+    } & {
+      id: string;
+      updateAt?: Date;
+      updateBy?: string;
+      createAt?: Date;
+      createBy?: string;
+    })[];
+    headers?: {
+      "X-Total-Count": number;
     };
-  };
-
-  type CreatePetRequest = {
-    body: PetDoc;
-  };
-
-  type CreatePetResponse = {
-    body: Pet;
-  };
-
-  type ShowPetByIdRequest = {
+  }
+  export interface CreatePetRequest {
+    body: {
+      /**
+       * pet's name
+       */
+      name?: string;
+      tag?: "DOG" | "CAT";
+      age?: number;
+      birthAt?: string;
+      grade?: number;
+      owner?: string;
+      other2?: string;
+    } & {
+      /**
+       * pet's name
+       */
+      name: string;
+    };
+  }
+  export interface CreatePetResponse {
+    content?: {
+      /**
+       * pet's name
+       */
+      name?: string;
+      tag?: "DOG" | "CAT";
+      age?: number;
+      birthAt?: string;
+      grade?: number;
+      owner?: string;
+      other1?: string;
+    } & {
+      id: string;
+      updateAt?: Date;
+      updateBy?: string;
+      createAt?: Date;
+      createBy?: string;
+    };
+  }
+  export interface ShowPetByIdRequest {
     petId: string;
-  };
-
-  type ShowPetByIdResponse = {
-    body: Pet;
-  };
-
-  type UpdatePetRequest = {
+  }
+  export interface ShowPetByIdResponse {
+    content?: {
+      /**
+       * pet's name
+       */
+      name?: string;
+      tag?: "DOG" | "CAT";
+      age?: number;
+      birthAt?: string;
+      grade?: number;
+      owner?: string;
+      other1?: string;
+    } & {
+      id: string;
+      updateAt?: Date;
+      updateBy?: string;
+      createAt?: Date;
+      createBy?: string;
+    };
+  }
+  export interface UpdatePetRequest {
     petId: string;
-    body: PetDoc;
-  };
-
-  type UpdatePetResponse = {
-    body: Pet;
-  };
-
-  type DeletePetRequest = {
+    body: {
+      /**
+       * pet's name
+       */
+      name?: string;
+      tag?: "DOG" | "CAT";
+      age?: number;
+      birthAt?: string;
+      grade?: number;
+      owner?: string;
+      other2?: string;
+    };
+  }
+  export interface UpdatePetResponse {
+    content?: {
+      /**
+       * pet's name
+       */
+      name?: string;
+      tag?: "DOG" | "CAT";
+      age?: number;
+      birthAt?: string;
+      grade?: number;
+      owner?: string;
+      other1?: string;
+    } & {
+      id: string;
+      updateAt?: Date;
+      updateBy?: string;
+      createAt?: Date;
+      createBy?: string;
+    };
+  }
+  export interface DeletePetRequest {
     petId: string;
-  };
-
-  type PetDoc = {
-    name: string;
-    tag: "DOG" | "CAT";
-    age: number;
-    birthAt: string;
-    grade: number;
-  };
-  type Pet = {
-    id: string;
-    name: string;
-    tag: "DOG" | "CAT";
-    age: number;
-    birthAt: string;
-    grade: number;
-  };
-  type PetOrDoc =
-    | {
-        name: string;
-        tag: "DOG" | "CAT";
-        age: number;
-        birthAt: string;
-        grade: number;
-      }
-    | {
-        id: string;
-        name: string;
-        tag: "DOG" | "CAT";
-        age: number;
-        birthAt: string;
-        grade: number;
-      };
-  type Err = {
-    code: string;
-    message: string;
-  };
+  }
 }
+
+export = SDK;

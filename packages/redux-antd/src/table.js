@@ -17,8 +17,8 @@ export const createTable = (
         this.props.dispatch(
           list({
             query: {
-              limit: defaultPageSize,
-              offset: 0,
+              _limit: defaultPageSize,
+              _offset: 0,
             },
           })
         );
@@ -32,8 +32,8 @@ export const createTable = (
       // query could be changed from outside
       const query = { ...this.props.listState.request.query };
       const { current = 1, pageSize = defaultPageSize } = pagination;
-      query.limit = pageSize;
-      query.offset = (current - 1) * pageSize;
+      query._limit = pageSize;
+      query._offset = (current - 1) * pageSize;
 
       Object.keys(filters)
         .filter(k => Boolean(filters[k]))
