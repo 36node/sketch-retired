@@ -38,14 +38,13 @@ export const createTable = (
       Object.keys(filters)
         .filter(k => Boolean(filters[k]))
         .forEach(k => {
-          if (!query.filter) query.filter = {};
-          query.filter[k] = filters[k];
+          query[k] = filters[k];
         });
 
       const { column, field, order } = sort;
       if (column)
-        query.sort = (order === "ascend" ? "" : "-") + (column.key || field);
-      else delete query.sort;
+        query._sort = (order === "ascend" ? "" : "-") + (column.key || field);
+      else delete query._sort;
 
       this.props.dispatch(
         list({
@@ -58,13 +57,13 @@ export const createTable = (
     render() {
       const { listState = {}, ...rest } = this.props;
       const { loading = false, result = [], total, request = {} } = listState;
-      const { limit = 10, offset = 0 } = request.query || {};
+      const { _limit = 10, _offset = 0 } = request.query || {};
       const pagination = {};
 
       // pagination from api data
       if (total) {
-        pagination.current = Math.floor(offset / limit + 1);
-        pagination.pageSize = limit;
+        pagination.current = Math.floor(_offset / _limit + 1);
+        pagination.pageSize = _limit;
         pagination.total = total;
       }
 

@@ -61,6 +61,7 @@ const columns = [
     title: "name",
     dataIndex: "name",
     key: "name",
+    sorter: true,
     /* fixed: true ,*/
   },
   // 复合列
