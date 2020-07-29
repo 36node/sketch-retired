@@ -1,5 +1,5 @@
+//@ts-check
 import fetch from "@36node/fetch";
-import { denormalize } from '@36node/query-normalizr';
 
 export default class SDK {
   /**@type {string} **/
@@ -16,6 +16,7 @@ export default class SDK {
   get auth() {
     {{#if components.securitySchemes.bearerAuth }}
     let token = this.token;
+    // @ts-ignore
     if (typeof token === "function") token = token();
     if (token) return `Bearer ${token}`;
     {{/if}}
@@ -31,9 +32,9 @@ export default class SDK {
    * @param {string} opt.base  base url
    * @param {string} opt.token token for authorization
    */
-  constructor(opt = {}) {
-    this.base = opt.base || "";
-    this.token = opt.token || "";
+  constructor(opt = { base: "", token: "" }) {
+    this.base = opt.base;
+    this.token = opt.token;
   }
 
   {{#each api}}
@@ -46,9 +47,11 @@ export default class SDK {
      * {{summary}}
      *
      * @param { {{~capitalize name}}Request} req {{name}} request
+     {{#if responseDef}}
      * @returns {Promise< {{~capitalize name}}Response>} {{response.description}}
+     {{/if}}
      */
-    {{name}}: (req = {}) => {
+    {{name}}: (req) => {
       const {
         {{#each parameters}}
         {{#is in "path"}}
@@ -58,11 +61,13 @@ export default class SDK {
         {{#withParamQuery parameters}}
         query,
         {{/withParamQuery}}
+        {{#withParamHeader parameters}}
         headers,
+        {{/withParamHeader}}
         {{#with requestBody}}
         body,
         {{/with}}
-      } = req;
+      } = req || {};
 
       {{#each parameters}}
       {{#is in "path"}}
@@ -84,12 +89,16 @@ export default class SDK {
       return fetch(`${this.base}{{toDollar path}}`, {
         method: "{{toUpperCase method}}",
         {{#withParamQuery parameters}}
-        query: denormalize(query),
+        query,
         {{/withParamQuery}}
         {{#with requestBody}}
         body,
         {{/with}}
-        headers: { Authorization: this.auth, ...headers },
+        headers: { Authorization: this.auth, 
+        {{#withParamHeader parameters}}
+        ...headers,
+        {{/withParamHeader}}
+        },
       });
     },
     {{/each}}

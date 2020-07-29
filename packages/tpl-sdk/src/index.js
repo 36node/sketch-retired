@@ -1,3 +1,4 @@
+//@ts-check
 import fetch from "@36node/fetch";
 
 export default class SDK {
@@ -13,6 +14,7 @@ export default class SDK {
    * */
   get auth() {
     let token = this.token;
+    // @ts-ignore
     if (typeof token === "function") token = token();
     if (token) return `Bearer ${token}`;
 
@@ -26,9 +28,9 @@ export default class SDK {
    * @param {string} opt.base  base url
    * @param {string} opt.token token for authorization
    */
-  constructor(opt = {}) {
-    this.base = opt.base || "";
-    this.token = opt.token || "";
+  constructor(opt = { base: "", token: "" }) {
+    this.base = opt.base;
+    this.token = opt.token;
   }
 
   /**
@@ -41,13 +43,13 @@ export default class SDK {
      * @param {ListPetsRequest} req listPets request
      * @returns {Promise<ListPetsResponse>} A paged array of pets
      */
-    listPets: (req = {}) => {
-      const { query, headers } = req;
+    listPets: req => {
+      const { query } = req || {};
 
       return fetch(`${this.base}/pets`, {
         method: "GET",
         query,
-        headers: { Authorization: this.auth, ...headers },
+        headers: { Authorization: this.auth },
       });
     },
     /**
@@ -56,15 +58,15 @@ export default class SDK {
      * @param {CreatePetRequest} req createPet request
      * @returns {Promise<CreatePetResponse>} The Pet created
      */
-    createPet: (req = {}) => {
-      const { headers, body } = req;
+    createPet: req => {
+      const { body } = req || {};
 
       if (!body) throw new Error("requetBody is required for createPet");
 
       return fetch(`${this.base}/pets`, {
         method: "POST",
         body,
-        headers: { Authorization: this.auth, ...headers },
+        headers: { Authorization: this.auth },
       });
     },
     /**
@@ -73,14 +75,14 @@ export default class SDK {
      * @param {ShowPetByIdRequest} req showPetById request
      * @returns {Promise<ShowPetByIdResponse>} Expected response to a valid request
      */
-    showPetById: (req = {}) => {
-      const { petId, headers } = req;
+    showPetById: req => {
+      const { petId } = req || {};
 
       if (!petId) throw new Error("petId is required for showPetById");
 
       return fetch(`${this.base}/pets/${petId}`, {
         method: "GET",
-        headers: { Authorization: this.auth, ...headers },
+        headers: { Authorization: this.auth },
       });
     },
     /**
@@ -89,32 +91,31 @@ export default class SDK {
      * @param {UpdatePetRequest} req updatePet request
      * @returns {Promise<UpdatePetResponse>} The pet
      */
-    updatePet: (req = {}) => {
-      const { petId, headers, body } = req;
+    updatePet: req => {
+      const { petId, body } = req || {};
 
       if (!petId) throw new Error("petId is required for updatePet");
       if (!body) throw new Error("requetBody is required for updatePet");
 
       return fetch(`${this.base}/pets/${petId}`, {
-        method: "PATCH",
+        method: "PUT",
         body,
-        headers: { Authorization: this.auth, ...headers },
+        headers: { Authorization: this.auth },
       });
     },
     /**
      *
      *
      * @param {DeletePetRequest} req deletePet request
-     * @returns {Promise<DeletePetResponse>} pet deleted
      */
-    deletePet: (req = {}) => {
-      const { petId, headers } = req;
+    deletePet: req => {
+      const { petId } = req || {};
 
       if (!petId) throw new Error("petId is required for deletePet");
 
       return fetch(`${this.base}/pets/${petId}`, {
         method: "DELETE",
-        headers: { Authorization: this.auth, ...headers },
+        headers: { Authorization: this.auth },
       });
     },
   };
