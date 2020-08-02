@@ -23,4 +23,4 @@ COPY --from=build /build/node_modules node_modules/
 COPY ./ ./
 
 # Start
-CMD "npm run server"
+CMD ["npm", "run", "server"]
