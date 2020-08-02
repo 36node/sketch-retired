@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.10](https://github.com/36node/sketch/compare/@36node/template-service@0.16.9...@36node/template-service@0.16.10) (2020-08-02)
+
+
+### Bug Fixes
+
+* **tpl-service:** dependencies ([bf8b5ed](https://github.com/36node/sketch/commit/bf8b5ed))
+
+
+
+
+
 ## [0.16.9](https://github.com/36node/sketch/compare/@36node/template-service@0.16.8...@36node/template-service@0.16.9) (2020-07-22)
 
 
