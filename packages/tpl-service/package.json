@@ -33,7 +33,7 @@
     "gen:postman": "swagen postman openapi.yml postman.json",
     "lint": "sketch lint src",
     "release": "standard-version",
-    "server": "bin/server.js",
+    "server": "node --harmony -r esm bin/server.js",
     "start": "sketch start",
     "sync": "bin/sync.js",
     "test": "sketch test",
