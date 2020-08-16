@@ -2,6 +2,8 @@ version: 2
 
 defaults: &defaults
   working_directory: ~/repo
+  environment:
+    TZ: "Asia/Shanghai"
   docker:
     - image: circleci/node:14
     - image: mongo:4
