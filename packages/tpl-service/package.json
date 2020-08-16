@@ -35,7 +35,7 @@
     "release": "standard-version",
     "server": "node --harmony -r esm bin/server.js",
     "start": "sketch start",
-    "sync": "bin/sync.js",
+    "sync": "node --harmony -r esm bin/sync.js",
     "test": "sketch test",
     "test:int": "sketch test --config test/jest.config.js"
   },
