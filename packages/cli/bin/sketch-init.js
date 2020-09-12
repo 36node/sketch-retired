@@ -15,6 +15,8 @@ const enableTpls = [
   "tcp",
   "react-component",
   "expo",
+  "nextjs",
+  "wxapp",
 ];
 
 function gitUser() {

@@ -57,7 +57,13 @@ switch (template.toLowerCase()) {
     args.push("--config", reduxLibaryRollupConfig);
     args.push("--sourcemap");
     break;
-
+  case "nextjs":
+    command = "next";
+    break;
+  case "wxapp":
+    command = "taro";
+    args.push("--type", "weapp");
+    break;
   default:
     throw new Error(`template ${template} not supported`);
 }
