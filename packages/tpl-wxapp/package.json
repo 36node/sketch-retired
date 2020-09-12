@@ -1,6 +1,6 @@
 {
-  "name": "tmp-wxapp",
-  "version": "1.0.0",
+  "name": "@36node/template-wxapp",
+  "version": "0.0.1",
   "private": true,
   "description": "",
   "templateInfo": {
@@ -8,6 +8,7 @@
     "typescript": false,
     "css": "sass"
   },
+  "template": "wxapp",
   "scripts": {
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",

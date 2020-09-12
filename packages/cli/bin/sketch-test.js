@@ -31,6 +31,8 @@ switch (template) {
   case "react-component":
   case "sdk":
   case "redux-library":
+  case "nextjs":
+  case "wxapp":
     command = "react-app-rewired";
     break;
   case "tcp":
