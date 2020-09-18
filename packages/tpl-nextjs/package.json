@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-nextjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "template": "nextjs",
   "publishConfig": {
     "access": "public"
@@ -22,15 +22,15 @@
     "markdown-it-toc-and-anchor": "^4.2.0",
     "next": "9.4.0",
     "node-fetch": "^2.6.0",
+    "rc-tabs": "^10.1.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "styled-components": "^5.1.0",
-    "rc-tabs": "^10.1.1"
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
+    "@36node/sketch": "^0.15.3",
+    "babel-jest": "^26.1.0",
     "babel-plugin-styled-components": "1.10.7",
-    "standard-version": "^6.0.1",
-    "@36node/sketch": "^0.15.2",
-    "babel-jest": "^26.1.0"
+    "standard-version": "^6.0.1"
   }
 }
