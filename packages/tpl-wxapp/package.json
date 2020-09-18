@@ -1,7 +1,6 @@
 {
   "name": "@36node/template-wxapp",
   "version": "0.0.1",
-  "private": true,
   "description": "",
   "templateInfo": {
     "name": "default",

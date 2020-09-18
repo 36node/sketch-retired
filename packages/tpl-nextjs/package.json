@@ -1,7 +1,6 @@
 {
   "name": "@36node/template-nextjs",
   "version": "0.0.1",
-  "private": true,
   "template": "nextjs",
   "publishConfig": {
     "access": "public"
