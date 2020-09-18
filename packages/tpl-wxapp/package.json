@@ -30,6 +30,9 @@
   },
   "author": "",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "config-overrides-path": "../cli/config-overrides",
   "dependencies": {
     "@tarojs/components": "2.0.7",
