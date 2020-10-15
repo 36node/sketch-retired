@@ -5,7 +5,7 @@ defaults: &defaults
   environment:
     TZ: "Asia/Shanghai"
   docker:
-    - image: circleci/node:12
+    - image: circleci/node:14
 
 jobs:
   build:
@@ -64,27 +64,6 @@ jobs:
             chmod +x bin/build-docker.sh
             bin/build-docker.sh $TAG $DOCKER_USER $DOCKER_PASS $DOCKER_REGISTRY
 
-  bump:
-    <<: *defaults
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "15:94:c7:13:68:ce:72:50:04:b0:03:c8:e1:c6:96:f0"
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependences
-          command: yarn install
-      - run:
-          name: git config
-          command: |
-            git config --global user.email "robot@circleci.com"
-            git config --global user.name "robot"
-      - run:
-          name: bump version
-          command: bin/bump.sh
-
 workflows:
   version: 2
   main:
@@ -108,13 +87,3 @@ workflows:
               only: /v.*/
             branches:
               ignore: /.*/
-  weekly:
-    triggers:
-      - schedule:
-          cron: "0 23 * * 6"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - bump
