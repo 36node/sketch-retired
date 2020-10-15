@@ -2,11 +2,9 @@ version: 2
 
 defaults: &defaults
   working_directory: ~/repo
-  environment:
-    TZ: "Asia/Shanghai"
   docker:
     - image: circleci/node:14
-    - image: mongo:4
+    - image: mongo:4.2
 
 jobs:
   build:
@@ -65,27 +63,6 @@ jobs:
             chmod +x bin/build-docker.sh
             bin/build-docker.sh $TAG $DOCKER_USER $DOCKER_PASS $DOCKER_REGISTRY
 
-  bump:
-    <<: *defaults
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "b1:ae:28:64:a6:7f:88:27:a9:6c:12:a7:85:d9:4e:03"
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependences
-          command: yarn install
-      - run:
-          name: git config
-          command: |
-            git config --global user.email "robot@circleci.com"
-            git config --global user.name "robot"
-      - run:
-          name: bump version
-          command: bin/bump.sh
-
 workflows:
   version: 2
   main:
@@ -109,13 +86,3 @@ workflows:
               only: /v.*/
             branches:
               ignore: /.*/
-  weekly:
-    triggers:
-      - schedule:
-          cron: "0 23 * * 6"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - bump
