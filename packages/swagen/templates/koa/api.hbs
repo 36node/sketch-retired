@@ -31,7 +31,7 @@ export default class {
         headers: {
           {{#each parameters}}
           {{#is in "header"}}
-          {{name}}: ctx.headers["{{name}}"],
+          '{{name}}': ctx.header["{{lowercase name}}"],
           {{/is}}
           {{/each}}
         },

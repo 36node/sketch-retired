@@ -82,14 +82,15 @@ const buildAjvErr = (errors = [], data) => ({
 export default (reqSchema, resSchema) => {
   return async (ctx, next) => {
     if (reqSchema) {
-      const validateReq = ajv.compile(reqSchema);
+      const validateReq = ajv.compile(lowerCaseReqHeaders(reqSchema));
       const req = {
         ...ctx.params,
         body: ctx.request.body,
         query: ctx.query,
-        headers: ctx.headers,
+        headers: ctx.header,
         cookies: ctx.cookies,
       };
+
       if (!validateReq(req)) {
         ctx.throw(
           400,
@@ -103,7 +104,7 @@ export default (reqSchema, resSchema) => {
     await next();
 
     if (resSchema) {
-      const validateRes = ajv.compile(lowerCaseHeaders(resSchema));
+      const validateRes = ajv.compile(lowerCaseResHeaders(resSchema));
       const res = {
         content: ctx.body,
         headers: ctx.response.headers,
@@ -128,7 +129,7 @@ export default (reqSchema, resSchema) => {
  * @param {object} schema 原始 schema
  * @returns {object} 供 ajv 校验使用的 schema
  */
-function lowerCaseHeaders(schema) {
+function lowerCaseResHeaders(schema) {
   if (!schema.properties || !schema.properties.headers) return schema;
   const headers = schema.properties.headers;
   const properties = Object.keys(headers.properties).reduce(
@@ -143,6 +144,38 @@ function lowerCaseHeaders(schema) {
         ...schema.headers,
         properties,
       },
+    },
+  };
+}
+
+/**
+ * 忽略请求中的header大小写
+ */
+function lowerCaseReqHeaders(schema) {
+  if (!schema.properties || !schema.properties.header) return schema;
+
+  const { header, ...rest } = schema.properties;
+  const newHeader = { ...header };
+
+  const { required = [], properties } = header;
+
+  if (required) newHeader.required = required.map(r => r.toLowerCase());
+
+  if (properties) {
+    newHeader.properties = Object.keys(properties).reduce(
+      (c, k) => ({
+        ...c,
+        [k.toLowerCase()]: properties[k],
+      }),
+      {}
+    );
+  }
+
+  return {
+    ...schema,
+    properties: {
+      ...rest,
+      headers: newHeader,
     },
   };
 }

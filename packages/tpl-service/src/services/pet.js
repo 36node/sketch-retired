@@ -103,6 +103,8 @@ export class Service extends API {
    * @param {API.Context<State>} [ctx] koa context
    */
   async deletePet(req, ctx) {
+    debug("delete pet with req %o", req);
+
     const { pet } = ctx.state;
     await pet.softDelete();
   }
