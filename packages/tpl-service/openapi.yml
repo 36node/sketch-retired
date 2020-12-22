@@ -315,6 +315,7 @@ components:
         birthAt:
           type: string
           format: date
+          nullable: true
         grade:
           type: integer
           format: int32
