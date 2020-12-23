@@ -3,6 +3,7 @@
 import Ajv from "ajv";
 import { get, merge, cloneDeep } from "lodash";
 import Debug from "debug";
+import mem from "mem";
 
 const debug = Debug("store:validate");
 
@@ -148,6 +149,10 @@ function lowerCaseResHeaders(schema) {
   };
 }
 
+export const memLowerCaseResHeaders = mem(lowerCaseResHeaders, {
+  cacheKey: JSON.stringify,
+});
+
 /**
  * 忽略请求中的header大小写
  */
@@ -179,3 +184,7 @@ function lowerCaseReqHeaders(schema) {
     },
   };
 }
+
+export const memLowerCaseReqHeader = mem(lowerCaseReqHeaders, {
+  cacheKey: JSON.stringify,
+});
