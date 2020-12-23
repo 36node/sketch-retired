@@ -83,7 +83,7 @@ const buildAjvErr = (errors = [], data) => ({
 export default (reqSchema, resSchema) => {
   return async (ctx, next) => {
     if (reqSchema) {
-      const validateReq = ajv.compile(lowerCaseReqHeaders(reqSchema));
+      const validateReq = ajv.compile(memLowerCaseReqHeader(reqSchema));
       const req = {
         ...ctx.params,
         body: ctx.request.body,
@@ -105,7 +105,7 @@ export default (reqSchema, resSchema) => {
     await next();
 
     if (resSchema) {
-      const validateRes = ajv.compile(lowerCaseResHeaders(resSchema));
+      const validateRes = ajv.compile(memLowerCaseResHeaders(resSchema));
       const res = {
         content: ctx.body,
         headers: ctx.response.headers,
