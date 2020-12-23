@@ -24,7 +24,7 @@ declare namespace API {
       name?: string;
       tag?: "DOG" | "CAT";
       age?: number;
-      birthAt?: string;
+      birthAt?: string | null;
       grade?: number;
       owner?: string;
       other1?: string;
@@ -47,7 +47,7 @@ declare namespace API {
       name?: string;
       tag?: "DOG" | "CAT";
       age?: number;
-      birthAt?: string;
+      birthAt?: string | null;
       grade?: number;
       owner?: string;
       other2?: string;
@@ -66,7 +66,7 @@ declare namespace API {
       name?: string;
       tag?: "DOG" | "CAT";
       age?: number;
-      birthAt?: string;
+      birthAt?: string | null;
       grade?: number;
       owner?: string;
       other1?: string;
@@ -89,7 +89,7 @@ declare namespace API {
       name?: string;
       tag?: "DOG" | "CAT";
       age?: number;
-      birthAt?: string;
+      birthAt?: string | null;
       grade?: number;
       owner?: string;
       other1?: string;
@@ -110,7 +110,7 @@ declare namespace API {
       name?: string;
       tag?: "DOG" | "CAT";
       age?: number;
-      birthAt?: string;
+      birthAt?: string | null;
       grade?: number;
       owner?: string;
       other2?: string;
@@ -124,7 +124,7 @@ declare namespace API {
       name?: string;
       tag?: "DOG" | "CAT";
       age?: number;
-      birthAt?: string;
+      birthAt?: string | null;
       grade?: number;
       owner?: string;
       other1?: string;

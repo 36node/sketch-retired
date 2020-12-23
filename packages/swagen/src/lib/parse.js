@@ -20,6 +20,7 @@ function _transSchema(obj, isRequest = false) {
   if (obj.type === "object") {
     newobj.additionalProperties = false;
   }
+
   for (let prop in obj) {
     if (
       (isRequest && !obj[prop].readOnly) ||
@@ -27,7 +28,12 @@ function _transSchema(obj, isRequest = false) {
     ) {
       newobj[prop] = _transSchema(obj[prop], isRequest);
     }
+
+    if (prop === "type" && obj.nullable) {
+      newobj[prop] = [obj.type, "null"];
+    }
   }
+
   return newobj;
 }
 
