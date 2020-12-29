@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.5](https://github.com/36node/sketch/compare/@36node/fetch@0.6.4...@36node/fetch@0.6.5) (2020-12-29)
+
+
+### Bug Fixes
+
+* **fetch:** query string use import instead of require ([20dbd02](https://github.com/36node/sketch/commit/20dbd02))
+
+
+
+
+
 ## [0.6.4](https://github.com/36node/sketch/compare/@36node/fetch@0.6.3...@36node/fetch@0.6.4) (2019-10-14)
 
 
