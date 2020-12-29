@@ -1,4 +1,4 @@
-const decodeComponent = require("decode-uri-component");
+import decodeComponent from "decode-uri-component";
 
 const strictUriEncode = str =>
   encodeURIComponent(str).replace(
