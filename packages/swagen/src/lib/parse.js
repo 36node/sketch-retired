@@ -72,8 +72,8 @@ function getRequestSchema({ parameters = [], requestBody }) {
 function getResponseSchema({ headers, content }) {
   const schema = initObjSchema();
   if (content) {
-    schema.properties.content = content;
-    schema.required.push("content");
+    schema.properties.body = content;
+    schema.required.push("body");
   }
   if (!isEmpty(headers)) {
     schema.properties.headers = initObjSchema();

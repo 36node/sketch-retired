@@ -51,7 +51,7 @@ export interface ListPetsRequest {
   };
 }
 export interface ListPetsResponse {
-  content: ({
+  body: ({
     /**
      * pet's name
      */
@@ -93,7 +93,7 @@ export interface CreatePetRequest {
   };
 }
 export interface CreatePetResponse {
-  content: {
+  body: {
     /**
      * pet's name
      */
@@ -116,7 +116,7 @@ export interface ShowPetByIdRequest {
   petId: string;
 }
 export interface ShowPetByIdResponse {
-  content: {
+  body: {
     /**
      * pet's name
      */
@@ -151,7 +151,7 @@ export interface UpdatePetRequest {
   };
 }
 export interface UpdatePetResponse {
-  content: {
+  body: {
     /**
      * pet's name
      */
