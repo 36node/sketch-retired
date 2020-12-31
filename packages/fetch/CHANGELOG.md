@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/36node/sketch/compare/@36node/fetch@0.6.5...@36node/fetch@0.7.0) (2020-12-31)
+
+
+### Features
+
+* **fetch:** remove module entry ([17f7dde](https://github.com/36node/sketch/commit/17f7dde))
+
+
+
+
+
 ## [0.6.5](https://github.com/36node/sketch/compare/@36node/fetch@0.6.4...@36node/fetch@0.6.5) (2020-12-29)
 
 
