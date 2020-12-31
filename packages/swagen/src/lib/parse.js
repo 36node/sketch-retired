@@ -71,15 +71,22 @@ function getRequestSchema({ parameters = [], requestBody }) {
  */
 function getResponseSchema({ headers, content }) {
   const schema = initObjSchema();
-  if (content) schema.properties.content = content;
+  if (content) {
+    schema.properties.content = content;
+    schema.required.push("content");
+  }
+  if (!isEmpty(headers)) {
+    schema.properties.headers = initObjSchema();
+    schema.required.push("headers");
+  }
   for (let key in headers) {
-    schema.properties.headers = schema.properties.headers || initObjSchema();
     if (headers[key].required) {
       schema.properties.headers.required.push(key);
     }
     schema.properties.headers.properties[key] = headers[key].schema;
   }
 
+  // if no response, just return undefined
   if (!isEmpty(schema.properties)) return _transSchema(schema);
 }
 
@@ -178,7 +185,14 @@ async function _parse(swagger) {
     }
   }
 
-  return { info, servers, api, components, security };
+  const schemaDefs = [];
+  for (const k in components.schemas) {
+    const s = components.schemas[k];
+    const def = await getDef(_transSchema(s), k);
+    if (def) schemaDefs.push(def);
+  }
+
+  return { info, servers, api, components, schemaDefs, security };
 }
 
 /**

@@ -13,11 +13,6 @@ export default class SDK {
    * @returns {string} auth header
    * */
   get auth() {
-    let token = this.token;
-    // @ts-ignore
-    if (typeof token === "function") token = token();
-    if (token) return `Bearer ${token}`;
-
     return "";
   }
 

@@ -11,34 +11,39 @@ declare class SDK {
   {{/each}}
 }
 
-declare global {
+export interface Options {
+  base?: string;
+  token?: string | (() => string);
+}
 
-  export interface Options {
-    base?: string;
-    token?: string | (() => string);
-  }
-
-  {{#each api}}
-  export interface {{capitalize @key}}API {
-    {{#each operations}}
-    /**
-     * {{summary}}
-     */
-    {{name}}(req: {{capitalize name}}Request): Promise<{{capitalize name}}Response>;
-    {{/each}}
-  }
-  {{/each}}
-
-  {{#each api}}
+{{#each api}}
+export interface {{capitalize @key}}API {
   {{#each operations}}
-  {{#if requestDef}}
-  {{{requestDef}}};
-  {{/if}}
+  /**
+    * {{summary}}
+    */
   {{#if responseDef}}
-  {{{responseDef}}};
+  {{name}}(req: {{capitalize name}}Request): Promise<{{capitalize name}}Response>;
+  {{else}}
+  {{name}}(req: {{capitalize name}}Request): Promise<void>;
   {{/if}}
-  {{/each}}
   {{/each}}
 }
+{{/each}}
+
+{{#each api}}
+{{#each operations}}
+{{#if requestDef}}
+{{{requestDef}}};
+{{/if}}
+{{#if responseDef}}
+{{{responseDef}}};
+{{/if}}
+{{/each}}
+{{/each}}
+
+{{#each schemaDefs}}
+{{{this}}}
+{{/each}}
 
 export = SDK;

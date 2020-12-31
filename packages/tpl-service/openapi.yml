@@ -274,7 +274,7 @@ paths:
           $ref: "#/components/responses/InternalError"
 
 security:
-  - bearerAuth: []
+  - BearerAuth: []
 
 components:
   responses:
@@ -391,7 +391,7 @@ components:
                 type: string
 
   securitySchemes:
-    bearerAuth: # arbitrary name for the security scheme
+    BearerAuth: # arbitrary name for the security scheme
       type: http
       scheme: bearer
       bearerFormat: JWT
