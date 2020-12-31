@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/36node/sketch/compare/@36node/template-sdk@0.10.56...@36node/template-sdk@0.11.0) (2020-12-31)
+
+
+### Features
+
+* enhance typescript for sdk, close [#199](https://github.com/36node/sketch/issues/199) ([f1d1db1](https://github.com/36node/sketch/commit/f1d1db1))
+
+
+
+
+
 ## [0.10.56](https://github.com/36node/sketch/compare/@36node/template-sdk@0.10.55...@36node/template-sdk@0.10.56) (2020-12-29)
 
 **Note:** Version bump only for package @36node/template-sdk
