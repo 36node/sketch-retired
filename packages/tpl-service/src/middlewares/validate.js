@@ -105,9 +105,9 @@ export default (reqSchema, resSchema) => {
     await next();
 
     if (resSchema) {
-      const validateRes = ajv.compile(memLowerCaseResHeaders(resSchema));
+      const validateRes = ajv.compile(resSchema);
       const res = {
-        content: ctx.body,
+        body: ctx.body,
         headers: ctx.response.headers,
         cookies: ctx.cookies,
       };
@@ -123,35 +123,6 @@ export default (reqSchema, resSchema) => {
     }
   };
 };
-
-/**
- * 忽略 headers 大小写，schema 也转成小写
- *
- * @param {object} schema 原始 schema
- * @returns {object} 供 ajv 校验使用的 schema
- */
-function lowerCaseResHeaders(schema) {
-  if (!schema.properties || !schema.properties.headers) return schema;
-  const headers = schema.properties.headers;
-  const properties = Object.keys(headers.properties).reduce(
-    (c, k) => ({ ...c, [k.toLowerCase()]: headers.properties[k] }),
-    {}
-  );
-  return {
-    ...schema,
-    properties: {
-      ...schema.properties,
-      headers: {
-        ...schema.headers,
-        properties,
-      },
-    },
-  };
-}
-
-export const memLowerCaseResHeaders = mem(lowerCaseResHeaders, {
-  cacheKey: JSON.stringify,
-});
 
 /**
  * 忽略请求中的header大小写

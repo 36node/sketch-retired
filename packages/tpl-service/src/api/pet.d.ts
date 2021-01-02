@@ -17,7 +17,7 @@ declare namespace API {
     };
   }
   export interface ListPetsResponse {
-    content?: ({
+    body: ({
       /**
        * pet's name
        */
@@ -35,8 +35,8 @@ declare namespace API {
       createAt?: Date;
       createBy?: string;
     })[];
-    headers?: {
-      "X-Total-Count": number;
+    headers: {
+      "x-total-count": number;
     };
   }
   export interface CreatePetRequest {
@@ -59,7 +59,7 @@ declare namespace API {
     };
   }
   export interface CreatePetResponse {
-    content?: {
+    body: {
       /**
        * pet's name
        */
@@ -82,7 +82,7 @@ declare namespace API {
     petId: string;
   }
   export interface ShowPetByIdResponse {
-    content?: {
+    body: {
       /**
        * pet's name
        */
@@ -117,7 +117,7 @@ declare namespace API {
     };
   }
   export interface UpdatePetResponse {
-    content?: {
+    body: {
       /**
        * pet's name
        */

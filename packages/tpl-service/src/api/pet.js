@@ -20,8 +20,8 @@ export default class {
         query: ctx.query,
       };
       const res = await this.listPets(req, ctx);
-      ctx.body = res.content;
-      ctx.set("X-Total-Count", res.headers["X-Total-Count"]);
+      ctx.body = res.body;
+      ctx.set("x-total-count", res.headers["x-total-count"]);
       ctx.status = 200;
     };
 
@@ -30,7 +30,7 @@ export default class {
         body: ctx.request.body,
       };
       const res = await this.createPet(req, ctx);
-      ctx.body = res.content;
+      ctx.body = res.body;
       ctx.status = 201;
     };
 
@@ -39,7 +39,7 @@ export default class {
         petId: ctx.params.petId,
       };
       const res = await this.showPetById(req, ctx);
-      ctx.body = res.content;
+      ctx.body = res.body;
       ctx.status = 200;
     };
 
@@ -49,7 +49,7 @@ export default class {
         body: ctx.request.body,
       };
       const res = await this.updatePet(req, ctx);
-      ctx.body = res.content;
+      ctx.body = res.body;
       ctx.status = 200;
     };
 

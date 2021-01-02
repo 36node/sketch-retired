@@ -6,6 +6,7 @@ declare class SDK {
   auth: string;
 
   pet: PetAPI;
+  store: PetAPI;
 }
 
 export interface Options {
@@ -17,7 +18,10 @@ export interface PetAPI {
   /**
    * List all pets
    */
-  listPets(req: ListPetsRequest): Promise<ListPetsResponse>;
+  listPets(
+    req: ListPetsRequest,
+    options: fetchOptions
+  ): Promise<ListPetsResponse>;
   /**
    * Create a pet
    */

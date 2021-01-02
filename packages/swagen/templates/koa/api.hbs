@@ -52,10 +52,10 @@ export default class {
       {{/or}}
       {{#or response.content response.headers}}const res = {{/or}}await this.{{decapitalize name}}({{#or parameters requestBody}}req,{{/or}}ctx);
       {{#if response.content}}
-      ctx.body = res.content;
+      ctx.body = res.body;
       {{/if}}
       {{#each response.headers}}
-      ctx.set("{{@key}}", res.headers["{{@key}}"]);
+      ctx.set("{{lowercase @key}}", res.headers["{{lowercase @key}}"]);
       {{/each}}
       ctx.status = {{response.status}};
     };

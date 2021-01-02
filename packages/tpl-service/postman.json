@@ -1,14 +1,14 @@
 {
   "item": [
     {
-      "id": "9655a832-acdd-4910-8853-d3724fd9d11b",
+      "id": "c58d791d-133d-4266-98d5-b9b46b73007a",
       "name": "pet",
       "item": [
         {
-          "id": "83fe8c92-18f0-4923-b573-b7ecc101f153",
+          "id": "8821ca27-b0a4-4c51-98bb-6fc6fb4b1958",
           "response": [
             {
-              "id": "40f81c72-9b06-4ce6-b2b9-1e4c8431178a",
+              "id": "95d3fe2f-9f1f-42fa-9924-3a5dbf2fb2d9",
               "header": [
                 {
                   "key": "Content-type",
@@ -97,7 +97,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "24d47fac-9364-4323-87ac-23db0c06ab2f",
+                "id": "3d63fa32-083c-43b3-8b2d-0a27f65cb003",
                 "type": "text/javascript",
                 "exec": [
                   "var Ajv = require('ajv');",
@@ -107,9 +107,9 @@
                   "  pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"type\":\"array\",\"items\":{\"allOf\":[{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"},\"owner\":{\"type\":\"string\"},\"other1\":{\"type\":\"string\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"},\"updateAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"updateBy\":{\"type\":\"string\"},\"createAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"createBy\":{\"type\":\"string\"}}}]}},\"headers\":{\"type\":\"object\",\"required\":[\"X-Total-Count\"],\"properties\":{\"X-Total-Count\":{\"type\":\"integer\"}}}}};",
+                  "const schema = {\"type\":\"object\",\"required\":[\"body\",\"headers\"],\"properties\":{\"body\":{\"type\":\"array\",\"items\":{\"allOf\":[{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":[\"string\",\"null\"],\"format\":\"date\",\"nullable\":true},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"},\"owner\":{\"type\":\"string\"},\"other1\":{\"type\":\"string\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"},\"updateAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"updateBy\":{\"type\":\"string\"},\"createAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"createBy\":{\"type\":\"string\"}}}]}},\"headers\":{\"type\":\"object\",\"required\":[\"x-total-count\"],\"properties\":{\"x-total-count\":{\"type\":\"integer\"}}}}};",
                   "const res = {",
-                  "  content: pm.response.json(),",
+                  "  body: pm.response.json(),",
                   "  headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
                   "}",
                   "pm.test(\"Json body schema test\", function(){",
@@ -192,10 +192,10 @@
           "description": "List all pets"
         },
         {
-          "id": "87990bea-7ee6-4151-ba83-2a7505d5d0a5",
+          "id": "f79381a1-5ef3-4fc0-bada-7487079fa470",
           "response": [
             {
-              "id": "b78db0a3-6c56-4137-b2c7-e97f802d704f",
+              "id": "85d53ed5-13b3-495c-a7ba-113f2217052c",
               "header": [
                 {
                   "key": "Content-type",
@@ -243,7 +243,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e6e1d7db-669b-4022-9ece-e3bbf9f5f4ab",
+                "id": "ad7418d0-2880-4c86-b2b1-688baa0d19d2",
                 "type": "text/javascript",
                 "exec": [
                   "var Ajv = require('ajv');",
@@ -253,9 +253,9 @@
                   "  pm.response.to.have.status(201);",
                   "});",
                   "",
-                  "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"allOf\":[{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"},\"owner\":{\"type\":\"string\"},\"other1\":{\"type\":\"string\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"},\"updateAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"updateBy\":{\"type\":\"string\"},\"createAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"createBy\":{\"type\":\"string\"}}}]}}};",
+                  "const schema = {\"type\":\"object\",\"required\":[\"body\"],\"properties\":{\"body\":{\"allOf\":[{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":[\"string\",\"null\"],\"format\":\"date\",\"nullable\":true},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"},\"owner\":{\"type\":\"string\"},\"other1\":{\"type\":\"string\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"},\"updateAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"updateBy\":{\"type\":\"string\"},\"createAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"createBy\":{\"type\":\"string\"}}}]}}};",
                   "const res = {",
-                  "  content: pm.response.json(),",
+                  "  body: pm.response.json(),",
                   "  headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
                   "}",
                   "pm.test(\"Json body schema test\", function(){",
@@ -301,10 +301,10 @@
           "description": "Create a pet"
         },
         {
-          "id": "b1d751c1-a978-4183-a817-aba935b0b41a",
+          "id": "d61f932f-ae2b-4c34-9760-0affff99e177",
           "response": [
             {
-              "id": "61ea286a-4ef5-452e-9fd0-889b44514c8e",
+              "id": "31320737-392f-4660-abb1-5ff85311ff75",
               "header": [
                 {
                   "key": "Content-type",
@@ -354,7 +354,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b6ae2f3d-4cb7-4d7b-83c1-14aee6319787",
+                "id": "d169c682-1d86-4de0-9cf6-4b165d757f1c",
                 "type": "text/javascript",
                 "exec": [
                   "var Ajv = require('ajv');",
@@ -364,9 +364,9 @@
                   "  pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"allOf\":[{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"},\"owner\":{\"type\":\"string\"},\"other1\":{\"type\":\"string\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"},\"updateAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"updateBy\":{\"type\":\"string\"},\"createAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"createBy\":{\"type\":\"string\"}}}]}}};",
+                  "const schema = {\"type\":\"object\",\"required\":[\"body\"],\"properties\":{\"body\":{\"allOf\":[{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":[\"string\",\"null\"],\"format\":\"date\",\"nullable\":true},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"},\"owner\":{\"type\":\"string\"},\"other1\":{\"type\":\"string\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"},\"updateAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"updateBy\":{\"type\":\"string\"},\"createAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"createBy\":{\"type\":\"string\"}}}]}}};",
                   "const res = {",
-                  "  content: pm.response.json(),",
+                  "  body: pm.response.json(),",
                   "  headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
                   "}",
                   "pm.test(\"Json body schema test\", function(){",
@@ -414,10 +414,10 @@
           "description": "Find pet by id"
         },
         {
-          "id": "e96a56ae-a7a8-4cf7-9847-b2822e04ae23",
+          "id": "5baf3147-8e45-4eb8-9214-ef609e1ca6b7",
           "response": [
             {
-              "id": "287f17ed-ffb1-43ee-9534-0351449d7886",
+              "id": "fc681579-4e23-4548-9bdd-e09ed6217db5",
               "header": [
                 {
                   "key": "Content-type",
@@ -475,7 +475,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a2faed37-2920-4f43-a071-e473ab63599e",
+                "id": "f494e740-77a6-4397-a1fc-ef17ad0279d1",
                 "type": "text/javascript",
                 "exec": [
                   "var Ajv = require('ajv');",
@@ -485,9 +485,9 @@
                   "  pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "const schema = {\"type\":\"object\",\"required\":[],\"properties\":{\"content\":{\"allOf\":[{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":\"string\",\"format\":\"date\"},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"},\"owner\":{\"type\":\"string\"},\"other1\":{\"type\":\"string\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"},\"updateAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"updateBy\":{\"type\":\"string\"},\"createAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"createBy\":{\"type\":\"string\"}}}]}}};",
+                  "const schema = {\"type\":\"object\",\"required\":[\"body\"],\"properties\":{\"body\":{\"allOf\":[{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"tag\":{\"type\":\"string\",\"enum\":[\"DOG\",\"CAT\"]},\"age\":{\"type\":\"integer\",\"format\":\"int32\"},\"birthAt\":{\"type\":[\"string\",\"null\"],\"format\":\"date\",\"nullable\":true},\"grade\":{\"type\":\"integer\",\"format\":\"int32\"},\"owner\":{\"type\":\"string\"},\"other1\":{\"type\":\"string\"}}},{\"type\":\"object\",\"required\":[\"id\"],\"properties\":{\"id\":{\"type\":\"string\"},\"updateAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"updateBy\":{\"type\":\"string\"},\"createAt\":{\"type\":\"string\",\"format\":\"date-time\"},\"createBy\":{\"type\":\"string\"}}}]}}};",
                   "const res = {",
-                  "  content: pm.response.json(),",
+                  "  body: pm.response.json(),",
                   "  headers: pm.response.headers.reduce((c, k) => ({...c, [k.key]: k.value }), {})",
                   "}",
                   "pm.test(\"Json body schema test\", function(){",
@@ -543,10 +543,10 @@
           "description": "Update pet"
         },
         {
-          "id": "dd51899d-5ffc-479a-b28b-703baba28c50",
+          "id": "d52994a4-27b9-4980-83a4-6159af547143",
           "response": [
             {
-              "id": "c32d6d2c-f86a-4af3-ada2-50ceaaf545cd",
+              "id": "0ac6fdad-c797-4405-b7b8-92efbc690ff7",
               "header": [],
               "cookie": [],
               "name": "Response_204",
@@ -591,7 +591,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2ee97624-7aec-4bca-b402-481de10bd1e4",
+                "id": "77e9aaa0-21d7-4655-99c5-17e886a0b96b",
                 "type": "text/javascript",
                 "exec": [
                   "var Ajv = require('ajv');",
@@ -674,7 +674,7 @@
     }
   ],
   "info": {
-    "_postman_id": "4c6f9771-fcff-473f-88f9-fd54354759db",
+    "_postman_id": "177eeee9-cb45-4cc1-8303-56fd999c6126",
     "name": "Petstore Service",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   }

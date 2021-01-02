@@ -80,10 +80,11 @@ function getResponseSchema({ headers, content }) {
     schema.required.push("headers");
   }
   for (let key in headers) {
+    const lowerCasedKey = key.toLowerCase();
     if (headers[key].required) {
-      schema.properties.headers.required.push(key);
+      schema.properties.headers.required.push(lowerCasedKey);
     }
-    schema.properties.headers.properties[key] = headers[key].schema;
+    schema.properties.headers.properties[lowerCasedKey] = headers[key].schema;
   }
 
   // if no response, just return undefined

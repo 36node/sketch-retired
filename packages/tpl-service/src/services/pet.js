@@ -47,9 +47,9 @@ export class Service extends API {
     const count = await Pet.count(query.filter);
 
     return {
-      content: plain(docs),
+      body: plain(docs),
       headers: {
-        "X-Total-Count": count,
+        "x-total-count": count,
       },
     };
   }
@@ -64,7 +64,7 @@ export class Service extends API {
   async createPet(req) {
     debug("crete pet with body %o", req.body);
     const pet = await Pet.create(req.body);
-    return { content: plain(pet) };
+    return { body: plain(pet) };
   }
 
   /**
@@ -77,7 +77,7 @@ export class Service extends API {
    */
   async showPetById(req, ctx) {
     const { pet } = ctx.state;
-    return { content: plain(pet) };
+    return { body: plain(pet) };
   }
 
   /**
@@ -92,7 +92,7 @@ export class Service extends API {
     const { pet } = ctx.state;
     debug("update pet with body %o", req.body);
     await pet.set(req.body).save();
-    return { content: plain(pet) };
+    return { body: plain(pet) };
   }
 
   /**

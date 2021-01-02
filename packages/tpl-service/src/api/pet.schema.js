@@ -30,9 +30,9 @@ export const listPetsReqSchema = {
 export const listPetsResSchema = {
   additionalProperties: false,
   type: "object",
-  required: [],
+  required: ["body", "headers"],
   properties: {
-    content: {
+    body: {
       type: "array",
       items: {
         allOf: [
@@ -71,8 +71,8 @@ export const listPetsResSchema = {
     headers: {
       additionalProperties: false,
       type: "object",
-      required: ["X-Total-Count"],
-      properties: { "X-Total-Count": { type: "integer" } },
+      required: ["x-total-count"],
+      properties: { "x-total-count": { type: "integer" } },
     },
   },
 };
@@ -113,9 +113,9 @@ export const createPetReqSchema = {
 export const createPetResSchema = {
   additionalProperties: false,
   type: "object",
-  required: [],
+  required: ["body"],
   properties: {
-    content: {
+    body: {
       allOf: [
         {
           additionalProperties: false,
@@ -159,9 +159,9 @@ export const showPetByIdReqSchema = {
 export const showPetByIdResSchema = {
   additionalProperties: false,
   type: "object",
-  required: [],
+  required: ["body"],
   properties: {
-    content: {
+    body: {
       allOf: [
         {
           additionalProperties: false,
@@ -220,9 +220,9 @@ export const updatePetReqSchema = {
 export const updatePetResSchema = {
   additionalProperties: false,
   type: "object",
-  required: [],
+  required: ["body"],
   properties: {
-    content: {
+    body: {
       allOf: [
         {
           additionalProperties: false,
