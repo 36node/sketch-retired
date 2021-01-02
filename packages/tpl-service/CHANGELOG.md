@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2](https://github.com/36node/sketch/compare/@36node/template-service@0.17.1...@36node/template-service@0.17.2) (2021-01-02)
+
+
+### Bug Fixes
+
+* **swagen:** headers lowcase ([43cffc8](https://github.com/36node/sketch/commit/43cffc8))
+
+
+
+
+
 ## [0.17.1](https://github.com/36node/sketch/compare/@36node/template-service@0.17.0...@36node/template-service@0.17.1) (2020-12-31)
 
 **Note:** Version bump only for package @36node/template-service

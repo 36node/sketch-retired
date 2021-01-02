@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.2](https://github.com/36node/sketch/compare/@36node/template-sdk@0.11.1...@36node/template-sdk@0.11.2) (2021-01-02)
+
+
+### Bug Fixes
+
+* **swagen:** headers lowcase ([43cffc8](https://github.com/36node/sketch/commit/43cffc8))
+
+
+
+
+
 ## [0.11.1](https://github.com/36node/sketch/compare/@36node/template-sdk@0.11.0...@36node/template-sdk@0.11.1) (2020-12-31)
 
 **Note:** Version bump only for package @36node/template-sdk
