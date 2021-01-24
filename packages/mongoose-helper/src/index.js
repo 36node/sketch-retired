@@ -65,14 +65,14 @@ class Base {
 
   /**
    * List documents
-   * @param {Object} conditions - query condition.
-   * @param {object} conditions.filter - mongo query.
-   * @param {number} conditions.lean - return pure json.
-   * @param {number} conditions.limit - limit number of docs to be returned.
-   * @param {number} conditions.offset - number of docs to be skipped.
-   * @param {string} conditions.populate - populate some reference fields.
-   * @param {string} conditions.select - select fileds.
-   * @param {string} conditions.sort - sort by.
+   * @param {Object} [conditions] - query condition.
+   * @param {object} [conditions.filter] - mongo query.
+   * @param {number} [conditions.lean] - return pure json.
+   * @param {number} [conditions.limit] - limit number of docs to be returned.
+   * @param {number} [conditions.offset] - number of docs to be skipped.
+   * @param {string} [conditions.populate] - populate some reference fields.
+   * @param {string} [conditions.select] - select fileds.
+   * @param {string} [conditions.sort] - sort by.
    * @returns {Promise<Array<this>>}
    */
   static list({

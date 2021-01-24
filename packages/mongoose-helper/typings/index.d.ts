@@ -2,14 +2,14 @@
 
 declare module "mongoose" {
   interface ListOptions {
-    filter: object;
-    lean: boolean;
-    limit: number;
-    offset: number;
-    populate: string | [string];
-    select: string | [string];
-    sort: string | [string];
-    group: string | [string];
+    filter?: object;
+    lean?: boolean;
+    limit?: number;
+    offset?: number;
+    populate?: string | [string];
+    select?: string | [string];
+    sort?: string | [string];
+    group?: string | [string];
   }
 
   interface Model<T extends Document>
