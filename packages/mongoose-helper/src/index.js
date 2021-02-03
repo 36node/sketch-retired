@@ -1,9 +1,46 @@
 import mongooseHidden from "mongoose-hidden";
 
-export function helper(schema, options) {
+/**
+ *
+ * @param {import('mongoose').Schema} schema
+ * @param {object} options
+ */
+export function helper(schema, options = {}) {
+  const {
+    createBy = true,
+    updateBy = true,
+    deleteBy = true,
+    softDelete = true,
+    timestamps = true,
+  } = options;
+
   // soft delete
-  schema.add({ deleted: { type: Boolean, default: false, index: true } });
-  schema.add({ deletedAt: { type: Date } });
+  if (softDelete) {
+    schema.add({ deleted: { type: Boolean, default: false, index: true } });
+    schema.add({ deletedAt: { type: Date } });
+  }
+
+  if (createBy) {
+    schema.add({ createBy: { type: String } });
+  }
+
+  if (updateBy) {
+    schema.add({ updateBy: { type: String } });
+  }
+
+  if (deleteBy) {
+    schema.add({ deleteBy: { type: String } });
+  }
+
+  if (timestamps) {
+    schema.set("timestamps", {
+      createdAt: "createAt",
+      updatedAt: "updateAt",
+    });
+  }
+
+  schema.set("toJSON", { virtuals: true });
+  schema.set("toObject", { virtuals: true });
 
   schema.loadClass(Base);
 
@@ -12,16 +49,6 @@ export function helper(schema, options) {
     hidden: { _id: true, deleted: true },
   });
 }
-
-export const defaultOptions = {
-  timestamps: { createdAt: "createAt", updatedAt: "updateAt" },
-  toJSON: {
-    virtuals: true,
-  },
-  toObject: {
-    virtuals: true,
-  },
-};
 
 class Base {
   /**
