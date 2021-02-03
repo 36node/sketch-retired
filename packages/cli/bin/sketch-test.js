@@ -15,6 +15,7 @@ program
   .option("--env", "which env for test")
   .option("--detectOpenHandles", "for debug")
   .option("--forceExit", "force exit")
+  .option("--passWithNoTests", "pass with no test")
   .parse(process.argv);
 
 let command;
