@@ -49,8 +49,9 @@ declare module "mongoose" {
      * Soft delete document by id
      *
      * @param id id of document
+     * @param deleteBy who delete
      */
-    softDelete(id: string): Promise<T>;
+    softDelete(id: string, deleteBy?: string): Promise<T>;
   }
 
   interface Document
@@ -60,8 +61,9 @@ declare module "mongoose" {
     /**
      * Soft delete itself.
      * It will set the deleted flag.
+     * @param deleteBy who delete
      */
-    softDelete(): Promise<this>;
+    softDelete(deleteBy?: string): Promise<this>;
     /**
      * Restore itself.
      * It will unset the deleted flag.
@@ -86,7 +88,6 @@ declare module "@36node/mongoose-helper" {
   interface HelperOptions {
     createBy?: Boolean;
     updateBy?: Boolean;
-    deleteBy?: Boolean;
     softDelete?: Boolean;
     timestamps?: Boolean;
   }
