@@ -9,7 +9,6 @@ export function helper(schema, options = {}) {
   const {
     createBy = true,
     updateBy = true,
-    deleteBy = true,
     softDelete = true,
     timestamps = true,
   } = options;
@@ -17,6 +16,7 @@ export function helper(schema, options = {}) {
   // soft delete
   if (softDelete) {
     schema.add({ deleted: { type: Boolean, default: false, index: true } });
+    schema.add({ deleteBy: { type: String } });
     schema.add({ deletedAt: { type: Date } });
   }
 
@@ -26,10 +26,6 @@ export function helper(schema, options = {}) {
 
   if (updateBy) {
     schema.add({ updateBy: { type: String } });
-  }
-
-  if (deleteBy) {
-    schema.add({ deleteBy: { type: String } });
   }
 
   if (timestamps) {

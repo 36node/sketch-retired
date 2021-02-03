@@ -86,7 +86,6 @@ declare module "@36node/mongoose-helper" {
   interface HelperOptions {
     createBy?: Boolean;
     updateBy?: Boolean;
-    deleteBy?: Boolean;
     softDelete?: Boolean;
     timestamps?: Boolean;
   }
