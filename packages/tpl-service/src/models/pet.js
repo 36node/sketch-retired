@@ -1,16 +1,13 @@
 import mongoose from "mongoose";
-import { helper, defaultOptions } from "@36node/mongoose-helper";
+import { helper } from "@36node/mongoose-helper";
 
-export const petSchema = new mongoose.Schema(
-  {
-    name: { type: String, required: true },
-    owner: mongoose.SchemaTypes.ObjectId,
-    age: Number,
-    tag: { type: String, enum: ["CAT", "DOG"] },
-    birthAt: String,
-  },
-  defaultOptions
-);
+export const petSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  owner: mongoose.SchemaTypes.ObjectId,
+  age: Number,
+  tag: { type: String, enum: ["CAT", "DOG"] },
+  birthAt: String,
+});
 
 /**
  * @typedef {Object} PetDoc

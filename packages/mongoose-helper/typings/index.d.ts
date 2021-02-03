@@ -67,23 +67,35 @@ declare module "mongoose" {
      * It will unset the deleted flag.
      */
     restore(): Promise<this>;
+
+    createBy?: String;
+    updateBy?: String;
+    deleteBy?: String;
+
+    createAt?: Date;
+    updateAt?: Date;
+
+    deleted?: Boolean;
+    deletedAt?: Date;
   }
 }
 
 declare module "@36node/mongoose-helper" {
   import mongoose = require("mongoose");
 
+  interface HelperOptions {
+    createBy?: Boolean;
+    updateBy?: Boolean;
+    deleteBy?: Boolean;
+    softDelete?: Boolean;
+    timestamps?: Boolean;
+  }
+
   /**
    * Mongoose helper for 36node team.
    */
-  export function helper(schema: mongoose.Schema, options?: object): void;
-  export const defaultOptions = {
-    timestamps: true,
-    toJSON: {
-      virtuals: true,
-    },
-    toObject: {
-      virtuals: true,
-    },
-  };
+  export function helper(
+    schema: mongoose.Schema,
+    options?: HelperOptions
+  ): void;
 }
