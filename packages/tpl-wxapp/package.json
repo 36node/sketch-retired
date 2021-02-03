@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-wxapp",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "templateInfo": {
     "name": "default",
@@ -55,7 +55,7 @@
     "taro-ui": "^2.3.1"
   },
   "devDependencies": {
-    "@36node/sketch": "^0.15.3",
+    "@36node/sketch": "^0.15.4",
     "@tarojs/mini-runner": "2.0.7",
     "@tarojs/webpack-runner": "2.0.7",
     "@types/react": "^16.4.6",
