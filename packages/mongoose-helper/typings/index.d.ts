@@ -78,6 +78,10 @@ declare module "mongoose" {
     deleted?: Boolean;
     deletedAt?: Date;
   }
+}
+
+declare module "@36node/mongoose-helper" {
+  import mongoose = require("mongoose");
 
   interface HelperOptions {
     createBy?: Boolean;
@@ -86,16 +90,12 @@ declare module "mongoose" {
     softDelete?: Boolean;
     timestamps?: Boolean;
   }
-}
-
-declare module "@36node/mongoose-helper" {
-  import mongoose = require("mongoose");
 
   /**
    * Mongoose helper for 36node team.
    */
   export function helper(
     schema: mongoose.Schema,
-    options?: mongoose.HelperOptions
+    options?: HelperOptions
   ): void;
 }
