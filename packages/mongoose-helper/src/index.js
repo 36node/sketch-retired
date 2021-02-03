@@ -62,12 +62,13 @@ class Base {
   /**
    * Soft delete document by id
    * @param id id of document
+   * @param deleteBy who delete
    * @returns {Promise<this>}
    */
-  static softDelete(id) {
+  static softDelete(id, deleteBy) {
     return this.findByIdAndUpdate(
       id,
-      { deletedAt: new Date(), deleted: true },
+      { deletedAt: new Date(), deleted: true, deleteBy },
       { new: true }
     ).exec();
   }
@@ -135,10 +136,11 @@ class Base {
    *
    * @returns {Promise<this>}
    */
-  softDelete() {
+  softDelete(deleteBy) {
     return this.set({
       deletedAt: new Date(),
       deleted: true,
+      deleteBy,
     }).save();
   }
 
@@ -151,6 +153,7 @@ class Base {
     return this.set({
       deletedAt: undefined,
       deleted: undefined,
+      deleteBy: undefined,
     }).save();
   }
 }
