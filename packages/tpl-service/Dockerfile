@@ -1,4 +1,4 @@
-FROM 14.8.0-alpine3.11 AS build
+FROM node:14.8.0-alpine3.11 AS build
 
 # install tools and deps for node-gyp
 RUN apk add --no-cache --virtual .gyp \
@@ -10,7 +10,7 @@ WORKDIR /build
 COPY package.json yarn.lock ./
 RUN yarn --prod
 
-FROM 14.8.0-alpine3.11
+FROM node:14.8.0-alpine3.11
 ENV TZ Asia/Shanghai
 
 ENV DEBUG=off \
