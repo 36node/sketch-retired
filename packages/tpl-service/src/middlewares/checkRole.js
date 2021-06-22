@@ -1,5 +1,7 @@
 import createError from "http-errors";
 
+import { intersection } from "lodash";
+
 export default function(operation, roles) {
   /**
    * 中间件 检查角色是否匹配
@@ -13,25 +15,13 @@ export default function(operation, roles) {
     const checkRoles = roles[operation];
     if (checkRoles.length > 0) {
       // 查找jwt.roles和roles是否有共同元素
-      let ok = false;
-      if (jwt.roles.length > 0) {
-        for (let i = 0; i < checkRoles.length; i++) {
-          for (let j = 0; j < jwt.roles.length; j++) {
-            if (jwt.roles[j] === checkRoles[i]) {
-              ok = true;
-              break;
-            }
-          }
-        }
-      }
-
-      if (!ok) {
+      let ret = intersection(checkRoles, jwt.roles);
+      if (!ret.length) {
         throw new createError.Forbidden(
           `Require roles ${checkRoles.join(" or ")}`
         );
       }
     }
-
     await next();
   };
 }

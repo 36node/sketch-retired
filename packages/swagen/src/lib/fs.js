@@ -75,3 +75,21 @@ export function generate(tplFile, toFile, data, prettierOpts = {}) {
     "utf8"
   );
 }
+
+/**
+ * Get api roles
+ *
+ * @param {*} api
+ */
+export function getApiRoles(api) {
+  let roles = [];
+  for (let name in api) {
+    for (let operation of api[name]["operations"]) {
+      roles.push({
+        operationId: operation["operationId"],
+        roles: operation["roles"] || [],
+      });
+    }
+  }
+  return roles;
+}
