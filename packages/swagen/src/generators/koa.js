@@ -1,4 +1,5 @@
 import path from "path";
+import fs from "fs";
 
 import { generate, mkdir, parse } from "../lib";
 
@@ -14,9 +15,28 @@ export default function genKoa({
   templatePath,
 }) {
   mkdir(dist);
+  const configPath = path.dirname(dist) + "/config";
+  mkdir(configPath);
   return parse(yamlFile)
     .then(function(swagger) {
       const { api } = swagger;
+
+      // 获取所有api operationId，默认在 dist(./src/api)同目录下(./src/config)生成roles.js
+      const rolePath = configPath + "/roles.js";
+      let roles = [];
+      for (let name in api) {
+        for (let operation of api[name]["operations"]) {
+          roles.push({
+            operationId: operation["operationId"],
+            roles: operation["roles"] || [],
+          });
+        }
+      }
+      // 将 roles 写入 roles.js 文件
+      const tplRole = path.join(templatePath, "koa", "role.hbs");
+      generate(tplRole, rolePath, { value: roles });
+
+      // 生成 api 文件
       const tplAPI = path.join(templatePath, "koa", "api.hbs");
       const tplDef = path.join(templatePath, "koa", "definitions.hbs");
       const tplSchema = path.join(templatePath, "koa", "schema.hbs");

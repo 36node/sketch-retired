@@ -18,7 +18,11 @@ function _transSchema(obj, isRequest = false) {
     newobj.tsType = "Date";
   }
   if (obj.type === "object") {
-    newobj.additionalProperties = false;
+    if (obj.additionalProperties) {
+      newobj.additionalProperties = true;
+    } else {
+      newobj.additionalProperties = false;
+    }
   }
 
   for (let prop in obj) {
@@ -126,6 +130,7 @@ async function _parse(swagger) {
         requestBody,
         responses,
         security,
+        "x-roles": roles,
       } = paths[path][method];
 
       // make sure some props must exist
@@ -182,6 +187,7 @@ async function _parse(swagger) {
         responseSchema,
         requestDef,
         responseDef,
+        roles,
       });
     }
   }

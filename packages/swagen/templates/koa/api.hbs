@@ -1,7 +1,8 @@
 //@ts-check
 
 import * as schemas from "./{{name}}.schema.js";
-import { validate } from "../middlewares";
+import { validate, checkRole } from "../middlewares";
+import roles from "../config/roles.js"
 
 /**
  * @typedef {Object} State
@@ -65,7 +66,7 @@ export default class {
     router.{{method}}(
       "{{toRoute path}}",
       validate({{#if requestSchema}}schemas.{{decapitalize name}}ReqSchema{{else}}null{{/if}}{{#if responseSchema}}, schemas.{{decapitalize name}}ResSchema{{/if}}),
-      ...this.middlewares("{{name}}"),
+      ...this.finalMiddlewares("{{name}}"),
       {{name}}
     );
   {{/each}}
@@ -86,6 +87,19 @@ export default class {
    */
   middlewares(operation) {
     return [];
+  }
+
+  /**
+   * final middleware
+   *
+   * @abstract
+   * @param {string} operation name of operation
+   * @returns {Array<import("koa").Middleware<State>>} middlewares
+   */
+  finalMiddlewares(operation) {
+    const mws = this.middlewares(operation);
+    const cr = checkRole(operation, roles);
+    return mws ? mws.concat([cr]) : [cr];
   }
 {{#each operations}}
 
