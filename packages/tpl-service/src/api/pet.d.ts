@@ -1,5 +1,5 @@
 import { Context, Middleware } from "koa";
-import Router, { RouterContext } from "koa-tree-router";
+import Router, { RouterContext } from "koa-router";
 
 declare namespace API {
   export interface ListPetsRequest {

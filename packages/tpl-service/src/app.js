@@ -10,7 +10,7 @@ import helmet from "koa-helmet";
 import koaLogger from "koa-logger";
 import koaPinoLogger from "koa-pino-logger";
 import jwt from "koa-jwt";
-import Router from "koa-tree-router";
+import Router from "koa-router";
 import health from "@36node/koa-health";
 import openapi from "@36node/koa-openapi";
 

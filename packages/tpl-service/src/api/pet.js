@@ -12,7 +12,7 @@ export default class {
   /**
    * Bind service to router
    *
-   * @param {import("koa-tree-router")} router the koa compatible router
+   * @param {import("koa-router")} router the koa compatible router
    * @returns {this}
    */
   bind(router) {
