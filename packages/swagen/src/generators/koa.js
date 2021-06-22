@@ -20,7 +20,7 @@ export default function genKoa({
 
       // 生成 roles.js 文件
       const tplRole = path.join(templatePath, "koa", "role.hbs");
-      generate(tplRole, path.join(dist, "roles.js"), {
+      generate(tplRole, path.join(dist, "_roles.js"), {
         value: getApiRoles(api),
       });
 
