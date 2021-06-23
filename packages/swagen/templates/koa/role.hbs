@@ -1,0 +1,7 @@
+const roles = {
+  {{#each value}}
+  {{ operationId }}: [{{#each roles}}"{{ this }}",{{/each}}],
+  {{/each}}
+};
+
+export default roles;

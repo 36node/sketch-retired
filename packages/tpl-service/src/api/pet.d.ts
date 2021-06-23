@@ -1,5 +1,5 @@
 import { Context, Middleware } from "koa";
-import Router, { RouterContext } from "koa-tree-router";
+import Router, { RouterContext } from "koa-router";
 
 declare namespace API {
   export interface ListPetsRequest {
@@ -143,7 +143,7 @@ declare namespace API {
 }
 
 declare class API {
-  middleware(operation: string): Array<Middleware>;
+  middlewares(operation: string): Array<Middleware>;
   bind(router: Router): API;
   listPets(req: API.ListPetsRequest, ctx: API.Context): Promise<API.ListPetsResponse>;
   createPet(req: API.CreatePetRequest, ctx: API.Context): Promise<API.CreatePetResponse>;

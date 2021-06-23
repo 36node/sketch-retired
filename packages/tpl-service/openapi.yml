@@ -15,6 +15,7 @@ paths:
     get:
       summary: List all pets
       operationId: listPets
+      x-roles: ["BREEDER", "OWNER"]
       tags:
         - pet
       parameters:
@@ -138,6 +139,7 @@ paths:
     post:
       summary: Create a pet
       operationId: createPet
+      x-roles: ["BREEDER"]
       tags:
         - pet
       requestBody:
@@ -182,6 +184,7 @@ paths:
     get:
       summary: Find pet by id
       operationId: showPetById
+      x-roles: ["OWNER"]
       tags:
         - pet
       parameters:
@@ -219,6 +222,7 @@ paths:
     put:
       summary: Update pet
       operationId: updatePet
+      x-roles: []
       tags:
         - pet
       parameters:

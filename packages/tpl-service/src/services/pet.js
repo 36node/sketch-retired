@@ -6,8 +6,7 @@ import { toMongooseQuery } from "@36node/query-normalizr";
 import API from "../api/pet";
 import { Pet } from "../models";
 import { plain } from "../lib";
-import { loadPet, createDataRole, withRole } from "../middlewares";
-import { Role } from "../constants";
+import { loadPet, createDataRole } from "../middlewares";
 
 const debug = Debug("store:service:pet");
 
@@ -19,8 +18,8 @@ const debug = Debug("store:service:pet");
 export class Service extends API {
   _middlewares = {
     showPetById: [loadPet],
-    updatePet: [loadPet, createDataRole, withRole(Role.PET_STORE_OWNER)],
-    deletePet: [loadPet, createDataRole, withRole(Role.PET_STORE_OWNER)],
+    updatePet: [loadPet, createDataRole],
+    deletePet: [loadPet, createDataRole],
   };
 
   /**

@@ -1,7 +1,8 @@
 //@ts-check
 
 import * as schemas from "./pet.schema.js";
-import { validate } from "../middlewares";
+import { validate, checkRole } from "../middlewares";
+import roles from "./_roles.js";
 
 /**
  * @typedef {Object} State
@@ -11,7 +12,7 @@ export default class {
   /**
    * Bind service to router
    *
-   * @param {import("koa-tree-router")} router the koa compatible router
+   * @param {import("koa-router")} router the koa compatible router
    * @returns {this}
    */
   bind(router) {
@@ -64,31 +65,31 @@ export default class {
     router.get(
       "/pets",
       validate(schemas.listPetsReqSchema, schemas.listPetsResSchema),
-      ...this.middlewares("listPets"),
+      ...this.finalMiddlewares("listPets"),
       listPets
     );
     router.post(
       "/pets",
       validate(schemas.createPetReqSchema, schemas.createPetResSchema),
-      ...this.middlewares("createPet"),
+      ...this.finalMiddlewares("createPet"),
       createPet
     );
     router.get(
       "/pets/:petId",
       validate(schemas.showPetByIdReqSchema, schemas.showPetByIdResSchema),
-      ...this.middlewares("showPetById"),
+      ...this.finalMiddlewares("showPetById"),
       showPetById
     );
     router.put(
       "/pets/:petId",
       validate(schemas.updatePetReqSchema, schemas.updatePetResSchema),
-      ...this.middlewares("updatePet"),
+      ...this.finalMiddlewares("updatePet"),
       updatePet
     );
     router.delete(
       "/pets/:petId",
       validate(schemas.deletePetReqSchema),
-      ...this.middlewares("deletePet"),
+      ...this.finalMiddlewares("deletePet"),
       deletePet
     );
 
@@ -108,6 +109,19 @@ export default class {
    */
   middlewares(operation) {
     return [];
+  }
+
+  /**
+   * final middleware
+   *
+   * @abstract
+   * @param {string} operation name of operation
+   * @returns {Array<import("koa").Middleware<State>>} middlewares
+   */
+  finalMiddlewares(operation) {
+    const mws = this.middlewares(operation);
+    const cr = checkRole(operation, roles);
+    return mws ? mws.concat([cr]) : [cr];
   }
 
   /**

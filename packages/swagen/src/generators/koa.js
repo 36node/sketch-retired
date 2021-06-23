@@ -1,6 +1,6 @@
 import path from "path";
 
-import { generate, mkdir, parse } from "../lib";
+import { generate, mkdir, parse, getApiRoles } from "../lib";
 
 /**
  * Generate code for koa server api
@@ -17,6 +17,14 @@ export default function genKoa({
   return parse(yamlFile)
     .then(function(swagger) {
       const { api } = swagger;
+
+      // 生成 roles.js 文件
+      const tplRole = path.join(templatePath, "koa", "role.hbs");
+      generate(tplRole, path.join(dist, "_roles.js"), {
+        value: getApiRoles(api),
+      });
+
+      // 生成 api 文件
       const tplAPI = path.join(templatePath, "koa", "api.hbs");
       const tplDef = path.join(templatePath, "koa", "definitions.hbs");
       const tplSchema = path.join(templatePath, "koa", "schema.hbs");

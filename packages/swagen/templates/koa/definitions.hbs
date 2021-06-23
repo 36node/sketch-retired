@@ -1,5 +1,5 @@
 import { Context, Middleware } from "koa";
-import Router, { RouterContext } from "koa-tree-router";
+import Router, { RouterContext } from "koa-router";
 
 declare namespace API {
   {{#each operations}}
@@ -15,7 +15,7 @@ declare namespace API {
 }
 
 declare class API {
-  middleware(operation: string): Array<Middleware>;
+  middlewares(operation: string): Array<Middleware>;
   bind(router: Router): API;
   {{#each operations}}
   {{name}}({{#if requestDef}}req: API.{{capitalize name}}Request, {{/if}}ctx: API.Context): {{#if responseDef}}Promise<API.{{capitalize name}}Response>{{else}}Promise<void>{{/if}};
