@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/36node/sketch/compare/@36node/query-normalizr@0.5.0...@36node/query-normalizr@0.5.1) (2021-08-21)
+
+
+### Bug Fixes
+
+* for mongoose nested key ([4532766](https://github.com/36node/sketch/commit/4532766))
+
+
+
+
+
 # [0.5.0](https://github.com/36node/sketch/compare/@36node/query-normalizr@0.4.8...@36node/query-normalizr@0.5.0) (2020-06-15)
 
 
