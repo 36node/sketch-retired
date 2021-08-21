@@ -38,20 +38,20 @@ export default function normalize(query) {
   // reference https://github.com/36node/sketch/blob/master/docs/url.md
   const filter = Object.keys(raw).reduce((acc, key) => {
     let val = raw[key];
-    let path = key === "id" ? "_id" : key;
+    let path = key === "id" ? "_id" : [key];
     let isRegex = false;
 
     // `_like _not`
     let match = /(.+)_(like|not)/.exec(key);
     if (match) {
-      path = match[1];
+      path = [match[1]];
       isRegex = true;
     }
 
     // `_gt`, `_lt`, `_gte` `_lte` `_ne` `_not`
     match = /(.+)_(gt|lt|gte|lte|ne|not)$/.exec(key);
     if (match) {
-      path = `${match[1]}.$${match[2]}`;
+      path = [match[1], `$${match[2]}`];
     }
 
     if (key === "q") {

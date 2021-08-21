@@ -78,3 +78,14 @@ test("should trim _ for reserved keys", () => {
     filter: { age: 1 },
   });
 });
+
+test("should build filter for nested key", () => {
+  const query = {
+    "people.age_lt": 20,
+    "people.age_gt": 10,
+    "people.gender": "male",
+  };
+  expect(normalize(query)).toEqual({
+    filter: { "people.age": { $lt: 20, $gt: 10 }, "people.gender": "male" },
+  });
+});
