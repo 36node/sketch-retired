@@ -17,7 +17,7 @@
     "typings"
   ],
   "config-overrides-path": "../cli/config-overrides",
-  "browser": "dist/browser.m.js",
+  "browser": "dist/browser.mjs",
   "main": "dist/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
