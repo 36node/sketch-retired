@@ -2,7 +2,7 @@ import wrapper from "./wrapper";
 import wxFetch from "./wxapp-fetch";
 
 /* eslint-disable */
-if (!window && wx) {
+if (typeof window === 'undefined' && typeof wx !== 'undefined') {
   global.fetch = wxFetch;
   global.Response = wxFetch.Response;
   global.Headers = wxFetch.Headers;

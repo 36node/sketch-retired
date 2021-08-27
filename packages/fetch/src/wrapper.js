@@ -7,6 +7,12 @@ function isJson(res) {
   );
 }
 
+function getGlobal() {
+  if (typeof global !== 'undefined') return global
+  if (typeof window !== 'undefined') return window
+  throw new Error('unable to get global object')
+}
+
 /**
  * A wrapper of fetch
  *
@@ -26,7 +32,7 @@ export default async function(url, opt = {}) {
     ...headers,
   };
 
-  const fetch = (global && global.fetch) || (window && window.fetch);
+  const fetch = getGlobal().fetch
 
   const res = await fetch(endpoint, {
     ...opt,
