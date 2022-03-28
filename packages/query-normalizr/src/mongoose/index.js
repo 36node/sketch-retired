@@ -4,7 +4,10 @@ function wrapValue(val, isRegex) {
   if (isArray(val)) return { $in: val.map(i => wrapValue(i, isRegex)) };
   if (isNil(val) || typeof val !== "string") return val;
   val = val.trim();
-  if (val && isRegex) return new RegExp(val.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), "i");
+  if (val && isRegex) {
+    // eslint-disable-next-line no-useless-escape
+    return new RegExp(val.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&"), "i");
+  }
 
   switch (val.toLowerCase()) {
     case "*":
