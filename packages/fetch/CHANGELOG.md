@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/36node/sketch/compare/@36node/fetch@0.7.0...@36node/fetch@0.7.1) (2022-03-28)
+
+
+### Bug Fixes
+
+* errors in vite ([#206](https://github.com/36node/sketch/issues/206)) ([ce60e0e](https://github.com/36node/sketch/commit/ce60e0e))
+
+
+
+
+
 # [0.7.0](https://github.com/36node/sketch/compare/@36node/fetch@0.6.5...@36node/fetch@0.7.0) (2020-12-31)
 
 

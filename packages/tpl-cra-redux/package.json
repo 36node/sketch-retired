@@ -1,6 +1,6 @@
 {
   "name": "@36node/template-cra-redux",
-  "version": "0.15.42",
+  "version": "0.15.43",
   "description": "A react boilerplate based on CRA",
   "license": "MIT",
   "publishConfig": {
@@ -58,7 +58,7 @@
   "devDependencies": {
     "@36node/browserslist-config": "^0.1.2",
     "@36node/eslint-config": "^0.6.4",
-    "@36node/sketch": "^0.15.5",
+    "@36node/sketch": "^0.15.6",
     "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^6.1.0",
     "@types/jest": "^24.0.11",
@@ -73,13 +73,13 @@
     "standard-version": "^6.0.1"
   },
   "dependencies": {
-    "@36node/fetch": "^0.7.0",
-    "@36node/redux": "^0.3.15",
+    "@36node/fetch": "^0.7.1",
+    "@36node/redux": "^0.3.16",
     "@36node/redux-antd": "^0.2.1",
     "@36node/redux-session": "^0.1.5",
     "@36node/redux-xlsx": "^0.1.19",
-    "@36node/template-react-component": "^0.3.61",
-    "@36node/template-sdk": "^0.11.5",
+    "@36node/template-react-component": "^0.3.62",
+    "@36node/template-sdk": "^0.11.6",
     "@ant-design/icons": "^4.0.5",
     "antd": "^4.1.0",
     "lodash": "^4.17.11",
