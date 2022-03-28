@@ -1,6 +1,6 @@
 {
   "name": "@36node/sketch",
-  "version": "0.15.6",
+  "version": "0.15.7",
   "description": "Cli for @36node/sketch",
   "repository": "36node/sketch",
   "publishConfig": {
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@36node/mock-server": "^0.0.22",
-    "@36node/query-normalizr": "^0.5.2",
+    "@36node/query-normalizr": "^0.5.3",
     "@babel/plugin-proposal-decorators": "7.4.4",
     "@babel/plugin-transform-react-jsx-development": "^7.10.1",
     "babel-loader": "8.0.5",
