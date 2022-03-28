@@ -4,7 +4,7 @@ function wrapValue(val, isRegex) {
   if (isArray(val)) return { $in: val.map(i => wrapValue(i, isRegex)) };
   if (isNil(val) || typeof val !== "string") return val;
   val = val.trim();
-  if (isRegex) return new RegExp(val, "i");
+  if (val && isRegex) return new RegExp(val.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), "i");
 
   switch (val.toLowerCase()) {
     case "*":
